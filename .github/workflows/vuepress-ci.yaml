@@ -16,5 +16,25 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn
-      - run: yarn docs:build
+      - name: command
+        run: |
+          yarn
+          (yarn dev) & (sleep 10 && yarn docs:dev) & (sleep 25 && yarn docs:build)
+          git config --global user.name  "github action"
+          git config --global user.email "hui.cheng@naturali.io"
+          cd docs/.vuepress/dist
+          git init
+          git add -A
+          git commit -m 'deploy'
+          env
+        with:
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      - run: yarn
+#      - run: (yarn dev) & (sleep 10 && yarn docs:dev) & (sleep 25 && yarn docs:build)
+#      - run: git config --global user.name  "github action"
+#      - run: git config --global user.email "hui.cheng@naturali.io"
+#      - working-directory: docs/.vuepress/dist 
+#      - run: git init
+#      - run: git add -A
+#      - run: git commit -m 'deploy'
+#      - run: git push -f https://username:${ACCESS_TOKEN}@github.com/framely/framely.github.io.git master:gh-pages
