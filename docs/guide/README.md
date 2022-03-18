@@ -25,11 +25,6 @@ Choosing support declarative approach can reduce the burden on builder's shoulde
 ### Component Based
 
 some example.
-::: story Story
-User: *something new.* 
-
-Bot: *What do you mean exactly?*
-:::
 
 ## Why Not ...?
 There are many other directions that has been tried in the industry and academia, why we decide against these?
