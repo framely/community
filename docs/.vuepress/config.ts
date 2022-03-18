@@ -230,14 +230,6 @@ export default defineUserConfig<DefaultThemeOptions>({
       },
     ],
     // new container.
-    [
-      '@vuepress/plugin-container',
-      {
-        type: 'story',
-        before: info => `<div class="story"><p class="title">${info}</p>`,
-        after: () => '</div>',
-      },
-    ],
 
     // only enable shiki plugin in production mode
     [
