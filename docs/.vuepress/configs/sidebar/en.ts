@@ -9,6 +9,7 @@ export const en: SidebarConfig = {
         '/guide/getting-started.md',
         '/guide/cui.md',
         '/guide/5levels-cui.md',
+        '/guide/components.md',
         '/guide/glossary.md',
       ],
     },
