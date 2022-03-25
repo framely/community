@@ -87,10 +87,17 @@
 }
 .logo-links{
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.links>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .links{
     display: flex;
-    width: 70%;
+    width: 80%;
     justify-content: space-evenly;
     
 }
@@ -100,7 +107,7 @@
 
 }
 .logo-socials{
-    width: 30%;
+    width: 10%;
     
 }
 .link-col{
