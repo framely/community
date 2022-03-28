@@ -10,7 +10,7 @@ export default defineHopeConfig({
   base: '/',
   // theme: path.resolve(__dirname, './theme'),
   alias:{
-    "@theme/HomeFooter.vue": path.resolve(__dirname, './components/homefooter/homefooter.vue'),
+    "@theme-hope/components/PageFooter": path.resolve(__dirname, './components/homefooter/homefooter.vue'),
   },
 
   head: [
