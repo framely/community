@@ -8,6 +8,7 @@ const isProd = process.env.NODE_ENV === 'production'
 
 export default defineHopeConfig({
   base: '/',
+  extends: "vuepress-theme-hope",
   // theme: path.resolve(__dirname, './theme'),
   alias:{
     // "@theme-hope/components/PageFooter": path.resolve(__dirname, './components/homefooter/homefooter.vue'),
@@ -94,6 +95,7 @@ export default defineHopeConfig({
         navbar: navbar.en,
 
         // sidebar
+        // @ts-ignore
         sidebar: sidebar.en,
 
         // page meta
@@ -111,6 +113,7 @@ export default defineHopeConfig({
         selectLanguageAriaLabel: '选择语言',
 
         // sidebar
+        // @ts-ignore
         sidebar: sidebar.zh,
 
         // page meta
