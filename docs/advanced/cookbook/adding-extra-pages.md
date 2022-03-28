@@ -1,4 +1,4 @@
-# Adding Extra Pages hh
+# Adding Extra Pages
 
 Sometimes you might want to add some extra pages without creating a markdown file in the source directory.
 
