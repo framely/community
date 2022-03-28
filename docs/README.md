@@ -10,6 +10,7 @@ actions:
   - text: Get Started
     link: https://framely.naturali.io
     type: secondary
+  
 features:
   - title: CUI for your service
     details: Building valuable services is hard. While we can not help with that, we can make building conversational user interface a lot easier.

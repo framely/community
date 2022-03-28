@@ -2,12 +2,13 @@ import { defineUserConfig } from '@vuepress/cli'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
 import { path } from '@vuepress/utils'
 import { navbar, sidebar } from './configs'
+import { defineHopeConfig } from 'vuepress-theme-hope'
 
 const isProd = process.env.NODE_ENV === 'production'
 
-export default defineUserConfig<DefaultThemeOptions>({
+export default defineHopeConfig({
   base: '/',
-  theme: path.resolve(__dirname, './theme'),
+  // theme: path.resolve(__dirname, './theme'),
   alias:{
     "@theme/HomeFooter.vue": path.resolve(__dirname, './components/homefooter/homefooter.vue'),
   },

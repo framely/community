@@ -23,3 +23,22 @@ html.dark {
 		font-weight: bold;
 	}
 }
+
+.home{
+ margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 100%;
+}
+.home .features{
+	max-width: var(--homepage-width);
+
+}
+
+.sidebar{
+	width: fit-content;
+}
+.footer{
+	padding: 0;
+}
