@@ -6,9 +6,9 @@ import { defineHopeConfig } from 'vuepress-theme-hope'
 
 const isProd = process.env.NODE_ENV === 'production'
 
-export default defineHopeConfig({
+export default defineUserConfig<DefaultThemeOptions>({
   base: '/',
-  extends: "vuepress-theme-hope",
+  // extends: "vuepress-theme-hope",
   // theme: path.resolve(__dirname, './theme'),
   alias:{
     // "@theme-hope/components/PageFooter": path.resolve(__dirname, './components/homefooter/homefooter.vue'),
