@@ -17,7 +17,7 @@ If you don't have WeChat Official Account, set up one first.
    
 ![An image](/.vuepress/public/images/channelConfig/step1_1.jpeg)
 
-3. Fill the *Name* box, and copy *Callback URL*
+2. Fill the *Name* box, and copy *Callback URL*
    
 ![An image](/.vuepress/public/images/channelConfig/step1_2.jpeg)
 
@@ -34,17 +34,17 @@ If you don't have WeChat Official Account, set up one first.
 If you used *Developer Password(AppSecret)* before but didn't store it, you can click **Reset** to get a new one.
 :::
 
-5. Click **Configuration** (or **View**), add *123.56.222.81* to *IP whitelist* and click **Confirm modification** to save the modification.
+4. Click **Configuration** (or **View**), add *123.56.222.81* to *IP whitelist* and click **Confirm modification** to save the modification.
 
 ![An image](/.vuepress/public/images/channelConfig/step2_2.jpeg)
 
-6. In the **Server Configuration** (服务器配置) field, click **Change Configuration**.
+5. In the **Server Configuration** (服务器配置) field, click **Change Configuration**.
 
 ![An image](/.vuepress/public/images/channelConfig/step2_3.png)
 
-7. Paste *Callback URL* you copied during **Step 1** in *URL*.
-8. Set your *Token* and copy it.
-9. Click **Random Generation** to generate *EncodingAESKey* and click **Submit**.
+6. Paste *Callback URL* you copied during **Step 1** in *URL*.
+7. Set your *Token* and copy it.
+8. Click **Random Generation** to generate *EncodingAESKey* and click **Submit**.
 
 ![An image](/.vuepress/public/images/channelConfig/step2_4.png)
 
