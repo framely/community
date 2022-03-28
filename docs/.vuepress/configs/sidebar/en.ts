@@ -8,6 +8,7 @@ export const en: SidebarConfig = {
         '/guide/README.md',
         '/guide/getting-started.md',
         '/guide/cui.md',
+        '/guide/structured.md',
         '/guide/5levels-cui.md',
         '/guide/components.md',
         '/guide/architecture.md',
