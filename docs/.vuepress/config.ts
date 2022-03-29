@@ -1,5 +1,5 @@
 import { defineUserConfig } from '@vuepress/cli'
-import type { DefaultThemeOptions } from '@vuepress/theme-default'
+import type { DefaultThemeOptions } from '@lando/vuepress-theme-default-plus'
 import { path } from '@vuepress/utils'
 import { navbar, sidebar } from './configs'
 
@@ -141,7 +141,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       // only enable git plugin in production mode
       git: isProd,
 
-      // externalLinkIcon: false,
+      externalLinkIcon: false,
 
       // use shiki plugin in production mode instead
       prismjs: !isProd,
