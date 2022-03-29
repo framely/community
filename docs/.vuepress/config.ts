@@ -141,7 +141,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       // only enable git plugin in production mode
       git: isProd,
 
-      externalLinkIcon: false,
+      // externalLinkIcon: false,
 
       // use shiki plugin in production mode instead
       prismjs: !isProd,
