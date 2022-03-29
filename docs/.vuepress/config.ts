@@ -1,11 +1,12 @@
 import { defineUserConfig } from '@vuepress/cli'
-import type { DefaultThemeOptions } from '@lando/vuepress-theme-default-plus'
+import type { DefaultThemeOptions } from 'vuepress'
 import { path } from '@vuepress/utils'
 import { navbar, sidebar } from './configs'
 
 const isProd = process.env.NODE_ENV === 'production'
 
 export default defineUserConfig<DefaultThemeOptions>({
+  theme: path.resolve(__dirname, './theme'),
   base: '/',
   alias:{
     '@theme/HomeFooter.vue':path.resolve(__dirname, './components/homefooter/homefooter.vue')
