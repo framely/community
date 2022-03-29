@@ -9,7 +9,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   theme: path.resolve(__dirname, './theme'),
   base: '/',
   alias:{
-    '@theme/HomeFooter.vue':path.resolve(__dirname, './components/homefooter/homefooter.vue')
+    //'@theme/HomeFooter.vue':path.resolve(__dirname, './components/homefooter/homefooter.vue')
   },
 
   head: [

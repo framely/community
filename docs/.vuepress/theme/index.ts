@@ -3,7 +3,7 @@ import { path } from '@vuepress/utils'
 
 const localTheme: ThemeObject = {
   name: 'vuepress-theme-local',
-  extends: '@lando/vuepress-theme-default-plus',
+  extends: '@vuepress/default',
 }
 
 export default localTheme
