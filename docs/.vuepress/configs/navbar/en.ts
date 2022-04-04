@@ -29,8 +29,14 @@ export const en: NavbarConfig = [
       },
     ],
   },
+  // {
+  //   text: 'Blog',
+  //   link: '/blog/'
+  // },
   {
-    text: 'Blog',
-    link: ''
-  }
+    text: "Article",
+    link: "/article/",
+  },
+
+
 ]

@@ -1,4 +1,5 @@
 import { defineUserConfig } from '@vuepress/cli'
+import { blog } from "vuepress-plugin-blog2";
 // @ts-ignore
 import type { DefaultThemeOptions } from '@vuepress'
 import { path } from '@vuepress/utils'
@@ -79,6 +80,9 @@ export default defineUserConfig<DefaultThemeOptions>({
     logo: '/images/logo.png',
     heroImage: '',
     docsDir: 'docs',
+    navbar:{
+      text:'Blog', link:'/blog/'
+    },
 
     // theme-level locales config
     locales: {
@@ -167,6 +171,8 @@ export default defineUserConfig<DefaultThemeOptions>({
   },
 
   plugins: [
+    
+   
     [
       '@vuepress/plugin-docsearch',
       {
@@ -219,7 +225,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
         },
       },
-    ],
+    ],// .vuepress/config.ts
     [
       '@vuepress/plugin-google-analytics',
       {
@@ -291,5 +297,13 @@ export default defineUserConfig<DefaultThemeOptions>({
           }
         : false,
     ],
+      [
+        '@vuepress/register-components',
+        {
+          components: {
+            // componentsDir: path.resolve(__dirname, './components'),
+          },
+        },
+      ],
   ],
 })

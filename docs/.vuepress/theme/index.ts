@@ -1,11 +1,71 @@
-import type { ThemeObject } from '@vuepress/core'
-import { path } from '@vuepress/utils'
+import { path } from "@vuepress/utils";
+import type { Theme } from "@vuepress/core";
+import type { DefaultThemeOptions } from "@vuepress/theme-default";
 
-const localTheme: ThemeObject = {
-  name: 'vuepress-theme-local',
-  extends: '@vuepress/theme-default',
+const blogTheme: Theme<DefaultThemeOptions> = {
+  name: "blog-theme",
+
+  // we are extending @vuepress/theme-default
+  extends: "@vuepress/theme-default",
+
+  // we provide some blog layouts
   layouts: {
+    Article: path.resolve(__dirname, "./layouts/Article.vue"),
+    // Category: path.resolve(__dirname, "./layouts/Category.vue"),
+    // Tag: path.resolve(__dirname, "./layouts/Tag.vue"),
+    // Timeline: path.resolve(__dirname, "./layouts/Timeline.vue"),
   },
-}
 
-export default localTheme
+  plugins: [
+    [
+      "blog2",
+      {
+        // only files under posts are articles
+        filter: ({ filePathRelative }) =>
+          filePathRelative && filePathRelative.startsWith("posts/"),
+
+        // getting article info
+        getInfo: ({ frontmatter, title }) => ({
+          title,
+          author: frontmatter.author || "",
+          date: frontmatter.date || null,
+          category: frontmatter.category || [],
+          tag: frontmatter.tag || [],
+        }),
+        type: [
+          {
+            key: "article",
+            // remove archive articles
+            filter: (page) => !page.frontmatter.archive,
+            path: "/article/",
+            layout: "Article",
+            frontmatter: () => ({ title: "Articles", sidebar: false }),
+            // sort pages with time and sticky
+            sorter: (pageA, pageB) => {
+              if (pageA.frontmatter.sticky && pageB.frontmatter.sticky)
+                return pageB.frontmatter.sticky - pageA.frontmatter.sticky;
+
+              if (pageA.frontmatter.sticky && !pageB.frontmatter.sticky)
+                return -1;
+
+              if (!pageA.frontmatter.sticky && pageB.frontmatter.sticky)
+                return 1;
+
+              if (!pageB.frontmatter.date) return 1;
+              if (!pageA.frontmatter.date) return -1;
+
+              return (
+                new Date(pageB.frontmatter.date).getTime() -
+                new Date(pageA.frontmatter.date).getTime()
+              );
+            },
+          },
+      
+        ],
+        hotReload: true,
+      },
+    ],
+  ],
+};
+
+export default blogTheme;

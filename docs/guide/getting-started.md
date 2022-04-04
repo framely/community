@@ -1,3 +1,12 @@
+---
+article: true
+icon: edit
+date: 1998-01-01
+category:
+  - History
+tag:
+  - WWI
+---
 # Quick Start
 Although one can use Framely to serve user's informational need, we designed Framely to help 
 you to provide transactional service conversationally as well, so that your conversational services can potentially become a revenue center instead of a cost center for you business, and it is simple, just build, test and deploy. 
