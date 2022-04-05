@@ -15,7 +15,6 @@ features:
     details: Building valuable services is hard. While we can not help with that, we can make building conversational user interface a lot easier.
   - title: Separation of Concerns
     details: Separate chatbot building into service, interaction and language perception, so different aspects can be handled by different people.
-    icon: hello
   - title: Declarative
     details: Focus on how you want your chatbot to behave instead of how such behavior should be implemented imperatively, you got Framely for that. 
   - title: Component-First

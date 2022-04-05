@@ -32,6 +32,32 @@ const blogTheme: Theme<DefaultThemeOptions> = {
           category: frontmatter.category || [],
           tag: frontmatter.tag || [],
         }),
+
+        category: [
+          {
+            key: "category",
+            getter: (page) => (page.frontmatter.category as string[]) || [],
+            layout: "Category",
+            itemLayout: "Category",
+            frontmatter: () => ({ title: "Categories", sidebar: false }),
+            itemFrontmatter: (name) => ({
+              title: `Category ${name}`,
+              sidebar: false,
+            }),
+          },
+          {
+            key: "tag",
+            getter: (page) => (page.frontmatter.tag as string[]) || [],
+            layout: "Tag",
+            itemLayout: "Tag",
+            frontmatter: () => ({ title: "Tags", sidebar: false }),
+            itemFrontmatter: (name) => ({
+              title: `Tag ${name}`,
+              sidebar: false,
+            }),
+          },
+        ],
+
         type: [
           {
             key: "article",
@@ -60,7 +86,18 @@ const blogTheme: Theme<DefaultThemeOptions> = {
               );
             },
           },
-      
+          {
+            key: "timeline",
+            // only article with date should be added to timeline
+            filter: (page) => page.frontmatter.date,
+            // sort pages with time
+            sorter: (pageA, pageB) =>
+              new Date(pageB.frontmatter.date).getTime() -
+              new Date(pageA.frontmatter.date).getTime(),
+            path: "/timeline/",
+            layout: "Timeline",
+            frontmatter: () => ({ title: "Timeline", sidebar: false }),
+          },
         ],
         hotReload: true,
       },
