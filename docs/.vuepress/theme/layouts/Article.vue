@@ -2,17 +2,18 @@
   <ParentLayout>
     <template #page>
       <main class="page article-page">
-        <div class="intro">
-          <div class="title">
+        <div class="top-info">
+          <div class="top-info-title">
             <h1>Framely Blog</h1>
           </div>
-          <div class="intro">
-            <p>Let's take you through our journey and provide guidance.</p>
+          <div class="top-info-desc">
+            <p>Machine intelligence for user experience</p>
           </div>
         </div>
         <ArticleList :items="articles.items" />
-        <Footer />
+        
       </main>
+      <Footer />
     </template>
   </ParentLayout>
 </template>
@@ -28,17 +29,12 @@ const articles = useBlogType("article");
   width: var(--homepage-width);
   margin: auto;
 }
-h1{
-  font-weight: normal;
-}
-.intro{
-  text-align: center;
-  margin-bottom: 100px;
-}
+
 @media (max-width:719px){
   .page{
-    margin-left: 12px;
-    margin-right: 12px;
+    max-width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
 

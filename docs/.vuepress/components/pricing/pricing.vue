@@ -9,24 +9,23 @@ defineProps({
 <template>
   <div class="main">
     <div class="top-info">
- 
-      <h1 v-if="frontmatter.title">{{ frontmatter.title }}</h1>
-      <p v-if="frontmatter.tagline">{{ frontmatter.tagline }}</p>
+      <h1 v-if="frontmatter.title" class="top-info-title">{{ frontmatter.title }}</h1>
+      <p v-if="frontmatter.tagline" class="top-info-desc">{{ frontmatter.tagline }}</p>
     </div>
     <div class="cards" v-if="frontmatter.cards">
       <!--  -->
       <div class="card" v-for="card in frontmatter.cards" :key="card">
         <div class="card-head">
-          <h2 v-if="card.package">{{ card.package }}</h2>
+          <h4 v-if="card.package">{{ card.package }}</h4>
           <div class="price-badge">
-            <h3 v-if="card.price">{{ card.price }}</h3>
+            <h1 v-if="card.price">{{ card.price }}</h1>
             <span v-if="card.badge" class="badge-price">{{ card.badge }}</span>
           </div>
-          <p v-if="card.tagline">{{ card.tagline }}</p>
+          <p v-if="card.tagline" class="text-c-lightest">{{ card.tagline }}</p>
         </div>
         <div class="card-body">
           <ul>
-            <li v-for="list in card.features" :key="list"><p>{{ list }}</p></li>
+            <li v-for="list in card.features" :key="list"><p class="text-c-lighter">{{ list }}</p></li>
           </ul>
         </div>
         <div class="card-footer">
@@ -48,33 +47,34 @@ footer{
     margin: auto;
 }
 .main {
-  width: var(--homepage-width);
+  max-width: var(--homepage-width);
   position: relative;
   margin-top: 30px;
   display: flex;
   margin: auto;
-
   flex-direction: column;
-  .top-info {
-    margin: auto;
-    text-align: center;
-    h1{
-      font-weight: normal;
-    }
+
+  .text-c-lightest{
+    color: var(--c-text-lightest);
+  }
+  .text-c-lighter{
+    color: var(--c-text-lighter);
   }
 
   .cards {
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0 2rem 2rem 2rem;
 
     .card {
       border: 1px solid var(--c-border);
-      border-radius: 12px;
+      border-radius: 4px;
       display: flex;
       flex-direction: column;
       padding: 1em;
-      margin: 2px;
+
       .price-badge {
         display: flex;
         align-items: center;
@@ -89,47 +89,38 @@ footer{
         }
       }
       .card-head {
-        width: 90%;
-        margin: auto;
+        padding: 0 10px 20px 10px;
         border-bottom: 1px solid var(--c-border);
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        h2 {
-          border: none;
+      }
+      .card-body {
+        height: 100%;
+        padding: 10px;
+
+        ul {
+          list-style: none;
+          padding-left: 0;
+          //height: 100%;
+          min-height: fit-content;
         }
       }
       .card-footer {
-        width: 90%;
-        margin: auto;
-        height: 12em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 10px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
 
         p {
           font-weight: bold;
         }
         button {
           width: 90%;
-          cursor: pointer;
           a {
             color: var(--c-bg);
-          }
-        }
-      }
-      .card-body {
-        height: 100%;
-        padding-top: 12px;
-
-        ul {
-          list-style: none;
-          height: 100%;
-          // min-height: fit-content;
-
-          li {
-            height: 30px;
-            padding-top: 0.5em;
-            margin: 20px 0;
-            // padding-bottom: 0.5em;
-            
           }
         }
       }
@@ -138,28 +129,17 @@ footer{
 }
 @media (max-width: 719px) {
   .main {
-    width: 100%;
+    //width: 100%;
     .cards {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 90%;
-      padding: 0;
+      //width: 90%;
       .card {
-        width: 90%;
-        // min-width: fit-content;
-        ul {
-          li {
-            margin-top: 10px;
-          }
-        }
+        //width: 90%;
+        min-width: fit-content;
       }
     }
-  }
-}
-@media (max-width: 1024px) {
-  .main {
-    width: 100%;
   }
 }
 </style>

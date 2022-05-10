@@ -1,45 +1,53 @@
 ---
 pricing: true
-topsubtitle: pricing.
-title: Predictable pricing, no surprises.
-tagline: start building for free, collaborate with a team.
+topsubtitle: 
+title: Collaboration Workflow on Declarative Platform
+tagline: Clone and import public libraries, reuse and customize everything effectively and efficiently. Start with a free Starter and upgrade later if you need more. 
 
 cards:
-    - package: Free
-      price: $0/month
-      badge: Important
-      tagline: Perfect for passion projects and simple websitescvbd
+    - package: Starter
+      price: $99
+      badge: per year per user
+      tagline: For developer team and freelancers, who want building and sharing
       features:
-                -  Upto 500MB database and 1 GB file storage
-                -  Upto 500MB database and 1 GB file storage
+                -  CUI Components
+                -  Public Libraries
+                -  Hosting Backoffice
+                -  Basic NLU Model
+                -  Open Sourced Runtime
+                -  Public Projects
+                -  Single Language
+                -  Limited Integration
+                -  Community Support
       footertagline: Free projects are paused after 1 week of inactivity
-      buttonText: Get started
+      buttonText: Add Starter Plan
       link: /guide/
-    - package: Pro
-      price: $30/month
-      badge: pro
-      tagline: Perfect for passion projects and simple websites
+
+    - package: Team
+      price: $49 
+      badge: per mo per user
+      tagline: For growing teams and agencies who want stronger permissions
       features:
-                - Upto 500MB database and 1 GB file storage
-                - Upto 500MB database and 1 GB file storage
-                - Upto 500MB database and 1 GB file storage
-                - Upto 500MB database and 1 GB file storage
-                - Upto 500MB database and 1 GB file storage
-                - Upto 500MB database and 1 GB file storage
+                - 'Everything included in Starter and:'
+                - Private Projects
+                - Multi Language
+                - Omni Channel
+                - Hosting Support
+                - Advanced NLU Model
       footertagline: Free projects are paused after 1 week of inactivity
-      buttonText: Get started
+      buttonText: Add Team Plan
       link: /guide/
-    - package: Enterprise
-      price: Contact Us
-      badge: Important
-      tagline: Perfect for passion projects and simple websites
+
+    - package: Case Based
+      price: Custom
+      badge: 
+      tagline: Bring enterprise-level security, compliance and flexible deployment
       features:
-                - Upto 500MB database and 1 GB file storage
-                - Upto 500MB database and 1 GB file storage
-                - Upto 500MB database and 1 GB file storage
-                - Upto 500MB database and 1 GB file storage
-                - Upto 500MB database and 1 GB file storage
-                - Upto 500MB database and 1 GB file storage
+                - 'Everything included in Team and: '
+                - Different mode NLU Model
+                - Remove Framely Branding
+                - Custom Integrations
+                - Advanced security, performance and customer success
       footertagline: Free projects are paused after 1 week of inactivity
       buttonText: Contact Us
       link: /guide/

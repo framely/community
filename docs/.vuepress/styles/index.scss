@@ -150,6 +150,7 @@ html.dark {
 	border: 1px solid var(--c-brand);
 	background: var(--c-brand);
 	color: var(--c-bg);
+	cursor: pointer;
 }
 
 .button-small.secondary {
@@ -359,6 +360,25 @@ html.dark {
 		}
 	}
 }
+
+//top-info style
+.top-info {
+    margin: 2.5rem;
+    text-align: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    .top-info-title{
+        font-weight: 600;
+        line-height: 1.6;
+    }
+
+    .top-info-desc{
+        color: var(--c-text-lightest);
+        padding-bottom: 1rem;
+    }
+  }
+//end top-info
 
 
 @media (max-width:719px) {
