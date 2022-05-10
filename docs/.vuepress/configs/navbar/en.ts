@@ -40,7 +40,6 @@ export const en = [
           '/reference/channels/wpa.md',
         ],
       },
- 
       {
         text: 'Supports',
         children: [
