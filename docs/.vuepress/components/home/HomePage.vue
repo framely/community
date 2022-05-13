@@ -6,7 +6,7 @@ import HomeHero from '@theme/HomeHero.vue'
 import CTA from '../cta/callToAction.vue'
 import ContentCard from '../contentCard/ContentCard.vue'
 import Hero from "../hero/hero.vue"
-import Footerh from "../homefooter/homefooter.vue"
+import HomeCorprateFooter from "../homefooter/homefooter.vue"
 </script>
 
 <template>
@@ -16,6 +16,7 @@ import Footerh from "../homefooter/homefooter.vue"
     <HomeContent />
     <ContentCard />
     <CTA />
+    <HomeCorprateFooter/>
     <HomeFooter />
   </main>
 </template>
