@@ -74,13 +74,16 @@ footer{
       display: flex;
       flex-direction: column;
       padding: 1em;
+      position: relative;
+      top: 0;
+      transition: top ease 0.5s;
 
       .price-badge {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
         .badge-price {
-          background: var(--c-icon);
+          background: var(--c-bg-icon);
           padding: 2px 5px;
           color: var(--c-brand) !important;
           border-radius: 2px;
@@ -124,6 +127,9 @@ footer{
           }
         }
       }
+    }
+    .card:hover{
+      top: -10px;
     }
   }
 }

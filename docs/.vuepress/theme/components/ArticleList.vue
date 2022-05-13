@@ -6,35 +6,27 @@
       <div class="sticky" v-if="info.sticky">
         {{info.title}}
       </div>
-
     </div> -->
 
-    <article  class="article" v-for="{ info, path } in items" :key="info">
+    <article v-for="{ info, path } in items" :key="info">
       
       <!-- New layout -->
       <RouterLink :to="path">
-      <div class="container-blog">
-        <div class="image">
-          <img :src="info.image" />
+      <div class="blog-card">
+        <div >
+          <img class="blog-card-image" :src="info.image" />
         </div>
-        <div class="content">
-          <div v-if="info.title" class="title">
+        <div class="blog-card-info">
+          <div v-if="info.title">
             <!-- <RouterLink :to="path"> -->
-
-            <h2>{{ info.title }}</h2>
+            <h2 class="blog-card-info-title">{{ info.title }}</h2>
           </div>
-          <div v-if="info.date" class="stamp">
-            <span class="date">{{
-              new Date(info.date).toLocaleDateString()
-            }}</span>
+          <div v-if="info.description">
+            <p class="blog-card-info-description">{{ info.description[0] }}</p>
           </div>
-          <div v-if="info.description" class="description">
-            <p>{{ info.description[0] }}</p>
-          </div>
-          <div class="stamp-author-date">
-            <div class="author">
-              <span class="name">{{ info.author }}</span>
-            </div>
+          <div class="blog-card-info-bottom">
+            <div class="author">{{ info.author }}</div>
+            <div v-if="info.date">{{ new Date(info.date).toLocaleDateString() }}</div> 
           </div>
         </div>
       </div>
@@ -55,99 +47,88 @@ defineProps({
 })
 </script>
 <style lang="scss">
-.sticky{
+/*.sticky{
   width: var;
-}
+}*/
 .article-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  margin: auto;
-    row-gap: 100px;
-    column-gap: 50px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  grid-row-gap: 2rem;
+  //grid-column-gap: 2rem;
 
-  width: 100%;
-  font-family: 'Roboto', sans-serif;
-  .article {
-    width: 1fr;
-    padding-bottom: 30px;
-    .container-blog {
-      .image {
-        // padding: 30px;
-        img {
-          width: 90%;
-          height: 50%;
-          border: 1px var(--c-border) solid;
-          border-radius: 15px;
-        }
-      }
-      .content {
-        // padding-left: 20px;
-        padding-right: 30px;
-        width: 90%;
-        padding-bottom: 0;
-        margin-bottom: 0;
-        h2 {
-          font-weight: normal;
-          border: 0;
-          line-height: 1.5rem;
-          font-size: 1.5rem;
-          color: var(--b-title);
-        }
-        p {
-          width: 90%;
-          font-size: 0.9rem;
-          color: var(--b-desc);
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          font-weight: normal;
-        }
-        .stamp {
-          font-size: 0.75rem;
-          line-height: normal;
-          color: var(--b-title);
-          font-weight: normal;
-
-
-        }
-        .author{
-          text-transform: uppercase;
-          font-size: .85em;
-          color: var(--b-title);
-          font-weight: normal;
-
-
-        }
-      }
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 1.5rem;
+      position: relative;
+      top: 0;
+      transition: top ease 0.5s;
     }
-  }
+
+    .blog-card:hover {
+      border: 1px solid var(--c-border);
+      border-radius: 6px;
+      top: -10px;
+    }
+
+    .blog-card-image {
+      width: 100%;
+      height: 12rem;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .blog-card-info {
+      display: flex;
+      flex-direction: column;
+      color: var(--c-text);
+      padding-top: 1rem;
+    }      
+
+    .blog-card-info-title {
+      text-transform: capitalize;
+      font-size: 20px;
+      font-weight: 700;
+      border-bottom: none;
+    }
+
+    .blog-card-info-description {
+      color: var(--c-text-lighter);
+      margin-top: 0px;
+      font-weight: normal
+    }
+
+    .blog-card-info-bottom {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.5rem;
+      color: var(--c-text-lighter);
+      font-size: 12px;
+      font-weight: normal
+    }
+
+    .author{
+      text-transform: uppercase;
+    }
 }
 @media (max-width:719px){
   .article-wrapper {
     grid-template-columns:1fr ;
-
-    width: 100%;
+    //width: 100%;
     align-items: center;
     justify-items: center;
-    .article{
-      .container-blog{
-            padding-left: 2rem;
-    padding-right: 2rem;
-        .image{
-          img{
-            width: 100%;
-          }
-        }
-        .content{
-          width: 100%;
-          h2{
-            line-height: 1.5em;
-          }
-        }
-      }
-    }
   }
+  .blog-card {
+    border: 1px solid var(--c-border);
+    border-radius: 6px;
+    padding: 2rem;
+  }
+   
 }
 </style>

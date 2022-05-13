@@ -107,7 +107,8 @@ function getCssValue(el: HTMLElement | null, property: string): number {
 </template>
 <style lang="scss" scoped>
 .navbar {
-  padding-left: 10px;
+  //padding-left: 10px;
+  padding-left: var(--navbar-padding-h);
 }
 .button {
   margin-left: 20px;
@@ -132,6 +133,7 @@ function getCssValue(el: HTMLElement | null, property: string): number {
     margin: 6px 0;
   }
   .toggle-menu {
+    margin-left: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

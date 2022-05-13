@@ -23,7 +23,7 @@ Of course, in the end, computer still need to know how to do thing. A declarativ
 ### Component Library
 Building thing from scratch is slow and expensive. By packaging the solution for well-defined use cases, such as recommending a list of items and asking user which one they like, into a reusable (meaning composable and reconfigurable) module or component, we can then integrate them into bigger and bigger solutions to deliver the desired conversational user experience. This way of building chatbot can save both time and cost, and user can enjoy higher quality experience because of the components can be built and maintained by specialized professionals.
 
-### Effective Dialog Understanding Customization without Ph.D.
+### Dialog Understanding without Ph.D.
 Human language are mess, and understanding it is hard as the different text can mean the same thing and the same text can mean different thing in different context. This is one of the key complications of building conversational user interface. The popular approach rely on standard ML/NLU tasks like text classification and named entity recognition. While these standard tasks are well studied, applying them to new business use case requires effective customization, which typically call for serious thus costly expertise in ML/NLU. Framely focus on schema grounded conversational user interface, and use a set of ML/NLU models that every easy for regular dev team to effectively customize for any use cases with just utterance exemplars and template, entirely drop the need for having Ph.D on your team.
 
 ## Conclusion

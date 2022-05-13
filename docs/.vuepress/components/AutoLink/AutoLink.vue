@@ -137,7 +137,7 @@ const RemoveSidebar = () => {
     height: 14px;
     margin-left: -4px;
     margin-right: 6px;
-    /*background: var(--c-icon); */
+    /*background: var(--c-bg-icon); */
     padding: 2px;
     border-radius: 50%;
 

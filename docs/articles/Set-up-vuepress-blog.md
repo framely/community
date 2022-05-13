@@ -3,7 +3,7 @@ article: true
 date: 2022-04-13
 
 image:
-    - blog/vuepress.png
+    - blog/test.png
 description:
     - We will create a blog using vuepress2 for various use cases
 author: karani

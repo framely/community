@@ -69,7 +69,7 @@ const HomeHeroImage: FunctionalComponent = () => {
           {{ tagline }}
         </p>
       </div>
-      <div class="buttons">
+      <div>
         <p v-if="actions.length" class="actions">
           <AutoLink
             v-for="action in actions"
@@ -152,10 +152,6 @@ const HomeHeroImage: FunctionalComponent = () => {
     padding: 4rem 0.5rem 0 0.5rem;
   }
   .intro {
-    width: 100%;
-  }
-  .buttons {
-    display: flex;
     width: 100%;
   }
   .intro .text-info h1 {

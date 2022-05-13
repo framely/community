@@ -177,12 +177,17 @@ const page = computed(() => {
 }
 .toggle {
   position: fixed;
-  top: 8%;
+
+  top: calc( var(--navbar-height) + 18px );
   left: 0;
   transform: translateX(-10px);
   background: var(--c-bg);
-  padding: 2px 10px;
+  padding: 4px 12px;
   z-index: 2;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid var(--c-border);
+  background-position: 50% 50%;
   box-shadow: 2px 2px 4px var(--c-bg), -2px -2px 4px var(--c-bg);
 }
 .mask-sidebar {
