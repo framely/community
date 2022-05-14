@@ -55,8 +55,8 @@ const page = computed(() => {
       <div v-if="frontmatter.article" class="container-blog">
         <div class="theme-default-content">
           <div class="toc">
-            <button @click="ShowToc" class="title">
-              <p>In this page</p>
+            <button @click="ShowToc" class="toc-title">
+              <p>On this page</p>
               <div class="angle">
                 <svg
                   width="24"
@@ -84,8 +84,8 @@ const page = computed(() => {
 
       <div v-else class="theme-default-content">
         <div class="toc">
-          <button @click="ShowToc" class="title">
-            <p>In this page</p>
+          <button @click="ShowToc" class="toc-title">
+            <p>On this page</p>
             <div class="angle">
               <svg
                 width="24"
@@ -123,33 +123,13 @@ const page = computed(() => {
   </div>
 </template>
 <style lang="scss" scoped>
-.page-nav {
+/*.page-nav {
   margin: 0 0;
-}
-.title {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  background: none;
-  align-items: center;
-  border: none;
-  background: var(--c-bg);
-  height: 50px;
-  font-size: 1em;
-}
-.toc-content .vuepress-toc .vuepress-toc-list .vuepress-toc-item a {
-  color: var(--c-text);
-}
-.vuepress-toc {
-  width: 100%;
-  border-left: 1px solid var(--c-border);
-  margin-left: 10px;
-  font-size: 0.9em;
-}
-.vuepress-toc-list {
-  background: #000;
-  color: var(--c-text) !important;
-}
+}*/
+//.toc-content .vuepress-toc .vuepress-toc-list a {
+  //color: var(--c-text);
+//}
+
 .theme-default-content:not(.custom) {
   max-width: 100%;
   /* display: flex; */
@@ -160,12 +140,29 @@ const page = computed(() => {
   }
 }
 .toc {
+  min-width: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   position: relative;
   height: fit-content;
   position: fixed;
+  
   width: 30%;
   right: 0;
   margin: auto;
+}
+.toc-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  //background: var(--c-bg);
+  //height: 50px;
+  font-size: 14px;
+  font-weight: 600;
 }
 .content {
   max-width: 60%;
@@ -188,7 +185,7 @@ const page = computed(() => {
   border-radius: 4px;
   border: 1px solid var(--c-border);
   background-position: 50% 50%;
-  box-shadow: 2px 2px 4px var(--c-bg), -2px -2px 4px var(--c-bg);
+  box-shadow: 0 8px 24px var(--c-bg-icon);
 }
 .mask-sidebar {
   height: 100%;
@@ -216,7 +213,7 @@ const page = computed(() => {
     transition: 0.3s ease;
     background: var(--c-bg);
     transition: height 292ms ease-in-out 0s;
-    font-size: 0.8em;
+    //font-size: 0.8em;
     // transition: 0.5s ease-in-out;
     // display: none;
   }
@@ -228,17 +225,17 @@ const page = computed(() => {
   .content {
     max-width: 100%;
   }
-  .title {
+  /*.toc-title {
     display: flex;
     justify-content: space-between;
     width: 100%;
     background: none;
     align-items: center;
     border: none;
-    background: var(--c-bg);
+    //background: var(--c-bg);
     height: 50px;
-    font-size: 1em;
-  }
+    //font-size: 1em;
+  }*/
   .angle {
     // transform: rotate(90deg);
     display: block;

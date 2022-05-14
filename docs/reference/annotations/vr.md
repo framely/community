@@ -1,6 +1,6 @@
 # Value Recommendation
 
-<Toc />
+[[toc]]
 
 ## Overview
 ::: tip What can I do？

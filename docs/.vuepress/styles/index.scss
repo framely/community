@@ -161,15 +161,17 @@ html.dark {
 }
 // end of big footer
 
-// toc
+// toc 
 .vuepress-toc {
+	border-left: 1px solid var(--c-border);
+	
 	.vuepress-toc-list {
 		.vuepress-toc-item {
 			list-style: none;
 
 			.vuepress-toc-link {
-				color: var(--c-desc);
-				font-weight: normal;
+				color: var(--c-text-lightest);
+				//font-weight: normal;
 			}
 
 			.active {
@@ -179,7 +181,6 @@ html.dark {
 
 	}
 }
-
 // end toc
 
 
