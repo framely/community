@@ -15,12 +15,12 @@ After specifying the type of information chatbot need to invoke service, builder
 Conversational user interface are further partitioned into interaction logic and language perception, so naturally interaction annotation contains language related part. Once interaction annotation is decided, these language related parts became required. This makes supporting new languages very easy, after defining the interaction and selecting the language you want, all builder have to do is to fill language aspects of the interaction annotation, and they are done. There are two kind of language related parts builder need to fill: template for text generation, and utterance exemplars for helping dialog understanding.
 
 ## Test
-After you specify desired conversational behavior you want your chatbot to deliver, you can use built in test tool to test out the interaction logic. This allows you quickly fixe any potential issues before it cause bad user experiences.
+After you specify desired conversational behavior you want your chatbot to deliver, you can use built in test tool to test out the interaction logic. This allows you quickly fix any potential issues before it causes bad user experiences.
 
 ## Deploy
-When chatbot pass your test, you can deploy chatbot to production environment, either Framely hosted or public/private cloud of your choice. Of course, before you do that, you want to configure the channels that you want to service, and support system where your human agent can pick up the failed conversations and provide user what they want.
+When chatbot passes your test, you can deploy chatbot to production environment, either Framely hosted or public/private cloud of your choice (for paid account). Of course, before you do that, you want to configure the channels that you want to service, and wire support system where your human agent can pick up the failed conversations and provide user what they want.
 
 ## Operate
-The real work starts after chatbot is deployed into production environment of your choice. It is important that you consistently monitor the actual conversations' user had with your system, and fix the various issues that chatbot had, at the same time these real user conversation is full of business opportunities if you know how to dig.
+The real work starts after chatbot is deployed into production environment. It is important that you consistently monitor the actual conversation sessions users had with your chatbot, and fix any issues that chatbot had. Also notice these real user conversations are full of business opportunities if you know how to dig.
 
 For the impatient, [you can get started now](https://framely.naturali.io). For the curious, read on.

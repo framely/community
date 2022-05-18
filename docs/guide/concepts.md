@@ -1,4 +1,4 @@
-# Key Concepts and Terminology
+# Key Concepts
 
 This section helps you understand the key concepts at the org level, and at chatbot level in terms of build, test, deploy and operate chatbots.
 
