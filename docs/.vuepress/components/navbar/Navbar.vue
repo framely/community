@@ -161,7 +161,7 @@ function getCssValue(el: HTMLElement | null, property: string): number {
     position: fixed;
     top: var(--navbar-height);
     height: 100%;
-    padding-left: 10px;
+    //padding-left: 10px;
     position: fixed;
     left: 0px;
     width: 100%;

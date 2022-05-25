@@ -136,8 +136,7 @@ const RemoveSidebar = () => {
 .linkicon{
     width: 14px;
     height: 14px;
-    margin-left: -4px;
-    padding-right: 2px;
+    padding-right: 4px;
 
 }
 .linkicon-text {

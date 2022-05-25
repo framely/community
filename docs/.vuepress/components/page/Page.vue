@@ -79,7 +79,7 @@ const checkPage = ()=>{
   border-radius: 4px;
   border: 1px solid var(--c-border);
   background-position: 50% 50%;
-  box-shadow: 2px 2px 4px var(--c-bg), -2px -2px 4px var(--c-bg);
+  box-shadow: 2px 2px 4px var(--c-bg-icon);
 }
 .mask-sidebar {
   height: 100%;
