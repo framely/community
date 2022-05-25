@@ -3,37 +3,35 @@ import type { NavbarConfig } from '@vuepress/theme-default'
 
 // import { version } from '../meta' 
 
-export const en = [
+export const en = [ 
   {
     text: 'Guide',
     link: '/guide/',
-
   },
   {
     text: 'Reference',
     children: [
       {
         text: 'Annotations',
-
         children: [
           {
-            text: 'Overview',
-            link: '/reference/annotations/overview.html',
-            icon: "/featureIcons/cui.svg",
+          link:'/reference/annotations/overview.md',
+          text:'Overview',
+          icon:"/featureIcons/cui.svg",
 
           },
           {
-            text: "Value Recommendation",
-            link: '/reference/annotations/vr.html',
-            icon: "/featureIcons/hotfix.svg",
+            link:'/reference/annotations/vr.md',
+            icon:"/featureIcons/hotfix.svg",
+            text:"Value Recommendation"
           },
           {
-            text: "Confirmation",
-            link: '/reference/annotations/confirmation.html',
-            icon: "/featureIcons/declarative.svg",
+            link:'/reference/annotations/confirmation.md',
+            icon:"/featureIcons/declarative.svg",
+            text:"Confirmation"
           }
-
-
+          
+         
         ],
       },
       {
@@ -42,7 +40,7 @@ export const en = [
           '/reference/channels/wpa.md',
         ],
       },
-
+ 
       {
         text: 'Supports',
         children: [
@@ -53,11 +51,11 @@ export const en = [
     ],
   },
   {
-    text: "Pricing",
-    link: "/pricing/"
+    text:"Pricing",
+    link:"/pricing/"
   },
   {
     text: 'Blog',
-    link: '/articles/'
+    link: '/articles/' 
   }
 ]
