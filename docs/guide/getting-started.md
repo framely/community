@@ -1,4 +1,4 @@
-# Quick Start
+# Getting Started
 Although one can use Framely to serve user's informational need, we designed Framely to help 
 you to build conversation user interface for your transactional service as well, so that your chatbot can be one stop conversational solution for all your users' need. 
 
