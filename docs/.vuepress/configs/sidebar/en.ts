@@ -3,13 +3,7 @@ export const en = {
   '/guide/': [
     {
       text: 'Getting Started',
-
-
-      children: [
-        '/guide/README.md',
-        '/guide/are-you-ready.md',
-        '/guide/getting-started.md',
-      ],
+      link: '/guide/README.md',
     },
     {
       text: "Key Concepts",
