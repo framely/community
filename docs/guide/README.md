@@ -1,4 +1,4 @@
-# Conversational User Interface
+# Build Conversational Apps
  
 At Framely, we are motivated by a simple question: both chatbot and app are user interfacing application providing same services, why should building bot cost much more than building app? We believe the high cost is the main reason that these magical conversational experiences are still elusive even when deep learning based NLU made huge stride in many NLU applications. Reducing the cost associated with chatbot building is the key to democratize conversational user experiences. 
 
