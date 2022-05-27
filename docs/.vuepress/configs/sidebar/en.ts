@@ -2,7 +2,7 @@
 export const en = {
   '/guide/': [
     {
-      text: 'Build Conversational App',
+      text: 'Schema Grounded Approach',
       children: [
         '/guide/README.md',
         '/guide/are-you-ready.md',

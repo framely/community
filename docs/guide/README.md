@@ -1,4 +1,4 @@
-# Schema Grounded Approach
+# Build Conversational App
  
 Just like their web and mobile counterparts, conversational apps, including chatbots and voicebots, are user facing applications that business build to provide services to their user. However, despite recent advances in natural language understanding (NLU) research, the magical user experiences promised by conversational apps are still elusive and only offered by these privileged. 
 
