@@ -6,7 +6,6 @@ Why most businesses can afford to build web app, but not the conversational one 
 
  Users interact with a business because it can do something better or cheaper, so there is no need to respond intelligently to all possible user utterances. For any given business, it is enough to focuses only on the conversations related to the service that business provides, which is defined by its API schema. Framely is a framework for building schema grounded conversational interface. In this schema ground approach, the goal is to build conversational interface for data types required by API schema, natural language text and voice are converted into schemas first, which represents what service users want and how they want it. Structured data returned from business logic is then rendered into natural text in the given language and style.
 
-
 ## Why Build CUI Framely
 To make building conversational app as cost-effective as building graphical user interface (GUI) app, we follow the same principles such as [Separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), [model-view-controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) and the same workflow such as [version control using git](https://en.wikipedia.org/wiki/Git) for collaboration. If these principles and best practices worked well for building GUI apps, why change them? Frameworks like Vue allow a domain expert with reasonable programming training to build great web apps, why we do not have such framework for building CUI? After all CUI and GUI can be just different user interface to the same services.
 
@@ -22,7 +21,7 @@ Instead of building things from scratch, the solution for well-defined use cases
 ### Dialog Understanding without Ph.D.
 Understanding human language is hard as the different texts can mean the same and also the meaning of the same can change by contexts. This is one of the key complications of building conversational user interface. The popular approach rely on standard ML/NLU tasks like text classification and named entity recognition. While these standard tasks are well studied, applying them to new business use case requires serious customization, which typically call for expensive expertise in ML/NLU. Based on clear separation between interaction and language encouraged by schema grounded CUI, Framely use a set of production friendly ML/NLU models that very easy for regular dev team to customize for any use cases with just utterance exemplars and template.
 
-## What We are Not?
+## What Framely is Not?
 Under the hood, we take advantage of the state of the art deep learning based natural language models that are production friendly. But conversational AI is just a means to develop conversational applications, not the goal. There are many other directions that have been tried in the industry and academia, while we are learning as much as possible from this large body of prior work, there are some trendy things we decide against. So if you want to try these approaches, look else where.
 
 ### End to End
