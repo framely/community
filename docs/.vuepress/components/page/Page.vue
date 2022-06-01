@@ -50,7 +50,7 @@ const checkPage = ()=>{
         <ToggleMenu v-if="checkPage()"  class="toggle" @click="ToggleMenuSidebar" />
         <Content />
 
-        <button  @click="ToggleMenuSidebar"><div id="mask-sidebar"></div></button>
+      <div id="mask-sidebar" @click="ToggleMenuSidebar"></div>
       </div>
 
       <PageMeta v-if="!frontmatter.pricing" />
