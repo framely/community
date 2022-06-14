@@ -23,38 +23,21 @@ By standardizing on how conversational behavior on slot filling can be defined v
 Framely CUI framework is static and strong typed since strong typing nature allows compile-time checking that is simply not possible otherwise. Before we define the CUI behavior for the APIs, we first need to describe them at schema level, basically the signature for the API functions and its parameter types. Conversational behavior the CUI components are attached to the type definitions via annotation, so it is influenced by decisions we made at type level. In particular, multi-Valued slot means CUI will try to collect multiple values for the given slot. Framely offers carefully designed CUI component to extract these values one by one, with help of dialog annotations like value recommendation. Unlike the other CUI platform, Framely support user defined type call frame, which can have its interaction logic predefined and then reused when it is used as slot type. Use frame in the nested or expand its slot directly can have big impact on conversational behavior of the frame.
 
 ## Five Stages of Slot Filling
- To make it possible to effectively define desired slot filling behavior for a range of use cases, Framely offer the annotation to control the various aspects of slot filling. We have controls to decide whether a slot should be filled, and if under what condition. In terms of how a slot should be filled through conversation, particularly how we can reduce the user's effort level and improve the efficiency of the conversation, Framely has a five stages pipeline capable of tightly integrating application logic and data.
+ To make it possible to effectively define desired slot filling behavior for a range of use cases, Framely offer the annotation to control the various components of slot filling. Here are how these annotations are arranged to define the interaction logic for slot filling, and a short introduction for each annotation. 
 
 ![five-phases](/images/annotation/fivephases.png)
 
-1. Fill Strategy gives the overall description for Slot Filling. It decides whether a user preference should be collected, and if so, collects from whom. It also influences what kind of interactions are suggested during Slot Filling like an undertone.
-2. Init collects user preference from businesses, directly. 
-3. Ask / 
-4. Value Recommendation collects user preference from users. The two phases, Init and Ask, share the same goal of getting the user preference, then turning it into slot value. As a result, they're recommended to pick one out of two. If by any chance both of them are defined, Framely tends to trust the business-provided value and skip asking users. The getting value goal also explains why Value Recommendation is just an assistant to Ask. Offering candidates is the means instead of ends.
-5. Value Check examines the legitimacy and validity of a slot value based on business defined rules. If the result is passed, Slot Filling will proceed to the next phase. If not, the default behaviour is to acquire the slot value again.
-6. Confirmation is usually used to emphasize values that users DON'T know (e.g. collected though Init), have side-effects, or simply value too much or trust too little by business. Confirmation supports a clear agreement by explicit confirming. If user confirms with a No, Framely will ask what's next since that bot has no clue about what's going wrong. Otherwise, (regardless user confirms with a Yes, or there's only implicit confirmation), Slot Filling will proceed to the next phase.
+1. [Fill Strategy](https://www.framely.ai/reference/annotations/fillstrategy.html) decides whether a slot should be filled and if so the source of the value input. .
+2. [Initialization]((https://www.framely.ai/reference/annotations/init.html)) try to fill the slots based on business logic first. 
+3. [Value Recommendation](https://www.framely.ai/reference/annotations/vr.html) provides a list of filling candidates per business data and logic for user to choose from. This can avoid waste user effort for filling slot with an unservable value. 
+4. [Value Check](https://www.framely.ai/reference/annotations/vc.html) examines proposed value is servable based on business rules.
+5. [Confirmation](https://www.framely.ai/reference/annotations/confirmation.html) give user a second chance to verify the proposed value.
 
-Among all the slot level annotations, one uses the followings to tailor their own Slot Filling process. Fill Strategy is the most special one as it connects the [schema level](https://www.framely.ai/guide/components.html#schema) and [interaction level](https://www.framely.ai/guide/components.html#interaction-logic) requirements: slot types can restrict Fill Strategy options, and Fill Strategy options suggest the usage of slot level annotations like an undertone. 
-
-If we carry on with that picture, the actual colours used on canvas should not only suit the motif but harmonize with the undertone.
-
-| Phase                    | Slot Level Annotations                             |
-| :----------------------- | :------------------------------------------------- |
-| Fill Strategy            | [Fill Strategy](https://www.framely.ai/reference/annotations/fillstrategy.html)                                      |
-| Init                     | [Initialization]((https://www.framely.ai/reference/annotations/init.html))                                     |
-| Ask<br/> Value Recommendation | [Prompts](https://www.framely.ai/reference/annotations/prompts.html), [Multi-Valued Prompts]((https://www.framely.ai/reference/annotations/mvprompts.html))<br/>[Value Recommendation](https://www.framely.ai/reference/annotations/vr.html) |
-| Value Check              | [Value Check](https://www.framely.ai/reference/annotations/vc.html)                                        |
-| Confirmation             | [Confirmation, Multi-Valued Confirmation](https://www.framely.ai/reference/annotations/confirmation.html)            |
-
-
-By simply answering the questions that these five annotations implies, Framely can guide you come up with a reasonable CUI interaction logic quickly. This way, you can focus on bring actual value to user by unique and cost-effective services, and make their life better.   
-
+By simply picking and configuring these five components, Framely can guide builder come up with a reasonable CUI interaction logic quickly. This way, you can focus on unique and cost-effective services that brings actual value to user and make their life better.   
 
 ## Advanced Annotations
 
-Slot level annotations is designed for the common use cases, so it is designed for convenience instead of flexibility. The underlying mechanism of schema grounded conversation are modeled based on dynamic composite state machines. So, if there are CUI behavior that can not be defined by these high level annotations, one can always to look at Transition, which offer a greater deal of control at low level: builder can directly control how bot should react given the state we are in, user input and some arbitrary condition defined on them. 
-
-Learn more about this on [Transition](https://www.framely.ai/reference/annotations/transition.html).
+Slot level annotations is designed for the common use cases, so it is designed for convenience instead of flexibility. The underlying mechanism of schema grounded conversation are modeled based on dynamic composite state machines. So, if there are CUI behavior that can not be defined by these high level annotations, one can always to look at [Transition](https://www.framely.ai/reference/annotations/transition.html), which offer a greater deal of control at low level: builder can directly control how bot should react given the state we are in, user input and some arbitrary condition defined on them. 
 
 
 
