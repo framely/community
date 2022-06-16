@@ -6,251 +6,109 @@
 
 If user did not mention which movie they want to watch when buying tickets, we need to prompt user for them. 
 ::: story 
-User: Can I get two tickets for 8:00pm please? 
+User: Can I get two tickets for 8:00pm please?
 
 Bot: *Which movie? We have two options: Top Gun and Star Wars.*
+
+User: What moive has IMAX version?
+
+Bot: *Both. Which movie do you want to watch?*
 
 User: Top Gun, please.
 :::
 
-Prompt strategy is a slot level annotation that builder can use to control the following aspects of slot filling when user did not provide their preference for given slot:
-- Whether to prompt user to fill this slot
-- Template that can be used to verbalize the slot request dialog act.
+Prompt strategy is a required slot level annotation that builder can use to control the following aspects of slot filling when user did not provide their preference for given slot:
+- Strategy that decide whether to prompt user to fill this slot. The interaction logic defined on Framely is deterministic, so if a slot is decided to be filled by the chosen strategy, then bot will not stop to prompt user for this slot until it is successfully filled and bot moves onto the next slot or response. The digression initiated by user will not change this unless the current intent is aborted or terminated.
+- Template that can be help to verbalize the slot request dialog act. Diversity of the response can be increased by adding more templates. Eventually, bot might support data to text models, when they become practical. For the strategy that needs template, builder need to provide at least one.
 
-## Features
+Prompt strategy is a composite annotation, as Framely provides a set of concrete strategy to cover different use cases, and let's cover them one by one.
 
-- Slot eventually can be filled or skipped (stays not filled). 
-- Slot value can be provided by user or business, with minor differences:
-  - User can provide slot value:
-    - under no extra condition / always
-    - under certain conditions
-    - after confirming he/she wants to answer the slot
-    - when he/she proactively mentions it first
-  - Business can provide slot value by:
-    - service function
-    - external event 
-- Different strategies could lead to interaction change (skipping slot-level annotations)
+## Always
+#### Motivation
+If a slot is required by business logic, you should configure the prompt strategy to be Always, bot will make sure this slot is filled properly. That means if user did not mention their preference before bot get to this slot, bot will prompt user for it. Always strategy will guarantee there will be value for the given slot.
 
-## How to use
+#### Analysis
+Always strategy works well with other annotations, in fact, it imposes no constraints on what you can do with the other [slot filling annotations](../../guide/slotfilling.md), including: [Initialization](init.md), [Value Recommendation](valuerec.md), [Value Check](vc.md) and [Confirmation](./reference/annotations/confirmation.md). Framely runtime will make sure the configurations on these annotations will work together seamlessly.
 
-Fill Strategy is always required. Framely will automatically add it for you once the slot is created, and sets the default to [Never Ask](#never-ask) (which behaves sort of like skipping the slot quietly). 
+#### How to Configure
+Always strategy is easy to set up:
+- Pick a slot
+- Set its Fill Strategy to Always
+- Fill at least one template in the Prompt text input box.
 
-There are six different strategies. A brief comparison of them is listed here for some big picture, and the detailed explanations will be given in the latter sections.
+## Conditional
+#### Motivation
+Not every slot is required to be filled. For example, when user want to watch a movie that do not have IMAX version, we should not be asking user about it. For example:
+If there is a Boolean slot to record whether user wants to see IMAX version, then for movie with IMAX version, bot can 
+::: story 
+User: Can I get two tickets for 8:00pm Top Gun, please?
 
-| Strategy name       | Who provides slot value   | How does slot value asked from user                          |    How does slot value initiated by business                 |
-| :------------------ | :------------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Always Ask          | User                      | always                                                       | /                                                            |
-| Conditional         | User                      | under certain conditions that business specifies             | /                                                            |
-| Boolean Gate        | User                      | when user explicitly expresses the willingness to answer a bunch of questions about a specific topic <br/> *(which belongs to a composite slot)* | /                                                            |
-| User Mentioned      | User                      | when user proactively mentions the slot first                | /                                                            |
-| Never Ask           | Business                  | /                                                            | if SlotInit in [Transition](https://www.framely.ai/reference/annotations/transition.html) is set <br/> *which eventually can be a constant, a synchronous service function etc.* |
-| External Event      | Business                  | /                                                            | always  <br/> *through external events caused by asynchronous client action* |
+Bot: *Do you want the IMAX version?*
 
-
-### Always Ask
-
-Always Ask suits all the CUXs which collect information from users without any special requirements. It is one of the most frequently used strategies. 
-
-Like the name implied, it tells the bot to ask users for slot value without any additional condition. And once the bot asks, it will not proceed with the conversation until getting an answer. Always Ask doesn't alter or skip any of the standard [Slot Filling](https://www.framely.ai/reference/slotfilling.html) phases. In other words, slot-level annotations are all welcome to be used.
-
-
-
-**[Usage Instruction]**
-
-<Badge type="warning" text="Required" vertical="top" />
-
-- Create a slot
-- Set its Fill Strategy to Always Ask
-- [Prompts](https://www.framely.ai/reference/annotations/prompts.html): at least one question is needed to request slot value from user.
-
-<Badge type="tip" text="Preferred" vertical="top" />
-
-- All annotations relate to [Slot Filling](https://www.framely.ai/reference/slotfilling.html), including: [Value Recommendation](https://www.framely.ai/reference/annotations/vr.html), [Value Check](https://www.framely.ai/reference/annotations/vc.html) and [Confirmation](https://www.framely.ai/reference/annotations/confirmation.html). You are suggested to use them based on requirements.
-
-
-
-**[Example]**
-
-The flower shop wants to collect what kind of colour the user likes for flowers.
-
-To support this, they need to:
-
-- create a slot named colour
-- set its Fill Strategy to Always Ask
-- add a prompt of "What kind of colour do you like for flowers?"
-
-And the following conversation can be expected:
-
-::: story Use case 1
-
-Bot: *What kind of colour do you like for flowers?*
-
-User: *Red, please.*
-
+User: Yes, please.
 :::
 
-::: story Usecase 2: Stuck unless getting an answer
+::: story
+User: Can I get two tickets for 8:00pm NomadLand, please?
 
-Bot: *What kind of colour do you like for flowers?* 
-
-User: *What do you have for roses? (Digression)*
-
-Bot: *Red and white. (Answer digression)<br/>&emsp;&emsp;What kind of colour do you like for flowers?*
-
-User: *Red, please.*
-
+Bot: *That will be $10. Please pay with ApplePay.*
 :::
 
-
-### Conditional
+#### Analysis
+On CUI level, this means a slot can be left unfilled when finish the interaction, and service API then should be prepared for such case, and potentially have default value for such slot at business logic level. 
 
 Conditional is designed for businesses who need to ask and collect information dependently. 
 
-When certain conditions are met, the bot behaves exactly like Always Ask; and if they're not met, slots hosting them will be skipped (neither be asked nor be filled). Notice these conditions can depend on both business logic or users former choice.
+Like Always strategy, the Conditional strategy is also orthogonal to other annotations in the [slot filling](../../guide/slotfilling.md) pipeline. 
 
+#### How to Configure
 
+- Pick a slot
+- Set its Fill Strategy to Conditional, then specify the conditional expression in Ask Condition input box, which should be configured like [Condition in Confirmation](./confirmation.md#condition)
+- Provide at least one template in Prompt for bot to generate natural language response.
 
-**[Usage Instruction]**
-
-<Badge type="warning" text="Required" vertical="top" />
-
-- Create a slot
-- Set its Fill Strategy to Conditional, and for the detailed configuration:
-  - Ask Condition should be configured like [Condition in Confirmation](https://www.framely.ai/reference/annotations/confirmation.html#condition)
-- [Prompts](https://www.framely.ai/reference/annotations/prompts.html)
-
-<Badge type="tip" text="Preferred" vertical="top" />
-
-- All annotations relate to [Slot Filling](https://www.framely.ai/reference/slotfilling.html), including: [Value Recommendation](https://www.framely.ai/reference/annotations/vr.html), [Value Check](https://www.framely.ai/reference/annotations/vc.html) and [Confirmation](https://www.framely.ai/reference/annotations/confirmation.html). You are suggested to use them based on requirements.
-
-
-
-**[Example]**
-
-The flower shop wants to collect what kind of colour the user likes for **roses** instead of all flowers (they might just have yellow sunflowers).
-
-To support this, they need to:
-
-- create a slot named flowerType
-  - set its Fill Strategy to Always Ask
-  - add a prompt of "What kind of flower do you like?"
-- create another slot named colour
-  - set its Fill Strategy to Conditional with the Ask Conditon set to `flowerrType Equal rose`
-  - add a prompt of "What kind of colour would you like for roses?"
-
-And the following conversation can be expected:
-
+## Gated
+#### Motivation
+Some time, the information you want to collect from user might be too heavy, or considered to be intrusive, so it is useful for bot to first ask permission before the real question? To figure out how long a patient had fever, is it on and off? what is the highest temperature, etc, directly start on this can be a bit odd for user.
 ::: story
+Bot: *Since when you had fever?*
+:::
+Instead, it is useful to first open the door before we ask question about interior.
+::: story
+Bot: *Do you have a fever?*
 
-**Use case 1: met condition**
+User: Yes.
 
-Bot: *What kind of flower do you like?*
-
-User: *Rose*
-
-Bot: *What kind of colour would you like for roses?*
-
-User: *Red, please.*
-
-Bot: *Ok, then your order is done.*
-
+Bot: *Since when?*
 :::
 
 ::: story
+Bot: *Do you have a fever?*
 
-**Use case 2: not met condition**
+User: Nope.
 
-Bot: *What kind of flower do you like?*
-
-User: *Sunflower.*
-
-Bot: *Ok, then your order is done.*
-
+Bot: *How about headache?*
 :::
 
-
-### Boolean Gate
-
-Boolean Gate offers control to let users decide whether they're going to answer a thread of questions about a specific topic. This sounds quite similar to [Conditional](#conditional), with the difference that Boolean Gate gathers condition from users DIRECTLY whereas Conditional's conditions are set by businesses (which can indirectly relate to users former answer).
-
-Unlike all the other strategies, Boolean Gate only supports composite slots currently. The HAS-A relationship naturally captures the scenario's intrinsic character. So, if you want the same experience for an entity slot, you should compose it into a frame first.
+#### Analysis
+Gated strategy can only be applied to frame slot. So to take advantage of this prompt strategy, you first need to define a frame to host the closely related slots. Like conditional strategy, this choice is also orthogonal to other annotations in the [slot filling](../../guide/slotfilling.md) pipeline. 
 
 Boolean Gate will ask users the YES-or-NO question once and once only, then waits for three kinds of answers:
+If the answer is Yes, Framely will then follow the depth first rule, and start to fill nested slots one at a time in their natural order. 
+If the answer is slot value, Framely will assume gate is opened, and start to fill nested slots with user input.
+If the answer is NO, the frame slot will simply be skipped (neither be asked nor be filled).
 
-- YES: If the answer is YES, Framely will then follow the depth first rule, and the topological order if slots are under the same frame to interact with users. Everything else works the same.
-- Slot value: If the answer is slot value , Framely will take it as a YES for the YES-or-NO question, and then try to find a slot (contianer) for the slot value inside composite slot.
-- NO: If the answer is NO, the composite slot will simply be skipped (neither be asked nor be filled).
+#### How to Configure
 
-
-
-**[Usage Instruction]**
-
-<Badge type="warning" text="Required" vertical="top" />
-
-- Create a **composite slot**
-- Set its Fill Strategy to Boolean Gate, and for the detailed configuration:
-  - Boolean Gate: prompts that ask user whether he/she wants to or is able to provide slot values should be set here
-  - Affirmatives and Negatives: see [Affirmatives and Negatives in Confirmation](https://www.framely.ai/reference/annotations/confirmation.html#affirmatives-and-negatives)
+- Pick a **frame slot**
+- Set its Fill Strategy to Gated, then configure the detail for gated strategy:
+  - Prompt: boolean question that ask user whether he/she wants to or is able to provide slot value
+  - Affirmatives and Negatives: see [Affirmatives and Negatives in Confirmation](./confirmation.md#affirmatives-and-negatives)
 
 ![boolean-gate](/images/annotation/fillstrategy/booleangate.png)
 
 
-<Badge type="tip" text="Preferred" vertical="top" />
-
-- All annotations relate to [Slot Filling](https://www.framely.ai/reference/slotfilling.html), including: [Prompts](https://www.framely.ai/reference/annotations/prompts.html), [Value Recommendation](https://www.framely.ai/reference/annotations/vr.html), [Value Check](https://www.framely.ai/reference/annotations/vc.html) and [Confirmation](https://www.framely.ai/reference/annotations/confirmation.html). You are suggested to use them based on requirements.
-
-
-
-**[Example]**
-
-Suppose message card requires the user to answer of bunch of questions, which inlcudes: card type, to whom, from whom, message content, font size, font colour, card size, card colour. And the flower shop doesn't want to start the interaction unless users do need to answer them. 
-
-To support this, they need to:
-
-- create a frame named MessageCard, with slots: cardType, toWhom, fromWhom, messageContent, fontColour, fontSize, messageCardColour, messageCardSize. Each of them is set with a prompt.
-- create a slot named messageCard, type MessageCard
-- set messageCard Fill Strategy to Boolean Gate, with Boolean Gate prompt as "Do you want a message card? (You need to answer up to 8 questions.)"
-
-And the following conversation can be expected:
-
-::: story
-
-**Use case 1: YES**
-
-Bot: *Do you want a message card?*
-
-User: *Yes*
-
-Bot: *What kind of card do you want? We have: 1. birthday card. 2. thanks card ...*
-
-:::
-
-::: story
-
-**Use case 2: Slot value**
-
-Bot: *Do you want a message card?*
-
-User: *Can I have a birthday card?*
-
-Bot: *To whom do you want to send to? ...*
-
-:::
-
-::: story
-
-**Use case 3: NO**
-
-Bot: *Do you want a message card?*
-
-User: *NO*
-
-Bot: *Ok, then your order is done.*
-
-:::
-
-
-### User Mentioned
+## User Mentioned
 
 User Mentioned means bot will only ask user when he/she proactively mentions it first. 
 
@@ -321,8 +179,10 @@ Bot: *Ok, then your order is done.*
 
 :::
 
+## Repair Only
 
-### Never Ask
+
+## Never
 
 There are chances businesses want to specify slot value by themselves instead of users. Never ask offers the ability to do that.
 
@@ -375,7 +235,7 @@ Bot: *Ok, then your order is done for 10 roses.*
 :::
 
 
-### External Event
+## External Event
 
 Like Never Ask, External Event also gathers slot value from businesses, but targets a different scenario: businesses send an asynchronous client action, then BLOCKs until the the third-party resumes and updates conversation.
 
