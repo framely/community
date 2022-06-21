@@ -6,13 +6,16 @@
 
 The goal of CUI is to reach common understanding between user and bot on the service that users want and business can serve. Not all user requests can be served per business logic. For example, user's initial preference about date when booking a table might not be valid as business can be closed on that date. In such cause, the bot should just inform the user the closure and save user's time by not asking for party size and time. 
 
-::: story
+:::: conversation
+::: user User
+I want to book a table this Friday.
+:::
+::: bot Bot
+Sorry, we are not open on Friday. Please choose another date.
+:::
+::::
 
-User: *I want to book a table this Friday.*
 
-Bot: *Sorry, we are not open on Friday. Please choose another date.*
-
-::: 
 Capturing the invalid user input per business logic is essential to make the conversation effective, With Value Check, builder can define what is considered to be invalid input based on service, and have bot to offer users the chance to give alternative choice.
 
 ## Features
@@ -22,7 +25,7 @@ Capturing the invalid user input per business logic is essential to make the con
     - Bot informs users the input value is invalid
     - Choose which slot to be cleared so bot can ask again
 
-## How to use
+## How To Use
 Value Check is an optional slot annotation. When [Slot Filling](https://www.framely.ai/guide/slotfilling.html#five-stages-of-slot-filling) moves to Value Check, [DM (Dialog Management)](https://www.framely.ai/guide/architecture.html#dialog-understanding-du) will check conditions defined in Value Check.
 - If all conditions are true, Value Check passes and Slot Filling moves on to the next stage.
 - If one of the conditions is false, Value Check fails.
@@ -57,29 +60,34 @@ Suppose the order of slots is as follows. Here are two different situations usin
 
 **Case 1 - Clear the input value of current slot** <Badge text="Default" vertical="middle"/>
 
-::: story
-
-User: *Can I book a table for 2 this Friday?*
-
-Bot: *What time would you like to book?*
-
-User: *5:00 pm.*
-
-Bot: *Sorry, small table at 5 pm on Friday is not available. Please choose another **time**.*
-
+:::: conversation
+::: user User
+Can I book a table for 2 this Friday?
 :::
+::: bot Bot
+What time would you like to book?
+:::
+::: user User
+5:00 pm.
+:::
+::: bot Bot
+Sorry, small table at 5 pm on Friday is not available. Please choose another **time**.
+:::
+::::
 
 **Case 2 - Keep the input value of current slot and clear another slot**
 
-::: story
-
-User: *Can I reserve a table for two this Friday?*
-
-Bot: *What time would you like to book?*
-
-User: *5:00 pm.*
-
-Bot: *Sorry, small table at 5 pm on Friday is not available. Please choose another **date**.*
-
+:::: conversation
+::: user User
+Can I reserve a table for two this Friday?
 :::
-
+::: bot Bot
+What time would you like to book?
+:::
+::: user User
+5:00 pm.
+:::
+::: bot Bot
+Sorry, small table at 5 pm on Friday is not available. Please choose another **date**.
+:::
+::::

@@ -28,7 +28,7 @@ Prompt strategy is a composite annotation, as Framely provides a set of concrete
 If a slot is required by business logic, you should configure the prompt strategy to be Always, bot will make sure this slot is filled properly. That means if user did not mention their preference before bot get to this slot, bot will prompt user for it. Always strategy will guarantee there will be value for the given slot.
 
 #### Analysis
-Always strategy works well with other annotations, in fact, it imposes no constraints on what you can do with the other [slot filling annotations](../../guide/slotfilling.md), including: [Initialization](init.md), [Value Recommendation](valuerec.md), [Value Check](vc.md) and [Confirmation](./reference/annotations/confirmation.md). Framely runtime will make sure the configurations on these annotations will work together seamlessly.
+Always strategy works well with other annotations, in fact, it imposes no constraints on what you can do with the other [slot filling annotations](../../guide/slotfilling.md), including: [Initialization](init.md), [Value Recommendation](valuerec.md), [Value Check](valuecheck.md) and [Confirmation](./reference/annotations/confirmation.md). Framely runtime will make sure the configurations on these annotations will work together seamlessly.
 
 #### How to Configure
 Always strategy is easy to set up:

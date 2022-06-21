@@ -46,7 +46,7 @@ Confirmation is optional for conversation design, Abusive usage will lead to the
 - Supports customizing strategy when user chooses ***NO***.
 
 
-## How to use
+## How To Use
 
 In this section, you will learn how to configure Confirmation annotations, including:  
 
