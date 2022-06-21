@@ -227,9 +227,9 @@ To understand how this works, see [On dialog understanding](On dialog understand
 
 #### Cooperate with Value Recommendation
 
-When [Value Recommendation](https://framely.github.io/reference/annotations/vr.html) has only 1 candidate, asking users to choose from 1 out of 1 implies confirmation as well. 
+When [Value Recommendation](valuerec.md) has only 1 candidate, asking users to choose from 1 out of 1 implies confirmation as well. 
 
-We cut the redundancy by asking [Value Recommendation's Single-entry Prompts](https://framely.github.io/reference/annotations/vr.html#single-entry-prompts) first, then skip Confirmation annotation.
+We cut the redundancy by asking [Value Recommendation's Single-entry Prompts](valuerec.md#single-entry) first, then skip Confirmation annotation.
 
 ::: story
 
