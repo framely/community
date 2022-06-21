@@ -16,7 +16,7 @@ There are a couple advantage of using backend component approach to build servic
 #### Features
 Provider annotations include [storage annotations](./overview.md#storage-annotations) and [back office annotations](./overview.md#backoffice-annotations).
 - Storage annotations define the database schema needed by the backend component, which can then be used to create the database for provider.
-  - column information for table
+  - Column information for table
   - Set a default value of a column
   - Set not-null constraints
   - Set unique constraints
@@ -24,7 +24,7 @@ Provider annotations include [storage annotations](./overview.md#storage-annotat
   - Upload a picture to a cell, and it will be stored as a URL
   - Select a value from a dropdown list
 
-#### How to Use
+#### How To Use
 Before starting, turn on **Storage Enabled** in **Frames** field to enable storing frames as tables in the database. There are two levels of provider annotations: slot level and frame level.
 - At a slot level, you can configure the column properties and back office annotations in the **Schema**  - **Slots** field.
 - At a frame level, you can configure table constraints in the **Annotation** field.
@@ -33,9 +33,11 @@ Before starting, turn on **Storage Enabled** in **Frames** field to enable stori
 
 
 ## SQL Data Type
-To create tables to store the frame instance, we need to map each slot of frame to a column in the database. SQL data type is a slot annotation, it defines the SQL data type for corresponding column for the given slot. Normally, we will automatically decide the SQL data type for each slot. But ff the slot type is *kotlin.String* or customized entity(e.g. like *City* in the below picture), you need to specify the database type of the column. Supported formats are `char(n)`, `varchar(n)`, `text`. Replace "n" with a number between 1 and 10485760, e.g. `char(16)`.
+To create tables to store the frame instance, we need to map each slot of frame to a column in the database. SQL data type is a slot annotation, it defines the SQL data type for corresponding column for the given slot. Normally, we will automatically decide the SQL data type for each slot. But if the slot type is *kotlin.String* or customized entity(e.g. like *Demo.test.City* in the below picture), you need to specify the database type of the column. 
 
-![SQL data type](/images/annotation/providerannotation/type.png)
+Supported formats are `char(n)`, `varchar(n)`, `text`. Replace "n" with a number between 1 and 10485760, e.g. `char(16)`. To learn more about Character Types, click [here](https://www.postgresql.org/docs/current/datatype-character.html).
+
+![sql-data-type](/images/annotation/providerannotation/sql-data-type.png)
 
 ## Default Value
 Default value is a slot annotation. You can use a constant or an expression as a default value. When there is no value specified in the column, the column will be filled with its default value.

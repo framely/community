@@ -85,7 +85,7 @@ Bot: *What time would you like to leave on the __return flight home__ ?*
 :::
 
 #### Value Check <Badge text="Preferred" />
-With the help of [value check](./vc.md), the bot can find out in time whether the value provided by the user satisfies the business boundaries. For example, when buying a movie ticket, the bot can inform the user in advance whether there is a schedule for the time, instead of notifying it when the last process is reached. 
+With the help of [value check](./valuecheck.md), the bot can find out in time whether the value provided by the user satisfies the business boundaries. For example, when buying a movie ticket, the bot can inform the user in advance whether there is a schedule for the time, instead of notifying it when the last process is reached. 
 
 ::: story
 Bot: *What time would you like to leave on the outbound flight ?*
@@ -111,7 +111,7 @@ Bot: *You want a one way ticket for:*
 :::
 
 
-## How to use
+## How To Use
 
 Before you start, you should make sure services or APIs that host your business logic are available, as value recommendation will turn your business data into recommendations.
 
@@ -243,7 +243,7 @@ Bot: *Alright, Star War, at 21:30pm. Would you like to proceed with payment?*
 ![vr-zep](/images/annotation/valuerec/vr-zep.png)
 :::
 
-When the recommendation is empty, the zero entry prompt will be replied to users. And then bot will exit the current intent as it can not provide the service any more. If this default behavior does not meet your expectations, you can customize this behavior with Transition annotation, or recover some value at the previous slot with [Value Check](./vc.md). 
+When the recommendation is empty, the zero entry prompt will be replied to users. And then bot will exit the current intent as it can not provide the service any more. If this default behavior does not meet your expectations, you can customize this behavior with Transition annotation, or recover some value at the previous slot with [Value Check](./valuecheck.md). 
 
 
 ### Expressions
