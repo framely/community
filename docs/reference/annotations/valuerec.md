@@ -243,7 +243,7 @@ Bot: *Alright, Star War, at 21:30pm. Would you like to proceed with payment?*
 ![vr-zep](/images/annotation/valuerec/vr-zep.png)
 :::
 
-When the recommendation is empty, the zero entry prompt will be replied to users. And then bot will exit the current intent as it can not provide the service any more. If this default behavior does not meet your expectations, you can customize this behavior with Transition annotation, or recover some value at the previous slot with [Value Check](./valuecheck.md). 
+When the recommendation is empty, the zero entry prompt will be replied to users. And then bot will exit the current intent as it can not provide the service anymore. If this default behavior does not meet your expectations, you can customize this behavior with Transition annotation, or recover some value at the previous slot with [Value Check](./valuecheck.md). 
 
 
 ### Expressions
@@ -252,4 +252,4 @@ When the recommendation is empty, the zero entry prompt will be replied to users
 ![vr-expression](/images/annotation/valuerec/vr-expression.png)
 :::
 
-Expressions in value recommendation can provide an active way for your users to get choices directly like *"what do yo have?"*, when they are in the dependent context.
+Expressions in value recommendation can provide an active way for your users to get choices directly like *"what do you have?"*, when they are in the dependent context.
