@@ -32,17 +32,14 @@ Yes
 :::
 ::::
 
-Of course, there are other use cases where initialization can be useful. For example, when booking a vocation, after a user has booked a flight ticket, bot can associate that flight arrival date and city for the start date and location for the subsequent hotel booking.
+Of course, there are other use cases where initialization can be useful. For example, when booking a vocation, after a user has booked a flight ticket, bot can associate that flight arrival date and city for the start date and location for the subsequent hotel booking. View the whole conversation in [Testcase - Vacation](https://framely.naturali.io/org/622c8ff683536204fe062b55/agent/62b12e4eede53f1b65047b11/test_case).
 
 :::: conversation
 ::: bot Bot
-Booked a ticket from New York to Los Angeles on Feb 2, 2022. What else can I do for you?
+Booked a ticket from New York to Los Angeles on Feb 2, 2022. Do you want to book a hotel in Los Angeles from Feb 2, 2022?
 :::
 ::: user User
-Can I book a hotel too?
-:::
-::: bot Bot
-Do you want to book a hotel in Los Angeles from Feb 2, 2022?
+Yes
 :::
 ::::
 
@@ -50,11 +47,13 @@ Clearly, Initialization allow you to reduce the user effort in accessing service
 
 ## Features
 
-You can provide the slot with an initial value by defining the association of the slot. Association is defined in [code expression](./kotlinexpression.md), which supports the following expressions:
-- Constant
-- Slot value
-- Function call
-- If expression
+- You can provide the slot with an initial value by defining the association of the slot. Association is defined in [code expression](./kotlinexpression.md), which supports the following expressions:
+  - Constant
+  - Function call
+
+- You can combine multiple expressions using:
+  - If expression
+  - Elvis operator
 
 ## How To Use
 
@@ -67,27 +66,27 @@ Initialization is an optional slot annotation. By adding initialization, you can
 2. Click **Try it now** > **Connect**, you can try it yourself.
 :::
 
-Association can be defined in [code expression](../../guide/glossary.md#code-expression-input) as follows. You can explore more expressions in [Kotlin docs](https://kotlinlang.org/docs/home.html).
+Association can be defined in [code expression](./kotlinexpression.md) as follows. 
 
 - **Constant**
 
   - For example, if the type of slot is *kotlin.Int*, you may set its association to be `0`.
 
-- **Slot value**
-
-  - In the first scenario mentioned in [Overview](#overview), you can set a start date of hotels as `arrivalDate`, which is the arrival date of a flight. 
-
-  - Go to [Intent: BookHotel](https://framely.naturali.io/org/622c8ff683536204fe062b55/agent/62b12e4cede53f1b65047b0f/intent/62b167ba1c33eb097abc218a) to learn more details.
-
 - **Function call**
 
-  - Regarding the second situation in [Overview](#overview), you can set the phone number as `getUserPhoneNumber()`, which returns the user's previous phone number. 
+  - Regarding the first situation in [Overview](#overview), you can set the phone number as `getUserPhoneNumber()`, which returns the user's previous phone number. 
 
   - Go to [Intent: FoodOrdering](https://framely.naturali.io/org/622c8ff683536204fe062b55/agent/62b12e4cede53f1b65047b0f/intent/62b12eacede53f1b65047b13) to learn more details.
-   
+
+To combine multiple expressions, you can use if expression and Elvis operator. Explore more expressions in [Kotlin docs](https://kotlinlang.org/docs/home.html).
+
 - **If expression**
 
-  - If the value you try to provide is conditional, try to use if expression. The format of if expression is like `if (a > b) a else b`. To learn more about if expression, check out [If expression](https://kotlinlang.org/docs/control-flow.html).
+  - If the value you try to provide is conditional, try to use [if expression](https://kotlinlang.org/docs/control-flow.html). The format of if expression is like `if (a > b) a else b`.
+
+- **Elvis operator**
+  - Instead of writing the complete if expression, you can also express this with the [Elvis operator](https://kotlinlang.org/docs/null-safety.html#elvis-operator) `?:`. If the expression to the left of `?:` is not null, the Elvis operator returns it, otherwise it returns the expression to the right. 
+  - For example, if an expression is `a?:b?:c`, and a is null while b is not null, the initial value is b.
 
 ::: tip Tips
 1. To confirm the initial value with users, you can add [Confirmation annotation](../annotations/confirmation.md).
