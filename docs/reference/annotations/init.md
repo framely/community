@@ -50,7 +50,7 @@ Clearly, Initialization allow you to reduce the user effort in accessing service
 
 ## Features
 
-You can provide the slot with an initial value by defining the association of the slot. Association is defined in [code expression](../../guide/glossary.md#code-expression-input), which supports the following expressions:
+You can provide the slot with an initial value by defining the association of the slot. Association is defined in [code expression](./kotlinexpression.md), which supports the following expressions:
 - Constant
 - Slot value
 - Function call
