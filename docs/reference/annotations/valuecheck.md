@@ -44,9 +44,6 @@ You can set conditions to check the validity of user input value. If all conditi
 
 Conditions are defined in [code expression](https://www.framely.ai/guide/glossary.html#code-expression-input), which should produce a Boolean value when evaluated, like `slot != null` , `function() == true` . You can joint the statements using `&&` or `||` , like `slot != null && slot < 3` .
 
-::: tip Tips
-For now, we only support adding one set of conditions. If you try to add more sets of conditions, you will get a warning message: *The slots are repeated*.
-:::
 ### Inform
 When Value Check fails, bot informs users that the value is invalid, like bot's utterance shown in [Overview](../annotations/vc.html#overview). You should add at least one inform. 
 
