@@ -4,7 +4,7 @@
 
 ## Overview
 
-Initialization is the first stage of  "[Five Stages of Slot Filling](../../guide/slotfilling.md#five-stages-of-slot-filling)". Before you ask users to fill the slot, you can provide the slot with an initial value. For example, when a user orders food, the bot will ask for the user's phone number.
+Initialization is the first stage of  "[Five Stages of Slot Filling](../../guide/slotfilling.md#five-stages-of-slot-filling)". Before you ask users to fill the slot, you can provide the slot with an initial value. For example, when a user orders food, the bot will need to have the user's phone number.
 
 :::: conversation
 ::: bot Bot
@@ -21,7 +21,7 @@ Yes
 :::
 ::::
 
-There is no problem asking like this if the user talks to the bot for the first time, but what if this user is a regular customer? Is it necessary for the user to type their phone number every time? With Initialization, a business can provide a phone number the user used before, so the bot won't bother users to type the delivery address twice. In this way, the above conversation will be like this:
+There is no problem asking like this if the user talks to the bot for the first time, but what if this user is a regular customer? Is it necessary for the user to type their phone number every time? What if user reach out from a logged-in channel like imessage, where we can get their phone number programmatically. If you know that user will most likely accept a value based application logic or historical data, bot can propose that value with Initialization, so that most users won't need to type phone number most of the time. In this way, the above conversation can instead be like this:
 
 :::: conversation
 ::: bot Bot
@@ -32,21 +32,21 @@ Yes
 :::
 ::::
 
-Besides, let's imagine another scenario: when a user has booked a flight ticket and is going to book a hotel. You can associate its arrival date and city with the start date and location of the hotels.
+Of course, there are other use cases where initialization can be useful. For example, when booking a vocation, after a user has booked a flight ticket, bot can associate that flight arrival date and city for the start date and location for the subsequent hotel booking.
 
 :::: conversation
 ::: bot Bot
 Booked a ticket from New York to Los Angeles on Feb 2, 2022. What else can I do for you?
 :::
 ::: user User
-How can I book a hotel?
+Can I book a hotel too?
 :::
 ::: bot Bot
-Do you want to book a hotel in Los Angeles on Feb 2, 2022?
+Do you want to book a hotel in Los Angeles from Feb 2, 2022?
 :::
 ::::
 
-Clearly, Initialization helps you save your users time and provide them with a more intelligent service. 
+Clearly, Initialization allow you to reduce the user effort in accessing service by using your know-how, thus give users a better user experience. 
 
 ## Features
 
@@ -58,7 +58,7 @@ You can provide the slot with an initial value by defining the association of th
 
 ## How To Use
 
-Initialization is an optional slot annotation. By adding associations, you can provide an initial value of the slot. When you add an association to a slot, ensure the type of association is consistent with the type of slot. If there are multiple associations, the first non-null association will be the initial value of the slot.
+Initialization is an optional slot annotation. By adding initialization, you can provide an initial value of the slot. When you add an association to a slot, ensure the type of association is consistent with the type of slot.
 
 ![init](/images/annotation/initialization/init.png)
 
@@ -71,7 +71,7 @@ Association can be defined in [code expression](../../guide/glossary.md#code-exp
 
 - **Constant**
 
-  - For example, if the type of a slot is *kotlin.Int*, you may set its association to be `0`.
+  - For example, if the type of slot is *kotlin.Int*, you may set its association to be `0`.
 
 - **Slot value**
 
