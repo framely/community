@@ -111,6 +111,10 @@ Know more about [kotlin Expression](kotlinexpression.md).
 
 ### Explicit 
 
+::: thumbnail
+![explicit](/images/annotation/confirmation/confirmation_condition_explicit.png)
+:::
+
 Explicit confirmation typically involves checking with the user that their input or request was understood correctly, it is very wise to confirm the critical details. Bot will not perform the action until it gets the reply from the user to confirm, usually yes/no or some synonym.
 
 You can double-check with the user prior to performing an action that would be difficult to undo, for example, cancel an order: 
@@ -136,7 +140,23 @@ I have cancelled the order for you.
 :::
 ::::
 
+But there are many ways to say yes or no by the user. To handle the synonym expressions of "yes/no", **Affirmatives** and **Negatives** provide the way for you to customize the "yes/no" understanding in specific contexts. 
+
+::: thumbnail
+![implicit](/images/annotation/confirmation/confirmation_expression.png)
+:::
+
+For example, In some scenarios, "*Sorry I need to change*" represents a new intention, but in certain scenarios, this means the user says no to the confirm. So you can add all of these cases in **Affirmatives** and **Negatives**. 
+
+::: tip Note
+The common understanding of confirmation yes and no is already supported in **system intent** *io.framely.core.confirmation.Yes* and *io.framely.core.confirmation.No*, so no need to define it here. But if needed, you can also customized system intent behavior by adding expressions.  
+:::
+
 ### Implicit
+
+::: thumbnail
+![implicit](/images/annotation/confirmation/confirmation_condition_implicit.png)
+:::
 
 Unlike explicit confirmation, implicit confirmation does not require a reply from the user. It just simply confirms the input has been received like an FYI notification, and an operation will take place without asking for user approval, although users might give one if they want to make a correction. 
 
@@ -154,12 +174,6 @@ Can I get your street address?
 Get. I will set your street address to be *[address]* . <br>You will receive an email confirmation of this change in a few minutes. What else can I help you with?
 :::
 ::::
-
-### Expressions
-
-There are many ways to say yes or no. To handle the synonym expressions of "yes/no" by the user, Affirmatives and Negatives provide the way for you to customize the "yes/no" understanding in specific contexts. 
-
-Sorry I need to change
 
 
 ## Corrections
