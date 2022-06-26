@@ -93,13 +93,13 @@ In this case, there are multiple conditions that need to be set here:
 - One should like `artist.identifier() == "adele"` :
 
 ::: thumbnail
-![condition]()
+![condition](/images/annotation/confirmation/condition_1.png)
 :::
 
 - Another can be simple, like `artist != null`:
 
 ::: thumbnail
-![condition]()
+![condition](/images/annotation/confirmation/condition_2.png)
 :::
 
 Bot will check the conditions according to the top-to-bottom order, and confirm when the condition is met:  
