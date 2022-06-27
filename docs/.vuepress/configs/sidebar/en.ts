@@ -53,7 +53,10 @@ export const en = {
     {
       text: 'Channel Reference',
       collapsible: true,
-      children: ['/reference/channels/wpa.md'],
+      children: [
+          '/reference/channels/wpa.md',
+        '/reference/channels/messenger.md',
+      ],
     },
     {
       text: 'Support Reference',
