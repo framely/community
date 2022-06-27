@@ -1,9 +1,13 @@
 # Messenger from Facebook
-The [Messenger Platform](https://developers.facebook.com/docs/messenger-platform/introduction) is meant for businesses to handle inquiries from their customers. Using the Facebook Messenger integration, you can create a Facebook Messenger bot to interact with your end-users within your business. Follow these steps to configure the Framely integration and Messenger.
-
-::: tip Note
-We show here how to configure the Framely integration and Messenger and deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
+::: right
+![test](/images/channelConfig/messenger/test.png)
 :::
+The [Messenger Platform](https://developers.facebook.com/docs/messenger-platform/introduction) is meant for businesses to handle inquiries from their customers. Using the Facebook Messenger integration, you can create a Facebook Messenger bot to interact with your end-users within your business. 
+
+We show here how to configure the Framely integration and Messenger, and deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
+
+Follow these steps to configure:
+[[toc]]
 
 ## Before You Begin
 On the Messenger side, please ensure you have all of the following:
@@ -48,6 +52,7 @@ For now, we can only allow one access token on one channel, which means that you
 :::
 
 ## Test Your Chatbot
+
 1. To test that your app setup was successful, go to your page and send a message to yourself. If you get a response, you have fully set up your app for receiving messages! :tada:
 2. To make the app accessible to the public, switch to [live mode](https://developers.facebook.com/docs/development/build-and-test/app-modes#live-mode).
 
@@ -55,6 +60,7 @@ For now, we can only allow one access token on one channel, which means that you
 - In the [development mode](https://developers.facebook.com/docs/development/build-and-test/app-modes#development-mode), only the administrator and tester that you invited can access the app. In this case, talk to the chatbot.
 - In the [live mode](https://developers.facebook.com/docs/development/build-and-test/app-modes#live-mode), apps can request [permissions](https://developers.facebook.com/docs/permissions/reference) from anyone, but only permissions approved through [App Review](https://developers.facebook.com/docs/app-review). Click [here](https://developers.facebook.com/docs/messenger-platform/app-review/) to submit your app for review.
 :::
+
 
 
 
