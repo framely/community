@@ -57,6 +57,7 @@ export const en = [
         text: 'Channels',
         children: [
           '/reference/channels/wpa.md',
+          '/reference/channels/messenger.md',
         ],
       },
 
