@@ -4,247 +4,174 @@
 
 ## Overview
 
-Confirmation presents user a binary choice of ***YES*** and ***NO***.  
+The goal of the conversational user interface is to reach agreement on what the user wants that is also deliverable by business as quickly as possible. So during collaborative conversation, bot might augment use choice based on business logic and data, so we need to keep user informed: 
 
-If user chose  ***YES***, bot will proceed to the next step.
-
-If user chose ***NO*** and provide no further instruction, bot will inform user to clarify the intention. (What did he/she unsatisfying or against for?) 
-
-::: story 
-
-Bot: *Your shopping cart has 1 pizza, 2 cokes. Total amount is: $15.<br/>&emsp;&emsp;Can you confirm these are what you want to order?*
-
-User: *No.*
-
-Bot: *What do you want to do next? You can change your choice before, leave the task and more.*
-
-User: *I want to drop 1 coke.*
-
-Bot: *1 coke is removed.<br/>&emsp;&emsp;Your shopping cart has 1 pizza, 1 cokes. Total amount is: $15.<br/>&emsp;&emsp;Con you confirm these are what you want to order?*
-
-User: *Yes.*
-
-Bot: *Order is placed. We'll send you to payment now.<br/>&emsp;&emsp;[Payment card]*
-
+:::: conversation
+::: user User
+Need one way ticket pls
 :::
+::: bot Bot
+Let's find a one way ticket for you. Which date do you want to fly?
+:::
+::: user User
+Dec 25th
+:::
+::: bot Bot
+Get, leaving on 2022-12-25. What time would you like to leave?
+:::
+::::
 
+Or based on business logic,  bot might ask the user to confirm the choice they made before consequential things really happen, and sometimes both: 
 
+:::: conversation
+::: bot Bot
+You want a one way ticket for: From JFK To London, Leaving on 2022-12-25, Time 17:00:00. Is that correct?
+:::
+::: user User
+Yes
+:::
+::::
 
-Confirmation is optional for conversation design, Abusive usage will lead to the impression of disruption. We suggest you use it when:
-
-- Next step is irreversible or high consequential: e.g. before database transactions, hand off to a human agent
-- Next step is user-sensitve: e.g. invoke a payment
-- You tend to win more by reducing the uncertainty: e.g. user selects items and asks to check out, confirm shopping list and total amount
-- Your business procedure requires it
-- Your target user does not mind to be interrupted: e.g. they are conservative in character, or not familiar with the service you provide
 
 ## Features
-- Provides two ways to confirm
-  - Implicit Confirmation
-  - Explicit Confirmation
-- Supports adding expressions of  affirmatives and negatives.
-- Supports customizing strategy when user chooses ***NO***.
+
+The features of confirmation are as follows for you:
+
+- Support two types of confirmation: Explicit and Implicit
+- Support conditional confirmations
+- Support multi-valued slot confirmation via per value confirmed
+- Provide corrections on default strategy and interruption strategy
+- Provide the way to customize the "yes/no" understanding of user utterances in specific contexts
 
 
-## How To Use
+## How to use
 
-In this section, you will learn how to configure Confirmation annotations, including:  
-
-- Where to confirm: [Add Annotation](#add-annotation)
-- When to confirm: [Multiple Conditions](#multiple-conditions), [Condition](#condition)
-- How to confirm: [Implicit Confirmation vs Explicit Confirmation](#implicit-confirmation-vs-explicit-confirmation)
-- What to answer: [Affirmatives and Negatives](#affirmatives-and-negatives)
-
-
-
-### Add Annotation
-
-There are three kinds of confirmation:
-
-| Annotation                             | Interacting frequency                                        | Typical  confirming content   |
-| :------------------------------------- | :----------------------------------------------------------- | :---------------------------- |
-| Confirmation (frame level)             | Confirming after all slots in the frame are done.            | All slots' value in the frame |
-| Confirmation (slot level)              | Confirming after the slot (as a whole) is checked. This works for both single-valued and multi-valued slot. | the slot's (whole) value      |
-| Multi-Valued Confirmation (slot level) | Confirming each time a slot value is given, if the slot is multi-valued. | the slot's each value         |
-
-For further information, see [Frame filling](../../guide/slotfilling.md).  
-
-
-
-While frame level sounds promising by batch confirming, it might mess user up if things go wrong. We suggest you to use the more frequent asked ones when:
-
-- You have strong confidence you could to reach a consensus with user
-- And if unfortunately you failed, the consequence is either acceptable or can be repaired in reasonable turns of interactions. We support the latter by [CRUD](../../guide/5levels-cui.html#crud-support).
-
-
-
-To create frame level Confirmation:
-
-1. Select **Intent/Frame** in the sidebar and choose a intent/frame
-2. Select the intent/frame's **Annotation** tab
-
-3. Find **Confirmation**
-
-To create slot level Confirmations:
-
-1. Select **Intent/Frame** in the sidebar and choose a intent/frame
-2. Select the intent/frame's **Schema** tab
-3. Choose a slot to open it's detail page
-4. Open drop down list **Add Annotation**
-
-3. Select **Confirmation** or **Multi-Valued Confirmation**
-
-
-
-### **Multiple Conditions**
-
-Condition is essentially a boolean expression. 
-
-For each Confirmation annotation, multiple conditions can be added.
-
-![confimation-multiple-conditions](/images/annotation/confirmation/confirmation_multiple_conditions.png)
-
-
-
-[DM (dialog management)](../../guide/architecture.html#dialog-management) will check these conditions one after one, and using the first one who's true to interact with user during conversation.
-
-In other words, these conditions are joined by `IF-ELSE` relationship.
-
-
-
-### Condition
-
-There are two ways to configure a specific condition:
-
-- Function invocation: Support the basic `AND` relationship. 
-- Code expression: Support any legal boolean expression.
-
-
-
-For function invocation:
-
-![confimation-condition](/images/annotation/confirmation/confirmation_condition.png "image upon should be interpreted as: `(slotA != null) && (slotB!! == 1)`")
-
-- Boolean expression's statement is generated by `[Condition] [Operator] [Value]`, and multiple statements are joint by `AND`. When no condition is added, it will default to `True`.
-
-- Operator works as follows:
-
-| Operator                 | Support type                                 | Example <br />(assume slot named x, value is y) |
-| :----------------------- | :------------------------------------------- | :---------------------------------------------- |
-| Not empty                | SV (single-valued), MV (multi-valued), frame | SV: x != null<br />MV: x!!.isNotEmpty()         |
-| Equal                    | SV                                           | x == y                                          |
-| Not equal to             | SV                                           | x != y                                          |
-| Greater than             | SV                                           | x > y                                           |
-| Greater than or equal to | SV                                           | x >= y                                          |
-| Less than                | SV                                           | x < y                                           |
-| Less than to equal to    | SV                                           | x <= y                                          |
-| Exist in                 | SV                                           | x in y                                          |
-| Not exist in             | SV                                           | x !in y                                         |
-| Is type of               | SV, MV, frame                                | x is y                                          |
-| Congruent                | MV                                           | x and y are bijection                           |
-
-For further information, see [Type](../../guide/concepts.html#type-systems).  
-
-
-
-### Implicit Confirmation vs Explicit Confirmation
-
-Confirmation can be asked in two different ways:
-
-- Explicit confirmation: Inform / emphasize information, ask a user to confirm them, and move forward based on the answer user given.
-- Implicit confirmation: Inform / emphasize information, then assume user always agrees and move forward.
-
-::: story 
-
-Bot: *Your shopping cart has 1 pizza, 2 cokes. Total amount is: $15. (Implicit Confirmation)<br/>&emsp;&emsp;Order is placed. We'll send you to payment now. <br/>&emsp;&emsp;[Payment card]*
-
+::: thumbnail
+![confirmation](/images/annotation/confirmation/confirmation.png)
 :::
 
+Confirmation is an optional annotation. There are two places that you can define confirmation: slot level and frame level, different places have different meanings:
+- **Slot Level**: bot will confirm on each slot which is defined. 
+- **Frame Level**: bot will confirm after all slots on the frame have been done, just like bundle slots together for confirmation. User can accept and modify batch confirmations. 
 
+### Conditions
 
-The key difference is implicit confirmation takes ***YES*** automatically, and saves one turn of interaction.
+With condition, bot can confirm with the user when the set of conditions are met. You can use [kotlin Expression](kotlinexpression.md) to express the timing of key pieces of information that should be implied or requested.
 
-We suggest you to carefully choose implicit confirmation based on the same rule [Add Annotation](#add-annotation) specifies.
+:::: conversation
+::: user User
+Get me two tickets for Adele on Jul 1st
+:::
+::: bot Bot
+Adele on Jul 1st, the Event Organizer is requiring all attendees to have been fully vaccinated (14 days past final vaccination show) AND to have received a negative COVID-19 test within 48 hours of the event. Please confirm you want to continue?
+:::
+::: user User
+confirm
+:::
+::: bot Bot
+Please select your seats
+:::
+::::
 
+From the example above, you can see that bot will confirm the COVID-19 info and request a yes or no answer when the artist is Adele, while others will not: 
 
+:::: conversation
+::: user User
+Get me two tickets for Coldplay on Aug 16th
+:::
+::: bot Bot
+Coldplay on Aug 16th, please select your seats
+:::
+::::
 
-### Affirmatives and Negatives
+In this case, there are multiple conditions that need to be set here:
 
-User makes a choice of  ***YES*** / ***NO***  through expression, and we supports the followings by default:
-
-- Affirmatives
-
-  - yes
-
-  - confirmed
-
-- Negatives
-  - no
-
-
-
-You could also customize them in Affirmatives and Negatives:
-
-![confimation-affirmatives-negatives](/images/annotation/confirmation/confirmation_affirmatives_negatives.png)
-
+::: thumbnail
+![multiple conditions](/images/annotation/confirmation/confirmation_table.png)
+:::
  
+- One should like `artist.identifier() == "adele"` :
 
-Note: The customization will only effect within the condition. For everlasting / bot-width customization, see [Advanced Usage: Customize Default Affirmatives and Negatives](#customize-default-affirmatives-and-negatives).
-
-
-
-### Advanced Usage
-
-#### Customize Strategy
-
-When a user chooses ***NO*** and provides no further disruption, the bot will ask the user:
-
-::: story 
-
-Bot: *What do you want to do next? You can change your choice before, leave the task and more.*
-
+::: thumbnail
+![condition](/images/annotation/confirmation/condition_1.png)
 :::
 
-This default strategy is defined in [system intent](../systemframes/systemframe.html) **io.framely.core.ConfirmationNo**. If you favour some other expression, you could customize them under its **Response** tab.
+- Another can be simple, like `artist != null`:
 
-
-
-For now, the expression of ***NO*** is the only thing we allow to customize. But we might plan to support both ***YES*** and ***NO***'s customizing behaviour (not only expression). Let us know if you have any suggestions.
-
-
-
-#### Customize Default Affirmatives and Negatives
-
-As mentioned in [Affirmatives and Negatives](#affirmatives-and-negatives), we offer a few default expression for all Confirmation annotations. 
-
-They are defined in [system frame](../systemframes/systemframe.html) **io.framely.core.confirmation.Yes** and **io.framely.core.confirmation.No**. If you want to populate more expressions, you could add them under their **Expression** tab.
-
-
-
-To understand how this works, see [On dialog understanding](On dialog understanding).
-
-
-
-#### Cooperate with Value Recommendation
-
-When [Value Recommendation](valuerec.md) has only 1 candidate, asking users to choose from 1 out of 1 implies confirmation as well. 
-
-We cut the redundancy by asking [Value Recommendation's Single-entry Prompts](valuerec.md#single-entry) first, then skip Confirmation annotation.
-
-::: story
-
-Bot: *Which one do you want for main dish? We have: 1. pizza, 2. risotto and many other more. (Value Recommendation with multiple candidates)*
-
-User: *Pizza.*
-
-Bot: *Are you sure you want to add pizza to shopping cart? (Ask to confirm)*
-
-User: *Yes.*
-
-Bot: *For drinks, we only have coke in stock, do you want it? (Value Recommendation with 1 candidate, using Single-entry Prompt)*
-
-User: *Yes.*
-
-Bot: *What do you want for dessert? (Skip confirm, asking next slot instead)*
-
+::: thumbnail
+![condition](/images/annotation/confirmation/condition_2.png)
 :::
+
+Bot will check the conditions according to the top-to-bottom order, and confirm when the condition is met:  
+- If the first condition is `true`, bot will respond the confirmation to the user.
+- if the first condition is `false`, bot will move on to the next condition, and so on.
+
+Know more about [kotlin Expression](kotlinexpression.md).
+
+
+### Explicit 
+
+::: thumbnail
+![explicit](/images/annotation/confirmation/confirmation_condition_explicit.png)
+:::
+
+Explicit confirmation typically involves checking with the user that their input or request was understood correctly, it is very wise to confirm the critical details. Bot will not perform the action until it gets the reply from the user to confirm, usually yes/no or some synonym.
+
+You can double-check with the user prior to performing an action that would be difficult to undo, for example, cancel an order: 
+
+:::: conversation
+::: user User
+Can I cancel an order?
+:::
+::: bot Bot
+Sure. Could you provide me with the order number?
+:::
+::: user User
+123456
+:::
+::: bot Bot
+I found the order: *[order details]* <br>Should I go ahead and Cancel the order?
+:::
+::: user User
+Yes.
+:::
+::: bot Bot
+I have cancelled the order for you. 
+:::
+::::
+
+But there are many ways to say yes or no by the user. To handle the synonym expressions of "yes/no", **Affirmatives** and **Negatives** provide the way for you to customize the "yes/no" understanding in specific contexts. 
+
+::: thumbnail
+![implicit](/images/annotation/confirmation/confirmation_expression.png)
+:::
+
+For example, In some scenarios, "*Sorry I need to change*" represents a new intention, but in certain scenarios, this means the user says no to the confirm. So you can add all of these cases in **Affirmatives** and **Negatives**. 
+
+::: tip Note
+The common understanding of confirmation yes and no is already supported in **system intent** *`io.framely.core.confirmation.Yes`* and *`io.framely.core.confirmation.No`*, so no need to define it here. But if needed, you can also customize system intent behavior by adding expressions.  
+:::
+
+### Implicit
+
+::: thumbnail
+![implicit](/images/annotation/confirmation/confirmation_condition_implicit.png)
+:::
+
+Unlike explicit confirmation, implicit confirmation does not require a reply from the user. It just simply confirms the input has been received like an FYI notification, and an operation will take place without asking for user approval, although users might give one if they want to make a correction. 
+
+:::: conversation
+::: user User
+I need to change the shipping address.
+:::
+::: bot Bot
+Can I get your street address?
+:::
+::: user User
+*[address]*
+:::
+::: bot Bot
+Get. I will set your street address to be *[address]* . <br>You will receive an email confirmation of this change in a few minutes. What else can I help you with?
+:::
+::::
+
