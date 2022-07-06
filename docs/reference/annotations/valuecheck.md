@@ -23,7 +23,7 @@ Capturing the invalid user input per business logic is essential to make the con
 - Check the validity of user input value
 - When Value Check fails
     - Bot informs users the input value is invalid
-    - Choose which slot to be cleared so bot can ask again
+    - Choose which slot to be cleared so that we can restart the slot filling process again.
 
 ## How To Use
 Value Check is an optional slot annotation. When [Slot Filling](https://www.framely.ai/guide/slotfilling.html#five-stages-of-slot-filling) moves to Value Check, [DM (Dialog Management)](https://www.framely.ai/guide/architecture.html#dialog-understanding-du) will check conditions defined in Value Check.
