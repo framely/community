@@ -23,7 +23,7 @@ Booked a ticket from New York to Los Angeles on Feb 2, 2022. Do you want to book
 In both case, initialization allows you to reduce the user effort level in acquiring service from you, thus give users a better user experience. 
 
 ## Overview
-Initialization is the first stage of  "[Five Stages of Slot Filling](../../guide/slotfilling.md#five-stages-of-slot-filling)". When it is time to fill a slot per prompt strategy, bot will first check whether there is initialization configured for this slot. If it finds a usable value (not null), it will skip the prompting stage, and go directly to value check and confirmation phase. 
+Initialization is the first stage of  "[Five Stages of Slot Filling](../../guide/slotfilling.md#five-stages-of-slot-filling)". When it is time to fill a slot per prompt strategy, bot will first check whether there is initialization configured for this slot. If it finds a usable value (not null), it will skip the prompting stage, and go directly to value check and confirmation phase. But if user have provided a value before, that will be used instead. 
 
 You can provide the slot with an initial value by defining the association of the slot. Association is defined in [code expression](./kotlinexpression.md), which supports the following expressions:
 - Constant: For example, if the type of slot is *kotlin.Int*, you may set its association to be `0`.
