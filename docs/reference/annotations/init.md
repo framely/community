@@ -44,14 +44,16 @@ Beyond the normal operator like +,-,*,/, you can combine expressions using:
 Initialization is an optional slot annotation. If you know that user will most likely accept a value based on application logic or historical data, you can use initialization to instruct bot to propose that value for user, reducing user's effort level.
 ![init](/images/annotation/initialization/init.png)
 
+### Do user have to accept the proposed value?
 Depending on whether you give user a chance to confirm, initialization are used for two different purposes: assignment and suggestion. 
-
-### Assignment
+#### Assignment
 Some time, your business dictates what value can a slot take given existing user choice and business logic, user have to accept. This is assignment, where you can first enable the initialization on the slot, but not configure the [explicit confirmation](../annotations/confirmation.md#explicit). This way, bot will simply inform user the system choice for this slot and move onto the next slot.
 
-### Suggestion
+#### Suggestion
 Some time, your business wants provide a candidate value that user will mostly prefer based on history and statistics across users, but since you are not certain, you want to give user a chance to confirm just in case user might have a different idea. This is suggestion, where you can first enable the initialization on the slot, then enable the [explicit confirmation](../annotations/confirmation.md#explicit). This way, bot will simply inform user the system choice for this slot and give user a chance to confirm. If a user agrees, bot moves onto next slot, if that user does not agree, bot go back to prompting phase to ask user again.
 
+
+## Considerations
 ::: tip Tips
 1. When using initialization, it is best to add an [implicit confirmation annotation](../annotations/confirmation.md) to inform user the choice system provided, just to keep user and bot on the same page.
 2. Make sure the value proposed here is in theory compatible with [value check](../annotations/valuecheck.md), minus fluctuation due to data changes, for example, the ticket is gone. This way, user does not get confused with ill-proposed value that triggered value check upfront.
