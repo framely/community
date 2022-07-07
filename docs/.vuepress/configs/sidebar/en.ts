@@ -54,8 +54,9 @@ export const en = {
       text: 'Channel Reference',
       collapsible: true,
       children: [
-          '/reference/channels/wpa.md',
+        '/reference/channels/wpa.md',
         '/reference/channels/messenger.md',
+        '/reference/channels/whatsapp.md',
       ],
     },
     {
