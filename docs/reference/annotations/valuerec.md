@@ -2,28 +2,36 @@
 
 [[toc]]
 
-## Overview
-One of the most clear and concise ways to give users information to continue the conversation is providing value recommendations, which can be used as hints to help the user answer a question or discover new features, and best for questions about complex or unfamiliar domains, or when options are limited or unclear. 
+## Motivation
+When you need to ask user's preference on a slot that have many potential values, it is often a good idea to offer user a list of candidates value based on application logic, so it is easy for user to converge to a workable choice. For example
 
-For example, with value recommendation, one can get the boundaries directly:  
-
-::: story
-User: *Get me two tickets for Star War for tonight, please.*
-
-Bot: *Star War, we only have it at 21:30pm. Would you like to get these?*
+:::: conversation
+::: user User
+Get me two tickets for Star Wars for tonight, please.*
 :::
+::: bot Bot
+What time? For Star Wars, we only have two showings left at 19:30pm and 21:30pm. Which one do you want?
+:::
+::::
 
 Instead of having many trials:
-
-::: story
-User: *Get me two tickets for Star War for tonight, please.*
-
-Bot: *Ok, what time?*
-
-User: *18:30pm.*
-
-Bot: *Sorry, Star War at 18:30pm have sold out, please choose another time.*
+:::: conversation
+::: user User
+Get me two tickets for Star War for tonight, please.
 :::
+::: bot Bot
+Ok, what time?
+:::
+::: user User
+18:30pm
+:::
+::: bot Bot
+Sorry, Star War at 18:30pm have sold out, please choose another time.
+:::
+::::
+
+## Overview
+When a slot has a large set of potentially valid values from user side, but much more restrictive set from business side, it is very useful to inform user as early as possible the restriction business had on the slot value. Value recommendation is one way of communicate such restriction so that user can focus on picking from a smaller pre-approved set of values that business had no problem to serve.
 
 When designing value recommendations, you can also consider the pros and cons in the table below:
 
