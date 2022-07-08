@@ -31,113 +31,34 @@ Sorry, Star War at 18:30pm have sold out, please choose another time.
 ::::
 
 ## Overview
-When a slot has a large set of potentially valid values from user side, but much more restrictive set from business side, it is very useful to inform user as early as possible the restriction business had on the slot value. Value recommendation is one way of communicate such restriction so that user can focus on picking from a smaller pre-approved set of values that business had no problem to serve.
+When a slot has a large set of potentially valid values from user side, but much more restrictive set servable from business side, it is very useful to inform user as early as possible the acceptable ones per business logic. Value recommendation is one way of communicate such restriction so that user can pick from a smaller set of values that is pre-approved by business, instead of go through multiple round of trial and error.
 
-When designing value recommendations, you can also consider the pros and cons in the table below:
+Value recommendation is rather complex conversational component, consist of
+- Source item list, where builder can specify a code expression or intent that return a list of the target type.
+- Paging behavior, when list is long, it is important to support "page" navigation like interactions:
+  - *"is there more options?"* for next page
+  - *"can you go back? I like to see these options again."* for previous page. 
+- Item picking, provide the ability to deal with selection expressions both by index or by name: 
 
-| With Value Recommendation 	| Without Value Recommendation 	|
-|:---	|:---	|
-|<ul><li>Makes it clear what the user can say by establishing boundaries.</li><li>Minimizes confusion, easy for users to answer.</li><li>Can feel limiting to users.</li></ul>	|<ul><li>Encourages the user to respond naturally and in their own words.</li><li>Difficult for users to anticipate what answers are supported.</li><li>Set expectations too high and overpromise.</li></ul>	|
-
-## Features
-
-The features of value recommendation are as follows:
-
-### Interactive level
-
-1. Support page navigation, like *"next page"*, *"previous page"*. 
-
-2. Provide the ability to deal with selection expressions in order or by name: 
-
-| Features 	| Examples 	|
-|:---	|:---	|
+| Selection 	| Examples 	|
+|:--	|:---	|
 |Can be expressed by the order in which they are placed	|*"the first one"*, *"second"*	|
-|Can be expressed through specific properties	|*"the red one"*, *"the hot one"*	|
-|Support primitive expressions and pronoun expressions	|*"this city"*, *"over there"*	|
-|Support don't care expressions |*"don't care"*, *"anything will do"*	|
+| Can be expressed through specific properties	        |*"the red one"*, *"the hot one"*	|
+| Support primitive expressions and pronoun expressions	|*"this city"*, *"over there"*	|
+| Support don't care expressions                       |*"don't care"*, *"anything will do"*	|
+- List rendering, allow builder to customize the template that verbalize the offer list in different languages.
 
-::: tip Note
-Don't care expressions need to be defined in another annotation, but the interactive experience will be reflected here. See more about [Don't Care](./dontcare.md).
-:::
+Aside from these main control, Framely value recommendation also comes with other bells and whistles to make it easy to adapt to real world situations. For example, there is a hard and soft mode toggle, which indicates whether option or value outside what bot offers is acceptable. There is also annotation allow you customize the conversational behavior when the item list is empty or just had one entry. 
 
-### Business boundaries
-
-Some default behaviors are already supported here, and you can use them directly. If they are not enough, you can customize them with Transition Component.
-
-1. Provide hard mode as the relationship between recommendations and business scope. When the user's expression is out of range, the default response like *"Sorry, we do not offer Star War at this time."* will be replied. 
-
-2. Support to define the confirmation or prompt, when the option of recommendations is single entry or zero entry.
-  
-  
-## Related Annotations
-
-![Value Rec related annotation](/images/annotation/valuerec/valuerec_related.png)
-
-#### Prompt <Badge type="warning" text="Required" />
-Once you’ve decided to offer a value recommendation, there must have a prompt in front, as users require this context to understand these recommendation items. For example, you can not always recommend a timetable directly, instead you'd better to indicate the context of the timetable:
-
-::: story
-Bot: *What time would you like to leave on the __outbound flight__ ?*
-  - *10:30*
-  - *11:30*
-  - *12:30*
-  - ……
-:::
-
-::: story
-Bot: *What time would you like to leave on the __return flight home__ ?*
-  - *10:30*
-  - *11:30*
-  - *12:30*
-  - ……
-:::
-
-#### Value Check <Badge text="Preferred" />
-With the help of [value check](./valuecheck.md), the bot can find out in time whether the value provided by the user satisfies the business boundaries. For example, when buying a movie ticket, the bot can inform the user in advance whether there is a schedule for the time, instead of notifying it when the last process is reached. 
-
-::: story
-Bot: *What time would you like to leave on the outbound flight ?*
-  - *10:30*
-  - *11:30*
-  - *12:30*
-
-User: *I would like to leave at 5pm.*
-
-Bot: *Sorry, tickets at 5pm have sold out, please choose another time.*
-:::
-
-#### Confirmation <Badge text="Preferred" />
-[Confirmation](./confirmation.md) can give users feedback on how their input was understood. This not only empowers users to correct mistakes immediately, but it also reassures them in a socially and conversationally appropriate way by establishing common ground. 
-
-::: story
-Bot: *You want a one way ticket for:*
-  - *From JFK To London*
-  - *Leaving on 2022-12-25*
-  - *Time 17:00:00*
-
-*Is that correct?*
-:::
-
-
-## How To Use
-
-Before you start, you should make sure services or APIs that host your business logic are available, as value recommendation will turn your business data into recommendations.
-
-There are two places that you can define value recommendation: slot level and frame level, different places have different meanings: 
-- **Slot Level**: Progressive, We value rec one column at a time, which can quickly result in nothing to recommend for the next slot.
-- **Frame Level**: Holistic, we always recommend multi slots simultaneously, and they will be filled together. 
-::: thumbnail
-![vr-source](/images/annotation/valuerec/valuerec_levels.png)
-*Value recommendation on different levels*
-:::
-So you have to decide where to put it based on your business. 
-
-
-### Hard Mode
-
+Value recommendation can be defined both on the slot level (both entity slot or frame slot) and frame level, with frame level definition available on all the slot of that frame automatically. The configuration of value recommendation is done in the follow UI:
 ::: thumbnail
 ![vr-popup](/images/annotation/valuerec/vr-popup.png)
 :::
+
+## How To Use
+
+
+### Hard Mode
 
 Hard is used to declare the relationship between business boundaries and recommendations. If the hard toggle is turned on, meaning your business scope is fully aligned with the recommended options. So if the item the user wants is not in all candidates, the bot will give user a default reply such as:
 
@@ -156,6 +77,7 @@ Customization of **system intent** will not only affect the current slot, but al
 :::
 
 ### Source
+Before you start, you should make sure services or APIs that host your business logic are available, as value recommendation will turn your business data into recommendations.
 
 ::: thumbnail
 ![vr-source](/images/annotation/valuerec/vr-source.png)
@@ -215,7 +137,7 @@ ${it!!.value}
 In theory, you can define header, body, footer as any content as you want, but if you want to reuse these components, then from a presentation point of view, these can be defined a bit more generically.
 :::
 
-#### Single-entry
+### Single-entry
 
 Single entry prompt used to handle the scenario when there is only one entry in the recommended options. Like confirmation, there are two ways to provide it to your users: **Explicit** and **Implicit**：
 
@@ -245,7 +167,7 @@ User: *Get me two tickets for Star War for tonight, please.*
 Bot: *Alright, Star War, at 21:30pm. Would you like to proceed with payment?*
 :::
 
-#### Zero-entry
+### Zero-entry
 
 ::: thumbnail
 ![vr-zep](/images/annotation/valuerec/vr-zep.png)
@@ -261,3 +183,25 @@ When the recommendation is empty, the zero entry prompt will be replied to users
 :::
 
 Expressions in value recommendation can provide an active way for your users to get choices directly like *"what do you have?"*, when they are in the dependent context.
+
+
+### Considerations
+
+Regardless where the VR is defined, they can be defined for slot with either entity type or frame type.
+- **Entity Slot**: when slots are more or less independent, this give user the ability to incrementally communicate what they want.
+- **Frame Slot**: Holistic, we always recommend multi slots simultaneously, and they will be filled together. 
+::: thumbnail
+![vr-source](/images/annotation/valuerec/valuerec_levels.png)
+*Value recommendation on different levels*
+:::
+So you have to decide where to put it based on your business. 
+
+::: tip Note
+Don't care expressions need to be defined in another annotation, but the interactive experience will be reflected here. See more about [Don't Care](./dontcare.md).
+:::
+
+When designing value recommendations, you can also consider the pros and cons in the table below:
+
+| With Value Recommendation 	| Without Value Recommendation 	|
+|:---	|:---	|
+|<ul><li>Makes it clear what the user can say by establishing boundaries.</li><li>Minimizes confusion, easy for users to answer.</li><li>Can feel limiting to users.</li></ul>	|<ul><li>Encourages the user to respond naturally and in their own words.</li><li>Difficult for users to anticipate what answers are supported.</li><li>Set expectations too high and overpromise.</li></ul>	|

@@ -1,4 +1,4 @@
-# Provider Annotations
+# Postgrest
 
 [[toc]]
 

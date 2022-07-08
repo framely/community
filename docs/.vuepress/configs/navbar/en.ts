@@ -13,7 +13,7 @@ export const en = [
     text: 'Reference',
     children: [
       {
-        text: 'CUI Annotations',
+        text: 'CUI components',
 
         children: [
           {
@@ -50,8 +50,13 @@ export const en = [
         ],
       },
       {
-        text: "Provider Annotations",
-        link: '/reference/annotations/providerannot.html',
+        text: "Providers",
+        children: [
+          {
+            text: "Postgrest",
+            link: '/reference/annotations/providerannot.html',
+          },
+        ]
       },
       {
         text: 'Channels',
