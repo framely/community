@@ -34,6 +34,10 @@ When slot is configured to be filled by user interaction, Framely framework uses
 
 By simply making decision on whether to enable and how to configure these five components, Framely can guide builder come up with a reasonable CUI interaction logic systematically. This way, builder can focus on unique and cost-effective services that brings actual value to user and make their life better.   
 
+It should be clear that message bot send to user in a single turn can contain message generated from more than one of these stages. In the example shown here,
+![Value Rec related annotation](/images/annotation/valuerec/valuerec_related.png)
+we have message generated from confirmation from previous slot, value check failure for the current slot possibly with user existing slot mention, prompt and value recommendation in attempt to fill the slot again.
+
 ## Advanced Annotations
 Slot level annotations is designed for the common use cases, so it is designed for convenience instead of flexibility. The underlying mechanism of schema grounded conversational user interface, including the 5 stage of slot filling, is modeled based on dynamic [startchart, also known as composite state machines](https://statecharts.dev/). So, if there are CUI behavior that can not be defined by these high level annotations, one can always to look at [Transition](https://www.framely.ai/reference/annotations/transition.html), which offer a greater deal of control at low level: builder can directly control how bot should react given the state we are in, user input and some arbitrary condition defined on them. 
 
