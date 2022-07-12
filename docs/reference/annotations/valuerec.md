@@ -56,9 +56,11 @@ Value recommendation can be defined both on the slot level (both entity slot or 
 :::
 
 ## How To Use
-
+There are many controls on the VR component configuration page, that can be used to design conversational interface for different use case, let's go over them one by one.
 
 ### Hard Mode
+#### Motivation
+When bot recommends options or candidate values for given slot to user, there are two different scenarios: it will offer an exhaustive list of servable options, or only list of some samples. The conversational interaction logic can be very different when user pick item out of list, or when there is only one entry or even entry in the list. 
 
 Hard is used to declare the relationship between business boundaries and recommendations. If the hard toggle is turned on, meaning your business scope is fully aligned with the recommended options. So if the item the user wants is not in all candidates, the bot will give user a default reply such as:
 

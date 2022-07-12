@@ -28,7 +28,7 @@ export const en = [
             icon: "/featureIcons/init.svg",
           },
           {
-            text: "Prompt Strategy",
+            text: "Fill Strategy",
             link: '/reference/annotations/fillstrategy.html',
             icon: "/featureIcons/separate.svg",
           },
