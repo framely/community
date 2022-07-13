@@ -2,161 +2,103 @@
 
 [[toc]]
 
+## Motivation
+
+When you focus on providing a personalized experience for your user, or giving unique functionality to your bot, such as improving system default behaviors, recovering slot filling state, transferring conversations under certain conditions, with the help of transition you can easily achieve. 
+
+For example, when the user wants to book a round-trip ticket but no suitable flight is available, you can make a decision on which step the user should start over from: 
+
+- Clear all the information and restart: 
+
+:::: conversation
+::: bot Bot
+Currently no tickets available. Let's try checking for other options. Please note that you will be asked to re-enter your information. What is the first and last name of the passenger flying?
+:::
+::::
+
+- Retain basic information and modify others: 
+
+:::: conversation
+::: bot Bot
+Currently no tickets available. Let's reset some information. Which day would you like to leave?
+:::
+::::
+
+- Keep all information except the last one: *Return Flight Time*: 
+
+:::: conversation
+::: bot Bot
+Currently no tickets available. Please choose another Return Flight Time. What time would you like to leave on the return flight home? 
+:::
+::::
+
 ## Overview
 
-Annotations that have been introduced so far should cover the most frequent requirements, but may not be adequate for the long tail experiences. Framely allows low-level customizations through Transition to cover them.
+Transition can be thought of as customization of system behaviors or enhancement of other annotations. It is an optional frame level annotation which lets you control how the conversation should be when meeting the specified conditions. 
 
+Transition consists of two parts: trigger method and update actions. This means when the condition is met or the event is triggered, bot will respond each action in sequence.
 
-For example, suppose a restaurant sells thousands of dishes. There's no way user can view the foods from top to bottom, so the restaurant has to categorize them into tree menu, then expects conversations like:
-
-::: story
-
-User: *Can I order some food?*
-
-Bot: *What kind of dish do you prefer? We have: 1. Noodle 2. Rice*
-
-User: *Noodle, please.*
-
-Bot: *Ok. What kind of noodles do you prefer? We have: 1. Dry Noodle 2. Soup Noodle*
-
-User: *The second.*
-
-Bot: *Got it. What kind of soup noodle do you prefer? We have 1. Tomato Egg Noodle, 2. ...*
-
+::: thumbnail
+![transition](/images/annotation/transition/transition.png)
 :::
-
-Solutions for this are awfully complex (if not impossible), but with Transition, the experience can be achieved through one single rule: looping the recommendation until user's answer is NOT a category but a dish (internal node in computer science).
-
-
-
-Transition is powerful enough to handle almost all arbitrary experiences, but it is designed to deal with requirements that CANNOT be accomplished by the methods introduced in  Guide and Reference, not as an alternation of them. Flexibility comes with details and efforts . If Transtion is the ONLY way to get the experience, be prepared to get your hands messy.
-
-
-
-## Features
-
-- Two methods to invoke transition
-  - User utterances or external events request an intent/frame
-  - Slot is being filled via interaction, and specified condition evaluates as true
-- Various actions to low-levelly customize the default behaviours
-  - Send messages: in plain text, or formatted through a list template
-  - Manipulate [Slot Filling](../../guide/slotfilling.md): set the stage to clear, fill, or recheck
-  - Dictate [Dialog Management](../../guide/architecture.md#dialog-management) to rewire in global view: create or destroy an intent, hand it to human agent, or close conversation
-- Mix-matches for triggers and actions
-
-
 
 ## How to use
 
-### Triggers
+Transition is a composite annotation, as Framely provides different methods to cover different triggers. You need to pick one trigger method first, then you can declare where and how the action responds one by one. 
 
-Transition can be triggered by Event and Condition. Each one aims to customize a specific genre of behaviour.
-
-
-
-#### Event
-
-Event-triggered transitions will be invoked anytime an user utterance or external event requests the Event intent/frame. It customizes the Event intent/frame's behaviour by appending actions at the end of it. The actions are special and powerful, because they can reach out contexts provided by the intent/frame who hosts the transition. *Event* intent/frame itself is independent from that.
-
-
-
-Here's one example of event-triggered transition:
-
-Suppose user has ordered a dozen things, and the conversation goes like:
-
-::: story
-
-Bot: *Ok, what else kind of dish do you prefer? We have: 1. Noodle 2. Rice*
-
-User: *What have I ordered so far?*
-
-Bot: *You have ordered: Tomato Egg Noodle, Oil Spread Noodle, ..., and Biangbiang Noodle.*
-
-*Any other dish do you prefer? We have: 1. Noodle 2. Rice*
-
-:::
-
-Deisgn for this conversation involves two intents, one is for order (offers conversation for line 1, 4), the other one is for repeat order (offers conversation for line 2, 3). Passing all the dishes from OrderIntent to RepeatOrderIntent is complex, especially when there's more than one upsale section. A better way to do this is to make RepeatOrderIntent as OrderIntent's event-triggered transition's event, and append a reply at the end of OrderIntent.
-
-
-
-To define an event-triggered transition, one needs to:
-
-1. Create a transtion
-2. Set Trigger Method to Event
-3. Set *Event* to the intent/frame needs to be customized
-4. Add actions to customize behaviour, in [Update Action](#actions)
+### Event Trigger
 
 ::: thumbnail
-<img alt="transition-event" src="/images/annotation/transition/transition-event.png">
+![transition-event](/images/annotation/transition/transition-event.png)
 :::
+
+Event trigger allows you to specify what should happen or be done when the bot gets user input event. User input event can be specified by a frame instance, which indicates arbitrary semantics. 
+
+
+
+
+### Condition Trigger
+
+::: thumbnail
+![transition-condition](/images/annotation/transition/transition-condition.png)
+:::
+
+Condition trigger allows you to customize each default behavior under specified situation. You can use [kotlin Expression](kotlinexpression.md) to express conditions you want, and set the trigger timing by selecting one slot. When the trigger timing slot is done and the condition expression evaluates to true, the corresponding actions will be executed. 
+
+
+
+
+### Update Action
+
+::: thumbnail
+![transition-action](/images/annotation/transition/transition-action.png)
+:::
+
+Update action contains one or more actions in sequence, you need to define it by order. When the trigger is active, bot will respond the update action one by one according to the top-to-bottom order. With actions, you can: 
+- Prompt Users for necessary information by Simply Reply and List Reply;
+- Change the state of slot filling by Clear Slot, Fill Slot and Recheck;
+- Transfer conversation by Intent Start, Intent Abort and Intent End.
+
+| Action      	| Useage 	|
+|:------------- |:-------------	|
+| Simple Reply  | Prompt user a text or media reply |
+| List Reply	  | Prompt user a list reply |
+| Clear Slot  	| Claer the target slot value	|
+| Fill Slot     | Assign the value expressed in code expression to target slot |
+| Recheck       | Move the state back to before check	target slot value |
+| Intent Start  | Start a new intent with its slot filled with assignments by code expression |
+| Intent Abort  | Abort the intent you specified |
+| Intent End    | Terminate the current intent |
+| Hand Off      | Transfer the current conversation to live agent. Please make sure you have configued [Support](../support/overview.md) |
+| Close Session | Clear the entire session |
 
 ::: tip Note
-An event can be consumed only once.
-
-For example, if the same frame is being configured as an [external event](fillstrategy.md#external) slot's type  an event-triggered transition's *Event* at the same time, it will only be served as slot value. Transition customizes things at a low-level, therefore has low priority.
+When use **Fill Slot** with Code expression, you should make sure assignment actually works. For example, Code expression should be valid ford current context.
 :::
 
 
-#### Condition
-
-Condition-triggered transitions will be triggered whenever the frame's slot is filled via interaction, AND the Conditions are evaluated as true. This means, if slots that are not being filled a value (e.g. when user answers no for multi-valued slot) or filled directly (e.g. through [Intent Start Assignments](#intent-start)), condition-triggered transitions will not be invoked. Also, for multi-valued slots, triggering happens per value piece instead of the whole slot.
-
-
-
-Example for condition-triggered transition is the one mentioned in overview:
-
-::: story
-
-User: *Can I order some food?*
-
-Bot: *What kind of dish do you prefer? We have: 1. Noodle 2. Rice*
-
-User: *Noodle, please.*
-
-Bot: *Ok. What kind of noodles do you prefer? We have: 1. Dry Noodle 2. Soup Noodle*
-
-User: *The second.*
-
-Bot: *Got it. What kind of soup noodle do you prefer? We have 1. Tomato Egg Noodle, 2. ...*
-
-:::
-
-Deisgn for this conversation involves two slots, one is source (used to record what user have chosen), the other one is target (ask user what he/she wants based on the source). Condition-triggered transition will assign target's value to source, then clear target to loop asking, until target reaches no suggestion (leaf node, in computer science).
-
-
-
-To configure a condition-triggered transition, one needs to:
-
-1. Create a transtion
-2. Set Trigger Method to Condition
-3. Set Condistions like [Confirmation Conditions](./confirmation.md#condition)
-4. Add actions to customize behaviour, in [Update Action](#actions)
-
-::: thumbnail
-<img alt="transition-condition" src="/images/annotation/transition/transition-condition.png">
-:::
-
-
-
-### Actions
-
-Transition's customized behaviours are defined by a sequence of actions under Updated Action.
-
-::: thumbnail
-<img alt="transition-action" src="/images/annotation/transition/transition-action.png">
-:::
-
-Framely supports almost a dozen of these actions, which can be categorized into three groups:
-
-1. Actions only reply messages as a side effect and make NO change to [Dialog Management](../../guide/architecture.md#dialog-management): [Simple Reply](#simple-reply), [List Reply](#list-reply)
-2. Actions manipulate Slot Filling related behaviours: [Clear Slot](#clear-slot), [Fill Slot](#fill-slot), and [Recheck Action](#recheck-action)
-3. Actions dictate Dialog Management to redirect in a global view: [Intent Start](#intent-start), [Intent Abort](#intent-abort), [End Action](#end-action), [Hand Off](#hand-off), and [Close Session](#close-session)
-
-Let's cover them one by one.
-
-
-
+<!-- 不确定是否需要下面的细节，还是单独一个 Action 区域来讲 -->
+ 
 #### Simple Reply
 
 ::: thumbnail
