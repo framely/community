@@ -4,7 +4,7 @@
 :::
 The [Messenger Platform](https://developers.facebook.com/docs/messenger-platform/introduction) is meant for businesses to handle inquiries from their customers. Using the Facebook Messenger integration, you can create a Facebook Messenger bot to interact with your end-users within your business. 
 
-We show here how to configure the Framely integration and Messenger, and deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
+We are going to show here how to configure the Framely integration and Messenger and then, deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
 
 Follow these steps to configure:
 [[toc]]
@@ -17,7 +17,7 @@ On the Messenger side, please ensure you have all of the following:
 
 
 ## Set Up Messenger
-1. Visit your [app dashboard](https://developers.facebook.com/apps), and enter one of the apps you want to serve by Framely chatbot. On the left sidebar, click **Add Product**. Hover over **Messenger** and Click **Set Up**.
+1. Visit your [app dashboard](https://developers.facebook.com/apps) and enter one of the apps you want to serve by Framely chatbot. On the left sidebar, click **Add Product**. Hover over **Messenger** and Click **Set Up**.
 
 ![add-messenger](/images/channelConfig/messenger/add-messenger.png)
 
