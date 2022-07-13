@@ -54,7 +54,7 @@ Transition is a composite annotation, as Framely provides different methods to c
 
 Event trigger allows you to specify what should happen or be done when the bot gets user input event. User input event can be specified by a frame instance, which indicates arbitrary semantics. 
 
-
+For example, in some purchase scenarios, if the user wants to use a certain coupon, you can use an additional frame as event to catch the user's utterance like "*use the coupon that will expire soon*", and also a fill action which can assign the coupon code by invoking a function that retrieves the expiring coupon code for given user.
 
 
 ### Condition Trigger
@@ -65,8 +65,16 @@ Event trigger allows you to specify what should happen or be done when the bot g
 
 Condition trigger allows you to customize each default behavior under specified situation. You can use [kotlin Expression](kotlinexpression.md) to express conditions you want, and set the trigger timing by selecting one slot. When the trigger timing slot is done and the condition expression evaluates to true, the corresponding actions will be executed. 
 
+For example, you offer a travel package includes flights and accommodation together, and the package cannot be purchased when either item is sold out. With condition you can notify the user earlier, instead of checking after the user has chosen. 
 
-
+:::: conversation
+::: user User
+Book a travel package 
+:::
+::: bot Bot
+Sorry, currently no package available. 
+:::
+::::
 
 ### Update Action
 
@@ -98,7 +106,8 @@ When use **Fill Slot** with Code expression, you should make sure assignment act
 
 
 <!-- 不确定是否需要下面的细节，还是单独一个 Action 区域来讲 -->
- 
+
+<!-- 
 #### Simple Reply
 
 ::: thumbnail
@@ -240,3 +249,4 @@ And on the top of that, if there're different category's actions in the collecte
 
 
 With the serializing of actions,  the mix-matching of triggers and action sequences, and the joint of the transition, arbitrary experinces in Framely comes true. 
+-->
