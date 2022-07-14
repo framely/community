@@ -4,18 +4,18 @@
 
 
 ## Overview
-Framely also supports the backend component in form of [postgrest provider](/guide/glossary.md#postgrest-provider). The backend component can be declaratively defined in two steps: first create database tables needed by service by adding storage annotation to frames, second provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify the operation team can access these tables via [back office](/guide/glossary.md#backoffice).
+Framely also supports the backend component in form of [postgrest provider](/guide/glossary.md#postgrest-provider). The backend component can be declaratively defined in two steps: First, create database tables needed by service by adding storage annotation to frames, secondly, provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify the operation team can access these tables via [back office](/guide/glossary.md#backoffice).
 
 There are a couple advantage of using backend component approach to build service provider. 
-1. In addition to declaratively building database as content management system, Framely backend component allow you to implement the service declaratively too using SQL. This make it possible for the business analyst to build backend.
-2. Since table are created based on the data type in the API schema, so no explicit conversion code are needed, rows in the table or view in the database are automatically converted into object in the Framely.
+1. In addition to declaratively building database as content management system, Framely backend component allows you to implement the service declaratively too using SQL. This make it possible for the business analyst to build backend.
+2. Since tables are created based on the data type in the API schema, so no explicit conversion code is needed, rows in the table or view in the database are automatically converted into an object in the Framely.
 ![frame-table](/images/annotation/providerannotation/frame-table.png)
-3. The admin interface or backoffice can also be automatically created based on annotation so that operation team can use backoffice to provide service. 
+3. The admin interface or backoffice can also be automatically created based on annotation so that the operation team can use backoffice to provide service. 
 4. Backoffice components can be reused by cloning for Framely hosted solution.
 
 #### Features
 Provider annotations include [storage annotations](./overview.md#storage-annotations) and [back office annotations](./overview.md#backoffice-annotations).
-- Storage annotations define the database schema needed by the backend component, which can then be used to create the database for provider.
+- Storage annotations defines the database schema needed by the backend component, which can then be used to create the database for provider.
   - Column information for table
   - Set a default value of a column
   - Set not-null constraints
@@ -33,7 +33,7 @@ Before starting, turn on **Storage Enabled** in **Frames** field to enable stori
 
 
 ## SQL Data Type
-To create tables to store the frame instance, we need to map each slot of frame to a column in the database. SQL data type is a slot annotation, it defines the SQL data type for corresponding column for the given slot. Normally, we will automatically decide the SQL data type for each slot. But if the slot type is *kotlin.String* or customized entity(e.g. like *Demo.test.City* in the below picture), you need to specify the database type of the column. 
+To create tables to store the frame instance, we need to map each slot of frame to a column in the database. SQL data type is a slot annotation, it defines the SQL data type for the corresponding column for the given slot. Normally, we will automatically decide the SQL data type for each slot but if the slot type is *kotlin.String* or customized entity(e.g. like *Demo.test.City* in the below picture), you need to specify the database type of the column. 
 
 Supported formats are `char(n)`, `varchar(n)`, `text`. Replace "n" with a number between 1 and 10485760, e.g. `char(16)`. To learn more about Character Types, click [here](https://www.postgresql.org/docs/current/datatype-character.html).
 
