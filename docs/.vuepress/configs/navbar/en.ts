@@ -34,7 +34,7 @@ export const en = [
           },
           {
             text: 'Value Recommendation',
-            link: '/reference/annotations/valuerec.md',
+            link: '/reference/annotations/valuerec.html',
             icon: '/navIcons/valuerec.svg',
           },
           {
@@ -64,17 +64,17 @@ export const en = [
         children: [
           {
             text: 'WeChat Official Account',
-            link: '/reference/channels/wpa.md',
+            link: '/reference/channels/wpa.html',
             icon: '/navIcons/wechat.svg',
           },
           {
             text: 'Messenger',
-            link: '/reference/channels/messenger.md',
+            link: '/reference/channels/messenger.html',
             icon: '/navIcons/messenger.svg',
           },
           {
             text: 'WhatsApp Business',
-            link: '/reference/channels/whatsapp.md',
+            link: '/reference/channels/whatsapp.html',
             icon: '/navIcons/whatsapp.svg',
           },
         ],
@@ -85,12 +85,12 @@ export const en = [
         children: [
           {
             text: 'Overview',
-            link: '/reference/support/overview.md',
+            link: '/reference/support/overview.html',
             icon: '/navIcons/overview.svg',
           },
           {
             text: 'Chatwoot',
-            link: '/reference/support/Chatwoot.md',
+            link: '/reference/support/Chatwoot.html',
             icon: '/navIcons/chat.svg',
           },
         ],
