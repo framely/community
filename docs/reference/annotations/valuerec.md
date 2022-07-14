@@ -7,7 +7,7 @@ When you need to ask user's preference on a slot that have many potential values
 
 :::: conversation
 ::: user User
-Get me two tickets for Star Wars for tonight, please.*
+Get me two tickets for Star Wars for tonight, please.
 :::
 ::: bot Bot
 What time? For Star Wars, we only have two showings left at 19:30pm and 21:30pm. Which one do you want?
@@ -17,7 +17,7 @@ What time? For Star Wars, we only have two showings left at 19:30pm and 21:30pm.
 Instead of having many trials:
 :::: conversation
 ::: user User
-Get me two tickets for Star War for tonight, please.
+Get me two tickets for Star Wars for tonight, please.
 :::
 ::: bot Bot
 Ok, what time?
@@ -26,7 +26,7 @@ Ok, what time?
 18:30pm
 :::
 ::: bot Bot
-Sorry, Star War at 18:30pm have sold out, please choose another time.
+Sorry, Star Wars at 18:30pm have sold out, please choose another time.
 :::
 ::::
 
@@ -64,9 +64,11 @@ When bot recommends options or candidate values for given slot to user, there ar
 
 Hard is used to declare the relationship between business boundaries and recommendations. If the hard toggle is turned on, meaning your business scope is fully aligned with the recommended options. So if the item the user wants is not in all candidates, the bot will give user a default reply such as:
 
-::: story
-Bot: *Sorry, we do not offer Star War at this time.*
+:::: conversation
+::: bot Bot
+Sorry, we do not offer Star Wars at this time.
 :::
+::::
 
 Of course, you can customize them on the system intent `io.framely.core.BadIndex` and `io.framely.core.BadCandidate` by adding more replies. 
 
@@ -150,11 +152,14 @@ Single entry prompt used to handle the scenario when there is only one entry in 
 
 - **Explicit**: requires a reply from the user to confirm, usually *"yes/no"* or some synonym.
 
-::: story
-User: *Get me two tickets for Star War for tonight, please.*
-
-Bot: *Star War, we only have it at 21:30pm. Would you like to get these?*
+:::: conversation
+::: user User
+Get me two tickets for Star Wars for tonight, please.
 :::
+::: bot Bot
+Star Wars, we only have it at 21:30pm. Would you like to get these?
+:::
+::::
 
 ::: thumbnail
 ![vr-sep-implicit](/images/annotation/valuerec/vr-sep-implicit.png)
@@ -163,11 +168,14 @@ Bot: *Star War, we only have it at 21:30pm. Would you like to get these?*
 
 - **Implicit**: does not require a reply from the user, simply confirms like *"Star War, at 21:30pm"* and moves on, although users might give one if they want to make a correction *"no, 18:30"*. In this example below, the next step is to explicitly confirm the purchase of these tickets.
 
-::: story
-User: *Get me two tickets for Star War for tonight, please.*
-
-Bot: *Alright, Star War, at 21:30pm. Would you like to proceed with payment?*
+:::: conversation
+::: user User
+Get me two tickets for Star Wars for tonight, please.
 :::
+::: bot Bot
+Alright, Star Wars, at 21:30pm. Would you like to proceed with payment?
+:::
+::::
 
 ### Zero-entry
 
