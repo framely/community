@@ -56,6 +56,18 @@ Event trigger allows you to specify what should happen or be done when the bot g
 
 For example, in some purchase scenarios, if the user wants to use a certain coupon, you can use an additional frame as event to catch the user's utterance like "*use the coupon that will expire soon*", and also a fill action which can assign the coupon code by invoking a function that retrieves the expiring coupon code for given user.
 
+:::: conversation
+::: bot Bot
+Okay lets go ahead and begin checkout.
+:::
+::: user User
+I want to use the coupon that will expire soon
+:::
+::: bot Bot
+Sure. Would you like to use the credit card on file?
+:::
+::::
+
 
 ### Condition Trigger
 
@@ -72,7 +84,7 @@ For example, you offer a travel package includes flights and accommodation toget
 Book a travel package 
 :::
 ::: bot Bot
-Sorry, currently no package available. 
+Sorry, currently no package available. What else can I do for you?
 :::
 ::::
 
@@ -82,23 +94,29 @@ Sorry, currently no package available.
 ![transition-action](/images/annotation/transition/transition-action.png)
 :::
 
-Update action contains one or more actions in sequence, you need to define it by order. When the trigger is active, bot will respond the update action one by one according to the top-to-bottom order. With actions, you can: 
+Update action contains one or more actions in sequence, you need to define it by order. When the trigger is active, bot will respond the update action one by one according to the **top-to-bottom order**, please make sure the order of actions is the one you want.
+
+With actions, you can: 
 - Prompt Users for necessary information by Simply Reply and List Reply;
-- Change the state of slot filling by Clear Slot, Fill Slot and Recheck;
+- Change the state of slot filling by Clear Slot, Fill Slot and Recheck Slot;
 - Transfer conversation by Intent Start, Intent Abort and Intent End.
 
-| Action      	| Useage 	|
+<br>
+
+| <div style="width:120px">Actions</div>  | Useages 	|
 |:------------- |:-------------	|
 | Simple Reply  | Prompt user a text or media reply |
 | List Reply	  | Prompt user a list reply |
 | Clear Slot  	| Claer the target slot value	|
 | Fill Slot     | Assign the value expressed in code expression to target slot |
-| Recheck       | Move the state back to before check	target slot value |
+| Recheck Slot  | Move the state back to before check	target slot value |
 | Intent Start  | Start a new intent with its slot filled with assignments by code expression |
 | Intent Abort  | Abort the intent you specified |
 | Intent End    | Terminate the current intent |
 | Hand Off      | Transfer the current conversation to live agent. Please make sure you have configued [Support](../support/overview.md) |
 | Close Session | Clear the entire session |
+
+<br>
 
 ::: tip Note
 When use **Fill Slot** with Code expression, you should make sure assignment actually works. For example, Code expression should be valid ford current context.
