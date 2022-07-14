@@ -137,7 +137,7 @@ const RemoveSidebar = () => {
     width: 14px;
     height: 14px;
     padding-right: 4px;
-    vertical-align: text-top;
+    vertical-align: text-bottom;
 }
 .linkicon-text {
   display: flex;
