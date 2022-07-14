@@ -19,66 +19,87 @@ export const en = [
           {
             text: 'Overview',
             link: '/reference/annotations/overview.html',
-            icon: "/featureIcons/cui.svg",
+            icon: '/navIcons/overview.svg',
 
           },
           {
-            text: "Initialization",
+            text: 'Initialization',
             link: '/reference/annotations/init.html',
-            icon: "/featureIcons/init.svg",
+            icon: '/navIcons/initialization.svg',
           },
           {
-            text: "Fill Strategy",
+            text: 'Fill Strategy',
             link: '/reference/annotations/fillstrategy.html',
-            icon: "/featureIcons/separate.svg",
+            icon: '/navIcons/fillstrategy.svg',
           },
           {
-            text: "Value Recommendation",
+            text: 'Value Recommendation',
             link: '/reference/annotations/valuerec.md',
-            icon: "/featureIcons/hotfix.svg",
+            icon: '/navIcons/valuerec.svg',
           },
           {
-            text: "Value Check",
+            text: 'Value Check',
             link: '/reference/annotations/valuecheck.html',
-            icon: "/featureIcons/check-item.svg",
+            icon: '/navIcons/valuecheck.svg',
           },
           {
-            text: "Confirmation",
+            text: 'Confirmation',
             link: '/reference/annotations/confirmation.html',
-            icon: "/featureIcons/declarative.svg",
+            icon: '/navIcons/confirmation.svg',
           },
         ],
       },
       {
-        text: "Providers",
+        text: 'Providers',
         children: [
           {
-            text: "Postgrest",
+            text: 'Postgrest',
             link: '/reference/annotations/providerannot.html',
+            icon: '/navIcons/postgresql.svg',
           },
         ]
       },
       {
         text: 'Channels',
         children: [
-          '/reference/channels/wpa.md',
-          '/reference/channels/messenger.md',
-          '/reference/channels/whatsapp.md',
+          {
+            text: 'WeChat Official Account',
+            link: '/reference/channels/wpa.md',
+            icon: '/navIcons/wechat.svg',
+          },
+          {
+            text: 'Messenger',
+            link: '/reference/channels/messenger.md',
+            icon: '/navIcons/messenger.svg',
+          },
+          {
+            text: 'WhatsApp Business',
+            link: '/reference/channels/whatsapp.md',
+            icon: '/navIcons/whatsapp.svg',
+          },
         ],
       },
 
       {
         text: 'Supports',
         children: [
-          '/reference/support/overview.md',
-          '/reference/support/Chatwoot.md'
+          {
+            text: 'Overview',
+            link: '/reference/support/overview.md',
+            icon: '/navIcons/overview.svg',
+          },
+          {
+            text: 'Chatwoot',
+            link: '/reference/support/Chatwoot.md',
+            icon: '/navIcons/chat.svg',
+          },
         ],
       },
     ],
   },
   {
-    text: "Pricing",
-    link: "/pricing/"
+    text: 'Pricing',
+    link: '/pricing/'
   },
   {
     text: 'Blog',

@@ -129,15 +129,15 @@ const RemoveSidebar = () => {
 #router-link {
   display: inline-block;
 }
-.img-icon{
+.img-icon {
   padding-left: 2px;
 }
 
-.linkicon{
+.linkicon {
     width: 14px;
     height: 14px;
     padding-right: 4px;
-
+    vertical-align: text-top;
 }
 .linkicon-text {
   display: flex;
