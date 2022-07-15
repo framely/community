@@ -106,10 +106,6 @@ Single entry inform is essentially an implicit confirmation, where bot let users
 :::
 
 ##### Zero entry
-::: thumbnail
-![vr-zep](/images/annotation/valuerec/vr-zep.png)
-:::
-
 When the recommendation list is empty, the zero entry inform will be replied to users. And then bot will exit the current intent as it can not provide the service anymore. If this default behavior does not meet your expectations, you can customize this behavior with Transition annotation, or recover some value at the previous slot with [Value Check](./valuecheck.md). 
 
 :::: conversation
@@ -117,6 +113,12 @@ When the recommendation list is empty, the zero entry inform will be replied to 
 Sorry, we do not have available showtime for Star Wars. What else can I do for you?
 :::
 ::::
+
+The template for this unhappy path can be configured here.
+::: thumbnail
+![vr-zep](/images/annotation/valuerec/vr-zep.png)
+:::
+
 
 ::: tip Note
 Customization of **system intent** will not only affect the current slot, but also the entire bot behaviors.
