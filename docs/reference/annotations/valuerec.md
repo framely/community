@@ -177,18 +177,6 @@ ${it!!.value}
 In theory, you can define header, body, footer as any content as you want, but if you want to reuse these components, then from a presentation point of view, these can be defined a bit more generically.
 :::
 
-
-
-
-### Expressions
-
-::: thumbnail
-![vr-expression](/images/annotation/valuerec/vr-expression.png)
-:::
-
-Expressions in value recommendation can provide an active way for your users to get choices directly like *"what do you have?"*, when they are in the dependent context.
-
-
 ### Considerations
 
 Regardless where the VR is defined, they can be defined for slot with either entity type or frame type.
