@@ -13,6 +13,8 @@ There are a couple advantage of using backend component approach to build servic
 3. The admin interface or backoffice can also be automatically created based on annotation so that the operation team can use backoffice to provide service. 
 4. Backoffice components can be reused by cloning for Framely hosted solution.
 
+## Provider Annotations
+
 #### Features
 Provider annotations include [storage annotations](./overview.md#storage-annotations) and [back office annotations](./overview.md#backoffice-annotations).
 - Storage annotations defines the database schema needed by the backend component, which can then be used to create the database for provider.
@@ -32,6 +34,8 @@ Before starting, turn on **Storage Enabled** in **Frames** field to enable stori
 ![provider-annotation](/images/annotation/providerannotation/provider-annotation.png)
 
 
+### SQL Data Type
+To create tables to store the frame instance, we need to map each slot of frame to a column in the database. SQL data type is a slot annotation, it defines the SQL data type for corresponding column for the given slot. Normally, we will automatically decide the SQL data type for each slot. But if the slot type is *kotlin.String* or customized entity(e.g. like *Demo.test.City* in the below picture), you need to specify the database type of the column. 
 ## SQL Data Type
 To create tables to store the frame instance, we need to map each slot of frame to a column in the database. SQL data type is a slot annotation, it defines the SQL data type for the corresponding column for the given slot. Normally, we will automatically decide the SQL data type for each slot but if the slot type is *kotlin.String* or customized entity(e.g. like *Demo.test.City* in the below picture), you need to specify the database type of the column. 
 
@@ -39,21 +43,21 @@ Supported formats are `char(n)`, `varchar(n)`, `text`. Replace "n" with a number
 
 ![sql-data-type](/images/annotation/providerannotation/sql-data-type.png)
 
-## Default Value
+### Default Value
 Default value is a slot annotation. You can use a constant or an expression as a default value. When there is no value specified in the column, the column will be filled with its default value.
 
 ![default-value](/images/annotation/providerannotation/default-value.png)
 
 For example, if the type of slot is *java.time.LocalDate*, you can set its default value as `'2022-6-15'` or `now()::date`. For details about default value in official documentation, click [here](https://www.postgresql.org/docs/current/ddl-default.html).
 
-## Allow Null
+### Allow Null
 ::: right
 ![allow-null](/images/annotation/providerannotation/allow-null.png)
 :::
 
 Allow null is a slot annotation that is turned on by default. Allow null is a column constraint and it means the column can be null. If you turn off allow null, it indicates that the column can't be null. To learn more about it, see [Not-Null Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html#id-1.5.4.6.6).
 
-## Unique
+### Unique
 Unique is a frame annotation. If there is only one slot in a group of unique constraints, unique constraints ensure the data contained in the corresponding column is unique among all the rows in the table. If not, unique constraints make sure that the combination of values in the indicated columns is unique across the table.
 
 To add one group of unique constraints, in the **Annotation** field, click **Add** and select unique keys. If there are 3 columns which should be unique individually, be sure to add 3 groups of unique constraints.
@@ -65,7 +69,7 @@ To learn more about it, see [Unique Constraints](https://www.postgresql.org/docs
 For now, among table constraints, we only support unique constraints. If you need more table constraints, please let us know.
 :::
 
-## URL
+### URL
 When sending messages to users, compared to plain text, rich cards can carry more information, like pictures, titles, descriptions, etc. To add a picture to a rich card, you need the picture URL.
 
 [Back office](../../guide/glossary.md#backoffice) supports uploading pictures and storing them as URLs. You can upload pictures in back office and get the picture URLs using PostgreSQL Function.
@@ -89,7 +93,7 @@ For example, there is a slot called *catPicture* in a storage-enabled frame, and
 
 ![back-office](/images/annotation/providerannotation/back-office.png)
 
-## Input Type
+### Input Type
 There are two input types: text and dropdown. By default, input type is text which means [operators](../../guide/glossary.md#operator-business) can type raw input directly. If you want to make it easy for operators to input legit and compatible value, you can switch input type to dropdown.
 
 ![dropdown](/images/annotation/providerannotation/dropdown.png)
@@ -102,3 +106,9 @@ For example, if a column is used to store a city, its dropdown List is like:
 [ { id: 'NY', name: 'NewYork' },
   { id: 'LA', name: 'Los Angeles' },]
 ```
+
+
+## Function Implementation
+
+
+## Back Office Operation
