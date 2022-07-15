@@ -54,17 +54,17 @@ export const en = [
         children: [
           {
             text: 'Overview',
-            link: '/reference/annotations/overview.html',
+            link: '/reference/providers/overview.html',
             icon: '/navIcons/overview.svg',
           },
           {
             text: 'Postgrest',
-            link: '/reference/annotations/postgrest.html',
+            link: '/reference/providers/postgrest.html',
             icon: '/navIcons/postgresql.svg',
           },
           {
             text: 'Google Sheets',
-            link: '/reference/annotations/googlesheets.html',
+            link: '/reference/providers/googlesheets.html',
             icon: '/navIcons/google-sheets.svg',
           },
         ]

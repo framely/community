@@ -3,6 +3,12 @@
 [[toc]]
 
 
+
+::: thumbnail
+![provider-workflow](/images/provider/overview/provider-workflow.png)
+How Provider Works
+:::
+
 ## Get Access to Business Data
 1. Connection
 

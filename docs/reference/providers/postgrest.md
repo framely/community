@@ -9,7 +9,7 @@ Framely also supports the backend component in form of [postgrest provider](/gui
 There are a couple advantage of using backend component approach to build service provider. 
 1. In addition to declaratively building database as content management system, Framely backend component allows you to implement the service declaratively too using SQL. This make it possible for the business analyst to build backend.
 2. Since tables are created based on the data type in the API schema, so no explicit conversion code is needed, rows in the table or view in the database are automatically converted into an object in the Framely.
-![frame-table](/images/annotation/providerannotation/frame-table.png)
+![frame-table](/images/provider/postgrest/frame-table.png)
 3. The admin interface or backoffice can also be automatically created based on annotation so that the operation team can use backoffice to provide service. 
 4. Backoffice components can be reused by cloning for Framely hosted solution.
 
@@ -31,7 +31,7 @@ Before starting, turn on **Storage Enabled** in **Frames** field to enable stori
 - At a slot level, you can configure the column properties and back office annotations in the **Schema**  - **Slots** field.
 - At a frame level, you can configure table constraints in the **Annotation** field.
 
-![provider-annotation](/images/annotation/providerannotation/provider-annotation.png)
+![provider-annotation](/images/provider/postgrest/provider-annotation.png)
 
 
 ### SQL Data Type
@@ -41,18 +41,18 @@ To create tables to store the frame instance, we need to map each slot of frame 
 
 Supported formats are `char(n)`, `varchar(n)`, `text`. Replace "n" with a number between 1 and 10485760, e.g. `char(16)`. To learn more about Character Types, click [here](https://www.postgresql.org/docs/current/datatype-character.html).
 
-![sql-data-type](/images/annotation/providerannotation/sql-data-type.png)
+![sql-data-type](/images/provider/postgrest/sql-data-type.png)
 
 ### Default Value
 Default value is a slot annotation. You can use a constant or an expression as a default value. When there is no value specified in the column, the column will be filled with its default value.
 
-![default-value](/images/annotation/providerannotation/default-value.png)
+![default-value](/images/provider/postgrest/default-value.png)
 
 For example, if the type of slot is *java.time.LocalDate*, you can set its default value as `'2022-6-15'` or `now()::date`. For details about default value in official documentation, click [here](https://www.postgresql.org/docs/current/ddl-default.html).
 
 ### Allow Null
 ::: right
-![allow-null](/images/annotation/providerannotation/allow-null.png)
+![allow-null](/images/provider/postgrest/allow-null.png)
 :::
 
 Allow null is a slot annotation that is turned on by default. Allow null is a column constraint and it means the column can be null. If you turn off allow null, it indicates that the column can't be null. To learn more about it, see [Not-Null Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html#id-1.5.4.6.6).
@@ -62,7 +62,7 @@ Unique is a frame annotation. If there is only one slot in a group of unique con
 
 To add one group of unique constraints, in the **Annotation** field, click **Add** and select unique keys. If there are 3 columns which should be unique individually, be sure to add 3 groups of unique constraints.
 
-![unique](/images/annotation/providerannotation/unique.png)
+![unique](/images/provider/postgrest/unique.png)
 
 To learn more about it, see [Unique Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-UNIQUE-CONSTRAINTS).
 ::: tip Tips
@@ -75,12 +75,12 @@ When sending messages to users, compared to plain text, rich cards can carry mor
 [Back office](../../guide/glossary.md#backoffice) supports uploading pictures and storing them as URLs. You can upload pictures in back office and get the picture URLs using PostgreSQL Function.
 
 ::: thumbnail
-![process](/images/annotation/providerannotation/process.png)
+![process](/images/provider/postgrest/process.png)
 Process of Getting Picuture URL
 :::
 
 ::: right
-![url](/images/annotation/providerannotation/url.png)
+![url](/images/provider/postgrest/url.png)
 :::
 
 To enable URL, select *kotlin.String* when choosing [Type](#type) and set data type as `text`. Once done, there will be a switch: URL. Turn on URL so that you can upload pictures in that column.
@@ -91,12 +91,12 @@ For example, there is a slot called *catPicture* in a storage-enabled frame, and
 2. Upload a picture in the column called *catPiture* and fill another column called catName.
 3. Back to the page displaying the table, you can view the picture that you just uploaded.
 
-![back-office](/images/annotation/providerannotation/back-office.png)
+![back-office](/images/provider/postgrest/back-office.png)
 
 ### Input Type
 There are two input types: text and dropdown. By default, input type is text which means [operators](../../guide/glossary.md#operator-business) can type raw input directly. If you want to make it easy for operators to input legit and compatible value, you can switch input type to dropdown.
 
-![dropdown](/images/annotation/providerannotation/dropdown.png)
+![dropdown](/images/provider/postgrest/dropdown.png)
 
 Dropdown List is a JSON array, which should return a list of values that are at least legit and potentially compatible so that operator can pick the correct value. The content of dropdown list includes two columns (id, name): where name will be displayed, and id will be assigned as value.
 
@@ -111,4 +111,4 @@ For example, if a column is used to store a city, its dropdown List is like:
 ## Function Implementation
 
 
-## Back Office Operation
+## Connection
