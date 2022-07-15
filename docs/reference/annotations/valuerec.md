@@ -65,7 +65,7 @@ Aside from these main control, Framely value recommendation also comes with othe
 
 Value recommendation can be defined both on the slot level (both entity slot or frame slot) and frame level, with frame level definition available on all the slot of that frame automatically. The configuration of value recommendation is done in the follow UI:
 ::: thumbnail
-![vr-popup](/images/annotation/valuerec/vr-popup.png)
+![value rec popup](/images/annotation/valuerec/valuerec.png)
 :::
 
 ## How To Use
@@ -91,7 +91,7 @@ How can I help you today? Mr. Bond. For example, I can help you with your monthl
 When the number of valid choices business can serve is small, you can turn on the **Hard Toggle** to control the conversational experience and communicate to user that the choices you offer are the only ones that will be accepted by your business:
 
 ::: thumbnail
-![valuerec-hard](/images/annotation/valuerec/vr-popup.png)
+![valuerec-hard](/images/annotation/valuerec/valuerec_hard.png)
 :::
 
 So if the item the user wants is not in the list of candidates, the bot will not try to fill the slot with the proposed value, i.e. going the value check phase, instead, it will stay at the prompt phase, and give user a default reply such as:
@@ -129,7 +129,7 @@ Single entry inform is essentially an implicit confirmation, where bot let users
 
 The configuration of single entry inform can be done here:
 ::: thumbnail
-![value rec single entry](/images/annotation/valuerec/vr-sep-implicit.png)
+![value rec single entry](/images/annotation/valuerec/valuerec_singleentry.png)
 :::
 
 - ##### Zero Entry
@@ -144,7 +144,7 @@ Sorry, we do not have available showtime for Star Wars. What else can I do for y
 
 The template for this unhappy path can be configured here:
 ::: thumbnail
-![value rec zero entry](/images/annotation/valuerec/vr-zep.png)
+![value rec zero entry](/images/annotation/valuerec/valuerec_zeroentry.png)
 :::
 
 
@@ -154,7 +154,7 @@ The template for this unhappy path can be configured here:
 Before you start, you should make sure services or APIs that host your business logic are available, as value recommendation will turn your business data into recommendations.
 
 ::: thumbnail
-![vr-source](/images/annotation/valuerec/vr-source.png)
+![value rec source](/images/annotation/valuerec/valuerec_source.png)
 :::
 
 Source is the place to declare where the recommended options come from. Normally, you can add it using function methods directly like ` function()` or `function(input: slot!!)` , which need to contact your service and return a list of options. However, in certain advanced scenarios, you may find it easier to define it with the code expression, which can generate dynamic suggestions. 
@@ -162,7 +162,7 @@ Source is the place to declare where the recommended options come from. Normally
 ### Display
 
 ::: thumbnail
-![vr-display](/images/annotation/valuerec/vr-display.png)
+![value rec display](/images/annotation/valuerec/valuerec_display.png)
 :::
 
 Display is what the bot shows to the user. If the hard toggle is turned on, here are three different scenarios triggered by different result sets: 
@@ -205,8 +205,6 @@ ${it!!.value}
   - The second is used to define the delimiter of the last entry. It can be empty if not needed.
 
 
-<!-- Todo: add template (universal message) -->
-
 ::: tip Note
 In theory, you can define header, body, footer as any content as you want, but if you want to reuse these components, then from a presentation point of view, these can be defined a bit more generically.
 :::
@@ -225,6 +223,6 @@ Regardless where the value recommendation is defined, they can be defined for sl
 - **Entity Slot**: when slots are more or less independent, this give user the ability to incrementally communicate what they want.
 - **Frame Slot**: Holistic, we always recommend multi slots simultaneously, and they will be filled together. 
 ::: thumbnail
-![vr-source](/images/annotation/valuerec/valuerec_levels.png)
+![value rec levels](/images/annotation/valuerec/valuerec_levels.png)
 *Value recommendation on different levels*
 :::
