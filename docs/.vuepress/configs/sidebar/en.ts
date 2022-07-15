@@ -49,7 +49,9 @@ export const en = {
     {
       text: 'Provider',
       children: [
-        '/reference/annotations/providerannot.md',
+        '/reference/providers/overview.md',
+        '/reference/providers/postgrest.md',
+        '/reference/providers/googlesheets.md',
       ]
     },
     {
