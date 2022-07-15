@@ -53,9 +53,19 @@ export const en = [
         text: 'Providers',
         children: [
           {
+            text: 'Overview',
+            link: '/reference/providers/overview.html',
+            icon: '/navIcons/overview.svg',
+          },
+          {
             text: 'Postgrest',
-            link: '/reference/annotations/providerannot.html',
+            link: '/reference/providers/postgrest.html',
             icon: '/navIcons/postgresql.svg',
+          },
+          {
+            text: 'Google Sheets',
+            link: '/reference/providers/googlesheets.html',
+            icon: '/navIcons/google-sheets.svg',
           },
         ]
       },

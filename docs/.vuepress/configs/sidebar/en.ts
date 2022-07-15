@@ -50,7 +50,9 @@ export const en = {
       text: 'Provider',
       collapsible: true,
       children: [
-        '/reference/annotations/providerannot.md',
+        '/reference/providers/overview.md',
+        '/reference/providers/postgrest.md',
+        '/reference/providers/googlesheets.md',
       ]
     },
     {
