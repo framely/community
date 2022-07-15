@@ -35,8 +35,6 @@ Before starting, turn on **Storage Enabled** in **Frames** field to enable stori
 
 
 ### SQL Data Type
-To create tables to store the frame instance, we need to map each slot of frame to a column in the database. SQL data type is a slot annotation, it defines the SQL data type for corresponding column for the given slot. Normally, we will automatically decide the SQL data type for each slot. But if the slot type is *kotlin.String* or customized entity(e.g. like *Demo.test.City* in the below picture), you need to specify the database type of the column. 
-## SQL Data Type
 To create tables to store the frame instance, we need to map each slot of frame to a column in the database. SQL data type is a slot annotation, it defines the SQL data type for the corresponding column for the given slot. Normally, we will automatically decide the SQL data type for each slot but if the slot type is *kotlin.String* or customized entity(e.g. like *Demo.test.City* in the below picture), you need to specify the database type of the column. 
 
 Supported formats are `char(n)`, `varchar(n)`, `text`. Replace "n" with a number between 1 and 10485760, e.g. `char(16)`. To learn more about Character Types, click [here](https://www.postgresql.org/docs/current/datatype-character.html).
