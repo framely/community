@@ -34,7 +34,7 @@ Sorry, Star Wars at 18:30pm have sold out, please choose another time.
 When a slot has a large set of potentially valid values from user side, but much more restrictive set servable from business side, it is very useful to inform user as early as possible the acceptable ones per business logic. Value recommendation is one way of communicate such restriction so that user can pick from a smaller set of values that is pre-approved by business, instead of go through multiple round of trial and error.
 
 Value recommendation is rather complex conversational component, consist of
-- Source item list, where builder can specify a code expression or intent that return a list of the target type.
+- Source, where builder can specify a code expression or intent that return a list of value of the target type.
 - Paging behavior, when list is long, it is important to support "page" navigation like interactions:
   - *"is there more options?"* for next page
   - *"can you go back? I like to see these options again."* for previous page. 
@@ -60,21 +60,65 @@ There are many controls on the VR component configuration page, that can be used
 
 ### Hard Mode
 #### Motivation
-When bot recommends options or candidate values for given slot to user, there are two different scenarios: it will offer an exhaustive list of servable options, or only list of some samples. The conversational interaction logic can be very different when user pick item out of list, or when there is only one entry or even entry in the list. 
-
-Hard is used to declare the relationship between business boundaries and recommendations. If the hard toggle is turned on, meaning your business scope is fully aligned with the recommended options. So if the item the user wants is not in all candidates, the bot will give user a default reply such as:
-
+When bot recommends options or candidate values for given slot to user, there are two different scenarios:
+- when servable options are small enought, it can offer an exhaustive list of servable options, for example:
 :::: conversation
 ::: bot Bot
-Sorry, we do not offer Star Wars at this time.
+Which color do you want on the tempo next percent? We only have white and also black left.
 :::
 ::::
 
-Of course, you can customize them on the system intent `io.framely.core.BadIndex` and `io.framely.core.BadCandidate` by adding more replies. 
+- when there are too many valid options, it is not a good idea to list them all, particularly on voice only channel like speaker. So it is a good idea to convey the suggestion nature of your offer.
+:::: conversation
+::: bot Bot
+How can I help you today? Mr. Bond. For example, I can help you with your monthly payment, or check new balance. 
+:::
+::::
 
-And if there are only one or zero recommended options, the default behavior will also be provided. The difference is that it needs to be defined in [Single Entry Prompts](./valuerec.md#single-entry) and [Zero Entry Prompts](./valuerec.md#zero-entry).
+#### Overview
+When the number of valid choices business can serve is small, you can turn on the hard toggle to control the conversational experience and communicate to user that the choices you offer are the only ones that will be accepted by your business.
 
-We recommend using hard mode when there are limited items and limited quantities. For example, when booking a flight ticket, hard mode can help your users understand the available flight arrangements. Users can choose what they want at one time, instead of trying multiple times and failing to get what they want each time.
+So if the item the user wants is not in the list of candidates, the bot will not try to fill the slot with the proposed value, i.e. going the value check phase, instead, it will stay at the prompt phase, and give user a default reply such as:
+:::: conversation
+::: bot Bot
+Sorry, we do not offer Star Wars at this time. The only available showtime for Star Wars is 8:00pm and 10:00pm. Which time do you prefer?
+:::
+::::
+The exact script of the first part can be customized on the system intent `io.framely.core.BadIndex` and `io.framely.core.BadCandidate` by adding more replies. 
+
+The conversational behavior will also be customized under hard mode for cases when number of entries return the source is one or zero, which can be defined in [Single Entry Informs](./valuerec.md#single-entry) and [Zero Entry Informs](./valuerec.md#zero-entry).
+
+#### How to Use
+Whenever there are limited valid options for a slot based on business data, you should enable hard mode. This will give you the customized behavior under tbe strong assumption that user can only pick options from the list of the offered options. After you turn on the hard mode for value recommendation, you can supply the template for two special cases.
+
+##### Single Entry
+Under the hard mode, if there are only one candidate options from the source, the entire conversational experience for the current slot will actually change to something more effective: bot will skip the prompt phase, and go directly to confirmation phase, where an implicit confirmation is required for single entry under hard mode. For example, when user want to one ticket for Star Wars without specifying the showtime:
+:::: conversation
+::: bot Bot
+Ok, available Star Wars showtime is 8:00pm (implicit confirmation for single entry inform). Do you want to watch IMAX version (move onto next slot)? 
+:::
+::::
+
+Single entry inform is essentially an implicit confirmation, where bot let users which option bot will assume so that both bot and user can be on the same page. The configuration of single entry inform can be done here.
+::: thumbnail
+![vr-sep-implicit](/images/annotation/valuerec/vr-sep-implicit.png)
+*Implicit*
+:::
+
+##### Zero entry
+When the recommendation list is empty, the zero entry inform will be replied to users. And then bot will exit the current intent as it can not provide the service anymore. If this default behavior does not meet your expectations, you can customize this behavior with Transition annotation, or recover some value at the previous slot with [Value Check](./valuecheck.md). 
+
+:::: conversation
+::: bot Bot
+Sorry, we do not have available showtime for Star Wars. What else can I do for you?
+:::
+::::
+
+The template for this unhappy path can be configured here.
+::: thumbnail
+![vr-zep](/images/annotation/valuerec/vr-zep.png)
+:::
+
 
 ::: tip Note
 Customization of **system intent** will not only affect the current slot, but also the entire bot behaviors.
@@ -140,60 +184,6 @@ ${it!!.value}
 ::: tip Note
 In theory, you can define header, body, footer as any content as you want, but if you want to reuse these components, then from a presentation point of view, these can be defined a bit more generically.
 :::
-
-### Single-entry
-
-Single entry prompt used to handle the scenario when there is only one entry in the recommended options. Like confirmation, there are two ways to provide it to your users: **Explicit** and **Implicit**：
-
-::: thumbnail
-![vr-sep-explict](/images/annotation/valuerec/vr-sep-explict.png)
-*Explict*
-:::
-
-- **Explicit**: requires a reply from the user to confirm, usually *"yes/no"* or some synonym.
-
-:::: conversation
-::: user User
-Get me two tickets for Star Wars for tonight, please.
-:::
-::: bot Bot
-Star Wars, we only have it at 21:30pm. Would you like to get these?
-:::
-::::
-
-::: thumbnail
-![vr-sep-implicit](/images/annotation/valuerec/vr-sep-implicit.png)
-*Implicit*
-:::
-
-- **Implicit**: does not require a reply from the user, simply confirms like *"Star War, at 21:30pm"* and moves on, although users might give one if they want to make a correction *"no, 18:30"*. In this example below, the next step is to explicitly confirm the purchase of these tickets.
-
-:::: conversation
-::: user User
-Get me two tickets for Star Wars for tonight, please.
-:::
-::: bot Bot
-Alright, Star Wars, at 21:30pm. Would you like to proceed with payment?
-:::
-::::
-
-### Zero-entry
-
-::: thumbnail
-![vr-zep](/images/annotation/valuerec/vr-zep.png)
-:::
-
-When the recommendation is empty, the zero entry prompt will be replied to users. And then bot will exit the current intent as it can not provide the service anymore. If this default behavior does not meet your expectations, you can customize this behavior with Transition annotation, or recover some value at the previous slot with [Value Check](./valuecheck.md). 
-
-
-### Expressions
-
-::: thumbnail
-![vr-expression](/images/annotation/valuerec/vr-expression.png)
-:::
-
-Expressions in value recommendation can provide an active way for your users to get choices directly like *"what do you have?"*, when they are in the dependent context.
-
 
 ### Considerations
 
