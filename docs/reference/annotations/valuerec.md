@@ -148,16 +148,35 @@ The template for this unhappy path can be configured here:
 :::
 
 
-
-
 ### Source
-Before you start, you should make sure services or APIs that host your business logic are available, as value recommendation will turn your business data into recommendations.
+To finish a transaction, user and bot need to agree on something that both user wants and business can serve. Source is designed for builder to specify a list of value candidates for the given slot that business can serve. Informing user this list can thus help to converge conversation faster to completion of transaction. 
 
+You use source to specify the list of candidate values for the target slot. For better experience, the candidates in this list should only include the options that are servable according to business logic or data. 
+
+When user want to get a pair of running shoes at Nike store, we need to ask couple questions to narrow down the lists, otherwise the list will be too long, particularly for communicating via voice: 
+:::: conversation
+::: bot Bot
+Sure, what kind of running shoes do you prefer? Do you need it for training or racing?
+:::
+::: user User
+Training please.
+:::
+::: bot Bot
+Running shoes for training, got it. Here are the running shoe series designed for training: Zoom Tempo NEXT%, ...
+:::
+::::
+
+In Framely, each intent is abstraction of a function with conversational behavior defined on top of it, including its input parameters. Each intent has a return. When an intent has a return type of multivalued target slot type, we can use it as source for value recommendation for the slot. To specify the list of candidates via user interaction, you just need to active intern based source configuration 
 ::: thumbnail
 ![value rec source](/images/annotation/valuerec/valuerec_source.png)
 :::
+and proceed with specifying what intent you want, and how to initialize some of it slots before we acttive the intent to get candidate list.
 
-Source is the place to declare where the recommended options come from. Normally, you can add it using function methods directly like ` function()` or `function(input: slot!!)` , which need to contact your service and return a list of options. However, in certain advanced scenarios, you may find it easier to define it with the code expression, which can generate dynamic suggestions. 
+When number of servable options for the target slot is not that much, you can instead directly specify it via code expression. In code expression, you can call out to service functions like ` function()` or `function(input: slot!!)`, and optionally apply some post-processing in Kotlin. If the service function is implemented to return only up-to-date options, then you will offer dynamic suggestions. But you can even specify a static list if it makes business sense, for example,
+```kotlin
+listOf(Color.Red, Color.Black)
+```
+This will Offer two colors for user to choose from.
 
 ### Display
 
@@ -165,7 +184,7 @@ Source is the place to declare where the recommended options come from. Normally
 ![value rec display](/images/annotation/valuerec/valuerec_display.png)
 :::
 
-Display is what the bot shows to the user. If the hard toggle is turned on, here are three different scenarios triggered by different result sets: 
+Display defines how the bot renders the list of options to the user. If the hard toggle is turned on, here are three different scenarios triggered by different result sets: 
 - **List**: which indicates the returned content is multiple items.
 - **Single entry**: which means there is only one item in the result set.
 - **Zero entry**: which means the return content is just empty.
@@ -175,7 +194,7 @@ Otherwise, only the list scenarios will be shown.
 #### List
 
 <!-- not sure this name is good? -->
-You can use the List module to provide a text list or rich card experience. In order to simplify your definition work, some default behaviors have been provided here. If these default values ​​can meet your application scenario, then you only need to pay attention to header, body and footer, which shows the main part of display: 
+You can use the List module to provide a text list or rich card experience at json format level. In order to simplify your definition work, some default behaviors have been provided here. If these default values can meet your application scenario, then you only need to pay attention to header, body (which will be repeated based the list, and pagination configurations) and footer, which shows the main part of display: 
 - **Header**: text area, defines the title content of the recommended card, such as *"Top picks for you: "*, *"Recommended for you: "*.
 
 - **Body**: text with code expression embedded, defines the recommended content body. The syntax of the body needs to follow the rules below: 
