@@ -13,7 +13,7 @@ export const en = [
     text: 'Reference',
     children: [
       {
-        text: 'CUI components',
+        text: 'CUI Components',
 
         children: [
           {

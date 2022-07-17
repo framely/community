@@ -2,46 +2,32 @@
 
 [[toc]]
 
+## Motivation
+
+During ordering a spicy sandwich, user might indicate a spicy level that might be too strong for many people, 
+
+:::: conversation
+::: bot Bot
+How spicy do you want for your Tofu sandwich? On scale of 1 to 5?
+:::
+::: user User
+5 please?
+:::
+::: bot Bot
+We use strong Jalapeño, so level 5 is considered deadly, are you sure you want level 5?
+:::
+::::
+
+
 ## Overview
+Even when user's choice for a slot passes value check, business can still think there are things that user might not know, thus can inform user something (implicit confirmation) or ask user to confirm their choice (explicit confirmation).
 
-The goal of the conversational user interface is to reach agreement on what the user wants that is also deliverable by business as quickly as possible. So during collaborative conversation, bot might augment use choice based on business logic and data, so we need to keep user informed: 
-
-:::: conversation
-::: user User
-Need one way ticket pls
-:::
-::: bot Bot
-Let's find a one way ticket for you. Which date do you want to fly?
-:::
-::: user User
-Dec 25th
-:::
-::: bot Bot
-Get, leaving on 2022-12-25. What time would you like to leave?
-:::
-::::
-
-Or based on business logic,  bot might ask the user to confirm the choice they made before consequential things really happen, and sometimes both: 
-
-:::: conversation
-::: bot Bot
-You want a one way ticket for: From JFK To London, Leaving on 2022-12-25, Time 17:00:00. Is that correct?
-:::
-::: user User
-Yes
-:::
-::::
-
-
-## Features
-
-The features of confirmation are as follows for you:
-
-- Support two types of confirmation: Explicit and Implicit
-- Support conditional confirmations
+With confirmation, you can control this behavior by 
+- Decide on which types of confirmation: Explicit and Implicit
+- Specify a conditional under when confirmations should be triggered.
 - Support multi-valued slot confirmation via per value confirmed
 - Provide corrections on default strategy and interruption strategy
-- Provide the way to customize the "yes/no" understanding of user utterances in specific contexts
+- Provide the way to customize the "yes/no" understanding of user utterances under this context for explicit confirmations
 
 
 ## How to use
