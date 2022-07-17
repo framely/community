@@ -47,7 +47,7 @@ export const en = {
       ],
     },
     {
-      text: 'Provider',
+      text: 'Providers',
       collapsible: true,
       children: [
         '/reference/providers/overview.md',
@@ -56,7 +56,7 @@ export const en = {
       ]
     },
     {
-      text: 'Channel Reference',
+      text: 'Channels',
       collapsible: true,
       children: [
         '/reference/channels/wpa.md',
@@ -65,7 +65,7 @@ export const en = {
       ],
     },
     {
-      text: 'Support Reference',
+      text: 'Supports',
       collapsible: true,
       children: [
           '/reference/support/overview.md',
