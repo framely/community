@@ -1,4 +1,4 @@
-# WhatsApp Business
+# WhatsApp
 ::: right
 ![test](/images/channelConfig/whatsapp/test.png)
 :::

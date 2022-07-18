@@ -1,4 +1,4 @@
-# WeChat Official Account
+# WeChat
 ::: right
 ![test](/images/channelConfig/wechat/test.png)
 :::

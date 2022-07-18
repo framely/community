@@ -59,6 +59,7 @@ export const en = {
       text: 'Channels',
       collapsible: true,
       children: [
+        '/reference/channels/overview.md',
         '/reference/channels/wpa.md',
         '/reference/channels/messenger.md',
         '/reference/channels/whatsapp.md',
