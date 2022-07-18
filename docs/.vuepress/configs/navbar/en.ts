@@ -73,6 +73,11 @@ export const en = [
         text: 'Channels',
         children: [
           {
+            text: 'Universal Channel',
+            link: '/reference/channels/overview.html',
+            icon: '/navIcons/wechat.svg',
+          },
+          {
             text: 'WeChat Official Account',
             link: '/reference/channels/wpa.html',
             icon: '/navIcons/wechat.svg',

@@ -4,7 +4,7 @@
 
 ## Motivation
 
-When you focus on providing a personalized experience for your user, or giving unique functionality to your bot, such as improving system default behaviors, recovering slot filling state, transferring conversations under certain conditions, with the help of transition you can easily achieve. 
+
 
 For example, when the user wants to book a round-trip ticket but no suitable flight is available, you can make a decision on which step the user should start over from: 
 
@@ -119,7 +119,7 @@ With actions, you can:
 <br>
 
 ::: tip Note
-When use **Fill Slot** with Code expression, you should make sure assignment actually works. For example, Code expression should be valid ford current context.
+When use **Fill Slot** with code expression, you should make sure assignment actually works. For example, code expression should be valid ford current context.
 :::
 
 

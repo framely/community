@@ -1,4 +1,4 @@
-# Messenger from Facebook
+# Messenger
 ::: right
 ![test](/images/channelConfig/messenger/test.png)
 :::
