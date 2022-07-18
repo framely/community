@@ -106,7 +106,73 @@ For example, if a column is used to store a city, its dropdown List is like:
 ```
 
 
-## Function Implementation
+## Function 
+### Definition
+When you create a function, you need to define the input parameters and return types of the function. For the imported function, you make the definition when you create the Postgres function in the component. For the local function, you make the definition in the Postgrest provider.
 
+#### How Types Convert Between Kotlin/Java and SQL
+- When you call the Postgres function, you pass the values of Kotlin/Java type and we will convert their types to SQL data types automatically, so you can use these parameters in your function body.
+- When the function returns values of SQL data type, we convert their types back to Kotlin/Java type for you, so you can display or use these values in the Framely environment.
+
+::: thumbnail
+![conversion](/images/provider/postgrest/conversion.png)
+Conversion Between Kotlin/Java and SQL
+:::
+Here are the mappings between Kotlin/Java types and SQL Data Types
+
+| Kotlin/Java Type                                           | SQL Data Type               |   
+|:-----------------------------------------------------------|:----------------------------|
+| kotlin.Int / java.time.Year                                | bigint                      |
+| kotlin.Float                                               | double precision            |
+| Customized entity (Builder-created Entity) / kotlin.String | text                        |
+| kotlin.Unit, kotlin.Any / kotlin.DayOfWeek / kotlin.ZoneId | text                        |
+| kotlin.Boolean                                             | boolean                     |
+| java.time.LocalDate / java.time.YearMonth                  | date                        |
+| java.time.LocalTime                                        | time without time zone      |
+| java.time.LocalDateTime                                    | timestamp without time zone | 
+
+#### How To Define the Input Parameters and Return Types
+
+![input-return](/images/provider/postgrest/input-return.png)
+
+For now, we support inputting multiple entities and returning only one frame. For input parameters, you can add each parameter with corresponding types. For return types, here are two situations:
+
+- If the function returns values from **multiple columns**, you need to create a frame and add those columns as slots into the frame. Make sure the types of slots are consistent with the types in the table definition.
+  
+  For example, if you have a table called Info which includes columns: name, userId and gender. The types of name and userId are `kotlin.String` and `kotlin.Int`. If you want to get user information from columns: name and userId, you can create a frame—userInfo—with two slots: name and userId. The types of name and userId are  `kotlin.String` and `kotlin.Int` as well.
+
+::: thumbnail
+![return-type](/images/provider/postgrest/return-type.png)
+:::
+
+- If the function returns values from **only one column**, you could use a row container to wrap it.
+    
+  For example, if the return type is `String`, you could create a frame: *RCString* and add a slot called *returnValue* whose type is `String`. To use the return values in [Value Recommendation](../annotations/valuerec.md), the code expression in the source is like this:
+
+``` kotlin
+// Suppose your function is named getFoodCategory
+componentName.getFoodCategory()?.map{it -> it.returnValue!!}
+```
+
+
+### Implementation
+
+As mentioned in [Implement Functions](./overview.md#implement-functions), there are two kinds of ways to implement a function:
+- If the implementation is **Kotlin**, you should write a function body in [Kotlin](https://kotlinlang.org/docs/functions.html).
+- If the implementation is **Provider Dependent**, you use [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) to implement the function.
+
+::: tip Note
+To learn how to implement Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
+:::
+
+#### How To Implement Provider Dependent Functions
+If you are familiar with [SQL](https://www.postgresql.org/docs/14/sql.html), writing SQL commands within a PL/pgSQL function will be easy. For example, if you've stored your customers' information in your database and you want to get a customer's name by their user ID, which is an input parameter named *userId_parameter*,  the code will be like this:
+``` sql
+BEGIN
+    RETURN QUERY 
+    SELECT name FROM "Info" WHERE "userId" = "userId_parameter";
+END
+```
+Besides, [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) also supports [simple loops](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONTROL-STRUCTURES-LOOPS) and [Conditionals](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONDITIONALS).
 
 ## Connection
