@@ -11,7 +11,7 @@ Click on **中 / EN** This is to select the language you wish to continue with.)
 
 Click on Sign in with GitHub [If you don't have a Github account, here is how to set up one Signing up for a new GitHub account - GitHub Docs](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account)
 
-![Language](/images/guide/platform/loginbuttonframely.PNG)
+<!-- ![Language](/images/guide/platform/loginbuttonframely.PNG) -->
 
 - No worries, if you don't have an account, *Click* **Click to sign up**
 
