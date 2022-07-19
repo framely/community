@@ -11,14 +11,14 @@ Click on **中 / EN** This is to select the language you wish to continue with.)
 
 Click on Sign in with GitHub [If you don't have a Github account, here is how to set up one Signing up for a new GitHub account - GitHub Docs](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account)
 
-<!-- ![Language](/images/guide/platform/loginbuttonframely.PNG) -->
+![Language](/images/guide/platform/loginbuttonframely.png)
 
 - No worries, if you don't have an account, *Click* **Click to sign up**
 
 Navigating
 When logged in, you should be able to see this:
 
-![Language](/images/guide/platform/organisationsTabFramely.PNG)
+![Language](/images/guide/platform/organisationsTabFramely.png)
 
 
   
@@ -29,11 +29,11 @@ Settings
 
 
 
-![Language](/images/guide/platform/settingsMenuLinkFramely.PNG)
+![Language](/images/guide/platform/settingsMenuLinkFramely.png)
 
 This takes you:
 
-![Language](/images/guide/platform/settingspageframely.PNG)
+![Language](/images/guide/platform/settingspageframely.png)
 
 
   
