@@ -1,60 +1,41 @@
-# Transition
+# Beyond Slot Filling
 
 [[toc]]
 
 ## Motivation
 
+The 5 stage slot filling is designed to minimize builders' effort level in building the conversational experience that get collaborative user served as fast as possible, under the favorable conditions. As such, the bot will follow a deterministic interaction logic that first determine a user's intent, and then aggressively fill slots of that intent one by one until it have all the required parameter to invoke the service.
 
-
-For example, when the user wants to book a round-trip ticket but no suitable flight is available, you can make a decision on which step the user should start over from: 
-
-- Clear all the information and restart: 
-
+However, the design bias towards favorable conditions in these standard slot filling components can sometime cumbersome for interaction logic for unhappy use case. For example, when a user wants to buy a ticket, the movie he wants is sold out. Instead of asking what showtime he likes, whether he wants IMAX, it is a better experience to simply exit conversation early:
 :::: conversation
-::: bot Bot
-Currently no tickets available. Let's try checking for other options. Please note that you will be asked to re-enter your information. What is the first and last name of the passenger flying?
+::: user User
+Two tickets for Star Wars please?
 :::
-::::
-
-- Retain basic information and modify others: 
-
-:::: conversation
 ::: bot Bot
-Currently no tickets available. Let's reset some information. Which day would you like to leave?
-:::
-::::
-
-- Keep all information except the last one: *Return Flight Time*: 
-
-:::: conversation
-::: bot Bot
-Currently no tickets available. Please choose another Return Flight Time. What time would you like to leave on the return flight home? 
+Sorry all tickets are sold out today. What else can I do for you?
 :::
 ::::
 
 ## Overview
+The 5 stage slot filling conversational interaction logic defined by chatbot builder in intentionally modeled under dynamic [state chart](https://statecharts.dev/), or dynamic composite state machines. The deterministic nature warranted by this conceptual model make it easy for business to control interaction logic for their business needs, both in building and debugging phase.
 
-Transition can be thought of as customization of system behaviors or enhancement of other annotations. It is an optional frame level annotation which lets you control how the conversation should be when meeting the specified conditions. 
+In particular, each entity slot filling is essentially a deterministic state machine, that deterministically move from the start state to end state, that go through the 5 stages of slot filling based the transition table defined by corresponding CUI components. The frame slot are filled by composite state machine that also by frame level CUI component as well as the components defined on each one of its slots. 
 
-Transition consists of two parts: trigger method and update actions. This means when the condition is met or the event is triggered, bot will respond each action in sequence.
+Transition is a low level annotation that give builder the ability to control the state machine directly. It is an optional frame level annotation which lets you define transitions between slots hosted directly and indirectly by hosting frame.
 
+Transition can be configured in two parts: triggering and update actions, where triggering defines under what condition the corresponding actions sequence is executed.
 ::: thumbnail
 ![transition](/images/annotation/transition/transition.png)
 :::
 
-## How to use
+## Transition
+ Currently, we support two kinds of transitions: event triggered transitions and condition triggered transitions.
 
-Transition is a composite annotation, as Framely provides different methods to cover different triggers. You need to pick one trigger method first, then you can declare where and how the action responds one by one. 
+### Event Triggered Transition
 
-### Event Trigger
+Given intent, the interaction logic or transition table defined by slot filling components will always try to proactively fill every it's slot, and delivery the result to user based on the filled slots. While direct slot filling is already capable for many real world use case, many advanced use cases involves no-direct slot filling.
 
-::: thumbnail
-![transition-event](/images/annotation/transition/transition-event.png)
-:::
-
-Event trigger allows you to specify what should happen or be done when the bot gets user input event. User input event can be specified by a frame instance, which indicates arbitrary semantics. 
-
-For example, in some purchase scenarios, if the user wants to use a certain coupon, you can use an additional frame as event to catch the user's utterance like "*use the coupon that will expire soon*", and also a fill action which can assign the coupon code by invoking a function that retrieves the expiring coupon code for given user.
+For example, during a purchase session, the user might want to use a certain coupon by say "*use the coupon that will expire soon*". Instead of responding with "I do not know what you are talking about", you can set up an event triggered transition, with triggering event set to be "CouponSelection", and actions include a fill action which can assign the coupon code that is returned from a function that retrieves the expiring coupon code for given user.
 
 :::: conversation
 ::: bot Bot
@@ -68,28 +49,44 @@ Sure. Would you like to use the credit card on file?
 :::
 ::::
 
+The triggering part of event triggerred transition are defined by arbitrary frame event, and update can be any valid action sequence.
+::: thumbnail
+![transition-event](/images/annotation/transition/transition-event.png)
+:::
 
-### Condition Trigger
 
+### Condition Triggered Transition
+
+The default behavior of slot filling after one slot is filled is always moving onto fill the next slot. But sometime, this behavior is not what you want. In addition to early exit example at the beginning of this doc, condition triggerred transition can also be used for looping back. 
+
+For example, a user want to get some food, say you have a taxonomy of food arranged into some tree structure, you can use condition triggerred transition for a while loop kind of conversational experience. Here, as long as the food user specified is not concrete food, but some category, we can jump back and ask user to clarify:
+
+:::: conversation
+::: user User
+I like order some Chinese food.
+:::
+::: bot Bot
+Cool, what food do you want? We have noodle or rice as main dish.
+:::
+::: user User
+noodle please.
+:::
+::: bot Bot
+Sure, what noodle do you want? we have dry noodle or noodle soup.
+:::
+::::
+
+Condition triggerred transition allows you to customize interaction logic based on slot values. The triggering part is defined by triggering timing and triggering condition, where timing is defined by a slot, and triggering condition can be specified by arbitrary boolean [kotlin Expression](kotlinexpression.md). When the trigger timing slot is filled and the condition expression evaluates to true, the corresponding actions will be executed. 
 ::: thumbnail
 ![transition-condition](/images/annotation/transition/transition-condition.png)
 :::
 
-Condition trigger allows you to customize each default behavior under specified situation. You can use [kotlin Expression](kotlinexpression.md) to express conditions you want, and set the trigger timing by selecting one slot. When the trigger timing slot is done and the condition expression evaluates to true, the corresponding actions will be executed. 
-
-For example, you offer a travel package includes flights and accommodation together, and the package cannot be purchased when either item is sold out. With condition you can notify the user earlier, instead of checking after the user has chosen. 
-
-:::: conversation
-::: user User
-Book a travel package 
+::: warning Used with caution
+Transition is a low level control that you can use to implement arbitrary conversational interaction logic. But with great power, comes with great responsibility. The low level control can adversely impact the interaction logic defined at slot filling level if not used carefully. Please test your design when it comes to transition.
 :::
-::: bot Bot
-Sorry, currently no package available. What else can I do for you?
-:::
-::::
 
-### Update Action
 
+## System Action
 ::: thumbnail
 ![transition-action](/images/annotation/transition/transition-action.png)
 :::
@@ -118,23 +115,13 @@ With actions, you can:
 
 <br>
 
-::: tip Note
-When use **Fill Slot** with code expression, you should make sure assignment actually works. For example, code expression should be valid ford current context.
-:::
-
-
-<!-- 不确定是否需要下面的细节，还是单独一个 Action 区域来讲 -->
-
-<!-- 
 #### Simple Reply
 
 ::: thumbnail
 <img alt="transition-simple-reply" src="/images/annotation/transition/transition-simple-reply.png">
 :::
 
-Simple Reply is usually used to send plain and short messages to users. The messages can be text, card or payment. Learn more about this on [Channels' Overview](../channels/overview.md).
-
-
+Simple Reply is usually used to send plain and short messages to users. The messages can be text, card or payment.
 
 #### List Reply
 
@@ -146,17 +133,12 @@ List Reply is also used to send messages, but targets in multi-valued scenarios.
 
 Learn more about this at [Value Recommendation's Display](valuerec.md#display). These two work in the same way.
 
-
-
 #### Clear Slot
-
 ::: thumbnail
 <img alt="transition-clear-slot" src="/images/annotation/transition/transition-clear-slot.png">
 :::
 
-Clear Slot clears the Target Slot's value, so it should be used when one is not satisfied with the target slot's value, BUT has no idea what the value should be. Dialog Management will behave like the target slot has never been offered a value, after the transition.
-
-
+Clear Slot clears the Target Slot's value, so it should be used when one is not satisfied with the target slot's value. After it been executed, Dialog Management will behave like the target slot has never been offered a value and may attempt to fill it again.
 
 #### Fill Slot
 
@@ -164,7 +146,7 @@ Clear Slot clears the Target Slot's value, so it should be used when one is not 
 <img alt="transition-fill-slot" src="/images/annotation/transition/transition-fill-slot.png">
 :::
 
-Fill Slot evaluates Code Expression and assigns the result to Target Slot, so unlike Clear Slot, it suits for the case that one is not satisfied with the target slot's value, AND knows what the value is.
+Fill Slot evaluates Code Expression and assigns the result to Target Slot.
 
 [Code Expression](../../guide/glossary.md#code-expression-input) here is very flexible. It accepts:
 
@@ -194,20 +176,23 @@ fun getSomeFrame(): SomeFrame {
   return returnValue
 }
 ```
+::: tip Note
+When use **Fill Slot** with code expression, you should make sure assignment actually works. For example, code expression should be valid ford current context.
+:::
 
 
 #### Recheck Action
 
-Recheck Action moves [Slot Filling stage](../../guide/slotfilling.md#five-stages-of-slot-filling) before Value Check, so it's used when Target Slot is no longer trustable from business side. One common scenario for this is a bunch of slots depend on each other, one of them changed, and the others' credibility are compromised.
+Recheck Action moves [Slot Filling stage](../../guide/slotfilling.md#five-stages-of-slot-filling) before Value Check, so bot will try to use old value directly for value check to make sure it still makes business sense. Framely reset every slot after slot to be cleared to be rechecked by default.
 
-!::: thumbnail
+::: thumbnail
 <img alt="transition-recheck" src="/images/annotation/transition/transition-recheck.png">
 :::
 
 
 #### Intent Start
 
-Intent Start starts an intent. Passing contexts from the current intent/frame is optional and supported by Assignments. It will fill Code Expression into the corresponding slot DIRECTLY (skip interactions defined on that slot), if set.
+Intent Start starts an intent. It will allow you to use Code Expression to initialize some slot, when this expression is evaluated to not null, the new started intent will skip the interaction on these slots.
 
 Code Expression here reaches context in the same way as [Fill Slot](#fill-slot) do.
 
@@ -215,12 +200,9 @@ Code Expression here reaches context in the same way as [Fill Slot](#fill-slot) 
 <img alt="transition-intent-start" src="/images/annotation/transition/transition-intent-start.png">
 :::
 
-
 #### Intent Abort
 
-When conversation goes wrong in an abnormal way, one doesn't know how to recover it and wants to prevent further damage by simply aborting all related intents in a radical fashion. Radical here means abort the specified intent, along with the nested intent/frame in it, the hosting intents of it (children and ancestors, in programming language).
-
-Intent Abort will also tell user `${intent?.typeName()} has been aborted!`. To customize the utterance, one needs to customize the response of [io.framely.core.AbortIntent](https://framely.naturali.io/org/5fa0e7dcf549c817cf952edd/agent/5fa27e3f3a0e9462a4a79edb/intent/5ffbe516d0953b9366732ff7?tab=2).
+When user feel there is no need to continue to conversation on some intent and wants to exit the current conversation around that, "like I do not want to buy ticket anymore", after he started with ticket buying intent, but change his mind after he checked weather.
 
 ::: thumbnail
 <img alt="transition-intent-abort" src="/images/annotation/transition/transition-intent-abort.png">
@@ -228,43 +210,16 @@ Intent Abort will also tell user `${intent?.typeName()} has been aborted!`. To c
 
 #### End Action
 
-When conversation goes wrong in a normal but not welcomed way, End Action solves the problem by stopping the current current intent/frame, along with the nested intent/frame in it immediately. For example, when all dishes are sold out, what restaurant can do is tell user his/her bad luck and end the selling intent.
+End Action stops the current intent/frame, along with the nested intent/frame in it immediately. For example, when all dishes are sold out, what restaurant can do is tell user his/her bad luck and end the selling intent.
 
 End Action acts on the intent/frame who hosts it, so no extra configuration is needed.
-
-
 
 #### Hand Off
 
 Hand Off sends the current intent to human agents. It needs no extra configuration.
-
-Learn more about Hand Off at [Support](../support/overview.md).
-
-
 
 #### Close Session
 
 Close Session is usually used when user triggers something so unwelcome that business has to terminate the current session. It needs no extra configuration.
 
 
-
-### Mix-matches and Collaborating
-
-Transition can be defined multiple times. Each is composed by a trigger and a sequence of actions introduced as upon.
-
-::: thumbnail
-<img alt="transition-multiple" src="/images/annotation/transition/transition-multiple.png">
-:::
-
-One must wonder what if multiple transitions are triggered at the same time?
-
-Multiple transitions under the same intent/frame are only allowed WITHOUT duplicate triggers. And by definition, event and condition-triggered transitions will never be invoked at the same time. So does multiple event-triggered transitions. The only complexity comes from condition-triggered transitions.
-
-When multiple condition-triggered transitions hit at the same time, Dialog Management will collect the satisfied trigger's corresponding actions and produce them together in order. The priority goes with the multiple transitions' order first, the action sequences' order inside them second. As for nested frame slots, transition on the BE nested slots' frame will be performed first, and ONLY when nothing is found will Dialog Management try to perform the hosting intent/frame's transitions.
-
-And on the top of that, if there're different category's actions in the collected action sequence, Dialog Management would always perform the message replying and Slot Filling customizing ones first, the Dialog Management rewiring ones later, regardless of the defining order. For example, if there were a Simple Reply, an Intent Start, and another Simple Reply, Dialog Management will perform as Simple Reply, the other Simple Reply, then Intent Start.
-
-
-
-With the serializing of actions,  the mix-matching of triggers and action sequences, and the joint of the transition, arbitrary experinces in Framely comes true. 
--->
