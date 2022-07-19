@@ -44,6 +44,7 @@ export const en = {
         '/reference/annotations/valuerec.md',
         '/reference/annotations/valuecheck.md',
         '/reference/annotations/confirmation.md',
+        '/reference/annotations/transition.md',
       ],
     },
     {
