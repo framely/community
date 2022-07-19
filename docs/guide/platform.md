@@ -1,60 +1,69 @@
 # User guide
 
+Learn how to get started with the framely platform to build chatbots for your services. Framely is an easy way to create chatbots in a developer friendly way. Framely carrys the heavy burden and creates a platform for you to easily develop developer CUIs for your service. Now let's get started:
+
+In this guide we will cover the following:
+- How to login
+- Quickly setting up a project through cloning and Importing
+- How to invite and manage team members
+
+
+Then we will cover more items like
+ - How to set up a project from scratch
+ - How to create a new organisation.
+
+
 #### Login
+Logging in to the framely platform is easy. The main requirement is a Github account. If you already have one then you can skip this part. If you do not have one then this step is for you.[Follow this link to learn how to set up one - GitHub Docs](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) 
 
-Go to **framely**
+Now that we have our github account, let's get on :
 
-Click on **中 / EN** This is to select the language you wish to continue with.)
+
+Go to [**framely**](https://framely.naturali.io)
+
+Click on **中 / EN** This is to select the language you wish to continue with.
 
 ![Language](/images/guide/platform/framelylang.png)
 
+- On the framely platform you need to have an account. Setting up one is easy. Just follow the link shown on the login page and fill in the details needed.
 
-Click on Sign in with GitHub [If you don't have a Github account, here is how to set up one Signing up for a new GitHub account - GitHub Docs](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account)
+
+Now we have our github accounts and framely platform accounts,  **Click** on *Sign in with GitHub*
 
 ![Language](/images/guide/platform/loginbuttonframely.png)
 
-- No worries, if you don't have an account, *Click* **Click to sign up**
+At this point we should be in and ready to easily build CUI for our services.
 
-Navigating
-When logged in, you should be able to see this:
+### Navigating
+Now that you are logged in, we should be able to go through things since it is an easy to use platform. If you have any questions or expressions used, head over to our [glossary](https://www.framely.ai/guide/glossary.html).
+
+The framely platform will create an organisation for you. This is done automatically. Why would one need an organisation. As a user, you can own several organisations. In this organisations, we can do quite a number of things. We will learn how to create an organisation later, for now, let's focus on what an organisation is and what you can do with it.
+
+An organisation falls under user. The organisations has the following attributes:
+
+- It has two roles: Owner and Member
+
+    > Owner is responsible for managing macro aspects of an organisations while a member can be internal or external collaborator
+
+- Owns a project(s)
+
+The organisation created automatically for you is as shown: 
 
 ![Language](/images/guide/platform/organisationsTabFramely.png)
 
-
+Let's take a tour and familiarise with this platform. 
   
-For new case, an organisation is created for you.
 **Click** one of the organisation as shown above to familiarize with the platform.
 Settings
 **Click** Settings:
 
-
-
 ![Language](/images/guide/platform/settingsMenuLinkFramely.png)
 
-This takes you:
+This takes you. Here you find information about your organisation and can edit some of the information to preference.
 
 ![Language](/images/guide/platform/settingspageframely.png)
 
-
-  
 On tab **General** , it should contain general information about the current organisation.
-
-#### Adding new members.
-On the settings  page, click  **Team  Members** :
-![Language](/images/guide/platform/TeamMembertabs.png)
-
-  
-Click **Add Member** 
-![Language](/images/guide/platform/AddMemberstab.png)
-
-  
-Here, a modal should open where you should enter the email of the person you wish to add then **click**  *Add* 
-![Language](/images/guide/platform/Addmembermodal.png)
-
-  
-When a member has been added, you can manage the member using the actions in the dropdown. 
-![Language](/images/guide/platform/Memberactions.png)
-
 
 #### Clone and Import
 To clone or import, click Clone and Import
@@ -83,6 +92,25 @@ This will open a modal that prompts you to Create new project
 
   
 Fill in the necessary information where applicable, and *Click* **Save** 
+
+#### Adding new members.
+On the settings  page, click  **Team  Members** :
+![Language](/images/guide/platform/TeamMembertabs.png)
+
+  
+Click **Add Member** 
+![Language](/images/guide/platform/AddMemberstab.png)
+
+  
+Here, a modal should open where you should enter the email of the person you wish to add then **click**  *Add* 
+![Language](/images/guide/platform/Addmembermodal.png)
+
+  
+When a member has been added, you can manage the member using the actions in the dropdown. 
+![Language](/images/guide/platform/Memberactions.png)
+
+
+
 
 
 #### Creating an Organisation
