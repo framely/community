@@ -50,7 +50,7 @@ export const en = [
           {
             text: 'Beyond Slot Filling',
             link: '/reference/annotations/transition.html',
-            icon: '/navIcons/confirmation.svg',
+            icon: '/navIcons/transition.svg',
           },
         ],
       },
