@@ -80,7 +80,7 @@ export const en = [
           {
             text: 'Universal Channel',
             link: '/reference/channels/overview.html',
-            icon: '/navIcons/wechat.svg',
+            icon: '/navIcons/universal.svg',
           },
           {
             text: 'WeChat Official Account',
