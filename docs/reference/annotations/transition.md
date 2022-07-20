@@ -138,11 +138,11 @@ Start a new intent with its slot filled with assignments by code expression, whe
 
 #### Intent Abort
 
-Abort the intent you specified. When user feel there is no need to continue to conversation on some intent and wants to exit the current conversation around that, "like I do not want to buy ticket anymore", after he started with ticket buying intent, but change his mind after he checked weather.
+Abort the intent you specified. Abort is treated as abnormal termination which indicates all associated or nested intents will be affected. For example, if you provide a round-trip booking service by using composite intent which contains flight intent, and there is no suitable flight available, you can make a decision to abort intent. If the flight intent aborted, the round-trip composite intent will be assumed the same way.  
 
 #### Intent End
 
-Terminate the current intent. For example, when the ticket that the user wants to buy has been sold out, it is a better experience to simply exit conversation early with condition triggerred transition by adding intent end action. Of course, you'd better add some replies at the same time to remind the user context. 
+Terminate the current intent. For example, when the ticket that the user wants to buy has been sold out, it is a better experience to simply exit conversation early with condition triggerred transition by adding intent end action. Of course, you'd better add some replies at the same time to remind the user context. Intent end will only terminate the current intent and will not affect others. 
 
 #### Hand Off
 
