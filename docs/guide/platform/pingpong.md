@@ -1,19 +1,25 @@
 # Creating your first Chatbot
 
-Upgrading communication is important for your services. Chatbots are important and provide a conversation interface to help customers with certain matters whenever a human agent is not available or when customer base is large. This means that 24/7 customer care service is possible. This also improves sales and boosts business growth.
+In this section, we create a chatbot that one sends a message of `ping` and gets a response `pong`: 
+:::: conversation
+::: user User
+ping
+:::
+::: bot Bot
+pong
+:::
+::::
 
-Chatbots  can help in transacting or even performing informational tasks. Transactional chatbots would be ideal for restaurants, cinemas while informational chatbots would be ideal for things like customer care or medical services since its usually contexually aware.
+Chatbots are essentially a set of intents, each intent is simply a functionality that can be triggered by user utterance and response can be generated based on execution result of that functionality. As a first step, let's see how we build a simplest chatbot with just one intent pong.
 
-In this section, we are basically aiming to create a chatbot that one sends a message of `ping` and gets a response `pong`.   The aim of this exercise is to show how one can configure a chatbot to return responses based on intents. If a customer, say would want to get information on  **ping** then the chatbot would return **pong** in a conversational manner. This is applicable in things like frequently asked questions where the solution is readily available and you can let the user know the answer.
+## Log into Organization
+To build your first chatbot, you need to be logged into the Framely platform. If you do not know how, please refer to [signup and login guide](/guide/platform/signingup.html).
 
-To build your first chatbot, you need to be logged into the Framely platform. If you do not know how, please refer to [this guide](/guide/signingup.html).
-
-Assuming you are already on the Framely platform, you should be to find an organisation created for you.
+After you logged in, you should be to in an organization created for you. 
 
 ![Org example](/images/guide/platform/orgexample.png)
 
-On the Framely platform we have the organisations which is an umbrella that contains:
-
+Organization is how you manage everything on the Framely platform, which is an umbrella that contains:
 - Owner and member. Owner is responsible for managing the macro aspects of the project while member can be internal or outside collaborator.
 
 - As a user, you can exist in multiple organisations.
@@ -24,11 +30,11 @@ On the Framely platform we have the organisations which is an umbrella that cont
 
 Check out our plans to see what you can do based on our different [plans](/pricing).
 
-## Creating first project
+## Creating first Chatbot
 
 In the first step of building our PingPong chatbot, we will create our first project.
 
-> Chatbot and backend are projects on the platform. For more info on terms refer to [glossary](/guide/glossary.html)
+> Chatbot, components and backend are types of projects you can create on the platform. For more info on terms refer to [glossary](/guide/glossary.html)
 
 **Click** *Chatbot* section on the sidebar. This should take you to the chatbot page.
 ![chatbot section](/images/guide/platform/chatbotsection.png)
