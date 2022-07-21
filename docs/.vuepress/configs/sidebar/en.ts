@@ -7,9 +7,17 @@ export const en = {
         '/guide/README.md',
         '/guide/are-you-ready.md',
         '/guide/getting-started.md',
-        '/guide/platform.md'
+       
 
       ],
+    },
+    {
+      text: 'Quickstart',
+      children:[
+        '/guide/signingup.md',
+        '/guide/pingpong.md'
+      ]
+
     },
     {
       text: "Key Concepts",

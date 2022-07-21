@@ -1,8 +1,9 @@
-# User guide
-The framely platform provides you with an effective way to build CUI for your services. To do this we require the following:
+# How to register
+
+The Framely platform provides you with an effective way to build CUI for your services. To do this we require the following:
 
 - A Github acccount
-- Registration to the framely platform
+- Registration to the Framely platform
 
 ### a. How to login
 
