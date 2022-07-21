@@ -176,4 +176,4 @@ When you add a member, you can perform  the following actions on them. This is h
 - Remove member
 
 Collaborators can make changes and make **pull requests**. This will be **reviewed**, **approved** and **Merged**. The reviewer can also close the pull request. 
-Changes made by member
+Changes made by member are not visible on the master branch until they make a pull request.
