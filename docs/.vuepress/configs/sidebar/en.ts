@@ -14,8 +14,9 @@ export const en = {
     {
       text: 'Quickstart',
       children:[
-        '/guide/signingup.md',
-        '/guide/pingpong.md'
+        '/guide/platform/signingup.md',
+        '/guide/platform/pingpong.md',
+        '/guide/platform/versioncontrol.md',
       ]
 
     },
