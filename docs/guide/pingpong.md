@@ -81,7 +81,7 @@ Framely provides different applications. For now we will select Default applicat
 
 Click **Create** and we have our first project.
 
-## Adding Response, Expression and Testing
+## Adding Response, Expression
 
 **1.**  *Click* **Create** on the page:
 ![createintent](/images/guide/platform/CreateIntent.png)
@@ -113,67 +113,20 @@ Framely uses version control. The version control is easy to use and we will dis
 
 **8.** **Commit** the changes made using the **Commit** button. Great now we can try it out.
 
-**9.**  *click* on the ***try it now** button. This will allow you to test the chatbot.
+
+## Testing
+**1.**  *click* on the ***try it now** button. This will allow you to test the chatbot.
 
 ![trynow](/images/guide/platform/trynow.png)
 
-**10.**   A **Modal** should appear, click on connect, and type in **ping** and you should be able to see something like:
+**2.**   A **Modal** should appear, click on connect, and type in **ping** and you should be able to see something like:
 
 ![response](/images/guide/platform/response.png)
 
 And now, you have a **ping pong** chatbot.
 
-### Deploying.
+## Deploying
 
 During creation of a chatbot project, we selected the region we wish to deploy the chatbot. Deploying the chatbot means that customers can access it. At this stage we have not configured channels but once we configure the channels we will be able to see how to deploy the chatbot
 
 
-### Version control
-
-This is how we manage and track changes to software code. A good example of version control is [git](https://git-scm.com/). Framely version control is modeled after git. Others can't see your branch, so you have to merge to master so that others can view the master version.  Version control helps members collaborate in building the chatbot.
-
-
-
-**1**. Make sure that you have **committed** the changes on **EN** and then you should be back to **STRUCT**
-
-**2**. *Click* on **version** on the **SideMenu**
-
-**3**. *Click* on **+ Pull Request** and you should be able to see your commit:
-> Pull request is used to indicate that you want to merge to master
-
-![pr](/images/guide/platform/pr.png)
-
-**4**. *Click* on the item and drawer should slide in and click **Approve**
-This is the review stage that can be done by your peers. For our case, we will just approve.
-
-![prapprove](/images/guide/platform/approvepr.png)
-
-**5**. *Click* on merge when the next drawer slides in. This should pop a modal where you enter version tag and *click* 
-**Save** . The changes are merged into master.
-
-![tag](/images/guide/platform/TAG.png)
-
-Collaboration is encouraged on the Framely platform. This is through you as an owner, inviting other people to be members of your organisation. You can also manage collaborators. We will discuss how to do that in a few steps:
-
-> Note that some of the collaboration flow actions are based on our flexible [plans](/pricing).
-
-#### How to invite collaborators
-
-**1**. *Click* on the **settings** menulink to move to the organisation settings.
-
-**2**  *Click* on **Team member** tab to move to the new page.
-
-**3**  *Click* on **Add member**.
-
-![add team member](/images/guide/platform/TC.png)
-
-When you add a member, you can perform  the following actions on them. This is how you as an owner can manage members.
-
-- Set as owner
-
-- Convert member to collaborator(Member now can longer access internal projects).
-
-- Remove member
-
-Collaborators can make changes and make **pull requests**. This will be **reviewed**, **approved** and **Merged**. The reviewer can also close the pull request. 
-Changes made by member are not visible on the master branch until they make a pull request.
