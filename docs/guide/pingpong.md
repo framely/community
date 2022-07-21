@@ -8,7 +8,7 @@ In this section, we are basically aiming to create a chatbot that one sends a me
 
 To build your first chatbot, you need to be logged into the Framely platform. If you do not know how, please refer to [this guide](/guide/signingup.html).
 
-Assuming you are already on the framely platform, you should be to find an organisation created for you.
+Assuming you are already on the Framely platform, you should be to find an organisation created for you.
 
 ![Org example](/images/guide/platform/orgexample.png)
 
@@ -93,9 +93,10 @@ On the new page, we will focus on three sections:
 
 **3.** Move to the **Response** tab, *click* on **Select types of actions** and *Select* **Simple Reply**.
 
-Framely uses version control. The version control is easy to use and we will discuss later on other things like **pull requests**, **Merging**, **Versions** etc. For now we will learn how to **commit** the changes we have made.
+Framely uses version control. The version control is easy to use and we will discuss later on other things like **pull requests**, **Merging**, **Versions** etc. For now we will learn how to **commit** the changes we have made. Version control allows for collaboration.
 
 **4.** It is easy  to do that through the *Click* of a button. Find the commit button as shown, *Click* to **Commit** changes. The **commit** should be a success.
+> Results to a new branch that can be reviewed and merged to master.
 ![commitbutton](/images/guide/platform/commitbutton.png).
 
 **5.** switch from **Struct**(Interaction language) to **EN**
@@ -121,4 +122,29 @@ Framely uses version control. The version control is easy to use and we will dis
 ![response](/images/guide/platform/response.png)
 
 And now, you have a **ping pong** chatbot.
+
+
+### Version control
+
+This is how we manage and track changes to software code. A good example of version control is [git](https://git-scm.com/). Framely version control is modeled after git. Others can't see your branch, so you have to merge to master so that others can view the master version.  Version control helps members collaborate in building the chatbot.
+
+**1**. Make sure that you have **committed** the changes on **EN** and then you should be back to **STRUCT**
+
+**2**. *Click* on **version** on the **SideMenu**
+
+**3**. *Click* on **+ Pull Request** and you should be able to see your commit:
+> Pull request is used to indicate that you want to merge to master
+
+![pr](/images/guide/platform/pr.png)
+
+**4**. *Click* on the item and drawer should slide in and click **Approve**
+This is the review stage that can be done by your peers. For our case, we will just approve.
+
+![prapprove](/images/guide/platform/approvepr.png)
+
+**5**. *Click* on merge when the next drawer slides in. This should pop a modal where you enter version tag and *click* 
+**Save** . The changes are merged into master.
+
+![tag](/images/guide/platform/TAG.png)
+
 
