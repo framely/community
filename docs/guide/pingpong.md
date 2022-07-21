@@ -43,7 +43,7 @@ We will discuss the different inputs to help you understand what to select:
 
 - *Public* - visible to everyone
 
-- *Internal* -
+- *Internal* - visible to internal members only.
 
 - *Private* - For private projects, check  out our flexible [plans](/pricing)
 
@@ -55,7 +55,7 @@ For now we will set up a **public** project to get started
 
 Framely provides different applications. For now we will select Default application, for Omnichannel and Multichannel apps, check out our [pricing plans](/pricing)
 
-> Provide info on mltichannel and multichannel
+> Provide info on omnichannel and multichannel
 
 ![input1](/images/guide/platform/input3.png)
 
