@@ -1,6 +1,10 @@
 # Creating your first Chatbot
 
-In this section, we are basically aiming to create a chatbot that one sends a message of `ping` and gets a response `pong`.
+Upgrading communication is important for your services. Chatbots are important and provide a conversation interface to help customers with certain matters whenever a human agent is not available or when customer base is large. This means that 24/7 customer care service is possible. This also improves sales and boosts business growth.
+
+Chatbots  can help in transacting or even performing converstational tasks. Transactional chatbots would be ideal for restaurants, cinemas while conversational chatbots would be ideal for things like customer care or medical services since its usually contexually aware.
+
+In this section, we are basically aiming to create a chatbot that one sends a message of `ping` and gets a response `pong`.   The aim of this exercise is to show how one can configure a chatbot to return responses based on intents. If a customer, say would want to get information on  **ping** then the chatbot would return **pong** in a conversational manner. This is applicable in things like frequently asked questions where the solution is readily available and you can let the user know the answer.
 
 To build your first chatbot, you need to be logged into the Framely platform. If you do not know how, please refer to [this guide](/guide/signingup.html).
 
