@@ -12,6 +12,10 @@ pong
 
 Chatbots are essentially a set of intents, each intent is simply a functionality that can be triggered by user utterance and response can be generated based on execution result of that functionality. As a first step, let's see how we build a simplest chatbot with just one intent pong.
 
+At the end of this series we should be able to have this chatbot deployed on Framely and using the Whatsapp business channel. This should be the result:
+
+![whatsapp](/images/guide/platform/whatsapp.jpg)
+
 ## Log into Organization
 To build your first chatbot, you need to be logged into the Framely platform. If you do not know how, please refer to [signup and login guide](/guide/platform/signingup.html).
 
