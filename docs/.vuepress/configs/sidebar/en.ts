@@ -17,6 +17,7 @@ export const en = {
         '/guide/platform/signingup.md',
         '/guide/platform/pingpong.md',
         '/guide/platform/versioncontrol.md',
+        '/guide/platform/integration.md'
       ]
 
     },
