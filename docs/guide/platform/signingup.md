@@ -1,25 +1,58 @@
-# Signup and Login
+# Sign Up For Framely Account
+> Create and log in to your Framely account.
 
-The Framely platform provides you with an effective way to build CUI for your services. To do this we require the following:
+You can start using Framely to build, test, deploy and operate your Chatbots by signing up for a Starter workspace plan, which is good for developers and freelancers who want building and sharing. You can also upgrade your workspace plans for both individuals and teams, add and remove seats for team members and collaborators. 
 
-- A Github acccount
-- Registration to the Framely platform
+This guide provides all required setup steps to get a Framely account. Let's begin: 
 
-The singup and login can be done in the following steps:
+[[toc]]
 
-1. Get a github account in using steps provided [here](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account)(skip this if you already have one.)
+## Signing up for an account
 
-2. Fill in [this registration form](https://docs.google.com/forms/d/e/1FAIpQLSeYGRXfYnB_uDKTS4hUfcD3w1f9LDI9swcC5Qhy71PTS_JANA/viewform). During this private beta phase, this provides us with initial information to help us help you in setting up your free trial.
+To create your starter Framely account, visit the [Sign Up page](https://docs.google.com/forms/d/e/1FAIpQLSeYGRXfYnB_uDKTS4hUfcD3w1f9LDI9swcC5Qhy71PTS_JANA/viewform) :
 
-3. Wait for the email notification that your account is ready. It might take a short waiting period while we get the gears running for you.
+::: thumbnail
+![sign up](/images/guide/signup/sign-up.png)
+:::
 
-3. Once notified, we can login with the click of a button.
+Filling out these questions here, then click **Submit** :
 
-![login](/images/guide/platform/loginbtn.png)
+::: thumbnail
+![submit](/images/guide/signup/submit.png)
+:::
 
-At this point, you should be greeted with a page similar to this:
+::: warning Need To Know
+As we only support signing in with **GitHub**, please make sure the email address you typed in form should already used by your GitHub. When you log into your account, you need to log in with GitHub. For more information about GitHub account, see [Getting started with your GitHub account](https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account)
+:::
 
-![firstpage](/images/guide/platform/firstpage.png)
+<br>
 
-That is it.
+After submitting, if you get the response *“Thanks for taking the time to fill out the form and we’ll get right back to you”* like below 👇 , this means the form was submitted successfully:
 
+::: thumbnail
+![success](/images/guide/signup/success.png)
+:::
+
+And then you will receive an Email notification, which means you have access to Framely with your GitHub account, and you can log into your Framely account now 🎉.
+
+
+## Logging into your account
+
+You can [log into your Framely account](https://framely.naturali.io/login) with your GitHub account. This allows you to log into simply by clicking the **Sign in with GitHub** button: 
+
+::: thumbnail
+![sign in](/images/guide/signup/sign-in.png)
+:::
+
+If you don't have account yet, you can click the **Click to sign up** link below, and go through with [signing up for an account](#signing-up-for-an-account) above first: 
+
+::: thumbnail
+![click to sign up](/images/guide/signup/click-to-sign-up.png)
+:::
+
+## Are you ready
+
+Before beginning to build your first chatbot, you should do the following before move to next step:
+
+1. Read [Build Conversational App](../README.md)
+2. Read [Before You Start](../are-you-ready.md)
