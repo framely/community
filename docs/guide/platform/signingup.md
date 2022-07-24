@@ -1,9 +1,9 @@
 # Sign Up For Framely Account
 > Create and log in to your Framely account.
 
-You can start using Framely to build, test, deploy and operate your Chatbots by signing up for a Starter workspace plan, which is good for developers and freelancers who want building and sharing. You can also upgrade your workspace plans for both individuals and teams, add and remove seats for team members and collaborators. 
+You can start using Framely to build your Chatbots by signing up for a Starter workspace plan, which is good for developers and freelancers who want building and sharing. You can also upgrade your workspace plans for both individuals and teams, add and remove team members and collaborators. 
 
-This guide provides all required setup steps to get a Framely account. Let's begin: 
+Follow the following steps to get a Framely account. Let's begin: 
 
 [[toc]]
 
@@ -22,19 +22,18 @@ Filling out these questions here, then click **Submit** :
 :::
 
 ::: warning Need To Know
-As we only support signing in with **GitHub**, please make sure the email address you typed in form should already used by your GitHub. When you log into your account, you need to log in with GitHub. For more information about GitHub account, see [Getting started with your GitHub account](https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account)
+As we only support signing in with **GitHub**, please make sure the email address you provide is the one you used for your GitHub account. For more information about GitHub account, see [Getting started with your GitHub account](https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account)
 :::
 
 <br>
 
-After submitting, if you get the response *“Thanks for taking the time to fill out the form and we’ll get right back to you”* like below 👇 , this means the form was submitted successfully:
+After submitting, if you get the response *“Thanks for taking the time to fill out the form, and we’ll get right back to you”* like below 👇 , this means the form was submitted successfully:
 
 ::: thumbnail
 ![success](/images/guide/signup/success.png)
 :::
 
-And then you will receive an Email notification, which means you have access to Framely with your GitHub account, and you can log into your Framely account now 🎉.
-
+You will wait an Email notification, which will inform you that you now have access to Framely with your GitHub account, and you can log into your Framely account now 🎉.
 
 ## Logging into your account
 
@@ -52,7 +51,7 @@ If you don't have account yet, you can click the **Click to sign up** link below
 
 ## Are you ready
 
-Before beginning to build your first chatbot, you should do the following before move to next step:
+Before beginning to build your first chatbot, you should be familiar with the following materials:
 
-1. Read [Build Conversational App](../README.md)
-2. Read [Before You Start](../are-you-ready.md)
+1. [Build Conversational App](../README.md)
+2. [Before You Start](../are-you-ready.md)
