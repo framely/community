@@ -115,6 +115,13 @@ export const en = [
           },
         ],
       },
+      {
+      text: 'Platform',
+      children:[
+        '/guide/platform/signingup.md',
+        '/guide/platform/versioncontrol.md',
+        ]
+      },
     ],
   },
   {
