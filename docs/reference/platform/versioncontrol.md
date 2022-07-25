@@ -1,4 +1,4 @@
-# Version control
+# Collaboration
 
 This is how we manage and track changes to software code. A good example of version control is [git](https://git-scm.com/). Framely version control is modeled after git. Others can't see your branch, so you have to merge to master so that others can view the master version.  Version control helps members collaborate in building the chatbot.
 
