@@ -1,4 +1,4 @@
-# Hello World Example
+# A PingPong Bot 
 > Follow this PingPong chatbot to get started with Framely.
 
 This guide will walk you through using Framely console to build and test a simple PingPong chatbot. When interacting with this chatbot, you can get greeting message, and response with *"pong"* to message *"ping"*, for example :
