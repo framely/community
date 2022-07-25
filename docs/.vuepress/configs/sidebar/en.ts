@@ -7,27 +7,13 @@ export const en = {
         '/guide/README.md',
         '/guide/are-you-ready.md',
         '/guide/getting-started.md',
-       
-
+       '/guide/pingpong.md',
       ],
-    },
-    {
-      text: 'Quickstart',
-      children:[
-        '/guide/platform/signingup.md',
-        '/guide/platform/pingpong.md',
-        '/guide/platform/versioncontrol.md',
-        '/guide/platform/integration.md'
-      ]
-
-    },
-    {
-      text: "Key Concepts",
-      link: '/guide/concepts.md',
     },
     {
       text: "Essentials",
       children: [
+        '/guide/concepts.md',
         '/guide/cooperative.md',
         '/guide/sgcui.md',
         '/guide/5levels-cui.md',
@@ -85,6 +71,14 @@ export const en = {
           '/reference/support/overview.md',
           '/reference/support/Chatwoot.md',
       ],
+    },
+    {
+      text: 'Platform',
+      children:[
+        '/guide/platform/signingup.md',
+        '/guide/platform/versioncontrol.md',
+        '/guide/platform/integration.md'
+      ]
     },
   ],
 }
