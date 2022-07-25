@@ -118,8 +118,16 @@ export const en = [
       {
       text: 'Platform',
       children:[
-        '/guide/platform/signingup.md',
-        '/guide/platform/versioncontrol.md',
+        {
+          text: 'Sign Up For Framely',
+          link: '/reference/platform/signingup.html',
+          icon: '/navIcons/signup.svg',
+        },
+        {
+          text: 'Collaboration',
+          link: '/reference/platform/versioncontrol.html',
+          icon: '/navIcons/branch.svg',
+        },
         ]
       },
     ],

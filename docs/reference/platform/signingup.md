@@ -53,5 +53,5 @@ If you don't have account yet, you can click the **Click to sign up** link below
 
 Before beginning to build your first chatbot, you should be familiar with the following materials:
 
-1. [Build Conversational App](../README.md)
-2. [Before You Start](../are-you-ready.md)
+1. [Build Conversational App](/guide/README.md)
+2. [Before You Start](/guide/are-you-ready.md)

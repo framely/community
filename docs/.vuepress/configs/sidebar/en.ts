@@ -7,7 +7,7 @@ export const en = {
         '/guide/README.md',
         '/guide/are-you-ready.md',
         '/guide/getting-started.md',
-       '/guide/pingpong.md',
+        '/guide/pingpong.md',
       ],
     },
     {
@@ -74,10 +74,10 @@ export const en = {
     },
     {
       text: 'Platform',
+      collapsible: true,
       children:[
-        '/guide/platform/signingup.md',
-        '/guide/platform/versioncontrol.md',
-        '/guide/platform/integration.md'
+        '/reference/platform/signingup.md',
+        '/reference/platform/versioncontrol.md',
       ]
     },
   ],
