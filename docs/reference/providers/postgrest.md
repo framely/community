@@ -104,23 +104,53 @@ For example, if a column is used to store a city, its dropdown List is like:
 [ { id: 'NY', name: 'NewYork' },
   { id: 'LA', name: 'Los Angeles' },]
 ```
+## Connection
+Once you deploy a chatbot which integrates with a postgrest provider, in the **Connection** field, you can get the **URL** of backoffice along with **Admin Email** and **Admin Password** to log in.
+
+![connection](/images/provider/postgrest/connection.png)
+
+::: tip Note
+Learn how to integrate with a postgrest provider, check out [Step 3: Import Component](../../articles/quick-start-with-service.md#step-3-import-component).
+:::
+
+## Function Implementation
+
+As mentioned in [Implement Functions](./overview.md#implement-functions), there are two kinds of ways to implement a function:
+- In **Provider Dependent** functions, use [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) to implement.
+  - :exclamation: Provider-dependent functions should always return a frame in which the slot's type is compatible with the return column's type in the same index.
+     
+     For example, if the slots in a frame are [_id_, _name_] of which types are [_kotlin.Int_, _kotlin.String_], the types of return columns should be [_bigint_, _text_] instead of [_text_, _bigint_].
+
+  - The name of a slot and of a column in the same index can be different.
+     
+    In the above example, the return columns can be [_userId_, _userName_].
+- In **Kotlin** functions, write function bodies in [Kotlin](https://kotlinlang.org/docs/functions.html). 
+  - Kotlin functions can be used to convert the value returning from a provider-dependent function to a desirable format.
+    
+     For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot so that you can use the return value directly in [Value Recommendation](../annotations/valuerec.md).
+  - Learn how to implement more Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
+
+``` kotlin
+/* 
+  Suppose a provider-dependent is getFoodCategory() which returns a list of frame. 
+  There is one slot called returnValue in the frame. 
+*/
+return getFoodCategory()!!.map{it -> it.returnValue!!} 
+```
 
 
-## Function 
-### Definition
-When you create a function, you need to define the input parameters and return types of the function. For the imported function, you make the definition when you create the Postgres function in the component. For the local function, you make the definition in the Postgrest provider.
 
-#### How Types Convert Between Kotlin/Java and SQL
-- When you call the Postgres function, you pass the values of Kotlin/Java type and we will convert their types to SQL data types automatically, so you can use these parameters in your function body.
-- When the function returns values of SQL data type, we convert their types back to Kotlin/Java type for you, so you can display or use these values in the Framely environment.
+### Types Conversion
+- When you call the **Provider Dependent function**, you pass the **entities** (or **frames**) and we will convert their types to **SQL data types** (or [**composite types**](https://www.postgresql.org/docs/current/rowtypes.html)) automatically, so you can use these parameters in your function body.
+- When the function returns a set of values of **composite type**, we convert the composite type back to a **frame**, so you can display or use these values in the Framely environment.
 
 ::: thumbnail
 ![conversion](/images/provider/postgrest/conversion.png)
-Conversion Between Kotlin/Java and SQL
+Type Conversion Between Framely and Postgrest
 :::
-Here are the mappings between Kotlin/Java types and SQL Data Types
+- Here is the conversion between entities and SQL data types:
 
-| Kotlin/Java Type                                           | SQL Data Type               |   
+| Entity                                                     | SQL Data Type               |   
 |:-----------------------------------------------------------|:----------------------------|
 | kotlin.Int / java.time.Year                                | bigint                      |
 | kotlin.Float                                               | double precision            |
@@ -131,41 +161,8 @@ Here are the mappings between Kotlin/Java types and SQL Data Types
 | java.time.LocalTime                                        | time without time zone      |
 | java.time.LocalDateTime                                    | timestamp without time zone | 
 
-#### How To Define the Input Parameters and Return Types
 
-![input-return](/images/provider/postgrest/input-return.png)
-
-For now, we support inputting multiple entities and returning only one frame. For input parameters, you can add each parameter with corresponding types. For return types, here are two situations:
-
-- If the function returns values from **multiple columns**, you need to create a frame and add those columns as slots into the frame. Make sure the types of slots are consistent with the types in the table definition.
-  
-  For example, if you have a table called Info which includes columns: name, userId and gender. The types of name and userId are `kotlin.String` and `kotlin.Int`. If you want to get user information from columns: name and userId, you can create a frame—userInfo—with two slots: name and userId. The types of name and userId are  `kotlin.String` and `kotlin.Int` as well.
-
-::: thumbnail
-![return-type](/images/provider/postgrest/return-type.png)
-:::
-
-- If the function returns values from **only one column**, you could use a row container to wrap it.
-    
-  For example, if the return type is `String`, you could create a frame: *RCString* and add a slot called *returnValue* whose type is `String`. To use the return values in [Value Recommendation](../annotations/valuerec.md), the code expression in the source is like this:
-
-``` kotlin
-// Suppose your function is named getFoodCategory
-componentName.getFoodCategory()?.map{it -> it.returnValue!!}
-```
-
-
-### Implementation
-
-As mentioned in [Implement Functions](./overview.md#implement-functions), there are two kinds of ways to implement a function:
-- If the implementation is **Kotlin**, you should write a function body in [Kotlin](https://kotlinlang.org/docs/functions.html).
-- If the implementation is **Provider Dependent**, you use [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) to implement the function.
-
-::: tip Note
-To learn how to implement Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
-:::
-
-#### How To Implement Provider Dependent Functions
+### Provider Dependent Functions
 If you are familiar with [SQL](https://www.postgresql.org/docs/14/sql.html), writing SQL commands within a PL/pgSQL function will be easy. For example, if you've stored your customers' information in your database and you want to get a customer's name by their user ID, which is an input parameter named *userId_parameter*,  the code will be like this:
 ``` sql
 BEGIN
@@ -174,5 +171,3 @@ BEGIN
 END
 ```
 Besides, [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) also supports [simple loops](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONTROL-STRUCTURES-LOOPS) and [Conditionals](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONDITIONALS).
-
-## Connection

@@ -22,4 +22,4 @@ How Provider Works
     - **Local functions** are added within the current provider and you can change the declarations.
 - There are two kinds of ways to implement a function
     - **Provider Dependent** means the language of function implementation is dependent on the type of the provider. For example, in Postgrest Provider, the language is PL/pgSQL.
-    - **Kotlin** means the function is implemented in kotlin. You can call both Kotlin functions and provider dependent functions in a Kotlin function.
+    - **Kotlin** means the function is implemented in kotlin. You can call both Kotlin functions and provider dependent functions in a Kotlin function. 
