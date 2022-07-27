@@ -13,7 +13,7 @@ There are a couple advantage of using backend component approach to build servic
 3. The admin interface or backoffice can also be automatically created based on annotation so that the operation team can use backoffice to provide service. 
 4. Backoffice components can be reused by cloning for Framely hosted solution.
 
-## Provider Annotations
+## Annotations
 
 #### Features
 Provider annotations include [storage annotations](./overview.md#storage-annotations) and [back office annotations](./overview.md#backoffice-annotations).
@@ -141,7 +141,7 @@ return getFoodCategory()!!.map{it -> it.returnValue!!}
 
 
 ### Types Conversion
-- When you call the **Provider Dependent function**, you pass the **entities** (or **frames**) and we will convert their types to **SQL data types** (or [**composite types**](https://www.postgresql.org/docs/current/rowtypes.html)) automatically, so you can use these parameters in your function body.
+- When you call the **Provider Dependent function**, you pass the **entities** (or **frames**) and we will convert their types to [**SQL data types**](https://www.postgresql.org/docs/current/datatype.html) (or [**composite types**](https://www.postgresql.org/docs/current/rowtypes.html)) automatically, so you can use these parameters in your function body.
 - When the function returns a set of values of **composite type**, we convert the composite type back to a **frame**, so you can display or use these values in the Framely environment.
 
 ::: thumbnail
@@ -162,7 +162,7 @@ Type Conversion Between Framely and Postgrest
 | java.time.LocalDateTime                                    | timestamp without time zone | 
 
 
-### Provider Dependent Functions
+### Postgres Functions
 If you are familiar with [SQL](https://www.postgresql.org/docs/14/sql.html), writing SQL commands within a PL/pgSQL function will be easy. For example, if you've stored your customers' information in your database and you want to get a customer's name by their user ID, which is an input parameter named *userId_parameter*,  the code will be like this:
 ``` sql
 BEGIN
