@@ -9,10 +9,13 @@ Framely also supports the backend component in form of [postgrest provider](/gui
 There are a couple advantage of using backend component approach to build service provider. 
 1. In addition to declaratively building database as content management system, Framely backend component allows you to implement the service declaratively too using SQL. This make it possible for the business analyst to build backend.
 2. Since tables are created based on the data type in the API schema, so no explicit conversion code is needed, rows in the table or view in the database are automatically converted into an object in the Framely.
-![frame-table](/images/provider/postgrest/frame-table.png)
 3. The admin interface or backoffice can also be automatically created based on annotation so that the operation team can use backoffice to provide service. 
 4. Backoffice components can be reused by cloning for Framely hosted solution.
 
+::: thumbnail
+![data-management](/images/provider/postgrest/data-management.png)
+How Framely, PostgreSQL and Backoffice Work Together
+:::
 ## Annotations
 
 #### Features

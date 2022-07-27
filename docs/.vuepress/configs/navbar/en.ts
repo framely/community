@@ -111,7 +111,7 @@ export const en = [
           {
             text: 'Chatwoot',
             link: '/reference/support/Chatwoot.html',
-            icon: '/navIcons/chat.svg',
+            icon: '/navIcons/chatwoot.svg',
           },
         ],
       },

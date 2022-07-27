@@ -8,7 +8,10 @@
 
 Framely supports the backend component in form of a Google Sheets provider. On the Google Sheets side, your operation team can upload and manage your business data in the spreadsheet. On the Framely side, you can get data from your spreadsheet using the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) and update data in your spreadsheet with the help of functions in [io.framely.provider.GoogleSheetsConnection](https://framely.naturali.io/org/5fa0e7dcf549c817cf952edd/agent/62d75a50d1bd62bdd2333bd3/frame/62d75bfad1bd62bdd2333bdb).
 
+::: thumbnail
 ![manage-data-on-two-sides](/images/provider/GoogleSheets/manage-data-on-two-sides.png)
+Operations on Framely and Google Sheets
+:::
 
 ::: tip Note
 Before you start, make sure you have [created a spreadsheet](https://support.google.com/docs/answer/6000292?hl=en).
