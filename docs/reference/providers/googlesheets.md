@@ -21,7 +21,7 @@ Before you start, make sure you have [created a spreadsheet](https://support.goo
 
 To begin with, you need to build a connection between Google Sheets and the provider so that the provider gets access to your spreadsheet. To build the connection, get your [spreadsheet Id](https://developers.google.com/sheets/api/guides/concepts#spreadsheet) and a [service account credential](https://developers.google.com/workspace/guides/create-credentials#service-account) then fill out the following form.
 
-![connection](/images/provider/GoogleSheets/connection.png)
+![connection](/images/provider/googlesheets/connection.png)
 
 Once you create a service account, you need to give this account permission to view or edit your spreadsheet.
 
@@ -30,10 +30,10 @@ Once you create a service account, you need to give this account permission to v
 **Step 2** Go to your [spreadsheet](https://docs.google.com/spreadsheets/u/0/). At the top-right, click **Share**.
 **Step 3**  Paste the email you copied and give the right permission to this service account. For example, if you don't need to update business data in your spreadsheet, set the service account as a **Viewer**, otherwise, set it as an **Editor**.
 
-![permit](/images/provider/GoogleSheets/permit.png)
+![permit](/images/provider/googlesheets/permit.png)
 
 ## Function Implementation
-As mentioned in [Implement Functions](http://localhost:8080/reference/providers/overview.html#implement-functions), there are two kinds of ways to implement a function:
+As mentioned in [Implement Functions](./reference/providers/overview.html#implement-functions), there are two kinds of ways to implement a function:
 - In **provider-dependent** functions, use the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) to implement.
   - :exclamation:Provider-dependent functions should always return a multi-value frame(even if the function returns only one row), in which the names of slots are the same as the names of columns, and the slot's type is compatible with the return column's type in the same index.
   - For example, if the slots in a frame are [_id_, _name_] of which types are [_kotlin.Int_, _kotlin.String_], the slots in return columns should be [_id_, _name_] as well, and the types of return columns are supposed to be [_number_, _string_] instead of [_string_, _number_].
@@ -65,7 +65,7 @@ As mentioned in [Implement Functions](http://localhost:8080/reference/providers/
 - When the **provider-dependent** function returns a set of values in the [Google Sheets data type](https://developers.google.com/chart/interactive/docs/querylanguage#literals), we put those values in the return frame you defined, so you can display or use these values in the Framely environment.
 
 ::: thumbnail
-![conversion](/images/provider/GoogleSheets/conversion.png)
+![conversion](/images/provider/googlesheets/conversion.png)
 Type Conversion Between Framely and Google Sheets
 :::
 
@@ -84,7 +84,7 @@ Type Conversion Between Framely and Google Sheets
 ### How To Write a Query
 To get your business data from a spreadsheet, you can write a query in **provider-dependent** functions. A provider-dependent function implementation consists of **Function Meta** and **Query**.
 
-![provider-dependent-function](/images/provider/GoogleSheets/provider-dependent-function.png)
+![provider-dependent-function](/images/provider/googlesheets/provider-dependent-function.png)
 
 - **Function Meta** is used to define optional parameters that are needed in your query. The **key** means the parameter's name and the **value** is the parameter's value.
   - The keys you can choose are range, headers, gid and sheet. To learn what each of the parameters means, check out [Creating a Chart from a Separate Spreadsheet](https://developers.google.com/chart/interactive/docs/spreadsheets#creating-a-chart-from-a-separate-spreadsheet).
