@@ -22,12 +22,12 @@ Filling out these questions here, then click **Submit** :
 :::
 
 ::: warning Need To Know
-As we only support signing in with **GitHub**, please make sure the email address you provide is the one you used for your GitHub account. For more information about GitHub account, see [Getting started with your GitHub account](https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account)
+As we only support signing in with **GitHub**, please make sure the email address you provide is the one you used for your GitHub account. For more information about GitHub account, see [Getting started with your GitHub account](https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account).
 :::
 
 <br>
 
-After submitting, if you get the response *“Thanks for taking the time to fill out the form, and we’ll get right back to you”* like below 👇 , this means the form was submitted successfully:
+After submitting, if you get the response *“Thanks for taking the time to fill out the form and we’ll get right back to you”* like below 👇 , this means the form was submitted successfully:
 
 ::: thumbnail
 ![success](/images/guide/signup/success.png)
