@@ -80,6 +80,7 @@ After logging in, there will be an org *(short for organization)* created automa
    ::: thumbnail
    ![complete form](/images/guide/pingpong/complete_form.png)
    :::
+
    ::: warning Need To Know
    - When you create a chatbot, you must specify a region. For the best performance, you should choose a region that is near your services and end-users. 
 
