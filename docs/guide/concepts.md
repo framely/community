@@ -3,19 +3,19 @@
 This section helps you understand the key concepts at the org level, and at chatbot level in terms of build, test, deploy and operate chatbots.
 
 ## Projects
-On the Framely platform, projects are the basic unit of work, it is very much like the repo on the github. One can decide whether it is public or private, what permission that each user can have on it, etc. They can be cloned or imported for maximal reuse. There are four kinds of projects on the platform.
+On the Framely platform, projects are the basic unit of work, just like the repo on the GitHub. One can decide whether it is public or private, what permission that each user can have on it, etc. Projects can be cloned or imported for reuse. There are three kinds of projects on the platform.
 
-### Services
-Service projects define a set of function interface that describe how business functionalities can be invoked, this includes the schema or data structure needed by these API functions for input and output parameter and how these input parameters can be used to trigger these functions to get result.
+### Chatbots
+A Framely chatbot is an application with conversational user interface that connects end-users with your services through conversations. It is essentially just a set of intents and all their dependencies like frames, services. 
+
+### Components
+Components are the reusable modules for getting user preferences via conversations, for example, asking user for a date can be one such component. Components can be integrated into bigger and bigger reusable component for more complex use cases. Component can contain a service, which allow interaction logic 
+
+#### Services
+A service defines a set of function interface that specify how business functionalities can be accessed, this includes the schema or data structure needed by these API functions for input and output parameter and how these input parameters can be used to trigger these functions to get result. Conversational behavior of these component can interact with services so that we can make the conversation as effective as possible.
 
 ### Providers
 Each service can have one or more provider projects that provide the implementation of these functionalities. Providers are also deployable, so the same provider can be used by different chatbots from the same organization. We support three types of providers: Postgresql based provider, restful provider and native provider. Providers can be shared by different chatbots in the same org.
-
-### Components
-CUI components are the reusable modules for getting some information from users via conversations, for example, one such component can be asking users for a date. Conversational behavior of these CUI component can depend on with service so that we can make the conversation as effective as possible. Components can be integrated into bigger and bigger reusable component for more complex use cases.
-
-### Chatbots
-A Framely chatbot is an application with conversational user interface that connects end-users with your services through conversations. The CUI is schema grounded, and consists of three modules in two layers, the language dependent perception layer and the language independent interaction layer: the dialog understanding module (perception layer) converts user utterances into event at schema level; interaction management module (interaction layer) processes the schema event and gets a response from the backend service; and a natural language generation module renders the returned schema data for users to consume. 
 
 
 ## Type Systems
@@ -24,7 +24,7 @@ Nowadays, services are typically available behind some APIs that are described b
 To make Framely capable enough to build conversational interface for any service, while staying as conceptually simple as possible, Framely adopts a static parts of type system that is required by OpenAPI: which in addition to primitive type and enums, also include arrays, composite type as well as inheritance and polymorphism support. The Framely CUI types, including intent, frame and entity, are dual purposed: in service or schema layer, they can be directly mapped into code level (currently Java/Kotlin) to invoke the service functions; in conversation layer, these same types directly encode the semantics of user utterances. By grounding user utterance onto data types at schema level, we can easily separate interaction design and language perception, which also makes multilingual support a no-brainer.
 
 ### Intents
-To cover a range of user needs, a chatbot typically offers conversational interface to a collection of the services via intent. On Framely, intent is a composite data type with zero or more slots (think of member data in object-oriented programming sense), the type of slots can be intent, frame (both concrete and interface) and entity. And slot can also be multivalued, which means we can take more than one values for that slot.
+Intents mean different things from different angles. For developer, an intent is essentially a function that a user can access through conversations. At schema layer, an intent is a composite data type with zero or more slots, each representing some input parameters needed by the underlying function. The type of slots can be intent, frame (both concrete and interface) and entity. And a slot can also be multivalued.
 
 In conversation layer, an intent represents what a user wants, is typically expressed by full sentences or verb phrases in user utterances. Examples for such utterances includes: "I would like to make a reservation on Sunday" or "Book me a table for two for Sunday evening". In the service layer, the intent can be thought as a function signature, with its slots directly mapped as input parameter for actual service function. 
 

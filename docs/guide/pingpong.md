@@ -99,7 +99,7 @@ Once created, you can see the chatbot shown like the following:
 
 ## Build
 
-To cover a range of user needs, chatbot typically offers conversational interface to a collection of the services via [Intent](../guide/concepts.md#intents). In conversation layer, the intent represents what a user wants, is typically expressed by full sentences or verb phrases in user utterances.
+Chatbot is essentially just a set of [intents](/guide/concepts.md#intents) and its dependency. An intent offers conversational interface to some functionality, typically as part of some [services](/guide/concepts.md#services). In conversation layer, the intent represents what a user wants, is typically expressed by full sentences or verb phrases in user utterances.
 
 When you create a chatbot, the following **Default Intents** are created automatically for you, and you can modify them as desired. 
 
@@ -114,7 +114,6 @@ When you create a chatbot, the following **Default Intents** are created automat
 ::: thumbnail
 ![default intents](/images/guide/pingpong/default_intents.png)
 :::
-
 
 ### Create a New Intent
 

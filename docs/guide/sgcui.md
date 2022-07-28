@@ -27,4 +27,3 @@ Current conversation owner can yield ownership to other party: for example, the 
 
 ## Implicit Contextual Management
 One of the hallmark of natural language is the same word can mean different things in the different context. While context dependent behavior is explicit modeled by conversation driven approaches, schema grounded CUI naturally has a context, the stack of frame that represent the the current filling. This forest representation of dialog state in the schema space made it easy to find the coreference for the pronouns and produce the contextual behavior almost as a by product.
-
