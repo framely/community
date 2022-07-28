@@ -4,9 +4,9 @@
 
 ## Overview
 
-[Google Sheets](https://www.google.com/sheets/about/#overview) is a spreadsheet program developed by Google and runs on the web browser. You and your teammates can use Google Sheets to create and edit online spreadsheets.
+[Google Sheets](https://www.google.com/sheets/about/#overview) is a spreadsheet web app developed by Google. You and your teammates can use Google Sheets to create and edit tabular or structured data collaboratively online.
 
-Framely supports the backend component in form of a Google Sheets provider. On the Google Sheets side, your operation team can upload and manage your business data in the spreadsheet. On the Framely side, you can get data from your spreadsheet using the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) and update data in your spreadsheet with the help of functions in [io.framely.provider.GoogleSheetsConnection](https://framely.naturali.io/org/5fa0e7dcf549c817cf952edd/agent/62d75a50d1bd62bdd2333bd3/frame/62d75bfad1bd62bdd2333bdb).
+Google Sheets provider allow you to use Google Sheets as backend, which the actual data can be managed by your operation team in online spreadsheet collaboratively. Through Google Sheets provider, you can query data from your spreadsheet using the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) and update data with the help of low level functions in [io.framely.provider.GoogleSheetsConnection](https://framely.naturali.io/org/5fa0e7dcf549c817cf952edd/agent/62d75a50d1bd62bdd2333bd3/frame/62d75bfad1bd62bdd2333bdb).
 
 ::: thumbnail
 ![manage-data-on-two-sides](/images/provider/googlesheets/manage-data-on-two-sides.png)
@@ -23,12 +23,10 @@ To begin with, you need to build a connection between Google Sheets and the prov
 
 ![connection](/images/provider/googlesheets/connection.png)
 
-Once you create a service account, you need to give this account permission to view or edit your spreadsheet.
-
-**How to permit a service account**
-**Step 1** :clipboard: Copy the email of your [service account](https://console.cloud.google.com/iam-admin/serviceaccounts).
-**Step 2** Go to your [spreadsheet](https://docs.google.com/spreadsheets/u/0/). At the top-right, click **Share**.
-**Step 3**  Paste the email you copied and give the right permission to this service account. For example, if you don't need to update business data in your spreadsheet, set the service account as a **Viewer**, otherwise, set it as an **Editor**.
+Once you create a service account, you need to give this account permission to view or edit your spreadsheet in three steps:
+1. Copy the email of your [service account](https://console.cloud.google.com/iam-admin/serviceaccounts).
+2. Go to your [spreadsheet](https://docs.google.com/spreadsheets/u/0/). At the top-right, click **Share**.
+3. Paste the email you copied and give the right permission to this service account. For example, if you don't need to update business data in your spreadsheet, set the service account as a **Viewer**, otherwise, set it as an **Editor**.
 
 ![permit](/images/provider/googlesheets/permit.png)
 

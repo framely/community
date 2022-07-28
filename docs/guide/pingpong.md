@@ -1,7 +1,7 @@
-# A PingPong Bot 
+# Quick Start with PingPong 
 > Follow this PingPong chatbot to get started with Framely.
 
-This guide will walk you through using Framely console to build and test a simple PingPong chatbot. When interacting with this chatbot, you can get greeting message, and response with *"pong"* to message *"ping"*, for example :
+This guide will walk you through using Framely platform to build and test a simple PingPong chatbot. When interacting with this chatbot, a user can get greeting message, and response of *"pong"* to his input message *"ping"*:
 
 :::: conversation
 ::: bot Bot
@@ -21,7 +21,7 @@ Thank you for contacting the virtual PingPong chatbot. Have a great day!
 :::
 ::::
 
-After this simple PingPong chatbot, you can easily reach the first level of [the five levels of CUI](docs/guide/5levels-cui.md), and easily manage how the messages are presented to users according to your own business. For example, if you are a restaurant, you can provide the experience of checking business hours for the user by modifying responses:
+After this simple PingPong chatbot, you can easily build [level 1 conversational user interface](./5levels-cui.md#frame-without-slot), and easily manage how the messages are presented to users per your own business logic. For example, if you are a restaurant, you can let your users check your business hours as follows:
 
 :::: conversation
 ::: bot Bot
@@ -47,17 +47,15 @@ Now, let's begin:
 
 ## Before You Begin
 
-Before you begin, you should do the following before reading this guide:
-
-1. Read [Build Conversational App](README.md)
-2. Read [Before You Start](are-you-ready.md)
-3. Perform [Sign Up For Framely Account](../reference/platform/signingup.md)
+Before you start follow this guide, it is suggested that you go through the following list first.
+1. Get familiar with [the basic idea of building conversational apps](README.md).
+2. [Make sure that you meet the prerequisite](are-you-ready.md)
+3. [Sign Up For Framely Account](../reference/platform/signingup.md)
 
 ## Create Chatbot
-
 After logging in, there will be an org *(short for organization)* created automatically for you, which is how you manage everything on the Framely platform. To create chatbot, follow these steps: 
 
-1. Enter your org by clicking your **org label**: 
+1. Select an org from your **org label**: 
 
 ::: thumbnail
 ![org list](/images/guide/pingpong/orglist.png)
@@ -65,17 +63,17 @@ After logging in, there will be an org *(short for organization)* created automa
 
 2. Create a chatbot : 
 
-  - STEP 1: Click **Chatbots** in the left sidebar menu.
-  - STEP 2: Click the **Create** button on the right side.
+  - 1. Click **Chatbots** in the left sidebar menu.
+  - 2. Click the **Create** button on the right side.
   ::: thumbnail
   ![create chatbot](/images/guide/pingpong/create_chatbot.png)
   :::
 
-  - STEP 3: Complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All can be modified after creation except the **Region** field:
+  - 3. Complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All can be modified after creation except the **Region** field:
 
-     1. Enter your chatbot's name in the **Project Label** field, start with lowercase, for example `pingpong`.
-     2. Select your preferred **Region**.
-     3. Select the languages for your chatbot in the **Add Language** field.
+     - 1. Enter your chatbot's name in the **Project Label** field, start with lowercase, for example `pingpong`.
+     - 2. Select your preferred **Region**.
+     - 3. Select the languages for your chatbot in the **Add Language** field.
 
    ::: thumbnail
    ![complete form](/images/guide/pingpong/complete_form.png)
@@ -87,7 +85,7 @@ After logging in, there will be an org *(short for organization)* created automa
    - Once a chatbot is created, its **Reegion** cannot change. In order to change a chatbot's region, you must export or clone a new chatbot with a different region.
    :::
 
-  - STEP 4: Once you are done with the form, click the **Save** button.
+  - 4. Once you are done with the form, click the **Save** button.
 
    ::: thumbnail
    ![create save](/images/guide/pingpong/create_save.png)
@@ -101,7 +99,7 @@ Once created, you can see the chatbot shown like the following:
 
 ## Build
 
-To cover a range of user needs, chatbot typically offers conversational interface to a collection of the services via [Intent](../guide/concepts.md#intents). In conversation layer, the intent represents what a user wants, is typically expressed by full sentences or verb phrases in user utterances.
+Chatbot is essentially just a set of [intents](/guide/concepts.md#intents) and its dependency. An intent offers conversational interface to some functionality, typically as part of some [services](/guide/concepts.md#services). In conversation layer, the intent represents what a user wants, is typically expressed by full sentences or verb phrases in user utterances.
 
 When you create a chatbot, the following **Default Intents** are created automatically for you, and you can modify them as desired. 
 
@@ -117,20 +115,19 @@ When you create a chatbot, the following **Default Intents** are created automat
 ![default intents](/images/guide/pingpong/default_intents.png)
 :::
 
-
 ### Create a New Intent
 
 For each chatbot, you can define many intents. The steps in this section create an intent that can response with "pong" to message "ping".
 
 #### 1. Create an intent 
 
-- STEP 1: Click the **Create** button on the right side.
+- 1. Click the **Create** button on the right side.
 
 ::: thumbnail
 ![create intent](/images/guide/pingpong/create_intent.png)
 :::
 
-- STEP 2: Enter `PingPong` in the **Intent Label** field, press enter. 
+- 2. Enter `PingPong` in the **Intent Label** field, press enter. 
 
 ::: thumbnail
 ![intent label](/images/guide/pingpong/intent_label.png)
@@ -151,13 +148,13 @@ In this PingPong bot, we can just care about two layers: interaction and languag
 
 So building PingPong intent, should add response on the structure level first:
 
-- STEP 1: On **STRUCT** level, click the **Response** tab, add **Simple Reply** in the **Default Action** section.
+- 1. On **STRUCT** level, click the **Response** tab, add **Simple Reply** in the **Default Action** section.
 
 ::: thumbnail
 ![add response](/images/guide/pingpong/add_response.png)
 :::
 
-- STEP 2: Click **Commit** icon in the right sidebar, for propagating structure level instances to each language level. 
+- 2. Click **Commit** icon in the right sidebar, for propagating structure level instances to each language level. 
 
 ::: thumbnail
 ![commit pingpong struct](/images/guide/pingpong/commit_pingpong_struct.png)
@@ -167,7 +164,7 @@ So building PingPong intent, should add response on the structure level first:
 In this way, you can always keep all language bots with the same structure which can provide a consistent experience in multilingual chatbot. For more information, see [Multi Language]().  
 ::: 
 
-- STEP 3: Select **language** in the second topbar, switch to the language level. In this case, we will switch to **EN** *(short for English)* level. 
+- 3. Select **language** in the second topbar, switch to the language level. In this case, we will switch to **EN** *(short for English)* level. 
 
 ::: thumbnail
 ![switch pingpong en](/images/guide/pingpong/switch_pingpong_en.png)
@@ -175,19 +172,19 @@ In this way, you can always keep all language bots with the same structure which
 
 Now let's add language-related aspects:
 
-- STEP 1: On the language level, click the **Expression** tab, enter `Ping Pong` in the **Alias** section, press enter. This field is the display name of an intent, and it is also an example of what a user might type or express this intent.
+- 1. On the language level, click the **Expression** tab, enter `Ping Pong` in the **Alias** section, press enter. This field is the display name of an intent, and it is also an example of what a user might type or express this intent.
 
 ::: thumbnail
 ![pingpong alias](/images/guide/pingpong/pingpong_alias.png)
 :::
 
-- STEP 2: In the **Expression** tab, enter `ping` in the **Expressions** section, press enter.
+- 2. In the **Expression** tab, enter `ping` in the **Expressions** section, press enter.
 
 ::: thumbnail
 ![pingpong expression](/images/guide/pingpong/pingpong_expression.png)
 :::
 
-- STEP 3: Click the **Responses** section, enter `Pong` in the **Simple Reply** section. 
+- 3. Click the **Responses** section, enter `Pong` in the **Simple Reply** section. 
 
 ::: thumbnail
 ![pingpong simple reply](/images/guide/pingpong/pingpong_simple_reply.png)
@@ -204,7 +201,7 @@ As **Try It Now** can only test committed content, please make sure both structu
 
 <br>
 
-- STEP 1: Make sure you have committed on each level.
+- 1. Make sure you have committed on each level.
 
 ::: thumbnail
 ![commit struct](/images/guide/pingpong/commit_struct.png)
@@ -216,7 +213,7 @@ As **Try It Now** can only test committed content, please make sure both structu
 *Figure 2: click commit on EN level*
 :::
 
-- STEP 2: Click **Try It Now** icon in the right sidebar, the test field will slide out. 
+- 2. Click **Try It Now** icon in the right sidebar, the test field will slide out. 
 
 ::: thumbnail
 ![try it now](/images/guide/pingpong/tryitnow_icon.png)
@@ -228,13 +225,13 @@ As **Try It Now** can only test committed content, please make sure both structu
 *Figure 2: Try It Now slide out*
 :::
 
-- STEP 3: Click **Connect**, and you can test your bot by typing messages.
+- 3. Click **Connect**, and you can test your bot by typing messages.
 
 ::: thumbnail
 ![connect](/images/guide/pingpong/connect.png)
 :::
 
-- STEP 4: Enter `ping` in the text entry and press enter, the bot responds `Pong`.
+- 3. Enter `ping` in the text entry and press enter, the bot responds `Pong`.
 
 ::: thumbnail
 ![pingpong test](/images/guide/pingpong/pingpong_test.png)
