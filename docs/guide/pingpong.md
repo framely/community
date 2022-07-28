@@ -63,8 +63,8 @@ After logging in, there will be an org *(short for organization)* created automa
 
 2. Create a chatbot : 
 
-  - 1: Click **Chatbots** in the left sidebar menu.
-  - 2: Click the **Create** button on the right side.
+  - 1. Click **Chatbots** in the left sidebar menu.
+  - 2. Click the **Create** button on the right side.
   ::: thumbnail
   ![create chatbot](/images/guide/pingpong/create_chatbot.png)
   :::
