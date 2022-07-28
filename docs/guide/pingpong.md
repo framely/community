@@ -55,7 +55,7 @@ Before you start follow this guide, it is suggested that you go through the foll
 ## Create Chatbot
 After logging in, there will be an org *(short for organization)* created automatically for you, which is how you manage everything on the Framely platform. To create chatbot, follow these steps: 
 
-1. Enter your org by clicking your **org label**: 
+1. Select an org from your **org label**: 
 
 ::: thumbnail
 ![org list](/images/guide/pingpong/orglist.png)
@@ -69,7 +69,7 @@ After logging in, there will be an org *(short for organization)* created automa
   ![create chatbot](/images/guide/pingpong/create_chatbot.png)
   :::
 
-  - 3: Complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All can be modified after creation except the **Region** field:
+  - 3. Complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All can be modified after creation except the **Region** field:
 
      - 1. Enter your chatbot's name in the **Project Label** field, start with lowercase, for example `pingpong`.
      - 2. Select your preferred **Region**.
@@ -85,7 +85,7 @@ After logging in, there will be an org *(short for organization)* created automa
    - Once a chatbot is created, its **Reegion** cannot change. In order to change a chatbot's region, you must export or clone a new chatbot with a different region.
    :::
 
-  - 4: Once you are done with the form, click the **Save** button.
+  - 4. Once you are done with the form, click the **Save** button.
 
    ::: thumbnail
    ![create save](/images/guide/pingpong/create_save.png)

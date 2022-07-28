@@ -23,7 +23,7 @@ To begin with, you need to build a connection between Google Sheets and the prov
 
 ![connection](/images/provider/googlesheets/connection.png)
 
-Once you create a service account, you need to give this account permission to view or edit your spreadsheet in two steps:
+Once you create a service account, you need to give this account permission to view or edit your spreadsheet in three steps:
 1. Copy the email of your [service account](https://console.cloud.google.com/iam-admin/serviceaccounts).
 2. Go to your [spreadsheet](https://docs.google.com/spreadsheets/u/0/). At the top-right, click **Share**.
 3. Paste the email you copied and give the right permission to this service account. For example, if you don't need to update business data in your spreadsheet, set the service account as a **Viewer**, otherwise, set it as an **Editor**.
