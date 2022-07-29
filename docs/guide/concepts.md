@@ -3,43 +3,47 @@
 This section helps you understand the key concepts at the org level, and at chatbot level in terms of build, test, deploy and operate chatbots.
 
 ## Projects
-On the Framely platform, projects are the basic unit of work, just like the repo on the GitHub. One can decide whether it is public or private, what permission that each user can have on it, etc. Projects can be cloned or imported for reuse. There are three kinds of projects on the platform.
+Just like repo on the GitHub, nn the Framely platform, projects are the basic unit of work. One can decide whether it is public or private, what permission that each user can have on it, etc. Projects can be cloned or imported for reuse. There are three kinds of projects on the platform.
 
 ### Chatbots
 A Framely chatbot is an application with conversational user interface that connects end-users with your services through conversations. It is essentially just a set of intents and all their dependencies like frames, services. 
 
 ### Components
-Components are the reusable modules for getting user preferences via conversations, for example, asking user for a date can be one such component. Components can be integrated into bigger and bigger reusable component for more complex use cases. Component can contain a service, which allow interaction logic 
+Components are the reusable modules for getting user preferences via conversations, for example, asking user for a date can be one such component. Components can be integrated into bigger and bigger reusable component for more complex use cases. Optionally, component can declare a service, which allows interaction logic to be defined against business logic and service APIs for better conversational experiences.
 
 #### Services
-A service defines a set of function interface that specify how business functionalities can be accessed, this includes the schema or data structure needed by these API functions for input and output parameter and how these input parameters can be used to trigger these functions to get result. Conversational behavior of these component can interact with services so that we can make the conversation as effective as possible.
+A service defines a set of function interface that specify how business functionalities can be accessed, this includes the schema or data structure needed by these API functions for input and output parameter and how these input parameters can be used to trigger these functions to get result. These services can be used during the conversation for making communicating more effective or after conversation for delivering the service. 
 
 ### Providers
 Each service can have one or more provider projects that provide the implementation of these functionalities. Providers are also deployable, so the same provider can be used by different chatbots from the same organization. We support three types of providers: Postgresql based provider, restful provider and native provider. Providers can be shared by different chatbots in the same org.
 
 
 ## Type Systems
-Nowadays, services are typically available behind some APIs that are described by API schema using description languages such as [OpenAPI (previously Swagger)](https://swagger.io/docs/specification/data-models/). The core of the API schema is the set of data types, which is used to describe the input and output parameters for the functions in the service. In order to describe a wide range of functions, OpenAPI requires a type system that supports an extended subset of [JSON Schema Specification Wright Draft 00](https://datatracker.ietf.org/doc/html/draft-wright-json-schema-00). 
+Services can be described by its schema, using description languages such as [OpenAPI](https://swagger.io/docs/specification/data-models/). The core of the API schema is its type system, which is needed to describe data types for the input and output parameters for the service functions. To make it easy to build conversational interface for any services, in addition to primitive type and enums, Framely type system also supports arrays, user defined types with builtin inheritance and polymorphism behaviors. 
 
-To make Framely capable enough to build conversational interface for any service, while staying as conceptually simple as possible, Framely adopts a static parts of type system that is required by OpenAPI: which in addition to primitive type and enums, also include arrays, composite type as well as inheritance and polymorphism support. The Framely CUI types, including intent, frame and entity, are dual purposed: in service or schema layer, they can be directly mapped into code level (currently Java/Kotlin) to invoke the service functions; in conversation layer, these same types directly encode the semantics of user utterances. By grounding user utterance onto data types at schema level, we can easily separate interaction design and language perception, which also makes multilingual support a no-brainer.
+A data type (or simply type) defines what operations can be applied to its instances, and the behavior on these instances resulted from these operations. As a conversational user interface framework, the types you can define on Framely, including intent, frame and entity, have their conversational behavior defined in three layers. In schema layer, they are directly mapped into hosting language data types (currently Java/Kotlin) so that it can be used to invoke the service functions directly; in interaction layer, how to collect user preferences are defined via dialog annotation; finally in language layer, these same types directly encode the semantics of utterances, and builder can use exemplar and template to control how to convert between natural text and structured representation back and forth. 
 
 ### Intents
-Intents mean different things from different angles. For developer, an intent is essentially a function that a user can access through conversations. At schema layer, an intent is a composite data type with zero or more slots, each representing some input parameters needed by the underlying function and intent name can be used to identify what user wants. The type of slots can be intent, frame (both concrete and interface) and entity. And a slot can also be multivalued. In some sense, the intent can be thought as a function signature, with its slots directly mapped as input parameter for actual service function. 
+Generally, an intent represents what a user wants, at the same time, it is essentially a function that a user can access through conversations for businesses. 
 
+In Framely, intent, as a composite CUI data type for functions, is designed to define a self-contained conversational component that delivers some functionality to a user. This means that all three aspects of conversational service delivery need to be defined on top of the corresponding data type: 
+1. collect what user wants through slot filling
+2. invoke function using collected slot value as input parameter
+3. verbalize the service result and render them in channel.
 
-At language layer, An intent is typically expressed by full sentences or verb phrases in user utterances. Examples for such utterances includes: "I would like to make a reservation on Sunday" or "Book me a table for two for Sunday evening".
-
-Each intent is self-contained conversational component that deliver some functionality to a user. Every aspect of this component can be configured on top of the corresponding data type at schema level: including frame filling that collects user preference, service triggering and response rendering.
-
+At language level, intents can be expressed mainly by verb phrases or full sentence. When expressed in full sentence, the subject need to be first person. Examples for such utterances includes: "Book me a table for two for Sunday evening" or "I would like to make a reservation on Sunday".
 
 ### Frame
-Like intent, frame is also a composite data type on Framely. While on the surface they look similar, both can have slots, with one main difference where frame slot can not be intent. But there are some huge difference from type system perspective, while we can have interface frame, we can not have builder defined interface intent.
+Frame is also a composite CUI data type in Framely. Frame is your standard object-oriented class type with composition and polymorphism behaviors support. So smaller frames can be composed to larger frames, with dialog annotations only defined once and reused by different larger frames. 
 
-In conversation layer, a frame represents objects with properties and is typically expressed in a noun phrase like "large, spicy noodle". In the service layer, the frame are your typical data class, which is parameters for your function.
+With inheritance, we can easily support "what symptoms do you have?" type of conversation. By define a interface symptom frame, and multiple concrete frame one for each actual symptom. Since each concrete frame can have a different interaction logic, when we try to fill an interface frame slot, we can naturally get the conversational experience we need. 
 
-To model complex real world business and more importantly promote reuse, frames support both composition and inheritance. So smaller frames can be composed to larger frames, with dialog annotations only defined once and reused by different larger frames. Also with inheritance, we can easily support "what symptoms do you have?" type of conversation, where each actual symptom has a different implementation frame but can be used to fill the parent frame typed slot.
+Since the same frame can be used by different intents, frame also naturally serves as context to pivot conversation back and forth between intents. In particular, a user response like "how is the weather like there?" to an earlier chatbot question "which day you want to fly to Shanghai?", while seemed missing information, is easy to understand if we know both weather and ticket intent use the same location frame.
 
-Since intent is essentially verb + frame, and same frame can be used by different intent, frame also naturally serves as context to pivot conversation back and forth between intents. This makes it easy to support side questions. For example when a chatbot asks a user "which day you want to fly to Shanghai?", user's response "how is the weather like there?", while seemed missing information, is easy to understand.
+At language level, a frame represents objects with properties and is typically expressed in a noun phrase like "large, spicy noodle". In the service layer, the frame are your typical data class, which is parameters for your function.
+
+### Dialog Act
+Dialog act is another composite CUI data type in Framely. When frame is designed to help convert meaning in natural text into structured representation, dialog act is the opposite of the frame. Dialog act is designed to map structured meaning back to natural text.
 
 ### Entity
 The term entity is used to describe the general concept of types and they are basic building block for complex data type. When discussing entity details, it's important to understand these specific aspects:
