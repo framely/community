@@ -189,7 +189,7 @@ Now let's add language-related aspects:
 
 ## Test
 
-Let's try this PingPong bot, which can handle a basic conversation with a welcome message and response with "pong" to message "ping". Framely providers a built-in test feature "**Try It Now**" to help you to uncover bugs with the debug info, you can test your you can test your chatbot by typing messages. 
+Let's try this PingPong bot, which can handle a basic conversation with a welcome message and response with "pong" to message "ping". Framely provides a built-in test feature "**Try It Now**" to help you to uncover bugs with the debug info, you can test your chatbot by typing messages. 
 
 ::: tip Note
 As **Try It Now** can only test committed content, please make sure both structure level and language level have been committed.
