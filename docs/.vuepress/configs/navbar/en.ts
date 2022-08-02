@@ -124,6 +124,11 @@ export const en = [
           icon: '/navIcons/signup.svg',
         },
         {
+          text: 'Testing',
+          link: '/reference/platform/testing.html',
+          icon: '/navIcons/testing.svg',
+        },
+        {
           text: 'Collaboration',
           link: '/reference/platform/versioncontrol.html',
           icon: '/navIcons/branch.svg',

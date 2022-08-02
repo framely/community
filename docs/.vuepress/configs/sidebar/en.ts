@@ -77,6 +77,7 @@ export const en = {
       collapsible: true,
       children:[
         '/reference/platform/signingup.md',
+        '/reference/platform/testing.md',
         '/reference/platform/versioncontrol.md',
       ]
     },
