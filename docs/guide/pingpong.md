@@ -79,7 +79,7 @@ After logging in, there will be an org *(short for organization)* created automa
       ::: warning Need To Know
       - When you create a chatbot, you must specify a region. For the best performance, you should choose a region that is near your services and end-users. 
 
-      - Once a chatbot is created, its **Reegion** cannot change. In order to change a chatbot's region, you must export or clone a new chatbot with a different region.
+      - Once a chatbot is created, its **Region** cannot change. In order to change a chatbot's region, you must export or clone a new chatbot with a different region.
       :::
    4. Once you are done with the form, click the **Save** button.
 
