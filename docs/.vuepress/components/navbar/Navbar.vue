@@ -130,6 +130,9 @@ function getCssValue(el: HTMLElement | null, property: string): number {
   .toggle-menu span:nth-child(2) {
     margin: 6px 0;
   }
+  .navbar-items-wrapper-links{
+    overflow: scroll;
+  }
   .toggle-menu {
     margin-left: 1rem;
     display: flex;
