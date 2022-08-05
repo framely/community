@@ -6,7 +6,7 @@ tagline: Schema grounded Chatbots for any Services
 heroText: Vue of Conversational User Interface
 actions:
   - text: Get Started
-    link: https://framely.naturali.io
+    link: https://build.framely.ai
     type: primary
   - text: Learn More
     link: /guide/getting-started.html
@@ -60,7 +60,7 @@ contentCards:
 cta :
   - details: Build conversational interface for your APIs.
     title: Get Started
-    link: https://framely.naturali.io
+    link: https://build.framely.ai
     
 mainfooter:
   - firstgrid:
