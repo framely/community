@@ -80,6 +80,7 @@ export const en = {
         '/reference/platform/multilingual.md',
         '/reference/platform/testing.md',
         '/reference/platform/versioncontrol.md',
+        '/reference/platform/access.md',
       ]
     },
   ],
