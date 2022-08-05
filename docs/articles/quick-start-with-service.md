@@ -10,7 +10,7 @@ author: SunnyMay
 ---
 
 # Quick Start with Service
-:tada: Welcome to Framely! In this guide, we use [Hours component](https://framely.naturali.io/org/615fa4282cc41400665536e3/agent/62650a98132e5d9cbc123fa9/service_schema) as an example to help you have a quick start with service. Hours component is designed to answer end-users' questions about business hours. To lean more about it, see [Hours - ReadMe](../articles/hours-readme.html). Let’s get started!
+:tada: Welcome to Framely! In this guide, we use [Hours component](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650a98132e5d9cbc123fa9/service_schema) as an example to help you have a quick start with service. Hours component is designed to answer end-users' questions about business hours. To lean more about it, see [Hours - ReadMe](../articles/hours-readme.html). Let’s get started!
 
 [[toc]]
 
@@ -22,8 +22,8 @@ If you want to know more details about terms marked in italics, look them up in 
 ## Step 1: Clone Provider
 *Clone* is another way of reuse. Instead of building chatbot from empty slate, you can create a new project by cloning exist chatbot. *Provider* provides access to implementation for the services. By cloning a provider, it saves time from implementing service by yourself. 
 
-:point_right: To begin with, let's clone [Hours provider](https://framely.naturali.io/org/615fa4282cc41400665536e3/agent/62650ad4132e5d9cbc123fb0/service_schema) to your organization.
-1. Open [Hours provider](https://framely.naturali.io/org/615fa4282cc41400665536e3/agent/62650ad4132e5d9cbc123fb0/service_schema) and click **Clone Project**.
+:point_right: To begin with, let's clone [Hours provider](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650ad4132e5d9cbc123fb0/service_schema) to your organization.
+1. Open [Hours provider](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650ad4132e5d9cbc123fb0/service_schema) and click **Clone Project**.
 2. Choose an organization to clone this provider to.
 3. When creating a new project, you can change default settings, like renaming your new project label.
 
@@ -49,14 +49,14 @@ When you successfully deploy your project, you can upload business data on [*Bac
 
 ## Step 3: Import Component
 
-*Component* defines how chatbot can collect user intention for some reason so that different businesses in the same sector do not need to build the same CUI behavior over and over again. *Import* is a way to reuse functionality of *Component*. By importing *Component* built by others, there is no need to build functionality from scratch. After you upload business data, let's import [Hours component](https://framely.naturali.io/org/615fa4282cc41400665536e3/agent/62650a98132e5d9cbc123fa9/service_schema) for service.
+*Component* defines how chatbot can collect user intention for some reason so that different businesses in the same sector do not need to build the same CUI behavior over and over again. *Import* is a way to reuse functionality of *Component*. By importing *Component* built by others, there is no need to build functionality from scratch. After you upload business data, let's import [Hours component](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650a98132e5d9cbc123fa9/service_schema) for service.
 
-1. Enter your [organization](https://framely.naturali.io/org), in **Chatbots** field, Click **Create** to create a new *Chatbot*.
+1. Enter your [organization](https://build.framely.ai/org), in **Chatbots** field, Click **Create** to create a new *Chatbot*.
 2. Fill in the form and modify default settings based on your scenario. :exclamation: Be sure to choose the right **TimeZone**.
 
 ![create](/images/blog/quick-start-with-service/create.png)
 
-3. Open [Hours component](https://framely.naturali.io/org/615fa4282cc41400665536e3/agent/62650a98132e5d9cbc123fa9/service_schema) and Click **Import Project**. Import this component to the chatbot you just created before.
+3. Open [Hours component](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650a98132e5d9cbc123fa9/service_schema) and Click **Import Project**. Import this component to the chatbot you just created before.
    
 ![import](/images/blog/quick-start-with-service/import.png)
 

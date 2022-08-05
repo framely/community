@@ -80,7 +80,7 @@ function getCssValue(el: HTMLElement | null, property: string): number {
       <NavbarItems id="navbar-items-right" class="navbar-items-wrapper-links" />
       <button class="button can-hide">
         <a
-          href="http://framely.naturali.io"
+          href="http://build.framely.ai"
           target="_blank"
           rel="noopener noreferrer"
           >Get Started</a

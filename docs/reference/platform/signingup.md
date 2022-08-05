@@ -37,7 +37,7 @@ You will wait an Email notification, which will inform you that you now have acc
 
 ## Logging into your account
 
-You can [log into your Framely account](https://framely.naturali.io/login) with your GitHub account. This allows you to log into simply by clicking the **Sign in with GitHub** button: 
+You can [log into your Framely account](https://build.framely.ai/login) with your GitHub account. This allows you to log into simply by clicking the **Sign in with GitHub** button: 
 
 ::: thumbnail
 ![sign in](/images/guide/signup/sign-in.png)

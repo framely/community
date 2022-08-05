@@ -6,7 +6,7 @@
 
 [Google Sheets](https://www.google.com/sheets/about/#overview) is a spreadsheet web app developed by Google. You and your teammates can use Google Sheets to create and edit tabular or structured data collaboratively online.
 
-Google Sheets provider allow you to use Google Sheets as backend, which the actual data can be managed by your operation team in online spreadsheet collaboratively. Through Google Sheets provider, you can query data from your spreadsheet using the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) and update data with the help of low level functions in [io.framely.provider.GoogleSheetsConnection](https://framely.naturali.io/org/5fa0e7dcf549c817cf952edd/agent/62d75a50d1bd62bdd2333bd3/frame/62d75bfad1bd62bdd2333bdb).
+Google Sheets provider allow you to use Google Sheets as backend, which the actual data can be managed by your operation team in online spreadsheet collaboratively. Through Google Sheets provider, you can query data from your spreadsheet using the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) and update data with the help of low level functions in [io.framely.provider.GoogleSheetsConnection](https://build.framely.ai/org/5fa0e7dcf549c817cf952edd/agent/62d75a50d1bd62bdd2333bd3/frame/62d75bfad1bd62bdd2333bdb).
 
 ::: thumbnail
 ![manage-data-on-two-sides](/images/provider/googlesheets/manage-data-on-two-sides.png)
@@ -97,7 +97,7 @@ To get your business data from a spreadsheet, you can write a query in **provide
 
 ### How To Update/Append Data
 
-To update and append your business, Framely provides external functions: _update_ and _append_. You can call these functions using `connection.update` and `connection.append` in Kotlin functions. Check out the definitions of these functions in [io.framely.provider.GoogleSheetsConnection](https://framely.naturali.io/org/5fa0e7dcf549c817cf952edd/agent/62d75a50d1bd62bdd2333bd3/frame/62d75bfad1bd62bdd2333bdb). To learn the source of the function, see [spreadsheets.values.update](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/update) and [spreadsheets.values.append](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append).
+To update and append your business, Framely provides external functions: _update_ and _append_. You can call these functions using `connection.update` and `connection.append` in Kotlin functions. Check out the definitions of these functions in [io.framely.provider.GoogleSheetsConnection](https://build.framely.ai/org/5fa0e7dcf549c817cf952edd/agent/62d75a50d1bd62bdd2333bd3/frame/62d75bfad1bd62bdd2333bdb). To learn the source of the function, see [spreadsheets.values.update](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/update) and [spreadsheets.values.append](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append).
 
 - The input parameters are the same in these two functions. 
 
