@@ -134,9 +134,19 @@ export const en = [
           icon: '/navIcons/testing.svg',
         },
         {
-          text: 'Collaboration',
+          text: 'Deployment',
+          link: '/reference/platform/deployment.html',
+          icon: '/navIcons/deployment.svg',
+        },
+        {
+          text: 'Version Control',
           link: '/reference/platform/versioncontrol.html',
           icon: '/navIcons/branch.svg',
+        },
+        {
+          text: 'Access Control',
+          link: '/reference/platform/access.html',
+          icon: '/navIcons/permission.svg',
         },
         ]
       },

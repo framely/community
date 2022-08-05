@@ -79,7 +79,9 @@ export const en = {
         '/reference/platform/signingup.md',
         '/reference/platform/multilingual.md',
         '/reference/platform/testing.md',
+        '/reference/platform/deployment.md',
         '/reference/platform/versioncontrol.md',
+        '/reference/platform/access.md',
       ]
     },
   ],

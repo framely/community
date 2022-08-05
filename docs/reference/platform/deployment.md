@@ -1,4 +1,4 @@
-# Interaction with integration.
+# Deployment
 
 End users here are handled for you. All you have to do is configure the chatbot and webhooks. With integration, you are working with a [channel](/reference/channels/overview.html).
 
