@@ -4,6 +4,8 @@ Collaboration is encouraged on the Framely platform. This is through you as an o
 
 > Note that some of the collaboration flow actions are based on our flexible [plans](/pricing).
 
+## Org Management
+
 #### How to invite collaborators
 
 **1**. *Click* on the **settings** menulink to move to the organisation settings.
@@ -24,3 +26,5 @@ When you add a member, you can perform  the following actions on them. This is h
 
 Collaborators can make changes and make **pull requests**. This will be **reviewed**, **approved** and **Merged**. The reviewer can also close the pull request. 
 Changes made by member are not visible on the master branch until they make a pull request.
+
+## Project Management
