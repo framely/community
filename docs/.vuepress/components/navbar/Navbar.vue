@@ -77,7 +77,10 @@ function getCssValue(el: HTMLElement | null, property: string): number {
 
     <div class="navbar-items-wrapper" :style="linksWrapperStyle">
       <slot name="before" />
+      <div id="nav-container">
+
       <NavbarItems id="navbar-items-right" class="navbar-items-wrapper-links" />
+      </div>
       <button class="button can-hide">
         <a
           href="http://build.framely.ai"
@@ -130,6 +133,13 @@ function getCssValue(el: HTMLElement | null, property: string): number {
   .toggle-menu span:nth-child(2) {
     margin: 6px 0;
   }
+  .navbar-items-wrapper-links{
+    background: yellow;
+    overflow: scroll !important;
+  }
+  #nav-container{
+    overflow: hidden;
+  }
   .toggle-menu {
     margin-left: 1rem;
     display: flex;
@@ -151,23 +161,30 @@ function getCssValue(el: HTMLElement | null, property: string): number {
       transform-origin: center;
     }
   }
-  .navbar-items-wrapper-links {
+  #navbar-items-right{
     background: var(--c-bg);
+    z-index: 9999999;
+    overflow: scroll;
+  }
+  .navbar-items-wrapper-links {
+    height: 90%;
     display: flex;
     flex-direction: column;
     z-index: 9999999;
     transition: 0.5s ease-out;
     position: fixed;
     top: var(--navbar-height);
-    height: 100vh;
-    //padding-left: 10px;
-    position: fixed;
+    max-height: 200vh;
+    // position: absolute;
+    padding-bottom: 20px ;
     right: 0;
+    bottom: 0;
     width: 100vw;
     font-size: 1.1em;
     //top: var(--navbar-height);
     transform: translate(120%);
     line-height: 1.4em;
+    overflow-y: scroll;
     
   }
   .slide-in-menu {
