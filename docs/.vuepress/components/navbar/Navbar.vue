@@ -86,7 +86,7 @@ function getCssValue(el: HTMLElement | null, property: string): number {
           href="http://build.framely.ai"
           target="_blank"
           rel="noopener noreferrer"
-          >Get Started</a
+          >Start to Build</a
         >
       </button>
       <slot name="after" />

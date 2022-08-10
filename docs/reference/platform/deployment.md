@@ -1,39 +1,23 @@
 # Deployment
 
-End users here are handled for you. All you have to do is configure the chatbot and webhooks. With integration, you are working with a [channel](/reference/channels/overview.html).
+[[toc]]
 
-In this guide we will configure a chatbot and deploy and interact with it on the user's end. We will try this usin whatsapp business.
+## Overview
 
-### Before you begin
+Framely currently provides two separate serving environments, **development** and **production**. When building your chatbot on paltform and testing your chatbot in [Try It Now](testing.md), it means you are in the development environment, regardless of whether you merge your branch to master or not. When interacting with your bot in an integrated [channel](../channels/overview.md), it means you are in the production environment. 
 
-You need to have gone through the following:
+Deploy is the one that lets you publish the **latest master version** of your bot from development environment to production environment. As deploy only works well with the master version, before you start, please make sure you are done with testing and keep all instances you need merged into master.  
 
-- Login to the [Framely platfom](/guide/platform/signingup.html)
+## How To Use
 
-- Create your first [chatbot](/guide/platform/pingpong.html)
+To deploy your chatbot, stay at **STRUCT** level:
 
-### Setting up
-We shall use the ping pong [chatbot](/guide/platform/pingpong.html) we created in the earlier section.
- 
-**1** *Click* **Settings** on your chatbot.
+1. Head to the **Versions** page, all the versions are listed.
+2. Click **Deploy** button, the latest version will be published to production environment.
+3. When completed, there will be a small green dot to indicate the current deployed version. 
 
-**2** *Click* on  the **Integrations** tab
+Now you can interact with your bot in each integrated channel. For example, deploy the PingPong bot we built in [Quick Start with PingPong](../../guide/pingpong.md) :
 
-**2** On the **Channels section** *Click* **Add new** and *select*  **WhatsApp Business** 
-
-![items](/images/guide/platform/integration.png)
-
-**4** Follow this process to get access token. [Get access token with whatsapp business](/reference/channels/whatsapp.html#set-up-whatsapp)
-
-**5** How to configure [webhook](/reference/channels/whatsapp.html#configure-webhook)
-
-**6** Once you have configured the webhook and **deployed** your chatbot, you should be able to test it.
-> To deploy a chatbot, you should find a button that initiates the deployment process allowing your chatbot to be available to end users.
-![url](/images/guide/platform/deploy.png)
-
-Results:
-![whatsapp](/images/guide/platform/whatsapp.jpg)
-
-Now we have a deployed version. Learn how to use other channels available at the moment [here](/reference/channels/overview.html)
-
-
+::: thumbnail
+<img width="400" alt="whatsapp" src="/images/guide/platform/whatsapp.jpg">
+:::
