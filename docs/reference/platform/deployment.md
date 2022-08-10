@@ -16,7 +16,7 @@ To deploy your chatbot, stay at **STRUCT** level:
 2. Click **Deploy** button, the latest version will be published to production environment.
 3. When completed, there will be a small green dot to indicate the current deployed version. 
 
-Now you can interact with your bot in each integrated channel.
+Now you can interact with your bot in each integrated channel. For example, deploy the PingPong bot we built in [Quick Start with PingPong](../../guide/pingpong.md) :
 
 ::: thumbnail
 <img width="400" alt="whatsapp" src="/images/guide/platform/whatsapp.jpg">
