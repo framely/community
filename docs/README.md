@@ -5,7 +5,7 @@ heroImage: /images/hero.png
 tagline: Schema grounded Chatbots for any Services
 heroText: Vue of Conversational User Interface
 actions:
-  - text: Get Started
+  - text: Start to Build
     link: https://build.framely.ai
     type: primary
   - text: Learn More
