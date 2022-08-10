@@ -14,7 +14,7 @@ To deploy your chatbot, stay at **STRUCT** level:
 
 1. Head to the **Versions** page, all the versions are listed.
 2. Click **Deploy** button, the latest version will be published to production environment.
-3. When completed, there will be a flag for the current deployed version. 
+3. When completed, there will be a small green dot to indicate the current deployed version. 
 
 Now you can interact with your bot in each integrated channel.
 
