@@ -52,42 +52,45 @@ Before you start follow this guide, it is suggested that you go through the foll
 2. [Make sure that you meet the prerequisite](are-you-ready.md)
 3. [Sign Up For Framely Account](../reference/platform/signingup.md)
 
-## Create Chatbot
+## Create
 After logging in, there will be an org *(short for organization)* created automatically for you, which is how you manage everything on the Framely platform. To create chatbot, follow these steps: 
 
-1. Select an org from your **org label**: 
+1. Select an org from your **org label** (If you are already inside an org, you can skip this step): 
 
 ::: thumbnail
 ![org list](/images/guide/pingpong/orglist.png)
 :::
 
-2. Create a chatbot :
-   1. Click **Chatbots** in the left sidebar menu.
-   2. Click the **Create** button on the right side.
-     ::: thumbnail
-     ![create chatbot](/images/guide/pingpong/create_chatbot.png)
-     :::
-   3. Complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All can be modified after creation except the **Region** field:
-      1. Enter your chatbot's name in the **Project Label** field, start with lowercase, for example `pingpong`.
-      2. Select your preferred **Region**.
-      3. Select the languages for your chatbot in the **Add Language** field.
+2. When you are inside an org, head to **Chatbots** page by clicking **Chatbots** in the left sidebar menu, then click the **Create** button on the right side.
 
-      ::: thumbnail
-      ![complete form](/images/guide/pingpong/complete_form.png)
-      :::
+::: thumbnail
+![create chatbot](/images/guide/pingpong/create_chatbot.png)
+:::
 
-      ::: warning Need To Know
-      - When you create a chatbot, you must specify a region. For the best performance, you should choose a region that is near your services and end-users. 
+3. Complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All of them can be modified after creation except the **Region** field:
+   1. Enter your chatbot's name in the **Project Label** field, start with lowercase, for example `pingpong`.
+   2. Select your preferred **Region**.
+   3. Select the languages for your chatbot in the **Add Language** field.
 
-      - Once a chatbot is created, its **Region** cannot change. In order to change a chatbot's region, you must export or clone a new chatbot with a different region.
-      :::
-   4. Once you are done with the form, click the **Save** button.
+   ::: thumbnail
+   ![complete form](/images/guide/pingpong/complete_form.png)
+   :::
 
-      ::: thumbnail
-      ![create save](/images/guide/pingpong/create_save.png)
-      :::
+   ::: warning Need To Know
+   - When you create a chatbot, you must specify a region. For the best performance, you should choose a region that is near your services and end-users. 
 
-Once created, you can see the chatbot shown like the following:
+   - Once a chatbot is created, its **Region** cannot change. In order to change a chatbot's region, you must export or clone a new chatbot with a different region.
+   :::
+
+   <br>
+
+4. Once you are done with the form, click the **Save** button.
+
+::: thumbnail
+![create save](/images/guide/pingpong/create_save.png)
+:::
+
+If created successfully, you can see the chatbot shown like the following:
 
 ::: thumbnail
 ![enter chatbot](/images/guide/pingpong/enter_chatbot.png)
@@ -115,7 +118,7 @@ When you create a chatbot, the following **Default Intents** are created automat
 
 For each chatbot, you can define many intents. The steps in this section create an intent that can response with "pong" to message "ping".
 
-#### 1. Create an intent 
+#### Create an Intent 
 
 1. Click the **Create** button on the right side.
 
@@ -129,18 +132,18 @@ For each chatbot, you can define many intents. The steps in this section create 
 ![intent label](/images/guide/pingpong/intent_label.png)
 :::
 
-::: tip Note
+::: warning Need To Know
 - Label is not a name, it is **identifier**, a language independent aspect for semantics in Framely. 
 - As a type label, **Intent Label** should start with capital case, limited 2-100 characters, and only support letters, digits and underscores.
 :::
 
 <br>
 
-#### 2. Build PingPong intent
+#### Build PingPong Intent
 
-Separation of concerns is essential in increasing productivity and reducing the cost of building things. Framely decompose chatbot into **3 layers**: schema, interaction and language perception. In this way, the exact conversational experience should be easily controlled by you based on arbitrary business logic. For example, it should be more easier to keep a multilingual chatbot with the same structure which can provide a consistent experience in each language. For more information, see [Separation of Concerns](../guide/README.md#separation-of-concerns) .
+Separation of concerns is essential in increasing productivity and reducing the cost of building things. Framely decompose chatbot into **3 layers**: schema, interaction and language perception. In this way, the exact conversational experience should be easily controlled by you based on arbitrary business logic. For example, it should be more easier to keep a multilingual chatbot with the same structure which can provide a consistent experience in each language. For more information, see [Separation of Concerns](../guide/README.md#separation-of-concerns).
 
-In this PingPong bot, we can just care about two layers: interaction and language. The difference between interaction and language is whether the entry is language-dependent or not. Language-related aspect like expression, prompt, reply for dialog understanding and template for text generation needs to be defined on language level, while others should be on structure level.
+In this PingPong bot, we can just care about two layers: **interaction** and **language**. The difference between interaction and language is whether the entry is language-dependent or not. Language-related aspect like expression, prompt, reply for dialog understanding and template for text generation needs to be defined on language level, while others should be on structure level. In this way, you can always keep all language bots with the same structure which can provide a consistent experience in multilingual chatbot. For more information, see [Multilingual](../reference/platform/multilingual.md).  
 
 So building PingPong intent, should add response on the structure level first:
 
@@ -156,10 +159,6 @@ So building PingPong intent, should add response on the structure level first:
 ![commit pingpong struct](/images/guide/pingpong/commit_pingpong_struct.png)
 :::
 
-::: tip Note
-In this way, you can always keep all language bots with the same structure which can provide a consistent experience in multilingual chatbot. For more information, see [Multi Language]().  
-::: 
-
 3. Select **language** in the second topbar, switch to the language level. In this case, we will switch to **EN** *(short for English)* level. 
 
 ::: thumbnail
@@ -168,19 +167,19 @@ In this way, you can always keep all language bots with the same structure which
 
 Now let's add language-related aspects:
 
-1. On the language level, click the **Expression** tab, enter `Ping Pong` in the **Alias** section, press enter. This field is the display name of an intent, and it is also an example of what a user might type or express this intent.
+4. On the language level, click the **Expression** tab, enter `Ping Pong` in the **Alias** section, press enter. This field is the display name of an intent, and it is also an example of what a user might type or express this intent.
 
 ::: thumbnail
 ![pingpong alias](/images/guide/pingpong/pingpong_alias.png)
 :::
 
-2. In the **Expression** tab, enter `ping` in the **Expressions** section, press enter.
+5. In the **Expression** tab, enter `ping` in the **Expressions** section, press enter.
 
 ::: thumbnail
 ![pingpong expression](/images/guide/pingpong/pingpong_expression.png)
 :::
 
-3. Click the **Responses** section, enter `Pong` in the **Simple Reply** section. 
+6. Click the **Responses** section, enter `Pong` in the **Simple Reply** section. 
 
 ::: thumbnail
 ![pingpong simple reply](/images/guide/pingpong/pingpong_simple_reply.png)
@@ -192,7 +191,7 @@ Now let's add language-related aspects:
 Let's try this PingPong bot, which can handle a basic conversation with a welcome message and response with "pong" to message "ping". Framely provides a built-in test feature "**Try It Now**" to help you to uncover bugs with the debug info, you can test your chatbot by typing messages. 
 
 ::: tip Note
-As **Try It Now** can only test committed content, please make sure both structure level and language level have been committed.
+As **Try It Now** can only test committed content, please make sure both structure level and language level have been committed. For more information, see [Testing](../reference/platform/testing.md).
 :::
 
 <br>
@@ -234,6 +233,84 @@ As **Try It Now** can only test committed content, please make sure both structu
 :::
 
 ::: tip Note
-You can restart your testing by clicking "**RESET CONTEXT**" icon, and create test cases by clicking "**Save Test case**" icon, then you can run test cases when needed.
+You can restart your testing by clicking "**Reset Context**" icon, and create test cases by clicking "**Save Test case**" icon, then you can run test cases when needed. For more information, see [Testing](../reference/platform/testing.md).
+:::
+
+## Modify
+
+As we said at the beginning, you can easily manage how the messages are presented to users per your own business logic, and achieved [level 1 conversational user interface](./5levels-cui.md#frame-without-slot), for example: 
+
+:::: conversation
+::: bot Bot
+Hi! I'm a virtual Restaurant chatbot. How can I assist you today?
+:::
+::: user User
+What is your hours?
+:::
+::: bot Bot
+We open every day from 10:00am to 9:00pm. Can I help you with anything else? 
+:::
+::: user User
+No, thanks
+:::
+::: bot Bot
+Thank you for contacting the virtual Restaurant chatbot. I am glad I could help you today. Good-bye!
+:::
+::::
+
+You can provide this experience by following these steps:
+
+1. Create a new intent, labeled as "BusinessHours".
+
+::: thumbnail
+![create hours](/images/guide/pingpong/create_hours.png)
+:::
+
+2. Add the response action you need, in this case we add a **Simple Reply** here, then commit struct.
+
+::: thumbnail
+![add hours response](/images/guide/pingpong/add_hours_response.png)
+:::
+
+3. Switch to the language side. In **Response** tab, enter `We open every day from 10:00am to 9:00pm.` in the simple reply and press enter.
+
+::: thumbnail
+![add hours reply](/images/guide/pingpong/add_hours_reply.png)
+:::
+
+4. In **Expression** tab, enter `We open every day from 10:00am to 9:00pm.` in **Expressions** field and press enter. Don't forget to add **Alias** at the same time.
+
+::: thumbnail
+![add hours expression](/images/guide/pingpong/add_hours_expression.png)
+:::
+
+5. Modify the **Greeting** intent **Response**, enter `Hi! I'm a virtual Restaurant chatbot.` in the simple reply and press enter.
+
+::: thumbnail
+![modify greeting](/images/guide/pingpong/modify_greeting.png)
+:::
+
+6. Modify the **Goodbye** intent **Response**, enter `Hi! I'm a virtual Restaurant chatbot.` in the simple reply and press enter.
+
+::: thumbnail
+![modify goodbye](/images/guide/pingpong/modify_goodbye.png)
+:::
+
+7. Add a prompt in the **skills** slot of **Main** intent, enter `How can I assist you today?` in the **Prompts** field and press enter. No need to delete any prompts, when there are multiple prompts, bot will randomly display one to the user.
+
+::: thumbnail
+![main skills](/images/guide/pingpong/main_skills.png)
+*Figure 1: click skills in Main intent*
+
+<br>
+
+![add skills prompt](/images/guide/pingpong/add_skills_prompt.png)
+*Figure 2: add prompt*
+:::
+
+8. Commit and Try it Now. If you get this, congratulations, you're done!
+
+::: thumbnail
+![modify result](/images/guide/pingpong/modify_result.png)
 :::
 

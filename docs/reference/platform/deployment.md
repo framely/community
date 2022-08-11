@@ -12,11 +12,25 @@ Deploy is the one that lets you publish the **latest master version** of your bo
 
 To deploy your chatbot, stay at **STRUCT** level:
 
-1. Head to the **Versions** page, all the versions are listed.
-2. Click **Deploy** button, the latest version will be published to production environment.
-3. When completed, there will be a small green dot to indicate the current deployed version. 
+1. Head to the **Versions** page, all the versions are listed. If there is no version here, you need to merge your chatbot first, for more information about versions, see [Version Control](versioncontrol.md). 
 
-Now you can interact with your bot in each integrated channel. For example, deploy the PingPong bot we built in [Quick Start with PingPong](../../guide/pingpong.md) :
+::: thumbnail
+![version page](/images/platform/deployment/version_page.png)
+:::
+
+2. Click **Deploy** button, the latest **Merged** version will be published to production environment.
+
+::: thumbnail
+![version page](/images/platform/deployment/deploy_button.png)
+:::
+
+3. When completed, there will be a **Green Checked Icon** to indicate the current deployed version. 
+
+::: thumbnail
+![version page](/images/platform/deployment/deploy_complete.png)
+:::
+
+Now you can interact with your bot in each integrated channel like the screenshot below. For more information about channel integration, see [channel](../channels/overview.md). 
 
 ::: thumbnail
 <img width="400" alt="whatsapp" src="/images/guide/platform/whatsapp.jpg">
