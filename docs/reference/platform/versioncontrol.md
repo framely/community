@@ -40,7 +40,7 @@ Pull requests can only be opened when there are differences between branch and m
 
 ## How to Use
 
-Following these steps to go through version control workflow:
+This guide walks you through version control workflow:
 
 ### Create Branch
 To create branch, you can just modify your project, for example you can create an intent. And then all your work will be done in your branch. 
