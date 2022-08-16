@@ -4,7 +4,7 @@
 :::
 A WeChat Official Account exists in the form of a Wechat user's contact and chat is the basis for the interaction between the Official Account and its users.
 
-We show here how to configure the Framely integration and Messenger and deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
+We are going to show here how to integrate Framely with WeChat and deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
 
 Follow these steps to configure:
 [[toc]]

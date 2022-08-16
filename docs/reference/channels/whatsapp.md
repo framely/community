@@ -4,7 +4,7 @@
 :::
 The [WhatsApp Business Platform](https://developers.facebook.com/docs/whatsapp) gives medium to large businesses the ability to connect with customers at scale. You can start conversations with customers in minutes, send customer care notifications or purchase updates, offer your customers a level of personalized service and provide support in the channel that your customers prefer to be reached on.
 
-We are going to show here how to configure the Framely integration and Messenger and deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
+We are going to show here how to integrate Framely with WhatsApp and deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
 
 Follow these steps to configure:
 [[toc]]
