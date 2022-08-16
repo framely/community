@@ -62,6 +62,7 @@ export const en = {
         '/reference/channels/wpa.md',
         '/reference/channels/messenger.md',
         '/reference/channels/whatsapp.md',
+        '/reference/channels/googlebusiness.md',
       ],
     },
     {
