@@ -98,7 +98,7 @@ export const en = [
             icon: '/navIcons/whatsapp.svg',
           },
           {
-            text: 'Google Business',
+            text: 'Google Business Message',
             link: '/reference/channels/googlebusiness.html',
             icon: '/navIcons/google-business.svg',
           },

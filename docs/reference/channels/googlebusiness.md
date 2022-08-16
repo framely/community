@@ -1,12 +1,12 @@
-# Google Business
+# Google Business Message
 [Business Messages](https://developers.google.com/business-communications/business-messages) is a mobile conversational channel that combines entry points on Google Maps, Search, and brand websites to create rich, asynchronous messaging experiences that delight customers and drive business results.
 
-We are going to show here how to integrate Framely with Google Business and deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
+We are going to show here how to integrate Google Business Message into Framely and deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
 
 Follow these steps to configure:
 [[toc]]
 
-## Set Up Google Business
+## Set Up Google Business Message
 
 #### Register As a Partner
 
