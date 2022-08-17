@@ -41,9 +41,7 @@ If you used *Developer Password(AppSecret)* before but didn't store it, you can 
    
 ![An image](/images/channelConfig/wechat/step1_2.jpeg)
 
-3. Click **Deploy** to deploy your chatbot.
-
-![An image](/images/channelConfig/wechat/step3_2.jpeg)
+3.[Deploy](../platform/deployment.md) your chatbot.
 
 ## Configure Server
 

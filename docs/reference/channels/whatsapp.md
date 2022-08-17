@@ -47,7 +47,7 @@ On the WhatsApp side, please ensure you have all of the following:
    - **Access Token**: Paste the token you copied when [getting the access token](#get-access-token).
    - **Phone Number ID**: Paste the Phone Number ID you copied when [setting up WhatsApp](#set-up-whatsapp).
 
-3. Click **Deploy** on the right sidebar to deploy your chatbot.
+3. [Deploy](../platform/deployment.md) your chatbot.
 
 ![add-messenger](/images/channelConfig/whatsapp/add-channel.png)
 
