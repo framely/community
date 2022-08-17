@@ -35,6 +35,10 @@ The service functions called in a chatbot are defined in components. Before impl
 
 ## Implement Functions
 - There are two kinds of functions in a provider and both of them need to be implemented. 
+  - **Imported functions** are imported from a component.
+  - **Local functions** are added within the current provider.
+
+
   | Type               | Can its declarations be changed? | Can it be Called in a chatbot?   |
   |:-------------------|:---------------------------------|:---------------------------------|
   | Imported function  | :x:                              | :white_check_mark:               |
