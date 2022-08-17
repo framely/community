@@ -35,7 +35,7 @@ On the Messenger side, please ensure you have all of the following:
    - **Callback URL**: :clipboard: Copy this value. This will be used to configure the Facebook Messenger Webhook. 
    - **Verify Token**: You can enter any private token you desire. :clipboard: Copy this value. This will be used to configure the Facebook Messenger Webhook. 
    - **Page Access Token**: Enter the access token generated during the [Messenger setup](#set-up-messenger).
-3. Click **Deploy** on the right sidebar to deploy your chatbot.
+3. [Deploy](../platform/deployment.md) your chatbot.
 
 ![add-channel](/images/channelConfig/messenger/add-channel.png)
 
