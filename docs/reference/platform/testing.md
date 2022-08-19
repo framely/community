@@ -40,13 +40,13 @@ For example, the user utterance `Get me two tickets for Star Wars` can be encode
 ```
 
 In **Try It Now**, you can set this structure in the **Structure Input** field: 
-- Before connect
+- Before connecting
 
 ::: thumbnail
 ![before connect](/images/platform/testing/before_connect.png)
 :::
 
-- After connect
+- After connecting
 
 ::: thumbnail
 ![after connect](/images/platform/testing/after_connect.png)
@@ -60,7 +60,7 @@ Then you can get the conversation in **Try It Now** like:
 
 ## Test Cases
 
-The goal of [golden test cases](https://en.wikipedia.org/wiki/Characterization_test) is to help you verify that the modifications made to your bot did not modify its behavior in unwanted or undesirable ways. In other words, test case execution verifies chatbot responses have not changed for the same inputs. 
+The goal of [golden test cases](https://en.wikipedia.org/wiki/Characterization_test) is to help you verify that the modifications made to your bot did not modify its behavior in unwanted or undesirable ways. In other words, test case execution verifies that chatbot responses have not changed for the same inputs. 
 
 To create a test case, you should simulate the path of the conversation you want to save in **Try It Now** and provide a test case display name. After saving, you can view them in the left sidebar menu **Test Cases**, which shows the test name, the latest test time and the latest test result. 
 
@@ -103,7 +103,7 @@ The instructions below show you how to test your bot.
 ![testing try it now](/images/platform/testing/testing_try_it_now.png)
 :::
 
-3. Enter **Structure Input** if you needed and click **Connect**. In this case, we just need to click **Connect**. 
+3. Enter **Structure Input** if needed and click **Connect**. In this case, we just need to click **Connect**. 
 
 ::: thumbnail
 ![testing connect](/images/platform/testing/testing_connect.png)
