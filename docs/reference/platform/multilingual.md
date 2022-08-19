@@ -38,7 +38,7 @@ Or head to the **Settings** page, add multiple languages in **Chatbot Language**
 ![setting language](/images/platform/multilingual/setting_language.png)
 :::
 
-After saved, depending on the language you choose, the corresponding language bot will be created automatically. To access language-specific bot, click the **Language Selector** at the second topbar.
+After its saved, depending on the language you choose, the corresponding language bot will be created automatically. To access language-specific bot, click the **Language Selector** at the second topbar.
 
 ::: thumbnail
 ![switch language](/images/platform/multilingual/switch_language.png)
@@ -46,8 +46,8 @@ After saved, depending on the language you choose, the corresponding language bo
 
 ### Remove Language
 
-Remove a language means you will delete the corresponding language bot. To delete a language-specific bot: 
-1. Switch the language bot you want to delete.
+Removing a language means you will delete the corresponding language bot. To delete a language-specific bot: 
+1. Switch to the language bot you want to delete.
 2. Head to the **Settings** page
 3. Scroll down to the bottom of the page and click **Delete Project**.
 
