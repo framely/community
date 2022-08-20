@@ -58,7 +58,9 @@ Your browser downloads the service account key. Store it in a secure location. Y
 ![add-channel](/images/channelConfig/googlebusiness/add-channel.png)
 
 ## Set Your Webhook
+A webhook is a partner-created HTTPS callback that specifies how your agent should respond to messages and events. You can set your webhook either at the partner level or at the agent level. Partner-level webhooks apply to every agent you maintain, while agent-level webhooks each apply to one individual agent.
 
+### Set Your Partner-level Webhook
 1. Open the [Account settings](https://business-communications.cloud.google.com/console/partner/settings?utm_source=/business-communications/business-messages/guides/quickstarts/echo-agent&utm_medium=devsite&utm_campaign=business-messages) in the Console.
 2. Make sure the correct partner account is selected.
 3. Set **Technical point of contact**.
@@ -68,6 +70,16 @@ Your browser downloads the service account key. Store it in a secure location. Y
 5. Click **Verify** and click **Save** in the top right corner.
 
 ![set-webhook](/images/channelConfig/googlebusiness/set-webhook.png)
+
+### Set an Agent-level Webhook
+1. Click your agent.
+2. In the left navigation, click **Integrations**.
+3. For **Webhook**, click **Configure**.
+    - For **Webhook endpoint URL**, paste the *callback URL* you copied when [adding Google Business channel](#add-google-business-channel).
+    - For **Client token**, paste the *client token* you copied when [adding Google Business channel](#add-google-business-channel).
+4. Click **Verify**.
+
+![set-webhook-agent](/images/channelConfig/googlebusiness/set-webhook-agent.png)
 
 ## Test Your Chatbot
 1. Open the [Business Communications Developer Console](https://business-communications.cloud.google.com/?utm_source=/business-communications/business-messages/guides/quickstarts/echo-agent&utm_medium=devsite&utm_campaign=business-messages).
