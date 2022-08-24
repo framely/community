@@ -78,14 +78,19 @@ export const en = [
         text: 'Channels',
         children: [
           {
-            text: 'Universal Channel',
+            text: 'Overview',
             link: '/reference/channels/overview.html',
+            icon: '/navIcons/overview.svg',
+          },
+          {
+            text: 'Universal Channel',
+            link: '/reference/channels/universalmessage.html',
             icon: '/navIcons/universal.svg',
           },
           {
-            text: 'WeChat Official Account',
-            link: '/reference/channels/wpa.html',
-            icon: '/navIcons/wechat.svg',
+            text: 'Google Business Message',
+            link: '/reference/channels/googlebusiness.html',
+            icon: '/navIcons/google-business.svg',
           },
           {
             text: 'Messenger',
@@ -97,10 +102,11 @@ export const en = [
             link: '/reference/channels/whatsapp.html',
             icon: '/navIcons/whatsapp.svg',
           },
+
           {
-            text: 'Google Business Message',
-            link: '/reference/channels/googlebusiness.html',
-            icon: '/navIcons/google-business.svg',
+            text: 'WeChat Official Account',
+            link: '/reference/channels/wpa.html',
+            icon: '/navIcons/wechat.svg',
           },
         ],
       },

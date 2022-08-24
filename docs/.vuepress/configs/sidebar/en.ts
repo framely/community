@@ -59,10 +59,11 @@ export const en = {
       collapsible: true,
       children: [
         '/reference/channels/overview.md',
-        '/reference/channels/wpa.md',
+        '/reference/channels/universalmessage.md',
+        '/reference/channels/googlebusiness.md',
         '/reference/channels/messenger.md',
         '/reference/channels/whatsapp.md',
-        '/reference/channels/googlebusiness.md',
+        '/reference/channels/wpa.md',
       ],
     },
     {
