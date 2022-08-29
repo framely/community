@@ -127,19 +127,21 @@ As mentioned in [Implement Functions](./overview.md#implement-functions), there 
   - The name of a slot and of a column in the same index can be different.
      
     In the above example, the return columns can be [_userId_, _userName_].
-- In **Kotlin** functions, write function bodies in [Kotlin](https://kotlinlang.org/docs/functions.html). 
+- In **Kotlin** functions, write function bodies in [Kotlin](https://kotlinlang.org/docs/functions.html).
   - Kotlin functions can be used to convert the value returning from a provider-dependent function to a desirable format.
-    
-     For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot so that you can use the return value directly in [Value Recommendation](../annotations/valuerec.md).
+
+    For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot so that you can use the return value directly in [Value Recommendation](../annotations/valuerec.md).
   - Learn how to implement more Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
 
-``` kotlin
-/* 
-  Suppose a provider-dependent is getFoodCategory() which returns a list of frame. 
-  There is one slot called returnValue in the frame. 
-*/
-return getFoodCategory()!!.map{it -> it.returnValue!!} 
-```
+  ``` kotlin
+  /* 
+    Suppose a provider-dependent is getFoodCategory() which returns a list of frame. 
+    There is one slot called returnValue in the frame. 
+  */
+  return getFoodCategory()!!.map{it -> it.returnValue!!} 
+  ```
+
+  - Learn how to implement more Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
 
 
 
@@ -149,7 +151,7 @@ return getFoodCategory()!!.map{it -> it.returnValue!!}
 
 ::: thumbnail
 ![conversion](/images/provider/postgrest/conversion.png)
-Type Conversion Between Framely and Postgrest
+Type Conversion Between Framely and PostgreSQL
 :::
 - Here is the conversion between entities and SQL data types:
 
@@ -173,4 +175,15 @@ BEGIN
     SELECT name FROM "Info" WHERE "userId" = "userId_parameter";
 END
 ```
-Besides, [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) also supports [simple loops](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONTROL-STRUCTURES-LOOPS) and [Conditionals](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONDITIONALS).
+Besides, [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) also supports [simple loops](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONTROL-STRUCTURES-LOOPS) and [conditionals](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONDITIONALS).
+::: warning Notice
+If the return value is not a storage-enabled frame and the type of slot in the frame is [*customized entity*](../../guide/glossary.md#entity) or *kotlin.String*, check whether the type of its corresponding column is *text* in PostgreSQL. If not, use `::text` to convert the type of column into *text*.
+
+For example, the return value is consist of *dishId* and *dishName*. The type of *dishName* is *customized entity* and its corresponding column is *varchar(50)* in PostgreSQL. Add `::text` behind *dishName* to convert *varchar(50)* to *text*, so that the conversion between Framely and PostgreSQL can work smoothly.
+``` sql
+BEGIN
+    RETURN QUERY 
+    SELECT "dishId", "dishName"::text FROM "dishItem";
+END
+```
+:::

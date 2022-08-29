@@ -37,23 +37,18 @@ As mentioned in [Implement Functions](./reference/providers/overview.html#implem
   - For example, if the slots in a frame are [_id_, _name_] of which types are [_kotlin.Int_, _kotlin.String_], the slots in return columns should be [_id_, _name_] as well, and the types of return columns are supposed to be [_number_, _string_] instead of [_string_, _number_].
 
 - In **Kotlin** functions, write function bodies in [Kotlin](https://kotlinlang.org/docs/functions.html).
-  - Kotlin functions can be used to preprocess your data and then you call provider-dependent functions passing the processed data.
-    
-  - For example, in Google Sheets, you can't use `is not null` to compare `null` with a constant (both `null is not null` and `'xxx' is not null` are illegal). Instead, you can first use Kotlin functions to convert a null value to a string(e.g. `"null"`) and compare the value with `"null"` in provider-dependent functions.
-    - In a provider-dependent function: getDate
-    ```sql   
-    select A where inputParam != "null" and B = inputParam
-    ```
-    - In a Kotlin function
-  
-    ```kotlin 
-    // 1. Convert inputParam to "null" if it's null
-    if(inputParam == null){
-        inputParam = "null"
-    }
-    // 2. Call the provider-dependent function
-    getDate(inputParam)
-    ```
+  - Kotlin functions can be used to convert the value returning from a provider-dependent function to a desirable format.
+
+    For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot so that you can use the return value directly in [Value Recommendation](../annotations/valuerec.md).
+  - Learn how to implement more Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
+
+  ``` kotlin
+  /* 
+    Suppose a provider-dependent is getFoodCategory() which returns a list of frame. 
+    There is one slot called category in the frame. 
+  */
+  return getFoodCategory()!!.map{it -> it.category!!} 
+  ```
 
   - Learn how to implement more Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
 

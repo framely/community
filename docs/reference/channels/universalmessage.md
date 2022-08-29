@@ -30,6 +30,7 @@ We also support standard events on univerval channel to make user experience a b
 3. Typing (IS_TYPING): To your agent, this event indicates that a user is typing. To a user, this event appears as a typing indicator and lets them know that your agent is composing a message. The typing indicator expires after a short time (approximately 20 seconds) or when the user's device receives a new message from your agent. Your agent can send multiple IS_TYPING events to reset the typing indicator's expiration timer.
 
 Other channel Framely currently supports:
-1. [Facebook Messenger](./messenger.md)
-2. [Whatsapp](./whatsapp.md)
-3. [WeChat](./wpa.md)
+1. [Google Business Messages](googlebusiness.md)
+2. [Facebook Messenger](./messenger.md)
+3. [Whatsapp](./whatsapp.md)
+4. [WeChat](./wpa.md)
