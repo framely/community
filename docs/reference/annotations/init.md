@@ -30,7 +30,7 @@ You can provide the slot with an initial value by defining the association of th
 - Slot:
   - You can pick an earlier slot of the same type as proposed value. If you pick a later slot, the behavior is not defined, meaning the behavior might change without notice.
 - Function call:
-  - Regarding the first situation in [Overview](#overview), you can set the phone number as `getUserPhoneNumber()`, which returns the user's previous phone number.
+  - Regarding the first situation in [Motivation](#motivation), you can set the phone number as `getUserPhoneNumber()`, which returns the user's previous phone number.
   - Go to [Intent: FoodOrdering](https://build.framely.ai/org/622c8ff683536204fe062b55/agent/62b12e4cede53f1b65047b0f/intent/62b12eacede53f1b65047b13) to learn more details.
   
 Beyond the normal operator like +,-,*,/, you can combine expressions using:
@@ -42,6 +42,8 @@ Beyond the normal operator like +,-,*,/, you can combine expressions using:
 
 ## How To Use
 Initialization is an optional slot annotation. If you know that a user will most likely accept a value based on application logic or historical data, you can use initialization to instruct the bot to propose that value for the user, reducing user's effort level.
+
+The configuration of initialization is shown in the following figure, **Target Slot** is the slot you want to propose a value to and **Association** is the proposed value.
 ![init](/images/annotation/initialization/init.png)
 
 ### Does a user have to accept the proposed value?
