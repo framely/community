@@ -38,10 +38,8 @@ As mentioned in [Implement Functions](./reference/providers/overview.html#implem
 
 - In **Kotlin** functions, write function bodies in [Kotlin](https://kotlinlang.org/docs/functions.html).
   - Kotlin functions can be used to convert the value returning from a provider-dependent function to a desirable format.
-
-    For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot so that you can use the return value directly in [Value Recommendation](../annotations/valuerec.md).
-  - Learn how to implement more Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
-
+  - For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot so that you can use the return value directly in [Value Recommendation](../annotations/valuerec.md).
+  
   ``` kotlin
   /* 
     Suppose a provider-dependent is getFoodCategory() which returns a list of frame. 

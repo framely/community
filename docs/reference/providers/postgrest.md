@@ -120,19 +120,14 @@ Learn how to integrate with a postgrest provider, check out [Step 3: Import Comp
 
 As mentioned in [Implement Functions](./overview.md#implement-functions), there are two kinds of ways to implement a function:
 - In **Provider Dependent** functions, use [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) to implement.
-  - :exclamation: Provider-dependent functions should always return a frame in which the slot's type is compatible with the return column's type in the same index.
-     
+  - :exclamation: Provider-dependent functions should always return a frame in which the slot's type is compatible with the return column's type in the same index.\
      For example, if the slots in a frame are [_id_, _name_] of which types are [_kotlin.Int_, _kotlin.String_], the types of return columns should be [_bigint_, _text_] instead of [_text_, _bigint_].
 
-  - The name of a slot and of a column in the same index can be different.
-     
+  - The name of a slot and of a column in the same index can be different.\
     In the above example, the return columns can be [_userId_, _userName_].
 - In **Kotlin** functions, write function bodies in [Kotlin](https://kotlinlang.org/docs/functions.html).
   - Kotlin functions can be used to convert the value returning from a provider-dependent function to a desirable format.
-
-    For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot so that you can use the return value directly in [Value Recommendation](../annotations/valuerec.md).
-  - Learn how to implement more Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
-
+  - For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot so that you can use the return value directly in [Value Recommendation](../annotations/valuerec.md).
   ``` kotlin
   /* 
     Suppose a provider-dependent is getFoodCategory() which returns a list of frame. 
