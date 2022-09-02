@@ -182,3 +182,14 @@ BEGIN
 END
 ```
 :::
+
+## Function Testing
+Function testing can be used to see if the result returned by the functions meet your expectation before you call functions in the chatbot. Follow these steps to learn how to use the function testing:
+1. Only when you deploy the current version of your provider, can you use the function testing. Be sure to deploy first!
+2. After deploying the provider, click **Try it now** on the right sidebar.
+3. In the **Function Testing** field, you can select a function which is provider-dependent and pass values to parameters. ❗ For now, we only support passing values to parameters whose type is an entity.
+4. In the **Result** field, you can see the return values of the function. As shown in the figure below, we get available dates for reservation. 
+
+![function-testing](/images/provider/postgrest/function-testing.png)
+
+
