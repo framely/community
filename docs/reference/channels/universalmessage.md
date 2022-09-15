@@ -44,9 +44,13 @@ Use the following guides to learn how to send messages to your customers by usin
 
 Rich Message allows you to send a structured message that includes information, media and suggested actions. Rich message can contain the following items:
 - `title` *Required*.
-- `descripitions` *Required*.
+- `description` *Required*.
 - `richMedia` *Optional*.
-- A list of actions, including `insideActions` or `floatActions`. *Optional*, actions of rich message can only one of them.
+- A list of suggested actions, including `insideActions` or `floatActions`. *Optional*, actions of rich message can only one of them.
+
+::: thumbnail
+![rich message](/images/channelConfig/universal/rich-message.png)
+:::
 
 #### JSON Representation
 
@@ -110,8 +114,8 @@ Rich Message allows you to send a structured message that includes information, 
 
 ##### Message Payload
 
-| Fields            | Type                                     | Description                                                            |
-|:---               |:---                                      |:---                                                                    |
+| Fields            | Type                                     | Description                                                              |
+|:---               |:---                                      |:---                                                                      |
 | `type`            | string                                   | *Required*. Universal message type, value must be `rich`.                |
 | `title`           | string                                   | *Required*. Title of the rich message card.                              |
 | `description`     | string                                   | *Required*. Description of the rich message card.                        |
