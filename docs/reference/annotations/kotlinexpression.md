@@ -6,7 +6,7 @@ It should be fairly easy to write Kotlin expression to specify some value, even 
 
 #### if expression 
 In Kotlin 'if' is an expression. It is called an expression because it compares the values of a and b and returns the maximum value. Therefore, in Kotlin there is no ternary operator (condition)?a:b because it is replaced by the if expression. 
-```
+``` kotlin
 if (condition) a else b
 ```
 Here we usually expect that a and b are of the same type.
@@ -14,7 +14,7 @@ Here we usually expect that a and b are of the same type.
 #### when expression
 If it is used as an expression, the value of the branch with which condition satisfied will be the value of overall expression. As an expression when returns a value with which the argument matches and we can store it in a variable or print directly. 
 
-```
+``` kotlin
 when(dayOfWeek)
 {
     1,2,3,4,5->"Weekday"
@@ -28,11 +28,11 @@ The not-null assertion operator (!!) converts any value to a non-null type and t
 
 #### Elvis operator
 When you have a nullable reference, b, you can say "if b is not null, use it, otherwise use some non-null value":
-```
+``` kotlin
 if (b != null)  b else c
 ```
 can be simplified to:
-```
+``` kotlin
 b ? c
 ```
 
