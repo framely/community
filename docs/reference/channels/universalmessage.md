@@ -42,15 +42,13 @@ Use the following guides to learn how to send messages to your customers by usin
 
 ### Rich Message
 
+![rich message](/images/channelConfig/universal/rich-message.png)
+
 Rich Message allows you to send a structured message that includes information, media and suggested actions. Rich message can contain the following items:
 - `title` *Required*.
 - `description` *Required*.
 - `richMedia` *Optional*.
 - A list of suggested actions, including `insideActions` or `floatActions`. *Optional*, actions of rich message can only one of them.
-
-::: thumbnail
-![rich message](/images/channelConfig/universal/rich-message.png)
-:::
 
 #### JSON Representation
 
@@ -170,3 +168,101 @@ For more information, you can jump into the following reference documentations:
 * [WhatsApp Business Platform](https://developers.facebook.com/docs/whatsapp)
 
 #### Examples
+
+##### Inside Actions
+
+When you need to send a chunk of related information, media, or suggestions, you should send a rich card with inside actions. A rich message card can contain any or all of the listed items, but must contain at least a title and description to be valid. 
+
+::: thumbnail
+![inside actions](/images/channelConfig/universal/inside-actions.png)
+:::
+
+The following code sends a rich message card with an image and suggested inside actions. 
+
+``` json
+{
+  "type": "rich",
+  "title": "Framely",
+  "description": "Schema grounded Chatbots for any Services",
+  "richMedia": {
+    "fileUrl": "https://www.framely.ai/images/schema.png",
+    "altText": "schema",
+    "height": "TALL"
+  },
+  "insideActions": [
+    {
+      "type": "click",
+      "url": "https://www.framely.ai",
+      "display": "Website",
+      "payload": "website"
+    },
+    {
+      "type": "reply",
+      "display": "Contact Us",
+      "payload": "contact_us"
+    }
+  ]
+}
+```
+
+When you need to present a user with dynamic options to choose between, you can also use a rich message card. Suitable for cases where selections do not need to show details.
+
+::: thumbnail
+![dynamic inside actions](/images/channelConfig/universal/dynamic-inside-actions.png)
+:::
+
+The following code sends a rich message card with dynamic suggested inside actions. 
+
+``` json
+// Header
+{
+  "type": "rich",
+  "title": "Here are some options for you:",
+  "description": "please select one of them",
+  "insideActions": [
+// End Header
+
+// Body, Delimiter should be "," and End should be empty.
+    {
+      "type": "reply",
+      "display": "${it.value.name()}",
+      "payload": "${it.value.label()}"
+    }
+// End Body
+
+// Footer
+  ]
+}
+// End Footer
+```
+
+
+##### Float Actions
+
+Float actions guide users through conversations by providing replies that your chatbot knows how to react to. When a user taps a suggested float action, your chatbot receives a message that contains the reply's text and postback data.
+
+::: thumbnail
+![float actions](/images/channelConfig/universal/float-actions.png)
+:::
+
+The following code sends text with two suggested float actions.
+
+``` json
+{
+  "type": "rich",
+  "title": "Confirmation of your tickets:",
+  "description": "Movie: ${movie!!.name()} \nTime: ${showtime!!.name()}",
+  "floatActions": [
+    {
+      "type": "reply",
+      "display": "Yes",
+      "payload": "confirmation_yes"
+    },
+    {
+      "type": "reply",
+      "display": "No",
+      "payload": "confirmation_no"
+    }
+  ]
+}
+```
