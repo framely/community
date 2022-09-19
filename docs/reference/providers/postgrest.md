@@ -73,46 +73,52 @@ For now, among table constraints, we only support unique constraints. If you nee
 ### URL
 When sending messages to users, compared to plain text, rich cards can carry more information, like pictures, titles, descriptions, etc. To add a picture to a rich card, you need the picture URL.
 
-[Back office](../../guide/glossary.md#backoffice) supports uploading pictures and storing them as URLs. You can upload pictures in back office and get the picture URLs using PostgreSQL Function.
-
 ::: thumbnail
 ![process](/images/provider/postgrest/process.png)
 Process of Getting Picuture URL
 :::
 
-::: right
+[Back office](../../guide/glossary.md#backoffice) supports uploading pictures and storing them as URLs. You can upload pictures in back office and get the picture URLs using PostgreSQL Function.
+::: left
 ![url](/images/provider/postgrest/url.png)
 :::
 
 To enable URL, select *kotlin.String* when choosing [Type](#type) and set data type as `text`. Once done, there will be a switch: URL. Turn on URL so that you can upload pictures in that column.
 
-For example, there is a slot called *catPicture* in a storage-enabled frame, and URL is enabled in this slot. Here are the steps to uploading pictures in back office.
-
+For example, there is a slot called *catPicture* and URL is enabled in this slot. Here are the steps to uploading pictures in back office.
 1. Go to back office, find the corresponding table, click **Create**.
-2. Upload a picture in the column called *catPiture* and fill another column called catName.
-3. Back to the page displaying the table, you can view the picture that you just uploaded.
+2. Upload a picture in the column called *catPiture*.
+3. Back to the page displaying the table, you can view the picture.
 
 ![back-office](/images/provider/postgrest/back-office.png)
 
 ### Input Type
-There are two input types: text and dropdown. By default, input type is text which means [operators](../../guide/glossary.md#operator-business) can type raw input directly. If you want to make it easy for operators to input legit and compatible value, you can switch input type to dropdown.
+There are two input types: 
+- **Text** means [operators](../../guide/glossary.md#operator-business) can type raw input directly.
+- **Dropdown** provides values which operators can pick one from. In this way, dropdown makes it easy for operators to input legit and compatible value.
+
+![input-type](/images/provider/postgrest/input-type.png)
+
+Dropdown List is a JSON array which includes two keys: 
+1. "name" will be displayed 
+2. "id" will be assigned as value
+
+You can provide a dropdown list statically by writing a JSON array like this:
+
+```json
+[{ "id": "NY", "name": "NewYork"}, 
+  { "id": "LA", "name": "Los Angeles"}]
+```
+Then operators can select a value from the dropdown in back office
 
 ![dropdown](/images/provider/postgrest/dropdown.png)
 
-Dropdown List is a JSON array, which should return a list of values that are at least legit and potentially compatible so that operator can pick the correct value. The content of dropdown list includes two columns (id, name): where name will be displayed, and id will be assigned as value.
-
-For example, if a column is used to store a city, its dropdown List is like:
-
-```json
-[ { id: 'NY', name: 'NewYork' },
-  { id: 'LA', name: 'Los Angeles' },]
-```
 ## Connection
 Once you deploy a chatbot which integrates with a postgrest provider, in the **Connection** field, you can get the **URL** of backoffice along with **Admin Email** and **Admin Password** to log in.
 
 ![connection](/images/provider/postgrest/connection.png)
 
-::: tip Note
+::: tip Note`
 Learn how to integrate with a postgrest provider, check out [Step 3: Import Component](../../articles/quick-start-with-service.md#step-3-import-component).
 :::
 
