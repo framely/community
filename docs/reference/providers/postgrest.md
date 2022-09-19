@@ -118,7 +118,7 @@ Once you deploy a chatbot which integrates with a postgrest provider, in the **C
 
 ![connection](/images/provider/postgrest/connection.png)
 
-::: tip Note`
+::: tip Note
 Learn how to integrate with a postgrest provider, check out [Step 3: Import Component](../../articles/quick-start-with-service.md#step-3-import-component).
 :::
 
