@@ -99,7 +99,7 @@ There are two input types:
 
 ![input-type](/images/provider/postgrest/input-type.png)
 
-Dropdown List is a JSON array which includes two keys: 
+Dropdown List returns a JSON array which includes two keys: 
 1. "name" will be displayed 
 2. "id" will be assigned as value
 
