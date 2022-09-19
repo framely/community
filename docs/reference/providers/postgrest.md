@@ -93,23 +93,23 @@ For example, there is a slot called *catPicture* and URL is enabled in this slot
 ![back-office](/images/provider/postgrest/back-office.png)
 
 ### Input Type
-There are two input types: 
+Input type determines how operators input a value. Here are two input types: 
 - **Text** means [operators](../../guide/glossary.md#operator-business) can type raw input directly.
-- **Dropdown** provides values which operators can pick one from. In this way, dropdown makes it easy for operators to input legit and compatible value.
+- **Dropdown** provides values which operators can pick from. In this way, dropdown makes it easy for operators to input legit and compatible value.
 
 ![input-type](/images/provider/postgrest/input-type.png)
 
-Dropdown List returns a JSON array which includes two keys: 
-1. "name" will be displayed 
-2. "id" will be assigned as value
+Dropdown list returns a JSON array which includes two keys: 
+1. "name" will be displayed in back office.
+2. "id" will be stored as value in the database.
 
 You can provide a dropdown list statically by writing a JSON array like this:
 
 ```json
-[{ "id": "NY", "name": "NewYork"}, 
-  { "id": "LA", "name": "Los Angeles"}]
+[{ "id": "M", "name": "Male"}, 
+  { "id": "F", "name": "Female"}]
 ```
-Then operators can select a value from the dropdown in back office
+Then operators can select a value from the dropdown in back office.
 
 ![dropdown](/images/provider/postgrest/dropdown.png)
 
