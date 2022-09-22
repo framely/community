@@ -40,7 +40,7 @@ Before starting, turn on **Storage Enabled** in **Frames** field to enable stori
 ### SQL Data Type
 To create tables to store the frame instance, we need to map each slot of frame to a column in the database. SQL data type is a slot annotation, it defines the SQL data type for the corresponding column for the given slot. Normally, we will automatically decide the SQL data type for each slot but if the slot type is *kotlin.String* or customized entity(e.g. like *Demo.test.City* in the below picture), you need to specify the database type of the column. 
 
-Supported formats are `char(n)`, `varchar(n)`, `text`. Replace "n" with a number between 1 and 10485760, e.g. `char(16)`. To learn more about Character Types, click [here](https://www.postgresql.org/docs/current/datatype-character.html).
+Supported formats are `char(n)`, `varchar(n)`,`varchar`, `text` where **n** is a positive integer, e.g. `char(16)`. To learn more about character types, click [here](https://www.postgresql.org/docs/current/datatype-character.html).
 
 ![sql-data-type](/images/provider/postgrest/sql-data-type.png)
 
@@ -70,35 +70,17 @@ To learn more about it, see [Unique Constraints](https://www.postgresql.org/docs
 For now, among table constraints, we only support unique constraints. If you need more table constraints, please let us know.
 :::
 
-### URL
-When sending messages to users, compared to plain text, rich cards can carry more information, like pictures, titles, descriptions, etc. To add a picture to a rich card, you need the picture URL.
-
-::: thumbnail
-![process](/images/provider/postgrest/process.png)
-Process of Getting Picuture URL
-:::
-
-[Back office](../../guide/glossary.md#backoffice) supports uploading pictures and storing them as URLs. You can upload pictures in back office and get the picture URLs using PostgreSQL Function.
-::: left
-![url](/images/provider/postgrest/url.png)
-:::
-
-To enable URL, select *kotlin.String* when choosing [Type](#type) and set data type as `text`. Once done, there will be a switch: URL. Turn on URL so that you can upload pictures in that column.
-
-For example, there is a slot called *catPicture* and URL is enabled in this slot. Here are the steps to uploading pictures in back office.
-1. Go to back office, find the corresponding table, click **Create**.
-2. Upload a picture in the column called *catPiture*.
-3. Back to the page displaying the table, you can view the picture.
-
-![back-office](/images/provider/postgrest/back-office.png)
 
 ### Input Type
-Input type determines how operators input a value. Here are two input types: 
+Input type determines how operators input a value. Here are three input types: 
 - **Text** means [operators](../../guide/glossary.md#operator-business) can type raw input directly.
 - **Dropdown** provides values which operators can pick from. In this way, dropdown makes it easy for operators to input legit and compatible value.
+- **Media** supports uploading pictures and storing URLs of pictures in the cell.
 
 ![input-type](/images/provider/postgrest/input-type.png)
 
+
+#### Dropdown
 Dropdown list returns a JSON array which includes two keys: 
 1. "name" will be displayed in back office.
 2. "id" will be stored as value in the database.
@@ -112,6 +94,17 @@ You can provide a dropdown list statically by writing a JSON array like this:
 Then operators can select a value from the dropdown in back office.
 
 ![dropdown](/images/provider/postgrest/dropdown.png)
+
+#### Media
+When you send pictures to a user, you actually send the URLs of the pictures in [rich messages](../channels/universalmessage.md#rich-message). By setting input type to media, you just need to upload pictures and the URLs of pictures will be stored in cells automatically. 
+
+For example, there is a slot called _photo_ of which input type is media. In the corresponding column, you can upload a picture and view the picture in its table.
+
+![media](/images/provider/postgrest/media.png)
+
+::: tip Note
+Only when [SQL data type](#sql-data-type) is `varchar`, `varchar(n)` and `text`, can you select media in the input type field.
+:::
 
 ## Connection
 Once you deploy a chatbot which integrates with a postgrest provider, in the **Connection** field, you can get the **URL** of backoffice along with **Admin Email** and **Admin Password** to log in.
