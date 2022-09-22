@@ -98,7 +98,7 @@ Then operators can select a value from the dropdown in back office.
 #### Media
 When you send pictures to a user, you actually send the URLs of the pictures in [rich messages](../channels/universalmessage.md#rich-message). By setting input type to media, you just need to upload pictures and the URLs of pictures will be stored in cells automatically. 
 
-For example, there is a slot called _photo_ of which input type is media. In the corresponding column, you can upload a picture and view the picture in its table.
+For example, there is a slot called _photo_ of which input type is media on Framely. In its corresponding column in back office, you can upload a picture and view the picture in the table.
 
 ![media](/images/provider/postgrest/media.png)
 
