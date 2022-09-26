@@ -1,4 +1,4 @@
-# Native Provider
+# Extension
 
 ## Configuration Meta
 
