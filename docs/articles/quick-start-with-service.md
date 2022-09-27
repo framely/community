@@ -1,43 +1,47 @@
 ---
 article: true
-date: 2022-05-25
+date: 2022-09-27
 
 image:
     - blog/quick-start.png
 description:
     - Use component to start quickly
-author: SunnyMay
+author: Sunny May
 ---
 
 # Quick Start with Service
-:tada: Welcome to Framely! In this guide, we use [Hours component](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650a98132e5d9cbc123fa9/service_schema) as an example to help you have a quick start with service. Hours component is designed to answer end-users' questions about business hours. To lean more about it, see [Hours - ReadMe](../articles/hours-readme.html). Let’s get started!
+In this guide, we use [Hours component](https://build.framely.ai/org/622c8ff683536204fe062b55/agent/630dc3282d6df2e68a96c688/service_schema) as an example to help you have a quick start with service. Hours component is designed to answer end-users' questions about business hours. 
 
+The whole procedure is shown in picture below and it is divided into these four steps:
 [[toc]]
 
-::: tip
-If you want to know more details about terms marked in italics, look them up in [glossary](../guide/glossary.html) which introduces common Framely terminology.
+::: thumbnail
+![clone](/images/blog/quick-start-with-service/flowchart.gif)
 :::
 
-
+::: tip Note
+You can look up terms marked in italics in [glossary](../guide/glossary.html) which introduces common Framely terminology.
+:::
 ## Step 1: Clone Provider
-*Clone* is another way of reuse. Instead of building chatbot from empty slate, you can create a new project by cloning exist chatbot. *Provider* provides access to implementation for the services. By cloning a provider, it saves time from implementing service by yourself. 
 
-:point_right: To begin with, let's clone [Hours provider](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650ad4132e5d9cbc123fb0/service_schema) to your organization.
-1. Open [Hours provider](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650ad4132e5d9cbc123fb0/service_schema) and click **Clone Project**.
+1. Open [Hours provider](https://build.framely.ai/org/622c8ff683536204fe062b55/agent/63101e0437fed01baf0079b3/service_schema) and click **Clone Project**.
 2. Choose an organization to clone this provider to.
-3. When creating a new project, you can change default settings, like renaming your new project label.
+3. You can change the default project label of the cloned provider.
 
-![clone](/images/blog/quick-start-with-service/clone-steps.png)
+![clone-provider](/images/blog/quick-start-with-service/clone-provider.png)
 
-4. Once you create a new project, Click **Deploy** to deploy it to Framely.
+## Step 2: Integrate Provider with Chatbot
 
-![deploy](/images/blog/quick-start-with-service/deploy.png)
+1. Open [Hours chatbot](https://build.framely.ai/org/622c8ff683536204fe062b55/agent/6329731a36b90caee5c750f3/intent) and click **Clone Project**. Choose an organization to clone this chatbot to.
+2. Select the region where your chatbot will be deployed. 
+3. Go to **Settings** > **Integrations**. Click a service provider and change it to the cloned provider.
 
+![integrate](/images/blog/quick-start-with-service/integrate.png)
 
+4. Click **Commit** on both STRUCT side and EN side.
+5. Go to **Versions**, Click **Pull Request**
 
-
-
-## Step 2: Upload Business Data
+## Step 3: Upload Business Data
 
 When you successfully deploy your project, you can upload business data on [*Backoffice*](https://backoffice-615fa4282cc41400665536e3.api.naturali.io/). In this example, we upload business hours and related information.
 
@@ -47,7 +51,7 @@ When you successfully deploy your project, you can upload business data on [*Bac
 
 ![upload](/images/blog/quick-start-with-service/upload.png)
 
-## Step 3: Import Component
+####### Step 3: Import Component
 
 *Component* defines how chatbot can collect user intention for some reason so that different businesses in the same sector do not need to build the same CUI behavior over and over again. *Import* is a way to reuse functionality of *Component*. By importing *Component* built by others, there is no need to build functionality from scratch. After you upload business data, let's import [Hours component](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650a98132e5d9cbc123fa9/service_schema) for service.
 
