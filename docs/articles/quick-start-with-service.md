@@ -1,88 +1,75 @@
 ---
 article: true
-date: 2022-05-25
+date: 2022-09-27
 
 image:
     - blog/quick-start.png
 description:
     - Use component to start quickly
-author: SunnyMay
+author: Sunny May
 ---
 
 # Quick Start with Service
-:tada: Welcome to Framely! In this guide, we use [Hours component](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650a98132e5d9cbc123fa9/service_schema) as an example to help you have a quick start with service. Hours component is designed to answer end-users' questions about business hours. To lean more about it, see [Hours - ReadMe](../articles/hours-readme.html). Let’s get started!
+In this guide, we use [hours component](https://build.framely.ai/org/622c8ff683536204fe062b55/agent/630dc3282d6df2e68a96c688/service_schema) as an example to help you have a quick start with service. Hours component is designed to answer end-users' questions about business hours. 
 
+The whole procedure is shown in picture below and it is divided into these four steps:
 [[toc]]
 
-::: tip
-If you want to know more details about terms marked in italics, look them up in [glossary](../guide/glossary.html) which introduces common Framely terminology.
+::: thumbnail
+![clone](/images/blog/quick-start-with-service/flowchart.gif)
 :::
 
-
 ## Step 1: Clone Provider
-*Clone* is another way of reuse. Instead of building chatbot from empty slate, you can create a new project by cloning exist chatbot. *Provider* provides access to implementation for the services. By cloning a provider, it saves time from implementing service by yourself. 
 
-:point_right: To begin with, let's clone [Hours provider](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650ad4132e5d9cbc123fb0/service_schema) to your organization.
-1. Open [Hours provider](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650ad4132e5d9cbc123fb0/service_schema) and click **Clone Project**.
+1. Open [hours provider](https://build.framely.ai/org/622c8ff683536204fe062b55/agent/63101e0437fed01baf0079b3/service_schema) and click **Clone Project**.
 2. Choose an organization to clone this provider to.
-3. When creating a new project, you can change default settings, like renaming your new project label.
+3. You can change the default project label of the cloned provider.
 
-![clone](/images/blog/quick-start-with-service/clone-steps.png)
+![clone-provider](/images/blog/quick-start-with-service/clone-provider.png)
 
-4. Once you create a new project, Click **Deploy** to deploy it to Framely.
+## Step 2: Integrate Provider with Chatbot
 
-![deploy](/images/blog/quick-start-with-service/deploy.png)
+1. Open [hours chatbot](https://build.framely.ai/org/622c8ff683536204fe062b55/agent/6329731a36b90caee5c750f3/intent) and click **Clone Project**. Choose an organization to clone this chatbot to.
+2. Select the region where your chatbot will be deployed. 
+3. Go to **Settings** > **Integrations**. Click a service provider, and change it to the cloned provider which implements the service.
+
+![integrate](/images/blog/quick-start-with-service/integrate.png)
+
+4. Click **Commit** on both STRUCT side and EN side.
+5. Go to **Versions**, and Click **Pull Request**.
+6. Click the current version.
+
+![pull-request](/images/blog/quick-start-with-service/pull-request.png)
+
+7. Click **Approve PR** and then **Merge**.
+8. Click **Deploy**. After deployment, refresh the web page and you can see a green checked icon which means the chatbot has been deployed successfully.
+
+![deploy-chatbot](/images/blog/quick-start-with-service/deploy-chatbot.png)
 
 
 
+## Step 3: Upload Business Data
+1. Back to the cloned provider in [step 1](#step-1-clone-provider). 
+2. Repeat #5-8 in [step 2](#step-2-integrate-provider-with-chatbot) to deploy the provider.
+3. Go to **Connection**, and click the corresponding region which you selected when cloning the chatbot. You can get a URL of [back office](../guide/glossary.md#backoffice) along with the login information.
 
+![connection](/images/blog/quick-start-with-service/connection.png)
 
-## Step 2: Upload Business Data
-
-When you successfully deploy your project, you can upload business data on [*Backoffice*](https://backoffice-615fa4282cc41400665536e3.api.naturali.io/). In this example, we upload business hours and related information.
-
-1. On the left sidebar, you can switch tables in your organization.
-2. Click **Create** to add a row.
-3. Complete the table and click **Save**. To learn what each column means, see [Hours - About Table](../articles/hours-readme.html#about-table).
+5. Log in to back office. On the left sidebar, you can switch tables in your organization.
+6. Click **Create** to add a row.
+7. Complete the table and click **Save**. To learn what each column means, see [readme](../articles/hours-readme.html#about-table).
 
 ![upload](/images/blog/quick-start-with-service/upload.png)
 
-## Step 3: Import Component
-
-*Component* defines how chatbot can collect user intention for some reason so that different businesses in the same sector do not need to build the same CUI behavior over and over again. *Import* is a way to reuse functionality of *Component*. By importing *Component* built by others, there is no need to build functionality from scratch. After you upload business data, let's import [Hours component](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650a98132e5d9cbc123fa9/service_schema) for service.
-
-1. Enter your [organization](https://build.framely.ai/org), in **Chatbots** field, Click **Create** to create a new *Chatbot*.
-2. Fill in the form and modify default settings based on your scenario. :exclamation: Be sure to choose the right **TimeZone**.
-
-![create](/images/blog/quick-start-with-service/create.png)
-
-3. Open [Hours component](https://build.framely.ai/org/615fa4282cc41400665536e3/agent/62650a98132e5d9cbc123fa9/service_schema) and Click **Import Project**. Import this component to the chatbot you just created before.
-   
-![import](/images/blog/quick-start-with-service/import.png)
-
-4. Back to your chatbot, in **Setting** field, click **Integrations** > **Select Service** and choose the component we imported before.
-5. Select **Service Provider** which you deploy in [step 2](../articles/quick-start-with-service.html#step-2-upload-business-data).
-
-![choose-provider](/images/blog/quick-start-with-service/choose-provider.png)
 
 ## Step 4: Try It Now
-*Intent* is simply a task that end-users accomplish through chatbot. It defines what user have to say to indicate that he/she wants some thing, and which actual function to invoke for that task. Testing your chatbot strats from triggering an intent. To trigger an intent, you can use one of the expressions defined in the intent.
-
-
-:muscle: One last step, you are almost there. Let's try to test your chatbot!
-
-1. Click **Commit**. 
-2. When commit successfully, switch to a language agent.
-
-![commit](/images/blog/quick-start-with-service/commit.png)
-
-3. Click **Commit**. 
-4. When commit successfully, click **Try It Now** > **Connect**.
-5. :confetti_ball: Well done! Now you can use expressions to ask bot for business hours.
+1. Back to the cloned chatbot in [Step 2](#step-2-integrate-provider-with-chatbot).
+2. Click **Commit** on EN side.
+3. When commit successfully, click **Try It Now!** then click **CONNECT**.
+4. :tada: Now you can use one of the [expressions](../guide/glossary.md#expression-exemplars) defined in intents to ask the bot for business hours and see what the bot replies.
 
 ![test](/images/blog/quick-start-with-service/test.png)
 
-::: tip How to find expressions
-1. Switch to a language agent.
-2. Click **Intents** > **Imported** > **Expression**.
-   :::
+::: tip How to find expressions?
+On EN side, Click **Intents** > **Imported** > **Expression**.
+:::
