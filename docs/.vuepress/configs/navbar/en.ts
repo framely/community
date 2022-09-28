@@ -159,6 +159,11 @@ export const en = [
           link: '/reference/platform/access.html',
           icon: '/navIcons/permission.svg',
         },
+        {
+          text: 'Reusability',
+          link: '/reference/platform/reusability.html',
+          icon: '/navIcons/reusability.svg',
+        }
         ]
       },
     ],

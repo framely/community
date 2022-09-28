@@ -84,6 +84,7 @@ export const en = {
         '/reference/platform/deployment.md',
         '/reference/platform/versioncontrol.md',
         '/reference/platform/access.md',
+        '/reference/platform/reusability.md'
       ]
     },
   ],
