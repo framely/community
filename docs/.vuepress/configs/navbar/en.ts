@@ -163,7 +163,13 @@ export const en = [
           text: 'Reusability',
           link: '/reference/platform/reusability.html',
           icon: '/navIcons/reusability.svg',
+        },
+        {
+          text: 'External Extension',
+          link: '/reference/platform/extension.html',
+          icon: '/navIcons/reusability.svg',
         }
+
         ]
       },
     ],
