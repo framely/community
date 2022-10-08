@@ -7,7 +7,7 @@ export const en = {
         '/guide/README.md',
         '/guide/are-you-ready.md',
         '/guide/getting-started.md',
-        '/guide/pingpong.md',
+        '/guide/pingpong.md'
       ],
     },
     {
@@ -19,7 +19,7 @@ export const en = {
         '/guide/5levels-cui.md',
         '/guide/slotfilling.md',
         '/guide/components.md',
-        '/guide/architecture.md',
+        '/guide/architecture.md'
       ]
     },
     {
@@ -43,6 +43,7 @@ export const en = {
         '/reference/annotations/valuecheck.md',
         '/reference/annotations/confirmation.md',
         '/reference/annotations/transition.md',
+        '/reference/annotations/systemcomponent.md'
       ],
     },
     {
@@ -51,7 +52,7 @@ export const en = {
       children: [
         '/reference/providers/overview.md',
         '/reference/providers/postgrest.md',
-        '/reference/providers/googlesheets.md',
+        '/reference/providers/googlesheets.md'
       ]
     },
     {
@@ -63,7 +64,7 @@ export const en = {
         '/reference/channels/googlebusiness.md',
         '/reference/channels/messenger.md',
         '/reference/channels/whatsapp.md',
-        '/reference/channels/wpa.md',
+        '/reference/channels/wpa.md'
       ],
     },
     {
@@ -71,7 +72,7 @@ export const en = {
       collapsible: true,
       children: [
           '/reference/support/overview.md',
-          '/reference/support/Chatwoot.md',
+          '/reference/support/Chatwoot.md'
       ],
     },
     {
