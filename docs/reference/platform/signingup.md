@@ -1,4 +1,4 @@
-# Sign Up For Framely
+# Sign Up
 > Create and log in to your Framely account.
 
 You can start using Framely to build your Chatbots by signing up for a Starter workspace plan, which is good for developers and freelancers who want to build and share. You can also upgrade your workspace plans for both individuals and teams, add and remove team members and collaborators. 

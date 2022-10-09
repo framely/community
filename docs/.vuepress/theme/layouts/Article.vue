@@ -5,7 +5,7 @@
         <div class="article-page">
           <div class="top-info">
             <div class="top-info-title">
-              <h1>Framely Blog</h1>
+              <h1>Blog</h1>
             </div>
             <div class="top-info-desc">
               <p>Machine intelligence for user experience</p>
