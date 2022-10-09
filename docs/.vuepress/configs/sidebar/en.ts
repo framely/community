@@ -84,8 +84,14 @@ export const en = {
         '/reference/platform/deployment.md',
         '/reference/platform/versioncontrol.md',
         '/reference/platform/access.md',
-        '/reference/platform/reusability.md',
-        '/reference/platform/extension.md'
+        '/reference/platform/reusability.md'
+      ]
+    },
+    {
+      text: 'Extensions',
+      collapsible: true,
+      children:[
+        '/reference/extensions/tutorial.md'
       ]
     },
   ],

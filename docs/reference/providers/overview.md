@@ -15,15 +15,13 @@ How Provider Works
 Follow these three steps to learn how to use a provider:
 [[toc]]
 
-### How To Build
-#### Get Access to Business Data
-### Connection
+## Get Access to Business Data
 Go to a provider, there is a **Connection** on the left sidebar. Connection is used by a provider to get access to your business data.
 - For [Postgres Providers](./postgrest.md), we support regions of Mainland China and North America to store your data in PostgreSQL. Once you deploy a chatbot with a specific region, the connection to that region will be available.
 - For RESTful Providers and [Google Sheet Providers](./googlesheets.md), you need to provide information to connect to the restful APIs or your Google Sheet.
 
 
-### Import Service
+## Import Service
 The service functions called in a chatbot are defined in components. Before implementing these functions, you need to import service first. You can import service in two steps:
 1. Go to a component with a service, click **Import Project** in the right sidebar and choose a provider which will implement service functions.
 
@@ -34,20 +32,8 @@ The service functions called in a chatbot are defined in components. Before impl
 
 ![add-frame](/images/provider/overview/add-frame.png)
 
-### Implement Functions
-- There are two kinds of functions in a provider and both of them need to be implemented. 
-  - **Imported functions** are imported from a component.
-  - **Local functions** are added within the current provider.
-
-
-  | Type               | Can its declarations be changed? | Can it be Called in a chatbot?   |
-  |:-------------------|:---------------------------------|:---------------------------------|
-  | Imported function  | :x:                              | :white_check_mark:               |
-  | Local function     | :white_check_mark:               | :x:                              |
-      
-  
+## Implement Functions
 - There are two kinds of ways to implement a function
+
     - **Provider Dependent** means the language of function implementation is dependent on the type of the provider. For example, in Postgrest Provider, the language is PL/pgSQL.
     - **Kotlin** means the function is implemented in kotlin. You can call both Kotlin functions and provider dependent functions in a Kotlin function. 
-
-### How To Use
