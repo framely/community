@@ -1,9 +1,11 @@
 # Simple Tutorial
 
+In this tutorial, you'll learn how to build an extension and how to use it.
+
 [[toc]]
 
 ## Development
-
+To begin with, you need to define functions and implement them.
 ### Prepare Runtime Environment
 
 1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the [runtime repository](https://github.com/opencui/runtime).
@@ -18,7 +20,7 @@
 :::
 
 3. In the **Service** field, click **Add** to define a function in the component.
-4. [Review changes](./versioncontrol.md#review-changes) and merge the branch into the master.
+4. [Review changes](../platform/versioncontrol.md#review-changes) and merge the branch into the master.
 5. Click **Export** and extract the generated file from the export. ❓  Put the generated file into the subdirectory you just created.
 
 ::: thumbnail
@@ -46,9 +48,11 @@ data class HelloWorldProvider(
     }
 }
 ```
-2. ❓ Follow README.md to build a JAR file
+2. ❓ Create a pull request and wait for reviewing.
 
 ## Register
+
+Once your branch has been merged into the master, you can configure your provider.
 
 1. Enter an organization. In the **Provider** field, create a native provider.
 
@@ -56,22 +60,23 @@ data class HelloWorldProvider(
 ![create-provider](/images/extensions/create-provider.png)
 :::
 
-2. [Import](./reusability.md#how-to-use) the component you just created into the native provider.
+2. [Import](../platform/reusability.md#how-to-use) the component you just created into the native provider.
 3. In the **Service** field, select the imported component in the **Implemented** section.
 4. In the **Connection** field.
     - Input the provider's qualified name of which format is `orgName.componentName.dataClass`.
-    - Upload the JAR file you just built.
-    - Fill in configuration meta.
+    - Provider the implementation of which format is `project(":extension:xxx")`. ❓ `xxx` is the name of the subdirectory you created in runtime/extensions.
+    - Fill in [configuration meta](#configuration-meta).
 
 ::: thumbnail
 ![connection](/images/extensions/connection.png)
 :::
    
-### Configuration Meta
+5. [Review changes](../platform/versioncontrol.md#review-changes) and merge the branch into the master.
+#### Configuration Meta
 
 Configuration Meta can help you generate the configuration informations needed to configure this provider, which specify what keys builder needs to declare. You can create custom configuration information forms by using a JSON format.
 
-#### JSON Representation
+##### JSON Representation
 
    ``` json
    [
@@ -101,7 +106,7 @@ Configuration Meta can help you generate the configuration informations needed t
    ]
    ```
 
-#### Fields
+##### Fields
 
 | Fields          | Type      | Description                                                                                                       |
 |:---             |:----------|:------------------------------------------------------------------------------------------------------------------|
@@ -118,7 +123,7 @@ options
 | `value`         | string | *Required*. |
 | `label`         | string | *Required*. Displayed on selection menu. |
 
-#### Examples
+##### Examples
 
 This example defines an configuration information form using text input, selection and boolean component.
 
@@ -168,18 +173,14 @@ This code will generate the configuration information forms like the screenshot 
 ![config meta](/images/extensions/config-meta.png)
 :::
 ## Reference
+When your provider is ready, integrate your chatbot with this provider. 
 
-### Integrate with Provider
-
-1. [Import](./reusability.md#how-to-use) the component you created into a chatbot that needs the extension.
+1. [Import](../platform/reusability.md#how-to-use) the component you created into a chatbot that needs the extension.
 2. In the **Setting** field, go to the **Integrations** section. Select the component along with its service provider. Fill in the configuration meta (In the picture below, there is only one key called _name_ in configuration meta).
+
+:tada: Congratulations! You are free to call the service functions now.
 
 ::: thumbnail
 ![integration](/images/extensions/integration.png)
 :::
 
-### Test Chatbot
-
-1. [View your Changes](./versioncontrol.md#view-your-changes) and merge the branch into the master.
-2. [Deploy](./deployment.md#how-to-use) the chatbot.
-3. ❓ Click Try it now to test the chatbot.
