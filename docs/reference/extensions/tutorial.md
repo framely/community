@@ -62,7 +62,7 @@ Once your branch has been merged into the master, you can configure your provide
 
 2. [Import](../platform/reusability.md#how-to-use) the component you just created into the native provider.
 3. In the **Service** field, select the imported component in the **Implemented** section.
-4. In the **Connection** field.
+4. In the **Configuration** field.
     - Input the provider's qualified name of which format is `orgName.componentName.dataClass`.
     - Provider the implementation of which format is `project(":extension:xxx")`. ❓ `xxx` is the name of the subdirectory you created in runtime/extensions.
     - Fill in [configuration meta](#configuration-meta).
