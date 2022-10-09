@@ -40,7 +40,7 @@ Configuration Meta can help you generate the configuration informations needed t
 |:---             |:---    |:---         |
 | `key`           | string | *Required*. Key will pass to codegen. |
 | `label`         | string | *Required*. Displayed on chatbot Integrations. |
-| `type`          | string | *Required when there is no `options[]`*. Should be one of the following: String | Text | Boolean, case sensitive. |
+| `type`          | string | *Required when there is no `options[]`*. Should be one of the following: String / Text / Boolean, case sensitive. |
 | `placeholder`   | string | *Optional*. |
 | `default_value` | string | *Optional*. |
 | `options[]`     | array  | *Required when there is no `type`*. |
@@ -98,5 +98,6 @@ This example defines an configuration information form using text input, selecti
 This code will generate the configuration information forms like the screenshot below:
 
 ::: thumbnail
-![config meta](/images/provider/nativeprovider/config-meta.png)
+![config meta](/images/extensions/nativeprovider/config-meta.png)
 :::
+

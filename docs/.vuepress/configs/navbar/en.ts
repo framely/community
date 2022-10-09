@@ -171,6 +171,16 @@ export const en = [
         }
         ]
       },
+      {
+        text: 'Extensions',
+        children: [
+          {
+            text: 'Simple Tutorial',
+            link: '/reference/extensions/tutorial.html',
+            icon: '/navIcons/overview.svg',
+          }
+        ],
+      },
     ],
   },
   {
