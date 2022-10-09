@@ -87,5 +87,12 @@ export const en = {
         '/reference/platform/reusability.md'
       ]
     },
+    {
+      text: 'Extensions',
+      collapsible: true,
+      children:[
+        '/reference/extensions/tutorial.md'
+      ]
+    },
   ],
 }
