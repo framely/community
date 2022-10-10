@@ -68,7 +68,7 @@ Once your branch has been merged into the master, you can configure your provide
     - Fill in [configuration meta](./extension.md#configuration-meta).
 
 ::: thumbnail
-![connection](/images/extensions/tutorial/connection.png)
+![configuration](/images/extensions/tutorial/configuration.png)
 :::
    
 5. [Review changes](../platform/versioncontrol.md#review-changes) and merge the branch into the master.
