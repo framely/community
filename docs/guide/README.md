@@ -27,11 +27,14 @@ Under the hood, we take advantage of the state of the art deep learning based na
 ### End to End
 Chatbots are developed to deliver services with good user experiences. However, good user experience alone may not be enough motivation for a business to build one.
 
-::: story
-User: *I would like some iced coffee.*
-
-Barista: *Sorry, we ran out, but the Starbucks next door has some excellent choices.*
+:::: conversation
+::: user User
+I would like some iced coffee.
 :::
+::: bot Bot
+Sorry, we ran out, but the Starbucks next door has some excellent choices.
+:::
+::::
 
 It is good user experience alright, but as a coffee shop owner, you might not want to invest towards this chatbot. To achieve your business goal, you need to have direct and full control of your chatbot so that you can react to ever-changing business conditions.
 

@@ -3,7 +3,7 @@ It is rare that businesses doesn't want to provide 24x7 personalized services. B
 
 There are many reasons why it is expensive to build usable conversational user interface (CUI) to your services. Today let's focus on one of the aspects: the lack of component based framework. I will talk about what is the component driven development and why it is a good idea to adopt this methodology. And then we will cover the main considerations for building a component based framework specific to conversational user experiences which reveals the main challenges in constructing CUI components. 
 
-## Component driven development
+## Component Driven Development
 Component-Driven Development is a development methodology that advocate building things based on prefabricated components. This methodology is popular because it exploits the following observation: it is generally much more involved in building something than using it. Everyone can light a match, but the number of people who can produce a box of matches is considerably small. Using off-the-shelf component is a key way to reduce cost in building things. It is no surprise that CDD is widely adopted in the real world, we can see its application everywhere, in construction, in computer manufacturing, and of course in software development. 
 
 But what is a component? According to Cambridge dictionary, A component is a part that combines with other parts to form something bigger. In software development, there are three aspects about component:
@@ -13,29 +13,29 @@ But what is a component? According to Cambridge dictionary, A component is a par
 
 In a user facing front end development, CDD is even more prevalent. Almost all modern frontend framework at their core are component based, Reactjs, SwiftUI, Vue, you name it. But why is this the case?
 
-## Benefit of the component based approach
+## Benefit of the Component Based Approach
 There are many possible angles that component based approach can be advantageous.
 1. Since the same component can be used multiple times in the different context, the average cost of getting the same functionality via a component is lower, sometimes much lower compared to building it from scratch (can be close to zero).
 2. Update component version can fix the issues of component without much builder's involvement, some time before builder even realizes there are problems.
 3. Using components can greatly reduce the time to market. As a component can be prefabricated or developed in parallel.
 4. Using components allows builders to try different things quickly as builders can focus on what they want instead of how to build it.
 
-## Conversational user interaction (CUI) component
+## Conversational User Interaction (CUI) component
 For conversational user interface, the component based approach can be more appealing. As half of the user interaction is dictated by end users, it is very likely that we will converge to a smaller set of CUI components thus introduce huge cost savings in building conversational user experiences. But what are the basic considerations of highly reusable conversational user interaction component?
 
 ### Schema
 The center of any CUI component is what information, or set of slots, can be collected from a user through conversations so that the chatbot can use such information to invoke services that users want. Obviously schema for the same vertical can be fairly stable, which makes conversational user interaction a profitable target for componentization. 
 
-### Interaction logic
+### Interaction Logic
 Given the set of slots that chatbot need to collect through conversation, one can define the interaction logic, imperatively or declaratively, which dictates how these slot will be filled. This is the part of the CUI component that needs to be encapsulated. One of the key requirements of the conversational interaction logic is order insensitivity. Assume a user knows what they want, the collected information should not change regardless of what order the user chooses to provide the information. In other words, a CUI component should behave deterministically with respect to the order of user input. While the state machine is enough to model the graphical user interaction (GUI), one typically needs to use statechart (Harel statechart) to efficiently model the conversational user interaction even at the single frame level, because we can not control what the user might do. 
 
-### Language hooks
+### Language Hooks
 It should be easy to port the same interaction logic into different languages. To this end, there should be a simple configuration on these CUI components that one can customize its dialog understanding and text generation behavior. Ideally, such configuration should require no background in the natural language understanding or machine learning so that everyone can contribute to language aspects without going through the steep learning curve.
 
-### Runtime considerations
+### Runtime Considerations
 For graphical user interface components, the runtime can be fairly simple because the wiring of components doesn't change after being determined at configuration time. Since we can not control what a user might say or do, the runtime for CUI component needs to be a lot more involved as we have to figure things out dynamically based on circumstances. For example, to support a user seamlessly switching between different topics, chatbot runtime needs to dynamically figure out the pronoun antecedent from context, automatically switch between different topics accordingly, so that chatbot and user are always on the same page. 
 
-### Integration with service
+### Integration with Service
 For task oriented conversation, the goal is always connecting user with desired services. So it should be possible for the CUI component to pair up with different service providers for maximal reuse. Furthermore, when a CUI component is used together with the compatible backend component, builder can simply deliver services directly by populating the table hosted in the backend components, without needing to understand how component works at CUI level.
 
 ## Provider Component

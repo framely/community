@@ -8,7 +8,7 @@ There are two different ways support system can work with chatbots, internal mod
 
 In the external mode, messages are coming from the channel attached to the bot, and bot appears to be a normal agent on the support system, and bot is responsible for requesting routing the messages via exposed APIs on the support side. For this mode to work, we need to support system expose the APIs conforming to the following semantics. 
 
-### Support API Requirement for external mode
+### Support API Requirement for External Mode
 To reduce the effort level on the user side, it is important that we route user conversation to the most relevant support team/department. This translates to support of notion of team/department on the support system side, where team is a group of human agent that are qualified to solve problem of certain topic.
 1. We can create a new user on the support side.
 2. We can create a conversation to store the history/context of the conversation in case a human agent needs to take over. 
@@ -20,7 +20,7 @@ To reduce the effort level on the user side, it is important that we route user 
 In the Framely hosted environment, we are mainly interested in the external mode, currently we provide the great open source support system chatwoot as the only option, but this can change when someone starts to build the connection with other system and open source it. 
 
 
-### Intent Based Routing under external mode
+### Intent Based Routing Under External Mode
 To reduce the effort level on the user side, we support the conversation routing based on user intent. Essentially, a user intents are grouped into multiple set, each maps to a particular team. When there are unfinished intent in the conversation, that intent can be used to decide which team should we route the conversation to, based on the builder supplied information. When there are no unfinished intent, we can also ask user to provide one, so that they can be transferred to right team directly.
 
 ## Configure Support

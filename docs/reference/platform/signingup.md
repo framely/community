@@ -7,8 +7,8 @@ Follow the following steps to get a Framely account. Let's begin:
 
 [[toc]]
 
-## Signing up for an account
-
+ Signing up for an account
+## Sign Up for an Account
 To create your starter Framely account, visit the [Sign Up page](https://docs.google.com/forms/d/e/1FAIpQLSeYGRXfYnB_uDKTS4hUfcD3w1f9LDI9swcC5Qhy71PTS_JANA/viewform) :
 
 ::: thumbnail
@@ -35,8 +35,8 @@ After submitting, if you get the response *“Thanks for taking the time to fill
 
 You will wait for an Email notification, which will inform you that you now have access to Framely with your GitHub account, and you can log into your Framely account now 🎉.
 
-## Logging into your account
-
+## Log Into Your Account
+Logging into your account
 You can [log into your Framely account](https://build.framely.ai/login) with your GitHub account. This allows you to log into simply by clicking the **Sign in with GitHub** button: 
 
 ::: thumbnail
@@ -49,7 +49,7 @@ If you don't have account yet, you can click the **Click to sign up** link below
 ![click to sign up](/images/guide/signup/click-to-sign-up.png)
 :::
 
-## Are you ready
+## Are You Ready
 
 Before beginning to build your first chatbot, you should be familiar with the following materials:
 

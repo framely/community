@@ -30,7 +30,7 @@ With confirmation, you can control this behavior by
 - Provide the way to customize the "yes/no" understanding of user utterances under this context for explicit confirmations
 
 
-## How to use
+## How To use
 
 ::: thumbnail
 ![confirmation](/images/annotation/confirmation/confirmation.png)
