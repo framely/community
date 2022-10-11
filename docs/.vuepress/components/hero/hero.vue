@@ -24,7 +24,7 @@ const heroText = computed(() => {
   if (frontmatter.value.heroText === null) {
     return null
   }
-  return frontmatter.value.heroText || siteLocale.value.title || 'Framely'
+  return frontmatter.value.heroText || siteLocale.value.title || 'OpenCUI'
 })
 const heroAlt = computed(
   () => frontmatter.value.heroAlt || heroText.value || 'hero'
@@ -33,7 +33,7 @@ const tagline = computed(() => {
   if (frontmatter.value.tagline === null) {
     return null
   }
-  return frontmatter.value.tagline || siteLocale.value.description || 'Framely'
+  return frontmatter.value.tagline || siteLocale.value.description || 'OpenCUI'
 })
 const actions = computed(() => {
   if (!isArray(frontmatter.value.actions)) {

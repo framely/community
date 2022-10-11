@@ -135,7 +135,7 @@ export const en = [
       text: 'Platform',
       children:[
         {
-          text: 'Sign Up For Framely',
+          text: 'Sign Up',
           link: '/reference/platform/signingup.html',
           icon: '/navIcons/signup.svg',
         },

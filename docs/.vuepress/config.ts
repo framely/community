@@ -52,8 +52,8 @@ export default defineUserConfig<DefaultThemeOptions>({
       },
     ],
     ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
-    ['meta', { name: 'application-name', content: 'Framely' }],
-    ['meta', { name: 'apple-mobile-web-app-title', content: 'Framely' }],
+    ['meta', { name: 'application-name', content: 'OpenCUI' }],
+    ['meta', { name: 'apple-mobile-web-app-title', content: 'OpenCUI' }],
     [
       'meta',
       { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
@@ -80,12 +80,12 @@ export default defineUserConfig<DefaultThemeOptions>({
   locales: {
     '/': {
       lang: 'en-US',
-      title: 'Framely',
+      title: 'OpenCUI',
       description: 'Cost-effective Conversational Interface for any Services',
     },
     // '/zh/': {
     //  lang: 'zh-CN',
-    //  title: 'Framely',
+    //  title: 'OpenCUI',
     //  description: '让天下没有难的对话式服务',
     // },
   },
