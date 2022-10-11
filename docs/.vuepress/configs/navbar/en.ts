@@ -52,6 +52,11 @@ export const en = [
             link: '/reference/annotations/transition.html',
             icon: '/navIcons/transition.svg',
           },
+          {
+            text: 'System CUI Components',
+            link: '/reference/annotations/systemcomponent.html',
+            icon: '/navIcons/systemcomponent.svg',
+          }
         ],
       },
       {
