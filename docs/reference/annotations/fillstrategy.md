@@ -192,9 +192,9 @@ Payment completed. Thanks for your business.
 ::::
 
 #### Overview
-External Event by itself only means blocking (of course some [Inform](https://www.framely.ai/reference/annotations/inform.html) is allowed before blocking). It is the builder's responsibility to configure the trusted software to send in an event to finish the blocked intent in the conversation. 
+External Event by itself only means blocking (of course some inform is allowed before blocking). It is the builder's responsibility to configure the trusted software to send in an event to finish the blocked intent in the conversation. 
 
-Apart from that, if the businesses wants to interact differently depending on how well the client action has done (e.g. is it successful, failed, or timed out), it needs to do some conditional branching with the hosting slot's value, just like all the other slots did. One typical place to do this is [Response](https://www.framely.ai/reference/annotations/response.html).
+Apart from that, if the businesses wants to interact differently depending on how well the client action has done (e.g. is it successful, failed, or timed out), it needs to do some conditional branching with the hosting slot's value, just like all the other slots did. One typical place to do this is response.
 
 To set a slot's prompt strategy to be external:
 - set its Prompt Strategy to External
