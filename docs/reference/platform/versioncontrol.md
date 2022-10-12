@@ -38,14 +38,14 @@ Pull requests can only be opened when there are differences between branch and m
 - **Commit**: Confirm your branch chagens and ready to start testing. 
 - **Pull Request**: Pull requests display diffs to compare the changes you made in your branch against the base master, which indicates you are willing to merge them into master.
 
-## How to Use
+## How To Use
 
 This guide walks you through version control workflow:
 
 ### Create Branch
 To create branch, you can just modify your project, for example you can create an intent. And then all your work will be done in your branch. 
 
-### View your Changes
+### View Your Changes
 1. To view your changes, clicking **Diff** icon in the right sidebar.
 
 ::: thumbnail

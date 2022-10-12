@@ -16,7 +16,7 @@ A frame can be marked as interface. Builder can define multiple frames as implem
 ### External
 When an artifact, including entity, frame and intent is defined as external, we assume the corresponding kotlin class is already provided so that we do not have to generate the code for this. The builtin types, like Int, Boolean are accessible at the Framely level, due to this mechanism. 
 
-### Multi valued
+### Multi Valued
 A slot can be declared as multivalued as opposed to single valued. A multivalued slot of type T can be translated into a slot with type List\<T\>. By creating a generic way of instantiating a list of instances of some type can make it easy to build the CUI for certain types.
 
 ### Global

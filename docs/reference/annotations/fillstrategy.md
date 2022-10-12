@@ -28,7 +28,7 @@ Prompt strategy is a required slot level annotation that you can use to control 
 - Strategy that decide whether or when to prompt the user to fill this slot. More importantly, it also defines how other fill annotations should work together. 
 - Prompt is customization of dialog act SlotRequest, it contains a template that can be help to verbalize the slot request dialog act. Diversity of the response can be increased by adding more templates. For the strategy that requires prompt template, builder needs to provide at least one.
 
-## How to Use
+## How To Use
 Prompt strategy is a composite annotation, as Framely provides a set of concrete strategy to cover different use cases and let's cover them one by one.
 
 ### Always

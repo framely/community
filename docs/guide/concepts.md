@@ -33,7 +33,7 @@ In Framely, intent, as a composite CUI data type for functions, is designed to d
 
 At language level, intents can be expressed mainly by verb phrases or full sentence. When expressed in full sentence, the subject need to be first person. Examples for such utterances includes: "Book me a table for two for Sunday evening" or "I would like to make a reservation on Sunday".
 
-### Frame
+### Frames
 Frame is also a composite CUI data type in Framely. Frame is your standard object-oriented class type with composition and polymorphism behaviors support. So smaller frames can be composed to larger frames, with dialog annotations only defined once and reused by different larger frames. 
 
 With inheritance, we can easily support "what symptoms do you have?" type of conversation. By define a interface symptom frame, and multiple concrete frame one for each actual symptom. Since each concrete frame can have a different interaction logic, when we try to fill an interface frame slot, we can naturally get the conversational experience we need. 
@@ -42,10 +42,10 @@ Since the same frame can be used by different intents, frame also naturally serv
 
 At language level, a frame represents objects with properties and is typically expressed in a noun phrase like "large, spicy noodle". In the service layer, the frame are your typical data class, which is parameters for your function.
 
-### Dialog Act
+### Dialog Acts
 Dialog act is another composite CUI data type in Framely. When frame is designed to help convert meaning in natural text into structured representation, dialog act is the opposite of the frame. Dialog act is designed to map structured meaning back to natural text.
 
-### Entity
+### Entities
 The term entity is used to describe the general concept of types and they are basic building block for complex data type. When discussing entity details, it's important to understand these specific aspects:
 1. Type: Defines the type of information you want to extract from user input. For example, cell phone model could be an entity type.
 2. Subtype: Entity type can have subtypes. For example, cell phone models could be partitioned into feature phone and smartphone, and smartphone can be further partitioned to iPhone and android phones. These partition of entity type allow for detailed control of how slot be filled.
@@ -62,10 +62,10 @@ After these types are defined at schema level, builder can add annotation on top
 
 Dialog annotations can be defined both on slot and frame level. Slot level annotations defines how individual slot can be filled. This includes whether the slot can take multiple values, whether it need confirmation. For frame slot, whether the polymorphism is allowed.  Frame level annotations are related to multi-slot filling where values for slots need to collectively make business sense. This includes annotations like value recommendations and value check. Value recommendation provides a user with candidate list so that they can pick one from that instead of input something that is invalid. Value check makes sure agent catch user input error as early as possible so that conversation can be efficient. Dialog annotations are naturally separated into interaction related and language related, each can be handled by different set of people. This makes multiple language support easy.
 
-### Storage Annotation
+### Storage Annotations
 Framely supports the full stack component, data types (frames) defined on the platform can be persisted to tables in the database. The storage annotation is used to specify how frames are stored in the Postgresql. For each slot, Builder can specify how to store them, whether to create an index for it or add a unique constraint. And stored procedures can be then be defined on these table and served as function via Postgrest. 
 
-### Backoffice Annotation
+### Backoffice Annotations
 Aside from being manipulated by users through Postgrest restful API, the persisted data can also be managed via admin web interface. In addition to storage annotation, builder can use backoffice annotation to specify how operation team can access these data via that web interface. This includes whether they can add row, change cell, etc. Backoffice annotation can also include the hint on what help and safeguard we have on the data entry for each slot.  
 
 ## Operational Software
