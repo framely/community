@@ -22,7 +22,7 @@ Use value check to check whether the option user input is servable based on busi
 - Choose which slot to be cleared so that we can restart the slot filling process from that slot again.
 
 ## How To Use
-Value Check is an optional slot annotation. When [Slot Filling](https://www.framely.ai/guide/slotfilling.html#five-stages-of-slot-filling) moves to Value Check, [DM (Dialog Management)](https://www.framely.ai/guide/architecture.html#dialog-understanding-du) will check conditions defined in Value Check.
+Value Check is an optional slot annotation. When [Slot Filling](../../guide/slotfilling.md#five-stages-of-slot-filling) moves to Value Check, [Dialog Manager](../../guide/glossary.md#dialog-manager-dm) will check conditions defined in Value Check.
 - If all conditions are true, Value Check passes and Slot Filling moves on to the next stage.
 - If one of the conditions is false, Value Check fails.
   When Value Check fails, bot uses Value Check prompts to inform users that the value is invalid, clear the predefined target slot first and start to conversation again from that slot.
@@ -40,7 +40,7 @@ Condition holds the boolean code expression that checks whether the value user i
 Conditions are defined in [code expression](./kotlinexpression.html), which should produce a Boolean value when evaluated, like `slot != null` , `function() == true` . You can joint the statements using `&&` or `||` , like `slot != null && slot < 3` .
 
 ### Inform
-When Value Check fails, bot informs users that the value is invalid, like bot's utterance shown in [Motivation](../annotations/valuecheck.html#motivation). You should add at least one template to inform. 
+When Value Check fails, bot informs users that the value is invalid, like bot's utterance shown in [Motivation](#motivation). You should add at least one template to inform. 
 
 ### Recovering Strategy
 

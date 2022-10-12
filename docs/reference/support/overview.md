@@ -35,13 +35,13 @@ To reduce the effort level on the user side, we support the conversation routing
    :::
 
 
-2. Make sure you have configured your channel first. Learn more about channel configuration, see [WeChat Official Account](https://www.framely.ai/reference/channels/wpa.html#before-you-begin).
+2. Make sure you have configured your channel first. Learn more about channel configuration, see [Channels](../channels/overview.md).
 
 3. We show here how to integrate your chatbots with Chatwoot in Framely hosted environment. For private deploy, please consult systems in your organization.
 
 ### Enable Support
 
-Click **Setting** > **Integrations**. In the **Support** field, enable the support you need. To configure Chatwoot, see [Chatwoot Configuration](/reference/support/Chatwoot.html#configuration)
+Click **Setting** > **Integrations**. In the **Support** field, enable the support you need. To configure Chatwoot, see [Chatwoot Configuration](Chatwoot.md#configuration)
 
 ![enable-chatwoot](/images/Chatwoot/enable-chatwoot.png)
 
@@ -62,6 +62,6 @@ Follow these steps to set up routing priority.
 ![routing-priority](/images/Chatwoot/routing-priority.png)
 
 ::: tip
-To get team id in Chatwoot, see [How to Get Team Id](/reference/support/Chatwoot.html#how-to-get-team-id).
+To get team id in Chatwoot, see [How to Get Team Id](Chatwoot.md#how-to-get-team-id).
 :::
 
