@@ -34,7 +34,7 @@ To begin with, you need to create a service interface(compomnent with service) a
 ### Implement Service Interface
 
 1. ❓ In a Kotlin file named with the component you exported, create a data class implementing the service interface. Here are code examples from [*me_test_component_0915.kt*](https://github.com/opencui/runtime/blob/main/extensions/helloworld/src/main/kotlin/me/test/component_0915/me_test_component_0915.kt):
-```kotlin{1,6-8,11-15}
+```kotlin{1,5-7}
 data class HelloWorldProvider(
     val config: Configuration,
     override var session: UserSession? = null): component_0915, IProvider {
