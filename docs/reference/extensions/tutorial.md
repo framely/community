@@ -66,7 +66,7 @@ Now in a native provider, you need to declare the data class that implements the
 ## Reference
 Next, integrate your chatbot with the native provider you created. 
 
-1. [Import](../platform/reusability.md#how-to-use) the component you created into a chatbot that needs this extension.
+1. [Import](../platform/reusability.md##import-1) the component you created into a chatbot that needs this extension.
 2. In the **Setting** field, go to the **Integrations** section. Select the service and choose its serivce provider. 
 3. Fill in the configuration form. As shown in the picture below, there is one field (_Name_) to fill as we have configured in the configuration meta.
 
