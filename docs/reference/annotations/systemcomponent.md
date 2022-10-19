@@ -2,11 +2,11 @@
 
 ## Motivation
 
-One of the design goal of our platform is to automatically handle many conversational issues: where user digress, how we bring them back on track, or where there are ambiguity, how we disambiguate through dynamically scheduled clarification. 
+One of the design goal of OpenCUI is to automatically handle many conversational issues: where user digress, how we bring them back on track, or where there are ambiguity, how we disambiguate through dynamically scheduled clarification. 
 
 Ideally we expect that you don‘t need to worry how they are triggered, and for most part you do not even need to do much as system CUI components will provide good default behaviors. But if needed you can customize the expression and script to tinker the behavior. 
 
-And our platform solution is based on aspect oriented programming. It does so by adding additional behavior (via system CUI components) to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a "pointcut" specification (triggered by runtime automatically). The  common system CUI are, and as time goes by, we will surely have more of these to enrich the default chatbot behavior.
+And the OpenCUI solution is based on aspect oriented programming. It does so by adding additional behavior (via system CUI components) to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a "pointcut" specification (triggered by runtime automatically). The  common system CUI are, and as time goes by, we will surely have more of these to enrich the default chatbot behavior.
 
 ## Clarification
 Often time, user might say something that dialog understanding did not fully understand, for example, there are multiple possibilities. These are the time when we can trigger system intent to engage in the conversation for user to clarify what they really meant. There are couple variants of this:
