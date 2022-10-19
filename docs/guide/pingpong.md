@@ -1,7 +1,7 @@
 # Quick Start with PingPong 
-> Follow this PingPong chatbot to get started with Framely.
+> Follow this PingPong chatbot to get started with OpenCUI.
 
-This guide will walk you through using Framely platform to build and test a simple PingPong chatbot. When interacting with this chatbot, a user can get greeting message, and response of *"pong"* to his input message *"ping"*:
+This guide will walk you through using OpenCUI platform to build and test a simple PingPong chatbot. When interacting with this chatbot, a user can get greeting message, and response of *"pong"* to his input message *"ping"*:
 
 :::: conversation
 ::: bot Bot
@@ -50,10 +50,10 @@ Now, let's begin:
 Before you start follow this guide, it is suggested that you go through the following list first.
 1. Get familiar with [the basic idea of building conversational apps](README.md).
 2. [Make sure that you meet the prerequisite](are-you-ready.md)
-3. [Sign Up For Framely Account](../reference/platform/signingup.md)
+3. [Sign Up For OpenCUI Account](../reference/platform/signingup.md)
 
 ## Create
-After logging in, there will be an org *(short for organization)* created automatically for you, which is how you manage everything on the Framely platform. To create chatbot, follow these steps: 
+After logging in, there will be an org *(short for organization)* created automatically for you, which is how you manage everything on the OpenCUI platform. To create chatbot, follow these steps: 
 
 1. Select an org from your **org label** (If you are already inside an org, you can skip this step): 
 
@@ -133,7 +133,7 @@ For each chatbot, you can define many intents. The steps in this section create 
 :::
 
 ::: warning Need To Know
-- Label is not a name, it is **identifier**, a language independent aspect for semantics in Framely. 
+- Label is not a name, it is **identifier**, a language independent aspect for semantics in OpenCUI. 
 - As a type label, **Intent Label** should start with capital case, limited 2-100 characters, and only support letters, digits and underscores.
 :::
 
@@ -141,7 +141,7 @@ For each chatbot, you can define many intents. The steps in this section create 
 
 #### Build PingPong Intent
 
-Separation of concerns is essential in increasing productivity and reducing the cost of building things. Framely decompose chatbot into **3 layers**: schema, interaction and language perception. In this way, the exact conversational experience should be easily controlled by you based on arbitrary business logic. For example, it should be more easier to keep a multilingual chatbot with the same structure which can provide a consistent experience in each language. For more information, see [Separation of Concerns](../guide/README.md#separation-of-concerns).
+Separation of concerns is essential in increasing productivity and reducing the cost of building things. OpenCUI decompose chatbot into **3 layers**: schema, interaction and language perception. In this way, the exact conversational experience should be easily controlled by you based on arbitrary business logic. For example, it should be more easier to keep a multilingual chatbot with the same structure which can provide a consistent experience in each language. For more information, see [Separation of Concerns](../guide/README.md#separation-of-concerns).
 
 In this PingPong bot, we can just care about two layers: **interaction** and **language**. The difference between interaction and language is whether the entry is language-dependent or not. Language-related aspect like expression, prompt, reply for dialog understanding and template for text generation needs to be defined on language level, while others should be on structure level. In this way, you can always keep all language bots with the same structure which can provide a consistent experience in multilingual chatbot. For more information, see [Multilingual](../reference/platform/multilingual.md).  
 
@@ -188,7 +188,7 @@ Now let's add language-related aspects:
 
 ## Test
 
-Let's try this PingPong bot, which can handle a basic conversation with a welcome message and response with "pong" to message "ping". Framely provides a built-in test feature "**Try It Now**" to help you to uncover bugs with the debug info, you can test your chatbot by typing messages. 
+Let's try this PingPong bot, which can handle a basic conversation with a welcome message and response with "pong" to message "ping". OpenCUI provides a built-in test feature "**Try It Now**" to help you to uncover bugs with the debug info, you can test your chatbot by typing messages. 
 
 ::: tip Note
 As **Try It Now** can only test committed content, please make sure both structure level and language level have been committed. For more information, see [Testing](../reference/platform/testing.md).

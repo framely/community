@@ -31,7 +31,7 @@ Now you can follow these steps to configure your account in Chatwoot.
 
 When you [enable Chatwoot](../support/overview.md#enable-support), we create a Chatwoot organization and add all the owners in your organization to it. The owners added to Chatwoot organization are called agents which are set as administrators by default.
 ::: tip How to Manage Owners in Your Organization?
-1. Log into Framely account and enter your organization.
+1. Log into OpenCUI account and enter your organization.
 2. Click **Settings** > **Internal Members**. Now You can view all the onwers and members in your organization.
 3. Click **···** to set the internal member as owner / member, or to remove internal members.
 :::

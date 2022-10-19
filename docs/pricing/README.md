@@ -46,7 +46,7 @@ cards:
       features:
                 - 'Everything included in Team and: '
                 - Different mode NLU Model
-                - Remove Framely Branding
+                - Remove OpenCUI Branding
                 - Custom Integrations
                 - Advanced security, performance and customer success
       footertagline: Free projects are paused after 1 week of inactivity

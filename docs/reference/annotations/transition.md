@@ -130,7 +130,7 @@ When use **Fill Slot** with code expression, you should make sure assignment act
 
 #### Recheck Slot
 
-Move the stage before checking the value of target slot, to make sure it still makes business sense. Framely reset every slot after slot to be cleared to be rechecked by default.
+Move the stage before checking the value of target slot, to make sure it still makes business sense. OpenCUI reset every slot after slot to be cleared to be rechecked by default.
 
 #### Intent Start
 

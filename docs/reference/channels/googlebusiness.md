@@ -1,7 +1,7 @@
 # Google Business Message
 [Business Messages](https://developers.google.com/business-communications/business-messages) is a mobile conversational channel that combines entry points on Google Maps, Search, and brand websites to create rich, asynchronous messaging experiences that delight customers and drive business results.
 
-We are going to show here how to integrate Google Business Message into Framely and deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
+We are going to show here how to integrate Google Business Message into OpenCUI and deploy the chatbot to a OpenCUI hosted environment. For the private deployment, please consult systems in your organization.
 
 Follow these steps to configure:
 [[toc]]
@@ -47,7 +47,7 @@ Your browser downloads the service account key. Store it in a secure location. Y
 
 ## Add Google Business Channel
 
-1. On the Framely side, enter a chatbot that you want to deploy. click **Setting** > **Integrations**. In the **Channels** field, click **Add New** > **Google Business Message**.
+1. On the OpenCUI side, enter a chatbot that you want to deploy. click **Setting** > **Integrations**. In the **Channels** field, click **Add New** > **Google Business Message**.
 2. The configuration information is as follows. Once you complete the configuration, click **SAVE**.
     - **Name**: You can set a name for your Google Business Message. This will be part of the Callback URL.
     - **Callback URL**: :clipboard: Copy this value. This will be used to configure the Google Business Message Webhook.  

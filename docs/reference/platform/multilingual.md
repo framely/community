@@ -6,7 +6,7 @@
 
 Multilingual chatbot is one of the most effective and efficient ways your brand can provide customer support to users in their native language. With multilingual chatbot, you can enhance customer satisfaction and engagement to a different level. 
 
-Just like graphic user experiences are built in two layers, where front-end engineers handle interaction logic, and UI designers control the look and feel, the conversational experience design should be decomposed into two layers as well. Framely provides you a way to define what interactions you will need in **Interaction Layer** and then lets you reuse them in every **Language layer**, which will always stay in sync and avoid unnecessary duplication of effort for you, just create once and reuse often.
+Just like graphic user experiences are built in two layers, where front-end engineers handle interaction logic, and UI designers control the look and feel, the conversational experience design should be decomposed into two layers as well. OpenCUI provides you a way to define what interactions you will need in **Interaction Layer** and then lets you reuse them in every **Language layer**, which will always stay in sync and avoid unnecessary duplication of effort for you, just create once and reuse often.
 
 ::: tip Note
 Multilingual chatbot assumes you deliver the same service to each user in their native languages. If the intention is to provide different services in different countries with different languages, you need to create different chatbots. 

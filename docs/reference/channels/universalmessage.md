@@ -1,22 +1,22 @@
 # Universal Channel
 
-Users interact with chatbot through channel, for example Facebook Messenger. On Framely, channels are integration plugin module that listen for user request for given channel, extract the input, and then triggers chatbot for the structured response, where channel plugin need to encode that response in the channel required format and send it out to user. 
+Users interact with chatbot through channel, for example Facebook Messenger. On OpenCUI, channels are integration plugin module that listen for user request for given channel, extract the input, and then triggers chatbot for the structured response, where channel plugin need to encode that response in the channel required format and send it out to user. 
 
 ## Motivation
 
-Framely focuses on supporting popular rich media channels like Facebook Messenger, WhatsApp, WeChat, and Google Business Message. Furthermore, Framely Runtime is designed be extensible so supporting new channels are easy, expect more and more channels will be supported down the road. 
+OpenCUI focuses on supporting popular rich media channels like Facebook Messenger, WhatsApp, WeChat, and Google Business Message. Furthermore, OpenCUI Runtime is designed be extensible so supporting new channels are easy, expect more and more channels will be supported down the road. 
 
 Different channels obviously have different rendering capabilities when it comes to message types. and even when they support the same message type, channels usually do it using different syntax. To support multiple channels at the same time, and to make omnichannel possible, each message can be defined on a per-channel basis. 
 
 While it is ok to describe the response messages specifically for each channel to get the maximal native experience, that will result in unnecessary burden for chatbot builders when they want to support as many channels as possible. 
 
-In Framely, we support universal channel. Messages supported in this channel is called universal messages, and they are a set of messages that are abstracted from commonly supported message type from popular channels like Messenger, WhatsApp, WeChat, iMessage and RCS and so on. These universal message will be translated into channel dependent format before we send it out through that channel, so that chatbot builder only need define the response once in universal channel. Of course, if they absolutely need the native experience, they can define response in that channel which will be used over the universal channel. 
+In OpenCUI, we support universal channel. Messages supported in this channel is called universal messages, and they are a set of messages that are abstracted from commonly supported message type from popular channels like Messenger, WhatsApp, WeChat, iMessage and RCS and so on. These universal message will be translated into channel dependent format before we send it out through that channel, so that chatbot builder only need define the response once in universal channel. Of course, if they absolutely need the native experience, they can define response in that channel which will be used over the universal channel. 
 
 ## Overview
 
 Universal Message offers a way for you to offer a richer in-conversation experience than standard text messages by integrating clickable buttons, images, lists, and more alongside text a single message. Universal Message can be used for many purposes, such as displaying product information, providing the message recipient to choose from a set of options, and showing search results.
 
-Universal Messages defined on Framely can be classified into two classes depending on what they try to verbalize: 
+Universal Messages defined on OpenCUI can be classified into two classes depending on what they try to verbalize: 
 1. **Single value message**, it can be used to verbalize a single value of some type. This type of message can only support tuple (think of static list where the number of elements are known at build time).
     ::: thumbnail
     ![Single value message](/images/channelConfig/universal/single-value-message.png)
@@ -36,7 +36,7 @@ We also support standard events on univerval channel to make user experience a b
 
 ## How To Use
 
-Message is a structure encoding of how information should be rendered to user on the channel. On Framely, regardless which channel the message is defined for, it is just a templated string that encodes some json object.
+Message is a structure encoding of how information should be rendered to user on the channel. On OpenCUI, regardless which channel the message is defined for, it is just a templated string that encodes some json object.
 
 Use the following guides to learn how to send messages to your customers by using universal message.
 

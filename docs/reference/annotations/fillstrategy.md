@@ -29,7 +29,7 @@ Prompt strategy is a required slot level annotation that you can use to control 
 - Prompt is customization of dialog act SlotRequest, it contains a template that can be help to verbalize the slot request dialog act. Diversity of the response can be increased by adding more templates. For the strategy that requires prompt template, builder needs to provide at least one.
 
 ## How To Use
-Prompt strategy is a composite annotation, as Framely provides a set of concrete strategy to cover different use cases and let's cover them one by one.
+Prompt strategy is a composite annotation, as OpenCUI provides a set of concrete strategy to cover different use cases and let's cover them one by one.
 
 ### Always
 #### Overview
@@ -123,8 +123,8 @@ How about headache?
 Gated strategy can only be applied to frame slot. So to take advantage of this prompt strategy, you first need to define a frame to host the closely related slots. Like conditional strategy, this choice is also orthogonal to other annotations in the [slot filling](../../guide/slotfilling.md) pipeline. 
 
 Boolean Gate will ask users the YES-or-NO question once, then waits for three kinds of answers:
-If the answer is Yes, Framely will then follow the depth first rule and start to fill nested slots one at a time in their natural order. 
-If the answer is slot value, Framely will assume gate is opened and start to fill nested slots with user input.
+If the answer is Yes, OpenCUI will then follow the depth first rule and start to fill nested slots one at a time in their natural order. 
+If the answer is slot value, OpenCUI will assume gate is opened and start to fill nested slots with user input.
 If the answer is NO, the frame slot will simply be skipped (neither be asked nor be filled).
 
 

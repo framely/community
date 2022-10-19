@@ -1,5 +1,5 @@
 # Glossary
-Framely is a component based declarative platform and repository for building conversational user interface for cooperative users to access your services. It is a low code platform for building personalized service, include chatbot and corresponding backend. The chatbot and backend defined on the platform will be first code-generated into Kotlin source code, which can be compiled and executed on top of Framely runtime anywhere.
+OpenCUI is a component based declarative platform and repository for building conversational user interface for cooperative users to access your services. It is a low code platform for building personalized service, include chatbot and corresponding backend. The chatbot and backend defined on the platform will be first code-generated into Kotlin source code, which can be compiled and executed on top of OpenCUI runtime anywhere.
 
 ## CUI
 Conversational user interface.
@@ -29,7 +29,7 @@ Builders describe what are needed and computer figure out how to do it.
 The arrangement rules of words and phrases to create well-formed sentences in a language.
 
 ## Semantics
-The meaning of a word, phrase, sentence, or text without context. In Framely, the semantics is defined semantic frames, or just frames.
+The meaning of a word, phrase, sentence, or text without context. In OpenCUI, the semantics is defined semantic frames, or just frames.
 
 ## Pragmatics
 Study of how context contributes to meaning, or meaning under context. We use the frame to express meaning under context as well.
@@ -47,7 +47,7 @@ Also known as business logic or more commonly service, defines how services shou
 User interacting application are commonly partitioned into frontend and backend. Where frontend manages the user interaction, and backend models data and application logic. And backend and frontend communicate via predefined-defined APIs. Frontend includes presentation layer and interaction logic layer, or frontend can also be partitioned into schema level and language level.
 
 ## Backend
-Framely assume backend hosts all the data and application logic for different frontends, chatbot is one such frontend. Backend are typically just implementation of restful APIs on top of database. Popular open source databases includes mysql and postgresql. Backend can be thought provider for services (or implemented the function declared in the services)
+OpenCUI assume backend hosts all the data and application logic for different frontends, chatbot is one such frontend. Backend are typically just implementation of restful APIs on top of database. Popular open source databases includes mysql and postgresql. Backend can be thought provider for services (or implemented the function declared in the services)
 
 ## Project
 Chatbot, component and provider are all project on platform.
@@ -59,14 +59,14 @@ Stakeholders for entire application (chatbot, backend and back office), there ar
 - **Operator** (business): The team that user the back office to deliver the information/service to end user.
 - **Admin** (business): Admin is a special kind of operator, they have full control of the data in the backend.
 
-As general rule, builder use platform, business operator and admin use backoffice. End-user use chatbot. And business admin may or may not hold the admin account on the Framely platform.
+As general rule, builder use platform, business operator and admin use backoffice. End-user use chatbot. And business admin may or may not hold the admin account on the OpenCUI platform.
 
 ## Chatbot
 An end user facing application or CUI frontend, user can access information and service through conversations in text or voice instead of a graphical user interface. All user facing application can be generally built in three layers: language, interaction and schema.
 
 ### 4 Layers of Chatbot
 
-- **Schema Layer**: Interface to service, or data structure needed to invoke the service as both input and output, are defined at schema level. Application logic is also defined in this layer, typically as the backend providers, some time simply via SQL on Framely, some time externally via restful APIs.
+- **Schema Layer**: Interface to service, or data structure needed to invoke the service as both input and output, are defined at schema level. Application logic is also defined in this layer, typically as the backend providers, some time simply via SQL on OpenCUI, some time externally via restful APIs.
 
 - **Interaction Layer**: Defines interaction logic, or how input parameter needed by service should be collected from user via conversational interactions, at an language independent fashion. The decision in this lever include whether to prompt user for given slot, whether to give recommendation when prompt, and what to do if input validation is failed, for example.
 
@@ -75,15 +75,15 @@ An end user facing application or CUI frontend, user can access information and 
 - **Message Layer**: Channel for message rendering offers a in-conversation experience, which is integration plugin module that listen for user request for given channel, extract the input, and then triggers chatbot for the structured response, where channel plugin need to encode that response in the channel required format and send it out to user.
 
 ## Component 
-The key design goal for Framely is to support composing the chatbot out of the reusable component so that builder does not always need to start from scratch. Notice components can be used to build bigger and bigger components. And some components contain service, which defines interface to a set of functions.  
+The key design goal for OpenCUI is to support composing the chatbot out of the reusable component so that builder does not always need to start from scratch. Notice components can be used to build bigger and bigger components. And some components contain service, which defines interface to a set of functions.  
 
 ## Service
 The interface for collection of functions that chatbot can use to access business logic.
 
 ## Provider
-Provider provide access to implementation for the services. Backend are simply a collection of providers. Framely currently provide Postgrest provider, RESTful provider and Google Sheets provider.
+Provider provide access to implementation for the services. Backend are simply a collection of providers. OpenCUI currently provide Postgrest provider, RESTful provider and Google Sheets provider.
 
-- **Postgrest Provider**: In addition to access, Postgrest provider are used to define both application logic  (via SQL in form of stored procedure) and database schema needed by such logic declaratively on Framely. This allows builder to define reusable backend components including both UI and backend (both data and business logic), with the dialog annotation, storage annotation as well as backoffice annotation. 
+- **Postgrest Provider**: In addition to access, Postgrest provider are used to define both application logic  (via SQL in form of stored procedure) and database schema needed by such logic declaratively on OpenCUI. This allows builder to define reusable backend components including both UI and backend (both data and business logic), with the dialog annotation, storage annotation as well as backoffice annotation. 
 
 - **RESTful Provider**: Service can also be accessed via restful API, with restful provider one can describe the mapping of the collected input parameter to actual Json format needed by endpoint.
 
@@ -117,13 +117,13 @@ The services that user want are generally accessed via some form APIs, and resul
 A way to improve the builder experience for input boxes, provides smart code completion, diagnostics, definition lookup, method signature help and more. The experience is like an IDE. There are three kinds of input boxes on the platform: kotlin code expression, SQL statement and JSON expression. 
 
 ## Runtime 
-The core of chatbot is to build common understanding of what user want through conversation, connect user to the right service and generate the natural text for channel to rendering to user.  These core functionalities are provided by Framely runtime as APIs, so each chatbot can focus on what information to collect and leave the actual information collect to runtime. Runtime also contains session management and dispatcher.
+The core of chatbot is to build common understanding of what user want through conversation, connect user to the right service and generate the natural text for channel to rendering to user.  These core functionalities are provided by OpenCUI runtime as APIs, so each chatbot can focus on what information to collect and leave the actual information collect to runtime. Runtime also contains session management and dispatcher.
 
 ## Dialog Manager (DM)
 Dialog manager is brain of the chatbot, and is responsible for calling DU with generated dialog expectation to get the frame event, and consult the dialog annotations to decide how to respond to user (in terms of semantic frames and language independent way) for next turn, and use text generator to translate the frame into natural text reply in the language that user speaks. Turn by turn, dialog manger will figure out what user wants, and connect user with the service they care. Runtime is a fully decomposed system, with DM operating solely on DU output, and given DU output, DM output is entirely independent of user utterance, and given DM output, text generation is independent of DU output(DM input). This is important to make DM language independent.
 
 ## Dialog Understanding (DU)
-A major part of runtime is convert what user said into semantic structure representation, or frame, given the dialog expectation. In Framely, DU is fully controlled by the context dependent expression exemplars, for both initial design and hot fix.
+A major part of runtime is convert what user said into semantic structure representation, or frame, given the dialog expectation. In OpenCUI, DU is fully controlled by the context dependent expression exemplars, for both initial design and hot fix.
 
 ## Dialog Expectation
 Information can be used to change how user utterance be understood. For example, if DU expect a song name, then "Beijing welcome you" will be recognized as a song and "Beijing" in there will not be recognized as city; if DU does not expect a song name, "Beijing" in there should be recognized as city. Dialog is used to summarize the conversational history so far, in terms of understanding, or given dialog expectation, the conversational history does not provide additional useful information toward understanding of the user input for the current turn. Dialog expectation is automatically used by DU for this purpose, and builder does not need to worry about it.
@@ -133,7 +133,7 @@ Dialog understanding is always conducted under context, and context is simply th
 
 - **Context Independent Expression**: Expression defined in the expression tab for intent are context independent, and they can be triggered in any context, or DU will convert the user utterances similar to the these expression exemplars into frame and send to dialog management for further processing.
 
-- **Context Dependent Expression**: All other expression defined on the Framely platform are considered context dependent, where its expected context is determined by where the expression exemplar is defined.  DU will convert expressions similar to these exemplars into corresponding frames only when the current dialog context matches the context where the exemplar is defined. For example, positive expression exemplar under confirmation on the slot will only be used to convert similar user utterance into corresponding frame when chatbot start the confirmation on that slot.
+- **Context Dependent Expression**: All other expression defined on the OpenCUI platform are considered context dependent, where its expected context is determined by where the expression exemplar is defined.  DU will convert expressions similar to these exemplars into corresponding frames only when the current dialog context matches the context where the exemplar is defined. For example, positive expression exemplar under confirmation on the slot will only be used to convert similar user utterance into corresponding frame when chatbot start the confirmation on that slot.
 
 ## Frame Event
 The semantic structure representing what user said, converted by DU under given dialog expectation. The Frame event can be at semantic level or pragmatic level.
@@ -159,7 +159,7 @@ User exchange messages with chatbot/human agent to get things done. There are th
 
 - **Text Message vs Media Message**. Text messages can be rendered in any channels, including in speaker that doesn't have display. Media messages are best rendered in the channels with display, like Google Business Message and Facebook Messenger.
 
-- **Universal Message vs Channel Specific Message**. Universal messages are defined in Universal Channel, and they will be rendered into all Framely supported channels on the best effort basis. The channel specific messages are defined in the specific channel, these messages will be chosen as reply to users for that channel instead of already defined generic messages. Channel specific message will be supported later.
+- **Universal Message vs Channel Specific Message**. Universal messages are defined in Universal Channel, and they will be rendered into all OpenCUI supported channels on the best effort basis. The channel specific messages are defined in the specific channel, these messages will be chosen as reply to users for that channel instead of already defined generic messages. Channel specific message will be supported later.
 
 - **Simple Message vs List Messages**. Simple messages render information in a single frame, and list messages render information in the list of frames. 
 
@@ -174,9 +174,9 @@ When chatbot does not know what to do or when user demand talking to a human age
 Back office is a interface for business admin/operator to interact with backend so that business can provide service to user.
 
 ## Reusability
-Reusability is the one of the key design goal for Framely to help business to reduce the cost of building personalized services. There are four different mechanisms available.
+Reusability is the one of the key design goal for OpenCUI to help business to reduce the cost of building personalized services. There are four different mechanisms available.
 
-- **Import**: Instead of build functionality from scratch, on Framely, the first choice of acquired functionality is import the relevant components. Where there are right components, builder only need to provide the business dependent data to service their users.
+- **Import**: Instead of build functionality from scratch, on OpenCUI, the first choice of acquired functionality is import the relevant components. Where there are right components, builder only need to provide the business dependent data to service their users.
 
 - **Clone**: Clone is another way of reuse. Instead of build chatbot from empty slate, one start from exist chatbot by clone it.
 
@@ -185,14 +185,14 @@ Reusability is the one of the key design goal for Framely to help business to re
 - **Compose**: We can use frame as slot of larger frame, to get bigger and bigger behavior.
 
 ## Deploy Mode
-The project, chatbot or provider, defined on the Framely have two deploy mode options.
+The project, chatbot or provider, defined on the OpenCUI have two deploy mode options.
 
-- **Framely Hosted**: When configured to be Framely hosted, there will be a button "deploy" that can trigger the new definition be deployed on the Framely cloud to serve the user traffic.
+- **OpenCUI Hosted**: When configured to be OpenCUI hosted, there will be a button "deploy" that can trigger the new definition be deployed on the OpenCUI cloud to serve the user traffic.
 
 - **Private Deploy**: When configured to be private-deployed, there will be a button "export" that can trigger the code generated for the project. The code can then be used by your devops team to bring up the service.
 
 ## Version Control
-Framely platform have a version control built in, so that it is easy for builder to collaborate on building chatbot. The version control is modeled after git for the nested structures.
+OpenCUI platform have a version control built in, so that it is easy for builder to collaborate on building chatbot. The version control is modeled after git for the nested structures.
 
 - **Branch**: One always works with a branch. Each builder can keep one active branch for each project.
 - **Master**: There is target branch where every one merge their result into. This is the version that get deployed.
@@ -207,7 +207,7 @@ Framely platform have a version control built in, so that it is easy for builder
 - **Close**: You can discard your change by close it.
 
 ## Org
-Builders belong to organization, and builders from the organization can collaborate freely. Framely charge organization instead of builder.
+Builders belong to organization, and builders from the organization can collaborate freely. OpenCUI charge organization instead of builder.
 
 ## Structure / Language View
 Each chatbot is consisted of one structure view and one or more language views. 
@@ -215,17 +215,17 @@ Each chatbot is consisted of one structure view and one or more language views.
 - **Language View**: Provides annotation so chatbot can convert natural text in difference language into semantic structure frames and back. 
 
 ## Type
-Framely is statically typed. Type are declared for every slot, every function input parameter and every function return. Entity, frame and intent are all considered to be type on Framely.
+OpenCUI is statically typed. Type are declared for every slot, every function input parameter and every function return. Entity, frame and intent are all considered to be type on OpenCUI.
 
 - **Statically Typed**: Statically typed is a programming language characteristic in which variable types are explicitly declared and thus are determined at compile time. This lets the compiler decide whether a given variable can perform the actions requested from it or not. Static typing associates types with variables, not with values.
 
-- **Generic Type**: Framely also support generic type, where builder can define behavior first and actual type is decided later.
+- **Generic Type**: OpenCUI also support generic type, where builder can define behavior first and actual type is decided later.
 
 ## Definition
 By default, intent, frame and entity can be claimed to be definition, in which case, we generate code for them. When definition is turned off, we do not generate code for them instead assume the corresponding code already exist somewhere.
 
 ## Label
-Label is a language independent aspct for semantics in Framely, that include entity type, entity instance, frames. Labels are denoted in the full qualified fashion in order to reduce the naming conflict.
+Label is a language independent aspct for semantics in OpenCUI, that include entity type, entity instance, frames. Labels are denoted in the full qualified fashion in order to reduce the naming conflict.
 
 ## Intent
 Intents are simply the tasks that user accomplish through chatbot. It defines what user have to say to indicate that he/she wants something, and which actual function to invoke for that task.
@@ -243,7 +243,7 @@ Frame can be declared as global. A global frame can occur in more than one inten
 Builder can map an interface frame to an entity, then have one subframe for this interface for every instance of the entity type. This reuses the expressions defined on the entity and its instances. The result is the utterance are recognized toward meaning using both dialog understanding (extractive and abstractive) methods.
 
 ## Entity
-In Framely, entity is a type of item and element that is relevant to the user's intent/frame, for example, city is an entity with instances like Beijing, New York, for example. Entities define typed data that can be extracted from the utterance and is essential to complete a user's required action. Entity instances are understood based on extractive methods. Entity has one or more type expressions.
+In OpenCUI, entity is a type of item and element that is relevant to the user's intent/frame, for example, city is an entity with instances like Beijing, New York, for example. Entities define typed data that can be extracted from the utterance and is essential to complete a user's required action. Entity instances are understood based on extractive methods. Entity has one or more type expressions.
 
 - **Entity Instance**: Entity instance is an entity of that type. It has a label that is language independent, and then one or more language dependent expressions (value expression) what user say and system could understand.
 
@@ -293,9 +293,9 @@ To inform user something (implicit confirmation) or ask user to confirm their ch
 Transition is a low level annotation that give builder the ability to control the state machine directly. It is an optional frame level annotation which lets you define transitions between slots hosted directly and indirectly by hosting frame.
 
 ## Expression Exemplars 
-All semantics in Framely can be referenced in multiple languages, and expression is the only way for builder to influence how user utterance is converted into semantic frames. By attaching expression exemplars to each semantic under some context, builder indicate user utterance that are similar to expression exemplars under the same context should be converted to the corresponding frame.
+All semantics in OpenCUI can be referenced in multiple languages, and expression is the only way for builder to influence how user utterance is converted into semantic frames. By attaching expression exemplars to each semantic under some context, builder indicate user utterance that are similar to expression exemplars under the same context should be converted to the corresponding frame.
 
-These expression exemplars are used by NLU model to hotfix the understanding issues. Notice expression exemplar are normally only useful under the given context, so it is easy for Framely to convert the same utterance into different frame representation under different context. Builder can provide expression exemplar for any semantics: do-not-care, negation, positive and negative under yes-no questions, for example,  There are different kinds of expression:
+These expression exemplars are used by NLU model to hotfix the understanding issues. Notice expression exemplar are normally only useful under the given context, so it is easy for OpenCUI to convert the same utterance into different frame representation under different context. Builder can provide expression exemplar for any semantics: do-not-care, negation, positive and negative under yes-no questions, for example,  There are different kinds of expression:
 
 - **Type Expression** (Name): The example of how entity, frame types are mentioned in different languages.
 - **Value Expression** (Entity Instance Expression): The example of how entity and frame instance are mentioned in different languages.

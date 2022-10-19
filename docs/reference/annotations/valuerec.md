@@ -61,7 +61,7 @@ Value recommendation is rather complex conversational component, consist of
 Don't care expressions need to be defined in another annotation, but the interactive experience will be reflected here. See more about [Don't Care](./dontcare.md).
 :::
 
-Aside from these main control, Framely value recommendation also comes with other bells and whistles to make it easy to adapt to real world situations. For example, there is a hard and soft mode toggle, which indicates whether option or value outside what bot offers is acceptable. There is also annotation allow you customize the conversational behavior when the item list is empty or just had one entry. 
+Aside from these main control, OpenCUI value recommendation also comes with other bells and whistles to make it easy to adapt to real world situations. For example, there is a hard and soft mode toggle, which indicates whether option or value outside what bot offers is acceptable. There is also annotation allow you customize the conversational behavior when the item list is empty or just had one entry. 
 
 Value recommendation can be defined both on the slot level (both entity slot or frame slot) and frame level, with frame level definition available on all the slot of that frame automatically. The configuration of value recommendation is done in the follow UI:
 ::: thumbnail
@@ -100,7 +100,7 @@ So if the item the user wants is not in the list of candidates, the bot will not
 Sorry, we do not offer Star Wars at this time. The only available showtime for Star Wars is 8:00pm and 10:00pm. Which time do you prefer?
 :::
 ::::
-The exact script of the first part can be customized on the system intent `io.framely.core.BadIndex` and `io.framely.core.BadCandidate` by adding more replies. 
+The exact script of the first part can be customized on the system intent `io.opencui.core.BadIndex` and `io.opencui.core.BadCandidate` by adding more replies. 
 
 The conversational behavior will also be customized under hard mode for cases when number of entries return the source is one or zero, which can be defined in [Single Entry Informs](./valuerec.md#single-entry) and [Zero Entry Informs](./valuerec.md#zero-entry).
 
@@ -166,7 +166,7 @@ Running shoes for training, got it. Here are the running shoe series designed fo
 :::
 ::::
 
-In Framely, each intent is abstraction of a function with conversational behavior defined on top of it, including its input parameters. Each intent has a return. When an intent has a return type of multivalued target slot type, we can use it as source for value recommendation for the slot. To specify the list of candidates via user interaction, you just need to active intern based source configuration 
+In OpenCUI, each intent is abstraction of a function with conversational behavior defined on top of it, including its input parameters. Each intent has a return. When an intent has a return type of multivalued target slot type, we can use it as source for value recommendation for the slot. To specify the list of candidates via user interaction, you just need to active intern based source configuration 
 ::: thumbnail
 ![value rec source](/images/annotation/valuerec/valuerec_source.png)
 :::

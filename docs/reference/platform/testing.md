@@ -14,7 +14,7 @@ To test your bot, you can use built-in test feature **Try It Now** to uncover bu
 
 When interacting with **Try It Now**, you can provide user input as text like *"Get me two tickets for Star Wars"*, or a json format represents the same semantics which is used to describe filling for some data structure or provide values for its slots. 
 
-Framely dialog engine can be interacted directly in Frame Event in its json format, which allows for easier bug fixes on the interaction logic by separating the dialog understanding issues. 
+OpenCUI dialog engine can be interacted directly in Frame Event in its json format, which allows for easier bug fixes on the interaction logic by separating the dialog understanding issues. 
 
 For example, the user utterance `Get me two tickets for Star Wars` can be encoded as following json structure:
 
