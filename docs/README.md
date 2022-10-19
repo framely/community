@@ -13,13 +13,13 @@ actions:
     type: secondary
 features:
   - title: CUI for your APIs
-    details: Building valuable services is hard, and we can not help with that. But if you already have APIs, building conversational user interface for it should be easy, with Framely.
+    details: Building valuable services is hard, and we can not help with that. But if you already have APIs, building conversational user interface for it should be easy, with OpenCUI.
     icon: /images/featureIcons/cui.svg
   - title: Separation of Concerns
     details: Decompose chatbot building into multiple concerns like service, interaction and language perception, so different aspects can be handled by different people.
     icon: /images/featureIcons/separate.svg
   - title: Declarative
-    details: Focus on what is the desired behavior for your chatbot instead of how such behavior should be implemented imperatively, you got Framely for that. 
+    details: Focus on what is the desired behavior for your chatbot instead of how such behavior should be implemented imperatively, you got OpenCUI for that. 
     icon: /images/featureIcons/declarative.svg
   - title: Component-First
     details: Never build from scratch, build complex behavior using imported components, so you can focus on what matters most for your business.
@@ -28,7 +28,7 @@ features:
     details: Accuracy is not the most important metric when it comes to dialog understanding. To deploy a chatbot into production, every thing need to be hot fixable by the operation team.
     icon: /images/featureIcons/hotfix.svg
   - title: Open Source Runtime
-    details: Reactjs enables teams to focus on their application dependent interaction logic, instead of reinventing wheels. Framely is doing the same for chatbots. 
+    details: Reactjs enables teams to focus on their application dependent interaction logic, instead of reinventing wheels. OpenCUI is doing the same for chatbots. 
     icon: /images/featureIcons/open-source-line.svg
   - title: Universal Messages
     details: Omnichannel made easy, the universal messages you defined once will get automatically translated into native message for each channel.  
@@ -40,7 +40,7 @@ features:
     details: The same interaction logic should be shared between all the different languages, so that you can use people with entirely different skillsets for this. 
     icon: /images/featureIcons/multi-language.svg
   - title: Fully Extensible
-    details: The chatbot defined on the Framely are generated into kotlin code, which makes it easy to integrate with any channel, support and services, take full advantage of java/kotlin ecosystem.
+    details: The chatbot defined on the OpenCUI are generated into kotlin code, which makes it easy to integrate with any channel, support and services, take full advantage of java/kotlin ecosystem.
     icon: /images/featureIcons/raw-code.svg
 
 contentCards:
@@ -49,11 +49,11 @@ contentCards:
     image: /images/schema.png
     left: true
   - title: Declare Interaction Logic
-    details: Schema defines what information we need to collect from a user in order to deliver the desired user experience. The interaction logic is driven by business logic and goals. Framely provides a set of interaction annotation which a builder can use declaratively to describe what conversational experience they want to provide, and Framely runtime will take care of the rest.
+    details: Schema defines what information we need to collect from a user in order to deliver the desired user experience. The interaction logic is driven by business logic and goals. OpenCUI provides a set of interaction annotation which a builder can use declaratively to describe what conversational experience they want to provide, and OpenCUI runtime will take care of the rest.
     image: /images/interaction.png
     left: false
   - title: Link Utterances to Semantics 
-    details: Natural language utterances in the different languages is translated to and from schema event by Framely dialog understanding and module. To control the language perception related behavior, the builder only needs to touch the language part of the relevant interaction annotation, by providing exemplars for user utterance and template for bot messaging. No machine learning (ML) and natural language understanding (NLU) training is needed, certainly no need for a Ph.D hire.
+    details: Natural language utterances in the different languages is translated to and from schema event by OpenCUI dialog understanding and module. To control the language perception related behavior, the builder only needs to touch the language part of the relevant interaction annotation, by providing exemplars for user utterance and template for bot messaging. No machine learning (ML) and natural language understanding (NLU) training is needed, certainly no need for a Ph.D hire.
     image: /images/language.png
     left: true
 
@@ -81,7 +81,7 @@ mainfooter:
           - link: /guide/cooperative.html
             text: Cooperative Principle
           - link: /guide/sgcui.html
-            text: Schema Grounded CUI
+            text: Schema Grounded
           - link: /guide/5levels-cui.html
             text: 5 Levels of CUI
           - link: /guide/components.html
@@ -101,9 +101,9 @@ mainfooter:
             text: Issues
       - title: Company
         links:
-          - link: https://framely.medium.com/
+          - link: https://opencui.medium.com/
             text: About
-          - link: https://framely.medium.com/
+          - link: https://opencui.medium.com/
             text: Blog
           - link: /storage
             text: Career

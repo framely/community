@@ -4,13 +4,13 @@
 
 ## Motivation
 
-It is common for multiple members to collaborate on building a project. Framely offers access control, which lets you give more granular access to specific project resources and prevents unwanted access to other resources. 
+It is common for multiple members to collaborate on building a project. OpenCUI offers access control, which lets you give more granular access to specific project resources and prevents unwanted access to other resources. 
 
 Access control lets you adopt the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege), so control access and permissions granted to team members, you grant only the necessary access to your project resources.
 
 ## Organization Access
 
-Your team can collaborate on Framely by using an organization account, which serves as a container for your shared work and gives the work a unique name and brand. You can invite people to join your organization, then give these members a variety of roles that grant different levels of access to the organization and its project. 
+Your team can collaborate on OpenCUI by using an organization account, which serves as a container for your shared work and gives the work a unique name and brand. You can invite people to join your organization, then give these members a variety of roles that grant different levels of access to the organization and its project. 
 
 The roles in the organization are:
 | Role   | Summary |
@@ -28,7 +28,7 @@ In addition to managing access to the organization itself, you can separately ma
 
 | Privacy  | Summary |
 |:--       |:---     |
-| Public   | Accessible to everyone in the Framely. Only have read-only permissions, if they are not granted specific access. |
+| Public   | Accessible to everyone in the OpenCUI. Only have read-only permissions, if they are not granted specific access. |
 | Internal | Accessible to certain organization internal members. Only have read-only permissions, if they are not granted specific access. |
 | Private  | Only accessible to you and people you explicitly share access with |
 

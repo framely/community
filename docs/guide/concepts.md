@@ -3,10 +3,10 @@
 This section helps you understand the key concepts at the org level, and at chatbot level in terms of build, test, deploy and operate chatbots.
 
 ## Projects
-Just like repo on the GitHub, on the Framely platform, projects are the basic unit of work. One can decide whether it is public or private, what permission that each user can have on it, etc. Projects can be cloned or imported for reuse. There are three kinds of projects on the platform.
+Just like repo on the GitHub, on the OpenCUI platform, projects are the basic unit of work. One can decide whether it is public or private, what permission that each user can have on it, etc. Projects can be cloned or imported for reuse. There are three kinds of projects on the platform.
 
 ### Chatbots
-A Framely chatbot is an application with conversational user interface that connects end-users with your services through conversations. It is essentially just a set of intents and all their dependencies like frames, dialog acts, entities and services. 
+A OpenCUI chatbot is an application with conversational user interface that connects end-users with your services through conversations. It is essentially just a set of intents and all their dependencies like frames, dialog acts, entities and services. 
 
 ### Components
 Components are the reusable modules for getting user preferences via conversations, for example, asking user for a date can be one such component. Components can be integrated into bigger and bigger reusable component for more complex use cases. Optionally, component can declare a service, which allows interaction logic to be defined against business logic and service APIs for better conversational experiences.
@@ -19,14 +19,14 @@ Each service can have one or more provider projects that provide the implementat
 
 
 ## Type Systems
-Services can be described by its schema, using description languages such as [OpenAPI](https://swagger.io/docs/specification/data-models/). The core of the API schema is its type system, which is needed to describe data types for the input and output parameters for the service functions. To make it easy to build conversational interface for any services, in addition to primitive type and enums, Framely type system also supports arrays, user defined types with builtin inheritance and polymorphism behaviors. 
+Services can be described by its schema, using description languages such as [OpenAPI](https://swagger.io/docs/specification/data-models/). The core of the API schema is its type system, which is needed to describe data types for the input and output parameters for the service functions. To make it easy to build conversational interface for any services, in addition to primitive type and enums, OpenCUI type system also supports arrays, user defined types with builtin inheritance and polymorphism behaviors. 
 
-A data type (or simply type) defines what operations can be applied to its instances, and the behavior on these instances resulted from these operations. As a conversational user interface framework, the types you can define on Framely, including intent, frame and entity, have their conversational behavior defined in three layers. In schema layer, they are directly mapped into hosting language data types (currently Java/Kotlin) so that it can be used to invoke the service functions directly; in interaction layer, how to collect user preferences are defined via dialog annotation; finally in language layer, these same types directly encode the semantics of utterances, and builder can use exemplar and template to control how to convert between natural text and structured representation back and forth. 
+A data type (or simply type) defines what operations can be applied to its instances, and the behavior on these instances resulted from these operations. As a conversational user interface framework, the types you can define on OpenCUI, including intent, frame and entity, have their conversational behavior defined in three layers. In schema layer, they are directly mapped into hosting language data types (currently Java/Kotlin) so that it can be used to invoke the service functions directly; in interaction layer, how to collect user preferences are defined via dialog annotation; finally in language layer, these same types directly encode the semantics of utterances, and builder can use exemplar and template to control how to convert between natural text and structured representation back and forth. 
 
 ### Intents
 Generally, an intent represents what a user wants, at the same time, it is essentially a function that a user can access through conversations for businesses. 
 
-In Framely, intent, as a composite CUI data type for functions, is designed to define a self-contained conversational component that delivers some functionality to a user. This means that all three aspects of conversational service delivery need to be defined on top of the corresponding data type: 
+In OpenCUI, intent, as a composite CUI data type for functions, is designed to define a self-contained conversational component that delivers some functionality to a user. This means that all three aspects of conversational service delivery need to be defined on top of the corresponding data type: 
 1. collect what user wants through slot filling
 2. invoke function using collected slot value as input parameter
 3. verbalize the service result and render them in channel.
@@ -34,7 +34,7 @@ In Framely, intent, as a composite CUI data type for functions, is designed to d
 At language level, intents can be expressed mainly by verb phrases or full sentence. When expressed in full sentence, the subject need to be first person. Examples for such utterances includes: "Book me a table for two for Sunday evening" or "I would like to make a reservation on Sunday".
 
 ### Frames
-Frame is also a composite CUI data type in Framely. Frame is your standard object-oriented class type with composition and polymorphism behaviors support. So smaller frames can be composed to larger frames, with dialog annotations only defined once and reused by different larger frames. 
+Frame is also a composite CUI data type in OpenCUI. Frame is your standard object-oriented class type with composition and polymorphism behaviors support. So smaller frames can be composed to larger frames, with dialog annotations only defined once and reused by different larger frames. 
 
 With inheritance, we can easily support "what symptoms do you have?" type of conversation. By define a interface symptom frame, and multiple concrete frame one for each actual symptom. Since each concrete frame can have a different interaction logic, when we try to fill an interface frame slot, we can naturally get the conversational experience we need. 
 
@@ -43,7 +43,7 @@ Since the same frame can be used by different intents, frame also naturally serv
 At language level, a frame represents objects with properties and is typically expressed in a noun phrase like "large, spicy noodle". In the service layer, the frame are your typical data class, which is parameters for your function.
 
 ### Dialog Acts
-Dialog act is another composite CUI data type in Framely. When frame is designed to help convert meaning in natural text into structured representation, dialog act is the opposite of the frame. Dialog act is designed to map structured meaning back to natural text.
+Dialog act is another composite CUI data type in OpenCUI. When frame is designed to help convert meaning in natural text into structured representation, dialog act is the opposite of the frame. Dialog act is designed to map structured meaning back to natural text.
 
 ### Entities
 The term entity is used to describe the general concept of types and they are basic building block for complex data type. When discussing entity details, it's important to understand these specific aspects:
@@ -58,12 +58,12 @@ In conversation layer, entity represents an instance of concept type, like "beij
 After these types are defined at schema level, builder can add annotation on top of it to control the every aspect of this component. An example will be what if a user did not specify a value for a required slot, how do we prompt them in a given language. As a declarative platform for building a full stack chatbot, different categories of annotations are supported: dialog annotation, storage annotation and backoffice annotation. 
 
 ### Dialog Annotations
- There are times that users do not give all the information needed in one utterance. Then we need to define the conversation plan to collect the missing info. In Framely, this is done by adding various dialog annotations. For example, we specify what question we use to get user's preference on a given slot.
+ There are times that users do not give all the information needed in one utterance. Then we need to define the conversation plan to collect the missing info. In OpenCUI, this is done by adding various dialog annotations. For example, we specify what question we use to get user's preference on a given slot.
 
 Dialog annotations can be defined both on slot and frame level. Slot level annotations defines how individual slot can be filled. This includes whether the slot can take multiple values, whether it need confirmation. For frame slot, whether the polymorphism is allowed.  Frame level annotations are related to multi-slot filling where values for slots need to collectively make business sense. This includes annotations like value recommendations and value check. Value recommendation provides a user with candidate list so that they can pick one from that instead of input something that is invalid. Value check makes sure agent catch user input error as early as possible so that conversation can be efficient. Dialog annotations are naturally separated into interaction related and language related, each can be handled by different set of people. This makes multiple language support easy.
 
 ### Storage Annotations
-Framely supports the full stack component, data types (frames) defined on the platform can be persisted to tables in the database. The storage annotation is used to specify how frames are stored in the Postgresql. For each slot, Builder can specify how to store them, whether to create an index for it or add a unique constraint. And stored procedures can be then be defined on these table and served as function via Postgrest. 
+OpenCUI supports the full stack component, data types (frames) defined on the platform can be persisted to tables in the database. The storage annotation is used to specify how frames are stored in the Postgresql. For each slot, Builder can specify how to store them, whether to create an index for it or add a unique constraint. And stored procedures can be then be defined on these table and served as function via Postgrest. 
 
 ### Backoffice Annotations
 Aside from being manipulated by users through Postgrest restful API, the persisted data can also be managed via admin web interface. In addition to storage annotation, builder can use backoffice annotation to specify how operation team can access these data via that web interface. This includes whether they can add row, change cell, etc. Backoffice annotation can also include the hint on what help and safeguard we have on the data entry for each slot.  

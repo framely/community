@@ -4,17 +4,17 @@
 
 
 ## Overview
-Framely also supports the backend component in form of [postgrest provider](/guide/glossary.md#postgrest-provider). The backend component can be declaratively defined in two steps: First, create database tables needed by service by adding storage annotation to frames, secondly, provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify the operation team can access these tables via [back office](/guide/glossary.md#backoffice).
+OpenCUI also supports the backend component in form of [postgrest provider](/guide/glossary.md#postgrest-provider). The backend component can be declaratively defined in two steps: First, create database tables needed by service by adding storage annotation to frames, secondly, provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify the operation team can access these tables via [back office](/guide/glossary.md#backoffice).
 
 There are a couple advantage of using backend component approach to build service provider. 
-1. In addition to declaratively building database as content management system, Framely backend component allows you to implement the service declaratively too using SQL. This make it possible for the business analyst to build backend.
-2. Since tables are created based on the data type in the API schema, so no explicit conversion code is needed, rows in the table or view in the database are automatically converted into an object in the Framely.
+1. In addition to declaratively building database as content management system, OpenCUI backend component allows you to implement the service declaratively too using SQL. This make it possible for the business analyst to build backend.
+2. Since tables are created based on the data type in the API schema, so no explicit conversion code is needed, rows in the table or view in the database are automatically converted into an object in the OpenCUI.
 3. The admin interface or backoffice can also be automatically created based on annotation so that the operation team can use backoffice to provide service. 
-4. Backoffice components can be reused by cloning for Framely hosted solution.
+4. Backoffice components can be reused by cloning for OpenCUI hosted solution.
 
 ::: thumbnail
 ![data-management](/images/provider/postgrest/data-management.png)
-How Framely, PostgreSQL and Backoffice Work Together
+How OpenCUI, PostgreSQL and Backoffice Work Together
 :::
 ## Annotations
 
@@ -98,7 +98,7 @@ Then operators can select a value from the dropdown in back office.
 #### Media
 When you send pictures to a user, you actually send the URLs of the pictures in [rich messages](../channels/universalmessage.md#rich-message). By setting input type to media, you just need to upload pictures and the URLs of pictures will be stored in cells automatically. 
 
-For example, there is a slot called _photo_ of which input type is media on Framely. In its corresponding column in back office, you can upload a picture and view the picture in the table.
+For example, there is a slot called _photo_ of which input type is media on OpenCUI. In its corresponding column in back office, you can upload a picture and view the picture in the table.
 
 ![media](/images/provider/postgrest/media.png)
 
@@ -141,11 +141,11 @@ As mentioned in [Implement Functions](./overview.md#implement-functions), there 
 
 ### Types Conversion
 - When you call the **Provider Dependent function**, you pass the **entities** (or **frames**) and we will convert their types to [**SQL data types**](https://www.postgresql.org/docs/current/datatype.html) (or [**composite types**](https://www.postgresql.org/docs/current/rowtypes.html)) automatically, so you can use these parameters in your function body.
-- When the function returns a set of values of **composite type**, we convert the composite type back to a **frame**, so you can display or use these values in the Framely environment.
+- When the function returns a set of values of **composite type**, we convert the composite type back to a **frame**, so you can display or use these values in the OpenCUI environment.
 
 ::: thumbnail
 ![conversion](/images/provider/postgrest/conversion.png)
-Type Conversion Between Framely and PostgreSQL
+Type Conversion Between OpenCUI and PostgreSQL
 :::
 - Here is the conversion between entities and SQL data types:
 
@@ -173,7 +173,7 @@ Besides, [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.htm
 ::: warning Notice
 If the return value is not a storage-enabled frame and the type of slot in the frame is [*customized entity*](../../guide/glossary.md#entity) or *kotlin.String*, check whether the type of its corresponding column is *text* in PostgreSQL. If not, use `::text` to convert the type of column into *text*.
 
-For example, the return value is consist of *dishId* and *dishName*. The type of *dishName* is *customized entity* and its corresponding column is *varchar(50)* in PostgreSQL. Add `::text` behind *dishName* to convert *varchar(50)* to *text*, so that the conversion between Framely and PostgreSQL can work smoothly.
+For example, the return value is consist of *dishId* and *dishName*. The type of *dishName* is *customized entity* and its corresponding column is *varchar(50)* in PostgreSQL. Add `::text` behind *dishName* to convert *varchar(50)* to *text*, so that the conversion between OpenCUI and PostgreSQL can work smoothly.
 ``` sql
 BEGIN
     RETURN QUERY 

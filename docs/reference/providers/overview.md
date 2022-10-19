@@ -1,10 +1,10 @@
 # Overview
 
-Framely relies on the service, a set of functions APIs, to interact with application backend, sometime also known as application logic or service. Service only defines the interface for how these functionalities can be accessed, and can have one or more implementation in form of providers. 
+OpenCUI relies on the service, a set of functions APIs, to interact with application backend, sometime also known as application logic or service. Service only defines the interface for how these functionalities can be accessed, and can have one or more implementation in form of providers. 
 
 Providers can be implemented in different types, which decides how one connect to the actual data source and application logic in terms of protocol. Of course, the implemented provider can be instantiated with different connection settings, and thus working with different data sources with the same schema. 
 
-We support two kinds of provider types: hosted provider type and stub provider type. [Postgrest](./postgrest.md) is the only hosted provider type Framely current supports. By hosted, it means Framely manages the schema of the data source so that we can clone database for new business, as well as hosting the database itself. On the other hand, Framely does not host data for stub providers, nor we have explicit knowledge about the data schema, so we assume we only handles function invocation through these stub providers. There will be many stub provider types, the first one we implemented are [Google Sheets](./googlesheets.md) based.  
+We support two kinds of provider types: hosted provider type and stub provider type. [Postgrest](./postgrest.md) is the only hosted provider type OpenCUI current supports. By hosted, it means OpenCUI manages the schema of the data source so that we can clone database for new business, as well as hosting the database itself. On the other hand, OpenCUI does not host data for stub providers, nor we have explicit knowledge about the data schema, so we assume we only handles function invocation through these stub providers. There will be many stub provider types, the first one we implemented are [Google Sheets](./googlesheets.md) based.  
 
 
 ::: thumbnail

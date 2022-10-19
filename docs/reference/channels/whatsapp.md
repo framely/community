@@ -4,7 +4,7 @@
 :::
 The [WhatsApp Business Platform](https://developers.facebook.com/docs/whatsapp) gives medium to large businesses the ability to connect with customers at scale. You can start conversations with customers in minutes, send customer care notifications or purchase updates, offer your customers a level of personalized service and provide support in the channel that your customers prefer to be reached on.
 
-We are going to show here how to integrate Framely with WhatsApp and deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
+We are going to show here how to integrate OpenCUI with WhatsApp and deploy the chatbot to a OpenCUI hosted environment. For the private deployment, please consult systems in your organization.
 
 Follow these steps to configure:
 [[toc]]
@@ -15,7 +15,7 @@ On the WhatsApp side, please ensure you have all of the following:
 - [A Meta Business Type App](https://developers.facebook.com/docs/development/create-an-app/)
 
 ## Set Up WhatsApp
-1. Visit your [app dashboard](https://developers.facebook.com/apps), and enter the app you want to serve by Framely chatbot. On the left sidebar, click **Add Product**. Hover over **WhatsApp** and Click **Set Up**. Create or select a Meta Business Account.
+1. Visit your [app dashboard](https://developers.facebook.com/apps), and enter the app you want to serve by OpenCUI chatbot. On the left sidebar, click **Add Product**. Hover over **WhatsApp** and Click **Set Up**. Create or select a Meta Business Account.
 
 ![add-messenger](/images/channelConfig/whatsapp/add-whatsapp.png)
 
@@ -38,7 +38,7 @@ On the WhatsApp side, please ensure you have all of the following:
 
 ## Add WhatsApp Channel
 
-1. On the Framely side, enter a chatbot that you want to deploy. Click **Setting** > **Integrations**. In the **Channels** field, click **Add New** > **WhatsApp Business**.
+1. On the OpenCUI side, enter a chatbot that you want to deploy. Click **Setting** > **Integrations**. In the **Channels** field, click **Add New** > **WhatsApp Business**.
 
 2. The configuration information is as follows. Once you complete the configuration, click **SAVE**.
    - **Name**: You can set a name for your WhatsApp app. This will be part of the Callback URL.

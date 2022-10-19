@@ -19,10 +19,10 @@ body:
 
   - type: checkboxes
     attributes:
-      label: Make sure you are using Framely on Google Chrome!
+      label: Make sure you are using OpenCUI on Google Chrome!
       description: Please double check that you are using a supported brower there. 
       options:
-      - label: I used Framely on Google Chrome
+      - label: I used OpenCUI on Google Chrome
         required: true
       
   - type: textarea
@@ -71,7 +71,7 @@ body:
  
   - type: input
     attributes:
-      label: Framely Link
+      label: OpenCUI Link
       description: Please copy and paste relevant link from brower.
       placeholder: Ensure that your project privacy is PUBLIC
     validations:

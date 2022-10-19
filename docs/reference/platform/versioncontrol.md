@@ -6,13 +6,13 @@
 
 Work collaboratively with multiple team members, you probably work together with your teammates in a shared folder on the same set of files, which always keep in sync automatically and instantly display the changes across all users' instances. It easy to work with but operates only on single files. Meanwhile, only one user can work on a file at a time, because when editing the same file at the same time, there will be conflicts. It is very easy to accidentally overwrite an important file you never mean to.
 
-So Framely provides a [Version Control](https://en.wikipedia.org/wiki/Version_control) system, which do not rely on a shared central project and allow users to maintain independent project and communicate revisions via changesets. Everybody on the team is able to work absolutely freely on any project at any time. You know what exactly is different in these versions, your teams work faster and smarter.
+So OpenCUI provides a [Version Control](https://en.wikipedia.org/wiki/Version_control) system, which do not rely on a shared central project and allow users to maintain independent project and communicate revisions via changesets. Everybody on the team is able to work absolutely freely on any project at any time. You know what exactly is different in these versions, your teams work faster and smarter.
 
 For more information about providing team members with access, see [Access Control](access.md).
 
 ## Working with Branch
 
-Framely platform is a version control system. You can collaborate with multiple members independently without affecting others. When you start building, such as adding or modifying some instances, a **Branch** is automatically created for you based on the current master(we call it **Base**). Then you can work on this branch in isolation from changes that other people are making to the project.
+OpenCUI platform is a version control system. You can collaborate with multiple members independently without affecting others. When you start building, such as adding or modifying some instances, a **Branch** is automatically created for you based on the current master(we call it **Base**). Then you can work on this branch in isolation from changes that other people are making to the project.
 
 ### Branch Changes
 While you are working, you can compare the changes you made with **Base** through **Diffs**. During a comparison, if you are not satisfied with these changes or have some new ideas, you can restore your changes by **Revert** operation. If you are satisfied with these changes, you can save these small groups of meaningful changes via **Commit** and prepare for [Testing]().

@@ -135,7 +135,7 @@ But there are many ways to say yes or no by the user. To handle the synonym expr
 For example, In some scenarios, "*Sorry I need to change*" represents a new intention, but in certain scenarios, this means the user says no to the confirm. So you can add all of these cases in **Affirmatives** and **Negatives**. 
 
 ::: tip Note
-The common understanding of confirmation yes and no is already supported in **system intent** *`io.framely.core.confirmation.Yes`* and *`io.framely.core.confirmation.No`*, so no need to define it here. But if needed, you can also customize system intent behavior by adding expressions.  
+The common understanding of confirmation yes and no is already supported in **system intent** *`io.opencui.core.confirmation.Yes`* and *`io.opencui.core.confirmation.No`*, so no need to define it here. But if needed, you can also customize system intent behavior by adding expressions.  
 :::
 
 ### Implicit

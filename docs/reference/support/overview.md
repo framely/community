@@ -1,10 +1,10 @@
 # Overview
 
-We understand no matter how well you build your chatbot, there will always be user requests that are beyond the design and implementation scope, and we need to handoff the conversation to human support team. Support is a software where human agents can handle the conversation when bot has failed or upon user requirement. Framely understand that your human support team already have their favorite support software, so instead of reinventing wheels, Framely is designed to play well with others when it comes to support system, as long as they can provide some basic APIs. 
+We understand no matter how well you build your chatbot, there will always be user requests that are beyond the design and implementation scope, and we need to handoff the conversation to human support team. Support is a software where human agents can handle the conversation when bot has failed or upon user requirement. OpenCUI understand that your human support team already have their favorite support software, so instead of reinventing wheels, OpenCUI is designed to play well with others when it comes to support system, as long as they can provide some basic APIs. 
 
 
 ## Two Cooperation Modes
-There are two different ways support system can work with chatbots, internal mode and external mode. In the internal mode, both channels and bots are managed by support systems, and when either bot or user indicate that they want to talk to a human agent, then the support system will route the conversation from bot to a human agent, and let the human agent take over. In theory, Framely should be able to work with any support system that is designed to work with third party bot solution, by simply implementing the hooks required by a given support system.
+There are two different ways support system can work with chatbots, internal mode and external mode. In the internal mode, both channels and bots are managed by support systems, and when either bot or user indicate that they want to talk to a human agent, then the support system will route the conversation from bot to a human agent, and let the human agent take over. In theory, OpenCUI should be able to work with any support system that is designed to work with third party bot solution, by simply implementing the hooks required by a given support system.
 
 In the external mode, messages are coming from the channel attached to the bot, and bot appears to be a normal agent on the support system, and bot is responsible for requesting routing the messages via exposed APIs on the support side. For this mode to work, we need to support system expose the APIs conforming to the following semantics. 
 
@@ -17,7 +17,7 @@ To reduce the effort level on the user side, it is important that we route user 
 5. We can transfer the conversation from bot to specified team by department statically or dynamically, potentially based on , so that a user can be served effectively. 
 6. After human agent is done with a service, next time, a user  starts interacting with bot again. Simply invoke CloseSession should be enough.  
 
-In the Framely hosted environment, we are mainly interested in the external mode, currently we provide the great open source support system chatwoot as the only option, but this can change when someone starts to build the connection with other system and open source it. 
+In the OpenCUI hosted environment, we are mainly interested in the external mode, currently we provide the great open source support system chatwoot as the only option, but this can change when someone starts to build the connection with other system and open source it. 
 
 
 ### Intent Based Routing Under External Mode
@@ -37,7 +37,7 @@ To reduce the effort level on the user side, we support the conversation routing
 
 2. Make sure you have configured your channel first. Learn more about channel configuration, see [Channels](../channels/overview.md).
 
-3. We show here how to integrate your chatbots with Chatwoot in Framely hosted environment. For private deploy, please consult systems in your organization.
+3. We show here how to integrate your chatbots with Chatwoot in OpenCUI hosted environment. For private deploy, please consult systems in your organization.
 
 ### Enable Support
 

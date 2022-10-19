@@ -1,5 +1,5 @@
 name: Feature Request
-description: Suggest an idea for Framely
+description: Suggest an idea for OpenCUI
 title: "[Feature Request]: "
 labels: ["feature request", "triage"]
   
@@ -7,9 +7,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to suggest an idea for Framely!
+        Thanks for taking the time to suggest an idea for OpenCUI!
         
-        An important design principle of Framely is approaching problems from first principle, which means we dig down first (foundation), before we build up actual thing. In general, we only consider adding new features that solve a problem that cannot be easily dealt with using existing usages (i.e. not just an alternative way of doing things that can already be done). The problem should also be common enough to justify the addition.
+        An important design principle of OpenCUI is approaching problems from first principle, which means we dig down first (foundation), before we build up actual thing. In general, we only consider adding new features that solve a problem that cannot be easily dealt with using existing usages (i.e. not just an alternative way of doing things that can already be done). The problem should also be common enough to justify the addition.
 
   - type: checkboxes
     attributes:
@@ -43,7 +43,7 @@ body:
       label: Describe alternatives you've considered
       description: |
         A clear and concise description of the alternative solutions you've considered. 
-        Be sure to explain why Framely's existing customizability isn't suitable for this feature.
+        Be sure to explain why OpenCUI's existing customizability isn't suitable for this feature.
     validations:
       required: true
       

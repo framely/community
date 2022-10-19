@@ -4,7 +4,7 @@
 :::
 The [Messenger Platform](https://developers.facebook.com/docs/messenger-platform/introduction) is meant for businesses to handle inquiries from their customers. Using the Facebook Messenger integration, you can create a Facebook Messenger bot to interact with your end-users within your business. 
 
-We are going to show here how to integrate Framely with Messenger and deploy the chatbot to a Framely hosted environment. For the private deployment, please consult systems in your organization.
+We are going to show here how to integrate OpenCUI with Messenger and deploy the chatbot to a OpenCUI hosted environment. For the private deployment, please consult systems in your organization.
 
 Follow these steps to configure:
 [[toc]]
@@ -17,7 +17,7 @@ On the Messenger side, please ensure you have all of the following:
 
 
 ## Set Up Messenger
-1. Visit your [app dashboard](https://developers.facebook.com/apps) and enter one of the apps you want to serve by Framely chatbot. On the left sidebar, click **Add Product**. Hover over **Messenger** and Click **Set Up**.
+1. Visit your [app dashboard](https://developers.facebook.com/apps) and enter one of the apps you want to serve by OpenCUI chatbot. On the left sidebar, click **Add Product**. Hover over **Messenger** and Click **Set Up**.
 
 ![add-messenger](/images/channelConfig/messenger/add-messenger.png)
 
@@ -29,7 +29,7 @@ On the Messenger side, please ensure you have all of the following:
 
 ## Add Messenger Channel
 
-1. On the Framely side, enter a chatbot that you want to deploy. Click **Setting** > **Integrations**. In the **Channels** field, click **Add New** > **Facebook Messenger**.
+1. On the OpenCUI side, enter a chatbot that you want to deploy. Click **Setting** > **Integrations**. In the **Channels** field, click **Add New** > **Facebook Messenger**.
 2. The configuration information is as follows. Once you complete the configuration, click **SAVE**.
    - **Name**: You can set a name for your Facebook Messenger. This will be part of the Callback URL.
    - **Callback URL**: :clipboard: Copy this value. This will be used to configure the Facebook Messenger Webhook. 
