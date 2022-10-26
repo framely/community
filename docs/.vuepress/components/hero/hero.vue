@@ -95,7 +95,7 @@ const HomeHeroImage: FunctionalComponent = () => {
   max-width: var(--homepage-width); 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  //justify-content: space-between;
   flex-direction: row;
   margin: auto;
   padding: 4rem 2rem 4rem 2rem;
@@ -109,8 +109,8 @@ const HomeHeroImage: FunctionalComponent = () => {
   margin-bottom: 60px;
 }
 .intro .text-info h1 {
-  font-size: 60px;
-  line-height: 80px;
+  font-size: calc(1.375rem + 1.5vw);
+  line-height: calc(3.125rem + 1vw);
   font-weight: 700;
 }
 .description {
@@ -118,9 +118,9 @@ const HomeHeroImage: FunctionalComponent = () => {
   line-height: 40px;
 }
 .img {
-  display: flex;
-  align-items: flex-end;
-  width: 60%;
+  //display: flex;
+  //align-items: flex-end;
+  width: 80%;
   //position: relative;
 }
 .image > img {
