@@ -25,7 +25,7 @@ jobs:
           yarn
           (yarn dev) & (sleep 10 && yarn docs:dev) & (sleep 25 && yarn docs:build)
           cd docs/.vuepress/dist
-          echo "www.framely.ai" > CNAME
+          echo "www.opencui.io" > CNAME
           git config --global user.name  "github action"
           git config --global user.email "hui.cheng@naturali.io"
           git init
