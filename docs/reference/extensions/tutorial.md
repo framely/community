@@ -2,7 +2,7 @@
 
 This tutorial helps you build and use an external extension. Examples used in this tutorial:
 - Service interface: [component_0915](https://build.framely.ai/org/625e2f3cd31e3de801ef5a93/agent/6322b5cb5bc5f3543eeabd33/service_schema). 
-- Native provider: [nativeProvider_1012](https://build.framely.ai/org/625e2f3cd31e3de801ef5a93/agent/63461f5b4ea6284787bcbc46/service_scheman).
+- Native provider: [nativeProvider_1012](https://build.framely.ai/org/625e2f3cd31e3de801ef5a93/agent/63461f5b4ea6284787bcbc46/service_schema).
 - Extension demo: [helloworld](https://github.com/opencui/runtime/tree/main/extensions/helloworld).
 
 The process of building and using external extensions is as follows.
