@@ -3,7 +3,7 @@ home: true
 title: Home
 heroImage: /images/hero.png
 tagline: Schema grounded Chatbots for any Services
-heroText: Vue of Conversational User Interface
+heroText: Open Frontend Framework for Chatbot Development
 actions:
   - text: Start to Build
     link: https://build.framely.ai
