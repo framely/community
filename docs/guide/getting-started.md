@@ -3,7 +3,7 @@ Although one can use OpenCUI to serve user's informational need, we designed Ope
 you to build conversation user interface for your transactional service as well, so that your chatbot can be one stop conversational solution for all your users' need. 
 
 ## Build
-Assuming that you have designed and implemented your valuable services already, and now you want to build conversational user interface for these services. On [OpenCUI](https://build.framely.ai) this can be done in three easy steps. 
+Assuming that you have designed and implemented your valuable services already, and now you want to build conversational user interface for these services. On [OpenCUI](https://build.opencui.io) this can be done in three easy steps. 
 
 #### 1. Describe Services at Schema Level
 Services are typically represented by a set of functions. To invoke a particular function for users, we need to collect input parameters for that function from users and capture the function returns somehow. To support arbitrary input and output parameters, OpenCUI support primitive data type in form of Entity and composite data type in form of Frame and Intent, with polymorphism support built in. These types serve two different purposes: on one hand, they are actual types needed to invoke functions at code level; on the other hand, they are schemas that encode the semantics of what user meant based on dialog understanding model. This connection between representation of meaning and code that actually runs, is basis for our schema grounded conversational user interface.
@@ -23,4 +23,4 @@ When chatbot passes your test, you can deploy chatbot to production environment,
 ## Operate
 The real work starts after chatbot is deployed into production environment. It is important that you consistently monitor the actual conversation sessions users had with your chatbot and fix any issues that chatbot had. Also notice these real user conversations are full of business opportunities if you know how to dig.
 
-For the impatient, [you can get started now](https://build.framely.ai). For the curious, read on.
+For the impatient, [you can get started now](https://build.opencui.io). For the curious, read on.

@@ -10,7 +10,7 @@ author: Sunny May
 ---
 
 # Quick Start with Service
-In this guide, we use [hours component](https://build.framely.ai/org/622c8ff683536204fe062b55/agent/630dc3282d6df2e68a96c688/service_schema) as an example to help you have a quick start with service. Hours component is designed to answer end-users' questions about business hours. 
+In this guide, we use [hours component](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/630dc3282d6df2e68a96c688/service_schema) as an example to help you have a quick start with service. Hours component is designed to answer end-users' questions about business hours. 
 
 The whole procedure is shown in picture below and it is divided into these four steps:
 [[toc]]
@@ -21,7 +21,7 @@ The whole procedure is shown in picture below and it is divided into these four 
 
 ## Step 1: Clone Provider
 
-1. Open [hours provider](https://build.framely.ai/org/622c8ff683536204fe062b55/agent/63101e0437fed01baf0079b3/service_schema) and click **Clone Project**.
+1. Open [hours provider](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/63101e0437fed01baf0079b3/service_schema) and click **Clone Project**.
 2. Choose an organization to clone this provider to.
 3. You can change the default project label of the cloned provider.
 
@@ -29,7 +29,7 @@ The whole procedure is shown in picture below and it is divided into these four 
 
 ## Step 2: Integrate Provider with Chatbot
 
-1. Open [hours chatbot](https://build.framely.ai/org/622c8ff683536204fe062b55/agent/6329731a36b90caee5c750f3/intent) and click **Clone Project**. Choose an organization to clone this chatbot to.
+1. Open [hours chatbot](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/6329731a36b90caee5c750f3/intent) and click **Clone Project**. Choose an organization to clone this chatbot to.
 2. Select the region where your chatbot will be deployed. 
 3. Go to **Settings** > **Integrations**. Click a service provider, and change it to the cloned provider which implements the service.
 

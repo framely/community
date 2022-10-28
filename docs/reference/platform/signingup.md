@@ -37,7 +37,7 @@ You will wait for an Email notification, which will inform you that you now have
 
 ## Log Into Your Account
 
-You can [log into your OpenCUI account](https://build.framely.ai/login) with your GitHub account. This allows you to log into simply by clicking the **Sign in with GitHub** button: 
+You can [log into your OpenCUI account](https://build.opencui.io/login) with your GitHub account. This allows you to log into simply by clicking the **Sign in with GitHub** button: 
 
 ::: thumbnail
 ![sign in](/images/guide/signup/sign-in.png)

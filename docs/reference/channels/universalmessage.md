@@ -182,17 +182,17 @@ The following code sends a rich message card with an image and suggested inside 
 ``` json
 {
   "type": "rich",
-  "title": "Framely",
+  "title": "OpenCUI",
   "description": "Schema grounded Chatbots for any Services",
   "richMedia": {
-    "fileUrl": "https://www.framely.ai/images/schema.png",
+    "fileUrl": "https://www.opencui.io/images/schema.png",
     "altText": "schema",
     "height": "TALL"
   },
   "insideActions": [
     {
       "type": "click",
-      "url": "https://www.framely.ai",
+      "url": "https://www.opencui.io",
       "display": "Website",
       "payload": "website"
     },

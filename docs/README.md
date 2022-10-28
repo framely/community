@@ -60,7 +60,7 @@ contentCards:
 cta :
   - details: Build conversational interface for your APIs.
     title: Get Started
-    link: https://build.framely.ai
+    link: https://build.opencui.io
     
 mainfooter:
   - firstgrid:
