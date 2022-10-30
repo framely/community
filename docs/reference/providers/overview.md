@@ -34,17 +34,6 @@ The service functions called in a chatbot are defined in components. Before impl
 ![add-frame](/images/provider/overview/add-frame.png)
 
 ## Implement Functions
-- There are two kinds of functions in a provider and both of them need to be implemented. 
-  - **Imported functions** are imported from a component.
-  - **Local functions** are added within the current provider.
-
-
-  | Type               | Can its declarations be changed? | Can it be Called in a chatbot?   |
-  |:-------------------|:---------------------------------|:---------------------------------|
-  | Imported function  | :x:                              | :white_check_mark:               |
-  | Local function     | :white_check_mark:               | :x:                              |
-      
-  
 - There are two kinds of ways to implement a function
     - **Provider Dependent** means the language of function implementation is dependent on the type of the provider. For example, in Postgrest Provider, the language is PL/pgSQL.
     - **Kotlin** means the function is implemented in kotlin. You can call both Kotlin functions and provider dependent functions in a Kotlin function. 
