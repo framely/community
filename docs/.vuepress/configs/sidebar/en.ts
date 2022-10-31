@@ -51,6 +51,7 @@ export const en = {
       collapsible: true,
       children: [
         '/reference/providers/overview.md',
+        '/reference/providers/native.md',
         '/reference/providers/postgrest.md',
         '/reference/providers/googlesheets.md'
       ]
@@ -86,13 +87,6 @@ export const en = {
         '/reference/platform/versioncontrol.md',
         '/reference/platform/access.md',
         '/reference/platform/reusability.md'
-      ]
-    },
-    {
-      text: 'Extensions',
-      collapsible: true,
-      children:[
-        '/reference/extensions/tutorial.md'
       ]
     },
   ],

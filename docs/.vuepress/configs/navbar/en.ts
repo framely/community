@@ -68,6 +68,11 @@ export const en = [
             icon: '/navIcons/overview.svg',
           },
           {
+          text: 'Native',
+            link: '/reference/providers/native.html',
+            icon: '/navIcons/postgresql.svg',
+          },
+          {
             text: 'Postgrest',
             link: '/reference/providers/postgrest.html',
             icon: '/navIcons/postgresql.svg',
@@ -170,16 +175,6 @@ export const en = [
           icon: '/navIcons/reusability.svg',
         }
         ]
-      },
-      {
-        text: 'Extensions',
-        children: [
-          {
-            text: 'Simple Tutorial',
-            link: '/reference/extensions/tutorial.html',
-            icon: '/navIcons/overview.svg',
-          }
-        ],
       },
     ],
   },
