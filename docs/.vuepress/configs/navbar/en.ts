@@ -66,6 +66,10 @@ export const en = [
             text: 'Overview',
             link: '/reference/providers/overview.html',
             icon: '/navIcons/overview.svg',
+          },          {
+          text: 'Native',
+            link: '/reference/providers/native.html',
+            icon: '/navIcons/postgresql.svg',
           },
           {
             text: 'Postgrest',
