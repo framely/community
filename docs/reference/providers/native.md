@@ -17,7 +17,7 @@ For application level interface, builder need to create a service component on t
 :::
 
 2. In the **Service** field, click **Add** to define a function in the component.
-3. [Review changes](docs/reference/platform/versioncontrol.md#review-changes) and merge the branch into the master.
+3. Review changes and merge the branch into the master.
 
 
 ## Export Component
@@ -30,7 +30,7 @@ Click **Export** and extract the generated file from the export. You can get the
 
 ## Development
 The standard way to develop native provider is to do it inside extension repo. 
-```aidl
+```
 git clone https://github.com/opencui/extensions.git
 ```
 We use gradle as build system, so you can create a subdirectory to host your subproject. Using the existing building system in this repo will make it easy for you to contribute your native provider back OpenCUI community.  
@@ -38,7 +38,7 @@ We use gradle as build system, so you can create a subdirectory to host your sub
 The implementation can then be developed as standard Kotlin project. See code examples from [*helloworld*](https://github.com/opencui/runtime/blob/main/extensions/helloworld/src/main/kotlin/me/test/component_0915/me_test_component_0915.kt#L732) to learn how.
 
 Make sure your project actually builds before you move to the next step.
-```aidl
+```
 ./gradlew your_project:build
 ```
  
