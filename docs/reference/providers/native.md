@@ -51,9 +51,9 @@ In order to make the native provider available for the chatbots on the platofrm,
 ![create-provider](/images/extensions/tutorial/create-provider.png)
 :::
 
-1. [Import](docs/reference/platform/reusability.md#how-to-use) the service component you want to implement into the native provider.
-2. In the **Service** field, select the imported component in the **Implemented** section.
-3. In the **Configuration** field, fill in the following information. Examples are shown in the screenshot below.
+2. Import the service component you want to implement into the native provider.
+3. In the **Service** field, select the imported component in the **Implemented** section.
+4. In the **Configuration** field, fill in the following information. Examples are shown in the screenshot below.
    - **Provider class name**: a fully qualified name of the class that implements the service interface. 
    - **Configuration meta**: a JSON array used to generate a form when integrate the extension into a chatbot. See [configuration meta](#configuration-meta) to learn how to write this.
    - **Implementation**: a label of the project to which the provider class belongs. The format of implementation is `group:project`.
@@ -64,7 +64,7 @@ In order to make the native provider available for the chatbots on the platofrm,
 ![configuration](/images/extensions/tutorial/configuration.png)
 :::
 
-4. [Review changes](docs/reference/platform/versioncontrol.md#review-changes) and merge the branch into the master.
+5. Review changes and merge the branch into the master.
 
 ### Configuration Meta
 
@@ -172,7 +172,7 @@ This code will generate the configuration information forms like the screenshot 
 ## Wire provider to service
 After native provider is registered on the platform, any builder can make use of it, by wiring the provider to the service in the chatbot settings. 
 
-1. [Import](docs/reference/platform/reusability.md##import-1) the component you created into a chatbot that needs this extension.
+1. Import the component you created into a chatbot that needs this extension.
 2. In the **Setting** field, go to the **Integrations** section. Select the service and choose its serivce provider. 
 3. Fill in the configuration form. As shown in the picture below, there is one field (_Name_) to fill as we have configured in the configuration meta.
 
