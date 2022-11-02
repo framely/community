@@ -9,16 +9,17 @@ Follow the following steps to get a OpenCUI account. Let's begin:
 
 ## Sign Up for an Account
 
-To create your starter OpenCUI account, visit the [Sign Up page](https://docs.google.com/forms/d/e/1FAIpQLSeYGRXfYnB_uDKTS4hUfcD3w1f9LDI9swcC5Qhy71PTS_JANA/viewform) :
+To create your starter OpenCUI account, please visit the [Sign Up page](https://docs.google.com/forms/d/e/1FAIpQLSeYGRXfYnB_uDKTS4hUfcD3w1f9LDI9swcC5Qhy71PTS_JANA/viewform):
+> If you already had access to OpenCUI, you can skip this step and [log into your account](#log-into-your-account) directly. 
 
 ::: thumbnail
-![sign up](/images/guide/signup/sign-up.png)
+![sign up page image](/images/guide/signup/sign-up.png)
 :::
 
 Filling out these questions here, then click **Submit** :
 
 ::: thumbnail
-![submit](/images/guide/signup/submit.png)
+![submit form image](/images/guide/signup/submit.png)
 :::
 
 ::: warning Need To Know
@@ -30,20 +31,20 @@ As we only support signing in with **GitHub**, please make sure the email addres
 After submitting, if you get the response *“Thanks for taking the time to fill out the form and we’ll get right back to you”* like below 👇 , this means the form was submitted successfully:
 
 ::: thumbnail
-![success](/images/guide/signup/success.png)
+![successful info](/images/guide/signup/success.png)
 :::
 
 You will wait for an Email notification, which will inform you that you now have access to OpenCUI with your GitHub account, and you can log into your OpenCUI account now 🎉.
 
 ## Log Into Your Account
 
-You can [log into your OpenCUI account](https://build.opencui.io/login) with your GitHub account. This allows you to log into simply by clicking the **Sign in with GitHub** button: 
+To log into your OpenCUI with your GitHub account, you should open the [Login page](https://build.opencui.io/login) and click the **Sign in with GitHub** button: 
 
 ::: thumbnail
 ![sign in](/images/guide/signup/sign-in.png)
 :::
 
-If you don't have account yet, you can click the **Click to sign up** link below, and go through with [signing up for an account](#signing-up-for-an-account) above first: 
+If you don't have account yet, you can click the hyperlink **Click to sign up** below, and go through with [signing up for an account](#signing-up-for-an-account) above first: 
 
 ::: thumbnail
 ![click to sign up](/images/guide/signup/click-to-sign-up.png)
