@@ -31,16 +31,22 @@ In OpenCUI, intent, as a composite CUI data type for functions, is designed to d
 2. invoke function using collected slot value as input parameter
 3. verbalize the service result and render them in channel.
 
-At language level, intents can be expressed mainly by verb phrases or full sentence. When expressed in full sentence, the subject need to be first person. Examples for such utterances includes: "Book me a table for two for Sunday evening" or "I would like to make a reservation on Sunday".
+At language level, intents can be expressed mainly by verb phrases or full sentence. When expressed in full sentence, the subject need to be first person. Examples for such utterances includes: *"Book me a table for two for Sunday evening"* or *"I would like to make a reservation on Sunday"*.
+
+#### Default Intents
+These following **Default Intents** will be created automatically when you successfully create the chatbot, and you can modify them as desired:
+- **Greeting**: a default welcome intent, this intent has simple expression exemplars like *"Hi"* or *"Hello"* that are matched when the user begins a conversation with your bot. This intent could return a response to let the user know what your bot does or what they can say to begin a conversation. 
+- **Goodbye**: a default ending intent, this intent returns a response to let the user know the conversation or service is ending soon. 
+- **Main**: a default mechanism for each chatbot. 
 
 ### Frames
 Frame is also a composite CUI data type in OpenCUI. Frame is your standard object-oriented class type with composition and polymorphism behaviors support. So smaller frames can be composed to larger frames, with dialog annotations only defined once and reused by different larger frames. 
 
-With inheritance, we can easily support "what symptoms do you have?" type of conversation. By define a interface symptom frame, and multiple concrete frame one for each actual symptom. Since each concrete frame can have a different interaction logic, when we try to fill an interface frame slot, we can naturally get the conversational experience we need. 
+With inheritance, we can easily support *"What symptoms do you have?"* type of conversation. By define a interface symptom frame, and multiple concrete frame one for each actual symptom. Since each concrete frame can have a different interaction logic, when we try to fill an interface frame slot, we can naturally get the conversational experience we need. 
 
-Since the same frame can be used by different intents, frame also naturally serves as context to pivot conversation back and forth between intents. In particular, a user response like "how is the weather like there?" to an earlier chatbot question "which day you want to fly to Shanghai?", while seemed missing information, is easy to understand if we know both weather and ticket intent use the same location frame.
+Since the same frame can be used by different intents, frame also naturally serves as context to pivot conversation back and forth between intents. In particular, a user response like *"How is the weather like there?"* to an earlier chatbot question *"Which day you want to fly to Shanghai?"*, while seemed missing information, is easy to understand if we know both weather and ticket intent use the same location frame.
 
-At language level, a frame represents objects with properties and is typically expressed in a noun phrase like "large, spicy noodle". In the service layer, the frame are your typical data class, which is parameters for your function.
+At language level, a frame represents objects with properties and is typically expressed in a noun phrase like *"Large, spicy noodle"*. In the service layer, the frame are your typical data class, which is parameters for your function.
 
 ### Dialog Acts
 Dialog act is another composite CUI data type in OpenCUI. When frame is designed to help convert meaning in natural text into structured representation, dialog act is the opposite of the frame. Dialog act is designed to map structured meaning back to natural text.
@@ -49,9 +55,9 @@ Dialog act is another composite CUI data type in OpenCUI. When frame is designed
 The term entity is used to describe the general concept of types and they are basic building block for complex data type. When discussing entity details, it's important to understand these specific aspects:
 1. Type: Defines the type of information you want to extract from user input. For example, cell phone model could be an entity type.
 2. Subtype: Entity type can have subtypes. For example, cell phone models could be partitioned into feature phone and smartphone, and smartphone can be further partitioned to iPhone and android phones. These partition of entity type allow for detailed control of how slot be filled.
-3. Entry: For each entity type, there are many entity entries. Each entity entry provides a set of words or phrases that are considered equivalent. For example, if cell phone is an entity type, you could define these entity entries: "iphone 12", "huawei mate pro", etc.
+3. Entry: For each entity type, there are many entity entries. Each entity entry provides a set of words or phrases that are considered equivalent. For example, if cell phone is an entity type, you could define these entity entries: `iphone 12`, `huawei mate pro`, etc.
 
-In conversation layer, entity represents an instance of concept type, like "beijing" is an instance of type "city". In service layer, entity are mapped to primitive type, of enum like atomic type. Understanding entity is typically done by extractive understanding, with synonyms annotation are the important control that builder has to influence the dialog understanding behavior.
+In conversation layer, entity represents an instance of concept type, like `beijing` is an instance of type `City`. In service layer, entity are mapped to primitive type, of enum like atomic type. Understanding entity is typically done by extractive understanding, with synonyms annotation are the important control that builder has to influence the dialog understanding behavior.
 
 
 ## Annotations

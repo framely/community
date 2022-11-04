@@ -1,7 +1,7 @@
 # Quick Start with PingPong 
 > Follow this PingPong chatbot to get started with OpenCUI.
 
-This guide will walk you through using OpenCUI platform to build and test a simple PingPong chatbot. When interacting with this chatbot, a user can get greeting message, and response of *"pong"* to his input message *"ping"*:
+This guide will walk you through using OpenCUI platform to build, test and deploy a simple PingPong chatbot. When interacting with this chatbot, a user can get greeting message, and response of *"pong"* to his input message *"ping"*. For example:
 
 :::: conversation
 ::: bot Bot
@@ -21,7 +21,7 @@ Thank you for contacting the virtual PingPong chatbot. Have a great day!
 :::
 ::::
 
-After this simple PingPong chatbot, you can easily build [level 1 conversational user interface](./5levels-cui.md#frame-without-slot), and easily manage how the messages are presented to users per your own business logic. For example, if you are a restaurant, you can let your users check your business hours as follows:
+After this simple PingPong chatbot, you can easily build the first level of the [5 Levels of CUI](./5levels-cui.md#frame-without-slot), and easily manage how the messages are presented to users per your own business logic. For example, if you are a restaurant, you can let your users check your business hours as follows:
 
 :::: conversation
 ::: bot Bot
@@ -49,46 +49,43 @@ Now, let's begin:
 
 Before you start follow this guide, it is suggested that you go through the following list first.
 1. Get familiar with [the basic idea of building conversational apps](README.md).
-2. [Make sure that you meet the prerequisite](are-you-ready.md)
-3. [Sign Up For OpenCUI Account](../reference/platform/signingup.md)
+2. Make sure that you meet the [prerequisite](are-you-ready.md).
+3. [Sign up](../reference/platform/signingup.md) for OpenCUI account.
 
-## Create
-After logging in, there will be an org *(short for organization)* created automatically for you, which is how you manage everything on the OpenCUI platform. To create chatbot, follow these steps: 
-
-1. Select an org from your **org label** (If you are already inside an org, you can skip this step): 
-
+## Create Chatbot
+After logging in, there will be an org *(short for organization)* automatically created for you. Select this org or any other org you want from your org list: 
 ::: thumbnail
 ![org list](/images/guide/pingpong/orglist.png)
 :::
 
-2. When you are inside an org, head to **Chatbots** page by clicking **Chatbots** in the left sidebar menu, then click the **Create** button on the right side.
+To create a chatbot, follow these steps (If you are already inside a chatbot, you can skip these steps): 
 
-::: thumbnail
-![create chatbot](/images/guide/pingpong/create_chatbot.png)
-:::
-
-3. Complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All of them can be modified after creation except the **Region** field:
-   1. Enter your chatbot's name in the **Project Label** field, start with lowercase, for example `pingpong`.
-   2. Select your preferred **Region**.
-   3. Select the languages for your chatbot in the **Add Language** field.
+1. When you are inside an org, head to chatbot list page by clicking **Chatbots** in the left sidebar menu, then click the **Create** button on the right side.
 
    ::: thumbnail
-   ![complete form](/images/guide/pingpong/complete_form.png)
+   ![create chatbot](/images/guide/pingpong/create_chatbot.png)
    :::
+
+2. After clicking the **Create** button, there will be a pop-up window. You should complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All of them can be modified after creation except the **Region** field:
+   - Enter your chatbot's name in the **Project Label** field, start with lowercase, for example `pingpong`.
+   - Select your preferred **Region**.
+   - Select the languages for your chatbot in the **Add Language** field.
 
    ::: warning Need To Know
    - When you create a chatbot, you must specify a region. For the best performance, you should choose a region that is near your services and end-users. 
 
    - Once a chatbot is created, its **Region** cannot change. In order to change a chatbot's region, you must export or clone a new chatbot with a different region.
    :::
+   
+   ::: thumbnail
+   ![complete form](/images/guide/pingpong/complete_form.png)
+   :::
 
-   <br>
+3. Once you are done with this form, click **Save** button.
 
-4. Once you are done with the form, click the **Save** button.
-
-::: thumbnail
-![create save](/images/guide/pingpong/create_save.png)
-:::
+   ::: thumbnail
+   ![create save](/images/guide/pingpong/create_save.png)
+   :::
 
 If created successfully, you can see the chatbot shown like the following:
 
@@ -96,147 +93,159 @@ If created successfully, you can see the chatbot shown like the following:
 ![enter chatbot](/images/guide/pingpong/enter_chatbot.png)
 :::
 
-## Build
+## Build Chatbot
 
-Chatbot is essentially just a set of [intents](/guide/concepts.md#intents) and its dependency. An intent offers conversational interface to some functionality, typically as part of some [services](/guide/concepts.md#services). In conversation layer, the intent represents what a user wants, is typically expressed by full sentences or verb phrases in user utterances.
+The service that a PingPong chatbot can provide is just a simple question-and-answer dialogue. Such frame is typically communicated in one sentence and conversations are done in a single turn. As the service provided by PingPong does not need to collect informations from a user, like booking a flight ticket requires departure time, departure place, destination, etc, chatbot at this level is just a set of [intents](/guide/concepts.md#intents) and its dependency. 
 
-When you create a chatbot, the following **Default Intents** are created automatically for you, and you can modify them as desired. 
+Therefore, we will skip the [describe service at schema level](getting-started.md#1-describe-services-at-schema-level) phase and start with interaction declaration. This section walks you through the steps to build the PingPong chatbot.
 
-### Default Intents
+### Declare Interaction
 
-- **Greeting**: a default welcome intent, this intent has simple expression exemplars like *"Hi"* or *"Hello"* that are matched when the user begins a conversation with your bot. This intent could return a response to let the user know what your bot does or what they can say to begin a conversation. 
+What is the interaction provided by this PingPong chabot? The answer is to give a response *"pong"* to the user's message *"ping"*. So all you have to do in the declare interaction phase is to add a response to one intent at STRUCT *(short for structure)* level which represents the interaction layer.
 
-- **Goodbye**: a default ending intent, this intent returns a response to let the user know the conversation or service is ending soon. 
+For each chatbot, you can create many intents. But in this case, you only need one. 
 
-- **Main**: a default mechanism for each chatbot. 
+1. Click into the [pingpong](#create-a-chatbot) chatbot, stay at **STRUCT** level.
 
-::: thumbnail
-![default intents](/images/guide/pingpong/default_intents.png)
-:::
+   ::: thumbnail
+   ![struct level](/images/guide/pingpong/struct_level.png)
+   :::
 
-### Create a New Intent
+2. Click **Create** button on the right side to create a intent.
 
-For each chatbot, you can define many intents. The steps in this section create an intent that can response with "pong" to message "ping".
+   ::: thumbnail
+   ![create intent](/images/guide/pingpong/create_intent.png)
+   :::
 
-#### Create an Intent 
+3. Enter a label (e.g. `PingPong`) in the **Intent Label** field and press enter. 
+   ::: warning Need To Know
+   - Label is not a name, it is **identifier**, a language independent aspect for semantics in OpenCUI. 
 
-1. Click the **Create** button on the right side.
+   - As a type label, **Intent Label** should start with capital case, limited 2-100 characters, and only support letters, digits and underscores.
+   :::
 
-::: thumbnail
-![create intent](/images/guide/pingpong/create_intent.png)
-:::
+   ::: thumbnail
+   ![intent label](/images/guide/pingpong/intent_label.png)
+   :::
 
-2. Enter `PingPong` in the **Intent Label** field, press enter. 
+4. Head to **Response** tab, select **Single Value Message** at **Default Action** section for declaring a simple reply.
 
-::: thumbnail
-![intent label](/images/guide/pingpong/intent_label.png)
-:::
+   ::: thumbnail
+   ![add response](/images/guide/pingpong/add_response.png)
+   :::
 
-::: warning Need To Know
-- Label is not a name, it is **identifier**, a language independent aspect for semantics in OpenCUI. 
-- As a type label, **Intent Label** should start with capital case, limited 2-100 characters, and only support letters, digits and underscores.
-:::
+5. Once done, click **Commit** icon in the right sidebar for propagating structure level instances to each language level. 
 
-<br>
+   ::: thumbnail
+   ![commit pingpong struct](/images/guide/pingpong/commit_pingpong_struct.png)
+   :::
 
-#### Build PingPong Intent
+### Fill Language Template and Exemplar
 
-Separation of concerns is essential in increasing productivity and reducing the cost of building things. OpenCUI decompose chatbot into **3 layers**: schema, interaction and language perception. In this way, the exact conversational experience should be easily controlled by you based on arbitrary business logic. For example, it should be more easier to keep a multilingual chatbot with the same structure which can provide a consistent experience in each language. For more information, see [Separation of Concerns](../guide/README.md#separation-of-concerns).
-
-In this PingPong bot, we can just care about two layers: **interaction** and **language**. The difference between interaction and language is whether the entry is language-dependent or not. Language-related aspect like expression, prompt, reply for dialog understanding and template for text generation needs to be defined on language level, while others should be on structure level. In this way, you can always keep all language bots with the same structure which can provide a consistent experience in multilingual chatbot. For more information, see [Multilingual](../reference/platform/multilingual.md).  
-
-So building PingPong intent, should add response on the structure level first:
-
-1. On **STRUCT** level, click the **Response** tab, add **Simple Reply** in the **Default Action** section.
-
-::: thumbnail
-![add response](/images/guide/pingpong/add_response.png)
-:::
-
-2. Click **Commit** icon in the right sidebar, for propagating structure level instances to each language level. 
-
-::: thumbnail
-![commit pingpong struct](/images/guide/pingpong/commit_pingpong_struct.png)
-:::
-
-3. Select **language** in the second topbar, switch to the language level. In this case, we will switch to **EN** *(short for English)* level. 
-
-::: thumbnail
-![switch pingpong en](/images/guide/pingpong/switch_pingpong_en.png)
-:::
+Once the declaration of the interaction is done, these language related parts become required. This makes supporting new languages very easy, all you need to do is to fill language aspects such as templates for text generation and utterance exemplars for helping dialog understanding. 
 
 Now let's add language-related aspects:
 
-4. On the language level, click the **Expression** tab, enter `Ping Pong` in the **Alias** section, press enter. This field is the display name of an intent, and it is also an example of what a user might type or express this intent.
+1. Switch to language layer by a selecting a language from the topbar. In this case, we will switch to English side, so select **EN** in the language dropdown menu. 
 
-::: thumbnail
-![pingpong alias](/images/guide/pingpong/pingpong_alias.png)
-:::
+   ::: thumbnail
+   ![switch pingpong en](/images/guide/pingpong/switch_pingpong_en.png)
+   :::
 
-5. In the **Expression** tab, enter `ping` in the **Expressions** section, press enter.
+2. To fill language templates, heading to the **Responses** tab, enter `Pong` in the **Single Value Message** field at **Default Action** section and press enter. 
 
-::: thumbnail
-![pingpong expression](/images/guide/pingpong/pingpong_expression.png)
-:::
+   ::: thumbnail
+   ![pingpong simple reply](/images/guide/pingpong/pingpong_simple_reply.png)
+   :::
 
-6. Click the **Responses** section, enter `Pong` in the **Simple Reply** section. 
+3. To fill utterance exemplars for helping dialog understanding, heading to the **Expression** tab: 
+   - In the **Names** section, enter `Ping Pong` for the pingpong intent display name and press enter. This field is also the examples of how this type is mentioned in different languages.
+      ::: thumbnail
+      ![pingpong alias](/images/guide/pingpong/pingpong_alias.png)
+      :::
 
-::: thumbnail
-![pingpong simple reply](/images/guide/pingpong/pingpong_simple_reply.png)
-:::
+   - In the **Expressions** section, enter `ping` and press enter. These expression exemplars can indicate user's intention under same contexts and can be used by NLU model to hotfix the understanding issues.
+      ::: thumbnail
+      ![pingpong expression](/images/guide/pingpong/pingpong_expression.png)
+      :::
+   
+4. Once you have filled all the language templates and expression exemplars, click **Commit** icon in the right sidebar for commiting your language layer changes.
 
+   ::: thumbnail
+   ![commit pingpong en](/images/guide/pingpong/commit_pingpong_en.png)
+   :::
 
-## Test
+## Test Chatbot
 
-Let's try this PingPong bot, which can handle a basic conversation with a welcome message and response with "pong" to message "ping". OpenCUI provides a built-in test feature "**Try It Now**" to help you to uncover bugs with the debug info, you can test your chatbot by typing messages. 
+OpenCUI provides a built-in testing feature "**Try It Now**" to help you to uncover bugs with the debug info, you can test your chatbot by typing messages. Let's test this PingPong chatbot, which will handle a basic conversation with a [default welcome message](concepts.md#default-intents) and response with *"pong"* to message *"ping"*. 
 
-::: tip Note
-As **Try It Now** can only test committed content, please make sure both structure level and language level have been committed. For more information, see [Testing](../reference/platform/testing.md).
-:::
+1. As **Try It Now** can only test committed content, please make sure both structure layer and language layer have been committed. 
 
-<br>
+   ::: thumbnail
+   ![commit struct](/images/guide/pingpong/commit_struct.png)
+   *Commit on STRUCT level*
 
-1. Make sure you have committed on each level.
+   <br>
 
-::: thumbnail
-![commit struct](/images/guide/pingpong/commit_struct.png)
-*Figure 1: click commit on STRUCT level*
+   ![commit lang](/images/guide/pingpong/commit_lang.png)
+   *Commit on EN level*
+   :::
 
-<br>
+2. On the language layer, click **Try It Now** icon in the right sidebar, the test field will slide out. 
 
-![commit lang](/images/guide/pingpong/commit_lang.png)
-*Figure 2: click commit on EN level*
-:::
+   ::: thumbnail
+   ![try it now](/images/guide/pingpong/tryitnow_icon.png)
+   *Click Try It Now icon*
 
-2. Click **Try It Now** icon in the right sidebar, the test field will slide out. 
+   <br>
 
-::: thumbnail
-![try it now](/images/guide/pingpong/tryitnow_icon.png)
-*Figure 1:  click Try It Now icon*
+   ![try it now](/images/guide/pingpong/tryitnow.png)
+   *Try It Now slide out*
+   :::
 
-<br>
+3. Click **Connect** button, it may take some time to execute. After the connection is executed successfully, you can test your bot by typing messages.
 
-![try it now](/images/guide/pingpong/tryitnow.png)
-*Figure 2: Try It Now slide out*
-:::
+   ::: thumbnail
+   ![connect](/images/guide/pingpong/connect.png)
+   :::
 
-3. Click **Connect**, and you can test your bot by typing messages.
+4. Enter `ping` in the text entry and press enter, then the bot will respond `Pong`. You can restart your testing by clicking "**Reset Context**" icon, and create test cases by clicking "**Save Test case**" icon. For more information about Try It Now, see [Testing](../reference/platform/testing.md).
+   ::: thumbnail
+   ![pingpong test](/images/guide/pingpong/pingpong_test.png)
+   :::
 
-::: thumbnail
-![connect](/images/guide/pingpong/connect.png)
-:::
+5. After you have tested your chabot, you can switch to the **STRUCT** level to merge your changes: 
+   1. On the **STRUCT** level, head to **Versions** page, click **Pull Request** on the right side.
+      ::: thumbnail
+      ![pingpong pull request](/images/guide/pingpong/pingpong_pull_request.png)
+      :::
+   2. Click the item you want to merge, **Compare Diffs** field will slide out.
+      ::: thumbnail
+      ![version item](/images/guide/pingpong/version_item.png)
+      :::
+   3. In the **Compare Diffs** drawer, make sure all the changes you made are what you want. You can switch between different layers from the topbar.
+      ::: thumbnail
+      ![review changes](/images/guide/pingpong/review_changes.png)
+      :::
+   4. After reviewing, you can **Approve** these changes and **Merge** them to master. For more information about changes review, see [Version Contorl](../reference/platform/versioncontrol.md).
+      ::: thumbnail
+      ![approve changes](/images/guide/pingpong/approve_changes.png)
+      *Approve changes*
 
-4. Enter `ping` in the text entry and press enter, the bot responds `Pong`.
+      <br>
 
-::: thumbnail
-![pingpong test](/images/guide/pingpong/pingpong_test.png)
-:::
+      ![merge changes](/images/guide/pingpong/merge_changes.png)
+      *Merge changes*
+            
+      <br>
 
-::: tip Note
-You can restart your testing by clicking "**Reset Context**" icon, and create test cases by clicking "**Save Test case**" icon, then you can run test cases when needed. For more information, see [Testing](../reference/platform/testing.md).
-:::
+      ![version tag](/images/guide/pingpong/version_tag.png)
+      *Create version tag and Save*
+      :::
 
-## Modify
+## Deploy Chatbot
+
+## Maintain Chatbot
 
 As we said at the beginning, you can easily manage how the messages are presented to users per your own business logic, and achieved [level 1 conversational user interface](./5levels-cui.md#frame-without-slot), for example: 
 
