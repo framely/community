@@ -21,7 +21,7 @@ Thank you for contacting the virtual PingPong chatbot. Have a great day!
 :::
 ::::
 
-After this simple PingPong chatbot, you can easily build the first level of the [5 Levels of CUI](./5levels-cui.md#frame-without-slot), and easily manage how the messages are presented to users per your own business logic. For example, if you are a restaurant, you can let your users check your business hours as follows:
+After this simple PingPong chatbot, you can easily build the first level of CUI [frame without slot](./5levels-cui.md#frame-without-slot), and easily manage how the messages are presented to users per your own business logic. For example, if you are a restaurant, you can let your users check your business hours as follows:
 
 :::: conversation
 ::: bot Bot
@@ -247,7 +247,7 @@ OpenCUI provides a built-in testing feature "**Try It Now**" to help you to unco
 
 ## Maintain Chatbot
 
-As we said at the beginning, you can easily manage how the messages are presented to users per your own business logic, and achieved [level 1 conversational user interface](./5levels-cui.md#frame-without-slot), for example: 
+As we said at the beginning, you can easily manage how the messages are presented to users per your own business logic, and achieved the first level of CUI [frame without slot](./5levels-cui.md#frame-without-slot), for example: 
 
 :::: conversation
 ::: bot Bot
@@ -267,59 +267,61 @@ Thank you for contacting the virtual Restaurant chatbot. I am glad I could help 
 :::
 ::::
 
-You can provide this experience by following these steps:
+You can provide such experience by following these steps:
 
 1. Create a new intent, labeled as "BusinessHours".
 
-::: thumbnail
-![create hours](/images/guide/pingpong/create_hours.png)
-:::
+   ::: thumbnail
+   ![create hours](/images/guide/pingpong/create_hours.png)
+   :::
 
-2. Add the response action you need, in this case we add a **Simple Reply** here, then commit struct.
+2. Add the response action you need, in this case we add a **Single Value Message** here, then commit struct for propagating to language side.
 
-::: thumbnail
-![add hours response](/images/guide/pingpong/add_hours_response.png)
-:::
+   ::: thumbnail
+   ![add hours response](/images/guide/pingpong/add_hours_response.png)
+   :::
 
-3. Switch to the language side. In **Response** tab, enter `We open every day from 10:00am to 9:00pm.` in the simple reply and press enter.
+3. Switch to the language side. Heading to **Response** tab, enter `We open every day from 10:00am to 9:00pm.` in single value message field and press enter.
 
-::: thumbnail
-![add hours reply](/images/guide/pingpong/add_hours_reply.png)
-:::
+   ::: thumbnail
+   ![add hours reply](/images/guide/pingpong/add_hours_reply.png)
+   :::
 
-4. In **Expression** tab, enter `We open every day from 10:00am to 9:00pm.` in **Expressions** field and press enter. Don't forget to add **Alias** at the same time.
+4. Select **Expression** tab, enter `what is your hours` in **Expressions** field and press enter. Don't forget to add **Names** at the same time.
 
-::: thumbnail
-![add hours expression](/images/guide/pingpong/add_hours_expression.png)
-:::
+   ::: thumbnail
+   ![add hours expression](/images/guide/pingpong/add_hours_expression.png)
+   :::
 
-5. Modify the **Greeting** intent **Response**, enter `Hi! I'm a virtual Restaurant chatbot.` in the simple reply and press enter.
+5. Of course, you can also maintain the behaviors of default intents as you want. To modify the default intent, back to intents list: 
 
-::: thumbnail
-![modify greeting](/images/guide/pingpong/modify_greeting.png)
-:::
+   - Click into **Greeting** intent. Select **Response** tab, enter `Hi! I'm a virtual Restaurant chatbot.` in single value message field and press enter.
 
-6. Modify the **Goodbye** intent **Response**, enter `Hi! I'm a virtual Restaurant chatbot.` in the simple reply and press enter.
+      ::: thumbnail
+      ![modify greeting](/images/guide/pingpong/modify_greeting.png)
+      :::
 
-::: thumbnail
-![modify goodbye](/images/guide/pingpong/modify_goodbye.png)
-:::
+   - Click into **Goodbye** intent. Select **Response** tab, enter `Thank you for contacting the virtual Restaurant chatbot. I am glad I could help you today. Good-bye!` in single value message field and press enter.
 
-7. Add a prompt in the **skills** slot of **Main** intent, enter `How can I assist you today?` in the **Prompts** field and press enter. No need to delete any prompts, when there are multiple prompts, bot will randomly display one to the user.
+      ::: thumbnail
+      ![modify goodbye](/images/guide/pingpong/modify_goodbye.png)
+      :::
 
-::: thumbnail
-![main skills](/images/guide/pingpong/main_skills.png)
-*Figure 1: click skills in Main intent*
+   - Click into **Main** intent. Add a prompt in the **skills** slot, enter `How can I assist you today?` in the **Prompts** field and press enter. No need to delete any prompts, when there are multiple prompts, bot will randomly display one of them to the user.
 
-<br>
+      ::: thumbnail
+      ![main skills](/images/guide/pingpong/main_skills.png)
+      *Click skills in Main intent*
 
-![add skills prompt](/images/guide/pingpong/add_skills_prompt.png)
-*Figure 2: add prompt*
-:::
+      <br>
 
-8. Commit and Try it Now. If you get this, congratulations, you're done!
+      ![add skills prompt](/images/guide/pingpong/add_skills_prompt.png)
+      *Add prompt*
+      :::
 
-::: thumbnail
-![modify result](/images/guide/pingpong/modify_result.png)
-:::
+6. Commit and Try it Now. If you get this, congratulations, you're done!
+
+   ::: thumbnail
+   ![modify result](/images/guide/pingpong/modify_result.png)
+   :::
 
