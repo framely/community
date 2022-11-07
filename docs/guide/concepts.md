@@ -53,6 +53,23 @@ The term entity is used to describe the general concept of types and they are ba
 
 In conversation layer, entity represents an instance of concept type, like "beijing" is an instance of type "city". In service layer, entity are mapped to primitive type, of enum like atomic type. Understanding entity is typically done by extractive understanding, with synonyms annotation are the important control that builder has to influence the dialog understanding behavior.
 
+#### How To Define
+1. In the **Entities** field, click **Create**.
+2. To add an instance, click **Add** in the **Instances** section.
+::: thumbnail
+![add instance](/images/guide/concepts/add-instance.png)
+:::
+
+3. To enable abstract, turn on **Abstract**.
+::: thumbnail
+![turn on abstract](/images/guide/concepts/turn-on-abstract.png)
+:::
+
+4. To add a parent entity, switch to **Schema** section and select an abstract entity in the **Parent Entities** section.
+::: thumbnail
+![add parent entity](/images/guide/concepts/add-parent-entity.png)
+:::
+
 
 ## Annotations
 After these types are defined at schema level, builder can add annotation on top of it to control the every aspect of this component. An example will be what if a user did not specify a value for a required slot, how do we prompt them in a given language. As a declarative platform for building a full stack chatbot, different categories of annotations are supported: dialog annotation, storage annotation and backoffice annotation. 
