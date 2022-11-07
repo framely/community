@@ -56,10 +56,15 @@ In conversation layer, entity represents an instance of concept type, like "beij
 #### How To Define
 1. In the **Entities** field, click **Create**.
 2. To add an instance, click **Add** in the **Instances** section.
-3. To enable abstract, turn on **Abstract**.
 ::: thumbnail
 ![add instance](/images/guide/concepts/add-instance.png)
 :::
+
+3. To enable abstract, turn on **Abstract**.
+::: thumbnail
+![turn on abstract](/images/guide/concepts/turn-on-abstract.png)
+:::
+
 4. To add a parent entity, switch to **Schema** section and select an abstract entity in the **Parent Entities** section.
 ::: thumbnail
 ![add parent entity](/images/guide/concepts/add-parent-entity.png)
