@@ -1,7 +1,7 @@
 # Quick Start with PingPong 
 > Follow this PingPong chatbot to get started with OpenCUI.
 
-This guide will walk you through using OpenCUI platform to build, test and deploy a simple PingPong chatbot. When interacting with this chatbot, a user can get greeting message, and response of *"pong"* to his input message *"ping"*. For example:
+This guide will walk you through using OpenCUI platform to build, test and deploy a simple PingPong chatbot. When interacting with this chatbot, a user can get a greeting message, and a response *"pong"* to input message *"ping"*. For example:
 
 :::: conversation
 ::: bot Bot
@@ -21,7 +21,7 @@ Thank you for contacting the virtual PingPong chatbot. Have a great day!
 :::
 ::::
 
-After this simple PingPong chatbot, you can easily build the first level of CUI [frame without slot](./5levels-cui.md#frame-without-slot), and easily manage how the messages are presented to users per your own business logic. For example, if you are a restaurant, you can let your users check your business hours as follows:
+After this simple PingPong chatbot, you can easily build **the first level of CUI** [frame without slot](./5levels-cui.md#frame-without-slot) and manage how the messages are presented to users per your own business logic. For example, if you are a restaurant, you can let your users check your business hours as following:
 
 :::: conversation
 ::: bot Bot
@@ -47,34 +47,33 @@ Now, let's begin:
 
 ## Before You Begin
 
-Before you start follow this guide, it is suggested that you go through the following list first.
+Before you start with this guide, it is recommended that you go through these following list first:
 1. Get familiar with [the basic idea of building conversational apps](README.md).
-2. Make sure that you meet the [prerequisite](are-you-ready.md).
-3. [Sign up](../reference/platform/signingup.md) for OpenCUI account.
+2. [Sign up](../reference/platform/signingup.md) for OpenCUI account.
 
 ## Create Chatbot
-After logging in, there will be an org *(short for organization)* automatically created for you. Select this org or any other org you want from your org list: 
+After you log in, there will be an org *(short for organization)* automatically created for you. You can select this org to create chatbots. Here, the org with label `me.quickstart` will be selected: 
 ::: thumbnail
 ![org list](/images/guide/pingpong/orglist.png)
 :::
 
-To create a chatbot, follow these steps (If you are already inside a chatbot, you can skip these steps): 
+To create a chatbot (If you are already inside a chatbot, you can skip these steps): 
 
-1. When you are inside an org, head to chatbot list page by clicking **Chatbots** in the left sidebar menu, then click the **Create** button on the right side.
+1. Inside an org, head to chatbot list page by clicking **Chatbots** in the left side menu, then click the **Create** button on the right side.
 
    ::: thumbnail
    ![create chatbot](/images/guide/pingpong/create_chatbot.png)
    :::
 
 2. After clicking the **Create** button, there will be a pop-up window. You should complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All of them can be modified after creation except the **Region** field:
-   - Enter your chatbot's name in the **Project Label** field, start with lowercase, for example `pingpong`.
+   - Enter your chatbot's label in the **Project Label** field, start with lowercase, for example `pingpong`.
    - Select your preferred **Region**.
    - Select the languages for your chatbot in the **Add Language** field.
 
    ::: warning Need To Know
    - When you create a chatbot, you must specify a region. For the best performance, you should choose a region that is near your services and end-users. 
 
-   - Once a chatbot is created, its **Region** cannot change. In order to change a chatbot's region, you must export or clone a new chatbot with a different region.
+   - Once a chatbot is created, you can not change its **Region**. In order to change a chatbot's region, you must export or clone a new one with a different region.
    :::
    
    ::: thumbnail
@@ -95,13 +94,13 @@ If created successfully, you can see the chatbot shown like the following:
 
 ## Build Chatbot
 
-The service that a PingPong chatbot can provide is just a simple question-and-answer dialogue. Such frame is typically communicated in one sentence and conversations are done in a single turn. As the service provided by PingPong does not need to collect informations from a user, like booking a flight ticket requires departure time, departure place, destination, etc, chatbot at this level is just a set of [intents](/guide/concepts.md#intents) and its dependency. 
+The service that a pingpong chatbot can provide is just a simple question-and-answer dialogue. Such frame is typically communicated in one sentence and conversations are done in a single turn. As the service provided by pingpong does not need to collect informations from a user, like booking a flight ticket requires departure time, departure place, destination, etc, chatbot at this level is just a set of [intents](/guide/concepts.md#intents) and its dependency. 
 
-Therefore, we will skip the [describe service at schema level](getting-started.md#1-describe-services-at-schema-level) phase and start with interaction declaration. This section walks you through the steps to build the PingPong chatbot.
+Therefore, we will skip the [describe service at schema level](getting-started.md#1-describe-services-at-schema-level) phase and start with interaction declaration. This section walks you through the steps to build the pingpong chatbot.
 
 ### Declare Interaction
 
-What is the interaction provided by this PingPong chabot? The answer is to give a response *"pong"* to the user's message *"ping"*. So all you have to do in the declare interaction phase is to add a response to one intent at STRUCT *(short for structure)* level which represents the interaction layer.
+What is the interaction provided by this pingpong chabot? The answer is to give a response *"pong"* to the user's message *"ping"*. So all you have to do in the declare interaction phase is to add a response to one intent at **STRUCT** *(short for structure)* level which represents the **interaction layer**. For more information about each of the layers, see [Separation of Concerns](README.md#separation-of-concerns) and [4 Layers of Chatbot](glossary.md#chatbot).
 
 For each chatbot, you can create many intents. But in this case, you only need one. 
 
@@ -111,7 +110,7 @@ For each chatbot, you can create many intents. But in this case, you only need o
    ![struct level](/images/guide/pingpong/struct_level.png)
    :::
 
-2. Click **Create** button on the right side to create a intent.
+2. To create a intent, click **Create** button on the right side.
 
    ::: thumbnail
    ![create intent](/images/guide/pingpong/create_intent.png)
@@ -146,7 +145,7 @@ Once the declaration of the interaction is done, these language related parts be
 
 Now let's add language-related aspects:
 
-1. Switch to language layer by a selecting a language from the topbar. In this case, we will switch to English side, so select **EN** in the language dropdown menu. 
+1. Switch to language layer by selecting a language from the topbar. In this case, we will switch to English side, so select **EN** in the language dropdown menu. 
 
    ::: thumbnail
    ![switch pingpong en](/images/guide/pingpong/switch_pingpong_en.png)
@@ -177,7 +176,7 @@ Now let's add language-related aspects:
 
 ## Test Chatbot
 
-OpenCUI provides a built-in testing feature "**Try It Now**" to help you to uncover bugs with the debug info, you can test your chatbot by typing messages. Let's test this PingPong chatbot, which will handle a basic conversation with a [default welcome message](concepts.md#default-intents) and response with *"pong"* to message *"ping"*. 
+OpenCUI provides a built-in testing feature "**Try It Now**" to help you to uncover bugs with the debug info, you can test your chatbot by typing messages. Let's test this pingpong chatbot, which will handle a basic conversation with a [default welcome message](concepts.md#default-intents) and response with *"pong"* to message *"ping"*. 
 
 1. As **Try It Now** can only test committed content, please make sure both structure layer and language layer have been committed. 
 
@@ -209,7 +208,7 @@ OpenCUI provides a built-in testing feature "**Try It Now**" to help you to unco
    ![connect](/images/guide/pingpong/connect.png)
    :::
 
-4. Enter `ping` in the text entry and press enter, then the bot will respond `Pong`. You can restart your testing by clicking "**Reset Context**" icon, and create test cases by clicking "**Save Test case**" icon. For more information about Try It Now, see [Testing](../reference/platform/testing.md).
+4. Enter `ping` in the text input box at the bottom and press enter, then the bot will respond `Pong`. You can restart your testing by clicking "**Reset Context**" icon, and create test cases by clicking "**Save Test Case**" icon. Of course, if there are some exceptions, you can get log info by clicking "**Debug**" icon. For more information about Try It Now, see [Testing](../reference/platform/testing.md).
    ::: thumbnail
    ![pingpong test](/images/guide/pingpong/pingpong_test.png)
    :::
@@ -227,7 +226,7 @@ OpenCUI provides a built-in testing feature "**Try It Now**" to help you to unco
       ::: thumbnail
       ![review changes](/images/guide/pingpong/review_changes.png)
       :::
-   4. After reviewing, you can **Approve** these changes and **Merge** them to master. For more information about changes review, see [Version Contorl](../reference/platform/versioncontrol.md).
+   4. After reviewing, you can **Approve** these changes and **Merge** them into master. For more information about changes review, see [Version Contorl](../reference/platform/versioncontrol.md).
       ::: thumbnail
       ![approve changes](/images/guide/pingpong/approve_changes.png)
       *Approve changes*
@@ -244,6 +243,91 @@ OpenCUI provides a built-in testing feature "**Try It Now**" to help you to unco
       :::
 
 ## Deploy Chatbot
+
+With Deploy action, the latest master of your chatbot can be published to production environment. And then your user can interact with this chatbot via your integrated channels. So before deploying, you need to make sure your chatbot has integrated at least one channel. 
+
+These following steps will show you how to use the extension channels provided by OpenCUI. If these are not enough, and you are good at development, you can extend any channel you need. For more information about extension, see [Native Provider](../reference/providers/native.md).
+
+Now let's use Messenger as an example. To use this integration:
+
+1. Select **Clone & Import** tab at the top of this page, type `channel` in the search bar and press enter. You can use filter on the right of the search box, please select **service** to assist in filtering.
+
+   ::: thumbnail
+   ![search channel](/images/guide/pingpong/search_channel.png)
+   :::
+
+2. Select the channel which provided by **OpenCUI** (labeled as `io.opencui`).
+
+   ::: thumbnail
+   ![select opencui channel](/images/guide/pingpong/select_opencui_channel.png)
+   :::
+
+3. In **channel** service, click **Import Project** icon on the right side bar and select your pingpong chatbot in the popup.
+   ::: thumbnail
+   ![click import icon](/images/guide/pingpong/click_import_icon.png)
+   *Click import project icon*
+
+   <br>
+
+   ![import to pingpong](/images/guide/pingpong/import_to_pingpong.png)
+   *Select your pingpong chatbot*
+   :::
+
+4. When you are done with import, you can see this **channel** service in the imported list.
+
+   ::: thumbnail
+   ![imported list](/images/guide/pingpong/imported_list.png)
+   :::
+
+5. To wire messenger to the channel service: 
+   1. Heading to **Settings** page, select **Integrations** tab. In the **Service Provider** section, select **channel** service (labeled as `io.opencui.channel.IChannel`) you just imported.
+
+      ::: thumbnail
+      ![service provider section](/images/guide/pingpong/service_provider_section.png)
+      *Service provider section*
+
+      <br>
+
+      ![select channel](/images/guide/pingpong/select_channel.png)
+      *Select io.opencui.channel.IChannel*
+      :::
+
+   2. In the wiring popup window, select **channel**'s implementation **messenger** (labeled as `io.opencui.messenger`).
+
+      ::: thumbnail
+      ![select provider](/images/guide/pingpong/select_provider.png)
+      :::
+
+   3. Then you will see the configuration information required by messenger channel in the popup window.
+
+      ::: thumbnail
+      ![config popup](/images/guide/pingpong/config_popup.png)
+      :::
+
+6. To configure messenger channel:
+   1. Follow the steps in [Set Up Messenger](../reference/channels/messenger.md#set-up-messenger) to set up your Meta app, **generate access token** and copy this value to OpenCUI.
+   2. Configure the integration: 
+      - **Label**: Set a label for this channel, should be unique. 
+      - **Callback URL**: Copy this value. This will be used to configure Messenger Webhook.
+      - **Verify Token**: You can enter any private token you desire. Copy this value. This will be used to configure Messenger Webhook.
+      - **Page Access Token**: Enter the access token you copied when set up messenger.
+      - **Default Language**: Set your chatbot default language.
+      ::: thumbnail
+      ![config info](/images/guide/pingpong/config_info.png)
+      :::
+
+7. When you're done configuring, merge your changes to master. And then you can deploy your chatbot by clicking **Deploy** button in **Versions** page.
+
+   ::: thumbnail
+   ![deploy chatbot](/images/guide/pingpong/deploy_chatbot.png)
+   :::
+
+8. When successful, there will be a **Green Checked Icon** to indicate current deployed version. Now you can finish setup of the Meta app and test it. Use the **Callback URL** and **Verify Token** values you copied above to configure the Messenger Webhook by following steps in the [Configure Webhook](../reference/channels/messenger.md#configure-webhook)  and [Test Your Chatbot](../reference/channels/messenger.md#test-your-chatbot).
+
+   ::: thumbnail
+   ![deploy checked icon](/images/guide/pingpong/deploy_checked_icon.png)
+   :::
+
 
 ## Maintain Chatbot
 
@@ -307,7 +391,7 @@ You can provide such experience by following these steps:
       ![modify goodbye](/images/guide/pingpong/modify_goodbye.png)
       :::
 
-   - Click into **Main** intent. Add a prompt in the **skills** slot, enter `How can I assist you today?` in the **Prompts** field and press enter. No need to delete any prompts, when there are multiple prompts, bot will randomly display one of them to the user.
+   - Click into **Main** intent. Add a prompt in the **skills** slot, enter `How can I assist you today?` in the **Prompts** field and press enter. No need to delete any prompts, when there are multiple prompts, bot will randomly display one of them to users.
 
       ::: thumbnail
       ![main skills](/images/guide/pingpong/main_skills.png)
