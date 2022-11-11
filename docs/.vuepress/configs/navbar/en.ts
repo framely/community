@@ -14,7 +14,6 @@ export const en = [
     children: [
       {
         text: 'CUI Components',
-
         children: [
           {
             text: 'Overview',
@@ -68,9 +67,14 @@ export const en = [
             icon: '/navIcons/overview.svg',
           },
           {
-          text: 'Native',
+            text: 'Extension',
+            link: '/reference/providers/extension.html',
+            icon: '/navIcons/extension.svg',
+          },
+          {
+          text: 'Native Provider',
             link: '/reference/providers/native.html',
-            icon: '/navIcons/postgresql.svg',
+            icon: '/navIcons/native.svg',
           },
           {
             text: 'Postgrest',
@@ -81,7 +85,7 @@ export const en = [
             text: 'Google Sheets',
             link: '/reference/providers/googlesheets.html',
             icon: '/navIcons/google-sheets.svg',
-          },
+          }
         ]
       },
       {
@@ -112,13 +116,12 @@ export const en = [
             link: '/reference/channels/whatsapp.html',
             icon: '/navIcons/whatsapp.svg',
           },
-
           {
             text: 'WeChat Official Account',
             link: '/reference/channels/wpa.html',
             icon: '/navIcons/wechat.svg',
-          },
-        ],
+          }
+        ]
       },
 
       {
@@ -133,47 +136,47 @@ export const en = [
             text: 'Chatwoot',
             link: '/reference/support/Chatwoot.html',
             icon: '/navIcons/chatwoot.svg',
-          },
-        ],
+          }
+        ]
       },
       {
-      text: 'Platform',
-      children:[
-        {
-          text: 'Sign Up',
-          link: '/reference/platform/signingup.html',
-          icon: '/navIcons/signup.svg',
-        },
-        {
-          text: 'Multilingual',
-          link: '/reference/platform/multilingual.html',
-          icon: '/navIcons/multilingual.svg',
-        },
-        {
-          text: 'Testing',
-          link: '/reference/platform/testing.html',
-          icon: '/navIcons/testing.svg',
-        },
-        {
-          text: 'Deployment',
-          link: '/reference/platform/deployment.html',
-          icon: '/navIcons/deployment.svg',
-        },
-        {
-          text: 'Version Control',
-          link: '/reference/platform/versioncontrol.html',
-          icon: '/navIcons/branch.svg',
-        },
-        {
-          text: 'Access Control',
-          link: '/reference/platform/access.html',
-          icon: '/navIcons/permission.svg',
-        },
-        {
-          text: 'Reusability',
-          link: '/reference/platform/reusability.html',
-          icon: '/navIcons/reusability.svg',
-        }
+        text: 'Platform',
+        children:[
+          {
+            text: 'Sign Up',
+            link: '/reference/platform/signingup.html',
+            icon: '/navIcons/signup.svg',
+          },
+          {
+            text: 'Multilingual',
+            link: '/reference/platform/multilingual.html',
+            icon: '/navIcons/multilingual.svg',
+          },
+          {
+            text: 'Testing',
+            link: '/reference/platform/testing.html',
+            icon: '/navIcons/testing.svg',
+          },
+          {
+            text: 'Deployment',
+            link: '/reference/platform/deployment.html',
+            icon: '/navIcons/deployment.svg',
+          },
+          {
+            text: 'Version Control',
+            link: '/reference/platform/versioncontrol.html',
+            icon: '/navIcons/branch.svg',
+          },
+          {
+            text: 'Access Control',
+            link: '/reference/platform/access.html',
+            icon: '/navIcons/permission.svg',
+          },
+          {
+            text: 'Reusability',
+            link: '/reference/platform/reusability.html',
+            icon: '/navIcons/reusability.svg',
+          }
         ]
       },
     ],
