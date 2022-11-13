@@ -1,5 +1,5 @@
 # Glossary
-OpenCUI is a component based declarative platform and repository for building conversational user interface for cooperative users to access your services. It is a low code platform for building personalized service, include chatbot and corresponding backend. The chatbot and backend defined on the platform will be first code-generated into Kotlin source code, which can be compiled and executed on top of OpenCUI runtime anywhere.
+OpenCUI is a component based declarative frontend framework for building conversational user interface for your services. It comes with a low code platform for building personalized service, include chatbot and corresponding backend.
 
 ## CUI
 Conversational user interface.
@@ -10,111 +10,58 @@ Conversational user experience.
 ## GUI
 Graphical user interface.
 
-## SQL
-Structure query language.
-
-## RDBMS
-Relational database management system.
-
-## API
-Application programming interface, typically in restful. 
-
 ## Imperative
-Builders describe how things should be done and computer simply follow that.
+Builders describe how things should be done step by step and computer simply follow that.
 
 ## Declarative
 Builders describe what are needed and computer figure out how to do it.
 
-## Syntax
-The arrangement rules of words and phrases to create well-formed sentences in a language.
-
-## Semantics
-The meaning of a word, phrase, sentence, or text without context. In OpenCUI, the semantics is defined semantic frames, or just frames.
-
-## Pragmatics
-Study of how context contributes to meaning, or meaning under context. We use the frame to express meaning under context as well.
 
 ## Cooperative Principle
 This assumes users are engaged in the conversation with bot for a common goal: user want to access some services that bot want to provide, thus it is user's interest to get what they want in the lowest effort possible.
 
-## Interaction Logic
-Defines how interaction should be carried out based on users input event.
-
 ## Application Logic
-Also known as business logic or more commonly service, defines how services should be delivered based on the user requirement (aggregated user input). It is very common that interaction logic reflects underlying application logic.
+Also known as business logic, defines what and how services should be delivered.
+
+## Interaction Logic
+Defines how interaction should be carried out based on users input event. Interaction logic are defined by underlying application logic.
 
 ## Frontend
-User interacting application are commonly partitioned into frontend and backend. Where frontend manages the user interaction, and backend models data and application logic. And backend and frontend communicate via predefined-defined APIs. Frontend includes presentation layer and interaction logic layer, or frontend can also be partitioned into schema level and language level.
+User-facing application are commonly partitioned into frontend and backend. Where frontend manages the user interaction, and backend models data and application logic. And backend and frontend communicate via predefined-defined APIs. Frontend includes perception layer (language aware) and interaction layer(for language independent interaction logic).
 
 ## Backend
-OpenCUI assume backend hosts all the data and application logic for different frontends, chatbot is one such frontend. Backend are typically just implementation of restful APIs on top of database. Popular open source databases includes mysql and postgresql. Backend can be thought provider for services (or implemented the function declared in the services)
+Backend hosts all the data and application logic for different frontends, with chatbot as one such frontend. Backend is implementation of service APIs.
 
 ## Project
-Chatbot, component and provider are all project on platform.
+Chatbot, component and provider are all projects on OpenCUI platform.
 
-## Roles
-Stakeholders for entire application (chatbot, backend and back office), there are no one to one mapping between the account system on platform, support of backoffice:
-- **Builder**: The people use platform to define chatbot and backend, usually hired by business. 
-- **End-user**: The people use chatbot to get things done.
-- **Operator** (business): The team that user the back office to deliver the information/service to end user.
-- **Admin** (business): Admin is a special kind of operator, they have full control of the data in the backend.
+### Chatbot
+An application with conversational user interface, or CUI frontend, where user can access service through text or voice instead of a graphical user interface. Chatbot can be generally built in 4 layers:
+- **Schema Layer**: Or API layer, defines interface to backend service, including data structure needed to invoke the service as both input and output.
 
-As general rule, builder use platform, business operator and admin use backoffice. End-user use chatbot. And business admin may or may not hold the admin account on the OpenCUI platform.
+- **Interaction Layer**: Defines interaction logic, or how input parameter needed by service should be collected from user via conversational interactions, in a language independent fashion. The decision in this lever include whether to prompt user for given slot, whether to give recommendation when prompt, and what to do if input validation is failed, for example.
 
-## Chatbot
-An end user facing application or CUI frontend, user can access information and service through conversations in text or voice instead of a graphical user interface. All user facing application can be generally built in three layers: language, interaction and schema.
+- **Language Layer**: Used for converting natural language and structured semantics back and forth. Expression for dialog understanding and template for text generation are the main control.
 
-### 4 Layers of Chatbot
+- **Channel Layer**: Different channels have different ways to encode the conversation relevant information, implementation for channels are defined in this layer to make sure the same bot can be accessed from different channel.
 
-- **Schema Layer**: Interface to service, or data structure needed to invoke the service as both input and output, are defined at schema level. Application logic is also defined in this layer, typically as the backend providers, some time simply via SQL on OpenCUI, some time externally via restful APIs.
+### Component 
+The composable architecture of OpenCUI allows you to build encapsulated component that handles interaction for some predefined purpose, and then wire these reusable components into bigger and bigger ones for what you need. And some components contain service APIs, which can be used to declaratively build the backend.  
 
-- **Interaction Layer**: Defines interaction logic, or how input parameter needed by service should be collected from user via conversational interactions, at an language independent fashion. The decision in this lever include whether to prompt user for given slot, whether to give recommendation when prompt, and what to do if input validation is failed, for example.
+#### Service
+The API for collection of functions that chatbot can use to access business data and logic.
 
-- **Language Layer**: Language perception, includes language related aspects like expression for dialog understanding and template for text generation.
+### Provider
+Provider is implementation for some APIs. There are two kind of provides, system providers that implements Channel/Support interface and service providers that implements business APIs. You can implement providers in Kotlin code for maximum freedom. Or you can use one of scripted provider backend, and use the corresponding script language to define business logic. OpenCUI currently provides the following scripted provider: Postgrest, RESTful and Google Sheets.
 
-- **Message Layer**: Channel for message rendering offers a in-conversation experience, which is integration plugin module that listen for user request for given channel, extract the input, and then triggers chatbot for the structured response, where channel plugin need to encode that response in the channel required format and send it out to user.
-
-## Component 
-The key design goal for OpenCUI is to support composing the chatbot out of the reusable component so that builder does not always need to start from scratch. Notice components can be used to build bigger and bigger components. And some components contain service, which defines interface to a set of functions.  
-
-## Service
-The interface for collection of functions that chatbot can use to access business logic.
-
-## Provider
-Provider provide access to implementation for the services. Backend are simply a collection of providers. OpenCUI currently provide Postgrest provider, RESTful provider and Google Sheets provider.
-
-- **Postgrest Provider**: In addition to access, Postgrest provider are used to define both application logic  (via SQL in form of stored procedure) and database schema needed by such logic declaratively on OpenCUI. This allows builder to define reusable backend components including both UI and backend (both data and business logic), with the dialog annotation, storage annotation as well as backoffice annotation. 
+- **Postgrest Provider**: In addition to access, Postgrest provider are used to define both application logic  (via SQL in form of stored procedure) and database schema needed by such logic declaratively on OpenCUI. This allows you to define reusable backend components including both UI and backend (both data and business logic), with the dialog annotation, storage annotation as well as backoffice annotation. 
 
 - **RESTful Provider**: Service can also be accessed via restful API, with restful provider one can describe the mapping of the collected input parameter to actual Json format needed by endpoint.
 
 - **Google Sheets Provider**: Google Sheets provider allow you to use Google Sheets as backend, which the actual data can be managed by your operation team in online spreadsheet collaboratively.
 
-## Function
-The smallest unit of functionality that backend can provide, which returns result based on input parameters. Functions are used to providing recommendations during conversation, or access service after conversation interaction. 
 
-- **Function Signature**: Function signature consists of name and types of the input parameters, as well as type of return, which can be defined in service components.
 
-- **Function Implementation**: Functions can be implemented in Kotlin and provider dependent languages. Functions implemented in kotlin, also known as native function, some time implicitly in runtime. Functions implemented in provider dependent language is based on stored procedure supported by provider database. For example, implementation for RESTful functions simply forward the input parameter to restful endpoints, and convert the json result back to specified data type. 
-
-## Code Expression
-Code expressions are the Kotlin expression or encoding of Kotlin expression that can be evaluated dynamically by runtime. Code expression can be used independently or embedded in templates. Since the declarative configuration of the chatbot on the platform are compiled into Kotlin source code, so it is possible to use arbitrary Kotlin code expression in some predefined places like condition definition. As more detailed example, in value recommendation, we need to use code expression to indicate which function should be called, with what parameters, and how different function is composed to provide the desired list of instances for user to choose from.
-
-## Text Generation
-To be able to easily interact with users in different language, we use text generation module to translate the same semantics into different natural text. For now we focus on the template based generation.
-
-To make building multi-language chatbot, builder can specify text generation templates to create desired sentence for user to make it easy for user get to their goal quickly and effortlessly.
-
-## Template
-In both prompt and response, we need to specify what chatbot say to user. This is accomplished by template. Template is just string with code expression embedded in it. One way of encoding the embedded code expression is to surround them with `${}`, the code expression inside `${}` will be evaluated to string and then concatenated with rest of static content to form the final message for user.
-
-## Prompt
-Use these templates to create question to guide user towards their goal. Examples include: "where do you want to go?", and "Are you sure you want to it to be extremely spicy?"
-
-## Response
-The services that user want are generally accessed via some form APIs, and result from the APIs will be some structured information. Response are the template to turn these structured result into natural text.
-
-## Auto Completion
-A way to improve the builder experience for input boxes, provides smart code completion, diagnostics, definition lookup, method signature help and more. The experience is like an IDE. There are three kinds of input boxes on the platform: kotlin code expression, SQL statement and JSON expression. 
 
 ## Runtime 
 The core of chatbot is to build common understanding of what user want through conversation, connect user to the right service and generate the natural text for channel to rendering to user.  These core functionalities are provided by OpenCUI runtime as APIs, so each chatbot can focus on what information to collect and leave the actual information collect to runtime. Runtime also contains session management and dispatcher.
@@ -302,3 +249,23 @@ These expression exemplars are used by NLU model to hotfix the understanding iss
 - **Partial Expression**: Exemplar that specify how to find value for given slot from the conversation history, in order to full understand user utterance when there are pronoun in there, i.e. "what is the weather over there" implies user want to to know weather of the $city$? 
 Pronoun Expression(experimental): for each slot, entity, builder can specify which pronoun is used to refer these, so that builder do not need to supply partial expression.  
 - **Pronoun Expression**: For each slot, entity, builder can specify which pronoun is used to refer these, so that builder do not need to supply partial expression.
+
+## Code Expression
+Code expressions (in Kotlin) can be evaluated dynamically by runtime. Code expression can be used independently or embedded in templates. Since the skills/frames/entities defined on the platform are directly compiled into Kotlin source code, so it is possible to use arbitrary Kotlin code expression in predefined places to specify the interaction logic. For example, in value recommendation, we can use code expression to indicate which function, and how it should be invoked to provide the desired list of instances for user to choose from.
+
+## Text Generation
+To be able to easily interact with users in different language, we use text generation module to translate the same semantics or dialog act into different natural text. For now we focus on the template based generation.
+
+To make building multi-language chatbot, builder can specify text generation templates to create desired sentence for user to make it easy for user get to their goal quickly and effortlessly.
+
+### Dialog Act
+
+### Template
+In both prompt and response, we need to specify what chatbot say to user. This is accomplished by template. Template is just string with code expression embedded in it. One way of encoding the embedded code expression is to surround them with `${}`, the code expression inside `${}` will be evaluated to string and then concatenated with rest of static content to form the final message for user.
+
+### Prompt
+Use these templates to create question to guide user towards their goal. Examples include: "where do you want to go?", and "Are you sure you want to it to be extremely spicy?"
+
+### Response
+The services that user want are generally accessed via some form APIs, and result from the APIs will be some structured information. Response are the template to turn these structured result into natural text.
+
