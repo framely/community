@@ -14,7 +14,7 @@ As we know before, provider provides the implementation of service interface. Bu
 
 These native provider can be registered as private deployment, in which case, you do not need to make its source available to OpenCUI platform. A chatbot that relies on even one private deploy provider can NOT be hosted by OpenCUI, instead you need export the generated kotlin project, and build and deploy it per their devops rules. 
 
-### Create Native Provider
+### 1. Create Native Provider
 
 To create a native provider:
 
@@ -34,7 +34,7 @@ To create a native provider:
     ![create provider popup](/images/provider/nativeprovider/create_provider_popup.png)
     :::
 
-### Declare Service Interface
+### 2. Declare Service Interface
 
 When you are done with creation, you need to declare which service interface this native provider implements. To declare the service interface, follow these steps:
 
@@ -74,7 +74,7 @@ When you are done with creation, you need to declare which service interface thi
    *Done with selection*
    :::
 
-### Configuration Setup
+### 3. Configuration Setup
 
 Configuration is the way you declare the Implementation dependencies for a build. 
      
@@ -197,17 +197,19 @@ This code will generate the configuration information forms like the screenshot 
 
 #### Implementation
 
-Implementation is the dependency info for linking implementation source code. The format of implementation should be `group:project`, for example `io.opencui.extensions:helloworld`. For more information about implementation, see [Develop Extension](extension.md#develop-extension).
-- `group`: group in **build.gradle** of this project.
-- `project`: the sub directory name you created.
+Implementation is the dependency info for linking implementation source code. The format of implementation should be `group:project`:
+- `group`: group in **build.gradle** of your project, for example `io.opencui.extensions`.
+- `project`: the subdirectory name you created.
+
+Therefore, the Implementation should look like `io.opencui.extensions:helloworld`. See [Develop Extension](extension.md#develop-extension) for more information.
 
 ::: thumbnail
 ![implementation](/images/provider/nativeprovider/implementation.png)
 :::
 
 
-## Wire Native Provider
-After a native provider is registered on platform, anyone can use it by wiring this implementation to its interface in chatbot's integration. To wire native provider, you can follow these steps below:
+## Wire and Configure
+After a native provider is registered on platform, anyone can use it by wiring the implementation to its interface in chatbot's integration and configure it. To wire and configure native provider, you can follow these steps below:
 
 1. **Declare service interface.** Click into the service component implemented by the native provider you will use, and import it into your chatbot.
    ::: thumbnail
