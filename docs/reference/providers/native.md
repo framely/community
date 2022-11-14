@@ -1,76 +1,104 @@
-#  Native Providers
-
-Native providers are crucial to OpenCUI chatbots, they provide the implementation to system interface like channel and support, as well as application interface or services like payments. 
-
-The process of building and register native provider is as follows, assuming that one want to use OpenCUI platform to define the conversational user interface frontend. One can potentially use OpenCUI runtime to develop chatbot without using OpenCUI platform, it is certainly possible, but is not covered here. 
-
+# Native Provider
 
 [[toc]]
 
-## Define interface
-For application level interface, builder need to create a service component on the OpenCUI. System interfaces are already created for you, if you want to connect to other channels, you should use them directly: io.opencui.channel.IChannel. Service can be defined as follows:
+## Overview
 
-1. Enter one of your organizations. In the **Component** field, create a component with service enabled.
+Native providers are crucial to OpenCUI chatbots, they provide the implementation to system interface like channel and support, as well as application interface or services like payments. 
 
-::: thumbnail
-![create-component](/images/extensions/tutorial/create-component.png)
-:::
+With the help of native providers, you can easily use extension services provided by OpenCUI or other orgs, and you can even efficiently develop new services for yourself or other builders. The process of building and wiring native provider is as following, assuming that you want to use OpenCUI platform to define the conversational user interface frontend. You can potentially use OpenCUI runtime to develop chatbot without using OpenCUI platform, it is certainly possible, but is not covered here. 
 
-2. In the **Service** field, click **Add** to define a function in the component.
-3. Review changes and merge the branch into the master.
+## Build Native Provider
 
+As we know before, provider provides the implementation of service interface. But unlike other providers, the implementation of native provider is defined outside the platform. Therefore, when registering a native provider, you need to declare whether its source is accessible to OpenCUI or not.
 
-## Export Component
-Before you can develop the native provider, you first need to export the code generated for the interface in the Kotlin source code. 
-Click **Export** and extract the generated file from the export. You can get the service interface named with the component in the generated file. Move this file to the directory you just created.
+These native provider can be registered as private deployment, in which case, you do not need to make its source available to OpenCUI platform. A chatbot that relies on even one private deploy provider can NOT be hosted by OpenCUI, instead you need export the generated kotlin project, and build and deploy it per their devops rules. 
 
-::: thumbnail
-![export-component](/images/extensions/tutorial/export-component.png)
-:::
+### 1. Create Native Provider
 
-## Development
-The standard way to develop native provider is to do it inside extension repo. 
-```
-git clone https://github.com/opencui/extensions.git
-```
-We use gradle as build system, so you can create a subdirectory to host your subproject. Using the existing building system in this repo will make it easy for you to contribute your native provider back OpenCUI community.  
+To create a native provider:
 
-The implementation can then be developed as standard Kotlin project. See code examples from [*helloworld*](https://github.com/opencui/runtime/blob/main/extensions/helloworld/src/main/kotlin/me/test/component_0915/me_test_component_0915.kt#L732) to learn how.
+1. Go to one of your org, select **Provider** in left side menu, click **Create** button on the right side.
 
-Make sure your project actually builds before you move to the next step.
-```
-./gradlew your_project:build
-```
- 
-## Register
-In order to make the native provider available for the chatbots on the platofrm, we need to register it on OpenCUI platform first, by creating a provider component.
+   ::: thumbnail
+   ![create provider](/images/provider/nativeprovider/create_provider.png)
+   :::
 
-1. Enter one of your organizations. In the **Provider** field, create a native provider.
+2. In the Create popup window: 
+    - Enter a label for your provider.
+    - Select **Native Provider** in **Provider Type** field.
+    - Declare **Deploy Mode**. Private deploy means its source code OpenCUI platform will not access, while OpenCUI-hosted means the platform needs to access it.
+    - Click **Save**.
 
-::: thumbnail
-![create-provider](/images/extensions/tutorial/create-provider.png)
-:::
+    ::: thumbnail
+    ![create provider popup](/images/provider/nativeprovider/create_provider_popup.png)
+    :::
 
-2. Import the service component you want to implement into the native provider.
-3. In the **Service** field, select the imported component in the **Implemented** section.
-4. In the **Configuration** field, fill in the following information. Examples are shown in the screenshot below.
-   - **Provider class name**: a fully qualified name of the class that implements the service interface. 
-   - **Configuration meta**: a JSON array used to generate a form when integrate the extension into a chatbot. See [configuration meta](#configuration-meta) to learn how to write this.
-   - **Implementation**: a label of the project to which the provider class belongs. The format of implementation is `group:project`.
-      - Group can be found the in *build.gradle* for the project.
-      - Project is the name of the directory you created.
+### 2. Declare Service Interface
+
+When you are done with creation, you need to declare which service interface this native provider implements. To declare the service interface, follow these steps:
+
+1. If you have not already entered the service component you want to implement, click into now. Within an organization, you can search it from the search bar on the component list page. Within clone&import page, you can search it from the search bar at the top of this page. Don't forget selecting **SERVICE** in filter to help you.
+
+   ::: thumbnail
+   ![search in Component list](/images/provider/nativeprovider/search_in_org.png)
+   *Search in Component list page*
+
+   <br>
+
+   ![search in Clone & Import list](/images/provider/nativeprovider/search_in_clone_import.png)
+   *Search in Clone&Import list page*
+   :::
+
+2. When you are in the service component, click **Import** icon in the right sdiebar. Then in the popup window, select your native provider and save.
+
+   ::: thumbnail
+   ![click import icon](/images/provider/nativeprovider/click_import_icon.png)
+   *Click import icon*
+
+   <br>
+
+   ![select native provider](/images/provider/nativeprovider/select_native_provider.png)
+   *Select native provider*
+   :::
+
+3. Back to your native provider, heading to **Service** page from the left side menu. In the **Implemented** section, select the service interface you just imported. 
+
+   ::: thumbnail
+   ![select service interface](/images/provider/nativeprovider/select_service_interface.png)
+   *Select service interface*
+
+   <br>
+
+   ![done with selection](/images/provider/nativeprovider/done_with_selection.png)
+   *Done with selection*
+   :::
+
+### 3. Configuration Setup
+
+Configuration is the way you declare the Implementation dependencies for a build. 
      
 ::: thumbnail
-![configuration](/images/extensions/tutorial/configuration.png)
+![configuration](/images/provider/nativeprovider/configuration.png)
 :::
 
-5. Review changes and merge the branch into the master.
+#### Provider Class Name
 
-### Configuration Meta
+For implementation build, you need to let OpenCUI know the implementation class that implements the service interface. So a provider class name is the fully qualified name of this class. 
 
-Configuration Meta can help you generate the configuration information needed to configure this provider, which specify what keys builder needs to declare. You can create custom configuration information forms by using a JSON format.
+::: thumbnail
+![provider class name](/images/provider/nativeprovider/provider_class_name.png)
+:::
 
-#### JSON Representation
+#### Configuration Meta
+
+Configuration Meta can help you setup the information needed when wiring this provider. You can create configuration template in JSON format.
+
+::: thumbnail
+![configuration meta](/images/provider/nativeprovider/configuration_meta.png)
+:::
+
+##### JSON Representation
 
 ``` json
 [
@@ -100,7 +128,7 @@ Configuration Meta can help you generate the configuration information needed to
 ]
 ```
 
-#### Fields
+##### Fields
 
 | Fields          | Type   | Description |
 |:---             |:---    |:---         |
@@ -117,9 +145,9 @@ options
 | `value`         | string | *Required*. |
 | `label`         | string | *Required*. Displayed on selection menu. |
 
-#### Examples
+##### Examples
 
-This example shows how some provider can be configured using text input, selection and boolean component.
+This example shows how a native provider can be configured by using text input, selection and boolean component, while wiring provider to service in chatbot.
 
 ``` json
 [
@@ -164,19 +192,39 @@ This example shows how some provider can be configured using text input, selecti
 This code will generate the configuration information forms like the screenshot below:
 
 ::: thumbnail
-![config meta](/images/extensions/nativeprovider/config-meta.png)
+![configuration meta example](/images/provider/nativeprovider/configuration_meta_example.png)
 :::
 
+#### Implementation
 
+Implementation is the dependency info for linking implementation source code. The format of implementation should be `group:project`:
+- `group`: group in **build.gradle** of your project, for example `io.opencui.extensions`.
+- `project`: the subdirectory name you created.
 
-## Wire provider to service
-After native provider is registered on the platform, any builder can make use of it, by wiring the provider to the service in the chatbot settings. 
-
-1. Import the component you created into a chatbot that needs this extension.
-2. In the **Setting** field, go to the **Integrations** section. Select the service and choose its serivce provider. 
-3. Fill in the configuration form. As shown in the picture below, there is one field (_Name_) to fill as we have configured in the configuration meta.
+Therefore, the Implementation should look like `io.opencui.extensions:helloworld`. See [Develop Extension](extension.md#develop-extension) for more information.
 
 ::: thumbnail
-![integration](/images/extensions/tutorial/integration.png)
+![implementation](/images/provider/nativeprovider/implementation.png)
 :::
+
+
+## Wire and Configure
+After a native provider is registered on platform, anyone can use it by wiring the implementation to its interface in chatbot's integration and configure it. To wire and configure native provider, you can follow these steps below:
+
+1. **Declare service interface.** Click into the service component implemented by the native provider you will use, and import it into your chatbot.
+   ::: thumbnail
+   ![click import icon](/images/provider/nativeprovider/click_import_icon.png)
+   ::: 
+
+2. **Wire native provider to its service interface.** Switch to your chatbot. Heading to **Settings** page, in **Integrations** tab, select the service interface you just imported and the native provider that implements it.
+
+   ::: thumbnail
+   ![chatbot integration](/images/provider/nativeprovider/chatbot_integration.png)
+   :::
+
+3. **Configure the integration.** Finish the configuration form and save. Don't forget to merge your latest changes to master.
+
+   ::: thumbnail
+   ![service provider](/images/provider/nativeprovider/service_provider.png)
+   :::
 
