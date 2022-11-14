@@ -1,5 +1,7 @@
 # Extension
 
+[[toc]]
+
 ## Overview
 
 The OpenCUI is designed to have a open architecture, so that it is easy to make functionality available to chatbot. The core of this open architecture is separation between interface and implementation, so that conversational behavior can be defined on the interface, while implementation can come in various form. 
