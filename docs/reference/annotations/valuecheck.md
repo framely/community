@@ -27,7 +27,9 @@ Value Check is an optional slot annotation. When [Slot Filling](../../guide/slot
 - If one of the conditions is false, Value Check fails.
   When Value Check fails, bot uses Value Check prompts to inform users that the value is invalid, clear the predefined target slot first and start to conversation again from that slot.
 
-![value-check](/images/annotation/valuecheck/value-check.png)
+::: thumbnail
+![value check](/images/annotation/valuecheck/value-check.png)
+::: 
 
 ::: tip Try it with templates  
 1. Go to [ValueCheck](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/6297f6d14cfdb2515448d814/test_case), see examples in Test Cases.
@@ -48,7 +50,9 @@ In case value check fails, you can decide which slot to be cleared in Recovering
 
 Suppose the order of slots is as follows. Here are two different situations using different Recovering Strategy.
 
-![slot-order](/images/annotation/valuecheck/slot-order.png)
+::: thumbnail
+![order of slots](/images/annotation/valuecheck/slots-order.png)
+:::
 
 **Case 1 - Clear the input value of current slot** <Badge text="Default" vertical="middle"/>
 

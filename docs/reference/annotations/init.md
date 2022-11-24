@@ -44,7 +44,10 @@ Beyond the normal operator like +,-,*,/, you can combine expressions using:
 Initialization is an optional slot annotation. If you know that a user will most likely accept a value based on application logic or historical data, you can use initialization to instruct the bot to propose that value for the user, reducing user's effort level.
 
 The configuration of initialization is shown in the following figure, **Target Slot** is the slot you want to propose a value to and **Association** is the proposed value.
-![init](/images/annotation/initialization/init.png)
+
+::: thumbnail
+![initialization](/images/annotation/initialization/init.png)
+:::
 
 ### Does a user have to accept the proposed value?
 Depending on whether you give user a chance to confirm, initialization are used for two different purposes: assignment and suggestion. 
