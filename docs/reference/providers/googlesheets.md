@@ -6,39 +6,52 @@
 
 [Google Sheets](https://www.google.com/sheets/about/#overview) is a spreadsheet web app developed by Google. You and your teammates can use Google Sheets to create and edit tabular or structured data collaboratively online.
 
-Google Sheets provider allow you to use Google Sheets as backend, which the actual data can be managed by your operation team in online spreadsheet collaboratively. Through Google Sheets provider, you can query data from your spreadsheet using the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) and update data with the help of low level functions in [io.opencui.provider.GoogleSheetsConnection](https://build.opencui.io/org/5fa0e7dcf549c817cf952edd/agent/62d75a50d1bd62bdd2333bd3/frame/62d75bfad1bd62bdd2333bdb).
+Google Sheets provider allow you to use Google Sheets as backend, which the actual data can be managed by your operation team in online spreadsheet collaboratively. Through Google Sheets provider, you can query data from your spreadsheet using the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) and update data with the help of low level functions in [io.opencui.provider.GoogleSheetsConnection](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/6340dea9815fc9881cbbbfe7/frame/6340dea9815fc9881cbbbfea).
 
 ::: thumbnail
-![manage-data-on-two-sides](/images/provider/googlesheets/manage-data-on-two-sides.png)
-Operations on OpenCUI and Google Sheets
+![data management](/images/provider/googlesheets/data-management.png)
+*Operations on OpenCUI and Google Sheets*
 :::
 
 ::: tip Note
 Before you start, make sure you have [created a spreadsheet](https://support.google.com/docs/answer/6000292?hl=en).
 :::
 
-## Connection
+## Build Connection
 
 To begin with, you need to build a connection between Google Sheets and the provider so that the provider gets access to your spreadsheet. To build the connection, get your [spreadsheet Id](https://developers.google.com/sheets/api/guides/concepts#spreadsheet) and a [service account credential](https://developers.google.com/workspace/guides/create-credentials#service-account) then fill out the following form.
 
+::: thumbnail
 ![connection](/images/provider/googlesheets/connection.png)
+:::
 
 Once you create a service account, you need to give this account permission to view or edit your spreadsheet in three steps:
 1. Copy the email of your [service account](https://console.cloud.google.com/iam-admin/serviceaccounts).
 2. Go to your [spreadsheet](https://docs.google.com/spreadsheets/u/0/). At the top-right, click **Share**.
 3. Paste the email you copied and give the right permission to this service account. For example, if you don't need to update business data in your spreadsheet, set the service account as a **Viewer**, otherwise, set it as an **Editor**.
 
+::: thumbnail
 ![permit](/images/provider/googlesheets/permit.png)
+:::
 
-## Function Implementation
-As mentioned in [Implement Functions](./reference/providers/overview.html#implement-functions), there are two kinds of ways to implement a function:
+## Implement Functions
+There are two kinds of ways to implement a function: **Provider Dependent** and **Kotlin**.
+
+:::thumbnail
+![function implementation](/images/provider/googlesheets/function-implementation.png)
+:::
+
 - In **provider-dependent** functions, use the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) to implement.
-  - :exclamation:Provider-dependent functions should always return a multi-value frame(even if the function returns only one row), in which the names of slots are the same as the names of columns, and the slot's type is compatible with the return column's type in the same index.
-  - For example, if the slots in a frame are [_id_, _name_] of which types are [_kotlin.Int_, _kotlin.String_], the slots in return columns should be [_id_, _name_] as well, and the types of return columns are supposed to be [_number_, _string_] instead of [_string_, _number_].
+  - In a return value of which type is frame, in which the names of slots are the same as the names of columns, and the slot's type is compatible with the return column's type in the same index.
+  - For example, if the slots in a frame are [_id_, _name_] of which types are [_kotlin.Int_, _kotlin.String_], the labels of slots in return columns should be [_id_, _name_] as well, and the types of return columns are supposed to be [_number_, _string_] instead of [_string_, _number_].
+
+::: warning Warning
+The return type of Provider-dependent function **can NOT be entity**. If the function only returns one column, you should add wrap the entity using a frame.
+:::
 
 - In **Kotlin** functions, write function bodies in [Kotlin](https://kotlinlang.org/docs/functions.html).
   - Kotlin functions can be used to convert the value returning from a provider-dependent function to a desirable format.
-  - For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot so that you can use the return value directly in [Value Recommendation](../annotations/valuerec.md).
+  - For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot.
   
   ``` kotlin
   /* 
@@ -72,10 +85,12 @@ Type Conversion Between OpenCUI and Google Sheets
 | java.time.LocalDateTime                                    | datetime                | 
 
 
-### How To Write a Query
+### Provider Dependent Functions
 To get your business data from a spreadsheet, you can write a query in **provider-dependent** functions. A provider-dependent function implementation consists of **Function Meta** and **Query**.
 
+::: thumbnail
 ![provider-dependent-function](/images/provider/googlesheets/provider-dependent-function.png)
+:::
 
 - **Function Meta** is used to define optional parameters that are needed in your query. The **key** means the parameter's name and the **value** is the parameter's value.
   - The keys you can choose are range, headers, gid and sheet. To learn what each of the parameters means, check out [Creating a Chart from a Separate Spreadsheet](https://developers.google.com/chart/interactive/docs/spreadsheets#creating-a-chart-from-a-separate-spreadsheet).
@@ -88,9 +103,9 @@ To get your business data from a spreadsheet, you can write a query in **provide
   select B where A = ${connection.toQueryString(userId!!)}
   ```
 
-### How To Update/Append Data
+### Kotlin Functions
 
-To update and append your business, OpenCUI provides external functions: _update_ and _append_. You can call these functions using `connection.update` and `connection.append` in Kotlin functions. Check out the definitions of these functions in [io.opencui.provider.GoogleSheetsConnection](https://build.opencui.io/org/5fa0e7dcf549c817cf952edd/agent/62d75a50d1bd62bdd2333bd3/frame/62d75bfad1bd62bdd2333bdb). To learn the source of the function, see [spreadsheets.values.update](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/update) and [spreadsheets.values.append](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append).
+To update and append your business, OpenCUI provides external functions: _update_ and _append_. You can call these functions using `connection.update` and `connection.append` in Kotlin functions. Check out the definitions of these functions in [io.opencui.provider.GoogleSheetsConnection](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/6340dea9815fc9881cbbbfe7/frame/6340dea9815fc9881cbbbfea). To learn the source of the function, see [spreadsheets.values.update](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/update) and [spreadsheets.values.append](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append).
 
 - The input parameters are the same in these two functions. 
 

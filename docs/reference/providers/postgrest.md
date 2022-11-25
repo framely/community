@@ -37,7 +37,7 @@ There are a couple advantage of using backend component approach to build servic
 ![add slots](/images/provider/postgrest/add-slots.png) 
 ::: 
 
-## Annotations
+## Add Annotations
 
 #### Features
 [Annotations](./overview.md#annotation) of providers include storage annotations and backoffice annotations.
@@ -145,7 +145,7 @@ Unique is a frame annotation. If there is only one slot in a group of unique con
 For now, among table constraints, we only support unique constraints. If you need more table constraints, please let us know.
 :::
 
-## Function Implementation
+## Implement Functions
 There are two kinds of ways to implement a function: **Provider Dependent** and **Kotlin**.
 
 :::thumbnail
@@ -219,14 +219,20 @@ END
 ```
 :::
 
-## Configuration
-Once you [deploy](../platform/deployment.md#how-to-use) the provider, in the **Configuration** field, you can get the **URL** of backoffice along with **Admin Email** and **Admin Password** to log in.
+## Add Data
+In the **Configuration** field, you can get the **URL** of backoffice along with **Admin Email** and **Admin Password** to log in backoffice. Via backoffice, you and the operation team can accesss the tables and add data into the database.
 
-:::thumbnail
+::: thumbnail
 ![configuration](/images/provider/postgrest/configuration.png)
+*Figure 1: configuration*
+
+<br>
+
+![backoffice](/images/provider/postgrest/backoffice.png)
+*Figure 2: interface after login the backoffice*
 :::
 
-## Function Testing
+## Test Functions
 Function testing can be used to see if the result returned by the functions meet your expectation before you call functions in the chatbot. Follow these steps to learn how to use the function testing:
 1. Only when you [deploy](../platform/deployment.md#how-to-use) the current version of your provider, can you use the function testing. Be sure to deploy first!
 2. After deploying the provider, click **Test**.
