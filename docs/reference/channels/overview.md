@@ -29,4 +29,23 @@ When integrating channels, you should set the channel language as default langua
 :::
 
 ## Private Deploy
-In private deploy plan, these integrations are not built-in. OpenCUI provides no support for these integrations. You should export your chatbot and follow the integration owner documentations for support. 
+In private deploy plan, these integrations are not built-in. OpenCUI provides no support for these integrations. You should export your chatbot and follow the integration owner documentations for support.
+
+## How To Use
+1. Before you start, you need to import the channel component to your chatbot. Enter [io.opencui.channel](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/63479c58bb57d84573e65ee8/service_schema), click **Import**. Select a chatbot in which you want to add channels and then click **Save**.                    
+
+::: thumbnail
+![import channel component](/images/channelConfig/overview/import-channel.png)
+:::
+
+2. Once you successfully imported the component, **go back to the chatbot**. At the **STRUCT** level, click **Settings**. In the **Integrations** tab, click **Select Service** and select **io.opencui.channel.IChannel**.
+
+::: thumbnail
+![select the service](/images/channelConfig/overview/select-service.png)
+:::
+
+3. Enter a **Label** and select a **Service Provider**(i.e. channel).
+
+::: thumbnail
+![select a channel](/images/channelConfig/overview/select-channel.png)
+:::
