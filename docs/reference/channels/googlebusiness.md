@@ -33,7 +33,7 @@ Follow these steps to configure:
 
 Your browser downloads the service account key. Store it in a secure location. You'll need this key later to deploy your chatbot.
 
-![create-key](/images/channelConfig/googlebusiness/create-key.png)
+![create key](/images/channelConfig/googlebusiness/create-key.png)
 
 #### Create a brand and an agent
 
@@ -43,19 +43,20 @@ Your browser downloads the service account key. Store it in a secure location. Y
 4. Deselect **Enable the Business Messages Helper Bot**.
 5. Click **Create agent**.
 
-![create-agent](/images/channelConfig/googlebusiness/create-agent.png)
+![create agent](/images/channelConfig/googlebusiness/create-agent.png)
 
 ## Add Google Business Channel
 
-1. On the OpenCUI side, enter a chatbot that you want to deploy. click **Setting** > **Integrations**. In the **Channels** field, click **Add New** > **Google Business Message**.
+1. On the OpenCUI side, enter a chatbot that you want to deploy. Follow [how to use](./overview.md/#how-to-use) and select **io.opencui.googleBusinessMessage** as the **Service Provider**.
 2. The configuration information is as follows. Once you complete the configuration, click **SAVE**.
-    - **Name**: You can set a name for your Google Business Message. This will be part of the Callback URL.
-    - **Callback URL**: :clipboard: Copy this value. This will be used to configure the Google Business Message Webhook.  
-    - **Client Token**: You can enter any private token you desire.:clipboard: Copy this value. This will be used to configure the Google Business Message Webhook. 
+    - **Label**: Set a label for your Google Business Message. Labels in each channel should be **unique**.
+    - **Callback URL**: :clipboard: Copy this value after setting the label and locale.. This will be used to configure the Google Business Message Webhook.  
+    - **Client Token**: Enter any private token you desire.:clipboard: Copy this value. This will be used to configure the Google Business Message Webhook. 
     - **Credential**: Enter the service account key you stored when [creating a service account](#create-a-service-account).
+    - **Locale**: Select a locale of the users whom the chatbot talking to in this channel.
 3. [Deploy](../platform/deployment.md) your chatbot.
 
-![add-channel](/images/channelConfig/googlebusiness/add-channel.png)
+![add channel](/images/channelConfig/googlebusiness/add-channel.png)
 
 ## Set Your Webhook
 A webhook is a partner-created HTTPS callback that specifies how your agent should respond to messages and events. You can set your webhook either at the partner level or at the agent level. Partner-level webhooks apply to every agent you maintain, while agent-level webhooks each apply to one individual agent.
@@ -69,7 +70,7 @@ A webhook is a partner-created HTTPS callback that specifies how your agent shou
     - For **Client token**, paste the *client token* you copied when [adding Google Business channel](#add-google-business-channel).
 5. Click **Verify** and click **Save** in the top right corner.
 
-![set-webhook](/images/channelConfig/googlebusiness/set-webhook.png)
+![set webhook](/images/channelConfig/googlebusiness/set-webhook.png)
 
 ### Set an Agent-level Webhook
 1. Click your agent.
@@ -79,7 +80,7 @@ A webhook is a partner-created HTTPS callback that specifies how your agent shou
     - For **Client token**, paste the *client token* you copied when [adding Google Business channel](#add-google-business-channel).
 4. Click **Verify**.
 
-![set-webhook-agent](/images/channelConfig/googlebusiness/set-webhook-agent.png)
+![set webhook agent](/images/channelConfig/googlebusiness/set-webhook-agent.png)
 
 ## Test Your Chatbot
 1. Open the [Business Communications Developer Console](https://business-communications.cloud.google.com/?utm_source=/business-communications/business-messages/guides/quickstarts/echo-agent&utm_medium=devsite&utm_campaign=business-messages).

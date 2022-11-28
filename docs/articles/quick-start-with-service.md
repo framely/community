@@ -1,6 +1,6 @@
 ---
 article: true
-date: 2022-09-27
+date: 2022-11-26
 
 image:
     - blog/quick-start.png
@@ -9,66 +9,115 @@ description:
 author: Sunny May
 ---
 
-# Quick Start with Service
-In this guide, we use [hours component](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/630dc3282d6df2e68a96c688/service_schema) as an example to help you have a quick start with service. Hours component is designed to answer end-users' questions about business hours. 
+# Quick Start with Hours Component
+In this guide, we use [hours component](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/630dc3282d6df2e68a96c688/service_schema) as an example to help you have a quick start with hours component. Hours component is designed to answer end-users' questions about business hours. 
 
-The whole procedure is shown in picture below and it is divided into these four steps:
+The whole procedure is divided into these steps:
 [[toc]]
 
+## Clone Provider
+
+1. Enter [hours provider](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/634cf3c5fba1927bffe79c86/service_schema) and click **Clone**.
+2. Choose an organization to clone this provider to and click **Save**.
+3. When creating a cloned project, you can change the default **Project Label** and **Region**.
+
 ::: thumbnail
-![clone](/images/blog/quick-start-with-service/flowchart.gif)
+![clone-provider](/images/blog/quick-start-with-service/clone-provider.png)
 :::
 
-## Step 1: Clone Provider
+4. Once the provider is created successfully, the page will automatically jump to the cloned provider. In the **Version** tab, click **Pull Request** and then click the current version.
 
-1. Open [hours provider](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/63101e0437fed01baf0079b3/service_schema) and click **Clone Project**.
-2. Choose an organization to clone this provider to.
-3. You can change the default project label of the cloned provider.
+::: thumbnail
+![pull request](/images/blog/quick-start-with-service/pull-request.png)
+*Figure 1: pull request*
 
-![clone-provider](/images/blog/quick-start-with-service/clone-provider.png)
+<br>
 
-## Step 2: Integrate Provider with Chatbot
+![click the current version](/images/blog/quick-start-with-service/click-version.png)
+*Figure 2: click the current version*
+:::
 
-1. Open [hours chatbot](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/6329731a36b90caee5c750f3/intent) and click **Clone Project**. Choose an organization to clone this chatbot to.
-2. Select the region where your chatbot will be deployed. 
-3. Go to **Settings** > **Integrations**. Click a service provider, and change it to the cloned provider which implements the service.
+5. Click **Approve PR** and then click **Merge**. Create a **version tag** and click **Save**.
 
+::: thumbnail
+![approve pull request](/images/blog/quick-start-with-service/approve-pr.png)
+*Figure 1: approve pull request*
+
+<br>
+
+![merge to master](/images/blog/quick-start-with-service/merge.png)
+*Figure 2: merge to master*
+
+<br>
+
+![create version tag](/images/blog/quick-start-with-service/create-version-tag.png)
+*Figure 3: create version tag and save*
+:::
+
+## Upload Business Data
+1. Before you start, you need to deploy the provider and then tables will be created automatically in the PostgreSQL database. In the **Version** tab, click **Deploy**. Once the provider deployed successfully, you can see a green checked icon.
+
+::: thumbnail
+![deploy provider](/images/blog/quick-start-with-service/deploy-provider.png)
+:::
+
+2. In the **Configuration** field, you can get the **URL** of backoffice along with *Admin Email* and *Admin Password* to log in backoffice. 
+
+::: thumbnail
+![configuration](/images/blog/quick-start-with-service/configuration.png)
+:::
+
+3. Log in to back office. On the left sidebar, you can switch tables in your organization. Click **Create** to add a row. Complete the table and click **Save**. To learn what each column means, see [readme](../articles/hours-readme.html#about-table).
+
+::: thumbnail
+![upload data](/images/blog/quick-start-with-service/upload-data.png)
+::: 
+
+## Import Component to Chatbot
+1. To begin with, you need to [create a chatbot](../guide/pingpong.md#create-chatbot).
+2. Enter [hours component](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/630dc3282d6df2e68a96c688/service_schema) and click **Import**. Select a chatbot in which you want to use the hours component and then click **Save**.
+
+::: thumbnail
+![import component](/images/blog/quick-start-with-service/import-component.png)
+:::
+
+## Integrate Provider with Chatbot
+
+1. Go back to your chatbot. In the **Settings** field, switch to the **Integrations** tab and Click **Select Service**. Enter a Label and select a Service Provider.
+
+::: thumbnail
 ![integrate](/images/blog/quick-start-with-service/integrate.png)
+:::
 
-4. Click **Commit** on both STRUCT side and EN side.
-5. Go to **Versions**, and Click **Pull Request**.
-6. Click the current version.
+## Test Chatbot
+1. Click **Commit** on **STRUCT** side. Then switch to **EN** side and click **Commit** as well.
 
-![pull-request](/images/blog/quick-start-with-service/pull-request.png)
+::: thumbnail
+![commit struct](/images/blog/quick-start-with-service/commit-struct.png)
+*Figure 1: commit at **STRUCT** side*
 
-7. Click **Approve PR** and then **Merge**.
-8. Click **Deploy**. After deployment, refresh the web page and you can see a green checked icon which means the chatbot has been deployed successfully.
+<br>
 
-![deploy-chatbot](/images/blog/quick-start-with-service/deploy-chatbot.png)
+![swtich to en](/images/blog/quick-start-with-service/switch-to-en.png)
+*Figure 2: swtich to EN side*
 
+<br>
 
+![commit en](/images/blog/quick-start-with-service/commit-en.png)
+*Figure 3: commit at **EN** side*
+:::
 
-## Step 3: Upload Business Data
-1. Back to the cloned provider in [step 1](#step-1-clone-provider). 
-2. Repeat #5-8 in [step 2](#step-2-integrate-provider-with-chatbot) to deploy the provider.
-3. Go to **Connection**, and click the corresponding region which you selected when cloning the chatbot. You can get a URL of [back office](../guide/glossary.md#backoffice) along with the login information.
+2. When commit successfully, click **Test**.
 
-![connection](/images/blog/quick-start-with-service/connection.png)
+::: thumbnail
+![click test](/images/blog/quick-start-with-service/click-test.png)
+:::
 
-5. Log in to back office. On the left sidebar, you can switch tables in your organization.
-6. Click **Create** to add a row.
-7. Complete the table and click **Save**. To learn what each column means, see [readme](../articles/hours-readme.html#about-table).
+3. Click **CONNECT**. Now you can use one of the [expressions](../guide/glossary.md#expression-exemplars) defined in intents to ask the bot for business hours and see what the bot replies. A sample conversation is shown below.
 
-![upload](/images/blog/quick-start-with-service/upload.png)
-
-
-## Step 4: Try It Now
-1. Back to the cloned chatbot in [Step 2](#step-2-integrate-provider-with-chatbot).
-2. Click **Commit** on EN side.
-3. When commit successfully, click **Try It Now!** then click **CONNECT**.
-4. :tada: Now you can use one of the [expressions](../guide/glossary.md#expression-exemplars) defined in intents to ask the bot for business hours and see what the bot replies.
-
-![test](/images/blog/quick-start-with-service/test.png)
+::: thumbnail
+![sample conversation](/images/blog/quick-start-with-service/conversation.png)
+:::
 
 ::: tip How to find expressions?
 On EN side, Click **Intents** > **Imported** > **Expression**.

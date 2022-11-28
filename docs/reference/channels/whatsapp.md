@@ -17,39 +17,40 @@ On the WhatsApp side, please ensure you have all of the following:
 ## Set Up WhatsApp
 1. Visit your [app dashboard](https://developers.facebook.com/apps), and enter the app you want to serve by OpenCUI chatbot. On the left sidebar, click **Add Product**. Hover over **WhatsApp** and Click **Set Up**. Create or select a Meta Business Account.
 
-![add-messenger](/images/channelConfig/whatsapp/add-whatsapp.png)
+![add messenger](/images/channelConfig/whatsapp/add-whatsapp.png)
 
 2. Below **WhatsApp**, click **Getting Started**. Scroll down to **Step 5**, and click **Add Phone Number**. Follow the instructions to complete your business information and verify the phone number.
 3. Refresh the website, back to **Step 1**. Select the phone number you just added and :clipboard: copy the **Phone number ID**.
 
-![add-messenger](/images/channelConfig/whatsapp/phone-number-id.png)
+![add phone number](/images/channelConfig/whatsapp/add-phone-number.png)
 
 ## Get Access Token
 1. Go to [Business Settings](https://business.facebook.com/settings). Below **Users**, click **System Users** > **Add**.
 2. Once you have added a system user, click **Generate New Token**. Select the app you just created and tick `whatsapp_business_messaging`, then click **Generate Token**. :clipboard: Copy and save your token.
 3. Click **Add Assets**. Select the app you just created, enable **Manage app** control and click **Save Changes**.
 
-![add-messenger](/images/channelConfig/whatsapp/add-system-user.png)
+![add system user](/images/channelConfig/whatsapp/add-system-user.png)
 
 4. Below **Accounts**, click **WhatsApp accounts**. Select your business account and click **Add People**. Select the system user you added in step 1, enable **Manage app** control, and click **Assign**.
 
-![add-messenger](/images/channelConfig/whatsapp/add-people.png)
+![add people](/images/channelConfig/whatsapp/add-people.png)
 
 
 ## Add WhatsApp Channel
 
-1. On the OpenCUI side, enter a chatbot that you want to deploy. Click **Setting** > **Integrations**. In the **Channels** field, click **Add New** > **WhatsApp Business**.
+1. On the OpenCUI side, enter a chatbot that you want to deploy. Follow [how to use](./overview.md/#how-to-use) and select **io.opencui.whatsapp** as the **Service Provider**.
 
 2. The configuration information is as follows. Once you complete the configuration, click **SAVE**.
-   - **Name**: You can set a name for your WhatsApp app. This will be part of the Callback URL.
-   - **Callback URL**: :clipboard: Copy this value. This will be used to configure the WhatsApp Webhook.
-   - **Verify Token**: You can enter any verify token you desire. :clipboard: Copy this value. This will be used to configure the WhatsApp Webhook.
+   - **Label**: Set a label for your WhatsApp app. Labels in each channel should be **unique**.
+   - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the WhatsApp Webhook.
+   - **Verify Token**: Enter any verify token you desire. :clipboard: Copy this value. This will be used to configure the WhatsApp Webhook.
    - **Access Token**: Paste the token you copied when [getting the access token](#get-access-token).
    - **Phone Number ID**: Paste the Phone Number ID you copied when [setting up WhatsApp](#set-up-whatsapp).
+   - **Locale**: Select a locale of the users whom the chatbot talking to in this channel.
 
 3. [Deploy](../platform/deployment.md) your chatbot.
 
-![add-messenger](/images/channelConfig/whatsapp/add-channel.png)
+![add channel](/images/channelConfig/whatsapp/add-channel.png)
 
 ## Configure Webhook
 
@@ -59,7 +60,7 @@ On the WhatsApp side, please ensure you have all of the following:
 
 3. Click **Manage** and subscribe `messages`.
 
-![add-messenger](/images/channelConfig/whatsapp/config-webhook.png)
+![config webhook](/images/channelConfig/whatsapp/config-webhook.png)
 
 ## Test Your Chatbot
 

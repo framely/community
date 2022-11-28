@@ -19,37 +19,38 @@ On the Messenger side, please ensure you have all of the following:
 ## Set Up Messenger
 1. Visit your [app dashboard](https://developers.facebook.com/apps) and enter one of the apps you want to serve by OpenCUI chatbot. On the left sidebar, click **Add Product**. Hover over **Messenger** and Click **Set Up**.
 
-![add-messenger](/images/channelConfig/messenger/add-messenger.png)
+![add messenger](/images/channelConfig/messenger/add-messenger.png)
 
 2. Click **Add or Remove Pages** and select a page you want to subscribe your app to.
+
+![add page](/images/channelConfig/messenger/add-page.png)
+
 3. In the **Access Tokens** section, click **Generate Token** button. :clipboard: Copy the access token, it's needed when [adding Messenger channel](#add-messenger-channel).
 
-![access-token](/images/channelConfig/messenger/access-token.png)
+![generate token](/images/channelConfig/messenger/generate-token.png)
 
 
 ## Add Messenger Channel
 
-1. On the OpenCUI side, enter a chatbot that you want to deploy. Click **Setting** > **Integrations**. In the **Channels** field, click **Add New** > **Facebook Messenger**.
+1. On the OpenCUI side, enter a chatbot that you want to deploy. Follow [how to use](./overview.md/#how-to-use) and select **io.opencui.messenger** as the **Service Provider**.
 2. The configuration information is as follows. Once you complete the configuration, click **SAVE**.
-   - **Name**: You can set a name for your Facebook Messenger. This will be part of the Callback URL.
-   - **Callback URL**: :clipboard: Copy this value. This will be used to configure the Facebook Messenger Webhook. 
-   - **Verify Token**: You can enter any private token you desire. :clipboard: Copy this value. This will be used to configure the Facebook Messenger Webhook. 
+   - **Label**: Set a label for your Facebook Messenger. Labels in each channel should be **unique**.
+   - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the Facebook Messenger Webhook. 
+   - **Verify Token**: Enter any private token you desire. :clipboard: Copy this value. This will be used to configure the Facebook Messenger Webhook. 
    - **Page Access Token**: Enter the access token generated during the [Messenger setup](#set-up-messenger).
+   - **Locale**: Select a locale of the users whom the chatbot talking to in this channel.
 3. [Deploy](../platform/deployment.md) your chatbot.
 
-![add-channel](/images/channelConfig/messenger/add-channel.png)
-
+![add channel](/images/channelConfig/messenger/add-channel.png)
 
 ## Configure Webhook
-1. On the Messenger side, in the **Webhooks** section of the Messenger settings console, click **Add Callback URL** button.
-2. Paste the *Callback URL* and *Verify Token* values you copied when [adding the Messenger channel](#add-messenger-channel). Click **Verify and Save** to confirm you callback URL.
-3. Click **Add subscriptions** and enable `messages` and `messaging_postbacks` in the page subscriptions.
+1. On the Messenger side, in the **Webhooks** section of the Messenger settings console, click **Add Callback URL** button. Paste the *Callback URL* and *Verify Token* values you copied when [adding the Messenger channel](#add-messenger-channel). Click **Verify and Save** to confirm you callback URL.
 
-![config-webhook](/images/channelConfig/messenger/config-webhook.png)
+![config webhook](/images/channelConfig/messenger/config-webhook.png)
 
-::: tip Note
-For now, we can only allow one access token on one channel, which means that you need to configure different Facebook apps for different Facebook pages.
-:::
+2. Click **Add subscriptions** and enable `messages` and `messaging_postbacks` in the page subscriptions.
+
+![add subscriptions](/images/channelConfig/messenger/add-subscriptions.png)
 
 ## Test Your Chatbot
 
