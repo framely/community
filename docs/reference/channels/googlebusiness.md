@@ -49,6 +49,7 @@ Your browser downloads the service account key. Store it in a secure location. Y
 
 1. On the OpenCUI side, enter a chatbot that you want to deploy. Follow [how to use](./overview.md/#how-to-use) and select **io.opencui.googleBusinessMessage** as the **Service Provider**.
 2. The configuration information is as follows. Once you complete the configuration, click **SAVE**.
+
     - **Label**: Set a label for your Google Business Message. Labels in each channel should be **unique**.
     - **Callback URL**: :clipboard: Copy this value after setting the label and locale.. This will be used to configure the Google Business Message Webhook.  
     - **Client Token**: Enter any private token you desire.:clipboard: Copy this value. This will be used to configure the Google Business Message Webhook. 

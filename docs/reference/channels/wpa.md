@@ -35,6 +35,7 @@ If you used *Developer Password(AppSecret)* before but didn't store it, you can 
 ## Add WeChat Channel
 1. On the OpenCUI side, enter a chatbot that you want to deploy. Follow [how to use](./overview.md/#how-to-use) and select **io.opencui.wechatOfficialAccount** as the **Service Provider**.
 2. The configuration information is as follows. Once you complete the configuration, click **SAVE**.
+   
    - **Label**: Set a label for your WeChat Official Account. Labels in each channel should be **unique**.
    - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the WhatsApp Webhook.
    - **App ID**: Paste the developer ID you copied when [setting up WeChat Official Account](#set-up-wechat-official-account).

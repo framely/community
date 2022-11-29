@@ -34,6 +34,7 @@ On the Messenger side, please ensure you have all of the following:
 
 1. On the OpenCUI side, enter a chatbot that you want to deploy. Follow [how to use](./overview.md/#how-to-use) and select **io.opencui.messenger** as the **Service Provider**.
 2. The configuration information is as follows. Once you complete the configuration, click **SAVE**.
+
    - **Label**: Set a label for your Facebook Messenger. Labels in each channel should be **unique**.
    - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the Facebook Messenger Webhook. 
    - **Verify Token**: Enter any private token you desire. :clipboard: Copy this value. This will be used to configure the Facebook Messenger Webhook. 
