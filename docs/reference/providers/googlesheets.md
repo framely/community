@@ -35,38 +35,14 @@ Once you create a service account, you need to give this account permission to v
 :::
 
 ## Implement Functions
-There are two kinds of ways to implement a function: **Provider Dependent** and **Kotlin**.
-
-:::thumbnail
-![function implementation](/images/provider/googlesheets/function-implementation.png)
-:::
-
-- In **provider-dependent** functions, use the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) to implement.
-  - In a return value of which type is frame, in which the names of slots are the same as the names of columns, and the slot's type is compatible with the return column's type in the same index.
-  - For example, if the slots in a frame are [_id_, _name_] of which types are [_kotlin.Int_, _kotlin.String_], the labels of slots in return columns should be [_id_, _name_] as well, and the types of return columns are supposed to be [_number_, _string_] instead of [_string_, _number_].
-
-::: warning Warning
-The return type of Provider-dependent function **can NOT be entity**. If the function only returns one column, you should add wrap the entity using a frame.
-:::
-
-- In **Kotlin** functions, write function bodies in [Kotlin](https://kotlinlang.org/docs/functions.html).
-  - Kotlin functions can be used to convert the value returning from a provider-dependent function to a desirable format.
-  - For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot.
-  
-  ``` kotlin
-  /* 
-    Suppose a provider-dependent is getFoodCategory() which returns a list of frame. 
-    There is one slot called category in the frame. 
-  */
-  return getFoodCategory()!!.map{it -> it.category!!} 
-  ```
-
-  - Learn how to implement more Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
+Before you start to implement functions, read [implementation](./overview.md#implementation) first.
 
 ### Types Conversion
 
 - When you call the **provider-dependent** function, use the function called _toQueryString_ to convert parameters to the right format.
-- When the **provider-dependent** function returns a set of values in the [Google Sheets data type](https://developers.google.com/chart/interactive/docs/querylanguage#literals), we put those values in the return frame you defined, so you can display or use these values in the OpenCUI environment.
+- When the **provider-dependent** function returns a set of values in the [Google Sheets data type](https://developers.google.com/chart/interactive/docs/querylanguage#literals), we put those values in the return frame you defined, so you can display or use these values in the OpenCUI environment. When returning values, be sure to follow these rules.
+  - The **types** of slots in the the frame should be compatible with the types of return columns in the same index. For example, if the types of slots in the frame are [_kotlin.Int_, _kotlin.String_], the SQL data types of return columns should be [_bigint_, _text_] instead of [_text_, _bigint_].
+  - The **labels** of slots in the the frame should be the same as the names of return columns in the same index. For example, if the labels of slots in a frame are [_id_, _name_], the names of return columns should be [_id_, _name_] as well.
 
 ::: thumbnail
 ![conversion](/images/provider/googlesheets/conversion.png)
@@ -86,7 +62,7 @@ Type Conversion Between OpenCUI and Google Sheets
 
 
 ### Provider Dependent Functions
-To get your business data from a spreadsheet, you can write a query in **provider-dependent** functions. A provider-dependent function implementation consists of **Function Meta** and **Query**.
+To get your business data from a spreadsheet, you can write a query in **provider-dependent** functions using the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage). A provider-dependent function implementation consists of **Function Meta** and **Query**.
 
 ::: thumbnail
 ![provider-dependent-function](/images/provider/googlesheets/provider-dependent-function.png)

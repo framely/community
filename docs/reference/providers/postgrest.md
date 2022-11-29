@@ -18,20 +18,21 @@ There are a couple advantage of using backend component approach to build servic
 :::
 
 ## Create Tables
-1. To begin with, you need to define the tables using storage-enabled frames. The label of a frame is the name of a table and the slots in the each frame are columns in each table. You can choose to create a frame or select an imported frame in the **Imported** field. 
+1. To begin with, [create a Postgrest provider](./overview.md#create-provider) and then [import a component](./overview.md#import-component) to the provider.
+2. Next, you need to define the tables using storage-enabled frames. The label of a frame is the name of a table and the slots in the each frame are columns in each table. You can choose to create a frame or select an imported frame in the **Imported** field.
 
 ::: thumbnail
 ![create a frame](/images/provider/postgrest/create-frame.png)
 *Create a frame*
 :::
 
-2. Turn on **Storage Enabled** so this frame will be used to create a table in the database. 
+3. Turn on **Storage Enabled** so this frame will be used to create a table in the database. 
 
 ::: thumbnail
 ![enable storage](/images/provider/postgrest/enable-storage.png)
 :::
 
-3. Add slots to the frame. 
+4. Add slots to the frame. 
 
 ::: thumbnail
 ![add slots](/images/provider/postgrest/add-slots.png) 
@@ -146,44 +147,19 @@ For now, among table constraints, we only support unique constraints. If you nee
 :::
 
 ## Implement Functions
-There are two kinds of ways to implement a function: **Provider Dependent** and **Kotlin**.
-
-:::thumbnail
-![function implementation](/images/provider/postgrest/function-implementation.png)
-:::
-
-- In **Provider Dependent** functions, use [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) to implement.
-  - In a return value of which type is frame, the **types** of slots in the the frame should be compatible with the types of return columns in the same index.\
-     For example, if the types of slots in the frame are [_kotlin.Int_, _kotlin.String_], the types of return columns should be [_bigint_, _text_] instead of [_text_, _bigint_].
-
-  - In a return value of which type is frame, the **label** of slots and the names of columns in the same index can be different.\
-    For example, if the labels of slots in a frame are [_id_, _name_], the names of return columns can be [_userId_, _userName_].
-::: warning Warning
-The return type of Provider-dependent function **can NOT be entity**. If the function only returns one column, you should add wrap the entity using a frame.
-:::
-- In **Kotlin** functions, write function bodies in [Kotlin](https://kotlinlang.org/docs/functions.html).
-  - Kotlin functions can be used to convert the value returning from a provider-dependent function to a desirable format. \
-     For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot.
-  ``` kotlin
-  /* 
-    Suppose a provider-dependent is getFoodCategory() which returns a list of frame. 
-    There is one slot called returnValue in the frame. 
-  */
-  return getFoodCategory()!!.map{it -> it.returnValue!!} 
-  ```
-
-  - Learn how to implement more Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
-
-
+Before you start to implement functions, read [implementation](./overview.md#implementation) first.
 
 ### Types Conversion
 - When you call the **Provider Dependent function**, you pass the **entities** (or **frames**) and we will convert their types to [**SQL data types**](https://www.postgresql.org/docs/current/datatype.html) (or [**composite types**](https://www.postgresql.org/docs/current/rowtypes.html)) automatically, so you can use these parameters in your function body.
-- When the function returns a set of values of **composite type**, we convert the composite type back to a **frame**, so you can display or use these values in the OpenCUI environment.
+- When the function returns a set of values of **composite type**, we convert the composite type back to a **frame**, so you can display or use these values in the OpenCUI environment. When returning values, be sure to follow these rules.
+  - The **types** of slots in the the frame should be compatible with the types of return columns in the same index. For example, if the types of slots in the frame are [_kotlin.Int_, _kotlin.String_], the SQL data types of return columns should be [_bigint_, _text_] instead of [_text_, _bigint_].
+  - The **labels** of slots in the the frame and the names of columns in the same index can be different. For example, if the labels of slots in a frame are [_id_, _name_], the names of return columns can be [_userId_, _userName_].
 
 ::: thumbnail
 ![conversion](/images/provider/postgrest/conversion.png)
 *Type Conversion Between OpenCUI and PostgreSQL*
 :::
+
 - Here is the conversion between entities and SQL data types:
 
 | Entity                                                     | SQL Data Type               |   
@@ -198,8 +174,10 @@ The return type of Provider-dependent function **can NOT be entity**. If the fun
 | java.time.LocalDateTime                                    | timestamp without time zone | 
 
 
-### Postgres Functions
-If you are familiar with [SQL](https://www.postgresql.org/docs/14/sql.html), writing SQL commands within a PL/pgSQL function will be easy. For example, if you've stored your customers' information in your database and you want to get a customer's name by their user ID, which is an input parameter named *userId_parameter*,  the code will be like this:
+### Provider Dependent Functions
+In provider dependent functions, the language used for implementation is [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html). If you are familiar with [SQL](https://www.postgresql.org/docs/14/sql.html), writing SQL commands within a PL/pgSQL function will be easy. 
+
+For example, if you've stored your customers' information in your database and you want to get a customer's name by their user ID, which is an input parameter named *userId_parameter*,  the code will be like this:
 ``` sql
 BEGIN
     RETURN QUERY 
@@ -207,6 +185,7 @@ BEGIN
 END
 ```
 Besides, [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) also supports [simple loops](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONTROL-STRUCTURES-LOOPS) and [conditionals](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONDITIONALS).
+
 ::: warning Notice
 If the return value is not a storage-enabled frame and the type of slot in the frame is **builder-define entity** or ***kotlin.String***, check whether the type of its corresponding column is *text* in PostgreSQL. If not, use `::text` to convert the type of column into *text*.
 
@@ -218,6 +197,7 @@ BEGIN
 END
 ```
 :::
+
 
 ## Add Data
 In the **Configuration** field, you can get the **URL** of backoffice along with **Admin Email** and **Admin Password** to log in backoffice. Via backoffice, you and the operation team can accesss the tables and add data into the database.
