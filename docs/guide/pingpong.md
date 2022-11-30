@@ -100,7 +100,7 @@ Therefore, we will skip the [describe service at schema level](getting-started.m
 
 ### Declare Interaction
 
-What is the interaction provided by this pingpong chabot? The answer is to give a response *"pong"* to the user's message *"ping"*. So all you have to do in the declare interaction phase is to add a response to one intent at **STRUCT** *(short for structure)* level which represents the **interaction layer**. For more information about each of the layers, see [Separation of Concerns](README.md#separation-of-concerns) and [4 Layers of Chatbot](glossary.md#chatbot).
+What is the interaction provided by this pingpong chabot? The answer is to give a response *"pong"* to the user's message *"ping"*. So all you have to do in the declare interaction phase is to add a response to one skill at **STRUCT** *(short for structure)* level which represents the **interaction layer**. For more information about each of the layers, see [Separation of Concerns](README.md#separation-of-concerns) and [4 Layers of Chatbot](glossary.md#chatbot).
 
 For each chatbot, you can create many skills. But in this case, you only need one. 
 
@@ -110,17 +110,17 @@ For each chatbot, you can create many skills. But in this case, you only need on
    ![struct level](/images/guide/pingpong/struct_level.png)
    :::
 
-2. To create a intent, click **Create** button on the right side.
+2. To create a skill, click **Create** button on the right side.
 
    ::: thumbnail
    ![create intent](/images/guide/pingpong/create_intent.png)
    :::
 
-3. Enter a label (e.g. `PingPong`) in the **Intent Label** field and press enter. 
+3. Enter a label (e.g. `PingPong`) in the **Skill Label** field and press enter. 
    ::: warning Need To Know
    - Label is not a name, it is **identifier**, a language independent aspect for semantics in OpenCUI. 
 
-   - As a type label, **Intent Label** should start with capital case, limited 2-100 characters, and only support letters, digits and underscores.
+   - As a type label, **Skill Label** should start with capital case, limited 2-100 characters, and only support letters, digits and underscores.
    :::
 
    ::: thumbnail
@@ -158,7 +158,7 @@ Now let's add language-related aspects:
    :::
 
 3. To fill utterance exemplars for helping dialog understanding, heading to the **Expression** tab: 
-   - In the **Names** section, enter `Ping Pong` for the pingpong intent display name and press enter. This field is also the examples of how this type is mentioned in different languages.
+   - In the **Names** section, enter `Ping Pong` for the pingpong skill display name and press enter. This field is also the examples of how this type is mentioned in different languages.
       ::: thumbnail
       ![pingpong alias](/images/guide/pingpong/pingpong_alias.png)
       :::

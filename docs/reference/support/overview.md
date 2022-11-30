@@ -20,8 +20,8 @@ To reduce the effort level on the user side, it is important that we route user 
 In the OpenCUI hosted environment, we are mainly interested in the external mode, currently we provide the great open source support system chatwoot as the only option, but this can change when someone starts to build the connection with other system and open source it. 
 
 
-### Intent Based Routing Under External Mode
-To reduce the effort level on the user side, we support the conversation routing based on user intent. Essentially, a user skills are grouped into multiple set, each maps to a particular team. When there are unfinished intent in the conversation, that intent can be used to decide which team should we route the conversation to, based on the builder supplied information. When there are no unfinished intent, we can also ask user to provide one, so that they can be transferred to right team directly.
+### Skill Based Routing Under External Mode
+To reduce the effort level on the user side, we support the conversation routing based on skill. Essentially, skills are grouped into multiple set, each maps to a particular team. When there are unfinished skills in the conversation, that skills can be used to decide which team should we route the conversation to, based on the builder supplied information. When there is no unfinished skill, we can also ask user to provide one, so that they can be transferred to right team directly.
 
 ## Configure Support
 
@@ -51,13 +51,13 @@ If you enable Chatwoot for the first time in your organization, check your email
 
 ### Set Up Routing Priority
 
-To make intent based routing work, you need to set up routing priority. When there are unfinished skills in the conversation, we follow routing priority to decide which team we should route the conversation to.\
-If an unfinished intent is one of the associate skills in routing priority, we route the conversation to the corresponding team. Otherwise, we route the conversation to default team.
+To make skill based routing work, you need to set up routing priority. When there are unfinished skills in the conversation, we follow routing priority to decide which team we should route the conversation to.\
+If an unfinished skill is one of the associate skills in routing priority, we route the conversation to the corresponding team. Otherwise, we route the conversation to default team.
 
 Follow these steps to set up routing priority.
 
 1. Click **Setting** > **Routing Priority** > **Default**, input team id of the default team. 
-2. If you have more than one team, click **add** to add more teams. The format of **Associate intent** is *Organization.Project.Intent*, e.g. *Demo.testChatbot.TestIntent*
+2. If you have more than one team, click **add** to add more teams. The format of **Associate skill** is *Organization.Project.Skill*, e.g. *Demo.testChatbot.TestSkill*
 
 ![routing-priority](/images/Chatwoot/routing-priority.png)
 

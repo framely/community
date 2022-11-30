@@ -19,14 +19,14 @@ Each service can have one or more provider projects that provide the implementat
 
 
 ## Type Systems
-Services can be described by its schema, using description languages such as [OpenAPI](https://swagger.io/docs/specification/data-models/). The core of the API schema is its type system, which is needed to describe data types for the input and output parameters for the service functions. To make it easy to build conversational interface for any services, in addition to primitive type and enums, OpenCUI type system also supports arrays, user defined types with builtin inheritance and polymorphism behaviors. 
+Services can be described by its schema, using description languages such as [OpenAPI](https://swagger.io/docs/specification/data-models/). The core of the API schema is its type system, which is needed to describe data types for the input and output parameters for the service functions. To make it easy to build conversational interface for any services, OpenCUI type system supports **built-in types** like primitive types and enums,  for example `java.time.LacalTime`, `kotlin.Int`, `kotlin.Boolean`, etc. These built-in types are usually automatically imported into projects, if not, you can [import](../reference/platform/reusability.md#import) them manually, and then you can view them under the Imported tab. You can explore more built-in types in [sytem.java](https://build.opencui.io/org/5f531ff3b18cde225665fcf3/agent/5fa26c1a22714e8c5b7b9ea3/entity), [sytem.kotlin](https://build.opencui.io/org/5f531ff3b18cde225665fcf3/agent/5fa21ced93f59e8e4f65839a/entity) and [io.opencui.core](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/633f953f28e4f04b5f8443b7/entity?page=0&imported=false&search=). In addition to built-in types, OpenCUI type system also supports arrays, user defined types with built-in inheritance and polymorphism behaviors. 
 
-A data type (or simply type) defines what operations can be applied to its instances, and the behavior on these instances resulted from these operations. As a conversational user interface framework, the types you can define on OpenCUI, including intent, frame and entity, have their conversational behavior defined in three layers. In schema layer, they are directly mapped into hosting language data types (currently Java/Kotlin) so that it can be used to invoke the service functions directly; in interaction layer, how to collect user preferences are defined via dialog annotation; finally in language layer, these same types directly encode the semantics of utterances, and builder can use exemplar and template to control how to convert between natural text and structured representation back and forth. 
+A data type (or simply type) defines what operations can be applied to its instances, and the behavior on these instances resulted from these operations. As a conversational user interface framework, the types you can define on OpenCUI, including skill, frame and entity, have their conversational behavior defined in three layers. In schema layer, they are directly mapped into hosting language data types (currently Java/Kotlin) so that it can be used to invoke the service functions directly; in interaction layer, how to collect user preferences are defined via dialog annotation; finally in language layer, these same types directly encode the semantics of utterances, and builder can use exemplar and template to control how to convert between natural text and structured representation back and forth. 
 
 ### Skills
-Generally, an intent represents what a user wants, at the same time, it is essentially a function that a user can access through conversations for businesses. 
+Generally, a skill represents what a user wants, at the same time, it is essentially a function that a user can access through conversations for businesses. 
 
-In OpenCUI, intent, as a composite CUI data type for functions, is designed to define a self-contained conversational component that delivers some functionality to a user. This means that all three aspects of conversational service delivery need to be defined on top of the corresponding data type: 
+In OpenCUI, skill, as a composite CUI data type for functions, is designed to define a self-contained conversational component that delivers some functionality to a user. This means that all three aspects of conversational service delivery need to be defined on top of the corresponding data type: 
 1. collect what user wants through slot filling
 2. invoke function using collected slot value as input parameter
 3. verbalize the service result and render them in channel.
@@ -35,8 +35,8 @@ At language level, skills can be expressed mainly by verb phrases or full senten
 
 #### Default Skills
 These following **Default Skills** will be created automatically when you successfully create the chatbot, and you can modify them as desired:
-- **Greeting**: a default welcome intent, this intent has simple expression exemplars like *"Hi"* or *"Hello"* that are matched when the user begins a conversation with your bot. This intent could return a response to let the user know what your bot does or what they can say to begin a conversation. 
-- **Goodbye**: a default ending intent, this intent returns a response to let the user know the conversation or service is ending soon. 
+- **Greeting**: a default welcome skill, this skill has simple expression exemplars like *"Hi"* or *"Hello"* that are matched when the user begins a conversation with your bot. This skill could return a response to let the user know what your bot does or what they can say to begin a conversation. 
+- **Goodbye**: a default ending skill, this skill returns a response to let the user know the conversation or service is ending soon. 
 - **Main**: a default mechanism for each chatbot. 
 
 ### Frames
@@ -44,7 +44,7 @@ Frame is also a composite CUI data type in OpenCUI. Frame is your standard objec
 
 With inheritance, we can easily support *"What symptoms do you have?"* type of conversation. By define a interface symptom frame, and multiple concrete frame one for each actual symptom. Since each concrete frame can have a different interaction logic, when we try to fill an interface frame slot, we can naturally get the conversational experience we need. 
 
-Since the same frame can be used by different skills, frame also naturally serves as context to pivot conversation back and forth between intents. In particular, a user response like *"How is the weather like there?"* to an earlier chatbot question *"Which day you want to fly to Shanghai?"*, while seemed missing information, is easy to understand if we know both weather and ticket intent use the same location frame.
+Since the same frame can be used by different skills, frame also naturally serves as context to pivot conversation back and forth between skills. In particular, a user response like *"How is the weather like there?"* to an earlier chatbot question *"Which day you want to fly to Shanghai?"*, while seemed missing information, is easy to understand if we know both weather and ticket skill use the same location frame.
 
 At language level, a frame represents objects with properties and is typically expressed in a noun phrase like *"Large, spicy noodle"*. In the service layer, the frame are your typical data class, which is parameters for your function.
 
