@@ -59,7 +59,7 @@ Reusability is the one of the key design goal for OpenCUI to help business to re
 
 - **Clone**: Clone is another way of reuse. Instead of build chatbot from empty slate, one start from exist chatbot by clone it.
 
-- **Inherit**: We support inherit/implement on frames and intents, so that we can reuse behavior by adding to existing frame instead of building frame from scratch.
+- **Inherit**: We support inherit/implement on frames and skills, so that we can reuse behavior by adding to existing frame instead of building frame from scratch.
 
 - **Compose**: We can use frame as slot of larger frame, to get bigger and bigger behavior.
 
@@ -177,9 +177,9 @@ Each chatbot/component is consisted of one structure view and one or more langua
 #### Label
 Label is a language independent aspct for semantics in OpenCUI, that include entity type, entity instance, frames. Labels are denoted in the full qualified fashion in order to reduce the naming conflict.
 ####  Global
-Frame can be declared as global. A global frame can occur in more than one intent/frame as the type for one of slot, just like regular frame, but we will only interact with user once to fill this frame in a session when it is first referenced (if not persisted), and all the subsequent reference via different slot of the same type will access the same information. All slot of the global frame type should be declared as never ask (I can understand call it never ask or always ask are both problematic as we don't know whether it will be asked in the context,  but we should NOT have conditional asking at least). The interaction on these slots are controlled by the global frame itself, not slot.
+Frame can be declared as global. A global frame can occur in more than one skill/frame as the type for one of slot, just like regular frame, but we will only interact with user once to fill this frame in a session when it is first referenced (if not persisted), and all the subsequent reference via different slot of the same type will access the same information. All slot of the global frame type should be declared as never ask (I can understand call it never ask or always ask are both problematic as we don't know whether it will be asked in the context,  but we should NOT have conditional asking at least). The interaction on these slots are controlled by the global frame itself, not slot.
 #### Schema
-Schema is a static view what frame is about: common goal and information needed by that goal. Anecdotally, there are two types of frames: verb frames and noun frames. Verb frames are related to intent which describe what user wants or what provider serves (they have to agree), and noun frames are essentially composite entity. Frames commonly has slots (has-a relationship), which can be of entity or frame type, that defines some aspects of this frame.
+Schema is a static view what frame is about: common goal and information needed by that goal. Anecdotally, there are two types of frames: verb frames and noun frames. Verb frames are related to skill which describe what user wants or what provider serves (they have to agree), and noun frames are essentially composite entity. Frames commonly has slots (has-a relationship), which can be of entity or frame type, that defines some aspects of this frame.
 
 #### Annotation
 The desired dynamic behavior of component is declaratively defined in form of annotations. These are designed as "control" so builder to control the desired behavior for their chatbots. Annotations can be defined on the frame level which defines behavior of the entire frame, or slot level which define the slot specific behavior. 
@@ -201,11 +201,11 @@ Skills define the tasks that user accomplish through conversing with chatbot. It
 
 
 ### Frame
-Frame captures the structure meaning that user expressed in their utterance. Intent is essentially frame with actions attached to it. Frame are understood using abstractive methods using machine learning models. Frame can contain one or more slots, with entity or frame types. There are two type of frames: language aware and language ignorant. Frame supports both has-a (composition) and is-a (inheritance) relationship on frame. One can add dialog annotation to frame (then became a CUI frame), but it is not required that frame has to have dialog annotations. Similarly, one can add storage/backoffice annotation to a frame in the backend, but it is not required.
+Frame captures the structure meaning that user expressed in their utterance. Skill is essentially frame with actions attached to it. Frame are understood using abstractive methods using machine learning models. Frame can contain one or more slots, with entity or frame types. There are two type of frames: language aware and language ignorant. Frame supports both has-a (composition) and is-a (inheritance) relationship on frame. One can add dialog annotation to frame (then became a CUI frame), but it is not required that frame has to have dialog annotations. Similarly, one can add storage/backoffice annotation to a frame in the backend, but it is not required.
 - **SubFrame**: A subframe inherits every thing from parent frame.
 
 ## Entity
-In OpenCUI, entity is a type of item and element that is relevant to the user's intent/frame, for example, city is an entity with instances like Beijing, New York, for example. Entities define typed data that can be extracted from the utterance and is essential to complete a user's required action. Entity instances are understood based on extractive methods. Entity has one or more type expressions.
+In OpenCUI, entity is a type of item and element that is relevant to the skill/frame, for example, city is an entity with instances like Beijing, New York, for example. Entities define typed data that can be extracted from the utterance and is essential to complete a user's required action. Entity instances are understood based on extractive methods. Entity has one or more type expressions.
 
 - **Entity Instance**: Entity instance is an entity of that type. It has a label that is language independent, and then one or more language dependent expressions (value expression) what user say and system could understand.
 

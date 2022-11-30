@@ -34,7 +34,7 @@ features:
     details: Omnichannel made easy, the universal messages you defined once will get automatically translated into native message for each channel.  
     icon: /images/featureIcons/universal-message.svg
   - title: Support 
-    details: Ran into conversations that bot can't handle, hand over to live agent with intent based routing, integration with any contact center software.
+    details: Ran into conversations that bot can't handle, hand over to live agent with skill based routing, integration with any contact center software.
     icon: /images/featureIcons/support.svg
   - title: Multi-language Ready
     details: The same interaction logic should be shared between all the different languages, so that you can use people with entirely different skillsets for this. 

@@ -40,7 +40,7 @@ Sorry, Star Wars at 19:00pm have sold out, please choose another time.
 When a slot has a large set of potentially valid values from user side, but much more restrictive set servable from business side, it is very useful to inform user as early as possible the acceptable ones per business logic. Value recommendation is one way of communicate such restriction so that user can pick from a smaller set of values that is pre-approved by business, instead of go through multiple round of trial and error.
 
 Value recommendation is rather complex conversational component, consist of
-- **Source**, where builder can specify a code expression or intent that return a list of value of the target type.
+- **Source**, where builder can specify a code expression or skill that return a list of value of the target type.
 
 - **Paging behavior**, when list is long, it is important to support "page" navigation like interactions:
   - *"is there more options?"* for next page
@@ -100,12 +100,12 @@ So if the item the user wants is not in the list of candidates, the bot will not
 Sorry, we do not offer Star Wars at this time. The only available showtime for Star Wars is 8:00pm and 10:00pm. Which time do you prefer?
 :::
 ::::
-The exact script of the first part can be customized on the system intent `io.opencui.core.BadIndex` and `io.opencui.core.BadCandidate` by adding more replies. 
+The exact script of the first part can be customized on the system skill `io.opencui.core.BadIndex` and `io.opencui.core.BadCandidate` by adding more replies. 
 
 The conversational behavior will also be customized under hard mode for cases when number of entries return the source is one or zero, which can be defined in [Single Entry Informs](./valuerec.md#single-entry) and [Zero Entry Informs](./valuerec.md#zero-entry).
 
 ::: tip Note
-Customization of **system intent** will not only affect the current slot, but also the entire bot behaviors.
+Customization of **system skill** will not only affect the current slot, but also the entire bot behaviors.
 :::
 
 #### Two Special Cases
@@ -134,7 +134,7 @@ The configuration of single entry inform can be done here:
 
 - ##### Zero Entry
 
-When the recommendation list is empty, the zero entry inform will be replied to users. And then bot will exit the current intent as it can not provide the service anymore. If this default behavior does not meet your expectations, you can customize this behavior with Transition annotation, or recover some value at the previous slot with [Value Check](./valuecheck.md). 
+When the recommendation list is empty, the zero entry inform will be replied to users. And then bot will exit the current skill as it can not provide the service anymore. If this default behavior does not meet your expectations, you can customize this behavior with Transition annotation, or recover some value at the previous slot with [Value Check](./valuecheck.md). 
 
 :::: conversation
 ::: bot Bot
@@ -166,11 +166,11 @@ Running shoes for training, got it. Here are the running shoe series designed fo
 :::
 ::::
 
-In OpenCUI, each intent is abstraction of a function with conversational behavior defined on top of it, including its input parameters. Each intent has a return. When an intent has a return type of multivalued target slot type, we can use it as source for value recommendation for the slot. To specify the list of candidates via user interaction, you just need to active intern based source configuration 
+In OpenCUI, each skill is abstraction of a function with conversational behavior defined on top of it, including its input parameters. Each skill has a return. When a skill has a return type of multivalued target slot type, we can use it as source for value recommendation for the slot. To specify the list of candidates via user interaction, you just need to active intern based source configuration 
 ::: thumbnail
 ![value rec source](/images/annotation/valuerec/valuerec_source.png)
 :::
-and proceed with specifying what intent you want, and how to initialize some of it slots before we acttive the intent to get candidate list.
+and proceed with specifying what skill you want, and how to initialize some of it slots before we acttive the skill to get candidate list.
 
 When number of servable options for the target slot is not that much, you can instead directly specify it via code expression. In code expression, you can call out to service functions like ` function()` or `function(input: slot!!)`, and optionally apply some post-processing in Kotlin. If the service function is implemented to return only up-to-date options, then you will offer dynamic suggestions. But you can even specify a static list if it makes business sense, for example,
 ```kotlin

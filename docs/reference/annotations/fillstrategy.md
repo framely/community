@@ -192,14 +192,14 @@ Payment completed. Thanks for your business.
 ::::
 
 #### Overview
-External Event by itself only means blocking (of course some inform is allowed before blocking). It is the builder's responsibility to configure the trusted software to send in an event to finish the blocked intent in the conversation. 
+External Event by itself only means blocking (of course some inform is allowed before blocking). It is the builder's responsibility to configure the trusted software to send in an event to finish the blocked skill in the conversation. 
 
 Apart from that, if the businesses wants to interact differently depending on how well the client action has done (e.g. is it successful, failed, or timed out), it needs to do some conditional branching with the hosting slot's value, just like all the other slots did. One typical place to do this is response.
 
 To set a slot's prompt strategy to be external:
 - set its Prompt Strategy to External
 - Inform: provide template to inform a user the conversation state,
-- Configure the third party software to send event to resume the intent. Different third party software have different mechanism.
+- Configure the third party software to send event to resume the skill. Different third party software have different mechanism.
 
 #### How to Use
 Whenever the bot needs to work with external software, external fill strategy is your choice. Use inform to let the user know when the ball is in somebody else's courts and continue with updated status when it got triggered by external event.

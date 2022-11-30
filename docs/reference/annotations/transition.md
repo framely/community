@@ -4,7 +4,7 @@
 
 ## Motivation
 
-The 5 stage slot filling is designed to minimize builders' effort level in building the conversational experience that get collaborative user served as fast as possible, under the favorable conditions. As such, the bot will follow a deterministic interaction logic that first determine a user's intent, and then aggressively fill slots of that intent one by one until it have all the required parameter to invoke the service.
+The 5 stage slot filling is designed to minimize builders' effort level in building the conversational experience that get collaborative user served as fast as possible, under the favorable conditions. As such, the bot will follow a deterministic interaction logic that first determines a user's intent, triggers the corresponding skill and then aggressively fills slots of that skill one by one until it has all the required parameters to invoke the service.
 
 However, the design bias towards favorable conditions in these standard slot filling components can sometime cumbersome for interaction logic for unhappy use case. For example, when a user wants to buy a ticket, the movie he wants is sold out. Instead of asking what showtime he likes, whether he wants IMAX, it is a better experience to simply exit conversation early:
 :::: conversation
@@ -33,7 +33,7 @@ Transition can be configured in two parts: triggering and update actions, where 
 
 ### Event Triggered Transition
 
-Given intent, the interaction logic or transition table defined by slot filling components will always try to proactively fill every it's slot, and delivery the result to user based on the filled slots. While direct slot filling is already capable for many real world use case, many advanced use cases involves no-direct slot filling.
+Given skill, the interaction logic or transition table defined by slot filling components will always try to proactively fill every it's slot, and delivery the result to user based on the filled slots. While direct slot filling is already capable for many real world use case, many advanced use cases involves no-direct slot filling.
 
 For example, during a purchase session, the user might want to use a certain coupon by say "*use the coupon that will expire soon*". Instead of responding with "*I do not know what you are talking about*", you can set up an event triggered transition, with triggering event set to be "CouponSelection", and actions include a fill action which can assign the coupon code that is returned from a function that retrieves the expiring coupon code for given user.
 
@@ -96,7 +96,7 @@ Update action contains one or more actions in sequence, you need to define it by
 With actions, you can: 
 - Prompt Users for necessary information by **Single Value Message** and **Multiple Value Message**. See [Universal channel](../channels/messenger.md) for more details about messages;
 - Change the state of slot filling by **Clear Slot**, **Fill Slot** and **Recheck Slot**;
-- Transfer conversation by **Intent Start**, **Intent Abort** and **Intent End**.
+- Transfer conversation by **Skill Start**, **Skill Abort** and **Skill End**.
 
 #### Single Value Message
 
@@ -132,17 +132,17 @@ When use **Fill Slot** with code expression, you should make sure assignment act
 
 Move the stage before checking the value of target slot, to make sure it still makes business sense. OpenCUI reset every slot after slot to be cleared to be rechecked by default.
 
-#### Intent Start
+#### Skill Start
 
-Start a new intent with its slot filled with assignments by code expression, when this expression is evaluated to not null, the new started intent will skip the interaction on these slots.
+Start a new skill with its slot filled with assignments by code expression, when this expression is evaluated to not null, the new started skill will skip the interaction on these slots.
 
-#### Intent Abort
+#### Skill Abort
 
-Abort the intent you specified. Abort is treated as abnormal termination which indicates all associated or nested intents will be affected. For example, if you provide a round-trip booking service by using composite intent which contains flight intent, and there is no suitable flight available, you can make a decision to abort intent. If the flight intent aborted, the round-trip composite intent will be assumed the same way.  
+Abort the skill you specified. Abort is treated as abnormal termination which indicates all associated or nested skills will be affected. For example, if you provide a round-trip booking service by using composite skill which contains flight skill, and there is no suitable flight available, you can make a decision to abort skill. If the flight skill aborted, the round-trip composite skill will be assumed the same way.  
 
-#### Intent End
+#### Skill End
 
-Terminate the current intent. For example, when the ticket that the user wants to buy has been sold out, it is a better experience to simply exit conversation early with condition triggerred transition by adding intent end action. Of course, you'd better add some replies at the same time to remind the user context. Intent end will only terminate the current intent and will not affect others. 
+Terminate the current skill. For example, when the ticket that the user wants to buy has been sold out, it is a better experience to simply exit conversation early with condition triggerred transition by adding skill end action. Of course, you'd better add some replies at the same time to remind the user context. Skill end will only terminate the current skill and will not affect others. 
 
 #### Hand Off
 

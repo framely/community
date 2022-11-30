@@ -31,7 +31,7 @@ You can provide the slot with an initial value by defining the association of th
   - You can pick an earlier slot of the same type as proposed value. If you pick a later slot, the behavior is not defined, meaning the behavior might change without notice.
 - Function call:
   - Regarding the first situation in [Motivation](#motivation), you can set the phone number as `getUserPhoneNumber()`, which returns the user's previous phone number.
-  - Go to [Intent: FoodOrdering](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/62b12e4cede53f1b65047b0f/intent/62b12eacede53f1b65047b13) to learn more details.
+  - Go to [SKill: FoodOrdering](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/62b12e4cede53f1b65047b0f/intent/62b12eacede53f1b65047b13) to learn more details.
   
 Beyond the normal operator like +,-,*,/, you can combine expressions using:
 - [If expression](./kotlinexpression.md#if-expression)

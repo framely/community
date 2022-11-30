@@ -113,12 +113,12 @@ The whole procedure is divided into these steps:
 ![click test](/images/blog/quick-start-with-service/click-test.png)
 :::
 
-3. Click **CONNECT**. Now you can use one of the [expressions](../guide/glossary.md#expression-exemplars) defined in intents to ask the bot for business hours and see what the bot replies. A sample conversation is shown below.
+3. Click **CONNECT**. Now you can use one of the [expressions](../guide/glossary.md#expression-exemplars) defined in skills to ask the bot for business hours and see what the bot replies. A sample conversation is shown below.
 
 ::: thumbnail
 ![sample conversation](/images/blog/quick-start-with-service/conversation.png)
 :::
 
 ::: tip How to find expressions?
-On EN side, Click **Intents** > **Imported** > **Expression**.
+On EN side, Click **Skills** > **Imported** > **Expression**.
 :::

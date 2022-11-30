@@ -9,7 +9,7 @@ Ideally we expect that you don‘t need to worry how they are triggered, and for
 And the OpenCUI solution is based on aspect oriented programming. It does so by adding additional behavior (via system CUI components) to existing code (an advice) without modifying the code itself, instead separately specifying which code is modified via a "pointcut" specification (triggered by runtime automatically). The  common system CUI are, and as time goes by, we will surely have more of these to enrich the default chatbot behavior.
 
 ## Clarification
-Often time, user might say something that dialog understanding did not fully understand, for example, there are multiple possibilities. These are the time when we can trigger system intent to engage in the conversation for user to clarify what they really meant. There are couple variants of this:
+Often time, user might say something that dialog understanding did not fully understand, for example, there are multiple possibilities. These are the time when we can trigger system skill to engage in the conversation for user to clarify what they really meant. There are couple variants of this:
 
 ### Value Clarification
 During the slot filling, particularly when we try to find value from the conversation history, there might be multiple values that can be used to fill the slot. This CUI component is used to ask user decide which one is what they want.
@@ -67,7 +67,7 @@ Do you want me to order food or reserve a table at your favorite restaurant?
 
 ## Slot Update
 
-Slot update is a system intent that is designed to provide the default behavior for users wanting to modify the value of the previous specified slot. For example, when a user changes his mind during booking a flight, the user might say *"I need to change the destination from Beijing to Shanghai"*. Then the bot will modify the value of destination and always execute the same interaction logic as if that slot is filled for the first time.
+Slot update is a system skill that is designed to provide the default behavior for users wanting to modify the value of the previous specified slot. For example, when a user changes his mind during booking a flight, the user might say *"I need to change the destination from Beijing to Shanghai"*. Then the bot will modify the value of destination and always execute the same interaction logic as if that slot is filled for the first time.
 
 :::: conversation
 ::: user User
