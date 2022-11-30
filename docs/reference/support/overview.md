@@ -21,7 +21,7 @@ In the OpenCUI hosted environment, we are mainly interested in the external mode
 
 
 ### Intent Based Routing Under External Mode
-To reduce the effort level on the user side, we support the conversation routing based on user intent. Essentially, a user intents are grouped into multiple set, each maps to a particular team. When there are unfinished intent in the conversation, that intent can be used to decide which team should we route the conversation to, based on the builder supplied information. When there are no unfinished intent, we can also ask user to provide one, so that they can be transferred to right team directly.
+To reduce the effort level on the user side, we support the conversation routing based on user intent. Essentially, a user skills are grouped into multiple set, each maps to a particular team. When there are unfinished intent in the conversation, that intent can be used to decide which team should we route the conversation to, based on the builder supplied information. When there are no unfinished intent, we can also ask user to provide one, so that they can be transferred to right team directly.
 
 ## Configure Support
 
@@ -51,8 +51,8 @@ If you enable Chatwoot for the first time in your organization, check your email
 
 ### Set Up Routing Priority
 
-To make intent based routing work, you need to set up routing priority. When there are unfinished intents in the conversation, we follow routing priority to decide which team we should route the conversation to.\
-If an unfinished intent is one of the associate intents in routing priority, we route the conversation to the corresponding team. Otherwise, we route the conversation to default team.
+To make intent based routing work, you need to set up routing priority. When there are unfinished skills in the conversation, we follow routing priority to decide which team we should route the conversation to.\
+If an unfinished intent is one of the associate skills in routing priority, we route the conversation to the corresponding team. Otherwise, we route the conversation to default team.
 
 Follow these steps to set up routing priority.
 

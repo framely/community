@@ -94,7 +94,7 @@ If created successfully, you can see the chatbot shown like the following:
 
 ## Build Chatbot
 
-The service that a pingpong chatbot can provide is just a simple question-and-answer dialogue. Such frame is typically communicated in one sentence and conversations are done in a single turn. As the service provided by pingpong does not need to collect informations from a user, like booking a flight ticket requires departure time, departure place, destination, etc, chatbot at this level is just a set of [intents](/guide/concepts.md#intents) and its dependency. 
+The service that a pingpong chatbot can provide is just a simple question-and-answer dialogue. Such frame is typically communicated in one sentence and conversations are done in a single turn. As the service provided by pingpong does not need to collect informations from a user, like booking a flight ticket requires departure time, departure place, destination, etc, chatbot at this level is just a set of [skills](/guide/concepts.md#skills) and its dependency. 
 
 Therefore, we will skip the [describe service at schema level](getting-started.md#1-describe-services-at-schema-level) phase and start with interaction declaration. This section walks you through the steps to build the pingpong chatbot.
 
@@ -102,7 +102,7 @@ Therefore, we will skip the [describe service at schema level](getting-started.m
 
 What is the interaction provided by this pingpong chabot? The answer is to give a response *"pong"* to the user's message *"ping"*. So all you have to do in the declare interaction phase is to add a response to one intent at **STRUCT** *(short for structure)* level which represents the **interaction layer**. For more information about each of the layers, see [Separation of Concerns](README.md#separation-of-concerns) and [4 Layers of Chatbot](glossary.md#chatbot).
 
-For each chatbot, you can create many intents. But in this case, you only need one. 
+For each chatbot, you can create many skills. But in this case, you only need one. 
 
 1. Click into the [pingpong](#create-a-chatbot) chatbot, stay at **STRUCT** level.
 
@@ -176,7 +176,7 @@ Now let's add language-related aspects:
 
 ## Test Chatbot
 
-OpenCUI provides a built-in testing feature "**Try It Now**" to help you to uncover bugs with the debug info, you can test your chatbot by typing messages. Let's test this pingpong chatbot, which will handle a basic conversation with a [default welcome message](concepts.md#default-intents) and response with *"pong"* to message *"ping"*. 
+OpenCUI provides a built-in testing feature "**Try It Now**" to help you to uncover bugs with the debug info, you can test your chatbot by typing messages. Let's test this pingpong chatbot, which will handle a basic conversation with a [default welcome message](concepts.md#default-skills) and response with *"pong"* to message *"ping"*. 
 
 1. As **Try It Now** can only test committed content, please make sure both structure layer and language layer have been committed. 
 

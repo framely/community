@@ -138,7 +138,7 @@ Start a new intent with its slot filled with assignments by code expression, whe
 
 #### Intent Abort
 
-Abort the intent you specified. Abort is treated as abnormal termination which indicates all associated or nested intents will be affected. For example, if you provide a round-trip booking service by using composite intent which contains flight intent, and there is no suitable flight available, you can make a decision to abort intent. If the flight intent aborted, the round-trip composite intent will be assumed the same way.  
+Abort the intent you specified. Abort is treated as abnormal termination which indicates all associated or nested skills will be affected. For example, if you provide a round-trip booking service by using composite intent which contains flight intent, and there is no suitable flight available, you can make a decision to abort intent. If the flight intent aborted, the round-trip composite intent will be assumed the same way.  
 
 #### Intent End
 

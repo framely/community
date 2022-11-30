@@ -6,7 +6,7 @@ This section helps you understand the key concepts at the org level, and at chat
 Just like repo on the GitHub, on the OpenCUI platform, projects are the basic unit of work. One can decide whether it is public or private, what permission that each user can have on it, etc. Projects can be cloned or imported for reuse. There are three kinds of projects on the platform.
 
 ### Chatbots
-A OpenCUI chatbot is an application with conversational user interface that connects end-users with your services through conversations. It is essentially just a set of intents and all their dependencies like frames, dialog acts, entities and services. 
+A OpenCUI chatbot is an application with conversational user interface that connects end-users with your services through conversations. It is essentially just a set of skills and all their dependencies like frames, dialog acts, entities and services. 
 
 ### Components
 Components are the reusable modules for getting user preferences via conversations, for example, asking user for a date can be one such component. Components can be integrated into bigger and bigger reusable component for more complex use cases. Optionally, component can declare a service, which allows interaction logic to be defined against business logic and service APIs for better conversational experiences.
@@ -23,7 +23,7 @@ Services can be described by its schema, using description languages such as [Op
 
 A data type (or simply type) defines what operations can be applied to its instances, and the behavior on these instances resulted from these operations. As a conversational user interface framework, the types you can define on OpenCUI, including intent, frame and entity, have their conversational behavior defined in three layers. In schema layer, they are directly mapped into hosting language data types (currently Java/Kotlin) so that it can be used to invoke the service functions directly; in interaction layer, how to collect user preferences are defined via dialog annotation; finally in language layer, these same types directly encode the semantics of utterances, and builder can use exemplar and template to control how to convert between natural text and structured representation back and forth. 
 
-### Intents
+### Skills
 Generally, an intent represents what a user wants, at the same time, it is essentially a function that a user can access through conversations for businesses. 
 
 In OpenCUI, intent, as a composite CUI data type for functions, is designed to define a self-contained conversational component that delivers some functionality to a user. This means that all three aspects of conversational service delivery need to be defined on top of the corresponding data type: 
@@ -31,10 +31,10 @@ In OpenCUI, intent, as a composite CUI data type for functions, is designed to d
 2. invoke function using collected slot value as input parameter
 3. verbalize the service result and render them in channel.
 
-At language level, intents can be expressed mainly by verb phrases or full sentence. When expressed in full sentence, the subject need to be first person. Examples for such utterances includes: *"Book me a table for two for Sunday evening"* or *"I would like to make a reservation on Sunday"*.
+At language level, skills can be expressed mainly by verb phrases or full sentence. When expressed in full sentence, the subject need to be first person. Examples for such utterances includes: *"Book me a table for two for Sunday evening"* or *"I would like to make a reservation on Sunday"*.
 
-#### Default Intents
-These following **Default Intents** will be created automatically when you successfully create the chatbot, and you can modify them as desired:
+#### Default Skills
+These following **Default Skills** will be created automatically when you successfully create the chatbot, and you can modify them as desired:
 - **Greeting**: a default welcome intent, this intent has simple expression exemplars like *"Hi"* or *"Hello"* that are matched when the user begins a conversation with your bot. This intent could return a response to let the user know what your bot does or what they can say to begin a conversation. 
 - **Goodbye**: a default ending intent, this intent returns a response to let the user know the conversation or service is ending soon. 
 - **Main**: a default mechanism for each chatbot. 
@@ -44,7 +44,7 @@ Frame is also a composite CUI data type in OpenCUI. Frame is your standard objec
 
 With inheritance, we can easily support *"What symptoms do you have?"* type of conversation. By define a interface symptom frame, and multiple concrete frame one for each actual symptom. Since each concrete frame can have a different interaction logic, when we try to fill an interface frame slot, we can naturally get the conversational experience we need. 
 
-Since the same frame can be used by different intents, frame also naturally serves as context to pivot conversation back and forth between intents. In particular, a user response like *"How is the weather like there?"* to an earlier chatbot question *"Which day you want to fly to Shanghai?"*, while seemed missing information, is easy to understand if we know both weather and ticket intent use the same location frame.
+Since the same frame can be used by different skills, frame also naturally serves as context to pivot conversation back and forth between intents. In particular, a user response like *"How is the weather like there?"* to an earlier chatbot question *"Which day you want to fly to Shanghai?"*, while seemed missing information, is easy to understand if we know both weather and ticket intent use the same location frame.
 
 At language level, a frame represents objects with properties and is typically expressed in a noun phrase like *"Large, spicy noodle"*. In the service layer, the frame are your typical data class, which is parameters for your function.
 

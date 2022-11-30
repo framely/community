@@ -59,7 +59,7 @@ Reusability is the one of the key design goal for OpenCUI to help business to re
 
 - **Clone**: Clone is another way of reuse. Instead of build chatbot from empty slate, one start from exist chatbot by clone it.
 
-- **Inherit**: We support inherit/implement on frames and intents, so that we can reuse behavior by adding to existing frame instead of building frame from scratch.
+- **Inherit**: We support inherit/implement on frames and skills, so that we can reuse behavior by adding to existing frame instead of building frame from scratch.
 
 - **Compose**: We can use frame as slot of larger frame, to get bigger and bigger behavior.
 
