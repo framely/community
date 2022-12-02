@@ -30,24 +30,3 @@ When setting up channels, you need to provide locale which determines the defaul
 
 ## External Extension Channel 
 External extension channels are created by other organizations and individuals. OpenCUI provides no support for such channels, as we do not have access to source code. These external channel extensions can only be used by private-deployed chatbot. You can also create a custom channel by using external Extensions.
-
-<!-- I think this should be in each channel
-## How To Use
-1. Before you start, you need to import the channel component to your chatbot. Enter [io.opencui.channel](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/63479c58bb57d84573e65ee8/service_schema), click **Import**. Select a chatbot in which you want to add channels and then click **Save**.                    
-
-::: thumbnail
-![import channel component](/images/channelConfig/overview/import-channel.png)
-:::
-
-2. Once you successfully imported the component, **go back to the chatbot**. At the **STRUCT** level, click **Settings**. In the **Integrations** tab, click **Select Service** and select **io.opencui.channel.IChannel**.
-
-::: thumbnail
-![select the service](/images/channelConfig/overview/select-service.png)
-:::
-
-3. Enter a **Label** and select a **Service Provider**(i.e. channel).
-
-::: thumbnail
-![select a channel](/images/channelConfig/overview/select-channel.png)
-:::
--->
