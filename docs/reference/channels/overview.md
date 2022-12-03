@@ -11,10 +11,10 @@ OpenCUI extension channels are fully supported by OpenCUI and configured with th
 
 Currently we provide several official extensions with other conversation platforms like Messenger, WhatsApp Business, Google Business Message and WeChat Official Account. They provide a user interface to the user, and call the OpenCUI API for you. When you want to integrate these channels for your users, you just need to wire and configure them to your chatbot. And then the user interactions will be handled for you. 
 
-To set up official channel extensions, you can follow these steps below:
-1. On the **channel platform**, generate **token**, such as access token, development information or credential. You should copy and save them.
-2. Switch to **OpenCUI platform**, configure channel integration by using the **token**. After completing all the configuration information, get the **Callback URL**, copy and save it.
-3. Back to the **channel platform**, set the channel **Webhook** by using the **Callback URL**.
+To set up official extension channels, you can follow these steps below:
+1. **Set Up Channel Platform**. Set up channel platform and generate **token**, such as access token, development information or credential. You should copy and save them.
+2. **Configure Channel From OpenCUI**. On OpenCUI platform, configure channel integration by using the token value you copied above. After completing all the configuration information, get **Callback URL**, copy and save it.
+3. **Finish Setup Channel**. Back to the channel platform, set channel **Webhook** by using the Callback URL you copied above.
 
 However, each channel may be set up in a slightly different way, so see the specific channel documentation for details:
 - [Messenger](messenger.md)

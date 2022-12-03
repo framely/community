@@ -64,7 +64,7 @@ On the Messenger side, please ensure you have all of the following:
 3. Configure Messenger integration as following: 
    - **Label**: Enter channel label, should be **unique**.
    - **Verify Token**: Enter any private token you desire. :clipboard: Copy this value. This will be used to configure the Messenger Webhook. 
-   - **Page Access Token**: Enter the access token you copied during the Facebook app setup above.
+   - **Page Access Token**: Paste the access token you copied during the Facebook app setup above.
    - **Locale**: Select locale which determines the default language used by your bot.
    - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the Messenger Webhook. 
 
@@ -72,16 +72,19 @@ On the Messenger side, please ensure you have all of the following:
    ![add channel](/images/channelConfig/messenger/add-channel.png)
    :::
 
-4. before you go to next step, don't forget to merge your changes into master and deploy your chatbot.
+4. Before you go to next step, don't forget to merge your changes into master and deploy your chatbot.
 
-## Finish Set Up Messenger
-1. Configure the Messenger webhook for your app. Back to your Meta App, go to **Messenger > Settings**, scroll down to **Webhooks** section, click **Add Callback URL** button. Use the **Webhook URL** and **Verify Token** values you copied above, click **Verify and Save** button. 
+## Finish Setup Messenger
+
+1. Configure the Messenger webhook for your app. Back to your Meta App:
+   1. Go to **Messenger > Settings**, scroll down to **Webhooks** section, click **Add Callback URL** button. 
+   2. A Webhook setting dialog opens, use the **Webhook URL** and **Verify Token** values you copied above, click **Verify and Save** button. 
 
    ::: thumbnail
    ![config webhook](/images/channelConfig/messenger/config-webhook.png)
    :::
 
-2. On the same page, click **Add subscriptions** button and enable `messages` and `messaging_postbacks` in the page subscriptions.
+2. On the **Webhooks** section, click **Add subscriptions** button and enable `messages` and `messaging_postbacks` in the page subscriptions.
 
    ::: thumbnail
    ![add subscriptions](/images/channelConfig/messenger/add-subscriptions.png)
