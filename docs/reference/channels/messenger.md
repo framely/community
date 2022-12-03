@@ -25,7 +25,7 @@ On the Messenger side, please ensure you have all of the following:
    ![add messenger](/images/channelConfig/messenger/add-messenger.png)
    :::
 
-2. Subscribe your app to a Facebook page. Go to **Messenger > Settings**, scroll down to **Access Tokens** section, click **Add or Remove Pages** button and select your page.
+2. Subscribe your app to a Facebook page. Go to **Messenger > Settings** panel, scroll down to **Access Tokens** section, click **Add or Remove Pages** button and select your page.
 
    ::: thumbnail
    ![add page](/images/channelConfig/messenger/add-page.png)
@@ -47,8 +47,8 @@ On the Messenger side, please ensure you have all of the following:
    ![import channel component](/images/channelConfig/overview/import-channel.png)
    :::
 
-2. Once you have done, switch to your chatbot to wire Messenger channel. On **STRUCT** level:
-   1. Head to **Settings** page, in the **Integrations** tab, select the service you just import. In this case, please select **io.opencui.channel.IChannel**.
+2. Once you have done, switch to your chatbot to wire Messenger channel:
+   1. On **STRUCT** level, head to **Settings** page, in the **Integrations** tab, select the service you just import. In this case, please select **io.opencui.channel.IChannel**.
    2. A configuration dialog opens, at **Service Provider** field, select **io.opencui.messenger** to wiring Messenger channel.
 
    ::: thumbnail
@@ -61,7 +61,7 @@ On the Messenger side, please ensure you have all of the following:
    *Wire Messenger channel*
    :::
 
-3. Configure Messenger integration as following: 
+3. Continue inside the dialog, configure Messenger integration as following: 
    - **Label**: Enter channel label, should be **unique**.
    - **Verify Token**: Enter any private token you desire. :clipboard: Copy this value. This will be used to configure the Messenger Webhook. 
    - **Page Access Token**: Paste the access token you copied during the Facebook app setup above.
@@ -77,14 +77,14 @@ On the Messenger side, please ensure you have all of the following:
 ## Finish Setup Messenger
 
 1. Configure the Messenger webhook for your app. Back to your Meta App:
-   1. Go to **Messenger > Settings**, scroll down to **Webhooks** section, click **Add Callback URL** button. 
-   2. A Webhook setting dialog opens, use the **Webhook URL** and **Verify Token** values you copied above, click **Verify and Save** button. 
+   1. Go to **Messenger > Settings** panel, scroll down to **Webhooks** section, click **Add Callback URL** button. 
+   2. A Webhook setting dialog opens, use the **Callback URL** and **Verify Token** values you copied above, click **Verify and Save** button. 
 
    ::: thumbnail
    ![config webhook](/images/channelConfig/messenger/config-webhook.png)
    :::
 
-2. On the **Webhooks** section, click **Add subscriptions** button and enable `messages` and `messaging_postbacks` in the page subscriptions.
+2. In the **Webhooks** section, click **Add subscriptions** button and enable `messages` and `messaging_postbacks` in the page subscriptions.
 
    ::: thumbnail
    ![add subscriptions](/images/channelConfig/messenger/add-subscriptions.png)

@@ -32,22 +32,46 @@ If you used *Developer Password(AppSecret)* before but didn't store it, you can 
 
 ![config whitelist](/images/channelConfig/wechat/config-whitelist.png)
 
-## Add WeChat Channel
-1. On the OpenCUI side, enter a chatbot that you want to deploy. Follow how to use and select **io.opencui.wechatOfficialAccount** as the **Service Provider**.
-2. The configuration information is as follows. Once you complete the configuration, click **SAVE**.
-   
-   - **Label**: Set a label for your WeChat Official Account. Labels in each channel should be **unique**.
-   - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the WhatsApp Webhook.
-   - **App ID**: Paste the developer ID you copied when [setting up WeChat Official Account](#set-up-wechat-official-account).
-   - **App Secret**: Paste the developer password you copied when [setting up WeChat Official Account](#set-up-wechat-official-account).
-   - **Token**: Enter any token you desire. :clipboard: Copy this value. This will be used to configure the WhatsApp Webhook.
-   - **Payment**: Enable or disable payment service in this channel.
-   - **Locale**: Select a locale of the users whom the chatbot talking to in this channel.
-3. [Deploy](../platform/deployment.md) your chatbot.
-   
-![add channel](/images/channelConfig/wechat/add-channel.png)
+## Configure WeChat From OpenCUI
 
-## Configure Server
+1. On OpenCUI platform, go to service component [io.opencui.channel](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/63479c58bb57d84573e65ee8/service_schema): 
+   1. Click **Import** button on the second topbar.
+   2. Select the chatbot you want to configure WeChat channel and **Save**.
+
+   ::: thumbnail
+   ![import channel component](/images/channelConfig/overview/import-channel.png)
+   :::
+
+2. Once you have done, switch to your chatbot to wire WeChat channel:
+   1. On **STRUCT** level, head to **Settings** page, in the **Integrations** tab, select the service you just import. In this case, please select **io.opencui.channel.IChannel**.
+   2. A configuration dialog opens, at **Service Provider** field, select **io.opencui.wechatOfficialAccount** to wiring WeChat channel.
+
+   ::: thumbnail
+   ![select the service](/images/channelConfig/overview/select-service.png)
+   *Select service io.opencui.channel.IChannel*
+
+   <br>
+
+   ![select a channel](/images/channelConfig/overview/select-channel.png)
+   *Wire WeChat channel*
+   :::
+
+2. Continue inside the dialog, configure WeChat integration as following: 
+   - **Label**: Enter channel label, should be **unique**.
+   - **App ID**: Paste the developer ID you copied during the WeChat Official Account setup above.
+   - **App Secret**: Paste the developer password you copied during the WeChat Official Account setup above.
+   - **Token**: Enter any token you desire. :clipboard: Copy this value. This will be used to configure the WhatsApp Webhook.
+   - **Payment**: Whether to use WeChat Pay.
+   - **Locale**: Select locale which determines the default language used by your bot.
+   - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the WeChat Server Configuration.
+
+   ::: thumbnail
+   ![add channel](/images/channelConfig/wechat/add-channel.png)
+   :::
+
+4. Before you go to next step, don't forget to merge your changes into master and deploy your chatbot.
+
+## Finish Setup WeChat Official Account
 
 1. Back to [WeChat Official Account Platform](https://mp.weixin.qq.com), In the **Server Configuration** (服务器配置) field, click **Change Configuration**. Paste *Callback URL* and *Token* you copied.
 
