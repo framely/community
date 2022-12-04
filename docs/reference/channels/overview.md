@@ -2,50 +2,31 @@
 
 With channel integrations, your customers can message you through their preferred channel, which is convenient for them. Your bot can start conversations with customers in minutes, send customer care notifications or purchase updates, and offer your customers a level of personalized service. 
 
-## OpenCUI-hosted 
+In OpenCUI, channels are essentially [Extensions](../providers/extension.md). There are two kinds of channel extensions: 
+[[toc]]
 
-OpenCUI currently provides several built-in integrations with other conversation platforms like Messenger, WhatsApp Business, Google Business Message and WeChat Official Account. You can provide support in the channel that your customers prefer to be reached on, and direct user interactions will be handled for you. 
+## OpenCUI Extension Channel
 
-You can build a chatbot for either one of these channels or all of them, and decide each integration handles end-user interactions in a **universal-message** way or a **channel-specific** way. For more information about the universal-message way, see [Universal Channel](universalmessage.md). For the specific integration channel details, see each type of channel documentation under **Channels** directory.
+OpenCUI extension channels are fully supported by OpenCUI and configured with the OpenCUI platform. You can see all of them in our extension repo. 
 
-These integrations provide a user interface to the user, and they call the OpenCUI API for you. All you need to do is build your chatbot and optionally implement a webhook service: 
-1. Generate **Token** from the channel platform, such as access token, development information or credential, you should copy and save them.
-2. Configure channel integration on OpenCUI platform by using the token, and get the **Callback URL**.
-3. Set the channel **Webhook** on channel platform by using the Callback URL.
+Currently we provide several official extensions with other conversation platforms like Messenger, WhatsApp Business, Google Business Message and WeChat Official Account. They provide a user interface to the user, and call the OpenCUI API for you. When you want to integrate these channels for your users, you just need to wire and configure them to your chatbot. And then the user interactions will be handled for you. 
 
-In OpenCUI-hosted plan, these integrations are fully supported and are configured with platform: 
+To set up official extension channels, you can follow these steps below:
+1. **Set Up Channel Platform**. Set up channel platform and generate **token**, such as access token, development information or credential. You should copy and save them.
+2. **Configure Channel From OpenCUI**. On OpenCUI platform, configure channel integration by using the token value you copied above. After completing all the configuration information, get **Callback URL**, copy and save it.
+3. **Finish Setup Channel**. Back to the channel platform, set channel **Webhook** by using the Callback URL you copied above.
+
+However, each channel may be set up in a slightly different way, so see the specific channel documentation for details:
 - [Messenger](messenger.md)
 - [WhatsApp Business](whatsapp.md)
 - [Google Business Message](googlebusiness.md)
 - [WeChat Official Account](wpa.md)
 
-::: tip Note
-- Before you start, you should have finished building chatbot and get the merged version.
-- Sometimes, you need to provide a private Verify Token, so that channel and OpenCUI can communicate with each other.
-:::
+You can build a chatbot for either one of these channels or all of them, and decide each integration handles user interactions in a **universal-message** way or a **channel-specific** way. For more information about the universal-message way, see [Universal Channel](universalmessage.md).
 
 ::: warning Need To Know
-When integrating channels, you should set the channel language as default language. Your bot will be able to understand all languages you have built, and use the default language when interacting with the user. During a conversation, the user can switch languages when needed.
+When setting up channels, you need to provide locale which determines the default language used by your bot. The bot will be able to understand all languages you have built, and interact with the user using the default language. During a conversation, the user can switch languages when needed.
 :::
 
-## Private Deploy
-In private deploy plan, these integrations are not built-in. OpenCUI provides no support for these integrations. You should export your chatbot and follow the integration owner documentations for support.
-
-## How To Use
-1. Before you start, you need to import the channel component to your chatbot. Enter [io.opencui.channel](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/63479c58bb57d84573e65ee8/service_schema), click **Import**. Select a chatbot in which you want to add channels and then click **Save**.                    
-
-::: thumbnail
-![import channel component](/images/channelConfig/overview/import-channel.png)
-:::
-
-2. Once you successfully imported the component, **go back to the chatbot**. At the **STRUCT** level, click **Settings**. In the **Integrations** tab, click **Select Service** and select **io.opencui.channel.IChannel**.
-
-::: thumbnail
-![select the service](/images/channelConfig/overview/select-service.png)
-:::
-
-3. Enter a **Label** and select a **Service Provider**(i.e. channel).
-
-::: thumbnail
-![select a channel](/images/channelConfig/overview/select-channel.png)
-:::
+## External Extension Channel 
+External extension channels are created by other organizations and individuals. OpenCUI provides no support for such channels, as we do not have access to source code. These external channel extensions can only be used by private-deployed chatbot. You can also create a custom channel by using external Extensions.

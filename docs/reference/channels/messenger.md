@@ -17,41 +17,78 @@ On the Messenger side, please ensure you have all of the following:
 
 
 ## Set Up Messenger
-1. Visit your [app dashboard](https://developers.facebook.com/apps) and enter one of the apps you want to serve by OpenCUI chatbot. On the left sidebar, click **Add Product**. Hover over **Messenger** and Click **Set Up**.
+1. Use [Meat App Dashboard](https://developers.facebook.com/apps) to add the Messenger product to your Meta App: 
+   1. Enter the App you want to configure, click **Add Product** on the left sidebar menu. 
+   2. Click **Set Up** button on **Messenger** product.
 
-![add messenger](/images/channelConfig/messenger/add-messenger.png)
+   ::: thumbnail
+   ![add messenger](/images/channelConfig/messenger/add-messenger.png)
+   :::
 
-2. Click **Add or Remove Pages** and select a page you want to subscribe your app to.
+2. Subscribe your app to a Facebook page. Go to **Messenger > Settings** panel, scroll down to **Access Tokens** section, click **Add or Remove Pages** button and select your page.
 
-![add page](/images/channelConfig/messenger/add-page.png)
+   ::: thumbnail
+   ![add page](/images/channelConfig/messenger/add-page.png)
+   :::
 
-3. In the **Access Tokens** section, click **Generate Token** button. :clipboard: Copy the access token, it's needed when [adding Messenger channel](#add-messenger-channel).
+3. Then you will be provided with an access token at this step. In the **Access Tokens** section, click **Generate Token** button. :clipboard: Copy this value. This token will be used to configure the integration from the OpenCUI platform.
 
-![generate token](/images/channelConfig/messenger/generate-token.png)
+   ::: thumbnail
+   ![generate token](/images/channelConfig/messenger/generate-token.png)
+   :::
 
+## Configure Messenger From OpenCUI
 
-## Add Messenger Channel
+1. On OpenCUI platform, go to service component [io.opencui.channel](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/63479c58bb57d84573e65ee8/service_schema): 
+   1. Click **Import** button on the second topbar.
+   2. Select the chatbot you want to configure Messenger channel and **Save**.
 
-1. On the OpenCUI side, enter a chatbot that you want to deploy. Follow [how to use](./overview.md/#how-to-use) and select **io.opencui.messenger** as the **Service Provider**.
-2. The configuration information is as follows. Once you complete the configuration, click **SAVE**.
+   ::: thumbnail
+   ![import channel component](/images/channelConfig/overview/import-channel.png)
+   :::
 
-   - **Label**: Set a label for your Facebook Messenger. Labels in each channel should be **unique**.
-   - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the Facebook Messenger Webhook. 
-   - **Verify Token**: Enter any private token you desire. :clipboard: Copy this value. This will be used to configure the Facebook Messenger Webhook. 
-   - **Page Access Token**: Enter the access token generated during the [Messenger setup](#set-up-messenger).
-   - **Locale**: Select a locale of the users whom the chatbot talking to in this channel.
-3. [Deploy](../platform/deployment.md) your chatbot.
+2. Once you have done, switch to your chatbot to wire Messenger channel:
+   1. On **STRUCT** level, head to **Settings** page, in the **Integrations** tab, select the service you just import. In this case, please select **io.opencui.channel.IChannel**.
+   2. A configuration dialog opens, at **Service Provider** field, select **io.opencui.messenger** to wiring Messenger channel.
 
-![add channel](/images/channelConfig/messenger/add-channel.png)
+   ::: thumbnail
+   ![select the service](/images/channelConfig/overview/select-service.png)
+   *Select service io.opencui.channel.IChannel*
 
-## Configure Webhook
-1. On the Messenger side, in the **Webhooks** section of the Messenger settings console, click **Add Callback URL** button. Paste the *Callback URL* and *Verify Token* values you copied when [adding the Messenger channel](#add-messenger-channel). Click **Verify and Save** to confirm you callback URL.
+   <br>
 
-![config webhook](/images/channelConfig/messenger/config-webhook.png)
+   ![select a channel](/images/channelConfig/overview/select-channel.png)
+   *Wire Messenger channel*
+   :::
 
-2. Click **Add subscriptions** and enable `messages` and `messaging_postbacks` in the page subscriptions.
+3. Continue inside the dialog, configure Messenger integration as following: 
+   - **Label**: Enter channel label, should be **unique**.
+   - **Verify Token**: Enter any private token you desire. :clipboard: Copy this value. This will be used to configure the Messenger Webhook. 
+   - **Page Access Token**: Paste the access token you copied during the Facebook app setup above.
+   - **Locale**: Select locale which determines the default language used by your bot.
+   - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the Messenger Webhook. 
 
-![add subscriptions](/images/channelConfig/messenger/add-subscriptions.png)
+   ::: thumbnail
+   ![add channel](/images/channelConfig/messenger/add-channel.png)
+   :::
+
+4. Before you go to next step, don't forget to merge your changes into master and deploy your chatbot.
+
+## Finish Setup Messenger
+
+1. Configure the Messenger webhook for your app. Back to your Meta App:
+   1. Go to **Messenger > Settings** panel, scroll down to **Webhooks** section, click **Add Callback URL** button. 
+   2. A Webhook setting dialog opens, use the **Callback URL** and **Verify Token** values you copied above, click **Verify and Save** button. 
+
+   ::: thumbnail
+   ![config webhook](/images/channelConfig/messenger/config-webhook.png)
+   :::
+
+2. In the **Webhooks** section, click **Add subscriptions** button and enable `messages` and `messaging_postbacks` in the page subscriptions.
+
+   ::: thumbnail
+   ![add subscriptions](/images/channelConfig/messenger/add-subscriptions.png)
+   :::
 
 ## Test Your Chatbot
 
@@ -62,8 +99,3 @@ On the Messenger side, please ensure you have all of the following:
 - In the [development mode](https://developers.facebook.com/docs/development/build-and-test/app-modes#development-mode), only the administrator and tester that you invited can access the app. In this case, talk to the chatbot.
 - In the [live mode](https://developers.facebook.com/docs/development/build-and-test/app-modes#live-mode), apps can request [permissions](https://developers.facebook.com/docs/permissions/reference) from anyone, but only permissions approved through [App Review](https://developers.facebook.com/docs/app-review). Click [here](https://developers.facebook.com/docs/messenger-platform/app-review/) to submit your app for review.
 :::
-
-
-
-
-
