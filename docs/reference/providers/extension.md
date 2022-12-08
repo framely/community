@@ -82,7 +82,7 @@ Now lest's use **helloworld** extension as an example to show how extension is d
 
 
 ### 2. Generate Code Stub
-In the service you described, click **Export** in the right sidebar to extract the generated file. 
+In the service you described, click **Export** extract the generated file. 
 
 ::: thumbnail
 ![export service component](/images/provider/extension/hello_export_service.png)
@@ -139,7 +139,7 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
     :::
 
 2. Declare service interface `component_0915` in native provider: 
-    - Go to service `component_0915`, click **Import** icon in the right sidebar. In the popup window, select your native provider, in this case we select `test`, and save. 
+    - Go to service `component_0915`, click **Import** icon. In the popup window, select your native provider, in this case we select `test`, and save. 
     - Back to the `test` native provider, heading to **Service** page from the left side menu. In the **Implemented** section, select `component_0915`.
 
     ::: thumbnail
@@ -177,7 +177,7 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
 1. If you have not already created a chatbot, create one now. Inside your org, head to chatbot list page by clicking **Chatbots** in the left side menu, then click **Create** button on the right side.
     - Enter your chatbot's label in the Project Label field, for example `helloworld`.
     - Select your preferred Region.
-    - Select the languages for your chatbot in the **Add Language** field, we selcet `EN` here.
+    - Select the languages for your chatbot in the **Add Language** field, we selcet `English(en)` here.
 
     ::: thumbnail
     ![create chatbot](/images/provider/extension/hello_create_chatbot.png)
@@ -189,7 +189,7 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
     *Create popup window*
     :::
 
-2. Import service `component_0915` into chatbot `helloworld`. Go to service `component_0915`, click **Import** icon in the right sidebar. In the popup window, select your chatbot, in this case we select `helloworld`, and save. 
+2. Import service `component_0915` into chatbot `helloworld`. Go to service `component_0915`, click **Import** icon. In the popup window, select your chatbot, in this case we select `helloworld`, and save. 
 
     ::: thumbnail
     ![import component0915 to chatbot](/images/provider/extension/hello_import_component0915.png)

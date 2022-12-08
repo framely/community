@@ -38,7 +38,7 @@ To create a native provider:
 
 When you are done with creation, you need to declare which service interface this native provider implements. To declare the service interface, follow these steps:
 
-1. If you have not already entered the service component you want to implement, click into now. Within an organization, you can search it from the search bar on the component list page. Within clone&import page, you can search it from the search bar at the top of this page. Don't forget selecting **SERVICE** in filter to help you.
+1. If you have not already entered the service component you want to implement, click into now. Within an organization, you can search it from the search bar on the component list page. Within explore page, you can search it from the search bar at the top of this page. Don't forget selecting **SERVICE** in filter to help you.
 
    ::: thumbnail
    ![search in Component list](/images/provider/nativeprovider/search_in_org.png)
@@ -46,11 +46,11 @@ When you are done with creation, you need to declare which service interface thi
 
    <br>
 
-   ![search in Clone & Import list](/images/provider/nativeprovider/search_in_clone_import.png)
-   *Search in Clone&Import list page*
+   ![search in Explore list](/images/provider/nativeprovider/search_in_explore.png)
+   *Search in Explore list page*
    :::
 
-2. When you are in the service component, click **Import** icon in the right sdiebar. Then in the popup window, select your native provider and save.
+2. When you are in the service component, click **Import** icon. Then in the popup window, select your native provider and save.
 
    ::: thumbnail
    ![click import icon](/images/provider/nativeprovider/click_import_icon.png)

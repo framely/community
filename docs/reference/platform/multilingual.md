@@ -38,7 +38,7 @@ Or head to the **Settings** page, add multiple languages in **Chatbot Language**
 ![setting language](/images/platform/multilingual/setting_language.png)
 :::
 
-After saved, depending on the language you choose, the corresponding language bot will be created automatically. To access language-specific bot, click the **Language Selector** at the second topbar.
+After saved, depending on the language you choose, the corresponding language bot will be created automatically. To access language-specific bot, click the **Language Selector**.
 
 ::: thumbnail
 ![switch language](/images/platform/multilingual/switch_language.png)
@@ -57,12 +57,4 @@ Remove a language means you will delete the corresponding language bot. To delet
 
 ::: danger Caution 
 Deleting a chatbot cannot be undone. This will permanently destroy all corresponding data, and remove all collaborator associations.
-:::
-
-### Integrations
-
-When integrating channels, you can choose a language as the default language. Your bot will be able to understand all languages you set, and use the default language when interacting with the user. During a conversation, the user can switch languages when needed.
-
-::: thumbnail
-![default language](/images/platform/multilingual/default_language.png)
 :::
