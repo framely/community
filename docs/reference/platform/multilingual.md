@@ -34,6 +34,7 @@ When creating a chatbot, you can add multiple languages in **Add Language** file
 
 Or head to the **Settings** page, add multiple languages in **Chatbot Language** filed.
 
+::: thumbnail
 ![setting language](/images/platform/multilingual/setting_language.png)
 :::
 
