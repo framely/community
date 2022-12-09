@@ -6,7 +6,7 @@ tagline: Schema grounded Chatbots for any Services
 heroText: Open Frontend Framework for Chatbot Development
 actions:
   - text: Start to Build
-    link: /reference/platform/signingup.html
+    link: https://build.opencui.io
     type: primary
   - text: Learn More
     link: /guide/getting-started.html
