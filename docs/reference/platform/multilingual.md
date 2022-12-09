@@ -38,7 +38,7 @@ Or head to the **Settings** page, add multiple languages in **Chatbot Language**
 ![setting language](/images/platform/multilingual/setting_language.png)
 :::
 
-After saved, depending on the language you choose, the corresponding language bot will be created automatically. To access language-specific bot, click the **Language Selector**.
+After saved, depending on the language you choose, the corresponding language bot will be created automatically. To access language-specific bot, click the **Language Selector** above the left sidebar menu.
 
 ::: thumbnail
 ![switch language](/images/platform/multilingual/switch_language.png)
