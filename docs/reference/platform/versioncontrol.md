@@ -66,7 +66,7 @@ To create branch, you can just modify your project, for example you can create a
 
 ### Sync Up with Master
 
-During your working, if the version of master has changed, the **Rebase** in the right sidebar will light up. 
+During your working, if the version of master has changed, the **Rebase** in the upper-right corner of the **Build** area will light up. 
 1. Click **Rebase** to merge the latest changes from the master.
 
 ::: thumbnail
