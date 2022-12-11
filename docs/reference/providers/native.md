@@ -18,7 +18,7 @@ These native provider can be registered as private deployment, in which case, yo
 
 To create a native provider:
 
-1. Go to one of your org, select **Provider** in left side menu, click **Create** button on the right side.
+1. Go to one of your org, select **Provider** in left side menu, click the **Create** button on the right side.
 
    ::: thumbnail
    ![create provider](/images/provider/nativeprovider/create_provider.png)
@@ -28,7 +28,7 @@ To create a native provider:
     - Enter a label for your provider.
     - Select **Native Provider** in **Provider Type** field.
     - Declare **Deploy Mode**. Private deploy means its source code OpenCUI platform will not access, while OpenCUI-hosted means the platform needs to access it.
-    - Click **Save**.
+    - Click the **Save** button.
 
     ::: thumbnail
     ![create provider popup](/images/provider/nativeprovider/create_provider_popup.png)
@@ -47,10 +47,10 @@ When you are done with creation, you need to declare which service interface thi
    <br>
 
    ![search in Clone & Import list](/images/provider/nativeprovider/search_in_clone_import.png)
-   *Search in Clone&Import list page*
+   *Search in Explore list page*
    :::
 
-2. When you are in the service component, click **Import** icon in the right sdiebar. Then in the popup window, select your native provider and save.
+2. When you are in the service component, click **Import** on the second navigation bar. Then in the popup window, select your native provider and save.
 
    ::: thumbnail
    ![click import icon](/images/provider/nativeprovider/click_import_icon.png)
