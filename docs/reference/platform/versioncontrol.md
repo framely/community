@@ -46,7 +46,7 @@ This guide walks you through version control workflow:
 To create branch, you can just modify your project, for example you can create a skill. And then all your work will be done in your branch. 
 
 ### View Your Changes
-1. To view your changes, clicking **Diff** icon in the right sidebar.
+1. To view your changes, clicking **Diff** in the upper-right corner of the **Build** area.
 
 ::: thumbnail
 ![click diff](/images/platform/versioncontrol/click_diff.png)
@@ -58,7 +58,7 @@ To create branch, you can just modify your project, for example you can create a
 ![compare diffs](/images/platform/versioncontrol/compare_diffs.png)
 :::
 
-3. If you are done with your work, don't forget commit your changes by clicking **Commit** icon on both struct side and lang side. This will prepare for the testing and pull request.
+3. If you are done with your work, don't forget commit your changes by clicking **Commit** on both struct side and lang side. This will prepare for the testing and pull request.
 
 ::: thumbnail
 ![commit](/images/platform/versioncontrol/commit.png)
@@ -66,8 +66,8 @@ To create branch, you can just modify your project, for example you can create a
 
 ### Sync Up with Master
 
-During your working, if the version of master has changed, the **Rebase** icon in the right sidebar will light up and turn red. 
-1. Click the red **Rebase** icon to merge the latest changes from the master.
+During your working, if the version of master has changed, the **Rebase** in the right sidebar will light up. 
+1. Click **Rebase** to merge the latest changes from the master.
 
 ::: thumbnail
 ![rebase](/images/platform/versioncontrol/rebase.png)
@@ -87,7 +87,7 @@ During your working, if the version of master has changed, the **Rebase** icon i
 
 ### Review Changes
 
-1. To review changes, you should create a pull request that is ready for review. Head to the **Versions** Page, click P**ull Request** button.
+1. To review changes, you should create a pull request that is ready for review. Head to the **Versions** Page, click **Pull Request** button.
 
 ::: thumbnail
 ![pull request](/images/platform/versioncontrol/pull_request.png)
