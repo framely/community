@@ -16,7 +16,7 @@ Multilingual chatbot assumes you deliver the same service to each user in their 
 
 When building a multilingual chatbot, you should design the bot interaction at **STRUCT** *(short for structure)* level which represents the interaction layer, and supply language-specific data in each language side. 
 
-It's easy to provide a consistent experience in multilingual chatbot, with the same structured data propagating to every language side by clicking the **Commit** icon in structure level. No need duplicate the bot you created, no need repeat the process for as many languages as you need, just  filling in the blanks with different languages.
+It's easy to provide a consistent experience in multilingual chatbot, with the same structured data propagating to every language side by clicking the **Commit** in structure level. No need duplicate the bot you created, no need repeat the process for as many languages as you need, just  filling in the blanks with different languages.
 
 ![two layers](/images/platform/multilingual/two_layers.png)
 
