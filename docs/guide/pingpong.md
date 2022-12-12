@@ -65,7 +65,7 @@ To create a chatbot (If you are already inside a chatbot, you can skip these ste
    ![create chatbot](/images/guide/pingpong/create_chatbot.png)
    :::
 
-2. After clicking **Create**, there will be a pop-up window. You should complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All of them can be modified after creation except the **Region** field:
+2. After clicking the **Create** button, there will be a pop-up window. You should complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All of them can be modified after creation except the **Region** field:
    - Enter your chatbot's label in the **Project Label** field, start with lowercase, for example `pingpong`.
    - Select your preferred **Region**.
    - Select the languages for your chatbot in the **Add Language** field.
@@ -213,8 +213,8 @@ OpenCUI provides a built-in testing feature "**Debug**" to help you to uncover b
    ![pingpong test](/images/guide/pingpong/pingpong_test.png)
    :::
 
-5. After you have tested your chabot, you can switch to the **STRUCT** level to merge your changes: 
-   1. Head to **Versions** page, click **Pull Request** on the right side.
+5. After you have tested your chabot, you can switch to **Version** page to create a pull request with your changes: 
+   1. In the middle of the second navigation bar, select **Version** tab. Then click **Pull Request** in the upper-right corner of the Version area.
       ::: thumbnail
       ![pingpong pull request](/images/guide/pingpong/pingpong_pull_request.png)
       :::
@@ -250,7 +250,7 @@ These following steps will show you how to use the extension channels provided b
 
 Now let's use Messenger as an example. To use this integration:
 
-1. Click **Explore** on the top navigation bar, type `channel` in the search bar and press enter. You can use filter on the right of the search box, please select **service** to assist in filtering.
+1. Select **Explore** tab on the top navigation bar, type `channel` in the search bar and press enter. You can use filter on the right of the search box, please select **service** to assist in filtering.
 
    ::: thumbnail
    ![search channel](/images/guide/pingpong/search_channel.png)
@@ -262,7 +262,7 @@ Now let's use Messenger as an example. To use this integration:
    ![select opencui channel](/images/guide/pingpong/select_opencui_channel.png)
    :::
 
-3. In **channel** service, click **Import** in the upper-left corner of the Build area and select your pingpong chatbot in the popup.
+3. In **channel** service, click **Import** on the right side of the second navigation bar. Select your pingpong chatbot in the popup window.
    ::: thumbnail
    ![click import](/images/guide/pingpong/click_import_icon.png)
    *Click import*
@@ -316,7 +316,7 @@ Now let's use Messenger as an example. To use this integration:
       ![config info](/images/guide/pingpong/config_info.png)
       :::
 
-7. When you're done configuring, merge your changes to master. And then you can deploy your chatbot by clicking **Deploy** in **Versions** page.
+7. When you're done configuring, merge your changes to master. And then you can deploy your chatbot by clicking **Deploy** in **Version** page.
 
    ::: thumbnail
    ![deploy chatbot](/images/guide/pingpong/deploy_chatbot.png)
