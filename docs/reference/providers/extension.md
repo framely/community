@@ -174,8 +174,7 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
 
 ### 5. Wire and Configure in Chatbot
 
-1. If you have not already created a chatbot, create one now. Inside your org, head to chatbot list page by clicking **Chatbots** in the left side menu, then click **Create**
-2. on the right side.
+1. If you have not already created a chatbot, create one now. Inside your org, head to chatbot list page by clicking **Chatbots** in the left side menu, then click **Create** on the right side.
     - Enter your chatbot's label in the Project Label field, for example `helloworld`.
     - Select your preferred Region.
     - Select the languages for your chatbot in the **Add Language** field, we selcet `English(en)` here.
@@ -190,13 +189,13 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
     *Create popup window*
     :::
 
-3. Import service `component_0915` into chatbot `helloworld`. Go to service `component_0915`, click **Import** on the second navigation bar. In the popup window, select your chatbot, in this case we select `helloworld`, and save. 
+2. Import service `component_0915` into chatbot `helloworld`. Go to service `component_0915`, click **Import** on the second navigation bar. In the popup window, select your chatbot, in this case we select `helloworld`, and save. 
 
     ::: thumbnail
     ![import component0915 to chatbot](/images/provider/extension/hello_import_component0915.png)
     :::
 
-4. Switch to your `helloworld` chatbot, wiring the implementation and configure the integration. 
+3. Switch to your `helloworld` chatbot, wiring the implementation and configure the integration. 
     - Heading to **Settings** page, in **Integrations** tab, select the service interface you just imported and the native provider that implements it. 
     - Finish the configuration form and save. 
     ::: thumbnail
@@ -209,4 +208,4 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
     *Configuration popup window*
     :::
 
-5. Don't forget to merge your latest changes to master.
+4. Don't forget to merge your latest changes to master.
