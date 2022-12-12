@@ -103,7 +103,7 @@ The instructions below show you how to test your bot.
 ![testing try it now](/images/platform/testing/testing_try_it_now.png)
 :::
 
-3. Enter **Structure Input** if needed and click the **Connect** button. In this case, we just need to click **Connect**. 
+3. Enter **Structure Input** if needed and click **Connect**. In this case, we just need to click **Connect**. 
 
 ::: thumbnail
 ![testing connect](/images/platform/testing/testing_connect.png)
@@ -129,7 +129,7 @@ The instructions below show you how to test your bot.
 ![save test case](/images/platform/testing/save_testcase.png)
 :::
 
-2. Enter a test case display name, for example `happy path`, click the **Save** button to save the test case..
+2. Enter a test case display name, for example `happy path`, click **Save** to save the test case..
 
 ::: thumbnail
 ![enter name](/images/platform/testing/enter_name.png)
@@ -149,7 +149,7 @@ The instructions below show you how to test your bot.
 ![run testcase](/images/platform/testing/run_testcase.png)
 :::
 
-2. Select the test cases you want to run, and click the **Run** button.
+2. Select the test cases you want to run, and click **Run**.
 
 ::: thumbnail
 ![run](/images/platform/testing/run.png)
