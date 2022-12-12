@@ -59,13 +59,13 @@ After you log in, there will be an org *(short for organization)* automatically 
 
 To create a chatbot (If you are already inside a chatbot, you can skip these steps): 
 
-1. Inside an org, head to chatbot list page by clicking **Chatbots** in the left side menu, then click the **Create** button on the right side.
+1. Inside an org, head to chatbot list page by clicking **Chatbots** in the left side menu, then click **Create** on the right side.
 
    ::: thumbnail
    ![create chatbot](/images/guide/pingpong/create_chatbot.png)
    :::
 
-2. After clicking the **Create** button, there will be a pop-up window. You should complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All of them can be modified after creation except the **Region** field:
+2. After clicking **Create**, there will be a pop-up window. You should complete the form for basic chatbot settings, here you only need to care about the **Project Label**, **Region** and **Add language**. All of them can be modified after creation except the **Region** field:
    - Enter your chatbot's label in the **Project Label** field, start with lowercase, for example `pingpong`.
    - Select your preferred **Region**.
    - Select the languages for your chatbot in the **Add Language** field.
@@ -80,7 +80,7 @@ To create a chatbot (If you are already inside a chatbot, you can skip these ste
    ![complete form](/images/guide/pingpong/complete_form.png)
    :::
 
-3. Once you are done with this form, click the **Save** button.
+3. Once you are done with this form, click **Save**.
 
    ::: thumbnail
    ![create save](/images/guide/pingpong/create_save.png)
@@ -110,7 +110,7 @@ For each chatbot, you can create many skills. But in this case, you only need on
    ![struct level](/images/guide/pingpong/struct_level.png)
    :::
 
-2. To create a skill, click the **Create** button on the right side.
+2. To create a skill, click **Create** on the right side.
 
    ::: thumbnail
    ![create intent](/images/guide/pingpong/create_intent.png)
@@ -202,7 +202,7 @@ OpenCUI provides a built-in testing feature "**Debug**" to help you to uncover b
    *Debug slide out*
    :::
 
-3. Click the **Connect** button, it may take some time to execute. After the connection is executed successfully, you can test your bot by typing messages.
+3. Click **Connect**, it may take some time to execute. After the connection is executed successfully, you can test your bot by typing messages.
 
    ::: thumbnail
    ![connect](/images/guide/pingpong/connect.png)
@@ -214,7 +214,7 @@ OpenCUI provides a built-in testing feature "**Debug**" to help you to uncover b
    :::
 
 5. After you have tested your chabot, you can switch to the **STRUCT** level to merge your changes: 
-   1. Head to **Versions** page, click the **Pull Request** button on the right side.
+   1. Head to **Versions** page, click **Pull Request** on the right side.
       ::: thumbnail
       ![pingpong pull request](/images/guide/pingpong/pingpong_pull_request.png)
       :::
@@ -264,7 +264,7 @@ Now let's use Messenger as an example. To use this integration:
 
 3. In **channel** service, click **Import** in the upper-left corner of the Build area and select your pingpong chatbot in the popup.
    ::: thumbnail
-   ![click import icon](/images/guide/pingpong/click_import_icon.png)
+   ![click import](/images/guide/pingpong/click_import_icon.png)
    *Click import*
 
    <br>
@@ -316,7 +316,7 @@ Now let's use Messenger as an example. To use this integration:
       ![config info](/images/guide/pingpong/config_info.png)
       :::
 
-7. When you're done configuring, merge your changes to master. And then you can deploy your chatbot by clicking the **Deploy** button in **Versions** page.
+7. When you're done configuring, merge your changes to master. And then you can deploy your chatbot by clicking **Deploy** in **Versions** page.
 
    ::: thumbnail
    ![deploy chatbot](/images/guide/pingpong/deploy_chatbot.png)
