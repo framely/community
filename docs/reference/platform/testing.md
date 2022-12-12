@@ -123,7 +123,7 @@ The instructions below show you how to test your bot.
 
 ### Create a Test Case
 
-1. Click **Save Test Case** icon in the topbar to save a conversation as a test case.
+1. Click the **Save Test Case** icon in the topbar to save a conversation as a test case.
 
 ::: thumbnail
 ![save test case](/images/platform/testing/save_testcase.png)
