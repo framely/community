@@ -46,7 +46,7 @@ When you are done with creation, you need to declare which service interface thi
 
    <br>
 
-   ![search in Clone & Import list](/images/provider/nativeprovider/search_in_clone_import.png)
+   ![search in Explore list](/images/provider/nativeprovider/search_in_clone_import.png)
    *Search in Explore list page*
    :::
 
