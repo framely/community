@@ -18,7 +18,7 @@ These native provider can be registered as private deployment, in which case, yo
 
 To create a native provider:
 
-1. Go to one of your org, select **Provider** in left side menu, click the **Create** button on the right side.
+1. Go to one of your org, select **Provider** in left side menu, click **Create** on the right side.
 
    ::: thumbnail
    ![create provider](/images/provider/nativeprovider/create_provider.png)
@@ -28,7 +28,7 @@ To create a native provider:
     - Enter a label for your provider.
     - Select **Native Provider** in **Provider Type** field.
     - Declare **Deploy Mode**. Private deploy means its source code OpenCUI platform will not access, while OpenCUI-hosted means the platform needs to access it.
-    - Click the **Save** button.
+    - Click **Save**.
 
     ::: thumbnail
     ![create provider popup](/images/provider/nativeprovider/create_provider_popup.png)
@@ -53,8 +53,8 @@ When you are done with creation, you need to declare which service interface thi
 2. When you are in the service component, click **Import** on the second navigation bar. Then in the popup window, select your native provider and save.
 
    ::: thumbnail
-   ![click import icon](/images/provider/nativeprovider/click_import_icon.png)
-   *Click import icon*
+   ![click import](/images/provider/nativeprovider/click_import_icon.png)
+   *Click import*
 
    <br>
 
@@ -213,7 +213,7 @@ After a native provider is registered on platform, anyone can use it by wiring t
 
 1. **Declare service interface.** Click into the service component implemented by the native provider you will use, and import it into your chatbot.
    ::: thumbnail
-   ![click import icon](/images/provider/nativeprovider/click_import_icon.png)
+   ![click import](/images/provider/nativeprovider/click_import_icon.png)
    ::: 
 
 2. **Wire native provider to its service interface.** Switch to your chatbot. Heading to **Settings** page, in **Integrations** tab, select the service interface you just imported and the native provider that implements it.
