@@ -39,7 +39,7 @@ The composition also provides reusability. When there is already a frame that in
 
 To import a component to your project, please follow the subsequent directions: 
 1. Click into the component which you would like to import.
-2. On the right sidebar, click **Import**.
+2. On the right sidebar, click **Import** icon.
 ::: thumbnail
 ![import icon](/images/platform/reusability/import-icon.png)
 :::
@@ -56,7 +56,7 @@ To import a component to your project, please follow the subsequent directions:
 
 To clone a project to your org, please follow the subsequent directions: 
 1. Click into the project which you would like to clone.
-2. On the right sidebar, click **Clone**.
+2. On the right sidebar, click **Clone** icon.
 ::: thumbnail
 ![clone icon](/images/platform/reusability/clone-icon.png)
 :::
