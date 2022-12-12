@@ -50,7 +50,7 @@ Now lest's use **helloworld** extension as an example to show how extension is d
 
 ### 1. Decribe Interface
 
-1. **Create service interface**. Go to one of your org, select **Components** in left side menu, click **Create** button on the right side. In the **Create** popup window: 
+1. **Create service interface**. Go to one of your org, select **Components** in left side menu, click **Create** on the right side. In the **Create** popup window: 
     - Enter a label for service component. For example, our hello world example uses `component_0915` as label. 
     - Turn on service toggle, enable service.
     - No need to add language. As a service that provides an interface for extensions does not need to add language.
@@ -58,7 +58,7 @@ Now lest's use **helloworld** extension as an example to show how extension is d
 
     ::: thumbnail
     ![create service component](/images/provider/extension/hello_create_service_component.png)
-    *Click Create button*
+    *Click Create*
     
     <br>
 
@@ -82,7 +82,7 @@ Now lest's use **helloworld** extension as an example to show how extension is d
 
 
 ### 2. Generate Code Stub
-In the service you described, click **Export** in the right sidebar to extract the generated file. 
+In the service you described, click **Export** on the second navigation bar to extract the generated file. 
 
 ::: thumbnail
 ![export service component](/images/provider/extension/hello_export_service.png)
@@ -122,7 +122,7 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
 
 ### 4. Register Native Provider
 
-1. Create a native provider. Go to one of your org, select **Provider** in left side menu, click **Create** button on the right side. In the **Create** popup window: 
+1. Create a native provider. Go to one of your org, select **Provider** in left side menu, click **Create** on the right side. In the **Create** popup window: 
     - Enter a label for provider. For example, `test` as label. 
     - Select **Native Provider** in **Provider Type** field.
     - Select **OpenCUI-hosted** in **Deploy Mode** field as `helloworld` is one of OpenCUI extensions.
@@ -130,7 +130,7 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
 
     ::: thumbnail
     ![create native provider](/images/provider/extension/hello_create_native.png)
-    *Click Create button*
+    *Click Create*
     
     <br>
 
@@ -139,7 +139,7 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
     :::
 
 2. Declare service interface `component_0915` in native provider: 
-    - Go to service `component_0915`, click **Import** icon in the right sidebar. In the popup window, select your native provider, in this case we select `test`, and save. 
+    - Go to service `component_0915`, click **Import** on the second navigation bar. In the popup window, select your native provider, in this case we select `test`, and save. 
     - Back to the `test` native provider, heading to **Service** page from the left side menu. In the **Implemented** section, select `component_0915`.
 
     ::: thumbnail
@@ -174,10 +174,10 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
 
 ### 5. Wire and Configure in Chatbot
 
-1. If you have not already created a chatbot, create one now. Inside your org, head to chatbot list page by clicking **Chatbots** in the left side menu, then click **Create** button on the right side.
+1. If you have not already created a chatbot, create one now. Inside your org, head to chatbot list page by clicking **Chatbots** in the left side menu, then click **Create** on the right side.
     - Enter your chatbot's label in the Project Label field, for example `helloworld`.
     - Select your preferred Region.
-    - Select the languages for your chatbot in the **Add Language** field, we selcet `EN` here.
+    - Select the languages for your chatbot in the **Add Language** field, we selcet `English(en)` here.
 
     ::: thumbnail
     ![create chatbot](/images/provider/extension/hello_create_chatbot.png)
@@ -189,7 +189,7 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
     *Create popup window*
     :::
 
-2. Import service `component_0915` into chatbot `helloworld`. Go to service `component_0915`, click **Import** icon in the right sidebar. In the popup window, select your chatbot, in this case we select `helloworld`, and save. 
+2. Import service `component_0915` into chatbot `helloworld`. Go to service `component_0915`, click **Import** on the second navigation bar. In the popup window, select your chatbot, in this case we select `helloworld`, and save. 
 
     ::: thumbnail
     ![import component0915 to chatbot](/images/provider/extension/hello_import_component0915.png)
