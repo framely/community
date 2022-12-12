@@ -18,7 +18,7 @@ To deploy your chatbot, stay at **STRUCT** level:
 ![version page](/images/platform/deployment/version_page.png)
 :::
 
-2. Click **Deploy** button, the latest **Merged** version will be published to production environment.
+2. Click **Deploy**, the latest **Merged** version will be published to production environment.
 
 ::: thumbnail
 ![version page](/images/platform/deployment/deploy_button.png)
