@@ -4,7 +4,7 @@
 
 ## Motivation
 
-To test your bot, you can use built-in test feature **Try It Now** to uncover bugs and prevent regressions. You can provide user input as text step by step, or you create and execute test case as needed. 
+To test your bot, you can use built-in test feature **Debug** to uncover bugs and prevent regressions. You can provide user input as text step by step, or you create and execute test case as needed. 
 
 ::: thumbnail
 ![pingpong test](/images/guide/pingpong/pingpong_test.png)
@@ -12,7 +12,7 @@ To test your bot, you can use built-in test feature **Try It Now** to uncover bu
 
 ## Structure Input
 
-When interacting with **Try It Now**, you can provide user input as text like *"Get me two tickets for Star Wars"*, or a json format represents the same semantics which is used to describe filling for some data structure or provide values for its slots. 
+When interacting with **Debug**, you can provide user input as text like *"Get me two tickets for Star Wars"*, or a json format represents the same semantics which is used to describe filling for some data structure or provide values for its slots. 
 
 OpenCUI dialog engine can be interacted directly in Frame Event in its json format, which allows for easier bug fixes on the interaction logic by separating the dialog understanding issues. 
 
@@ -39,7 +39,7 @@ For example, the user utterance `Get me two tickets for Star Wars` can be encode
 ]
 ```
 
-In **Try It Now**, you can set this structure in the **Structure Input** field: 
+In **Debug**, you can set this structure in the **Structure Input** field: 
 - Before connecting
 
 ::: thumbnail
@@ -52,7 +52,7 @@ In **Try It Now**, you can set this structure in the **Structure Input** field:
 ![after connect](/images/platform/testing/after_connect.png)
 :::
 
-Then you can get the conversation in **Try It Now** like: 
+Then you can get the conversation in **Debug** like: 
 
 ::: thumbnail
 ![structure input](/images/platform/testing/structure_input.png)
@@ -62,7 +62,7 @@ Then you can get the conversation in **Try It Now** like:
 
 The goal of [golden test cases](https://en.wikipedia.org/wiki/Characterization_test) is to help you verify that the modifications made to your bot did not modify its behavior in unwanted or undesirable ways. In other words, test case execution verifies that chatbot responses have not changed for the same inputs. 
 
-To create a test case, you should simulate the path of the conversation you want to save in **Try It Now** and provide a test case display name. After saving, you can view them in the left sidebar menu **Test Cases**, which shows the test name, the latest test time and the latest test result. 
+To create a test case, you should simulate the path of the conversation you want to save in **Debug** and provide a test case display name. After saving, you can view them in the left sidebar menu **Test Cases**, which shows the test name, the latest test time and the latest test result. 
 
 ::: thumbnail
 ![test cases](/images/platform/testing/test_cases.png)
@@ -75,7 +75,7 @@ To run the test case, you can select the one you want to run. The test engine wi
 
 ## How To Use
 
-**Try It Now** will only test the instances you committed, so you need to commit your chatbot on both structure side and language side. This means that whenever there are new changes, **Commit** is required, and the new changes will be tested in try it now. Otherwise you will still test the past performance.
+**Debug** will only test the instances you committed, so you need to commit your chatbot on both structure side and language side. This means that whenever there are new changes, **Commit** is required, and the new changes will be tested in debug. Otherwise you will still test the past performance.
 
 ::: thumbnail
 ![commit struct](/images/guide/pingpong/commit_struct.png)
@@ -89,15 +89,15 @@ To run the test case, you can select the one you want to run. The test engine wi
 
 The instructions below show you how to test your bot.
 
-### Try It Now
+### Debug
 
-1. Select the language bot you want to test, click **Commit** icon in the right sidebar.
+1. Select the language bot you want to test, click **Commit** in the upper-right corner of the **Build** area.
 
 ::: thumbnail
 ![testing commit](/images/platform/testing/testing_commit.png)
 :::
 
-2. Click **Try It Now** icon in the right sidebar, then the test field will slide out.
+2. Click **Debug** in the upper-right corner of the **Build** area, then the test field will slide out.
 
 ::: thumbnail
 ![testing try it now](/images/platform/testing/testing_try_it_now.png)
