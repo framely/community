@@ -145,7 +145,7 @@ Once the declaration of the interaction is done, these language related parts be
 
 Now let's add language-related aspects:
 
-1. Switch to language layer by selecting a language from the topbar. In this case, we will switch to English side, so select **EN** in the language dropdown menu. 
+1. Switch to language layer by selecting a language from the language selector in the upper-left corner of the Build area. In this case, we will switch to English side, so select **EN** in the language dropdown menu. 
 
    ::: thumbnail
    ![switch pingpong en](/images/guide/pingpong/switch_pingpong_en.png)
@@ -176,7 +176,7 @@ Now let's add language-related aspects:
 
 ## Test Chatbot
 
-OpenCUI provides a built-in testing feature "**Debug**" to help you to uncover bugs with the debug info, you can test your chatbot by typing messages. Let's test this pingpong chatbot, which will handle a basic conversation with a [default welcome message](concepts.md#default-skills) and response with *"pong"* to message *"ping"*. 
+OpenCUI provides a built-in testing feature **Debug** to help you to uncover bugs with debug info, you can test your chatbot by typing messages. Let's test this pingpong chatbot, which will handle a basic conversation with a [default welcome message](concepts.md#default-skills) and response with *"pong"* to message *"ping"*. 
 
 1. As **Debug** can only test committed content, please make sure both structure layer and language layer have been committed. 
 
@@ -190,7 +190,7 @@ OpenCUI provides a built-in testing feature "**Debug**" to help you to uncover b
    *Commit on EN level*
    :::
 
-2. On the language layer, click **Debug** in the upper-right corner of the Build area , the test field will slide out. 
+2. On the language layer, click **Debug** in the upper-right corner of the Build area , the debug field will slide out. 
 
    ::: thumbnail
    ![try it now](/images/guide/pingpong/tryitnow_icon.png)
@@ -208,7 +208,7 @@ OpenCUI provides a built-in testing feature "**Debug**" to help you to uncover b
    ![connect](/images/guide/pingpong/connect.png)
    :::
 
-4. Enter `ping` in the text input box at the bottom and press enter, then the bot will respond `Pong`. You can restart your testing by clicking "**Reset Contexts**" icon, and create test cases by clicking "**Save Test Case**" icon. Of course, if there are some exceptions, you can get log info by clicking "**Debug**". For more information about Debug, see [Testing](../reference/platform/testing.md).
+4. Enter `ping` in the text input box at the bottom and press enter, then the bot will respond `Pong`. You can save test cases by clicking "**Save Test Case**" icon, and restart your testing by clicking "**Reset Contexts**" icon. Of course, if there are some exceptions, you can get log info by clicking "**View Log**" icon. For more information about Debug, see [Testing](../reference/platform/testing.md).
    ::: thumbnail
    ![pingpong test](/images/guide/pingpong/pingpong_test.png)
    :::
@@ -273,13 +273,13 @@ Now let's use Messenger as an example. To use this integration:
    *Select your pingpong chatbot*
    :::
 
-4. When you are done with import, you can see this **channel** service in the imported list.
+4. When you are done with import, switch to your pingpong chatbot, you can see this **channel** service under the **Imported** tab.
 
    ::: thumbnail
    ![imported list](/images/guide/pingpong/imported_list.png)
    :::
 
-5. To wire messenger to the channel service: 
+5. To wire messenger to the channel service, back to **Build** tab: 
    1. Heading to **Settings** page, select **Integrations** tab. In the **Service Provider** section, select **channel** service (labeled as `io.opencui.channel.IChannel`) you just imported.
 
       ::: thumbnail
@@ -308,10 +308,10 @@ Now let's use Messenger as an example. To use this integration:
    1. Follow the steps in [Set Up Messenger](../reference/channels/messenger.md#set-up-messenger) to set up your Meta app, **generate access token** and copy this value to OpenCUI.
    2. Configure the integration: 
       - **Label**: Set a label for this channel, should be unique. 
-      - **Callback URL**: Copy this value. This will be used to configure Messenger Webhook.
       - **Verify Token**: You can enter any private token you desire. Copy this value. This will be used to configure Messenger Webhook.
       - **Page Access Token**: Enter the access token you copied when set up messenger.
-      - **Locale**: Set your chatbot a locale.
+      - **Locale**: Select a locale which determines the default language used by your bot.
+      - **Callback URL**: Copy this value after setting the label and locale. This will be used to configure Messenger Webhook.
       ::: thumbnail
       ![config info](/images/guide/pingpong/config_info.png)
       :::
@@ -322,7 +322,7 @@ Now let's use Messenger as an example. To use this integration:
    ![deploy chatbot](/images/guide/pingpong/deploy_chatbot.png)
    :::
 
-8. When successful, there will be a **Green Checked Icon** to indicate current deployed version. Now you can finish setup of the Meta app and test it. Use the **Callback URL** and **Verify Token** values you copied above to configure the Messenger Webhook by following steps in the [Configure Webhook](../reference/channels/messenger.md#configure-webhook)  and [Test Your Chatbot](../reference/channels/messenger.md#test-your-chatbot).
+8. When successful, there will be a **Green Checked Icon** to indicate current deployed version. Now you can finish setup of the Meta app and test it. Use the **Callback URL** and **Verify Token** values you copied above to configure the Messenger Webhook by following steps in the [Configure Webhook](../reference/channels/messenger.md#finish-setup-messenger)  and [Test Your Chatbot](../reference/channels/messenger.md#test-your-chatbot).
 
    ::: thumbnail
    ![deploy checked icon](/images/guide/pingpong/deploy_checked_icon.png)
