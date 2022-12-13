@@ -58,7 +58,7 @@ To create branch, you can just modify your project, for example you can create a
 ![compare diffs](/images/platform/versioncontrol/compare_diffs.png)
 :::
 
-3. If you are done with your work, don't forget commit your changes by clicking the **Commit** button on both struct side and language sides. This will prepare for the testing and pull request.
+3. If you are done with your work, don't forget to **Commit** your changes on both structure level and language level. This will prepare for the testing and pull request.
 
 ::: thumbnail
 ![commit](/images/platform/versioncontrol/commit.png)
@@ -66,8 +66,8 @@ To create branch, you can just modify your project, for example you can create a
 
 ### Sync Up with Master
 
-During your working, if the version of master has changed, the **Rebase** in the upper-right corner of the Build area will light up and turn red. 
-1. Click **Rebase** to merge the latest changes from the master.
+During your working, if the version of master has changed, **Rebase** with its icon in the upper-right corner of the Build area will light up and turn red. 
+1. Click **Rebase** to merge the latest changes from the master into your branch.
 
 ::: thumbnail
 ![rebase](/images/platform/versioncontrol/rebase.png)
@@ -87,37 +87,40 @@ During your working, if the version of master has changed, the **Rebase** in the
 
 ### Review Changes
 
-1. To review changes, you should create a pull request that is ready for review. In the middle of the second navigation bar, select **Version** tab. Then click **Pull Request** in the upper-right corner of the Version area.
+To review changes, you should switch to **Version** page. In the middle of the second navigation bar, select **Version** tab: 
 
-::: thumbnail
-![pull request](/images/platform/versioncontrol/pull_request.png)
-:::
+1. If you are ready to be reviewed, you can create a pull request with your changes. 
+    - Click **Pull Request** in the upper-right corner of the Version area.
 
-2. When the creation is successful, you can see the pull request created in the version list. 
+    ::: thumbnail
+    ![pull request](/images/platform/versioncontrol/pull_request.png)
+    :::
 
-::: thumbnail
-![pull request item](/images/platform/versioncontrol/pull_request_item.png)
-:::
+    - When the creation is successful, you can see the pull request item in the version list. You can review by yourself or request a review from other person.
 
-3. Click the pull request item, you can review by yourself or request a review from other person. After you've finished reviewing all the diffs you want in the pull request, click **Approve PR** or **Close PR** to submit your review. 
+    ::: thumbnail
+    ![pull request item](/images/platform/versioncontrol/pull_request_item.png)
+    :::
+
+2. If the pull request item already exists, click on the item to review. After you've finished reviewing all the diffs in the pull request, click **Approve PR** or **Close PR** to submit your review. 
 
 ::: thumbnail
 ![review](/images/platform/versioncontrol/review.png)
 :::
 
-4. When the pull request is approved, you can merge it by yourself. Select the approved pull request you'd like to merge, click **Merge**.
+3. When the pull request is approved, you can merge it. Select the approved pull request you'd like to merge, click **Merge**.
 
 ::: thumbnail
 ![merge](/images/platform/versioncontrol/merge.png)
 :::
 
-5. Enter your version tag, click **Save**, the **Merge** process will start. At the same time, a **Rebase** operation will be done automatically to avoid changes being out of date.
+4. Enter your version tag, click **Save**, the **Merge** process will start. At the same time, a **Rebase** operation will be done automatically to avoid changes being out of date.
 
 ::: thumbnail
 ![version tag](/images/platform/versioncontrol/version_tag.png)
 :::
 
-6. If you are an owner or have admin permissions, you can set the project as protected project. It means pull request authors cannot approve their own pull requests. To set this feature, head to the **Settings** page, enable the **Protected** by turning on the toggle.
+5. If you are an owner or have admin permissions, you can set the project as protected project. It means pull request authors cannot approve their own pull requests. To set this feature, head to the **Settings** page, enable the **Protected** by turning on the toggle.
 
 ::: thumbnail
 ![protected](/images/platform/versioncontrol/protected.png)
