@@ -86,7 +86,7 @@ In conversation layer, entity represents an instance of concept type, like `beij
 ![turn on abstract](/images/guide/concepts/turn-on-abstract.png)
 :::
 
-4. To add a parent entity, switch to the **Schema** tab. In the  **Parent Entities** section, select an abstract entity.
+4. To add a parent entity, switch to the **Schema** tab. In the **Parent Entities** section, select an abstract entity.
 ::: thumbnail
 ![add parent entity](/images/guide/concepts/add-parent-entity.png)
 :::
