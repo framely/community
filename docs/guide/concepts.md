@@ -30,11 +30,23 @@ These pre-defined data types we support like [Java](https://build.opencui.io/org
 Generally, a skill represents what a user wants, at the same time, it is essentially a function that a user can access through conversations for businesses. 
 
 In OpenCUI, skill, as a composite CUI data type for functions, is designed to define a self-contained conversational component that delivers some functionality to a user. This means that all three aspects of conversational service delivery need to be defined on top of the corresponding data type: 
-1. collect what user wants through slot filling
-2. invoke function using collected slot value as input parameter
-3. verbalize the service result and render them in channel.
+1. Collect what user wants through slot filling.
+2. Invoke functions using collected slot value as input parameter. The invoked function can be a native function defined in the current skill, or a function from the slot of the current skill, in a nested sense like `slot.function()`.
+3. Verbalize the service result and render them in channel.
 
 At language level, skills can be expressed mainly by verb phrases or full sentence. When expressed in full sentence, the subject need to be first person. Examples for such utterances includes: *"Book me a table for two for Sunday evening"* or *"I would like to make a reservation on Sunday"*.
+
+#### How To Define
+In a skill, the slots you can add include regular slots and service slots. Regular slots are used to collect information while service slots can be used to get access to the service.
+1. To add a regular slot, first select the **Schema** tab. In the **Slots** section, click **Add Slot**.
+::: thumbnail
+![add regular slot](/images/guide/concepts/add-regular-slot.png)
+:::
+
+2. To add a service slot, scroll down to the **Service** section, click **Select Service**.
+::: thumbnail
+![click select service](/images/guide/concepts/click-select-service.png)
+:::
 
 #### Default Skills
 These following **Default Skills** will be created automatically when you successfully create the chatbot, and you can modify them as desired:
@@ -63,18 +75,18 @@ The term entity is used to describe the general concept of types and they are ba
 In conversation layer, entity represents an instance of concept type, like `beijing` is an instance of type `City`. In service layer, entity are mapped to primitive type, of enum like atomic type. Understanding entity is typically done by extractive understanding, with synonyms annotation are the important control that builder has to influence the dialog understanding behavior.
 
 #### How To Define
-1. In the **Entities** field, click **Create**.
-2. To add an instance, click **Add** in the **Instances** section.
+1. Head to **Entities** page, click **Create**.
+2. To add an instance, under the **Instances** tab, click **Add**.
 ::: thumbnail
 ![add instance](/images/guide/concepts/add-instance.png)
 :::
 
-3. To enable abstract, turn on **Abstract**.
+3. To enable abstract, turn on the **Abstract** toggle.
 ::: thumbnail
 ![turn on abstract](/images/guide/concepts/turn-on-abstract.png)
 :::
 
-4. To add a parent entity, switch to **Schema** section and select an abstract entity in the **Parent Entities** section.
+4. To add a parent entity, switch to the **Schema** tab. In the  **Parent Entities** section, select an abstract entity.
 ::: thumbnail
 ![add parent entity](/images/guide/concepts/add-parent-entity.png)
 :::
