@@ -31,22 +31,10 @@ Generally, a skill represents what a user wants, at the same time, it is essenti
 
 In OpenCUI, skill, as a composite CUI data type for functions, is designed to define a self-contained conversational component that delivers some functionality to a user. This means that all three aspects of conversational service delivery need to be defined on top of the corresponding data type: 
 1. Collect what user wants through slot filling.
-2. Invoke functions using collected slot value as input parameter. The invoked function can be a native function defined in the current skill, or a function from the slot of the current skill, in a nested sense like `slot.function()`.
+2. Invoke functions using collected slot value as input parameter. The invoked function can be a native function defined in the current skill, or a function from the slot of the current skill, in a nested sense like `slot.function()`. You can add slots in the **Slots** section or **Services** section in a skill.
 3. Verbalize the service result and render them in channel.
 
 At language level, skills can be expressed mainly by verb phrases or full sentence. When expressed in full sentence, the subject need to be first person. Examples for such utterances includes: *"Book me a table for two for Sunday evening"* or *"I would like to make a reservation on Sunday"*.
-
-#### How To Define
-In a skill, the slots you can add include regular slots and service slots. Regular slots are used to collect information while service slots can be used to get access to the service.
-1. To add a regular slot, first select the **Schema** tab. In the **Slots** section, click **Add Slot**.
-::: thumbnail
-![add regular slot](/images/guide/concepts/add-regular-slot.png)
-:::
-
-2. To add a service slot, scroll down to the **Service** section, click **Select Service**.
-::: thumbnail
-![click select service](/images/guide/concepts/click-select-service.png)
-:::
 
 #### Default Skills
 These following **Default Skills** will be created automatically when you successfully create the chatbot, and you can modify them as desired:
