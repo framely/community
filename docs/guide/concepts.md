@@ -30,8 +30,8 @@ These pre-defined data types we support like [Java](https://build.opencui.io/org
 Generally, a skill represents what a user wants, at the same time, it is essentially a function that a user can access through conversations for businesses. 
 
 In OpenCUI, skill, as a composite CUI data type for functions, is designed to define a self-contained conversational component that delivers some functionality to a user. This means that all three aspects of conversational service delivery need to be defined on top of the corresponding data type: 
-1. Collect what user wants through slot filling.
-2. Invoke functions using collected slot value as input parameter. The invoked function can be a native function defined in the current skill, or a function from the slot of the current skill, in a nested sense like `slot.function()`. You can add slots in the **Slots** section or **Services** section in a skill.
+1. Collect what user wants through slot filling. You can add slots in the **Slots** section in a skill.
+2. Invoke functions using collected slot value as input parameter. The invoked function can be a native function defined in the current skill, or a function from the slot of the current skill, in a nested sense like `slot.function()`. You can add service slots in the **Services** section in a skill.
 3. Verbalize the service result and render them in channel.
 
 At language level, skills can be expressed mainly by verb phrases or full sentence. When expressed in full sentence, the subject need to be first person. Examples for such utterances includes: *"Book me a table for two for Sunday evening"* or *"I would like to make a reservation on Sunday"*.
