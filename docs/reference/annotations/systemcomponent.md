@@ -229,9 +229,8 @@ Do you have some promo code?
 
 For more information about Boolean Gate annotation, see [Gated](fillstrategy.md#gated). 
 
-
-
 ## User Identifier
+
 User identifier is a system frame that provides basic information of the user in a channel-dependent way. Once you've added a slot of which type is [`user.UserIdentifier`](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/633f953f28e4f04b5f8443b7/frame/633f953f28e4f04b5f84453e), when the user chats with bot in a channel, the bot can access the user ID, the type and the label of the channel. For example, in the [WhatsApp](../channels/whatsapp.md) channel, the user ID is the user's phone number, the type of the channel is *whatsApp* and the label of the channel is defined by the chatbot builder.
 
 With the information from user identifier, it's convenient for business to manage users along with their requests. For example, when the bot has confirmed the reservation information with users, it could store the reservation under the user ID and send the user ID back to the user. When the user comes for dinner, that ID can be used to get the reserved table.
