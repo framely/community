@@ -31,7 +31,7 @@ There are two types of frames: interface and implementation, which allows you to
 In OpenCUI, interface frame can inherit many interfaces, every function on the interface is abstract (only signature, no body). Implementation frame can implement many interfaces, but can only inherit one implementation, and must implement all the abstract functions specified in the interface. 
 
 ## Compose
-The composition also provides reusability. When there is already a frame that includes the instances and behaviors you want, you can reuse the existing frame as slot for a larger frame, to get bigger and bigger behavior. 
+The composition also provides reusability. When there is already a frame that includes the instances and behaviors you want, you can reuse the existing frame as a slot, or use the frame directly in a skill. By doing so, you can get bigger and bigger behaviors.
 
 ## How To Use
 
@@ -84,7 +84,7 @@ To inherit or implement frames:
 
 ### Compose
 
-To compose frames, navigate to the target frame. Under the **Schema** tab, select the frame you want to reuse in the **Slots** section. 
+1. To add a frame slot, navigate to the target frame. Under the **Schema** tab, select the frame you want to reuse in the **Slots** section. 
 ::: thumbnail
 ![compose](/images/platform/reusability/compose.png)
 *1. In Slots section*
@@ -93,4 +93,9 @@ To compose frames, navigate to the target frame. Under the **Schema** tab, selec
 
 ![compose frame](/images/platform/reusability/compose-frame.png)
 *2. Add frame as slot*
+:::
+
+2. To use a frame, navigate to the target skill. Under the **Schema** tab, select the frame you want to reuse in the **Use Frame** section.
+::: thumbnail
+![use frame](/images/platform/reusability/use-frame.png)
 :::
