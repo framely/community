@@ -69,7 +69,7 @@ Follow these steps to learn how to use scripted providers:
 ::: thumbnail
 
 ![click add frame](/images/provider/overview/click-add-frame.png)
-*Figure 1: click **Add Frame to Implemen***
+*Figure 1: click **Add Frame to Implement***
 
 <br>
 

@@ -107,7 +107,7 @@ The whole procedure is divided into these steps:
 *Figure 3: commit at **EN** side*
 :::
 
-2. When commit successfully, click **Test**.
+2. When commit successfully, click **Debug**.
 
 ::: thumbnail
 ![click test](/images/blog/quick-start-with-service/click-test.png)
