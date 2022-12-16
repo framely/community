@@ -215,7 +215,7 @@ In the **Configuration** field, you can get the **URL** of backoffice along with
 ## Test Functions
 Function testing can be used to see if the result returned by the functions meet your expectation before you call functions in the chatbot. Follow these steps to learn how to use the function testing:
 1. Only when you [deploy](../platform/deployment.md#how-to-use) the current version of your provider, can you use the function testing. Be sure to deploy first!
-2. After deploying the provider, click **Test**.
+2. After deploying the provider, click **Debug**.
 
 ::: thumbnail
 ![click test](/images/provider/postgrest/click-test.png)
