@@ -35,7 +35,29 @@ Once you create a service account, you need to give this account permission to v
 :::
 
 ## Implement Functions
-Before you start to implement functions, read [implementation](./overview.md#implementation) first.
+There are two kinds of ways to implement a function: **Provider Dependent** and **Kotlin**.
+
+- In **provider-dependent** functions, use the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) to implement.
+  - In a return value of which type is frame, in which the names of slots are the same as the names of columns, and the slot's type is compatible with the return column's type in the same index.
+  - For example, if the slots in a frame are [_id_, _name_] of which types are [_kotlin.Int_, _kotlin.String_], the labels of slots in return columns should be [_id_, _name_] as well, and the types of return columns are supposed to be [_number_, _string_] instead of [_string_, _number_].
+
+::: warning Warning
+The return type of Provider-dependent function **can NOT be entity**. If the function only returns one column, you should add wrap the entity using a frame.
+:::
+
+- In **Kotlin** functions, write function bodies in [Kotlin](https://kotlinlang.org/docs/functions.html).
+  - Kotlin functions can be used to convert the value returning from a provider-dependent function to a desirable format.
+  - For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot.
+
+  ``` kotlin
+  /* 
+    Suppose a provider-dependent is getFoodCategory() which returns a list of frame. 
+    There is one slot called category in the frame. 
+  */
+  return getFoodCategory()!!.map{it -> it.category!!} 
+  ```
+
+  - Learn how to implement more Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
 
 ### Types Conversion
 

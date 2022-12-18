@@ -2,8 +2,8 @@
 
 [[toc]]
 
-
 ## Overview
+
 OpenCUI also supports the backend component in form of [postgrest provider](/guide/glossary.md#provider). The backend component can be declaratively defined in two steps: First, create database tables needed by service by adding storage annotation to frames, secondly, provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify the operation team can access these tables via backoffice.
 
 There are a couple advantage of using backend component approach to build service provider. 
@@ -12,112 +12,200 @@ There are a couple advantage of using backend component approach to build servic
 3. The admin interface or backoffice can also be automatically created based on annotation so that the operation team can use backoffice to provide service. 
 4. Backoffice components can be reused by cloning for OpenCUI hosted solution.
 
+## Create Postgrest Provider
+
+To create a postgrest provider: 
+1. Go to one of your org, select **Provider** in left side menu, click **Create** on the right side.
+   ::: thumbnail
+   ![create provider](/images/provider/postgrest/create-provider.png)
+   :::
+
+2. In the Create popup window, complete the form for basic settings: 
+   - Enter a label for your postgrest provider.
+   - Select **Postgrest** in **Provider Type** field.
+   - Select **OpenCUI-hosted** in **Deploy Mode** field as currently we only support hosted mode for postgrest provider. 
+   - Specify a **Region** for your postgrest database.
+   - Click **Save**.
+
+   ::: thumbnail
+   ![provider form](/images/provider/postgrest/provider-form.png)
+   :::
+
+## Declare Service Interface
+
+When you are done with creation, you need to declare which service interface this postgrest provider implements. 
+
+To declare the service interface, enter the service component you want to implement, click **Import** on right side of the second navigation bar. Then in the popup window, select your postgrest provider and **Save**.
+
 ::: thumbnail
-![data management](/images/provider/postgrest/data-management.png)
-*How to create a table and access data*
+![import component](/images/provider/postgrest/import-component.png)
 :::
 
-## Create Tables
-1. To begin with, [create a Postgrest provider](./overview.md#create-provider) and then [import a component](./overview.md#import-component) to the provider.
-2. Next, you need to define the tables using storage-enabled frames. The label of a frame is the name of a table and the slots in the each frame are columns in each table. You can choose to create a frame or select an imported frame in the **Imported** field.
+## Create Database Tables
 
-::: thumbnail
-![create a frame](/images/provider/postgrest/create-frame.png)
-*Create a frame*
-:::
-
-3. Turn on **Storage Enabled** so this frame will be used to create a table in the database. 
+With postgres provider, it is very convenient to create a database without the SQL `CREATE TABLE` statement. All you need to do is create frames or select existing frames (Local or Imported) and **enable Storage**. 
 
 ::: thumbnail
 ![enable storage](/images/provider/postgrest/enable-storage.png)
 :::
 
-4. Add slots to the frame. 
+A frame represents a table, and slots in this frame represent the table columns:
+- Frame label specifies the names of the table.
+- Slot label specifies the names of the columns of the table.
+- Slot type specifies the type of data the column can hold.
 
 ::: thumbnail
-![add slots](/images/provider/postgrest/add-slots.png) 
-::: 
+![data management](/images/provider/postgrest/data-management.png)
+:::
 
-## Add Annotations
+```sql
+-- OpenCUI will create table by the rules you specify with the frame.
+-- Then the SQL CREATE TABLE statement will be like this:
 
-#### Features
-[Annotations](./overview.md#annotation) of providers include storage annotations and backoffice annotations.
-- Storage annotations defines the database schema needed by the backend component, which can then be used to create the database for provider.
-  - Column information for table
-  - Set a default value of a column
-  - Set not-null constraints
-  - Set unique constraints
-- Backoffice annotations are used to define the user experience of the backoffice for the backend.
-  - Upload a picture to a cell, and it will be stored as a URL
-  - Select a value from a dropdown list
+CREATE TABLE frame_label (
+  slot_1 SlotType,
+  slot_2 SlotType,
+  slot_3 SlotType,
+  ...
+) ;
+```
 
-#### How To Use
+You can use **Storage Annotations** to declare constraints which are used to specify rules for the data in a table. This ensures the accuracy and reliability of the data in the table. Constraints can be column level or table level, therefore, storage annotations can be slot level or frame level. Slot level apply to a column, and frame level apply to the whole table.
 
+If the table needs to be accessed by the operation team on the admin interface, you can also specify it through **Backoffice Annotations**. 
 
-There are two levels of provider annotations: slot level and frame level.
-- At a slot level, you can add both storage annotations and backoffice annotations in the **Schema** field. Except that the **Default Value** needs to be added manually, others are added by default.
+When the postgres provider **Deploy** button is triggered, OpenCUI platform will update the table structure in the corresponding hosted database. 
+
+::: tip Need To Know
+When creating a table in hosted database, OpenCUI will automatically add two columns, `ID` column and `create_at` column. So, normally, you don't need to add these two slots in a frame, but you can if you need to.
+:::
+
+### Data Type
+
+Data types are a way to limit the kind of data that can be stored in a table: integer, character, date and time, binary, and so on. For sure, there will be some type conversion between OpenCUI platform and SQL date types. For an overview of the available data types: 
+
+| OpenCUI Platform Type   | SQL Data Type Examples      |
+|:------------------------|:----------------------------|
+| kotlin.Boolean          | boolean                     |
+| kotlin.Float            | double precision            |
+| kotlin.Int              | bigint                      |
+| kotlin.String           | text, char(n), varchar(n)   |
+| java.time.LocalDate     | date                        |
+| java.time.LocalDateTime | timestamp without time zone |
+| java.time.LocalTime     | time without time zone      |
+| java.time.Year          | bigint                      |
+| java.time.YearMonth     | date                        | 
+
+Types that are not specified in the table above will be considered as string types, including custom entity types. String types can be one of `text`, `char(n)` and `varchar(n)`, where `n` is a positive integer. For more information about such types in PostgreSQL, click [Character Types](https://www.postgresql.org/docs/current/datatype-character.html).
+
+If the type conversion is deterministic, you don't need to worry about it, the SQL date type will be displayed automatically. Otherwise, you need to specify one.
 
 ::: thumbnail
-![click one slot](/images/provider/postgrest/click-slot.png)
-*Figure 1: click on one slot*
+![sql data type deterministic](/images/provider/postgrest/sql-data-type-deterministic.png)
+*Type conversion is deterministic*
 
 <br>
 
-![add annotations](/images/provider/postgrest/add-annotations.png)
-*Figure 2: annotations*
+![sql data type](/images/provider/postgrest/sql-data-type.png)
+*Need to specify data type*
 :::
 
-- At a frame level, you can configure storage annotations which is setting unique constraints in the **Annotation** field.
+### Allow Null
+
+By default, a column can hold NULL values. So the Allow Null toggle is enabled by default. To enforce a column to NOT accept NULL values, disable it. For more information about this constraint in PostgreSQL, see [Not-Null Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html#id-1.5.4.6.6).
+
+::: thumbnail
+![sql allow null](/images/provider/postgrest/sql-allow-null.png)
+:::
+
+### Default Value
+
+A column can be assigned a default value. When a new row is created and no values are specified for some of the columns, those columns will be filled with their respective default values. The default value can be a constant or an expression. A common example is for a `java.time.LocalTime` slot, you can set default value as `now()`. For more information about default value in PostgreSQL, click [Default Values](https://www.postgresql.org/docs/current/ddl-default.html).
+
+::: thumbnail
+![sql default value](/images/provider/postgrest/sql-default-value.png)
+:::
+
+### Unique
+
+Unique ensure that the data contained in a column, or a group of columns, is unique among all the rows in the table. It is a frame level annotation, you can have many unique constraints per table. 
+
+You can set one slot in one unique constraint, this specifies that all values in this column are different. You can also set a group of slots in one unique, this specifies that the combination of values in the indicated columns is unique across the whole table, though any one of the columns need not be (and ordinarily isn't) unique. For more information about unique constraints in PostgreSQL, see [Unique Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-UNIQUE-CONSTRAINTS).
 
 ::: thumbnail
 ![unique](/images/provider/postgrest/unique.png)
 :::
 
+### Input Type
 
-### SQL Data Type
-To create tables to store the frame instance, we need to map each slot of frame to a column in the database. SQL data type is a slot annotation, it defines the SQL data type for the corresponding column for the given slot. Normally, we will automatically decide the SQL data type for each slot but if the slot type is ***kotlin.String*** or **builder-defined entity**, you need to specify the database type of the column. 
-
-Supported formats are `char(n)`, `varchar(n)`,`varchar`, `text` where **n** is a positive integer, e.g. `char(16)`. To learn more about character types, click [here](https://www.postgresql.org/docs/current/datatype-character.html).
+Input type is a backoffice annotation, indicating how the operation team input data values on the admin interface. Here are three options: text, dropdown and media.
 
 ::: thumbnail
-![sql data type](/images/provider/postgrest/sql-data-type.png)
+![sql input type](/images/provider/postgrest/sql-input-type.png)
 :::
 
-### Input Type
-Input type determines how operators input a value. Here are three input types: 
-- **Text** means [operators](../../guide/glossary.md#operator-business) can type raw input directly.
-- **Dropdown** provides values which operators can pick from. In this way, dropdown makes it easy for operators to input legit and compatible value.
-- **Media** supports uploading pictures and storing URLs of pictures in the cell. 
+#### Text
 
-::: tip Notice
-Only when the [SQL data type](#sql-data-type) is `text`,`varchar` or `varchar(n)` can you choose **Media**.
+An input box for the data value, allowing to enter any content.
+
+::: thumbnail
+![input text](/images/provider/postgrest/input-text.png)
 :::
 
 #### Dropdown
+
+A dropdown menu for displaying choices. To select value from options makes it easier for operators to input legit and compatible value.
 
 ::: thumbnail
 ![dropdown annotation](/images/provider/postgrest/dropdown-annotation.png)
 :::
 
-Dropdown list returns a JSON array which includes two keys: 
-1. "name" will be displayed in backoffice.
-2. "id" will be stored as value in the database.
+Currently dropdown only supports static options, which can be defined via JSON: 
+- JSON Representation
+```json
+[
+  {
+    "id": "value1",
+    "name": "display1"
+  },
+  {
+    "id": "value2",
+    "name": "display2"
+  }
+]
+```
+- Fields
 
-You can provide a dropdown list statically by writing a JSON array like this:
+| Fields         | Type   | Description |
+|:---            |:---    |:---         |
+| `id`           | string | *Required*. Stored as value in the database. |
+| `name`         | string | *Required*. Displayed in backoffice (admin interface). |
+
+
+For example, you can provide a dropdown list statically via JSON like this:
 
 ```json
-[{ "id": "M", "name": "Male"}, 
-  { "id": "F", "name": "Female"}]
+[
+  {
+    "id": "M",
+    "name": "Male"
+  },
+  {
+    "id": "F",
+    "name": "Female"
+  }
+]
 ```
-Then operators can select a value from the dropdown in backoffice.
+
+Then operators can select the value from the select component in backoffice like this:
 
 ::: thumbnail
 ![dropdown](/images/provider/postgrest/dropdown.png)
-*Dropdown in backoffice*
 :::
 
 #### Media
-When you send pictures to a user, you actually send the URLs of the pictures in [rich messages](../channels/universalmessage.md#rich-message). By setting input type to media, you just need to upload pictures and the URLs of pictures will be stored in cells automatically. 
+
+By setting input type to media, operators can upload pictures by selecting or dragging in the backoffice and the URLs of pictures will be stored in cells automatically. When you need to send rich messages to users, you can use these URLs for displaying.
 
 For example, there is a slot called _photo_ of which input type is media on OpenCUI. In its corresponding column in backoffice, you can upload a picture and view the picture in the table.
 
@@ -131,51 +219,59 @@ For example, there is a slot called _photo_ of which input type is media on Open
 *Figure 2: view pitures in the table*
 :::
 
-### Allow Null
-Allow null is a slot annotation that is turned on by default. Allow null is a column constraint and it means the column can be null. If you turn off allow null, it indicates that the column can't be null. To learn more about it, see [Not-Null Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html#id-1.5.4.6.6).
-
-### Default Value
-Default value is a slot annotation. You can use a constant or an expression as a default value. When there is no value specified in the column, the column will be filled with its default value.
-
-For example, if the type of slot is *java.time.LocalDate*, you can set its default value as `'2022-6-15'` or `now()::date`. For details about default value in official documentation, click [here](https://www.postgresql.org/docs/current/ddl-default.html).
-
-### Unique
-Unique is a frame annotation. If there is only one slot in a group of unique constraints, unique constraints ensure the data contained in the corresponding column is unique among all the rows in the table. If not, unique constraints make sure that the combination of values in the indicated columns is unique across the table. To learn more about it, see [Unique Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-UNIQUE-CONSTRAINTS).
-
-::: tip Notice
-For now, among table constraints, we only support unique constraints. If you need more table constraints, please let us know.
+::: tip Need To Know
+When the SQL data type is one of `text`, `varchar` and `varchar(n)`, you can choose **Media**.
 :::
 
-## Implement Functions
-Before you start to implement functions, read [implementation](./overview.md#implementation) first.
+## Access Backoffice
 
-### Types Conversion
-- When you call the **Provider Dependent function**, you pass the **entities** (or **frames**) and we will convert their types to [**SQL data types**](https://www.postgresql.org/docs/current/datatype.html) (or [**composite types**](https://www.postgresql.org/docs/current/rowtypes.html)) automatically, so you can use these parameters in your function body.
-- When the function returns a set of values of **composite type**, we convert the composite type back to a **frame**, so you can display or use these values in the OpenCUI environment. When returning values, be sure to follow these rules.
-  - The **types** of slots in the the frame should be compatible with the types of return columns in the same index. For example, if the types of slots in the frame are [_kotlin.Int_, _kotlin.String_], the SQL data types of return columns should be [_bigint_, _text_] instead of [_text_, _bigint_].
-  - The **labels** of slots in the the frame and the names of columns in the same index can be different. For example, if the labels of slots in a frame are [_id_, _name_], the names of return columns can be [_userId_, _userName_].
+Once the table structure has been declared in OpenCUI platform, the hosted database can be accessed through **Backoffice** (the admin interface). To access the actual data source, you need to deploy the postgres provider first. 
+1. Heading to **Version** page, in the middle of the second navigation bar, select **Version** tab. 
+2. Click **Deploy** in the upper-right corner of the Version area.
+::: thumbnail
+![deploy postgres provider](/images/provider/postgrest/sql-deploy.png)
+:::
+
+When the **Deploy** button is triggered, OpenCUI platform will update the table structure in the corresponding hosted database. Then, you can log in to the backoffice to access the actual data source through Postgres provider configuration information. 
+
+1. Switch to **Build** area, in the middle of the second navigation bar, select **Build** tab.
+2. In the left side menu, click **Configuration**, then you can get the configuration information.
+3. Copy and paste the **URL** to your browser, use **Admin Email** and **Admin Password** to log into backoffice.
+::: thumbnail
+![configuration](/images/provider/postgrest/configuration.png)
+*Configuration information*
+
+<br>
+
+![backoffice](/images/provider/postgrest/backoffice.png)
+*Backoffice, the admin interface*
+:::
+
+## Provide Function Implementation
+
+To provide function implementation, you need to add service interface to implement first.
+
+Back to your postgrest provider, heading to **Service** page from the left side menu. In the **Implemented** section, select the service interface you want to implement.
+
+:::thumbnail
+![function implementation](/images/provider/postgrest/function-implementation.png)
+:::
+
+Then all the functions on the service interface will be shown. To implement a fucntion, click one of the functions in **Functions** section. In the function popup window, you can provide the implementation in **Provider Dependent** script language or just in **Kotlin**. No matter which language you will be using, OpenCUI provides a built-in auto-completion feature to help you with your implementation.
 
 ::: thumbnail
-![conversion](/images/provider/postgrest/conversion.png)
-*Type Conversion Between OpenCUI and PostgreSQL*
+![click a function](/images/provider/postgrest/click-function.png)
+*Click a function*
+
+<br>
+
+![implement function](/images/provider/postgrest/implement-function.png)
+*Provide implementation*
 :::
 
-- Here is the conversion between entities and SQL data types:
+### Provider Dependent Language
 
-| Entity                                                     | SQL Data Type               |   
-|:-----------------------------------------------------------|:----------------------------|
-| kotlin.Int / java.time.Year                                | bigint                      |
-| kotlin.Float                                               | double precision            |
-| Customized entity (Builder-created Entity) / kotlin.String | text                        |
-| kotlin.Unit, kotlin.Any / kotlin.DayOfWeek / kotlin.ZoneId | text                        |
-| kotlin.Boolean                                             | boolean                     |
-| java.time.LocalDate / java.time.YearMonth                  | date                        |
-| java.time.LocalTime                                        | time without time zone      |
-| java.time.LocalDateTime                                    | timestamp without time zone | 
-
-
-### Provider Dependent Functions
-In provider dependent functions, the language used for implementation is [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html). If you are familiar with [SQL](https://www.postgresql.org/docs/14/sql.html), writing SQL commands within a PL/pgSQL function will be easy. 
+For Postgrest providers, the provider dependent language is [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html). If you are familiar with [SQL](https://www.postgresql.org/docs/14/sql.html), writing SQL commands within a PL/pgSQL function will be easy. 
 
 For example, if you've stored your customers' information in your database and you want to get a customer's name by their user ID, which is an input parameter named *userId_parameter*,  the code will be like this:
 ``` sql
@@ -186,7 +282,7 @@ END
 ```
 Besides, [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) also supports [simple loops](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONTROL-STRUCTURES-LOOPS) and [conditionals](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONDITIONALS).
 
-::: warning Notice
+::: tip Need To Know
 If the return value is not a storage-enabled frame and the type of slot in the frame is **builder-define entity** or ***kotlin.String***, check whether the type of its corresponding column is *text* in PostgreSQL. If not, use `::text` to convert the type of column into *text*.
 
 For example, the return value is consist of *dishId* and *dishName*. The type of *dishName* is *customized entity* and its corresponding column is *varchar(50)* in PostgreSQL. Add `::text` behind *dishName* to convert *varchar(50)* to *text*, so that the conversion between OpenCUI and PostgreSQL can work smoothly.
@@ -198,35 +294,51 @@ END
 ```
 :::
 
+::: warning Warning
+The return type of Provider-dependent function **can NOT be entity**. If the function only returns one column, you should add wrap the entity using a frame.
 
-## Add Data
-In the **Configuration** field, you can get the **URL** of backoffice along with **Admin Email** and **Admin Password** to log in backoffice. Via backoffice, you and the operation team can accesss the tables and add data into the database.
-
-::: thumbnail
-![configuration](/images/provider/postgrest/configuration.png)
-*Figure 1: configuration*
-
-<br>
-
-![backoffice](/images/provider/postgrest/backoffice.png)
-*Figure 2: interface after login the backoffice*
+For example, if the type of column is X, you should create a frame and add a slot in the frame. The type of the slot should be corresponding of X in OpenCUI. 
 :::
 
-## Test Functions
-Function testing can be used to see if the result returned by the functions meet your expectation before you call functions in the chatbot. Follow these steps to learn how to use the function testing:
-1. Only when you [deploy](../platform/deployment.md#how-to-use) the current version of your provider, can you use the function testing. Be sure to deploy first!
-2. After deploying the provider, click **Test**.
+When the function returns a set of values of **composite type**, we convert the composite type back to a **frame**, so you can display or use these values in the OpenCUI environment. When returning values, be sure to follow these rules.
+  - The **types** of slots in the the frame should be compatible with the types of return columns in the same index. For example, if the types of slots in the frame are [_kotlin.Int_, _kotlin.String_], the SQL data types of return columns should be [_bigint_, _text_] instead of [_text_, _bigint_].
+  - The **labels** of slots in the the frame and the names of columns in the same index can be different. For example, if the labels of slots in a frame are [_id_, _name_], the names of return columns can be [_userId_, _userName_].
+
+### Kotlin
+
+In OpenCUI, function can always be implemented in **Kotlin**, known as native functions. For more information about Kotlin, see [Kotlin](https://kotlinlang.org/docs/functions.html). 
+
+Native functions can be used to convert the value returning from a provider-dependent function to a desirable format. For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot.
+
+``` kotlin
+/* 
+Suppose a provider-dependent is getFoodCategory() which returns a list of frame. 
+There is one slot called returnValue in the frame. 
+*/
+return getFoodCategory()!!.map{it -> it.returnValue!!} 
+```
+
+## Function Console
+
+When you finish implementing the function, before you wire it to the chatbot, you can verify whether your implementation is as expected through **Function Console**. To use function console, following these steps: 
+
+1. Deploy your postgres provider. In the middle of the second navigation bar, select **Version** tab,  click **Deploy** in the upper-right corner of the Version area.
+
+::: thumbnail
+![deploy postgres provider](/images/provider/postgrest/sql-deploy.png)
+:::
+
+2. After deploying, switch to **Build** tab. In the upper-right corner of the **Build** area, click **Debug**. 
 
 ::: thumbnail
 ![click test](/images/provider/postgrest/click-test.png)
 :::
 
-3. Select a function which is provider-dependent and pass values to parameters. 
+3. In **Function Console**, select a function and pass values to parameters. 
    - If you want to pass null to a parameter, just leave it empty.
    - If the type of a parameter is entity, you can type its value directly.
    - If the type of a parameter is frame, please use JSON format.
-4. Click **Execute**.
-5. In the **Result** field, you can see the return values of the function. As shown in the figure below, this function returns the information of the reservation. 
+4. Click **Execute**, then you can see the returns in **Result** section. As shown below, this function will return the reservation information. 
 
 ::: thumbnail
 ![function testing](/images/provider/postgrest/function-testing.png)
