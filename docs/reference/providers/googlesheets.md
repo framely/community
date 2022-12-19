@@ -4,7 +4,7 @@
 
 ## Overview
 
-[Google Sheets](https://www.google.com/sheets/about/#overview) is a spreadsheet web app developed by Google. You and your teammates can use Google Sheets to create and edit tabular or structured data collaboratively online.
+[Google Sheets](https://www.google.com/sheets/about/#overview) is a web-based application that enables users to create, update and modify spreadsheets and share the data online in real time.
 
 Google Sheets provider allow you to use Google Sheets as backend, which the actual data can be managed by your operation team in online spreadsheet collaboratively. Through Google Sheets provider, you can query data from your spreadsheet using the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) and update data with the help of low level functions in [io.opencui.provider.GoogleSheetsConnection](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/6340dea9815fc9881cbbbfe7/frame/6340dea9815fc9881cbbbfea).
 
@@ -35,29 +35,7 @@ Once you create a service account, you need to give this account permission to v
 :::
 
 ## Implement Functions
-There are two kinds of ways to implement a function: **Provider Dependent** and **Kotlin**.
-
-- In **provider-dependent** functions, use the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) to implement.
-  - In a return value of which type is frame, in which the names of slots are the same as the names of columns, and the slot's type is compatible with the return column's type in the same index.
-  - For example, if the slots in a frame are [_id_, _name_] of which types are [_kotlin.Int_, _kotlin.String_], the labels of slots in return columns should be [_id_, _name_] as well, and the types of return columns are supposed to be [_number_, _string_] instead of [_string_, _number_].
-
-::: warning Warning
-The return type of Provider-dependent function **can NOT be entity**. If the function only returns one column, you should add wrap the entity using a frame.
-:::
-
-- In **Kotlin** functions, write function bodies in [Kotlin](https://kotlinlang.org/docs/functions.html).
-  - Kotlin functions can be used to convert the value returning from a provider-dependent function to a desirable format.
-  - For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot.
-
-  ``` kotlin
-  /* 
-    Suppose a provider-dependent is getFoodCategory() which returns a list of frame. 
-    There is one slot called category in the frame. 
-  */
-  return getFoodCategory()!!.map{it -> it.category!!} 
-  ```
-
-  - Learn how to implement more Kotlin functions, check out [Kotlin Function](../annotations/kotlinexpression.md).
+Before you start to implement functions, read implementation first.
 
 ### Types Conversion
 
