@@ -4,7 +4,7 @@
 
 ## Overview
 
-[Google Sheets](https://www.google.com/sheets/about/#overview) is a spreadsheet web app developed by Google. You and your teammates can use Google Sheets to create and edit tabular or structured data collaboratively online.
+[Google Sheets](https://www.google.com/sheets/about/#overview) is a web-based application that enables users to create, update and modify spreadsheets and share the data online in real time.
 
 Google Sheets provider allow you to use Google Sheets as backend, which the actual data can be managed by your operation team in online spreadsheet collaboratively. Through Google Sheets provider, you can query data from your spreadsheet using the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) and update data with the help of low level functions in [io.opencui.provider.GoogleSheetsConnection](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/6340dea9815fc9881cbbbfe7/frame/6340dea9815fc9881cbbbfea).
 
@@ -35,7 +35,7 @@ Once you create a service account, you need to give this account permission to v
 :::
 
 ## Implement Functions
-Before you start to implement functions, read [implementation](./overview.md#implementation) first.
+Before you start to implement functions, read implementation first.
 
 ### Types Conversion
 
