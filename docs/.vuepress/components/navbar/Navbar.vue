@@ -83,7 +83,7 @@ function getCssValue(el: HTMLElement | null, property: string): number {
       </div>
       <button class="button can-hide">
         <a
-          href="/reference/platform/signingup.html"
+          href="https://build.opencui.io/"
           target="_blank"
           rel="noopener noreferrer"
           >Start to Build</a
