@@ -247,6 +247,10 @@ When the **Deploy** button is triggered, OpenCUI platform will update the table 
 *Backoffice, the admin interface*
 :::
 
+::: warning Caution
+Be very careful with table schema changes, remember to manually modify data in backoffice that is no longer compatible.
+:::
+
 ## Provide Function Implementation
 
 To provide function implementation, you need to add service interface to implement first.
@@ -257,7 +261,7 @@ Back to your postgrest provider, heading to **Service** page from the left side 
 ![function implementation](/images/provider/postgrest/function-implementation.png)
 :::
 
-Then all the functions on the service interface will be shown. To implement a fucntion, click one of the functions in **Functions** section. In the function popup window, you can provide the implementation in **Provider Dependent** script language or just in **Kotlin**. No matter which language you will be using, OpenCUI provides a built-in auto-completion feature to help you with your implementation.
+Then all the functions on the service interface will be shown. To implement a fucntion, click one of the functions in **Functions** section. In the function popup window, you can provide the implementation in **Provider Dependent** script language or just in **Kotlin**. No matter which language you will be using, OpenCUI provides a built-in **Auto Completion** feature to help you with your implementation.
 
 ::: thumbnail
 ![click a function](/images/provider/postgrest/click-function.png)
@@ -320,9 +324,9 @@ return getFoodCategory()!!.map{it -> it.returnValue!!}
 
 ## Function Console
 
-When you finish implementing the function, before you wire it to the chatbot, you can verify whether your implementation is as expected through **Function Console**. To use function console, following these steps: 
+When you finish implementing the function, before you wire it to the chatbot, you can verify whether your implementation is as expected through **Function Console**. Currently, function console can only test **Provider Dependent** implementations. To use function console, following these steps: 
 
-1. Deploy your postgres provider. In the middle of the second navigation bar, select **Version** tab,  click **Deploy** in the upper-right corner of the Version area.
+1. Deploy your postgres provider. In the middle of the second navigation bar, select **Version** tab, click **Deploy** in the upper-right corner of the Version area. Make sure that all changes including function implementations are merged into master and deployed successfully.
 
 ::: thumbnail
 ![deploy postgres provider](/images/provider/postgrest/sql-deploy.png)
@@ -344,5 +348,23 @@ When you finish implementing the function, before you wire it to the chatbot, yo
 ![function testing](/images/provider/postgrest/function-testing.png)
 :::
 
+## Wire to Chatbot
 
+Once you have a postgrest provider running, you need to wire this implementation to its service interface in your chatbot that allows chatbots to communicate with data source. To wire postgrest provider to chatbot, you can follow these steps below:
+
+1. Declare service interface implemented by this postgrest provider in chatbot. It means you need to import service component into your chatbot. Click into the service component, and **import** it into your chatbot.
+
+::: thumbnail
+![import service into chatbot](/images/provider/postgrest/import-service-into-chatbot.png)
+:::
+
+2. Switch to your chatbot, wire postgrest provider to its service interface.
+    1. On **STRUCT** level, click **Settings** in the left side menu. 
+    2. In **Integrations** tab, select the service interface you just imported and the postgrest provider that implements it. At the same time, a label needs to be added to show different integration.
+
+::: thumbnail
+![chatbot integration](/images/provider/postgrest/chatbot-integration.png)
+:::
+
+After wired, you can also edit postgrest provider at any time. Don't forget to merge your latest changes to master.
 
