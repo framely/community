@@ -273,9 +273,9 @@ Then all the functions on the service interface will be shown. To implement a fu
 *Provide implementation*
 :::
 
-### Provider Dependent Language
+### PL/pgSQL
 
-For Postgrest providers, the provider dependent language is [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html). If you are familiar with [SQL](https://www.postgresql.org/docs/14/sql.html), writing SQL commands within a PL/pgSQL function will be easy. 
+For Postgrest providers, the provider dependent language is [PL/pgSQL](https://www.postgresql.org/docs/current/plpgsql.html). If you are familiar with [SQL](https://www.postgresql.org/docs/14/sql.html), writing SQL commands within a PL/pgSQL function will be easy. 
 
 For example, if you've stored your customers' information in your database and you want to get a customer's name by their user ID, which is an input parameter named *userId_parameter*,  the code will be like this:
 ``` sql
