@@ -80,11 +80,6 @@ export const en = [
             text: 'Postgrest',
             link: '/reference/providers/postgrest.html',
             icon: '/navIcons/postgresql.svg',
-          },
-          {
-            text: 'Google Sheets',
-            link: '/reference/providers/googlesheets.html',
-            icon: '/navIcons/google-sheets.svg',
           }
         ]
       },
