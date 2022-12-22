@@ -28,7 +28,7 @@ OpenCUI relies on the service, application related interface, to interact with a
 
 1. [Postgrest](./postgrest.md) is the only hosted provider type OpenCUI currently supports. By hosted, it means OpenCUI manages the schema of the data source so that we can clone database for new business, as well as hosting the database itself. 
 
-2. On the other hand, OpenCUI does not host data for stub providers, nor we have explicit knowledge about the data schema, so we assume we only handles function invocation through these stub providers. There will be many stub provider types, the first one we implemented are [Google Sheets](./googlesheets.md) based.  
+2. On the other hand, OpenCUI does not host data for stub providers, nor we have explicit knowledge about the data schema, so we assume we only handles function invocation through these stub providers. There will be many stub provider types, the first one we implemented is Google Sheets based.  
 
 
 Scripted providers are typically defined in three steps:
@@ -45,4 +45,3 @@ After wired, you can also edit scripted provider at any time.
 
 See specific documentation for details:
 - [Postgrest Provider](postgrest.md)
-- [Google Sheets Provider](googlesheets.md)
