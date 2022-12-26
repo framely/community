@@ -88,6 +88,16 @@ export const en = {
         '/reference/platform/access.md',
         '/reference/platform/reusability.md'
       ]
-    },
+    }
+  ],
+  '/articles/': [
+    {
+      text: 'Blog',
+      collapsible: true,
+      children:[
+        '/articles/quick-start-with-service.md',
+        '/articles/requirements-on-reservation.md'
+      ]
+    }
   ],
 }
