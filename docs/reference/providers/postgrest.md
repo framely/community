@@ -35,7 +35,10 @@ To create a postgrest provider:
 
 When you are done with creation, you need to declare which service interface this postgrest provider implements. 
 
-To declare the service interface, enter the service component you want to implement, click **Import** on right side of the second navigation bar. Then in the popup window, select your postgrest provider and **Save**.
+To declare the service interface:
+1. Enter the service component you want to implement.
+2. Click **Import** on right side of the second navigation bar. 
+3. In the popup window, select your postgrest provider and **Save**.
 
 ::: thumbnail
 ![import component](/images/provider/postgrest/import-component.png)
@@ -43,7 +46,7 @@ To declare the service interface, enter the service component you want to implem
 
 ## Create Database Tables
 
-With postgres provider, it is very convenient to create a database without the SQL `CREATE TABLE` statement. All you need to do is create frames or select existing frames (Local or Imported) and **enable Storage**. 
+With postgres provider, it is very convenient to create a database without the SQL `CREATE TABLE` statement. All you need to do is create frames or select existing frames (Local or Imported) and **Enable Storage**. 
 
 ::: thumbnail
 ![enable storage](/images/provider/postgrest/enable-storage.png)
@@ -187,12 +190,16 @@ For example, you can provide a dropdown list statically via JSON like this:
 ```json
 [
   {
-    "id": "M",
-    "name": "Male"
+    "id": "imax3d",
+    "name": "IMAX 3D"
   },
   {
-    "id": "F",
-    "name": "Female"
+    "id": "digital3d",
+    "name": "Digital 3D"
+  },
+  {
+    "id": "standard",
+    "name": "Standard"
   }
 ]
 ```
