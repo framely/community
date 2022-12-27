@@ -34,7 +34,7 @@ The implementation can then be developed as standard Kotlin project. Make sure y
 ./gradlew your_project:build
 ```
 
-### 4. Register native provider
+### 4. Register Native Provider
 
 Regardless if the extensions are external, you need to register their native provider on the platform so that OpenCUI can generate the frontend code for them. To register native provider, follow steps in the [Build Native Provider](native.md#build-native-provider) documentation to accomplish the following:
 1. Create native provider.
@@ -139,18 +139,14 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
     :::
 
 2. Declare service interface `component_0915` in native provider: 
-    - Go to service `component_0915`, click **Import** on the second navigation bar. In the popup window, select your native provider, in this case we select `test`, and save. 
+    - Go to service `component_0915`, click **Import** on the second navigation bar. In the popup window, select your native provider, in this case we select `test`, and **Save**. 
+        ::: thumbnail
+        ![import component0915 to native provider](/images/provider/extension/hello_import_component0915.png)
+        :::
     - Back to the `test` native provider, heading to **Service** page from the left side menu. In the **Implemented** section, select `component_0915`.
-
-    ::: thumbnail
-    ![import component0915 to native provider](/images/provider/extension/hello_import_component0915.png)
-    *Import service to native provider*
-    
-    <br>
-
-    ![select service in native provider](/images/provider/extension/hello_select_service.png)
-    *Declare service in native provider*
-    :::
+        ::: thumbnail
+        ![select service in native provider](/images/provider/extension/hello_select_service.png)
+        :::
 
 3. Configuration setup, heading to **Configuration** page from the left side menu:
     - Enter **Provider Class Name**, a fully qualified name of this implementation class. In this case, enter `me.test.component_0915.HelloWorldProvider`. 
