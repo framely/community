@@ -66,6 +66,7 @@ defineProps({
         border-radius: 6px;
         top: -10px;
       }
+      margin-bottom: 4rem;
     }
 
     .blog-card-image {
