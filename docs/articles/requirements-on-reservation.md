@@ -5,7 +5,7 @@ date: 2022-12-21
 image:
     - blog/reservation/requirement-cover.png
 description:
-    - List requirements by contextual snippets
+    - We list basic services a reservation chatbot should support
 author: Sunny May
 ---
 
