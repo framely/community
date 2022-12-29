@@ -6,7 +6,7 @@ image:
     - blog/requirement-for-cui/requirement.png
 description:
     - We devised an effective way to communicate CUI requirement
-author: Sean Wu
+author: Sean Wu, Bird Zeng
 ---
 
 # Document Requirement for CUI
@@ -45,7 +45,7 @@ Services can be customized along many dimensions, so acquiring users' preference
 
 By structured, we first mean that conversation is factored into two layers: logic layer and language layer: chatbot first decide what it needs to say in logic layer, then render that semantic into the language that users understand. At logical level, conversations is deterministic. Here we do not mean that chatbot should say the same exact message, that is boring. Chatbot can and should produce diverse text responses as long as these responses convey the same meaning. Deterministic conversations can result in consistency, which is another advantage of deploying chatbots, in addition to their 24x7 availability. 
 
-| Service | Logic Layer | Language Layer | 
+| Schema | Interaction Logic | Language Perception | 
 | :---    | :---        |:---            |                     
 | movie title | <ul><li> Required. </li><li> Provide options.</li><li> Need verified.</li></ul> | <ul><li> Which movie do you want to see? </li><li> Which film are you interested in watching? </li><li> What movie do you have in mind? </li><li> Which film are you considering going to see? </li><li> ... </li></ul> | 
 | showtime | <ul><li> Required. </li><li> Provide options.</li><li> Need verified.</li></ul> | <ul><li> Which showtime would you like? </li><li> At what time would you like to see the show? </li><li> What time would you like to go to the movie? </li><li> ... </li></ul> | 
