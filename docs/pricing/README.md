@@ -24,7 +24,7 @@ cards:
 
     - package: Team
       price: $399 
-      badge: per yesr
+      badge: per year
       tagline: For growing teams and agencies who want stronger permissions
       features:
                 - 'Everything included in Starter and:'
