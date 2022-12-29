@@ -3,7 +3,7 @@ article: true
 date: 2022-12-26
 
 image:
-    - blog/quick-start.png
+    - blog/reservation/service-cover.png
 description:
     - Build a reservation service step by step
 author: Sunny May
