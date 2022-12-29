@@ -6,7 +6,7 @@ tagline: Clone and import public libraries, reuse and customize everything effec
 
 cards:
     - package: Starter
-      price: $99
+      price: $199
       badge: per year
       tagline: For developer team and freelancers, who want building and sharing
       features:
@@ -23,8 +23,8 @@ cards:
       link: /guide/
 
     - package: Team
-      price: $49 
-      badge: per mo per user
+      price: $399 
+      badge: per yesr
       tagline: For growing teams and agencies who want stronger permissions
       features:
                 - 'Everything included in Starter and:'
