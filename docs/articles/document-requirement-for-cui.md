@@ -3,13 +3,14 @@ article: true
 date: 2022-12-27
 
 image:
-    - blog/requirement-for-cui/requirement.png
+    - blog/banner/document_requirement.png
 description:
     - We devised an effective way to communicate CUI requirement
 author: Sean Wu, Bird Zeng
 ---
 
 # Document Requirement for CUI
+![Banner](/images/blog/banner/document_requirement.png)
 
 Service chatbot is an essential approach to improve the customer experience. With recent advance in large language model, service chatbots are moving from only answering questions to providing transactional services as well. They are now expected to handle requests like reserving a table or ordering food, or even more complex service like health care.
 

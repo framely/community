@@ -74,6 +74,7 @@ defineProps({
       height: 10rem;
       border-radius: 6px;
       object-fit: cover;
+      background-color: var(--c-bg-light);
     }
 
     .blog-card-info {

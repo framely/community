@@ -3,7 +3,7 @@ article: true
 date: 2022-11-26
 
 image:
-    - blog/quick-start.png
+    - blog/banner/quick_start_with_hours.png
 description:
     - Use component to start quickly
 author: Sunny May

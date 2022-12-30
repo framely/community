@@ -3,7 +3,7 @@ article: true
 date: 2022-12-21
 
 image:
-    - blog/quick-start.png
+    - blog/banner/tutorial_reservation_i.png
 description:
     - List requirements by contextual snippets
 author: Sunny May
