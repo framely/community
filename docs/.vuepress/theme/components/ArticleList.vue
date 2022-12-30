@@ -71,7 +71,7 @@ defineProps({
 
     .blog-card-image {
       width: 100%;
-      height: 12rem;
+      height: 10rem;
       border-radius: 6px;
       object-fit: cover;
     }
@@ -115,6 +115,9 @@ defineProps({
   .article-wrapper {
     padding:0 2rem;
     grid-column-gap: 2rem;
+      .blog-card-image {
+        height: 12rem;
+      }
   }
 }
 @media (max-width:719px){
