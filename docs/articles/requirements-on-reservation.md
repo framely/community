@@ -5,7 +5,7 @@ date: 2022-12-21
 image:
     - blog/banner/tutorial_reservation_i.png
 description:
-    - List requirements by contextual snippets
+    - We list basic services a reservation chatbot should support
 author: Sunny May
 ---
 
@@ -25,21 +25,16 @@ There are some assumptions applied to all these services:
 ## Make a Reservation
 
 The schema representation of the service can be sketched as follows:
-1. Service: make a reservation 
-2. Slots
 
-| Name                    | Type                                    |
-|:------------------------|:----------------------------------------|
-| user id                 | String                                  |
-| date                    | LocalDate                               |
-| time                    | LocalTime                               |
-| table type              | TableType (e.g., small, medium, large)  |
+| Service                 | Make a reservation                                                                                                                                                                                                            |
+|:------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Slots**               | <ol><li> `userId` with type **String** </li><li> `date` with type **LocalDate** </li><li> `time` with type **LocalTime** </li><li> `table type` with type **TableType** entity (e.g., _small_, _medium_, _large_)  </li></ol> |
 
 The conversational behavior of the bot for this service can be described in the following contextual snippets: 
 
 ### Happy Path
 1. Description: the user provides valid values and the reservation is made successfully.
-2. Precondition: complete = false.
+2. Precondition: `complete` = false.
 3. Annotated conversation:
 
 :::: conversation
@@ -94,11 +89,11 @@ Your reservation is secured. Thank you very much for making the reservation! You
 
 ::::
 
-4. End state: user id = "xxxx", date = "2022-12-25", time = "17:00", table type = "small", complete = true.
+4. End state: `user id` = "xxxx", `date` = "2022-12-25", `time` = "17:00", `table type` = "small", `complete` = true.
 
 ### Inform Failure
 1. Description: the user confirms the reservation but the reservation fails.
-2. Precondition: user id = "xxxx", date = "2022-12-25", time = "17:00", table type = "small", complete = true, fail to make a reservation.
+2. Precondition: `user id` = "xxxx", `date` = "2022-12-25", `time` = "17:00", `table type` = "small", `complete` = true, fail to make a reservation.
 3. Annotated conversation: 
 
 :::: conversation
@@ -117,13 +112,13 @@ Sorry, the table you want to book is not available at present.
 
 ::::
 
-4. End state: user id = "xxxx", date = "2022-12-25", time = "17:00", table type = "small", complete = true.
+4. End state: `user id` = "xxxx", `date` = "2022-12-25", `time` = "17:00", `table type` = "small", `complete` = true.
 
 
 ### Support Updating Value
 
 1. Description: before the reservation has been made, the user wants to change the date.
-2. Precondition: user id = "xxxx", date = "2022-12-25", complete = false.
+2. Precondition: `user id` = "xxxx", `date` = "2022-12-25", `complete` = false.
 3. Annotated conversation:
 
 :::: conversation
@@ -138,12 +133,12 @@ The date is changed from Sunday, December 25, 2022 to Saturday, December 24, 202
 
 ::::
 
-4. End state: user id = "xxxx", date = "2022-12-24", complete = false. 
+4. End state: `user id` = "xxxx", `date` = "2022-12-24", `complete` = false. 
 
 ### Handle Invalid Value
 
 1. Description: there is no available table for Sunday, the user changes to another date.
-2. Precondition: user id = "xxxx", date = "2022-12-25", complete = false, there is no available table for 2022-12-25.
+2. Precondition: `user id` = "xxxx", `date` = "2022-12-25", `complete` = false, there is no available table for 2022-12-25.
 3. Annotated conversation:
 
 :::: conversation
@@ -161,12 +156,12 @@ Friday.
 
 ::::
 
-4. End state: user id = "xxxx", date = "2022-12-23", complete = false.
+4. End state: `user id` = "xxxx", `date` = "2022-12-23", `complete` = false.
 
 ### Handle Denial
 
 1. Description: the user denies all the values for making a reservation.
-2. Precondition: user id = "xxxx", date = "2022-12-25", time = "17:00", table type = "small", complete = true.
+2. Precondition: `user id` = "xxxx", `date` = "2022-12-25", `time` = "17:00", `table type` = "small", `complete` = true.
 3. Annotated conversation:
 
 :::: conversation
@@ -181,21 +176,23 @@ No.
 
 ::::
 
-4. End state: user id = "xxxx", complete = false.
+4. End state: `user id` = "xxxx", `complete` = false.
 
 
 ## View Reservations
 
 The schema representation of the service can be sketched as follows:
-1. Service: view a reservation.
-2. Slots: user id, with type String.
+
+| Service                 | View reservations                                  |
+|:------------------------|:---------------------------------------------------|
+| **Slots**               | <ol><li> `userId` with type **String**  </li></ol> |
 
 The conversational behavior of the bot for this service can be described in the following contextual snippets: 
 
 ### Happy Path
 
 1. Description: when the user has valid reservations, display them to the user.
-2. Precondition: complete = false.
+2. Precondition: `complete` = false.
 3. Annotated conversation:
 
 :::: conversation
@@ -210,12 +207,12 @@ You have reserved a small table at 5:00 PM for Sunday, December 25, 2022.
 
 ::::
 
-4. End state: user id = "xxxx", complete = true.
+4. End state: `user id` = "xxxx", `complete` = true.
 
 ### Inform None Reservation
 
 1. Description: when the user has no valid reservations, notify the user.
-2. Precondition: complete = false.
+2. Precondition: `complete` = false.
 3. Annotated conversation:
 
 :::: conversation
@@ -230,26 +227,23 @@ Sorry, I can't find your valid reservation. Please check whether you made the re
 
 ::::
 
-4. End state: user id = "xxxx", complete = true.
+4. End state: `user id` = "xxxx", `complete` = true.
 
 
 ## Cancel a Reservation
 
 The schema representation of the service can be sketched as follows:
-1. Service: cancel a reservation.
-2. Slots
 
-| Name                    | Type                                    |
-|:------------------------|:----------------------------------------|
-| user id                 | String                                  |
-| reservation id          | Int                                     |
+| Service                 | Cancel a reservation                                                                            |
+|:------------------------|:------------------------------------------------------------------------------------------------|
+| **Slots**               | <ol><li> `userId` with type **String**  </li><li> `reservation id` with type **Int** </li></ol> |
 
 The conversational behavior of the bot for this service can be described in the following contextual snippets: 
 
 ### Happy Path
 
 1. Description: the user has a valid reservation and it is canceled successfully.
-2. Precondition: complete = false.
+2. Precondition: `complete` = false.
 3. Annotated conversation:
 
 :::: conversation
@@ -272,12 +266,12 @@ The reservation has been canceled successfully.
 
 ::::
 
-4. End state: user id = "xxxx", reservation id = "15", complete = true.
+4. End state: `user id` = "xxxx", `reservation id` = "15", `complete` = true.
 
 ### Handle Several Reservations
 
 1. Description: the user has more than one valid reservation so the user needs to choose one of them.
-2. Precondition: user id = "xxxx", complete = false.
+2. Precondition: `user id` = "xxxx", `complete` = false.
 3. Annotated conversation:
 
 :::: conversation
@@ -294,4 +288,4 @@ The second.
 
 ::::
 
-4. End state: user id = "xxxx", reservation id = "16", complete = true.
+4. End state: `user id` = "xxxx", `reservation id` = "16", `complete` = true.
