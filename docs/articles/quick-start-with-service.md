@@ -3,7 +3,7 @@ article: true
 date: 2022-11-26
 
 image:
-    - blog/quick-start-with-service/cover.png
+    - blog/banner/quick_start_with_hours.png
 description:
     - We show you the steps of building a chatbot using a hours component
 author: Sunny May

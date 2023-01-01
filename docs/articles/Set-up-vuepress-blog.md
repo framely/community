@@ -3,16 +3,16 @@ article: true
 date: 2022-04-13
 
 image:
-    - blog/test.png
+    - blog/banner/set_up_vuepress.png
 description:
     - We will create a blog using vuepress2 for various use cases
 author: karani
 ---
 
-# Set up a blog with vuepressV2
-![Banner](/images/blog/vuepress.png)
+# Set Up a Blog with VuePress v2.0.0
+![Banner](/images/blog/banner/set_up_vuepress.png)
 
-### outline
+### Outline
 
 - Introduction
 - What is vuepress
@@ -20,9 +20,9 @@ author: karani
 - Conclusion
 - Repo to get started
 
-## What is vuepress
+## What is VuePress
 
-**Vuepress** is a static site generator that uses markdown. It's mainly used for documentation.
+**VuePress** is a static site generator that uses markdown. It's mainly used for documentation.
 
 ### Features
 
@@ -77,7 +77,7 @@ Now run the following command and you should be able to view your initial set up
 npx vuepress dev docs
 ```
 
-### Add the plugin
+### Add the Plugin
 
 This allows us to add blog features to our new site
 ```

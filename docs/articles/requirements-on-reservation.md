@@ -3,7 +3,7 @@ article: true
 date: 2022-12-21
 
 image:
-    - blog/reservation/requirement-cover.png
+    - blog/banner/tutorial_reservation_i.png
 description:
     - We list basic services a reservation chatbot should support
 author: Sunny May
