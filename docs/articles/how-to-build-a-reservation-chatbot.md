@@ -3,7 +3,7 @@ article: true
 date: 2022-12-26
 
 image:
-    - blog/reservation/chatbot-cover.png
+    - blog/banner/tutorial_reservation_iii.png
 description:
     - We show you the way to build a reservation chatbot step by step
 author: Sunny May
