@@ -1,11 +1,11 @@
 ---
 article: true
-date: 2022-12-27
+date: 2023-01-03
 
 image:
     - blog/banner/chatbot_development_with_opencui.png
 description:
-    - We devised an effective way to communicate CUI requirement
+    - Reduce complexity of building functional chatbot
 author: Sean Wu
 ---
 
