@@ -14,7 +14,7 @@ author: Sunny May
 [[toc]]
 
 ## Overview
-Following the [requirements on making a reservation](./requirements-on-reservation.md#make-a-reservation), this guide shows you how to build a reservation chatbot step by step with a [reservation service](./how-to-build-a-reservation-service.md).
+Following the [requirements on making a reservation](./requirements-on-reservation.md#make-a-reservation), this guide shows you how to build a reservation chatbot step by step with a [reservation service](./reservation-service.md).
 
 **What do you build?**
 - A [component](../guide/concepts.md#components) that provides reusable [conversational user interaction (CUI) components](../guide/components.md#conversational-user-interaction-cui-component). 
@@ -30,10 +30,10 @@ Read the following articles first and get familiar with the basic concepts and o
 2. [Key concept](../guide/concepts.md) helps you to understand the type system and the roles of different projects.
 3. [Slot filling](../guide/slotfilling.md) helps you to design how the bot interacts with users.
 
-Besides, be sure you've followed [how to build a reservation service](./how-to-build-a-reservation-service.md) to build the component and provider for reservation service.
+Besides, be sure you've followed [reservation API](./reservation-service.md) and [how to implement a reservation service](./how-to-build-a-reservation-service.md) to build the component and provider for reservation service.
 
 ## Component 
-In this section, you add [CUI components](../guide/components.md#conversational-user-interaction-cui-component) to the [reservation component](./how-to-build-a-reservation-service.md#component).
+In this section, you add [CUI components](../guide/components.md#conversational-user-interaction-cui-component) to the [reservation component](./reservation-service.md#create-a-component).
 
 ### Add Slots & Annotations
 To make a reservation, the information needed is the user ID, date, time and type of table. You need to create a [skill](../guide/concepts.md#skills) and add four slots to store the information. To get an ID of a user automatically without asking the user, you can use a system CUI frame called [user.UserIdentifier](../reference/annotations/systemcomponent.md#user-identifier). A slot called *userId* in this frame is a channel-dependent identifier of the user.
@@ -71,9 +71,9 @@ Besides,  you need to add the following annotations:
 :::
 
 :tipping_hand_woman: Now you can follow the steps below to add schema and annotations:
-1. [Import](../reference/platform/reusability.md#import-1) [*io.opencui.core*](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/633f953f28e4f04b5f8443b7/intent?page=0&imported=false&search=) to the [reservation component](./how-to-build-a-reservation-service.md#component).
+1. [Import](../reference/platform/reusability.md#import-1) [*io.opencui.core*](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/633f953f28e4f04b5f8443b7/intent?page=0&imported=false&search=) to the [reservation component](./reservation-service.md#create-a-component).
 2. In the reservation component, create a skill called **MakeReservation**.
-3. In the **MakeReservation** skill, add a **userId** slot of which type is *io.opencui.core.user.UserIdentifier​* and [use a frame](../reference/platform/reusability.md#compose-1) of which type is *ReservationInfo*.
+3. In the **MakeReservation** skill, add a **userId** slot of which type is *io.opencui.core.user.UserIdentifier* and [use a frame](../reference/platform/reusability.md#compose-1) of which type is *ReservationInfo*.
 4. To invoke functions imported from the service, add a service slot in the **Services** section in the skill.
 5. Add the above annotations needed by each slot to implement the interaction logic.
 
@@ -92,14 +92,12 @@ In the previous sections, you've done development at the structure level. In thi
 
 **Expressions**
 
-When a user wants to make a reservation, he might say "*make a reservation*" or he might mention a specific date, like "*book a table tomorrow*". To cover the above situations, the expressions you need to add to the skill are: 
+When a user wants to make a reservation, he might say "*make a reservation*" or he might mention a specific date, like "*book a table tomorrow*". To cover the above situations, the expressions you need to add to the **MakeReservation** skill are: 
 
-| Skill                   | Expressions                 |
-|:------------------------|:----------------------------|
-| MakeReservation         | make a reservation          |
-|                         | book a table $date$         |
-|                         | book a table $time$         |
-|                         | book a table $tableType$    |
+- make a reservation
+- book a table $date$
+- book a table $time$
+- book a table $tableType$
 
 ::: warning Warning
 Do **NOT** copy and paste the text in `$$` but type the text instead.
@@ -142,36 +140,29 @@ Besides, the templates you need to define in reseponse are:
 In this section, you reuse [CUI components](../guide/components.md#conversational-user-interaction-cui-component) and customize a builder-defined entity.
 
 ### Import Component
-:tipping_hand_woman: To begin with, you need to create an [OpenCUI-hosted](../guide/glossary.md#deploy-mode) chatbot and [import](../reference/platform/reusability.md#import-1) the [reservation component](#component) into the chatbot.
+To begin with, you need to create an [OpenCUI-hosted](../guide/glossary.md#deploy-mode) chatbot and [import](../reference/platform/reusability.md#import-1) the [reservation component](#component) into the chatbot.
 
 ### Set Integration
-:tipping_hand_woman: Next, when your [reservation provider](./how-to-build-a-reservation-service.md#provider) is ready, you can [integrate the provider with your chatbot](../reference/providers/postgrest.md#wire-to-chatbot) to get access to the reservation service. 
+Next, when your [reservation provider](./how-to-build-a-reservation-service.md) is ready, you can [integrate the provider with your chatbot](../reference/providers/postgrest.md#wire-to-chatbot) to get access to the reservation service. 
 
 ::: tip Tip
 If your provider is not ready, you can just move on to the next step but be sure to set the integration before the [testing](../reference/platform/testing.md).
 :::
 
 ### Add Instances
-For now, there is no [entity instance](../guide/glossary.md#entity) added to the **TableType** entity. 
-
-:tipping_hand_woman: To complete the entity, you need to add the following instances to the imported entity: TableType.
-
-| Imported Entity    | Instance |
-|:-------------------|:---------|
-| TableType          | small​    |
-|                    | medium   |
-|                    | large    |
+For now, there is no [entity instance](../guide/glossary.md#entity) added to the **TableType** entity. You need to add the following instances to the **TableType** entity.
+- small
+- medium
+- large
 
 ### Add Expressions
-At a language level, there is no expression for instances in the **TableType** entity. 
+At a language level, there is no expression for instances in the **TableType** entity. You need to **switch to the** [**EN agent**](../reference/platform/multilingual.md#add-multi-language) and add expressions to the **TableType** entity for each instance.
 
-:tipping_hand_woman: To complete the entity, you need to **switch to the** [**EN agent**](../reference/platform/multilingual.md#add-multi-language) and add expressions for each instance.
-
-| Entity    | Instance | Expressions                |
-|:----------|:---------|:---------------------------|
-| TableType | small​    | small <br>small table      |
-|           | medium   | medium <br>medium table    |
-|           | large    | large <br>large table      |
+| Instance | Expressions                                      |
+|:---------|:-------------------------------------------------|
+| small    | <ul><li> small </li><li>small table </li></ul>   |
+| medium   | <ul><li> medium </li><li>medium table </li></ul> |
+| large    | <ul><li> large </li><li>large table </li></ul>   |
 
 ### What's Next
 Once you've built your chatbot, you can [test](../reference/platform/testing.md) it and see if it works as you expect. If it works well on the platform, you can try to deploy the chatbot to a [channel](../reference/channels/overview.md#opencui-extension-channel) and check the real conversation on a specific channel. You may use the [rich message](../reference/channels/universalmessage.md#rich-message) to provide a better experience for your users.
