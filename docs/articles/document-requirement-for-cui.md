@@ -63,9 +63,9 @@ The conversational behavior of the chatbot for that service can then be describe
 
 Let's use movie ticket selling service as example, the scheme representation of the service can be sketched as follows:
 
-| Service     | Sell movie ticket  | 
+| Service     | Slots  | 
 | :---        | :---               |
-| **Slots**   | <ol><li>`movie title`, with type **MovieTitle** entity.</li><li>`showtime`, with type **LocalTime**.</li><li>`format`, with type **MovieFormat**, e.g. *IMAX 3D*, *Digital 3D*, *Standard*.</li><li>`number of ticket`, with type **Integer**.</li></ol>  | 
+| **Sell Movie Ticket**   | <ol><li>`movie title`, with type **MovieTitle** entity.</li><li>`showtime`, with type **LocalTime**.</li><li>`format`, with type **MovieFormat**, e.g. *IMAX 3D*, *Digital 3D*, *Standard*.</li><li>`number of ticket`, with type **Integer**.</li></ol>  | 
 
 ### Contextual Snippet 1: Happy Path
 
