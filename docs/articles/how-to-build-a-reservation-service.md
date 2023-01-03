@@ -64,7 +64,7 @@ To get available dates, time frames and types of tables, first you need tables t
 | tableType   | TableType             |
 | status      | kotlin.Int            |
 
-## Implement functions 
+## Implement Functions 
 Once you've created tables, you can implement the [function interfaces](./reservation-service.md#add-function-interfaces) imported from the reservation component. By doing so, your business can get access to your database and perform [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operation within it.
 
 :tipping_hand_woman: Now [select a service interface](../reference/providers/postgrest.md#provide-function-implementation) to implement. Next, copy the following codes to implement corresponding functions. Before you start to integrate the provider with a chatbot, be sure to use the [function console](../reference/providers/postgrest.md#function-console) to test functions first.
