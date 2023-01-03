@@ -9,26 +9,26 @@ description:
 author: Sunny May
 ---
 
-# Requirements on Reservation
+# Requirements for Table Reservation
 
-In this article, requirements on the reservation bot are listed in form of contextual snippets so you can learn what the bot should provide by those sample conversations, which includes the following services:
+In this article, we document high level design and requirements for conversational user interface on table reservation bot, so you get some idea on what the bot should behave conversationally. Here are the list of service we want to provide:
 
 [[toc]]
 
 There are some assumptions applied to all these services:
-1. The bot asks the user for a value only when there is no valid value for that slot. 
-2. The bot lists options to help users to make a decision.
-3. The bot confirms the values provided by the user.
-4. The bot can get the id of the user without asking.
-5. A valid reservation means the reservation is made by the user, not expired and hasn't been canceled.
+1. The bot can get the id of the user without asking.
+2. A valid reservation means it is not expired and hasn't been canceled.
 
 ## Make a Reservation
 
 The schema representation of the service can be sketched as follows:
 
-| Service                 | Make a reservation                                                                                                                                                                                                            |
-|:------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Slots**               | <ol><li> `userId` with type **String** </li><li> `date` with type **LocalDate** </li><li> `time` with type **LocalTime** </li><li> `table type` with type **TableType** entity (e.g., _small_, _medium_, _large_)  </li></ol> |
+Service: Make a reservation                                                                                            
+Slots:
+1. `userId` with type **String** 
+2. `date` with type **LocalDate** 
+3. `time` with type **LocalTime**  
+4. `table type` with type **TableType** entity (e.g., _small_, _medium_, _large_)
 
 The conversational behavior of the bot for this service can be described in the following contextual snippets: 
 
@@ -181,11 +181,8 @@ No.
 
 ## View Reservations
 
-The schema representation of the service can be sketched as follows:
-
-| Service                 | View reservations                                  |
-|:------------------------|:---------------------------------------------------|
-| **Slots**               | <ol><li> `userId` with type **String**  </li></ol> |
+Slots:
+1. `userId` with type **String**
 
 The conversational behavior of the bot for this service can be described in the following contextual snippets: 
 
@@ -231,12 +228,9 @@ Sorry, I can't find your valid reservation. Please check whether you made the re
 
 
 ## Cancel a Reservation
-
-The schema representation of the service can be sketched as follows:
-
-| Service                 | Cancel a reservation                                                                            |
-|:------------------------|:------------------------------------------------------------------------------------------------|
-| **Slots**               | <ol><li> `userId` with type **String**  </li><li> `reservation id` with type **Int** </li></ol> |
+Slots:
+1. `userId` with type **String** 
+2. `reservation id` with type **Int**
 
 The conversational behavior of the bot for this service can be described in the following contextual snippets: 
 
