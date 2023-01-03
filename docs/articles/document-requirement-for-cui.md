@@ -5,11 +5,11 @@ date: 2022-12-27
 image:
     - blog/banner/document_requirement.png
 description:
-    - We devised an effective way to communicate CUI requirement
+    - We devised an effective way to communicate CUI design
 author: Sean Wu, Bird Zeng
 ---
 
-# Document Requirement for CUI
+# Document CUI Design
 ![Banner](/images/blog/banner/document_requirement.png)
 
 Service chatbot is an essential approach to improve the customer experience. With recent advance in large language model, service chatbots are moving from only answering questions to providing transactional services as well. They are now expected to handle requests like reserving a table or ordering food, or even more complex service like health care.
@@ -63,9 +63,9 @@ The conversational behavior of the chatbot for that service can then be describe
 
 Let's use movie ticket selling service as example, the scheme representation of the service can be sketched as follows:
 
-| Service     | Sell movie ticket  | 
+| Service     | Slots  | 
 | :---        | :---               |
-| **Slots**   | <ol><li>`movie title`, with type **MovieTitle** entity.</li><li>`showtime`, with type **LocalTime**.</li><li>`format`, with type **MovieFormat**, e.g. *IMAX 3D*, *Digital 3D*, *Standard*.</li><li>`number of ticket`, with type **Integer**.</li></ol>  | 
+| **Sell Movie Ticket**   | <ol><li>`movie title`, with type **MovieTitle** entity.</li><li>`showtime`, with type **LocalTime**.</li><li>`format`, with type **MovieFormat**, e.g. *IMAX 3D*, *Digital 3D*, *Standard*.</li><li>`number of ticket`, with type **Integer**.</li></ol>  | 
 
 ### Contextual Snippet 1: Happy Path
 
