@@ -1,11 +1,11 @@
 ---
 article: true
-date: 2023-01-04
+date: 2023-01-03
 
 image:
     - blog/banner/tutorial_reservation_i.png
 description:
-    - We explain the function interfaces that get access to reservation service
+    - We define the interfaces that get access to reservation service
 author: Sunny May
 ---
 
