@@ -21,8 +21,8 @@ features:
   - title: Declarative
     details: Focus on what is the desired behavior for your chatbot instead of how such behavior should be implemented imperatively, you got OpenCUI for that. 
     icon: /images/featureIcons/declarative.svg
-  - title: Component-First
-    details: Never build from scratch, build complex behavior using imported components, so you can focus on what matters most for your business.
+  - title: Component-Based
+    details: Never build from scratch, build complex behavior by reusing black-box components, so you can focus on what you want instead of how to implement it.
     icon: /images/featureIcons/component.svg
   - title: Hot Fixable NLU 
     details: Accuracy is not the most important metric when it comes to dialog understanding. To deploy a chatbot into production, every thing need to be hot fixable by the operation team.
