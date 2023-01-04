@@ -18,9 +18,6 @@ features:
   - title: Separation of Concerns
     details: Decompose chatbot building into multiple concerns like service, interaction and language perception, so different aspects can be handled by different people.
     icon: /images/featureIcons/separate.svg
-  - title: Declarative
-    details: Focus on what is the desired behavior for your chatbot instead of how such behavior should be implemented imperatively, you got OpenCUI for that. 
-    icon: /images/featureIcons/declarative.svg
   - title: Component-Based
     details: Never build from scratch, build complex behavior by reusing black-box components, so you can focus on what you want instead of how to implement it.
     icon: /images/featureIcons/component.svg
