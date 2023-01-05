@@ -16,7 +16,7 @@ author: Sunny May
 ## Overview
 This guide shows you how to design and build a reservation module with [reservation interfaces](./reservation-interfaces.md). The reservation module provides reusable [conversational user interaction (CUI) components](../guide/components.md#conversational-user-interaction-cui-component) so builders who use this module can reuse CUI components to provide reservation services in their own chatbots.
 
-## Design Module
+## CUI Design
 To begin with, we document high level design and requirements for conversational user interface on table reservation bot, so you get some idea on what the bot should behave conversationally. Here are the list of service we want to provide:
 
 There are some assumptions applied to all these services:

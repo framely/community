@@ -14,24 +14,24 @@ author: Sunny May
 [[toc]]
 
 ## Overview
-The reservation interfaces provide general services for [making a table reservation](./build-reservation-module.md#make-a-reservation).
+The reservation interfaces provide access to make a table reservation.
 
 ## Interfaces
 ### Objects
 **ReservationInfo**
 - Description: the information provided by the user for reservation
 - Properties:
-    - `date_param`, with type **java.time.LocalDate**
-    - `time_param`, with type **java.time.LocalTime**
-    - `tableType_param`, with type **TableType**
+    - `date`, with type **java.time.LocalDate**
+    - `time`, with type **java.time.LocalTime**
+    - `tableType`, with type **TableType**
 
 **TableInfo**
 - Description: the whole information of available tables.
 - Properties:
-    - `date_param`, with type **java.time.LocalDate**
+    - `date`, with type **java.time.LocalDate**
     - `startTime`, with type **java.time.LocalTime**
     - `endTime`, with type **java.time.LocalTime**
-    - `tableType_param`, with type **TableType**
+    - `tableType`, with type **TableType**
     - `minGuest`, with type **kotlin.Int**
     - `maxGuest`, with type **kotlin.Int**
 
@@ -57,7 +57,7 @@ The reservation interfaces provide general services for [making a table reservat
 ## How To Add
 Following the definition of interfaces, you can create the [type systems](../guide/concepts.md#type-systems) and [services](../guide/concepts.md#services) in a module. If you have problems in adding interfaces, you can refer to the [reservation service](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/63734ef820b0d2661d800404/service_schema).
 
-To add interfaces for [making a table reservation](./build-reservation-module.md#make-a-reservation), follow these procedures:
+To add interfaces for making a table reservation, follow these procedures:
 1. Create a module with service enabled and [add the EN language](../reference/platform/multilingual.md#add-multi-language).
 2. Create an [entity](../guide/concepts.md#entities) called **TableType**.
 3. Create two [frames](../guide/concepts.md#frames) to represent **ReservationInfo** object and **TableInfo** object. Add slots that are the same as properties of the object in each frame.
