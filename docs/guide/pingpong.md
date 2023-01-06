@@ -213,12 +213,12 @@ OpenCUI provides a built-in testing feature **Debug** to help you to uncover bug
    ![pingpong test](/images/guide/pingpong/pingpong_test.png)
    :::
 
-5. After you have tested your chabot, you can switch to **Version** page to create a pull request with your changes: 
-   1. In the middle of the second navigation bar, select **Version** tab. Then click **Pull Request** in the upper-right corner of the Version area.
+5. After you have tested your chabot, you can create a pull request, compare changes across your branch and review these changes. To create a pull request: 
+   1. In the middle of the second navigation bar, select **Version** tab. Click **Pull Request** in the upper-right corner of the Version area.
       ::: thumbnail
       ![pingpong pull request](/images/guide/pingpong/pingpong_pull_request.png)
       :::
-   2. Click the item you want to merge, **Compare Diffs** field will slide out.
+   2. Click the item you want to review, **Compare Diffs** field will slide out.
       ::: thumbnail
       ![version item](/images/guide/pingpong/version_item.png)
       :::
@@ -273,13 +273,13 @@ Now let's use Messenger as an example. To use this integration:
    *Select your pingpong chatbot*
    :::
 
-4. When you are done with import, switch to your pingpong chatbot, you can see this **channel** service under the **Imported** tab.
+4. When you are done with import, switch to your pingpong chatbot, you can see this **channel** service in the **Imported** list.
 
    ::: thumbnail
    ![imported list](/images/guide/pingpong/imported_list.png)
    :::
 
-5. To wire messenger to the channel service, back to **Build** tab: 
+5. To wire messenger to the channel service: 
    1. Heading to **Settings** page, select **Integrations** tab. In the **Service Provider** section, select **channel** service (labeled as `io.opencui.channel.IChannel`) you just imported.
 
       ::: thumbnail
@@ -316,7 +316,7 @@ Now let's use Messenger as an example. To use this integration:
       ![config info](/images/guide/pingpong/config_info.png)
       :::
 
-7. When you're done configuring, merge your changes to master. And then you can deploy your chatbot by clicking **Deploy** in **Version** page.
+7. When you're done configuring, switch to **Version** tab and merge your changes to master. And then you can deploy your chatbot by clicking **Deploy**.
 
    ::: thumbnail
    ![deploy chatbot](/images/guide/pingpong/deploy_chatbot.png)
