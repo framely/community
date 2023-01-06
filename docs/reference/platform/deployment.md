@@ -33,5 +33,5 @@ To deploy your chatbot, stay at **STRUCT** level:
 Now you can interact with your bot in each integrated channel like the screenshot below. For more information about channel integration, see [channel](../channels/overview.md). 
 
 ::: thumbnail
-<img width="400" alt="whatsapp" src="/images/guide/platform/whatsapp.jpg">
+<img width="400" alt="whatsapp" src="/images/platform/deployment/whatsapp.jpg">
 :::
