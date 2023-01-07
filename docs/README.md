@@ -2,8 +2,8 @@
 home: true
 title: Home
 heroImage: /images/hero.png
-tagline: Schema grounded Chatbots for any Services
-heroText: Open Frontend Framework for Chatbot Development
+tagline: Schema grounded CUI for any Services
+heroText: Component-based Approach for Chatbot Development
 actions:
   - text: Start to Build
     link: /reference/platform/signingup.html
