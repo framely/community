@@ -40,22 +40,9 @@ features:
     details: The chatbot defined on the OpenCUI are generated into kotlin code, which makes it easy to integrate with any channel, support and services, take full advantage of java/kotlin ecosystem.
     icon: /images/featureIcons/raw-code.svg
 
-contentCards:
-  - title: Start with API Schema
-    details: The services that you want to expose is uniquely defined by API schema, which on one hand, capture the data type of the input and output parameter, and signature of the function, and on the other hand, represent the meaning user expression in the utterances. 
-    image: /images/schema.png
-    left: true
-  - title: Declare Interaction Logic
-    details: Schema defines what information we need to collect from a user in order to deliver the desired user experience. The interaction logic is driven by business logic and goals. OpenCUI provides a set of interaction annotation which a builder can use declaratively to describe what conversational experience they want to provide, and OpenCUI runtime will take care of the rest.
-    image: /images/interaction.png
-    left: false
-  - title: Link Utterances to Semantics 
-    details: Natural language utterances in the different languages is translated to and from schema event by OpenCUI dialog understanding and module. To control the language perception related behavior, the builder only needs to touch the language part of the relevant interaction annotation, by providing exemplars for user utterance and template for bot messaging. No machine learning (ML) and natural language understanding (NLU) training is needed, certainly no need for a Ph.D hire.
-    image: /images/language.png
-    left: true
 
 cta :
-  - details: Build conversational interface for your APIs.
+  - details: Import what you need, Configure to your desire and Deploy.
     title: Get Started
     link: /reference/platform/signingup.html
     
