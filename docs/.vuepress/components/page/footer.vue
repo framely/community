@@ -1,7 +1,7 @@
 <template>
   <section class="footer-small">
     <div class="links">
-      <p>OpenCUI, Inc &copy; 2022 All rights reserved</p>
+      <p>OpenCUI, Inc &copy; 2023 All rights reserved</p>
     </div>
     <div class="links">
       <a href="#">What is OpenCUI?</a>
