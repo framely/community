@@ -46,53 +46,6 @@ cta :
     title: Get Started
     link: /reference/platform/signingup.html
     
-mainfooter:
-  - firstgrid:
-      - title: Product
-        links:
-          - link: /database
-            text: Component
-          - link: /auth
-            text: Chatbot
-          - link: /storage
-            text: Service
-          - link: /functions
-            text: Provider
-          - link: /pricing
-            text: Runtime
-      - title: Resources
-        links:
-          - link: /guide/cooperative.html
-            text: Cooperative Principle
-          - link: /guide/sgcui.html
-            text: Schema Grounded
-          - link: /guide/5levels-cui.html
-            text: 5 Levels of CUI
-          - link: /guide/components.html
-            text: CUI Component
-          - link: /guide/architecture.html
-            text: Under the Hood
-  - secondgrid:
-      - title: Builder
-        links:
-          - link: /guide/
-            text: Guide
-          - link: /reference/
-            text: Reference
-          - link: https://github.com/framely/community/discussions
-            text: Community
-          - link: https://github.com/framely/community/issues
-            text: Issues
-      - title: Company
-        links:
-          - link: https://opencui.medium.com/
-            text: About
-          - link: https://opencui.medium.com/
-            text: Blog
-          - link: /storage
-            text: Career
-          - link: https://framely.webflow.io/contact
-            text: Contact
 
 footerHtml: true 
 ---
