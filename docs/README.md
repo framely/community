@@ -42,7 +42,7 @@ features:
 
 
 cta :
-  - details: Simple, just Import what you need, Configure and Deploy.
+  - details: Import what you need, Configure and Deploy.
     title: Get Started
     link: /reference/platform/signingup.html
     
