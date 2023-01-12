@@ -200,9 +200,9 @@ This code will generate the configuration information forms like the screenshot 
 Implementation is the dependency info for linking implementation source code. The format of implementation should be `group:project:version`. Normally, the `group` and `version` field can be found in the **build.gradle** file of the implementation project:
 - `group`: group in the **build.gradle** file of your project. For example, in [helloworld extension](https://github.com/opencui/extensions/blob/main/helloworld/build.gradle), it is `io.opencui.extensions`.
 - `project`: the subdirectory name of this project. 
-- `version`: version in the **build.gradle** file of your project. For example, in [helloworld extension](https://github.com/opencui/extensions/blob/main/helloworld/build.gradle), it is `1.0-SNAPSHOT`
+- `version`: version in the **build.gradle** file of your project. For example, in [helloworld extension](https://github.com/opencui/extensions/blob/main/helloworld/build.gradle), it is `1.0-SNAPSHOT`.
 
-Therefore, the Implementation should look like `io.opencui.extensions:helloworld:1.0-SNAPSHOT`. See [Develop Extension](extension.md#develop-extension) for more information.
+Therefore, the Implementation should look like `io.opencui.extensions:helloworld:1.0-SNAPSHOT`. For more information about helloworld extension, see [Quickstart with Helloworld](extension.md#quickstart-with-helloworld) .
 
 ::: thumbnail
 ![implementation](/images/provider/nativeprovider/implementation.png)
