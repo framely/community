@@ -46,7 +46,7 @@ When you're done, make sure you merge all of your changes into master.
 
 ## Quickstart with Helloworld
 
-Now lest's use **helloworld** extension as an example to show how extension is developed. This simple hello word extension gets name from configuration, and then simly return `hello $name`.
+Now lest's use [helloworld extension](https://github.com/opencui/extensions/tree/main/helloworld) as an example to show how extension is developed. This simple hello word extension gets name from configuration, and then simly return `hello $name`.
 
 ### 1. Decribe Interface
 
@@ -160,7 +160,7 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
           }
         ]
         ```
-    - Enter `io.opencui.extensions:helloworld` in **Implementation** field.
+    - Enter `io.opencui.extensions:helloworld:1.0-SNAPSHOT` in **Implementation** field. The format of this field should be `group:project:version`. Normally, the `group` and `version` field can be found in the **build.gradle** file.
 
     ::: thumbnail
     ![configuration setup](/images/provider/extension/hello_configuration_setup.png)
