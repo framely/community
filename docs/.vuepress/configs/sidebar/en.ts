@@ -31,10 +31,7 @@ export const en = {
   '/reference/': [
     {
       text: 'CUI Components',
-      icon:"/featureIcons/cui.svg",
-
       collapsible: true,
-
       children: [
         '/reference/annotations/overview.md',
         '/reference/annotations/init.md',
@@ -90,4 +87,29 @@ export const en = {
       ]
     },
   ],
+  '/plugins/': [
+    {
+      text: 'Components',
+      children: [
+        {
+          text: 'Date Picker',
+          children:[
+            '/plugins/components/datepicker/datepicker-requirement.md',
+            '/plugins/components/datepicker/datepicker-design.md'
+          ],
+        }
+      ],
+    },
+    {
+      text: 'Services',
+      children: [
+        {
+          text: 'Reservation',
+          children:[
+            '/plugins/services/reservation/reservation-requirement.md'
+          ],
+        }
+      ]
+    },
+  ]
 }
