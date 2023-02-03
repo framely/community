@@ -1,4 +1,4 @@
-# Date picker CUI Design
+# Date Picker CUI Design
 
 ## Usage
 

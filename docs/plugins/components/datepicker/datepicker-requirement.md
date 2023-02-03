@@ -1,4 +1,4 @@
-# Date picker Requirement
+# Date Picker Requirement
 
 When designing a web or mobile app, a date picker is often required. Instead of developing one from scratch, we tend to use an existing implementation because:
 
