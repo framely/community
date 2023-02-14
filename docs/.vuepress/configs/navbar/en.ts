@@ -7,7 +7,6 @@ export const en = [
   {
     text: 'Guide',
     link: '/guide/',
-
   },
   {
     text: 'Reference',
@@ -19,7 +18,6 @@ export const en = [
             text: 'Overview',
             link: '/reference/annotations/overview.html',
             icon: '/navIcons/overview.svg',
-
           },
           {
             text: 'Initialization',
@@ -118,7 +116,6 @@ export const en = [
           }
         ]
       },
-
       {
         text: 'Supports',
         children: [
@@ -175,6 +172,31 @@ export const en = [
         ]
       },
     ],
+  },
+  {
+    text: 'Plugins',
+    children: [
+      {
+        text: 'Components',
+        children: [
+          {
+            text: 'DatePicker',
+            link: '/plugins/components/datepicker/datepicker-requirement.html',
+            icon: '/navIcons/datepicker.png',
+          }
+        ]
+      },
+      {
+        text: 'Services',
+        children: [
+          {
+            text: 'Reservation',
+            link: '/plugins/services/reservation/reservation-requirement.html',
+            icon: '/navIcons/reservation.png',
+          }
+        ]
+      }
+    ]
   },
   {
     text: 'Pricing',
