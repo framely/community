@@ -1,4 +1,4 @@
-# Date Picker CUI Design
+# Overview
 
 ## Usage
 
@@ -41,7 +41,7 @@ When the bot is making value recommendations, the auxiliary slots below can help
 | Snippet 1                  | Happy Path                                    | 
 | :---                       | :---                                          | 
 | **Description**            | Defines what happens if everything goes well. | 
-| **Precondition**           | complete: `false`                             | 
+| **Precondition**           | complete = `false`                             | 
 | **Annotated Conversation** | <ul><li> :robot: : Which date would you like？ <br>&emsp;&emsp;- 2023-01-19 <br>&emsp;&emsp;- 2023-01-20 <br>&emsp;&emsp;- 2023-01-21 </li><li> :blush: : Jan 19. </li><li> :robot: : Get, your date is 2023-01-19. </li></ul> | 
 | **End State**              | <ul><li>date = `2023-01-19` </li><li>complete = `true` </li></ul> | 
 
@@ -50,18 +50,18 @@ When the bot is making value recommendations, the auxiliary slots below can help
 | Snippet 2                  | Date Value Can NOT Pass Verification          | 
 | :---                       | :---                                          | 
 | **Description**            | After the user specifies a date, the date does not pass validation. Bot prompts the verification failure message and asks the user again. | 
-| **Precondition**           | complete: `false`                             | 
+| **Precondition**           | complete = `false`                             | 
 | **Annotated Conversation** | <ul><li> :blush: : Jan 19. </li><li> :robot: : The date is not available. Which date would you like? <br>&emsp;&emsp;- 2023-01-20 <br>&emsp;&emsp;- 2023-01-21 <br>&emsp;&emsp;- 2023-01-22 </li></ul> | 
-| **End State**              | complete: `false`                             | 
+| **End State**              | complete = `false`                             | 
 
 ### 3. User Provides Partial Inform
 
 | Snippet 3                  | User Provides Partial Inform                  | 
 | :---                       | :---                                          | 
 | **Description**            | After the bot provides candidates, the user proposes some conditions to narrow down the available options. | 
-| **Precondition**           | complete: `false`                             | 
+| **Precondition**           | complete = `false`                             | 
 | **Annotated Conversation** | <ul><li> :robot: : Which date would you like？ <br>&emsp;&emsp;- 2023-01-19 <br>&emsp;&emsp;- 2023-01-20 <br>&emsp;&emsp;- 2023-01-21 </li><li> :blush: : mon or tues. </li><li> :robot: : Here are some optins for you: <br>&emsp;&emsp;- 2023-01-23 <br>&emsp;&emsp;- 2023-01-24 <br>&emsp;&emsp;- 2023-01-30 <br>&emsp;&emsp;- 2023-01-31</li></ul> | 
-| **End State**              | complete: `false`                             | 
+| **End State**              | complete = `false`                             | 
 
 ### 4. User Change Mind
 

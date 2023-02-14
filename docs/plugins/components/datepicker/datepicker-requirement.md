@@ -1,8 +1,9 @@
-# Date Picker Requirement
+# Motivation
 
 When designing a web or mobile app, a date picker is often required. Instead of developing one from scratch, we tend to use an existing implementation because:
 
 1. Building a visually appealing and functional date picker can be a complex and time-consuming task. Even the simplest date pickers, like the one from Material Design as above, often have multiple sub parts that require separate views to be rendered and control to be implemented.
+
 2. In many cases, the appearance and functionality of the date input UI has minimal impact on user experience and business objectives, so it is important to save effort by focusing on other value-generating activities.
 
 And to use this date picker, simply import it and connect the output (selected date) to your interaction logic, you are done.
@@ -19,6 +20,7 @@ To support different languages, CUI components should support simple annotations
 In addition to actual services users need such as getting a ticket, production system can be utilized to improve conversational user experience. There are at least two opportunities for this:
 
 1. **Value Recommendation**: When prompting users for a preferred date, we can ask backend to provide a list of available date candidates, so that user does not need to suggest something that is not available in the production system, which can be a frustrating and ineffective conversation experience. Further more, when presented with value recommendation, the component should understand utterances like: *“Do you have more options?”* and *“the second one, please”*.
+
 2. **Value Check**: After users provide their preferred date, we can use a backend API to check if it is valid according to business logic. By catching these invalid values early and immediately asking users for an alternative choice, we can save them time and prevent them from wasting time filling out later slots. It should also be possible to specify the recovery strategy.
 
 We should be able to wire different service APIs to a date picker, so that we can use the same date picker in different businesses.
@@ -27,6 +29,7 @@ We should be able to wire different service APIs to a date picker, so that we ca
 It is absolutely necessary to understand direct utterance such as “I like to leave on June 30th, please”. But often time, there are many indirect but nonetheless natural ways for users to narrow down their choices, and it is important for us to understand these expressions. There are two different kinds:
 
 1. **Auxiliary Slot**: One such constraint is expressed in the different but related data type, and captured in what we called auxiliary slot. For example, we can add `dayOfWeek = Monday` to dialog state per user’s utterance: *“I am only available on Mondays”*.
+
 2. **Companion Slot**: Another common way of expressing constraint is to add logic operation to existing date type. For example: *“but I am not available on June 19th”*.
 
 Of course to fully support these expression, we will need backend provide APIs that can make use these additional ways of expressing the constraints on the date preference.

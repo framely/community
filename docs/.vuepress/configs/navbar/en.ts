@@ -182,7 +182,7 @@ export const en = [
           {
             text: 'DatePicker',
             link: '/plugins/components/datepicker/datepicker-requirement.html',
-            icon: '/navIcons/initialization.svg',
+            icon: '/navIcons/datepicker.png',
           }
         ]
       },
@@ -192,7 +192,7 @@ export const en = [
           {
             text: 'Reservation',
             link: '/plugins/services/reservation/reservation-requirement.html',
-            icon: '/navIcons/extension.svg',
+            icon: '/navIcons/reservation.png',
           }
         ]
       }
