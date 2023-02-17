@@ -31,11 +31,6 @@ Value Check is an optional slot annotation. When [Slot Filling](../../guide/slot
 ![value check](/images/annotation/valuecheck/value-check.png)
 ::: 
 
-::: tip Try it with templates  
-1. Go to [ValueCheck](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/6297f6d14cfdb2515448d814/test_case), see examples in Test Cases.
-2. Click **Try it now** > **Connect**, you can try it yourself.
-:::
-
 ### Conditions
 Condition holds the boolean code expression that checks whether the value user input is servable by business. If all conditions are true, Value Check passes. If one of the conditions is false, Value Check fails.
 

@@ -12,7 +12,7 @@ The order will be under the same number "1202555xxxx" as last time. Ready to pla
 :::
 ::::
 
-There are other use cases where initialization can be useful. For example, when booking a vacation, after a user has booked a flight ticket, the bot can associate that flight arrival date and city for the start date and location for the subsequent hotel booking. View the whole conversation in [Testcase - Vacation](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/62b12e4eede53f1b65047b11/test_case).
+There are other use cases where initialization can be useful. For example, when booking a vacation, after a user has booked a flight ticket, the bot can associate that flight arrival date and city for the start date and location for the subsequent hotel booking. 
 
 :::: conversation
 ::: bot Bot
@@ -31,7 +31,6 @@ You can provide the slot with an initial value by defining the association of th
   - You can pick an earlier slot of the same type as proposed value. If you pick a later slot, the behavior is not defined, meaning the behavior might change without notice.
 - Function call:
   - Regarding the first situation in [Motivation](#motivation), you can set the phone number as `getUserPhoneNumber()`, which returns the user's previous phone number.
-  - Go to [SKill: FoodOrdering](https://build.opencui.io/org/622c8ff683536204fe062b55/agent/62b12e4cede53f1b65047b0f/intent/62b12eacede53f1b65047b13) to learn more details.
   
 Beyond the normal operator like +,-,*,/, you can combine expressions using:
 - [If expression](./kotlinexpression.md#if-expression)

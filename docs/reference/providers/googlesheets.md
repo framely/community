@@ -6,7 +6,7 @@
 
 [Google Sheets](https://www.google.com/sheets/about/#overview) is a web-based application that enables users to create, update and modify spreadsheets and share the data online in real time.
 
-Google Sheets provider allow you to use Google Sheets as backend, which the actual data can be managed by your operation team in online spreadsheet collaboratively. Through Google Sheets provider, you can query data from your spreadsheet using the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) and update data with the help of low level functions in [io.opencui.provider.GoogleSheetsConnection](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/6340dea9815fc9881cbbbfe7/frame/6340dea9815fc9881cbbbfea).
+Google Sheets provider allow you to use Google Sheets as backend, which the actual data can be managed by your operation team in online spreadsheet collaboratively. Through Google Sheets provider, you can query data from your spreadsheet using the [Query Language](https://developers.google.com/chart/interactive/docs/querylanguage) and update data with the help of low level functions in `io.opencui.provider.GoogleSheetsConnection`.
 
 ::: thumbnail
 ![data management](/images/provider/googlesheets/data-management.png)
@@ -81,7 +81,7 @@ To get your business data from a spreadsheet, you can write a query in **provide
 
 ### Kotlin Functions
 
-To update and append your business, OpenCUI provides external functions: _update_ and _append_. You can call these functions using `connection.update` and `connection.append` in Kotlin functions. Check out the definitions of these functions in [io.opencui.provider.GoogleSheetsConnection](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/6340dea9815fc9881cbbbfe7/frame/6340dea9815fc9881cbbbfea). To learn the source of the function, see [spreadsheets.values.update](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/update) and [spreadsheets.values.append](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append).
+To update and append your business, OpenCUI provides external functions: _update_ and _append_. You can call these functions using `connection.update` and `connection.append` in Kotlin functions. Check out the definitions of these functions in `io.opencui.provider.GoogleSheetsConnection`. To learn the source of the function, see [spreadsheets.values.update](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/update) and [spreadsheets.values.append](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append).
 
 - The input parameters are the same in these two functions. 
 
