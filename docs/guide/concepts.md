@@ -24,7 +24,7 @@ Services can be described by its schema, using description languages such as [Op
 
 A data type (or simply type) defines what operations can be applied to its instances, and the behavior on these instances resulted from these operations. As a conversational user interface framework, the types you can define on OpenCUI, including skill, frame and entity, have their conversational behavior defined in three layers. In schema layer, they are directly mapped into hosting language data types (currently Java/Kotlin) so that it can be used to invoke the service functions directly; in interaction layer, how to collect user preferences are defined via dialog annotation; finally in language layer, these same types directly encode the semantics of utterances, and builder can use exemplar and template to control how to convert between natural text and structured representation back and forth. 
 
-These pre-defined data types we support like [Java](https://build.opencui.io/org/5f531ff3b18cde225665fcf3/agent/5fa26c1a22714e8c5b7b9ea3/entity), [Kotlin](https://build.opencui.io/org/5f531ff3b18cde225665fcf3/agent/5fa21ced93f59e8e4f65839a/entity) are usually automatically imported into projects. If not, you can import them manually, and then you can view them under Imported tab.
+These pre-defined data types we support like [Java](https://build.opencui.io/org/system/agent/java/struct/entity), [Kotlin](https://build.opencui.io/org/system/agent/kotlin/struct/entity) are usually automatically imported into projects. If not, you can import them manually, and then you can view them under Imported tab.
 
 ### Skills
 Generally, a skill represents what a user wants, at the same time, it is essentially a function that a user can access through conversations for businesses. 

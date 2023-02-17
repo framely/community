@@ -39,7 +39,7 @@ On the Messenger side, please ensure you have all of the following:
 
 ## Configure Messenger From OpenCUI
 
-1. On OpenCUI platform, go to service component [io.opencui.channel](https://build.opencui.io/org/633db11928e4f04b5f8443b4/agent/63479c58bb57d84573e65ee8/service_schema): 
+1. On OpenCUI platform, go to service component [io.opencui.channel](https://build.opencui.io/org/io.opencui/agent/channel/struct/service_schema): 
    1. Click **Import** button on the second topbar.
    2. Select the chatbot you want to configure Messenger channel and **Save**.
 
