@@ -1,4 +1,4 @@
-# Quick Start with PingPong 
+# Quickstart with PingPong 
 > Follow this PingPong chatbot to get started with OpenCUI.
 
 This guide will walk you through using OpenCUI platform to build, test and deploy a simple PingPong chatbot. When interacting with this chatbot, a user can get a greeting message, and a response *"pong"* to input message *"ping"*. For example:

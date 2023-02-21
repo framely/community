@@ -12,6 +12,21 @@ export const en = [
     text: 'Reference',
     children: [
       {
+        text: 'Quickstarts',
+        children: [
+          {
+            text: 'Sign Up',
+            link: '/reference/platform/signingup.html',
+            icon: '/navIcons/signup.svg',
+          },
+          {
+            text: 'Quickstart with PingPong',
+            link: '/reference/quickstarts/pingpong.html',
+            icon: '/navIcons/pingpong.svg',
+          }
+        ]
+      },
+      {
         text: 'CUI Components',
         children: [
           {
@@ -134,11 +149,6 @@ export const en = [
       {
         text: 'Platform',
         children:[
-          {
-            text: 'Sign Up',
-            link: '/reference/platform/signingup.html',
-            icon: '/navIcons/signup.svg',
-          },
           {
             text: 'Multilingual',
             link: '/reference/platform/multilingual.html',
