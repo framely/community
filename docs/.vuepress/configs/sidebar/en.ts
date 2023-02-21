@@ -6,8 +6,7 @@ export const en = {
       children: [
         '/guide/README.md',
         '/guide/are-you-ready.md',
-        '/guide/getting-started.md',
-        '/guide/pingpong.md'
+        '/guide/getting-started.md'
       ],
     },
     {
@@ -29,6 +28,14 @@ export const en = {
     }
   ],
   '/reference/': [
+    {
+      text: 'Quickstarts',
+      collapsible: true,
+      children: [
+        '/reference/platform/signingup.md',
+        '/reference/quickstarts/pingpong.md'
+      ],
+    },
     {
       text: 'CUI Components',
       collapsible: true,
@@ -77,7 +84,6 @@ export const en = {
       text: 'Platform',
       collapsible: true,
       children:[
-        '/reference/platform/signingup.md',
         '/reference/platform/multilingual.md',
         '/reference/platform/testing.md',
         '/reference/platform/deployment.md',
