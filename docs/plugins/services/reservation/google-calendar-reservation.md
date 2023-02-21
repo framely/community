@@ -192,70 +192,44 @@ To add features as slots for your concrete resource:
 1. **Create** entity types for your features. 
    1. Go to **Entities** page, click **Create**, type the entity Label and press the ENTER/RETURN key. (e.g. HairdresserName).
    2. **Add** entity instances you need. (*e.g. tony, zhangsan*) Don't forget to configure the expression at the language level.
-      ::: thumbnail
-      ![add entity](/images/plugins/reservation/googlecalendar/add_entity.png)
-      :::
+    ::: thumbnail
+    ![add entity](/images/plugins/reservation/googlecalendar/add_entity.png)
+    :::
 2. Add entity types as slots. 
    1. Back to your concrete frame page.
    2. In the **Slots** section, click **Add Slots** selector and select the entity type you want to add.  
-      ::: thumbnail
-      ![add slot](/images/plugins/reservation/googlecalendar/add_slot.png)
-      :::
+    ::: thumbnail
+    ![add slot](/images/plugins/reservation/googlecalendar/add_slot.png)
+    :::
 
 ### Specify Required Properties
 
-When you are done with setting up resources in both Calendar and OpenCUI, you need to specify the required  properties of them.
+When you are done with setting up resources in both Calendar and OpenCUI, you need to specify the required properties of them in [Google Admin console](https://admin.google.com/).
 
-#### 1. Associate Timezone and Default Duration with Buildings
-
-Each building configured in calendar needs to set a `timezone` and `default durations` in building **Description**. And we assume the same type has the same duration. So duration is designed based on resource type.
-
-**JSON Representation**
-```json
-{
-  "timezone": "America/New_York",
-  "defaultDurations": {
-    "resourceType_1": 3600,
-    "resourceType_2": 7200
-  }
-}
-```
-
-| Property           | Description | 
-|:---                |:---         | 
-| `timezone`         | Required. The time zone of this building, also represents the timezone of each resource. Formatted as an [IANA Time Zone Database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). | 
-| `defaultDurations` | Required. How long should each appointment last. Should be key-value pairs: <ul><li>key: String. Your resource type. </li><li>value: Int. The time interval, in seconds. </li></ul>  | 
-
-For example: 
-```json
-{"timezone": "America/New_York", "defaultDuration": {"Hairdresser": 3600}}
-```
-
-::: thumbnail
-![building description](/images/plugins/reservation/googlecalendar/building_description.png)
-:::
-
-#### 2. Associate Features with Resources
-
-Each resource configured in calendar needs to be associated with a JSON format in resource **Description(internal)**, which will deserialize to OpenCUI concrete frame object (the subclass of resource frame type). At the same time, you can add any feature related to the resource, which can be used to retrieve the resource.
+Each resource configured in calendar needs to be associated with a JSON format in resource **Description(internal)**, which will deserialize to OpenCUI concrete frame object (the subclass of resource frame type). At the same time, you can set the corresponding features for each resource through key-value pairs, which can be used for filtering. 
+- If resource is Identifiable: for example, users know which resource they are getting, like hairdresser. You should set `slotLabel` and `slotTypeInstancesLabel` as key-value pairs, like `"hairdresserName": "tony"`.
+- If resource is Anonymous: for example, users do not know the identity of the resource, like tables, as long as the table meets their requirement, they do not care which table it is. You can set the corresponding key-value pairs you need to retrieve the resource.
 
 **JSON Representation**
 ```json
 {
-  "@class": "FrameLabel",  // fully qualified name
-  "slotLabel": "slotTypeInstancesLabel",
+  "@class": "FrameLabel", // fully-qualified name
+  "durations": [
+    3600,
+    7200
+  ],
   "key": "value"
 }
 ```
 
-| Property          | Description | 
-|:---               |:---         | 
-| `@class`          | Required. The concrete frame label you defined in your Module or Chatbot, which implements services.opencui.reservation.Resource. Label should be the fully-qualified name. | 
-| *key-value pairs* | <ul><li>If resource is Identifiable: for example, users know which resource they are getting, like hairdresser. You should set slotLabel and slotTypeInstancesLabel as key-value pairs. </li><li>If resource is Anonymous: for example, users do not know the identity of the resource, like tables, as long as the table meets their requirement, they do not care which table it is. You can set any feature you need to filter the resource. </li></ul> | 
+| Property      | Type   | Description | 
+|:---           |:---    |:---         | 
+| `@class`      | String | Required. The concrete frame label you defined in your Module or Chatbot, which implements *services.opencui.reservation.Resource*. Label should be the fully-qualified name. | 
+| `durations[]` | Int[]  | Required. How long should each appointment last. The time interval, in seconds. | 
 
 For example: 
 ```json
-{"@class": "me.quickstart.reservationTest.Hairdresser", "hairdresserName": "tony"}
+{"@class": "me.quickstart.reservationTest.Hairdresser", "defaultDuration": [3600,7200], "hairdresserName": "tony"}
 ```
 
 ::: thumbnail
@@ -273,21 +247,26 @@ The testing acts on real data, so use caution when trying methods that create, m
 
 Now let's use `getResourceInfo` as an example.
 
-1. In your chatbot, create a skill.
-2. Go to **Schema** tab, in the **Services** section, select *services.opencui.reservation*, click **Save**.
+1. In your chatbot, create a testing skill, for example, *Ping*.
+2. Use services. Go to **Schema** tab, in the **Services** section, select *services.opencui.reservation*, click **Save**.
     ::: thumbnail
     ![testing add service](/images/plugins/reservation/googlecalendar/testing_add_service.png)
     :::
-3. Go to **Response** tab, in the **Default Action** section, add the actions you need. In this case, we add **Single Value Message**.
+3. Add actions. Go to **Response** tab, in the **Default Action** section, add the actions you need. In this case, we add **Single Value Message**.
     ::: thumbnail
     ![testing add reply](/images/plugins/reservation/googlecalendar/testing_add_reply.png)
     :::
 4. Click **Commit**, and switch to language level.
-5. Go to **Expression** tab, add **Names** and **Expressions**.
-6. Go to **Response** tab, add the reply and call the `getResourceInfo` function.
+5. Add language template and exemplar:
+    1. Go to **Expression** tab, add **Names** and **Expressions**.
+    ::: thumbnail
+    ![testing add expression](/images/plugins/reservation/googlecalendar/testing_add_expression.png)
+    :::
+    2. Go to **Response** tab, add the reply and call the `getResourceInfo` function.
     ```kotlin
-    This is Resource id 8832794285's info: 
-    ${ (reservation.getResourceInfo("8832794285") as Hairdresser)!!.hairdresserName!!.expression() }
+    // change "xxxxxxxx" to your resource id
+    This is Resource id xxxxxxxx's info: 
+    ${ (reservation.getResourceInfo("xxxxxxxx") as Hairdresser)!!.hairdresserName!!.expression() }
     ```
     ::: thumbnail
     ![testing call function](/images/plugins/reservation/googlecalendar/testing_call_function.png)
