@@ -206,6 +206,27 @@ To add features as slots for your concrete resource:
 
 When you are done with setting up resources in both Calendar and OpenCUI, you need to specify the required properties of them in [Google Admin console](https://admin.google.com/).
 
+#### 1. Associate Timezone with Buildings
+
+Each building configured in calendar needs to set a `timezone` in building's **Description**. 
+
+**JSON Representation**
+```json
+{
+  "timezone": "America/New_York"
+}
+```
+
+| Property   | Type   | Description | Example |
+|:---        |:---    |:---         | :---    |
+| `timezone` | String | Required. The time zone of this building, also represents the timezone of each resource. (Formatted as an [IANA Time Zone Database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)) | *America/New_York* |
+
+::: thumbnail
+![building description](/images/plugins/reservation/googlecalendar/building_description.png)
+:::
+
+#### 2. Associate Features with Resources
+
 Each resource configured in calendar needs to be associated with a JSON format in resource **Description(internal)**, which will deserialize to OpenCUI concrete frame object (the subclass of resource frame type). At the same time, you can set the corresponding features for each resource through key-value pairs, which can be used for filtering. 
 - If resource is Identifiable: for example, users know which resource they are getting, like hairdresser. You should set `slotLabel` and `slotTypeInstancesLabel` as key-value pairs, like `"hairdresserName": "tony"`.
 - If resource is Anonymous: for example, users do not know the identity of the resource, like tables, as long as the table meets their requirement, they do not care which table it is. You can set the corresponding key-value pairs you need to retrieve the resource.
