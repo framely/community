@@ -49,7 +49,7 @@ Now, let's begin:
 
 Before you start with this guide, it is recommended that you go through these following list first:
 1. Get familiar with [the basic idea of building conversational apps](README.md).
-2. [Sign up](../reference/platform/signingup.md) for OpenCUI account.
+2. [Sign up](../platform/signingup.md) for OpenCUI account.
 
 ## Create Chatbot
 After you log in, there will be an org *(short for organization)* automatically created for you. You can select this org to create chatbots. Here, the org with label `me.quickstart` will be selected: 
