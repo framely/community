@@ -113,7 +113,8 @@ export const en = {
           text: 'Reservation',
           children:[
             '/plugins/services/reservation/reservation-requirement.md',
-            '/plugins/services/reservation/google-calendar-reservation.md'
+            '/plugins/services/reservation/google-calendar-reservation.md',
+            '/plugins/services/reservation/reservation-api.md'
           ],
         }
       ]
