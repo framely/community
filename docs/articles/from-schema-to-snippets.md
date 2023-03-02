@@ -3,14 +3,16 @@ article: true
 date: 2023-02-25
 
 image:
-    - blog/banner/document_requirement.png
+    - blog/banner/from-schema-to-snippets.png
 description:
     - The 3 Essential Steps Every Business Should Follow After ChatGPT
 author: Bird Zeng
 ---
 
 # From Schema to Snippets: A Blueprint for Chatbot
-![Banner](/images/blog/banner/document_requirement.png)
+![Banner](/images/blog/banner/from-schema-to-snippets.png)
+
+> Building Efficient Chatbots: The 3 Essential Steps Every Business Should Follow After ChatGPT
 
 When designing conversational user experiences, there is often a focus on making chatbots smart, intelligent, and human-like. However, this approach can be driven more by technology constraints than the actual services being provided. While language models like ChatGPT can enhance customer experience, they can not determine the business logic of the chatbot, which requires a deep understanding of specific industry requirements and goals.
 
