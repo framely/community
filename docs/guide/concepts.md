@@ -8,8 +8,8 @@ Just like repo on the GitHub, on the OpenCUI platform, projects are the basic un
 ### Chatbots
 A OpenCUI chatbot is an application with conversational user interface that connects end-users with your services through conversations. It is essentially just a set of skills and all their dependencies like frames, dialog acts, entities and services. 
 
-### Components
-Components are the reusable modules for getting user preferences via conversations, for example, asking user for a date can be one such component. Components can be integrated into bigger and bigger reusable component for more complex use cases. Optionally, component can declare a service, which allows interaction logic to be defined against business logic and service APIs for better conversational experiences.
+### Modules
+Modules are the reusable components for getting user preferences via conversations, for example, asking user for a date can be one such module. Modules can be integrated into a bigger and bigger reusable module for more complex use cases. Optionally, a module can declare a service, which allows interaction logic to be defined against business logic and service APIs for better conversational experiences.
 
 #### Services
 A service defines a set of function interface that specify how business functionalities can be accessed, this includes the schema or data structure needed by these API functions for input and output parameter and how these input parameters can be used to trigger these functions to get result. These services can be used during the conversation for making communicating more effective or after conversation for delivering the service. 
