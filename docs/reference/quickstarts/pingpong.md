@@ -1,8 +1,6 @@
 # Quickstart with PingPong 
 
->To begin using OpenCUI, you can start by following this PingPong chatbot tutorial. 
-
-This PingPong tutorial will take you step-by-step through the process of creating, building and testing a basic PingPong chatbot on the OpenCUI platform. When engaging with the chatbot, users will receive a welcoming message and a *"pong"* reply when inputting the message *"ping"*. For example:
+This PingPong tutorial will guide you step-by-step through the process of creating, building, and testing a basic chatbot on the OpenCUI platform. A chatbot is essentially an application with a conversational user interface. Users can interact with the chatbot by first connecting to it, after which they will receive a welcoming message. From there, users can input messages and receive responses from the bot. For example:
 
 :::: conversation
 ::: bot Bot
@@ -22,12 +20,9 @@ Thank you for contacting the virtual PingPong chatbot. Have a great day!
 :::
 ::::
 
-Following the creation of this straightforward PingPong chatbot, you can readily develop the initial level of CUI [frame without slot](../../guide/5levels-cui.md#frame-without-slot), and govern the presentation of messages to users based on your specific business logic. As an illustration, if you operate a restaurant, you can allow users to check your business hours using the following approach: 
+By completing this tutorial, you should be able to develop the [FAQ like](../../guide/5levels-cui.md#frame-without-slot) conversational user experience, such as allowing users to check your business hours: 
 
 :::: conversation
-::: bot Bot
-Hi! I'm a virtual Restaurant chatbot. How can I assist you today?
-:::
 ::: user User
 What is your hours?
 :::
@@ -37,20 +32,9 @@ We open every day from 10:00am to 9:00pm. Can I help you with anything else?
 ::: user User
 No, thanks
 :::
-::: bot Bot
-Thank you for contacting the virtual Restaurant chatbot. I am glad I could help you today. Good-bye!
-:::
 ::::
 
-Now, let's begin:
-
-[[toc]]
-
-## Before You Begin
-
-Prior to commencing this tutorial, it is advisable to complete the following checklist:
-1. Acquaint yourself with [the fundamental idea of crafting conversational applications](../../guide/README.md).
-2. Register for an [OpenCUI account](../platform/signingup.md).
+> Before you begin, it is useful to get familiar with [the fundamental idea of crafting conversational applications](../../guide/README.md) and sign up for an [OpenCUI account](../platform/signingup.md).
 
 ## Create a Chatbot
 
