@@ -18,7 +18,7 @@ We encourage you to build upon our scenario by defining more modules or extensio
 Overall, our reservation scenario project aims to simplify and streamline the chatbot building process for you, saving you time and effort while delivering a seamless and convenient experience for your customers.
 
 Select the document below to see more details:
-1. Reservation APIs: exposes most of the features available in the reservation scenario.
+1. [Reservation API](reservation-api.md): exposes most of the features available in the reservation scenario.
 2. Backend Providers
     - [Google Calendar](google-calendar-reservation.md): use a domain calendar to schedule customers' reservations.
 3. Application scenario
