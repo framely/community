@@ -33,7 +33,8 @@ export const en = {
       collapsible: true,
       children: [
         '/reference/platform/signingup.md',
-        '/reference/quickstarts/pingpong.md'
+        '/reference/quickstarts/pingpong.md',
+        '/reference/quickstarts/quickstart-channel.md'
       ],
     },
     {

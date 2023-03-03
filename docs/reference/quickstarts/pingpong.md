@@ -2,7 +2,7 @@
 
 >To begin using OpenCUI, you can start by following this PingPong chatbot tutorial. 
 
-This PingPong tutorial will take you step-by-step through the process of building, testing, and deploying a basic PingPong chatbot on the OpenCUI platform. When engaging with the chatbot, users will receive a welcoming message and a *"pong"* reply when inputting the message *"ping"*. For example:
+This PingPong tutorial will take you step-by-step through the process of creating, building and testing a basic PingPong chatbot on the OpenCUI platform. When engaging with the chatbot, users will receive a welcoming message and a *"pong"* reply when inputting the message *"ping"*. For example:
 
 :::: conversation
 ::: bot Bot
@@ -64,7 +64,7 @@ Upon logging in, an organization (or *org* for short) will be generated automati
    ![create chatbot](/images/guide/pingpong/create_chatbot.png)
    :::
 
-2. Once you click **Create**, a pop-up window will appear. Complete the form for basic chatbot settings, focusing on the **Project Label**, **Region**, and **Add Language** fields. All of these fields can be modified after the chatbot is created, except for the **Region** field.
+2. Once you click **Create**, a pop-up window will appear. Complete the form for basic chatbot settings, focusing on the **Project Label**, **Region**, and **Add Language** fields. Except for the **Project Label** and **Region** fields, all other fields can be modified after creating the chatbot.
    - In the **Project Label** field, enter the label for your chatbot starting with a lowercase letter (e.g., *pingpong*).
    - Choose your preferred **Region**.
    - Select the languages for your chatbot in the **Add Language** field.
@@ -97,7 +97,7 @@ The pingpong chatbot is a simple question-and-answer dialogue service that is ty
 
 ### 1. Interaction Declaration
 
-The main interaction offered by the pingpong chatbot is to respond with *"pong"* when the user sends the message *"ping"*. In the declare interaction phase, you only need to add this response to a single skill at structure level, which represents the interaction layer. You can create multiple skills for each chatbot, but for this pingpong chatbot, a single skill is sufficient. 
+The main interaction offered by the pingpong chatbot is to respond with *"pong"* when the user sends the message *"ping"*. In the declare interaction phase, you only need to add this response to a single skill at structure level, which represents the interaction layer. For more information about each of the layers, see [Separation of Concerns](../../guide/README.md#separation-of-concerns) and [4 Layers of Chatbot](../../guide/glossary.md#chatbot). You can create multiple skills for each chatbot, but for this pingpong chatbot, a single skill is sufficient. 
 
 To create a new skill and add a response to the pingpong chatbot at the STRUCT level, follow these steps:
 
@@ -220,7 +220,7 @@ To test your chatbot using Debug, follow these steps:
 
 ## Review Changes
 
-After completing your work, it's important to review your changes and ensure they meet the chatbot's features and quality standards. One way to do this is by opening a pull request and comparing the changes across your branch. Once you are satisfied with the changes, you can merge them into the master.
+After completing your work, it's important to review your changes and ensure they meet the chatbot's features and quality standards. One way to do this is by opening a pull request and comparing the changes across your branch. Once you are satisfied with the changes, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version Control](../platform/versioncontrol.md) section.
 
 To create a pull request:
 1. In the second navigation bar, select the **Version** tab.
@@ -252,59 +252,4 @@ To review changes:
 
    ![version tag](/images/guide/pingpong/version_tag.png)
    *Create version tag and Save*
-   :::
-
-## Deploy Chatbot
-
-The Deploy action allows you to publish the latest master of your chatbot to the production environment, allowing your users to interact with it via the integrated channels. However, before deploying, you must ensure that your chatbot is integrated with at least one channel.
-
-Here are the steps to integrate a channel, using Messenger as an example:
-
-1. Heading to **Settings** page, select **Integrations** tab. In the **Service Provider** section, select **channel** service (labeled as `io.opencui.channel.IChannel`) .
-
-   ::: thumbnail
-   ![service provider section](/images/guide/pingpong/service_provider_section.png)
-   *Service provider section*
-
-   <br>
-
-   ![select channel](/images/guide/pingpong/select_channel.png)
-   *Select io.opencui.channel.IChannel*
-   :::
-
-2. In the popup window, select **messenger** (labeled as `io.opencui.messenger`).
-
-   ::: thumbnail
-   ![select provider](/images/guide/pingpong/select_provider.png)
-   :::
-
-3. Then you will see the configuration information required by messenger channel in the popup window.
-
-   ::: thumbnail
-   ![config popup](/images/guide/pingpong/config_popup.png)
-   :::
-
-4. Configure the messenger channel:
-   1. Follow the steps in [Set Up Messenger](../channels/messenger.md#set-up-messenger) to set up your Meta app, **generate access token** and copy this value to OpenCUI.
-   2. Configure the integration: 
-      - **Label**: Set a label for this channel, should be unique. 
-      - **Verify Token**: You can enter any private token you desire. Copy this value. This will be used to configure Messenger Webhook.
-      - **Page Access Token**: Enter the access token you copied when set up messenger.
-      - **Locale**: Select a locale which determines the default language used by your bot.
-      - **Callback URL**: Copy this value after setting the label and locale. This will be used to configure Messenger Webhook.
-   3. Click **Save**.
-      ::: thumbnail
-      ![config info](/images/guide/pingpong/config_info.png)
-      :::
-
-5. When you're done configuring, switch to **Version** tab, and deploy your chatbot by clicking **Deploy** button.
-
-   ::: thumbnail
-   ![deploy chatbot](/images/guide/pingpong/deploy_chatbot.png)
-   :::
-
-6. If the deployment is successful, a **Green Checked Icon** will appear to indicate the currently deployed version. You can then finish setting up the Meta app and test it. Use the **Callback URL** and **Verify Token** values you copied earlier to configure the Messenger Webhook by following the steps in the [Configure Webhook](../channels/messenger.md#finish-setup-messenger)  and [Test Your Chatbot](../channels/messenger.md#test-your-chatbot).
-
-   ::: thumbnail
-   ![deploy checked icon](/images/guide/pingpong/deploy_checked_icon.png)
    :::

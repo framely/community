@@ -23,6 +23,11 @@ export const en = [
             text: 'Quickstart with PingPong',
             link: '/reference/quickstarts/pingpong.html',
             icon: '/navIcons/pingpong.svg',
+          },
+          {
+            text: 'Interactions with Channels',
+            link: '/reference/quickstarts/quickstart-channel.html',
+            icon: '/navIcons/messenger.svg',
           }
         ]
       },
