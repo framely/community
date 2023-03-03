@@ -246,13 +246,3 @@ Finally, you can try to use your chatbot to make a table reservation. To test th
    :::
 
 ::tada:: Well done! You've built up a table reservation chatbot. To explore more use cases, you can check the test cases in the [tableReservationApp](https://build.opencui.io/org/me.restaurant/agent/tableReservationApp/en/test_case) chatbot.
-
-
-
-
-
-
-
-
-
-
