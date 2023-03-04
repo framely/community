@@ -78,17 +78,9 @@ For businesses, chatbots are developed to expose services through conversational
 ::: thumbnail
 ![three layers](/images/guide/pingpong/3layers.png)
 :::
-Service is a set of functions, so chatbot is simply a set of skills. Building a chatbot is simply building skills one at a time. Given services, the CUI can be divided into interaction and language layer. Given user input and conversation history, the language layer are responsible for converting between natural language text and semantics (structured representation of meaning), interaction logic or sometime known as dialog management, decide how bot should react in semantics. In this tutorial, let's see how we can define a simplest skill, the one without any input parameter/slots in three layers.
+Service is a set of functions, so chatbot is simply a set of skills. Building a chatbot is simply building skills one at a time. Given services, the CUI can be divided into interaction and language layer. Given user input and conversation history, the language layer are responsible for converting between natural language text and semantics (structured representation of meaning), interaction logic or sometime known as dialog management, decide how bot should react in semantics. For more information about each of the layers, see [Separation of Concerns](../../guide/README.md#separation-of-concerns) and [4 Layers of Chatbot](../../guide/glossary.md#chatbot).
 
-### 1. Create Skill
-
-
-### 2. Interaction Declaration
-
-The main interaction offered by the pingpong chatbot is to respond with *"pong"* when the user sends the message *"ping"*. In the declare interaction phase, you only need to add this response to a single skill at structure level, which represents the interaction layer. For more information about each of the layers, see [Separation of Concerns](../../guide/README.md#separation-of-concerns) and [4 Layers of Chatbot](../../guide/glossary.md#chatbot). You can create multiple skills for each chatbot, but for this pingpong chatbot, a single skill is sufficient. 
-
-To create a new skill and add a response to the pingpong chatbot at the STRUCT level, follow these steps:
-
+In this tutorial, let's see how we can define a simple skill, the one without any input parameter/slots in three layers. But first we need to create a skill. We can create a skill by first click on skills on the left column to select skills' workspace, and then click Create on the right to create one skill
 1. Go to the **pingpong** chatbot and ensure that you are at the **STRUCT** level.
 
    ::: thumbnail
@@ -106,7 +98,7 @@ To create a new skill and add a response to the pingpong chatbot at the STRUCT l
    ::: warning Need To Know
    In OpenCUI, a label is not a name but an identifier that is independent of the language used. The Skill Label, being a type of label, should adhere to the following guidelines:
    - It should start with a capital letter.
-   - It should be between 2 to 100 characters in length.
+   - It should be between 2 and 100 characters in length.
    - It should only contain letters, digits, and underscores.
    
    <br>
@@ -117,13 +109,19 @@ To create a new skill and add a response to the pingpong chatbot at the STRUCT l
    ![intent label](/images/guide/pingpong/intent_label.png)
    :::
 
-4. Navigate to the **Response** tab and select **Single Value Message** under the **Default Action** section to declare a simple reply.
+### 1. Specify the Schema
+Since this skill does not have any slots, we can skip the [service description phase at the schema level](../../guide/getting-started.md#1-describe-services-at-schema-level) as the skill name is the only thing, and it is defined when the skill is created.
+
+### 2. Interaction Declaration
+
+The pingpong skill responds a *"pong"* when the user sends the message *"ping"*. In the declare interaction phase, you only need to add this response to a single skill at structure level, which represents the interaction layer. 
+1. Navigate to the **Response** tab and select **Single Value Message** under the **Default Action** section to declare a simple reply.
 
    ::: thumbnail
    ![add response](/images/guide/pingpong/add_response.png)
    :::
 
-5. Once you have finished creating the skill, click **Commit** in the upper-right corner of the Build area to propagate the structure level instances to each language level.
+2. Once you have finished creating the skill, click **Commit** in the upper-right corner of the Build area to propagate the structure level instances to each language level.
 
    ::: thumbnail
    ![commit pingpong struct](/images/guide/pingpong/commit_pingpong_struct.png)
@@ -164,9 +162,8 @@ To get started, follow these steps:
    ![commit pingpong en](/images/guide/pingpong/commit_pingpong_en.png)
    :::
 
-## Chatbot Testing
-
-OpenCUI includes a built-in testing feature called **Debug** that helps you uncover bugs by providing debug information. With Debug, you can test your chatbot by typing messages. In this example, we will test the pingpong chatbot that will respond with *"pong"* to the message *"ping"* and has a default welcome message.
+## Chatbot Testing 
+OpenCUI includes a built-in testing feature called **Debug** that helps you uncover CUI bugs by providing debug information. With Debug, you can test your chatbot by typing messages. In this example, we will test the pingpong chatbot that will respond with *"pong"* to the message *"ping"* and has a default welcome message.
 
 Note that Debug can only test committed content, so ensure that both the structure layer and language layer have been committed before testing.
 
