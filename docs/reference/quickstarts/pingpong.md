@@ -20,7 +20,7 @@ Thank you for contacting the virtual PingPong chatbot. Have a great day!
 :::
 ::::
 
-By completing this tutorial, you should be able to develop the [FAQ like](../../guide/5levels-cui.md#frame-without-slot) conversational user experience, such as allowing users to check your business hours: 
+OpenCUI supports [5 levels of CUI](../../guide/5levels-cui.md) capabilities. By completing this tutorial, you should be able to develop and debug [the first level, FAQ like](../../guide/5levels-cui.md#frame-without-slot) conversational user experience, such as allowing users to check your business hours: 
 
 :::: conversation
 ::: user User
@@ -38,25 +38,22 @@ No, thanks
 
 ## Create a Chatbot
 
->Here is a step-by-step guide to creating a chatbot. If you are already working within a chatbot, you may proceed directly to the [chatbot building process](#build-a-chatbot) and skip these steps.
+>The OpenCUI platform can be understood as GitHub specifically for chatbots. However, instead of repositories, work under organization is organized into projects, including chatbots, reusable modules and providers. Therefore, creating a chatbot is analogous to creating a repository on GitHub.
 
-Upon logging in, an organization (or *org* for short) will be generated automatically for you. You may choose this org to initiate the creation of chatbots. To create a chatbot, follow these steps:
-
-1. Within an org, navigate to the chatbot list page by clicking **Chatbots** on the left side menu. Then, click **Create** on the right side.
+Upon logging in, an organization (or "org" for short) will be automatically generated for you. You can create a chatbot under this org by following these steps:
+1. Within an org, click **Chatbots** on the left side to work on chatbots (instead of modules and providers), then click **Create** on the right side.
 
    ::: thumbnail
    ![create chatbot](/images/guide/pingpong/create_chatbot.png)
    :::
 
-2. Once you click **Create**, a pop-up window will appear. Complete the form for basic chatbot settings, focusing on the **Project Label**, **Region**, and **Add Language** fields. Except for the **Project Label** and **Region** fields, all other fields can be modified after creating the chatbot.
-   - In the **Project Label** field, enter the label for your chatbot starting with a lowercase letter (e.g., *pingpong*).
-   - Choose your preferred **Region**.
-   - Select the languages for your chatbot in the **Add Language** field.
+2. Once you click **Create**, a pop-up form for basic chatbot settings will appear, complete the form.
+   - **Project Label**, the unique identifier for the chatbot, we suggest use low cased label(e.g., *pingpong*).
+   - **Region**: where do you want to deploy this chatbot to. Ideally it should be close to your users. 
+   - **Add Language**: add every language you want to support.
 
    ::: warning Need To Know
-   - When creating a chatbot, it is essential to select an appropriate region to optimize performance. The ideal region should be in close proximity to your services and end-users.
-
-   - It is not possible to change a chatbot's region after it has been created. Therefore, if you need to change a chatbot's region, you must export it or create a new one with the desired region by cloning it.
+   - If you want to change a chatbot's label or region, you will need to clone it with the desired choices. Note all user session data with old chatbot will be lost.
    :::
    
    ::: thumbnail
@@ -69,17 +66,24 @@ Upon logging in, an organization (or *org* for short) will be generated automati
    ![create save](/images/guide/pingpong/create_save.png)
    :::
 
-If the chatbot is created successfully, it will be displayed as shown below:
+If the chatbot is created successfully, it should be displayed as shown below:
 
 ::: thumbnail
 ![enter chatbot](/images/guide/pingpong/enter_chatbot.png)
 :::
 
 ## Build a Chatbot
+For businesses, chatbots are developed to expose services through conversational user interface. So the goal of CUI is then just instantiate function object through conversation. On OpenCUI platform, CUI behavior is defined on the types. In particular, CUI behavior for function is defined by corresponding skill, and parameter type needed by function are defined as frames and entities, with frames for composite and polymorphic types, and entities for primitive types. 
 
-The pingpong chatbot is a simple question-and-answer dialogue service that is typically communicated in one sentence, and the conversations are completed in a single turn. Since this service does not require any data collection, such as booking a flight ticket, which requires the departure time, departure place, destination, etc., we can skip the [service description phase at the schema level](../../guide/getting-started.md#1-describe-services-at-schema-level) and proceed directly to the interaction declaration. This section will guide you through the steps required to build the pingpong chatbot.
+::: thumbnail
+![three layers](/images/guide/pingpong/3layers.png)
+:::
+Service is a set of functions, so chatbot is simply a set of skills. Building a chatbot is simply building skills one at a time. Given services, the CUI can be divided into interaction and language layer. Given user input and conversation history, the language layer are responsible for converting between natural language text and semantics (structured representation of meaning), interaction logic or sometime known as dialog management, decide how bot should react in semantics. In this tutorial, let's see how we can define a simplest skill, the one without any input parameter/slots in three layers.
 
-### 1. Interaction Declaration
+### 1. Create Skill
+
+
+### 2. Interaction Declaration
 
 The main interaction offered by the pingpong chatbot is to respond with *"pong"* when the user sends the message *"ping"*. In the declare interaction phase, you only need to add this response to a single skill at structure level, which represents the interaction layer. For more information about each of the layers, see [Separation of Concerns](../../guide/README.md#separation-of-concerns) and [4 Layers of Chatbot](../../guide/glossary.md#chatbot). You can create multiple skills for each chatbot, but for this pingpong chatbot, a single skill is sufficient. 
 
@@ -125,7 +129,7 @@ To create a new skill and add a response to the pingpong chatbot at the STRUCT l
    ![commit pingpong struct](/images/guide/pingpong/commit_pingpong_struct.png)
    :::
 
-### 2. Filling Language Template and Exemplar
+### 3. Filling Language Template and Exemplar
 
 After declaring the interaction, the next step is to provide language-specific details such as templates for text generation and utterance exemplars for dialog understanding. This step is crucial for supporting new languages as it helps the chatbot to communicate with users in a natural way.
 
