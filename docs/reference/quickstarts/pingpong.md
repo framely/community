@@ -36,7 +36,7 @@ No, thanks
 
 > Before you begin, it is useful to get familiar with [the fundamental idea of crafting conversational applications](../../guide/README.md) and sign up for an [OpenCUI account](../platform/signingup.md).
 
-### Create a Chatbot
+### Create Chatbot
 
 >The OpenCUI platform can be understood as GitHub specifically for chatbots. However, instead of repositories, work under organization is organized into projects, including chatbots, reusable modules and providers. Therefore, creating a chatbot is analogous to creating a repository on GitHub.
 
