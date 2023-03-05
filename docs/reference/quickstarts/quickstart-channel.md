@@ -10,6 +10,42 @@ If you don't intend to use an integration, this quickstart is not necessary.
 
 Before proceeding with this guide, make sure to complete the steps outlined in the [Quickstart with PingPong](pingpong.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
 
+## Review Changes
+
+After completing your work, it's important to review your changes and ensure they meet the chatbot's features and quality standards. One way to do this is by opening a pull request and comparing the changes across your branch. Once you are satisfied with the changes, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version Control](../platform/versioncontrol.md) section.
+
+To create a pull request:
+1. In the second navigation bar, select the **Version** tab.
+2. Click **Pull Request** in the upper-right corner of the Version area.
+::: thumbnail
+![pingpong pull request](/images/guide/pingpong/pingpong_pull_request.png)
+:::
+
+To review changes: 
+1. Click the item you want to review, and **Compare Diffs** field will slide out.
+   ::: thumbnail
+   ![version item](/images/guide/pingpong/version_item.png)
+   :::
+2. In the **Compare Diffs** drawer, make sure all the changes you made are what you want. You can switch between different layers from the topbar.
+   ::: thumbnail
+   ![review changes](/images/guide/pingpong/review_changes.png)
+   :::
+3. Once you're satisfied with the changes, you can **Approve** them and **Merge** them into master. For more information about changes review, see [Version Contorl](../platform/versioncontrol.md).
+   ::: thumbnail
+   ![approve changes](/images/guide/pingpong/approve_changes.png)
+   *Approve changes*
+
+   <br>
+
+   ![merge changes](/images/guide/pingpong/merge_changes.png)
+   *Merge changes*
+            
+   <br>
+
+   ![version tag](/images/guide/pingpong/version_tag.png)
+   *Create version tag and Save*
+   :::
+
 ## Setup Channels
 
 Here are the steps on how to set up and enable a channel, specifically using Messenger as an example:
