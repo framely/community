@@ -36,7 +36,7 @@ No, thanks
 
 > Before you begin, it is useful to get familiar with [the fundamental idea of crafting conversational applications](../../guide/README.md) and sign up for an [OpenCUI account](../platform/signingup.md).
 
-## Create a Chatbot
+### Create a Chatbot
 
 >The OpenCUI platform can be understood as GitHub specifically for chatbots. However, instead of repositories, work under organization is organized into projects, including chatbots, reusable modules and providers. Therefore, creating a chatbot is analogous to creating a repository on GitHub.
 
@@ -72,7 +72,7 @@ If the chatbot is created successfully, it should be displayed as shown below:
    ![enter chatbot](/images/guide/pingpong/enter_chatbot.png)
    :::
 
-## Build a Chatbot
+### Build Chatbot
 Chatbots allow user access functions through CUI, and CUI behavior for an exposed function is defined in its corresponding skill. The input parameters of a function are represented by slots in the skill, and the type of these parameters, along with CUI behavior for these types are defined as frames and entities, with frames for composite and polymorphic types, and entities for primitive types. Service is a set of functions, so chatbot is simply a set of skills. Building a chatbot is simply building skills one at a time.
 
 ::: thumbnail
@@ -82,9 +82,8 @@ CUI can be divided into interaction and language layer. The language layer are r
 
 In this tutorial, let's see how we can define a simple skill, the one without any slots in the following 4 steps. 
 
-### 1. Create Skill
+#### 1. Create Skill
 1. Go to the **pingpong** chatbot and ensure that you are at the **INTERACTION** level.
-
    ::: thumbnail
    ![Interaction level](/images/guide/pingpong/struct_level.png)
    :::
@@ -109,10 +108,10 @@ In this tutorial, let's see how we can define a simple skill, the one without an
    ![intent label](/images/guide/pingpong/intent_label.png)
    :::
 
-### 1. Declare Schema
+#### 2. Declare Schema
 A skill defines how we invoke a function through CUI, so to build a skill, we need to first declare its schema, or signature of the corresponding function, this includes mostly the input parameters of the function. On a skill's  **Schema** tab, we can add slots, functions and other services needed by this skill. Since the simple skill like "pingpong" does not have any slots, we can skip the [service description phase at the schema level](../../guide/getting-started.md#1-describe-services-at-schema-level).
 
-### 2. Annotate Interactions
+#### 3. Annotate Interactions
 On OpenCUI platform, the CUI behavior of any type, include skills, frames and entities, can be defined in form of dialog annotation. Dialogue annotation can be attached to type as whole (on its Annotation, Response and Expression tab), or attached to its slots. Dialogue annotations need to be configured at interaction layer first before we can configure it at the language level.
 
 The pingpong skill responds a *"pong"* when the user sends the message *"ping"*.  This can be done by adding a response to the skill at interaction layer. 
@@ -128,7 +127,7 @@ The pingpong skill responds a *"pong"* when the user sends the message *"ping"*.
    ![commit pingpong interaction](/images/guide/pingpong/commit_pingpong_struct.png)
    :::
 
-### 3. Fill Language Template and Exemplar
+#### 4. Fill Language Template and Exemplar
 Most dialog annotations need to be configured at the language level, one for each language supported. There are two kind of language related annotations, templates and exemplars. The text edits for them are scattered in different context, like when bot prompt a slot, the templates and exemplars defined there will only work in these contexts. Templates define how bot should respond, and utterance similar to exemplars defined on skill expression tab will trigger bot to start that skill, and once a skill is started, bot will follow the interaction logic defined to bring skill to completion and deliver the user what they want. 
 
 At language level, PingPong skill can be configured as follows:
@@ -162,7 +161,7 @@ At language level, PingPong skill can be configured as follows:
    ![commit pingpong en](/images/guide/pingpong/commit_pingpong_en.png)
    :::
 
-## Chatbot Testing 
+### Test Chatbot 
 OpenCUI includes a built-in testing feature called **Debug** that helps you uncover CUI bugs by providing debug information. With Debug, you can test your chatbot without setting up channels.
 
 Note that Debug can only test committed content, so ensure that both the interaction layer and language layer have been committed before testing.
