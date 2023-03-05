@@ -83,10 +83,10 @@ CUI can be divided into interaction and language layer. The language layer are r
 In this tutorial, let's see how we can define a simple skill, the one without any slots in the following 4 steps. 
 
 ### 1. Create Skill
-1. Go to the **pingpong** chatbot and ensure that you are at the **STRUCT** level.
+1. Go to the **pingpong** chatbot and ensure that you are at the **INTERACTION** level.
 
    ::: thumbnail
-   ![struct level](/images/guide/pingpong/struct_level.png)
+   ![Interaction level](/images/guide/pingpong/struct_level.png)
    :::
 
 2. Click **Create** button on the right side to create a new skill.
@@ -125,7 +125,7 @@ The pingpong skill responds a *"pong"* when the user sends the message *"ping"*.
 2. Once you are done with change in the interaction layer, click **Commit** in the upper-right corner of the Build area to make the interaction level change available to language level. 
 
    ::: thumbnail
-   ![commit pingpong struct](/images/guide/pingpong/commit_pingpong_struct.png)
+   ![commit pingpong interaction](/images/guide/pingpong/commit_pingpong_struct.png)
    :::
 
 ### 3. Fill Language Template and Exemplar
@@ -168,7 +168,7 @@ OpenCUI includes a built-in testing feature called **Debug** that helps you unco
 Note that Debug can only test committed content, so ensure that both the interaction layer and language layer have been committed before testing.
 
 ::: thumbnail
-******![commit struct](/images/guide/pingpong/commit_struct.png)******
+******![commit interaction](/images/guide/pingpong/commit_struct.png)******
 *Commit on Interaction level*
 
 <br>
