@@ -72,7 +72,7 @@ Chatbots allow user access functions through CUI, and CUI behavior for an expose
 ![three layers](/images/guide/pingpong/3layers.png)
 :::
 
-CUI can be divided into interaction and language layer. The language layer are responsible for converting between natural language text and semantics (structured representation of meaning), interaction logic (also known as dialog management), decide how bot should react in semantics. For more information about each of the layers, see [Separation of Concerns](../../guide/README.md#separation-of-concerns) and [4 Layers of Chatbot](../../guide/glossary.md#chatbot).
+CUI can be divided into interaction and language layer. The language layer are responsible for converting between natural language text and semantics (structured representation of meaning), interaction logic (also known as dialog management), decide how bot should react in semantics. For more information about each of the layers, see [3 Layers of Chatbot](../../guide/3layers.md).
 
 In this tutorial, let's see how we can define a simple skill, the one without any slots in the following 4 steps. 
 
