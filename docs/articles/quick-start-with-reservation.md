@@ -14,9 +14,11 @@ author: Sunny May
 
 ## Overview
 
-This guide shows you how to build a table reservation chatbot to help users to make/view/cancel reservations. To build this chatbot, you don't need to design any CUI or develop the backend. All you need to do is to reuse the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent). CUI design is already handled by that module and backend development is done in the [Google Calendar reservation provider](../plugins/services/reservation/google-calendar-reservation.md).
+This guide shows you how to build a table reservation chabot quickly by using a module, and the great news is that you don't need to design any CUI or develop the backend. 
 
-The following conversation shows how your chatbot helps the user make a reservation:
+A Module is a reusable unit for getting user preferences via conversations. The module used here is [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent) that handles CUI design for you. Besides, backend development is done in the [Google Calendar reservation provider](../plugins/services/reservation/google-calendar-reservation.md). 
+
+The table reservation chabot is used to help users to make/view/cancel reservations. The following conversation shows how this chatbot helps the user make a reservation:
 
 :::: conversation
 
@@ -63,6 +65,16 @@ Your reservation has been made. We'll see you at 3:00 PM on Sunday, December 25,
 ::::
 
 You can find all the services the table reservation module provides in [reservation CUI design](./build-reservation-module.md#cui-design).
+
+In general, the table reservation chatbot can be built in four steps: 
+1. Set up resources in Google platform.
+2. Create a chatbot.
+3. Import a table reservation module to your chatbot.
+4. Set up the provider in your chatbot so your the provider can get aceess to your resources.
+
+::: thumbnail
+![workflow](/images/blog/quickstarts-with-reservation/workflow.png)
+:::
 
 ## Before You Start
 
@@ -231,18 +243,22 @@ To use the functionality provided by the reservation API, follow these steps to 
 
 Finally, you can try to use your chatbot to make a table reservation. To test the chatbot:
 
-1. Click **Commit** on both **SRUCT** side and **EN** side.
-2. On **EN** side, click **Debug** > **Connect**.
-3. When it's connected, you can send "_I want to book a table_" to start making a reservation. Then provide the number of guests, date and time. If there is an available table, you can book it successfully. For example:
+1. You can send "_I want to book a table_" to start making a reservation. Then provide the number of guests, date and time. If there is an available table, you can book it successfully. For example:
 
    ::: thumbnail
    ![example conversation](/images/blog/quickstarts-with-reservation/example-conversation.png)
    :::
 
-4. Once you've made a reservation, you can go to your Google Calendar and check that reservation. Here is the reservation made by the above example:
+2. Once you've made a reservation, you can go to your Google Calendar and check that reservation. Here is the reservation made by the above example:
 
    ::: thumbnail
    ![example reservation](/images/blog/quickstarts-with-reservation/example-reservation.png)
    :::
+
+The picture below shows how the reservation is made. 
+::: thumbnail
+![message process](/images/blog/quickstarts-with-reservation/message-process.png)
+:::
+
 
 ::tada:: Well done! You've built up a table reservation chatbot. To explore more use cases, you can check the test cases in the [tableReservationApp](https://build.opencui.io/org/me.restaurant/agent/tableReservationApp/en/test_case) chatbot.
