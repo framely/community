@@ -8,18 +8,17 @@ export const en = {
         '/guide/are-you-ready.md',
         '/guide/getting-started.md'
       ],
+    },
+    {
+      text: 'Quickstarts',
+      children: [
+        '/guide/signingup.md',
+        '/guide/pingpong.md',
+        '/guide/quickstart-channel.md'
+      ],
     }
   ],
   '/reference/': [
-    {
-      text: 'Quickstarts',
-      collapsible: true,
-      children: [
-        '/reference/platform/signingup.md',
-        '/reference/quickstarts/pingpong.md',
-        '/reference/quickstarts/quickstart-channel.md'
-      ],
-    },
     {
       text: "Essentials",
       collapsible: true,
