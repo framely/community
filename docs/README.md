@@ -6,10 +6,10 @@ tagline: Schema grounded CUI for any Services
 heroText: Component-based Approach for Chatbot Development
 actions:
   - text: Start to Build
-    link: /reference/platform/signingup.html
+    link: https://build.opencui.io
     type: primary
   - text: Learn More
-    link: /guide/getting-started.html
+    link: /guide/getting-started.html#all-quickstarts
     type: secondary
 features:
   - title: CUI for your APIs
@@ -44,7 +44,7 @@ features:
 cta :
   - details: Import what you need, Customize and Deploy.
     title: Get Started
-    link: /reference/platform/signingup.html
+    link: /guide/getting-started.html#all-quickstarts
     
 
 footerHtml: true 
