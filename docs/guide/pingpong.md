@@ -20,7 +20,7 @@ Thank you for contacting the virtual PingPong chatbot. Have a great day!
 :::
 ::::
 
-OpenCUI supports [5 levels of CUI](../../guide/5levels-cui.md) capabilities. By completing this tutorial, you should be able to develop and debug [the first level, FAQ like](../../guide/5levels-cui.md#frame-without-slot) conversational user experience, such as allowing users to check your business hours: 
+OpenCUI supports [5 levels of CUI](../reference/essentials/5levels-cui.md) capabilities. By completing this tutorial, you should be able to develop and debug [the first level, FAQ like](../reference/essentials/5levels-cui.md#frame-without-slot) conversational user experience, such as allowing users to check your business hours: 
 
 :::: conversation
 ::: user User
@@ -35,7 +35,7 @@ No, thanks
 ::::
 
 :::tip
-Before you begin, it is useful to get familiar with [the fundamental idea of crafting conversational applications](../../guide/README.md) and sign up for an [OpenCUI account](../platform/signingup.md).
+Before you begin, it is useful to get familiar with [the fundamental idea of crafting conversational applications](README.md) and sign up for an [OpenCUI account](signingup.md).
 :::
 
 ## Create Chatbot
@@ -72,7 +72,7 @@ Chatbots allow user access functions through CUI, and CUI behavior for an expose
 ![three layers](/images/guide/pingpong/3layers.png)
 :::
 
-CUI can be divided into interaction and language layer. The language layer are responsible for converting between natural language text and semantics (structured representation of meaning), interaction logic (also known as dialog management), decide how bot should react in semantics. For more information about each of the layers, see [3 Layers of Chatbot](../../guide/3layers.md).
+CUI can be divided into interaction and language layer. The language layer are responsible for converting between natural language text and semantics (structured representation of meaning), interaction logic (also known as dialog management), decide how bot should react in semantics. For more information about each of the layers, see [3 Layers of Chatbot](3layers.md).
 
 In this tutorial, let's see how we can define a simple skill, the one without any slots in the following 4 steps. 
 
@@ -156,7 +156,7 @@ To test your chatbot using Debug, follow these steps:
 
 3. Enter `ping` in the text input box at the bottom and press enter, then the bot should respond with `Pong`. If you add more than one template, bot will reply in turn. If you add more than one examplar to a skill, any examplar will trigger that skill. It is assumed that the skills are semantically exclusively, so that one should not use the same exemplar in different skills from the same bot. As the skill level exemplars has no context. 
 
-   You can save test cases by clicking the "**Save Test Case**" icon, and restart your testing by clicking the "**Reset Contexts**" icon. If there are any exceptions, you can view log information by clicking the "**View Log**" icon. For more information about Debug, refer to the [Testing](../platform/testing.md) section.
+   You can save test cases by clicking the "**Save Test Case**" icon, and restart your testing by clicking the "**Reset Contexts**" icon. If there are any exceptions, you can view log information by clicking the "**View Log**" icon. For more information about Debug, refer to the [Testing](../reference/platform/testing.md) section.
 
    ::: thumbnail
    ![pingpong test](/images/guide/pingpong/pingpong_test.png)
