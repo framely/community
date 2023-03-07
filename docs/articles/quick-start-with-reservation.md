@@ -16,9 +16,23 @@ author: Sunny May
 
 This guide shows you how to build a table reservation chabot quickly by using a module, and the great news is that you don't need to design any CUI or develop the backend. 
 
-A Module is a reusable unit for getting user preferences via conversations. The module used here is [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent) that handles CUI design for you. Besides, backend development is done in the [Google Calendar reservation provider](../plugins/services/reservation/google-calendar-reservation.md). 
+A Module is a reusable unit for getting user preferences via conversations. The module used here is [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent) that handles CUI design for you. Inside the table reservation module, there are [reservation API](../plugins/services/reservation/reservation-api.md) that provide access to your backend. Meanwhile, backend development is done by [Google Calendar reservation provider](../plugins/services/reservation/google-calendar-reservation.md). 
 
-The table reservation chabot is used to help users to make/view/cancel reservations. The following conversation shows how this chatbot helps the user make a reservation:
+::: thumbnail
+![table reservation module.png](/images/blog/quickstarts-with-reservation/table-reservation-module.png)
+:::
+
+It only takes four steps to build a table reservation chatbot:
+1. Set up resources in Google platform.
+2. Create a chatbot.
+3. Import a table reservation module to your chatbot.
+4. Set up the provider in your chatbot so your the provider can get aceess to your resources.
+
+::: thumbnail
+![workflow](/images/blog/quickstarts-with-reservation/workflow.png)
+:::
+
+The table reservation chabot is used to helptest users to make/view/cancel reservations. The following conversation shows how this chatbot helps the user make a reservation:
 
 :::: conversation
 
@@ -65,16 +79,6 @@ Your reservation has been made. We'll see you at 3:00 PM on Sunday, December 25,
 ::::
 
 You can find all the services the table reservation module provides in [reservation CUI design](./build-reservation-module.md#cui-design).
-
-In general, the table reservation chatbot can be built in four steps: 
-1. Set up resources in Google platform.
-2. Create a chatbot.
-3. Import a table reservation module to your chatbot.
-4. Set up the provider in your chatbot so your the provider can get aceess to your resources.
-
-::: thumbnail
-![workflow](/images/blog/quickstarts-with-reservation/workflow.png)
-:::
 
 ## Before You Start
 
@@ -228,7 +232,9 @@ Now it's time to create a table reservation chatbot and reuse the table reservat
 
 ## Set Up Reservation Provider
 
-To use the functionality provided by the reservation API, follow these steps to set up the reservation provider:
+Before you can use the functionality provided by the reservation API, you should declare a reservation service first, then set up the reservation provider for that service.
+
+To set up the reservation provider:
 
 1. Enter the chatbot you just created.
 2. Heading to **Settings** page, in **Integrations** tab
