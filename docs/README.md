@@ -9,7 +9,7 @@ actions:
     link: https://build.opencui.io
     type: primary
   - text: Learn More
-    link: /guide/getting-started.html#all-quickstarts
+    link: /guide/getting-started.html#from-beginner-to-master
     type: secondary
 features:
   - title: CUI for your APIs
