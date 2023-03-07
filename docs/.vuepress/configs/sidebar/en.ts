@@ -8,18 +8,6 @@ export const en = {
         '/guide/are-you-ready.md',
         '/guide/getting-started.md'
       ],
-    },
-    {
-      text: "Essentials",
-      children: [
-        '/guide/concepts.md',
-        '/guide/cooperative.md',
-        '/guide/sgcui.md',
-        '/guide/5levels-cui.md',
-        '/guide/slotfilling.md',
-        '/guide/components.md',
-        '/guide/architecture.md'
-      ]
     }
   ],
   '/reference/': [
@@ -31,6 +19,18 @@ export const en = {
         '/reference/quickstarts/pingpong.md',
         '/reference/quickstarts/quickstart-channel.md'
       ],
+    },
+    {
+      text: "Essentials",
+      collapsible: true,
+      children: [
+        '/reference/essentials/concepts.md',
+        '/reference/essentials/cooperative.md',
+        '/reference/essentials/sgcui.md',
+        '/reference/essentials/5levels-cui.md',
+        '/reference/essentials/slotfilling.md',
+        '/reference/essentials/components.md'
+      ]
     },
     {
       text: 'CUI Components',
@@ -72,8 +72,8 @@ export const en = {
       text: 'Supports',
       collapsible: true,
       children: [
-          '/reference/support/overview.md',
-          '/reference/support/Chatwoot.md'
+        '/reference/support/overview.md',
+        '/reference/support/Chatwoot.md'
       ],
     },
     {
@@ -87,6 +87,13 @@ export const en = {
         '/reference/platform/access.md',
         '/reference/platform/reusability.md'
       ]
+    },
+    {
+      text: 'Runtime',
+      collapsible: true,
+      children: [
+        '/reference/runtime/architecture.md'
+      ],
     },
     {
       text: "Glossary",

@@ -32,6 +32,41 @@ export const en = [
         ]
       },
       {
+        text: 'Essentials',
+        children: [
+          {
+            text: 'Key Concepts',
+            link: '/reference/essentials/concepts.html',
+            icon: '/navIcons/overview.svg',
+          },
+          {
+            text: 'Cooperative Principle',
+            link: '/reference/essentials/cooperative.html',
+            icon: '/navIcons/extension.svg',
+          },
+          {
+          text: 'Schema Grounded CUI',
+            link: '/reference/essentials/sgcui.html',
+            icon: '/navIcons/native.svg',
+          },
+          {
+            text: '5 Levels of CUI',
+            link: '/reference/essentials/5levels-cui.html',
+            icon: '/navIcons/postgresql.svg',
+          },
+          {
+          text: 'Slot Filling',
+            link: '/reference/essentials/slotfilling.html',
+            icon: '/navIcons/native.svg',
+          },
+          {
+            text: 'Conversational Component',
+            link: '/reference/essentials/components.html',
+            icon: '/navIcons/postgresql.svg',
+          }
+        ]
+      },
+      {
         text: 'CUI Components',
         children: [
           {
@@ -183,6 +218,16 @@ export const en = [
             text: 'Reusability',
             link: '/reference/platform/reusability.html',
             icon: '/navIcons/reusability.svg',
+          }
+        ]
+      },
+      {
+        text: 'Runtime',
+        children: [
+          {
+            text: 'Under the Hood',
+            link: '/reference/runtime/architecture.html',
+            icon: '/navIcons/overview.svg',
           }
         ]
       },
