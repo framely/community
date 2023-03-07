@@ -5,11 +5,11 @@ import type { NavbarConfig } from '@vuepress/theme-default'
 
 export const en = [
   {
-    text: 'Guide',
+    text: 'Quickstart',
     link: '/guide/',
   },
   {
-    text: 'Reference',
+    text: 'Guide',
     children: [
       {
         text: 'Quickstarts',
@@ -186,6 +186,16 @@ export const en = [
           }
         ]
       },
+      {
+        text: 'Glossary',
+        children: [
+          {
+            text: 'Glossary',
+            link: '/reference/glossary.html',
+            icon: '/navIcons/overview.svg',
+          }
+        ]
+      }
     ],
   },
   {

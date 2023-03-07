@@ -27,7 +27,7 @@ The general behavior of slot filling is controlled by the [Fill Strategy](../ref
 
 When slot is configured to be filled by user interaction, OpenCUI framework uses a five stage slot filling process that is designed to help user converge on a servable service request as effortless as possible. This filling process can be easily configured via corresponding annotations based on business logic:
 1. [Initialization](../reference/annotations/init.md) try to fill the slots based on business logic first.
-2. [Prompt](../guide/glossary.md#prompt) allow you to provide the template for SlotRequest dialog act, needed to request user preference for the given slot.
+2. [Prompt](../reference/glossary.md#prompt) allow you to provide the template for SlotRequest dialog act, needed to request user preference for the given slot.
 3. [Value Recommendation](../reference/annotations/valuerec.md) provides a list of filling candidates per business data and logic for user to choose from. This can avoid waste user effort for filling slot with an unservable value. 
 4. [Value Check](../reference/annotations/valuecheck.md) examines proposed value is servable based on business rules.
 5. [Confirmation](../reference/annotations/confirmation.md) give user a second chance to verify the proposed value.

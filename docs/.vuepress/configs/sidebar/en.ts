@@ -20,11 +20,6 @@ export const en = {
         '/guide/components.md',
         '/guide/architecture.md'
       ]
-    },
-    {
-      text: "Glossary",
-      link: '/guide/glossary.md',
-
     }
   ],
   '/reference/': [
@@ -93,6 +88,10 @@ export const en = {
         '/reference/platform/reusability.md'
       ]
     },
+    {
+      text: "Glossary",
+      link: '/reference/glossary.md'
+    }
   ],
   '/plugins/': [
     {

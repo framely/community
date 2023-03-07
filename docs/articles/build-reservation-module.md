@@ -367,7 +367,7 @@ Now, you need to add a native function to filter the resources by the number of 
 
 ### Define Interaction 
 
-OpenCUI provides [dialog annotations](../reference/annotations#dialog-annotations) to define how the bot interacts with users, and [responses](../guide/glossary.md#response) to display the result. In this section, you add dialog annotations and responses to the **MakeReservation** skill.
+OpenCUI provides [dialog annotations](../reference/annotations#dialog-annotations) to define how the bot interacts with users, and [responses](../reference/glossary.md#response) to display the result. In this section, you add dialog annotations and responses to the **MakeReservation** skill.
 
 Before you start, here are some assumptions about this business:
 1. There is only one location for this restaurant.
@@ -460,7 +460,7 @@ makeReservation() == true
 
 ### Add language Aspect
 
-In previous sections, you've done development at the structure level that is language-independent. In this section, you develop at a language level, so the bot can process the users' utterances and reply to users in natural text. There are two kinds of language-related parts builder needs to fill: [templates](../guide/glossary.md#template) for text generation and [expressions](../guide/glossary.md#expression-exemplars) for helping dialog understanding.
+In previous sections, you've done development at the structure level that is language-independent. In this section, you develop at a language level, so the bot can process the users' utterances and reply to users in natural text. There are two kinds of language-related parts builder needs to fill: [templates](../reference/glossary.md#template) for text generation and [expressions](../reference/glossary.md#expression-exemplars) for helping dialog understanding.
 
 Before you start, **[switch to the EN agent](https://opencui.io/reference/platform/multilingual.html#add-multi-language)** first.
 
