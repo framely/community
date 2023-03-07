@@ -25,7 +25,7 @@ export const en = [
             icon: '/navIcons/extension.svg',
           },
           {
-          text: 'Schema Grounded CUI',
+            text: 'Schema Grounded CUI',
             link: '/reference/essentials/sgcui.html',
             icon: '/navIcons/native.svg',
           },
@@ -35,7 +35,7 @@ export const en = [
             icon: '/navIcons/postgresql.svg',
           },
           {
-          text: 'Slot Filling',
+            text: 'Slot Filling',
             link: '/reference/essentials/slotfilling.html',
             icon: '/navIcons/native.svg',
           },
@@ -105,7 +105,7 @@ export const en = [
             icon: '/navIcons/extension.svg',
           },
           {
-          text: 'Native Provider',
+            text: 'Native Provider',
             link: '/reference/providers/native.html',
             icon: '/navIcons/native.svg',
           },
