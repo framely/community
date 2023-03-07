@@ -2,7 +2,7 @@
 export const en = {
   '/guide/': [
     {
-      text: 'Schema Grounded Approach',
+      text: 'Overview',
       children: [
         '/guide/README.md',
         '/guide/are-you-ready.md',
@@ -10,7 +10,7 @@ export const en = {
       ],
     },
     {
-      text: 'Quickstarts',
+      text: 'Step by Step',
       children: [
         '/guide/signingup.md',
         '/guide/pingpong.md',
