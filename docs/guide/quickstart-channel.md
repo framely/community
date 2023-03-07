@@ -12,7 +12,7 @@ Before proceeding with this guide, make sure to complete the steps outlined in t
 
 ## Review Changes
 
-After completing your work, it's important to review your changes and ensure they meet the chatbot's features and quality standards. One way to do this is by opening a pull request and comparing the changes across your branch. Once you are satisfied with the changes, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version Control](../platform/versioncontrol.md) section.
+After completing your work, it's important to review your changes and ensure they meet the chatbot's features and quality standards. One way to do this is by opening a pull request and comparing the changes across your branch. Once you are satisfied with the changes, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version Control](../reference/platform/versioncontrol.md) section.
 
 To create a pull request:
 1. In the second navigation bar, select the **Version** tab.
@@ -30,7 +30,7 @@ To review changes:
    ::: thumbnail
    ![review changes](/images/guide/pingpong/review_changes.png)
    :::
-3. Once you're satisfied with the changes, you can **Approve** them and **Merge** them into master. For more information about changes review, see [Version Contorl](../platform/versioncontrol.md).
+3. Once you're satisfied with the changes, you can **Approve** them and **Merge** them into master. For more information about changes review, see [Version Contorl](../reference/platform/versioncontrol.md).
    ::: thumbnail
    ![approve changes](/images/guide/pingpong/approve_changes.png)
    *Approve changes*
@@ -75,7 +75,7 @@ Here are the steps on how to set up and enable a channel, specifically using Mes
    :::
 
 4. Configure the Messenger channel:
-   1. Follow the steps in [Set Up Messenger](../channels/messenger.md#set-up-messenger) to set up your Meta app, **generate access token** and copy this value to OpenCUI.
+   1. Follow the steps in [Set Up Messenger](../reference/channels/messenger.md#set-up-messenger) to set up your Meta app, **generate access token** and copy this value to OpenCUI.
    2. Configure the integration: 
       - **Label**: Set a label for this channel, should be unique. 
       - **Verify Token**: You can enter any private token you desire. Copy this value. This will be used to configure Messenger Webhook.
@@ -91,7 +91,7 @@ In OpenCUI, it's possible to configure multiple channels by adding multiple item
 - To enable the **Messenger** channel, select **channel** service (`io.opencui.channel.IChannel`), wire `io.opencui.messenger` and provide the required configuration details.
 - To enable the **WhatsApp** channel, select **channel** service (`io.opencui.channel.IChannel`), wire `io.opencui.whatsapp` and input the necessary configuration information.
 
-By adding these channels to chatbot, you can easily configure and manage multiple channels for your chatbot. To learn more about each of the channels, please refer to the [Channel](../channels/overview.md) sections.
+By adding these channels to chatbot, you can easily configure and manage multiple channels for your chatbot. To learn more about each of the channels, please refer to the [Channel](../reference/channels/overview.md) sections.
 
 Once you've finished configuring the channel, the next step is to deploy your chatbot.
 
@@ -111,4 +111,4 @@ The Deploy action allows you to publish the latest master of your chatbot to the
    ![deploy checked icon](/images/guide/pingpong/deploy_checked_icon.png)
    :::
 
-3. You can now complete the setup of your Meta app and test it out. To configure the Messenger Webhook, use the **Callback URL** and **Verify Token** values that you copied earlier and follow the instructions in the [Finish Setup Messenger](../channels/messenger.md#finish-setup-messenger) and [Test Your Chatbot](../channels/messenger.md#test-your-chatbot) section.
+3. You can now complete the setup of your Meta app and test it out. To configure the Messenger Webhook, use the **Callback URL** and **Verify Token** values that you copied earlier and follow the instructions in the [Finish Setup Messenger](../reference/channels/messenger.md#finish-setup-messenger) and [Test Your Chatbot](../reference/channels/messenger.md#test-your-chatbot) section.

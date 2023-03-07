@@ -5,29 +5,44 @@ import type { NavbarConfig } from '@vuepress/theme-default'
 
 export const en = [
   {
-    text: 'Guide',
+    text: 'Quickstart',
     link: '/guide/',
   },
   {
-    text: 'Reference',
+    text: 'Guide',
     children: [
       {
-        text: 'Quickstarts',
+        text: 'Essentials',
         children: [
           {
-            text: 'Sign Up',
-            link: '/reference/platform/signingup.html',
-            icon: '/navIcons/signup.svg',
+            text: 'Key Concepts',
+            link: '/reference/essentials/concepts.html',
+            icon: '/navIcons/overview.svg',
           },
           {
-            text: 'Quickstart with PingPong',
-            link: '/reference/quickstarts/pingpong.html',
-            icon: '/navIcons/pingpong.svg',
+            text: 'Cooperative Principle',
+            link: '/reference/essentials/cooperative.html',
+            icon: '/navIcons/extension.svg',
           },
           {
-            text: 'Interactions with Channels',
-            link: '/reference/quickstarts/quickstart-channel.html',
-            icon: '/navIcons/messenger.svg',
+            text: 'Schema Grounded CUI',
+            link: '/reference/essentials/sgcui.html',
+            icon: '/navIcons/native.svg',
+          },
+          {
+            text: '5 Levels of CUI',
+            link: '/reference/essentials/5levels-cui.html',
+            icon: '/navIcons/postgresql.svg',
+          },
+          {
+            text: 'Slot Filling',
+            link: '/reference/essentials/slotfilling.html',
+            icon: '/navIcons/native.svg',
+          },
+          {
+            text: 'Conversational Component',
+            link: '/reference/essentials/components.html',
+            icon: '/navIcons/postgresql.svg',
           }
         ]
       },
@@ -90,7 +105,7 @@ export const en = [
             icon: '/navIcons/extension.svg',
           },
           {
-          text: 'Native Provider',
+            text: 'Native Provider',
             link: '/reference/providers/native.html',
             icon: '/navIcons/native.svg',
           },
@@ -186,6 +201,26 @@ export const en = [
           }
         ]
       },
+      {
+        text: 'Runtime',
+        children: [
+          {
+            text: 'Under the Hood',
+            link: '/reference/runtime/architecture.html',
+            icon: '/navIcons/overview.svg',
+          }
+        ]
+      },
+      {
+        text: 'Glossary',
+        children: [
+          {
+            text: 'Glossary',
+            link: '/reference/glossary.html',
+            icon: '/navIcons/overview.svg',
+          }
+        ]
+      }
     ],
   },
   {
