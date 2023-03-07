@@ -11,7 +11,6 @@ export const en = {
     },
     {
       text: 'Step by Step',
-      icon: '/navIcons/overview.svg',
       children: [
         '/guide/signingup.md',
         '/guide/pingpong.md',
