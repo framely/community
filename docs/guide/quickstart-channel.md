@@ -1,18 +1,19 @@
 # Interactions with Channels
 
-By utilizing channels, user interactions with your chatbot are automatically managed for you. To get started, simply construct your chatbot, establish the channel platform and generate tokens (e.g. access token, development information, credentials), and configure channel integration through OpenCUI platform using these token values.
+Once you have developed and tested your chatbot, you can deploy it and start to serve one or more channels. Here channels are the applications can user use to send request, sometimes in form of text message, to chatbot, live agent or even other users, for example: Messenger, iMessage, and RCS, to name a few. Channels can potentially also be voice based like Echo, Siri, to name a few. OpenCUI chatbot can be easily extended to work with any channels, as long as we develop a specifically designed software extension, also called channels on OpenCUI platform. 
 
-This guide shows you how to integrate your chatbot with the Messenger channel for easy user interactions.
+::: thumbnail
+![How messenger bot works](/images/guide/how-messenger-bot-works.png)
+:::
 
-## Before You Begin
+How does it work? Let's use Messenger as example. User send a message using the client software to Messenger platform, and Messenger platform forward that message to the end point that your channel implementation listens, upon get the user input, chatbot produce output, and ask channel implementation send the reply to the end point that Messenger platform listens, which will forward the reply to end user. Clearly to make this work, one have to configure on both Messenger platform side, and OpenCUI side, so that they both know where to send message to. 
 
-If you don't intend to use an integration, this quickstart is not necessary.
+This guide builds on top of [Quickstart with PingPong](pingpong.md), is designed to show you how to integrate your chatbot with the Messenger channel. Channel are only supported in OpenCUI production environment, and to deploy your change to production environment, you need to create the PR, and merge it into master.
 
-Before proceeding with this guide, make sure to complete the steps outlined in the [Quickstart with PingPong](pingpong.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
+## Merge Changes
+OpenCUI comes with a Git like version control system, that is specifically designed for the structured chatbot definition so that we can manage the definition across modules and languages accurately. If you used Git in your development, this process should be very similar.
 
-## Review Changes
-
-After completing your work, it's important to review your changes and ensure they meet the chatbot's features and quality standards. One way to do this is by opening a pull request and comparing the changes across your branch. Once you are satisfied with the changes, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version Control](../reference/platform/versioncontrol.md) section.
+After you tested your change, t's important to ask project owner to review your changes and ensure they meet the chatbot's features and quality standards, by opening a pull request and comparing the changes across your branch. Once your change is approved, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version Control](../reference/platform/versioncontrol.md) section.
 
 To create a pull request:
 1. In the second navigation bar, select the **Version** tab.
