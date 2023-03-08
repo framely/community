@@ -12,12 +12,6 @@ export const en = [
     text: 'Guide',
     link: '/reference/'
   },
-
-  //TODO add README and change link
-  {
-    text: 'Plugins',
-    link: '/plugins/components/datepicker/datepicker-requirement.html'
-  },
   {
     text: 'Pricing',
     link: '/pricing/'
