@@ -1,6 +1,11 @@
-# Reservation API
+# API Reference
 
-## API List
+The Reservation API ([services.opencui.reservation.IReservation](https://build.opencui.io/org/services.opencui/agent/reservation/struct/service_schema)) is applied to booking scenarios, including creating bookings, querying bookings, and canceling bookings, which exposes most of the features available in the reservation scenario. 
+
+- To utilize this service, ensure that you have an existing provider that implements it.
+- To invoke this service, ensure that your project have imported it and used it within your target skill/frame type.
+
+## Resource
 
 ### makeReservation
 
@@ -374,7 +379,7 @@ val duration = 3600
 val resourceList = listResource(location, resourceType, date, time, duration)
 ```
 
-## Data Structure
+## Types
 
 ### Location
 

@@ -93,8 +93,9 @@ export const en = {
       children: [
         {
           text: 'Date Picker',
+          link: '/reference/plugins/components/datepicker/',
+          collapsible: true,
           children:[
-            '/reference/plugins/components/datepicker/datepicker-requirement.md',
             '/reference/plugins/components/datepicker/datepicker-design.md'
           ],
         }
@@ -106,8 +107,9 @@ export const en = {
       children: [
         {
           text: 'Reservation',
+          link: '/reference/plugins/services/reservation/',
+          collapsible: true,
           children:[
-            '/reference/plugins/services/reservation/reservation-requirement.md',
             '/reference/plugins/services/reservation/reservation-api.md',
             '/reference/plugins/services/reservation/google-calendar-reservation.md'
           ],
