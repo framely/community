@@ -2,15 +2,9 @@
 export const en = {
   '/guide/': [
     {
-      text: 'Overview',
-      children: [
-        '/guide/README.md',
-        '/guide/are-you-ready.md',
-      ],
-    },
-    {
       text: 'Step by Step',
       children: [
+        '/guide/are-you-ready.md',
         '/guide/signingup.md',
         '/guide/pingpong.md',
         '/guide/quickstart-channel.md'
