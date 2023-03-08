@@ -5,6 +5,9 @@ The OpenCUI platform can be useful at various stages of chatbot development, suc
 
 While we build OpenCUI based on many best practices in building user interface applications, to deal with the unique challenges presented in building CUI, such as user can say anything at any time, we need to introduce some unique solutions. The conceptual model that is needed for one to take full advantage of OpenCUI, thus need a bit of practice to get used to. To assist you in this, we have developed a series of tutorials that aim to guide you step-by-step in understanding the conceptual model and becoming proficient in using OpenCUI to build exceptional conversational experiences. 
 
+#### [Before You Start](are-you-ready.md)
+If you are serious about use OpenCUI in production, you might want to make sure you are prepared.
+
 #### [Sign Up](signingup.md)
 Before we fully open up, we required you signup first so that we can get some idea on how we can help you. All you need is a GitHub account, ideally with your email verified. 
 
