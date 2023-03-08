@@ -9,7 +9,10 @@ While we build OpenCUI based on many best practices in building user interface a
 Before we fully open up, we required you signup first so that we can get some idea on how we can help you. All you need is a GitHub account, ideally with your email verified. 
 
 #### [Quickstart with PingPong](pingpong.md)
-This guide walks you through how to create a basic chatbot on the OpenCUI platform. The sample provides a quick way to explore the functionality of a chatbot and it can serve as a starting point for your chatbot development.
+This guide walks you through how to create a basic chatbot on the OpenCUI platform. The sample provides a quick way to explore the functionality of a chatbot, and it can serve as a starting point for your chatbot development. 
+
+#### [Interactions with Channels](quickstart-channel.md)
+This guide walks you through how to use the builtin version control system to review and merge your change to master. It explains to you how chatbot work with messaging platform like Messenger, and shows you how to configure both side using Messenger as example. After going through this, you should be able to interact with your chatbot in Messenger. 
 
 
 For the impatient, [you can get started now](https://build.opencui.io).
