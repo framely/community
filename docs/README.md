@@ -9,7 +9,7 @@ actions:
     link: https://build.opencui.io
     type: primary
   - text: Learn More
-    link: /guide/getting-started.html#from-beginner-to-master
+    link: /guide/
     type: secondary
 features:
   - title: CUI for your APIs
@@ -44,7 +44,7 @@ features:
 cta :
   - details: Import what you need, Customize and Deploy.
     title: Get Started
-    link: /guide/getting-started.html#all-quickstarts
+    link: /guide/
     
 
 footerHtml: true 
