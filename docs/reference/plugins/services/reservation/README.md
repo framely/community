@@ -1,4 +1,4 @@
-# Motivation
+# Overview
 
 Reservation is a common scenario in many businesses and services, whether it's a restaurant, a hotel, a doctor's office, or a hair salon. Customers often need to make appointments or reservations in advance to ensure they can get the service they need at a specific time. With the rise of chatbots and conversational interfaces, businesses have an opportunity to make the reservation process even more convenient and user-friendly for customers by allowing them to book services through a chatbot which can increase efficiency for your businesses.
 
@@ -18,9 +18,9 @@ We encourage you to build upon our scenario by defining more modules or extensio
 Overall, our reservation scenario project aims to simplify and streamline the chatbot building process for you, saving you time and effort while delivering a seamless and convenient experience for your customers.
 
 Select the document below to see more details:
-1. [Reservation API](reservation-api.md): exposes most of the features available in the reservation scenario.
-2. Backend Providers
-    - [Google Calendar](google-calendar-reservation.md): use a domain calendar to schedule customers' reservations.
-3. Application scenario
-    - Restaurant table booking
-    - Hairdresser appointment scheduling
+
+#### [API Reference](reservation-api.md)
+Reservation service interface, exposes most of the features available in the reservation scenario.
+
+#### [Google Calendar](google-calendar-reservation.md)
+A backend provider implement reservation service interface, you can use a domain calendar to schedule customers' reservations.
