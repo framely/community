@@ -9,34 +9,7 @@ export const en = {
         '/guide/pingpong.md',
         '/guide/quickstart-channel.md'
       ],
-    },
-    {
-      text: 'CUI Components',
-      collapsible: true,
-      children: [
-        {
-          text: 'Date Picker',
-          children:[
-            '/guide/plugins/components/datepicker/datepicker-requirement.md',
-            '/guide/plugins/components/datepicker/datepicker-design.md'
-          ],
-        }
-      ],
-    },
-    {
-      text: 'Services',
-      collapsible: true,
-      children: [
-        {
-          text: 'Reservation',
-          children:[
-            '/guide/plugins/services/reservation/reservation-requirement.md',
-            '/guide/plugins/services/reservation/reservation-api.md',
-            '/guide/plugins/services/reservation/google-calendar-reservation.md'
-          ],
-        }
-      ]
-    },
+    }
   ],
   '/reference/': [
     {
@@ -113,6 +86,33 @@ export const en = {
       children: [
         '/reference/runtime/architecture.md'
       ],
+    },
+    {
+      text: 'CUI Components',
+      collapsible: true,
+      children: [
+        {
+          text: 'Date Picker',
+          children:[
+            '/reference/plugins/components/datepicker/datepicker-requirement.md',
+            '/reference/plugins/components/datepicker/datepicker-design.md'
+          ],
+        }
+      ],
+    },
+    {
+      text: 'Services',
+      collapsible: true,
+      children: [
+        {
+          text: 'Reservation',
+          children:[
+            '/reference/plugins/services/reservation/reservation-requirement.md',
+            '/reference/plugins/services/reservation/reservation-api.md',
+            '/reference/plugins/services/reservation/google-calendar-reservation.md'
+          ],
+        }
+      ]
     },
     {
       text: "Glossary",
