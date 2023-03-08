@@ -6,7 +6,6 @@ export const en = {
       children: [
         '/guide/README.md',
         '/guide/are-you-ready.md',
-        '/guide/getting-started.md'
       ],
     },
     {

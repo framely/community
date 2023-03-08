@@ -8,11 +8,9 @@ export const en = [
     text: 'Quickstart',
     link: '/guide/'
   },
-
-  //TODO add README and change link
   {
     text: 'Guide',
-    link: '/reference/essentials/concepts.html'
+    link: '/reference/'
   },
 
   //TODO add README and change link

@@ -32,20 +32,6 @@ To review changes:
    ![review changes](/images/guide/pingpong/review_changes.png)
    :::
 3. Once you're satisfied with the changes, you can **Approve** them and **Merge** them into master. For more information about changes review, see [Version Contorl](../reference/platform/versioncontrol.md).
-   ::: thumbnail
-   ![approve changes](/images/guide/pingpong/approve_changes.png)
-   *Approve changes*
-
-   <br>
-
-   ![merge changes](/images/guide/pingpong/merge_changes.png)
-   *Merge changes*
-            
-   <br>
-
-   ![version tag](/images/guide/pingpong/version_tag.png)
-   *Create version tag and Save*
-   :::
 
 ## Setup Channels
 
