@@ -42,7 +42,7 @@ features:
 
 
 cta :
-  - details: Import what you need, Customize and Deploy.
+  - details: Import what you need, customize and deploy.
     title: Get Started
     link: /guide/
     
