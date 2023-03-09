@@ -120,5 +120,15 @@ export const en = {
       text: "Glossary",
       link: '/reference/glossary.md'
     }
+  ],
+  '/policy/': [
+    {
+      text: 'Terms of Service',
+      link: '/policy/terms.md'
+    },
+    {
+      text: 'Privacy Policy',
+      link: '/policy/privacy.md'
+    }
   ]
 }
