@@ -4,10 +4,9 @@
       <p>OpenCUI, Inc &copy; 2023 All rights reserved</p>
     </div>
     <div class="links">
-      <a href="#">What is OpenCUI?</a>
-      <a href="#">Terms</a>
-      <a href="#">Privacy</a>
-      <a href="#">Sitemap</a>
+      <a href="https://opencui.medium.com/">Medium</a>
+      <a href="/policy/terms.html">Terms</a>
+      <a href="/policy/privacy.html">Privacy</a>
     </div>
   </section>
 </template>
