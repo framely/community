@@ -1,35 +1,25 @@
----
-article: true
-date: 2023-03-06
-
-image:
-    - blog/banner/quickstart_with_reservation.png
-description:
-    - We show you the steps of building a chatbot using a table reservation module
-author: Sunny May
----
 # Quickstart with Reservation
 
 [[toc]]
 
 ## Overview
 
-This guide shows you how to build a table reservation chabot quickly by using a module, and the great news is that you don't need to design any CUI or develop the backend. 
+This guide shows you how to reuse a module to build a table reservation chabot in seconds, and the great news is that you don't need to design any CUI or develop the backend. 
 
-A Module is a reusable unit for getting user preferences via conversations. The module used here is [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent) that handles CUI design for you. Inside the table reservation module, there are [reservation API](../plugins/services/reservation/reservation-api.md) that provide access to your backend. Meanwhile, backend development is done by [Google Calendar reservation provider](../plugins/services/reservation/google-calendar-reservation.md). 
+A Module is a reusable unit for getting user preferences via conversations. The module used here is [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent) that handles CUI design for you. Inside the table reservation module, there are [reservation API](../reference/plugins/services/reservation/reservation-api.md) that provide access to your backend. Meanwhile, backend development is done by [Google Calendar reservation provider](../reference/plugins/services/reservation/google-calendar-reservation.md). 
 
 ::: thumbnail
-![table reservation module.png](/images/blog/quickstarts-with-reservation/table-reservation-module.png)
+![table reservation module.png](/images/guide/reuse-module/table-reservation-module.png)
 :::
 
 It only takes four steps to build a table reservation chatbot:
-1. Set up resources in Google platform.
-2. Create a chatbot.
-3. Import a table reservation module to your chatbot.
-4. Set up the provider in your chatbot so your the provider can get aceess to your resources.
+1. **Set up** resources in Google platform.
+2. **Create** a chatbot.
+3. **Import** a table reservation module to your chatbot.
+4. **Set up** the provider in your chatbot so your the provider can get aceess to your resources.
 
 ::: thumbnail
-![workflow](/images/blog/quickstarts-with-reservation/workflow.png)
+![workflow](/images/guide/reuse-module/workflow.png)
 :::
 
 The table reservation chabot is used to helptest users to make/view/cancel reservations. The following conversation shows how this chatbot helps the user make a reservation:
@@ -78,12 +68,12 @@ Your reservation has been made. We'll see you at 3:00 PM on Sunday, December 25,
 
 ::::
 
-You can find all the services the table reservation module provides in [reservation CUI design](./build-reservation-module.md#cui-design).
+You can find all the services the table reservation module provides in [reservation CUI design](../articles/build-reservation-module.md#cui-design).
 
 ## Before You Start
 
-1. Read [Quickstart with PingPong](../reference/quickstarts/pingpong.md).
-2. Read [Provider: Google Calendar](../plugins/services/reservation/google-calendar-reservation.md) and set up Google Workspace and service account.
+1. Read [Quickstart with PingPong](./pingpong.md).
+2. Read [Provider: Google Calendar](../reference/plugins/services/reservation/google-calendar-reservation.md) and set up Google Workspace and service account.
 
 ## Set Up Resources
 
@@ -119,7 +109,7 @@ Sign in to your [Google Admin console](https://admin.google.com/). To add resour
    - Click **ADD BUILDING**.
 
     ::: thumbnail
-    ![resource management](/images/blog/quickstarts-with-reservation/resource-management.png)
+    ![resource management](/images/guide/reuse-module/resource-management.png)
     :::
 
 2. In the Buildings section
@@ -133,7 +123,7 @@ Sign in to your [Google Admin console](https://admin.google.com/). To add resour
    - Switch back to **Resources**.
 
     ::: thumbnail
-    ![add building](/images/blog/quickstarts-with-reservation/add-building.png)
+    ![add building](/images/guide/reuse-module/add-building.png)
     :::
 
 3. In the Resources section
@@ -147,7 +137,7 @@ Sign in to your [Google Admin console](https://admin.google.com/). To add resour
    - Click **ADD RESOURCE**.
 
     ::: thumbnail
-    ![add resource](/images/blog/quickstarts-with-reservation/add-resource.png)
+    ![add resource](/images/guide/reuse-module/add-resource.png)
     :::
 
 4. Repeat step 3 to add the other two resources and change the value in the **Description** field.
@@ -157,7 +147,7 @@ Sign in to your [Google Admin console](https://admin.google.com/). To add resour
 Once done, your building and resources should be the same as those in the screenshot below.
 
 ::: thumbnail
-![resources example](/images/blog/quickstarts-with-reservation/resources-example.png)
+![resources example](/images/guide/reuse-module/resources-example.png)
 :::
 
 ### Block Time in Google Calendar
@@ -167,29 +157,29 @@ Make sure you are an [admin](https://support.google.com/a/answer/172176?hl=en) f
 1. On Other calendars, click **+** > **Browse resources** (If there is no such option, you may need to wait for a few hours for ACL changes to take effect before you can manage these resources.)
 
     ::: thumbnail
-    ![browse resources](/images/blog/quickstarts-with-reservation/browse-resources.png)
+    ![browse resources](/images/guide/reuse-module/browse-resources.png)
     :::
 
 2. Tick your table resources.
 
     ::: thumbnail
-    ![tick resources](/images/blog/quickstarts-with-reservation/tick-resources.png)
+    ![tick resources](/images/guide/reuse-module/tick-resources.png)
     :::
 
 3. Back to your calendars, choose one resource calendar, and click **Settings and sharing**.
 
    ::: thumbnail
-   ![click resoure](/images/blog/quickstarts-with-reservation/click-resoure.png)
+   ![click resoure](/images/guide/reuse-module/click-resoure.png)
    :::
 
 4. Make sure the timezone of this resource calendar is correct. 
 
    ::: thumbnail
-   ![check timezone](/images/blog/quickstarts-with-reservation/check-timezone.png)
+   ![check timezone](/images/guide/reuse-module/check-timezone.png)
    :::
 
 5. Repeat steps 3 and 4 to check the timezone of the other two resource calendars.
-6. Double click on your primary calendar to add an event. Set this event as follows
+6. Double click on your primary calendar to add an event. Set this event as follows:
    - **Title**: Closed
    - **Time**: `Mar 3, 2023 12:00am` to `11:00am Mar 3, 2023`
    - **Repeat**: Weekly on Sunday, Tuesday, Wednesday, Thursday, Friday, Saturday
@@ -199,7 +189,7 @@ Make sure you are an [admin](https://support.google.com/a/answer/172176?hl=en) f
      - (table)-My First Restaurant-1-Small table
 
    ::: thumbnail
-   ![add event](/images/blog/quickstarts-with-reservation/add-event.png)
+   ![add event](/images/guide/reuse-module/add-event.png)
    :::
 
 7. Repeat step 6 to add the other events and change the **time** and **Repeat** fields for each event.
@@ -213,7 +203,7 @@ Make sure you are an [admin](https://support.google.com/a/answer/172176?hl=en) f
 Once done, the events in your resource calendars should be the same as those in the screenshot below.
 
 ::: thumbnail
-![calendar example](/images/blog/quickstarts-with-reservation/calendar-example.png)
+![calendar example](/images/guide/reuse-module/calendar-example.png)
 :::
 
 ## Import Table Reservation Module
@@ -227,7 +217,7 @@ Now it's time to create a table reservation chatbot and reuse the table reservat
    - Click **Save**.
 
    ::: thumbnail
-   ![import module](/images/blog/quickstarts-with-reservation/import-module.png)
+   ![import module](/images/guide/reuse-module/import-module.png)
    :::
 
 ## Set Up Reservation Provider
@@ -239,31 +229,31 @@ To set up the reservation provider:
 1. Enter the chatbot you just created.
 2. Heading to **Settings** page, in **Integrations** tab
    - Click **Select Service** and select **services.opencui.reservation.IReservation**.
-   - Follow [set up Google calendar reservation provider](../plugins/services/reservation/google-calendar-reservation.md#set-up-google-calendar-reservation-provider) to complete this integration.
+   - Follow [set up Google calendar reservation provider](../reference/plugins/services/reservation/google-calendar-reservation.md#set-up-google-calendar-reservation-provider) to complete this integration.
 
    ::: thumbnail
-   ![set up provider](/images/blog/quickstarts-with-reservation/set-up-provider.png)
+   ![set up provider](/images/guide/reuse-module/set-up-provider.png)
    :::
 
 ## Test Chatbot
 
 Finally, you can try to use your chatbot to make a table reservation. To test the chatbot:
 
-1. You can send "_I want to book a table_" to start making a reservation. Then provide the number of guests, date and time. If there is an available table, you can book it successfully. For example:
+1. Send "_I want to book a table_" to start making a reservation. Then provide the number of guests, date and time. If there is an available table, you can book it successfully. For example:
 
    ::: thumbnail
-   ![example conversation](/images/blog/quickstarts-with-reservation/example-conversation.png)
+   ![example conversation](/images/guide/reuse-module/example-conversation.png)
    :::
 
 2. Once you've made a reservation, you can go to your Google Calendar and check that reservation. Here is the reservation made by the above example:
 
    ::: thumbnail
-   ![example reservation](/images/blog/quickstarts-with-reservation/example-reservation.png)
+   ![example reservation](/images/guide/reuse-module/example-reservation.png)
    :::
 
 The picture below shows how the reservation is made. 
 ::: thumbnail
-![message process](/images/blog/quickstarts-with-reservation/message-process.png)
+![message process](/images/guide/reuse-module/message-process.png)
 :::
 
 
