@@ -1,28 +1,15 @@
-# Quickstart with Reservation
+# Table Reservation
 
 [[toc]]
 
 ## Overview
 
-This guide shows you how to reuse a module to build a table reservation chabot in seconds, and the great news is that you don't need to design any CUI or develop the backend. 
+This guide shows you how to reuse a module to build a table reservation chatbot. A module is a reusable CUI unit with its conversational behavior defined against some service APIs. There are two kinds of module, base module come with its own service APIs, while composite module need to import other modules to deliver some complex conversational experience.
+Notice a base module can have one or more provider that provide the implementations of the service APIs defined in that module.
 
-A Module is a reusable unit for getting user preferences via conversations. The module used here is [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent) that handles CUI design for you. Inside the table reservation module, there are [reservation API](../reference/plugins/services/reservation/reservation-api.md) that provide access to your backend. Meanwhile, backend development is done by [Google Calendar reservation provider](../reference/plugins/services/reservation/google-calendar-reservation.md). 
+Import right module allow you to add new functionality to your chatbot quickly. In this guide, we demonstrate how can you add [table reservation](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent) to your restaurant chatbot. The table reservation module relies on a base module [reservation API](../reference/plugins/services/reservation/reservation-api.md) that currently has a [Google Calendar based provider](../reference/plugins/services/reservation/google-calendar-reservation.md). 
 
-::: thumbnail
-![table reservation module.png](/images/guide/reuse-module/table-reservation-module.png)
-:::
-
-It only takes four steps to build a table reservation chatbot:
-1. **Set up** resources in Google platform.
-2. **Create** a chatbot.
-3. **Import** a table reservation module to your chatbot.
-4. **Set up** the provider in your chatbot so your the provider can get aceess to your resources.
-
-::: thumbnail
-![workflow](/images/guide/reuse-module/workflow.png)
-:::
-
-The table reservation chabot is used to helptest users to make/view/cancel reservations. The following conversation shows how this chatbot helps the user make a reservation:
+The resulting chatbot can help users to make/view/cancel table reservations, here is an example dialogue:
 
 :::: conversation
 
@@ -68,20 +55,20 @@ Your reservation has been made. We'll see you at 3:00 PM on Sunday, December 25,
 
 ::::
 
-You can find all the services the table reservation module provides in [reservation CUI design](../articles/build-reservation-module.md#cui-design).
+The detailed CUI design for table reservation can be found [here](../articles/build-reservation-module.md#cui-design).
 
-## Before You Start
 
-1. Read [Quickstart with PingPong](./pingpong.md).
-2. Read [Provider: Google Calendar](../reference/plugins/services/reservation/google-calendar-reservation.md) and set up Google Workspace and service account.
+It only takes few steps to add a table reservation functionality to a chatbot:
+1. **Set up** resources in Google platform. Here resource is the booked table.
+2  **Import** a table reservation module to your chatbot.
+3  **Set up** the provider in your chatbot to access to your resources.
+
 
 ## Set Up Resources
+Under the design of reservation API, the resource are the entity that user can book or reserve, such as table in restaurant or hairdresser. Before users can book a table, you should prepare your table resources first. Different provider has different way of define what resources are available for booking. Since we are use [Google calendar based provider](../reference/plugins/services/reservation/google-calendar-reservation.md), we use Google Admin console to define table resources and Google Calendar to store reservations.
 
-Before users can book a table, you should prepare your table resources first. A table resource represents a real table in your restaurant, so one table resource can only be booked once at a certain time.
 
-In this guide, we use Google Admin console to store table resources and Google Calendar to store reservations. With reservation API, the chabot can get access to your resources and schedule reservations for users.
-
-To begin with, you need to set up your table resources in two steps:
+You can set up your table resources in two steps:
 1. In the Admin console, add your buildings and resources.
 2. In the Google Calendar, set the business hours by adding block time, so users can't book tables when you are not open.
 
