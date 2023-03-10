@@ -60,8 +60,8 @@ The detailed CUI design for table reservation can be found [here](../articles/bu
 
 It only takes few steps to add a table reservation functionality to a chatbot:
 1. **Set up** resources in Google platform. Here resource is the booked table.
-2  **Import** a table reservation module to your chatbot.
-3  **Set up** the provider in your chatbot to access to your resources.
+2. **Import** a table reservation module to your chatbot. 
+3. **Set up** the provider in your chatbot to access to your resources.
 
 
 ## Set Up Resources
