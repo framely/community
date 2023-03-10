@@ -17,5 +17,9 @@ This guide walks you through how to create a basic chatbot on the OpenCUI platfo
 #### [Interactions with Channels](quickstart-channel.md)
 This guide walks you through how to use the builtin version control system to review and merge your change to master. It explains to you how chatbot work with messaging platform like Messenger, and shows you how to configure both side using Messenger as example. After going through this, you should be able to interact with your chatbot in Messenger. 
 
+#### [Table Reservation](quickstart-reservation.md)
+Reusable module can greatly reduce the cost of building chatbot. In this guide, we show you how to import a table reservation module, configure the provider so that you can start to provide table reservation through conversational user interface in no time.
+
+
 
 For the impatient, [you can get started now](https://build.opencui.io).
