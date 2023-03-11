@@ -40,7 +40,7 @@ Before you begin, it is useful to get familiar with [the fundamental idea of cra
 
 ## Create Chatbot
 
->The OpenCUI platform can be understood as GitHub specifically for chatbots. However, instead of repositories, work under organization is organized into projects, including chatbots, reusable modules and providers. Therefore, creating a chatbot is analogous to creating a repository on GitHub.
+>The OpenCUI platform can be understood as GitHub specifically for chatbots. Creating a chatbot is analogous to creating a repository on GitHub.
 
 Upon logging in, an organization (or "org" for short) will be automatically generated for you. You can create a chatbot under this org by following these steps:
 1. Within an org, click **Chatbots** on the left side menu to work on chatbots (instead of modules and providers), then click **Create** on the right side.
