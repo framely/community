@@ -139,26 +139,5 @@ At language level, PingPong skill can be configured as follows:
    ![commit pingpong en](/images/guide/pingpong/commit_pingpong_en.png)
    :::
 
-## Test Chatbot 
-OpenCUI includes a built-in testing feature called **Debug** that helps you uncover CUI bugs by providing debug information. With Debug, you can test your chatbot without setting up channels.
-
+### 5. Test Chatbot
 Note that Debug can only test committed content, so ensure that both the interaction layer and language layer have been committed before testing.
-
-To test your chatbot using Debug, follow these steps:
-
-1. On the language layer, click **Debug** in the upper-right corner of the Build area , the debug field will slide out. 
-
-   ::: thumbnail
-   ![try it now](/images/guide/pingpong/tryitnow_icon.png)
-   :::
-
-2. Click **Connect**. This may take some time to as we build and deploy the chatbot to our test environment. Once the connection is established successfully, you can test your chatbot by typing messages.
-
-3. Enter `ping` in the text input box at the bottom and press enter, then the bot should respond with `Pong`. If you add more than one template, bot will reply in turn. If you add more than one examplar to a skill, any examplar will trigger that skill. It is assumed that the skills are semantically exclusively, so that one should not use the same exemplar in different skills from the same bot. As the skill level exemplars has no context. 
-
-   You can save test cases by clicking the "**Save Test Case**" icon, and restart your testing by clicking the "**Reset Contexts**" icon. If there are any exceptions, you can view log information by clicking the "**View Log**" icon. For more information about Debug, refer to the [Testing](../reference/platform/testing.md) section.
-
-   ::: thumbnail
-   ![pingpong test](/images/guide/pingpong/pingpong_test.png)
-   :::
-
