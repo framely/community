@@ -11,6 +11,9 @@ If you are serious about use OpenCUI in production, you might want to make sure 
 #### [Sign Up](signingup.md)
 Before we fully open up, we required you signup first so that we can get some idea on how we can help you. All you need is a GitHub account, ideally with your email verified. 
 
+#### [Clone and Play](start-with-clone.md)
+Cloning an existing project is the fastest way to start play with it. This guide show you how to clone a project, and then how to use builtin Debug tool to test it.
+
 #### [Quickstart with PingPong](pingpong.md)
 This guide walks you through how to create a basic chatbot on the OpenCUI platform. The sample provides a quick way to explore the functionality of a chatbot, and it can serve as a starting point for your chatbot development. 
 
