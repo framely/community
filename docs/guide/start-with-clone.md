@@ -1,13 +1,13 @@
 # Clone and Modify
 
-OpenCUI is a platform designed to help regular dev team to build natural conversational user interface(CUI) for their services. To reduce the cost of building CUI, OpenCUI adopt a component based approach so that you can make use of prefabricated projects instead of building everything from scratch. There are two different ways of reusing existing work on OpenCUI platform, importing or cloning. This guide will show you how to start to play with a chatbot by cloning it.
+OpenCUI is a platform designed to help regular dev team to build natural conversational user interface(CUI) for their services. To reduce the cost of building CUI, OpenCUI adopts a component based approach so that you can make use of prefabricated projects instead of building everything from scratch. There are two different ways of reusing existing work on OpenCUI platform, importing or cloning. This guide will show you how to start to play with a chatbot by cloning it.
 
 The OpenCUI platform can be understood as GitHub specifically for chatbots. However, instead of repositories, work under organization is organized into projects, including chatbots, reusable modules and providers:
-- **Chatbot**: An CUI application, where users can access service through text or voice instead of a graphical user interface.
-- **Module**: Module consists of CUI components that handle interaction for some predefined domain. Module can be reused by chatbot or other module. One can define a service interface in a module, which can be used by that module to interact with backend.
+- **Chatbot**: A CUI application, where users can access service through text or voice instead of a graphical user interface.
+- **Module**: Module consists of CUI components that handle interaction for some predefined domain. Module can be reused by chatbots or other modules. One can define a service interface in a module, which can be used by that module to interact with backend.
 - **Provider**: The implementation of module interface. 
 
-When you clone a project, you create an exact copy in your organization that you can inspect and modify. Cloning from a bot that providing the similar services is a great way to get started since you do not have to start from scratch. This guide shows you how to clone a simple chatbot and test it using the builtin debug tool on the OpenCUI platform.
+When you clone a project, you create an exact copy in your organization that you can inspect and modify. Cloning from a bot that provides similar services is a great way to get started since you do not have to start from scratch. This guide shows you how to clone a simple chatbot and test it using the builtin debug tool on the OpenCUI platform.
 
 ## Clone Chatbot
 
@@ -16,7 +16,7 @@ In OpenCUI, you can discover a variety of public projects from **Explore** tab a
 When you are inside the project you want to clone, follow these steps to clone it： 
 1. Click **Clone** on the right of the second navigation bar.
 2. Choose the **Org** where you want to add your cloned project, and **Save**.
-3. Once you click **Save**, a pop-up window for basic chatbot settings will appear, you can modify them, then click **Save** directly.
+3. Once you click **Save**, a pop-up window for basic chatbot settings will appear, and you can modify them, then click **Save** directly.
 
 ::: thumbnail
 ![enter chatbot](/images/guide/start-with-clone/click_clone.png)
@@ -41,7 +41,7 @@ To test your chatbot using Debug, follow these steps:
 2. Click **Connect**. This may take some time to as we build and deploy the chatbot to our test environment. Once the connection is established successfully, you can test your chatbot by typing messages.
 
 3. Enter `ping` in the text input box at the bottom and press enter, then the bot should respond with `Pong`. 
-4. You can make modification such as changing the response and expression. For the change to take effect, make sure you commit and reconnect.
+4. You can make modifications, such as changing the response and expression. For the change to take effect, make sure you commit and reconnect.
 
    You can save test cases by clicking the "**Save Test Case**" icon, and restart your testing by clicking the "**Reset Contexts**" icon. You can view log information by clicking the "**View Log**" icon. For more information about Debug, refer to the [Testing](../reference/platform/testing.md) section.
 
