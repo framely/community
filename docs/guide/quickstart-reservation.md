@@ -63,6 +63,10 @@ It only takes few steps to add a table reservation functionality to a chatbot:
 2. **Import** a table reservation module to your chatbot. 
 3. **Set up** the provider in your chatbot to access to your resources.
 
+## Before You Start
+
+1. Perform steps in [Quickstart with PingPong](./pingpong.md).
+2. Read [Provider: Google Calendar](../reference/plugins/services/reservation/google-calendar-reservation.md) and set up Google Workspace and service account.
 
 ## Set Up Resources
 Under the design of reservation API, the resource are the entity that user can book or reserve, such as table in restaurant or hairdresser. Before users can book a table, you should prepare your table resources first. Different provider has different way of define what resources are available for booking. Since we are use [Google calendar based provider](../reference/plugins/services/reservation/google-calendar-reservation.md), we use Google Admin console to define table resources and Google Calendar to store reservations.
