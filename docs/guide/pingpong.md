@@ -40,8 +40,7 @@ Before you begin, it is useful to get familiar with [the fundamental idea of cra
 
 ## Before You Start
 
-1. [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-2. It is useful to get familiar with [the fundamental idea of crafting conversational applications](README.md).
+[Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
 ## Create Chatbot
 

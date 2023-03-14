@@ -201,7 +201,7 @@ Once done, the events in your resource calendars should be the same as those in 
 
 Now it's time to create a table reservation chatbot and reuse the table reservation module.
 
-1. [Create a chatbot](./pingpong.md#create-chatbot) and add the English language.
+1. Create a chatbot and add the English language.
 2. Enter the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent)
    - Click **Import**.
    - Select the chatbot you just created.
