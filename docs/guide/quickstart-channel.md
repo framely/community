@@ -1,4 +1,4 @@
-# Interactions with Channels
+# Interactions with channels
 
 Once you have developed and tested your chatbot, you can deploy it and start to serve one or more channels. Here channels are the applications can user use to send request, sometimes in form of text message, to chatbot, live agent or even other users, for example: Messenger, iMessage, and RCS, to name a few. Channels can potentially also be voice based like Echo, Siri, to name a few. OpenCUI chatbot can be easily extended to work with any channels, as long as we develop a specifically designed software extension, also called channels on OpenCUI platform. 
 
@@ -10,12 +10,10 @@ How does it work? Let's use Messenger as example. User send a message using the 
 
 This guide builds on top of [Quickstart with PingPong](pingpong.md), is designed to show you how to integrate your chatbot with the Messenger channel. Channel are only supported in OpenCUI production environment, and to deploy your change to production environment, you need to create the PR, and merge it into master.
 
-## Before You Start
-
-
+## Before you start
 Make sure to complete the steps outlined in the [Quickstart with PingPong](./pingpong.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
 
-## Merge Changes
+## Merge changes
 OpenCUI comes with a Git like version control system, that is specifically designed for the structured chatbot definition so that we can manage the definition across modules and languages accurately. If you used Git in your development, this process should be very similar.
 
 After you tested your change, t's important to ask project owner to review your changes and ensure they meet the chatbot's features and quality standards, by opening a pull request and comparing the changes across your branch. Once your change is approved, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version Control](../reference/platform/versioncontrol.md) section.
@@ -38,7 +36,7 @@ To review changes:
    :::
 3. Once you're satisfied with the changes, you can **Approve** them and **Merge** them into master. For more information about changes review, see [Version Contorl](../reference/platform/versioncontrol.md).
 
-## Setup Channels
+## Setup channels
 
 Here are the steps on how to set up and enable a channel, specifically using Messenger as an example:
 
@@ -87,7 +85,7 @@ By adding these channels to chatbot, you can easily configure and manage multipl
 
 Once you've finished configuring the channel, the next step is to deploy your chatbot.
 
-## Deploy Chatbot
+## Deploy chatbot
 
 The Deploy action allows you to publish the latest master of your chatbot to the production environment, allowing your users to interact with it via the integrated channels. However, before deploying, you must ensure that your chatbot is integrated with at least one channel.
 
