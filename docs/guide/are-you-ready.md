@@ -14,7 +14,6 @@ As with any user facing application, someone needs to own the interaction logic.
 
 The success of any chatbot project requires you have a CUI product manager. This person should have direct access to product owner and can make tradeoff between features. Ideally this person understands your business really well (a must) and have background in the CUI (a good to have). It is understood that there are not many people with CUI product experience, which is ok. OpenCUI has a well-defined declarative way of defining interaction logic, the learning curve is very friendly.
 
-
 ## Have Operation Team Ready
 Creating the CUI for your business is just the first step, you need to have operation team, so you can bring the chatbot online. This is important for two reasons. First, language is a very complex thing, it is hard for you to get it dialog understanding right in one shot, so it is essential to monitor the actual conversations and provide expression to continuously to improve dialog understanding for your domain. Second, with CUI, a user can ask for services that you are not prepared, this is a good opportunity for you to figure out what other features should be developed next. The good thing about CUI is, you do not have to educate your user, if they need a feature, they will find you.
 
