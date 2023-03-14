@@ -10,6 +10,11 @@ How does it work? Let's use Messenger as example. User send a message using the 
 
 This guide builds on top of [Quickstart with PingPong](pingpong.md), is designed to show you how to integrate your chatbot with the Messenger channel. Channel are only supported in OpenCUI production environment, and to deploy your change to production environment, you need to create the PR, and merge it into master.
 
+## Before You Start
+
+
+Make sure to complete the steps outlined in the [Quickstart with PingPong](./pingpong.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
+
 ## Merge Changes
 OpenCUI comes with a Git like version control system, that is specifically designed for the structured chatbot definition so that we can manage the definition across modules and languages accurately. If you used Git in your development, this process should be very similar.
 

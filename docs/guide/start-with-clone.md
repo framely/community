@@ -9,6 +9,10 @@ The OpenCUI platform can be understood as GitHub specifically for chatbots. Howe
 
 When you clone a project, you create an exact copy in your organization that you can inspect and modify. Cloning from a bot that provides similar services is a great way to get started since you do not have to start from scratch. This guide shows you how to clone a simple chatbot and test it using the builtin debug tool on the OpenCUI platform.
 
+## Before You Start
+
+[Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+
 ## Clone Chatbot
 
 In OpenCUI, you can discover a variety of public projects from **Explore** tab at the top of the page, which was built by the OpenCUI community. In this guide, we will use pingpong chatbot as an example, click [here](https://build.opencui.io/org/me.quickstart/agent/pingpong/struct/intent?page=0&imported=false&search=) to select pingpong chatbot.

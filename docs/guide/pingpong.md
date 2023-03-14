@@ -35,8 +35,12 @@ No, thanks
 ::::
 
 :::tip
-Before you begin, it is useful to get familiar with [the fundamental idea of crafting conversational applications](README.md) and sign up for an [OpenCUI account](signingup.md).
+Before you begin, it is useful to get familiar with [the fundamental idea of crafting conversational applications](README.md).
 :::
+
+## Before You Start
+
+[Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
 ## Create Chatbot
 

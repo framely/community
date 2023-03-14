@@ -63,6 +63,10 @@ It only takes few steps to add a table reservation functionality to a chatbot:
 2. **Import** a table reservation module to your chatbot. 
 3. **Set up** the provider in your chatbot to access to your resources.
 
+## Before You Start
+
+1. [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+2. Set up [Google Workspace](../reference/plugins/services/reservation/google-calendar-reservation.md#set-up-google-workspace) and [service account](../reference/plugins/services/reservation/google-calendar-reservation.md#set-up-service-account).
 
 ## Set Up Resources
 Under the design of reservation API, the resource are the entity that user can book or reserve, such as table in restaurant or hairdresser. Before users can book a table, you should prepare your table resources first. Different provider has different way of define what resources are available for booking. Since we are use [Google calendar based provider](../reference/plugins/services/reservation/google-calendar-reservation.md), we use Google Admin console to define table resources and Google Calendar to store reservations.
@@ -226,7 +230,7 @@ To set up the reservation provider:
 
 Finally, you can try to use your chatbot to make a table reservation. To test the chatbot:
 
-1. Send "_I want to book a table_" to start making a reservation. Then provide the number of guests, date and time. If there is an available table, you can book it successfully. For example:
+1. Use [Debug](../reference/platform/testing.md#debug) to send "_I want to book a table_" to start making a reservation. Then provide the number of guests, date and time. If there is an available table, you can book it successfully. For example:
 
    ::: thumbnail
    ![example conversation](/images/guide/reuse-module/example-conversation.png)
