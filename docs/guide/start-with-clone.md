@@ -1,4 +1,4 @@
-## Clone a project
+# Clone a project
 
 OpenCUI is a platform designed to help regular dev team to build natural conversational user interface(CUI) for their services. To reduce the cost of building CUI, OpenCUI adopts a component based approach so that you can make use of prefabricated projects instead of building everything from scratch. There are two different ways of reusing existing work on OpenCUI platform, importing or cloning. This guide will show you how to start to play with a chatbot by cloning it.
 
