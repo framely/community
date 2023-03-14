@@ -12,7 +12,8 @@ This guide builds on top of [Quickstart with PingPong](pingpong.md), is designed
 
 ## Before You Start
 
-Perform steps in [Quickstart with PingPong](./pingpong.md).
+
+Make sure to complete the steps outlined in the [Quickstart with PingPong](./pingpong.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
 
 ## Merge Changes
 OpenCUI comes with a Git like version control system, that is specifically designed for the structured chatbot definition so that we can manage the definition across modules and languages accurately. If you used Git in your development, this process should be very similar.
