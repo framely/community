@@ -35,7 +35,7 @@ No, thanks
 ::::
 
 :::tip
-Before you begin, it is useful to get familiar with [the fundamental idea of crafting conversational applications](README.md) and sign up for an [OpenCUI account](signingup.md).
+Before you begin, it is useful to get familiar with [the fundamental idea of crafting conversational applications](README.md).
 :::
 
 ## Before You Start
