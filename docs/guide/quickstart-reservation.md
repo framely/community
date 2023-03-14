@@ -65,8 +65,8 @@ It only takes few steps to add a table reservation functionality to a chatbot:
 
 ## Before You Start
 
-1. Perform steps in [Quickstart with PingPong](./pingpong.md).
-2. Read [Provider: Google Calendar](../reference/plugins/services/reservation/google-calendar-reservation.md) and set up Google Workspace and service account.
+1. [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+2. Set up [Google Workspace](../reference/plugins/services/reservation/google-calendar-reservation.md#set-up-google-workspace) and [service account](../reference/plugins/services/reservation/google-calendar-reservation.md#set-up-service-account).
 
 ## Set Up Resources
 Under the design of reservation API, the resource are the entity that user can book or reserve, such as table in restaurant or hairdresser. Before users can book a table, you should prepare your table resources first. Different provider has different way of define what resources are available for booking. Since we are use [Google calendar based provider](../reference/plugins/services/reservation/google-calendar-reservation.md), we use Google Admin console to define table resources and Google Calendar to store reservations.
@@ -201,15 +201,8 @@ Once done, the events in your resource calendars should be the same as those in 
 
 Now it's time to create a table reservation chatbot and reuse the table reservation module.
 
-1. Create a chatbot and add the English language.
-2. Enter the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent)
-   - Click **Import**.
-   - Select the chatbot you just created.
-   - Click **Save**.
-
-   ::: thumbnail
-   ![import module](/images/guide/reuse-module/import-module.png)
-   :::
+1. [Create a chatbot](./pingpong.md#create-chatbot) and add the English language.
+2. [Import](../reference/platform/reusability.md#import-1) the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent) to the chatbot you just created.
 
 ## Set Up Reservation Provider
 
@@ -230,7 +223,7 @@ To set up the reservation provider:
 
 Finally, you can try to use your chatbot to make a table reservation. To test the chatbot:
 
-1. Send "_I want to book a table_" to start making a reservation. Then provide the number of guests, date and time. If there is an available table, you can book it successfully. For example:
+1. Use [Debug](../reference/platform/testing.md#debug) to send "_I want to book a table_" to start making a reservation. Then provide the number of guests, date and time. If there is an available table, you can book it successfully. For example:
 
    ::: thumbnail
    ![example conversation](/images/guide/reuse-module/example-conversation.png)
@@ -249,3 +242,14 @@ The picture below shows how the reservation is made.
 
 
 ::tada:: Well done! You've built up a table reservation chatbot. To explore more use cases, you can check the test cases in the [tableReservationApp](https://build.opencui.io/org/me.restaurant/agent/tableReservationApp/en/test_case) chatbot.
+
+
+4. Create a chatbot and add the English language.
+5. Enter the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent)
+    - Click **Import**.
+    - Select the chatbot you just created.
+    - Click **Save**.
+
+   ::: thumbnail
+   ![import module](/images/guide/reuse-module/import-module.png)
+   :::
