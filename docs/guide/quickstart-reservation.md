@@ -242,14 +242,3 @@ The picture below shows how the reservation is made.
 
 
 ::tada:: Well done! You've built up a table reservation chatbot. To explore more use cases, you can check the test cases in the [tableReservationApp](https://build.opencui.io/org/me.restaurant/agent/tableReservationApp/en/test_case) chatbot.
-
-
-4. Create a chatbot and add the English language.
-5. Enter the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent)
-    - Click **Import**.
-    - Select the chatbot you just created.
-    - Click **Save**.
-
-   ::: thumbnail
-   ![import module](/images/guide/reuse-module/import-module.png)
-   :::
