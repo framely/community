@@ -203,13 +203,14 @@ Now it's time to create a table reservation chatbot and reuse the table reservat
 
 1. [Create a chatbot](./pingpong.md#create-chatbot) and add the English language.
 2. Enter the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent)
-    - Click **Import**.
-    - Select the chatbot you just created.
-    - Click **Save**.
+   - Click **Import**.
+   - Select the chatbot you just created.
+   - Click **Save**.
 
    ::: thumbnail
    ![import module](/images/guide/reuse-module/import-module.png)
    :::
+
 ## Set Up Reservation Provider
 
 Before you can use the functionality provided by the reservation API, you should declare a reservation service first, then set up the reservation provider for that service.
