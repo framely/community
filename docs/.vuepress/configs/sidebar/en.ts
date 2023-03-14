@@ -7,6 +7,7 @@ export const en = {
         '/guide/are-you-ready.md',
         '/guide/signingup.md',
         '/guide/start-with-clone.md',
+        '/guide/debug.md',
         '/guide/pingpong.md',
         '/guide/quickstart-channel.md',
         '/guide/quickstart-reservation.md'
