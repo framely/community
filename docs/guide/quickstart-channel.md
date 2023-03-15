@@ -1,4 +1,4 @@
-# Interactions with channels
+# Deploy a chatbot
 
 Once you have developed and tested your chatbot, you can deploy it and start to serve one or more channels. Here channels are the applications can user use to send request, sometimes in form of text message, to chatbot, live agent or even other users, for example: Messenger, iMessage, and RCS, to name a few. Channels can potentially also be voice based like Echo, Siri, to name a few. OpenCUI chatbot can be easily extended to work with any channels, as long as we develop a specifically designed software extension, also called channels on OpenCUI platform. 
 

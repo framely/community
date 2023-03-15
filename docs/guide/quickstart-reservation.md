@@ -1,4 +1,4 @@
-# Table Reservation
+# Import a module: table reservation
 
 [[toc]]
 

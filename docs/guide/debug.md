@@ -1,4 +1,4 @@
-# Debug tool
+# Debug a chatbot
 
 Before your chatbot is fully ready and can be deployed to production environment, OpenCUI includes a built-in **Debug** tool that allows you to test your design in the development environment, so that you can uncover CUI design bugs as early as possible, with some restrictions. With Debug, you can't test your chatbot in asynchronous extensions including channels like Messenger. Debug can only test one language at a time, and only committed content in your branch.
 
