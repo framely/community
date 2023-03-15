@@ -1,4 +1,4 @@
-# Quickstart with PingPong 
+# Build a simple chatbot
 
 This PingPong tutorial will guide you step-by-step through the process of creating, building, and testing a basic chatbot on the OpenCUI platform. A chatbot is essentially an application with a conversational user interface (CUI). Users can interact with the chatbot by first connecting to it, for which they will receive a welcoming message. From there, users can input messages and receive responses from the bot one turn at a time. For example:
 

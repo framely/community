@@ -1,26 +1,29 @@
-# Clone a project
+# Clone a chatbot
 
-OpenCUI is a platform designed to help regular dev team to build natural conversational user interface(CUI) for their services. To reduce the cost of building CUI, OpenCUI adopts a component based approach so that you can make use of prefabricated projects instead of building everything from scratch. There are two different ways of reusing existing work on OpenCUI platform, importing or cloning. This guide will show you how to start to play with a chatbot by cloning it.
+OpenCUI is a platform designed to help regular development teams build natural conversational user interfaces (CUIs) for their services. To reduce the cost of building CUIs, OpenCUI adopts a component-based approach so that you can use pre-built components instead of building everything from scratch. There are two different ways of reusing existing work on the OpenCUI platform: importing or cloning. This guide will show you how to begin experimenting with a chatbot by cloning it.
 
-The OpenCUI platform can be understood as GitHub specifically for chatbots. However, instead of repositories, work under organization is organized into projects, including chatbots, reusable modules and providers:
-- **Chatbot**: A CUI application, where users can access service through text or voice instead of a graphical user interface.
-- **Module**: Module consists of CUI components that handle interaction for some predefined domain. Module can be reused by chatbots or other modules. One can define a service interface in a module, which can be used by that module to interact with backend.
-- **Provider**: The implementation of module interface. 
+The OpenCUI platform can be thought of as a GitHub specifically for chatbots. However, instead of repositories, the work within the organization is organized into projects, including chatbots, reusable modules, and providers:
 
-When you clone a project, you create an exact copy in your organization that you can inspect and modify. Cloning an existing bot that provides similar services is a great way to get started since you do not have to start from scratch. This guide shows you how to clone a simple chatbot.
+- **Chatbot**: A CUI application where users can access a service through text or voice instead of a graphical user interface.
+- **Module**: A module consists of CUI components that handle interaction for a predefined domain. Modules can be reused by chatbots or other modules. You can define a service interface in a module that can be used by the module to interact with the backend.
+- **Provider**: The provider is the implementation of the module interface.
+
+When you clone a project, you create an exact copy in your organization that you can inspect and modify. Cloning a project allows you to freely experiment with changes without affecting the original project. Cloning an existing bot that provides similar services is a great way to get started since you don't have to start from scratch. This guide will show you how to clone a simple chatbot.
 
 ### Before you start
 
 [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
-### Clone chatbot
+### Clone chatbot pingpont
 
-In OpenCUI, you can discover a variety of public projects from **Explore** tab at the top of the page, which was built by the OpenCUI community. In this guide, we will use pingpong chatbot as an example, click [here](https://build.opencui.io/org/me.quickstart/agent/pingpong/struct/intent?page=0&imported=false&search=) to select pingpong chatbot.
+In OpenCUI, you can discover a growing number of public projects from **Explore** tab at the top of the page, which was built by the OpenCUI community. In this guide, we will show you how to clone a chatbot (project for that matter) using pingpong as example, following these steps： 
 
-When you are inside the project you want to clone, follow these steps to clone it： 
-1. Click **Clone** on the right of the second navigation bar.
-2. Choose the **Org** where you want to add your cloned project, and **Save**.
-3. Once you click **Save**, a pop-up window for basic chatbot settings will appear, and you can modify them, then click **Save** directly.
+1. Click **Explore** at the top of page. 
+2. Type "pingpong" in the search box at the top.
+3. Click [here](https://build.opencui.io/org/me.quickstart/agent/pingpong/struct/intent?page=0&imported=false&search=) to select me.quickstart/pingpong chatbot.
+4. Once you are inside project, Click **Clone** on the top right of page (the second navigation bar).
+5. Choose which **Owner** (organization you have write permission) you want to clone this project to, and **Save**.
+6. Once you click **Save**, a pop-up window for basic project settings will appear, and you can modify them, then click **Save**. 
 
 ::: thumbnail
 ![enter chatbot](/images/guide/start-with-clone/click_clone.png)
