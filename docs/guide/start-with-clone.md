@@ -32,3 +32,6 @@ In OpenCUI, you can discover a growing number of public projects from **Explore*
 ::: warning Need To Know
 A project's label or region can not be changed after creation or clone, so choose it wisely. For privacy reasons, the connections and user session data will NOT be cloned.
 :::
+
+### Next steps
+Now you have a chatbot in your organization, you can play with it by following [test a chatbot](debug.md).
