@@ -28,12 +28,12 @@ In OpenCUI, you can discover a growing number of public projects from **Explore*
     :::
 
 * On the new popup window, you need to decide couple things: 
-  - 1). choose which **Owner** organization you want to clone this project to;
-  - 2). optionally you can change the project label for this clone; 
-  - 3). Decide on how you want to deploy this, have OpenCUI hosting it for you or have it deployed on premise; 
-  - 4). Which region do you want to deploy this chatbot to? 
-  - 5). Decide the timezone for your chatbot? 
-- After you made your selection, you can click on **Clone** to finish.
+  - Choose which **Owner** organization you want to clone this project to;
+  - Optionally you can change the project label for this clone; 
+  - Decide on how you want to deploy this, have OpenCUI hosting it for you or have it deployed on premise; 
+  - Pick which region you want to deploy this chatbot to, pick one that is closer to your targeted users; 
+  - Decide the timezone for your chatbot, the interpretation of "today" will be based on this timezone; 
+  - Click on **Clone** at the bottom of the popup.
 
     ::: thumbnail
     ![enter chatbot](/images/guide/start-with-clone/clone.png)
