@@ -35,4 +35,5 @@ For these pro coders, you can inspect the detailed log by clicking the "**View L
    ![pingpong test](/images/guide/pingpong/pingpong_test.png)
    :::
 
-
+### Next steps
+Now you know how you can test a chatbot, let's see how you can [build a simple chatbot](pingpong.md).
