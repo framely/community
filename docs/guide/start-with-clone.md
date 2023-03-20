@@ -21,13 +21,18 @@ In OpenCUI, you can discover a growing number of public projects from **Explore*
 1. Click **Explore** at the top of page. 
 2. Type "pingpong" in the search box at the top.
 3. Click [here](https://build.opencui.io/org/me.quickstart/agent/pingpong/struct/intent?page=0&imported=false&search=) to select me.quickstart/pingpong chatbot.
-4. Once you are inside project, Click **Clone** on the top right of page (the second navigation bar).
-5. Choose which **Owner** (organization you have write permission) you want to clone this project to, and **Save**.
-6. Once you click **Save**, a pop-up window for basic project settings will appear, and you can modify them, then click **Save**. 
+4. Once you are inside project, you inspect the project to see if it fits your needs. If so, click **Clone** on the top right of page (the second navigation bar). 
 
-::: thumbnail
-![enter chatbot](/images/guide/start-with-clone/click_clone.png)
-:::
+    ::: thumbnail
+    ![enter chatbot](/images/guide/start-with-clone/click_clone.png)
+    :::
+
+5. On the new popup window, you need to decide couple things: 1). choose which **Owner** organization you want to clone this project to; 2). optionally you can change the project label for this clone; 3). Decide on how you want to deploy this, have OpenCUI hosting it for you or have it deployed on premise; 4). Which region do you want to deploy this chatbot to? 5). Decide the timezone for your chatbot? After you made your selection, you can click on **Clone** to finish.
+
+    ::: thumbnail
+    ![enter chatbot](/images/guide/start-with-clone/clone.png)
+    :::
+
 
 ::: warning Need To Know
 A project's label or region can not be changed after creation or clone, so choose it wisely. For privacy reasons, the connections and user session data will NOT be cloned.
