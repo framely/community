@@ -1,6 +1,6 @@
 # Build a simple chatbot
 
-This PingPong tutorial will guide you step-by-step through the process of creating, building, and testing a basic chatbot on the OpenCUI platform. A chatbot is essentially an application with a conversational user interface (CUI). Users can interact with the chatbot by first connecting to it, for which they will receive a welcoming message. From there, users can input messages and receive responses from the bot one turn at a time. For example:
+This PingPong tutorial will guide you step-by-step through the process of creating, building a simple chatbot on the OpenCUI platform. A chatbot is essentially an application with a conversational user interface (CUI). Users can interact with the chatbot by first connecting to it, then they will receive a welcoming message. From there, users can input messages and receive responses from the bot one turn at a time. For example:
 
 :::: conversation
 ::: bot Bot
@@ -20,27 +20,11 @@ Thank you for contacting the virtual PingPong chatbot. Have a great day!
 :::
 ::::
 
-OpenCUI supports [5 levels of CUI](../reference/essentials/5levels-cui.md) capabilities. By completing this tutorial, you should be able to develop and debug [the first level, FAQ like](../reference/essentials/5levels-cui.md#frame-without-slot) conversational user experience, such as allowing users to check your business hours: 
-
-:::: conversation
-::: user User
-What is your hours?
-:::
-::: bot Bot
-We open every day from 10:00am to 9:00pm. Can I help you with anything else? 
-:::
-::: user User
-No, thanks
-:::
-::::
-
-:::tip
-Before you begin, it is useful to get familiar with [the fundamental idea of crafting conversational applications](README.md).
-:::
+OpenCUI supports [5 levels of CUI](../reference/essentials/5levels-cui.md) capabilities. By completing this tutorial, you should be able to develop and debug [the first level, FAQ like](../reference/essentials/5levels-cui.md#frame-without-slot) conversational user experience, such as allowing users to check your business hours.
 
 ## Before you start
-
-[Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+* [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+* It is useful to get familiar with [the fundamental idea of crafting conversational applications](../reference/essentials/).
 
 ## Create chatbot
 
