@@ -10,7 +10,7 @@ This quickstart assumes you have finished [Clone a project](start-with-clone.md)
 To test your chatbot using Debug, follow these steps:
 * Switch to a language view, in this case **EN**. 
    ::: thumbnail
-   ![try it now](/images/guide/pingpong/tryitnow_icon.png)
+   ![try it now](/images/guide/pingpong/switch_pingpong_en.png)
    :::
 * In a language view, click **Debug** in the upper-right corner of the Build area , the debug window will slide out. 
 
