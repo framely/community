@@ -64,9 +64,6 @@ If the chatbot is created successfully, it should be displayed as shown below:
 ## Build chatbot
 Chatbots allow user access functions through CUI, and CUI behavior for an exposed function is defined in its corresponding skill. The input parameters of a function are represented by slots in the skill, and the type of these parameters, along with CUI behavior for these types are defined as frames and entities, with frames for composite and polymorphic types, and entities for primitive types. Service is a set of functions, so chatbot is simply a set of skills. Building a chatbot is simply building skills one at a time.
 
-::: thumbnail
-![three layers](/images/guide/pingpong/3layers.png)
-:::
 
 CUI can be divided into interaction and language layer. The language layer are responsible for converting between natural language text and semantics (structured representation of meaning), interaction logic (also known as dialog management), decide how bot should react in semantics. For more information about each of the layers, see [3 Layers of Chatbot](3layers.md).
 
