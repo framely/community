@@ -2,7 +2,7 @@
 home: true
 title: Home
 heroImage: /images/hero.png
-tagline: Schema grounded CUI for any Services
+tagline: Type-grounded CUI for any Services
 heroText: Component-based Approach for Chatbot Development
 actions:
   - text: Start to Build
