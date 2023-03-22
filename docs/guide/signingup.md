@@ -1,4 +1,4 @@
-# Sign Up
+# Sign up
 > Create and log in to your OpenCUI account.
 
 You can start using OpenCUI to build your Chatbots by signing up for a Starter workspace plan, which is good for developers and freelancers who want to build and share. You can also upgrade your workspace plans for both individuals and teams, add and remove team members and collaborators. 
@@ -7,9 +7,9 @@ Follow the following steps to get a OpenCUI account. Let's begin:
 
 [[toc]]
 
-### Sign Up for an Account
+### Sign up for an account
 
-To create your starter OpenCUI account, please visit the [Sign Up page](https://docs.google.com/forms/d/e/1FAIpQLSeYGRXfYnB_uDKTS4hUfcD3w1f9LDI9swcC5Qhy71PTS_JANA/viewform):
+To create your starter OpenCUI account, please visit the [Sign up page](https://docs.google.com/forms/d/e/1FAIpQLSeYGRXfYnB_uDKTS4hUfcD3w1f9LDI9swcC5Qhy71PTS_JANA/viewform):
 > If you already had access to OpenCUI, you can skip this step and [log into your account](#log-into-your-account) directly. 
 
 ::: thumbnail
@@ -36,9 +36,9 @@ After submitting, if you get the response *“Thanks for taking the time to fill
 
 You will wait for an Email notification, which will inform you that you now have access to OpenCUI with your GitHub account, and you can log into your OpenCUI account now 🎉.
 
-### Log Into Your Account
+### Log in to your account
 
-To log into your OpenCUI with your GitHub account, you should open the [Login page](https://build.opencui.io/login) and click the **Sign in with GitHub** button: 
+To log in to your OpenCUI with your GitHub account, you should open the [Login page](https://build.opencui.io/login) and click the **Sign in with GitHub** button: 
 
 ::: thumbnail
 ![sign in](/images/guide/signup/sign-in.png)
@@ -50,9 +50,9 @@ If you don't have account yet, you can click the hyperlink **Click to sign up** 
 ![click to sign up](/images/guide/signup/click-to-sign-up.png)
 :::
 
-### Are You Ready
+### Are you ready
 
 Before beginning to build your first chatbot, you should be familiar with the following materials:
 
-1. [Build Conversational App](/guide/README.md)
-2. [Before You Start](/guide/are-you-ready.md)
+1. [Build conversational app](/guide/README.md)
+2. [Before you start](/guide/are-you-ready.md)

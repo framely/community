@@ -26,11 +26,11 @@ You can make modifications, such as changing the response and expression. For th
 ## Reset session
 The replies that bot generated for the user input depends on the conversation history. Sometime, you need to have a clean start to try something, you can restart your testing session by clicking the "**Reset Contexts**" icon.
 
-## View Log
+## View log
 For coders, you can inspect the detailed log by clicking the "**View Log**" icon.
 
 ## Save test case
 You can save test cases by clicking the "**Save Test Case**" icon, which allow you rerun them in a later stage. For more information about Debug, refer to the [Testing](../reference/platform/testing.md) section.
 
-### Next steps
+## Next steps
 Now you know how you can test a chatbot, let's see how you can [build a simple chatbot](pingpong.md).

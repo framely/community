@@ -14,7 +14,7 @@ When you clone a project, you create an exact copy in your organization that you
 
 [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
-## Clone chatbot pingpont
+## Clone chatbot pingpong
 
 In OpenCUI, you can discover a growing number of public projects by clicking **Explore** tab at the top of the page, which was built by the OpenCUI community, you can inspect the project to see if it fits your needs. Once you are inside project you want to clone, you can follow steps below to accomplishded clone.
 
