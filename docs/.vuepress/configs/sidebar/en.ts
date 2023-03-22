@@ -2,7 +2,7 @@
 export const en = {
   '/guide/': [
     {
-      text: 'Step by Step',
+      text: 'Step by step',
       children: [
         '/guide/are-you-ready.md',
         '/guide/signingup.md',
