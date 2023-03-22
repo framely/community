@@ -8,15 +8,15 @@ Once you have developed and tested your chatbot, you can deploy it and start to 
 
 How does it work? Let's use Messenger as example. User send a message using the client software to Messenger platform, and Messenger platform forward that message to the end point that your channel implementation listens, upon get the user input, chatbot produce output, and ask channel implementation send the reply to the end point that Messenger platform listens, which will forward the reply to end user. Clearly to make this work, one have to configure on both Messenger platform side, and OpenCUI side, so that they both know where to send message to. 
 
-This guide builds on top of [Quickstart with PingPong](pingpong.md), is designed to show you how to integrate your chatbot with the Messenger channel. Channel are only supported in OpenCUI production environment, and to deploy your change to production environment, you need to create the PR, and merge it into master.
+This guide builds on top of [Build a simple chatbot](pingpong.md), is designed to show you how to integrate your chatbot with the Messenger channel. Channel are only supported in OpenCUI production environment, and to deploy your change to production environment, you need to create the PR, and merge it into master.
 
 ## Before you start
-Make sure to complete the steps outlined in the [Quickstart with PingPong](./pingpong.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
+Make sure to complete the steps outlined in the [Build a simple chatbot](./pingpong.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
 
 ## Merge changes
 OpenCUI comes with a Git like version control system, that is specifically designed for the structured chatbot definition so that we can manage the definition across modules and languages accurately. If you used Git in your development, this process should be very similar.
 
-After you tested your change, t's important to ask project owner to review your changes and ensure they meet the chatbot's features and quality standards, by opening a pull request and comparing the changes across your branch. Once your change is approved, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version Control](../reference/platform/versioncontrol.md) section.
+After you tested your change, t's important to ask project owner to review your changes and ensure they meet the chatbot's features and quality standards, by opening a pull request and comparing the changes across your branch. Once your change is approved, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version control](../reference/platform/versioncontrol.md) section.
 
 To create a pull request:
 1. In the second navigation bar, select the **Version** tab.
@@ -34,7 +34,7 @@ To review changes:
    ::: thumbnail
    ![review changes](/images/guide/pingpong/review_changes.png)
    :::
-3. Once you're satisfied with the changes, you can **Approve** them and **Merge** them into master. For more information about changes review, see [Version Contorl](../reference/platform/versioncontrol.md).
+3. Once you're satisfied with the changes, you can **Approve** them and **Merge** them into master. For more information about changes review, see [Version contorl](../reference/platform/versioncontrol.md).
 
 ## Setup channels
 
@@ -65,7 +65,7 @@ Here are the steps on how to set up and enable a channel, specifically using Mes
    :::
 
 4. Configure the Messenger channel:
-   1. Follow the steps in [Set Up Messenger](../reference/channels/messenger.md#set-up-messenger) to set up your Meta app, **generate access token** and copy this value to OpenCUI.
+   1. Follow the steps in [Set up Messenger](../reference/channels/messenger.md#set-up-messenger) to set up your Meta app, **generate access token** and copy this value to OpenCUI.
    2. Configure the integration: 
       - **Label**: Set a label for this channel, should be unique. 
       - **Verify Token**: You can enter any private token you desire. Copy this value. This will be used to configure Messenger Webhook.
@@ -101,4 +101,4 @@ The Deploy action allows you to publish the latest master of your chatbot to the
    ![deploy checked icon](/images/guide/pingpong/deploy_checked_icon.png)
    :::
 
-3. You can now complete the setup of your Meta app and test it out. To configure the Messenger Webhook, use the **Callback URL** and **Verify Token** values that you copied earlier and follow the instructions in the [Finish Setup Messenger](../reference/channels/messenger.md#finish-setup-messenger) and [Test Your Chatbot](../reference/channels/messenger.md#test-your-chatbot) section.
+3. You can now complete the setup of your Meta app and test it out. To configure the Messenger Webhook, use the **Callback URL** and **Verify Token** values that you copied earlier and follow the instructions in the [Finish setup Messenger](../reference/channels/messenger.md#finish-setup-messenger) and [Test your chatbot](../reference/channels/messenger.md#test-your-chatbot) section.
