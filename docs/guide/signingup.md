@@ -10,7 +10,7 @@ Follow the following steps to get a OpenCUI account. Let's begin:
 ### Sign up for an account
 
 To create your starter OpenCUI account, please visit the [Sign up page](https://docs.google.com/forms/d/e/1FAIpQLSeYGRXfYnB_uDKTS4hUfcD3w1f9LDI9swcC5Qhy71PTS_JANA/viewform):
-> If you already had access to OpenCUI, you can skip this step and [log into your account](#log-into-your-account) directly. 
+> If you already had access to OpenCUI, you can skip this step and [log in to your account](#log-in-to-your-account) directly. 
 
 ::: thumbnail
 ![sign up page image](/images/guide/signup/sign-up.png)

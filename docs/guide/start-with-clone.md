@@ -20,14 +20,14 @@ In OpenCUI, you can discover a growing number of public projects by clicking **E
 
 In this guide, we will show you how to clone a chatbot (project for that matter) using pingpong as example. Click [here](https://build.opencui.io/org/me.quickstart/agent/pingpong/struct/intent?page=0&imported=false&search=) to inside `me.quickstart.pingpong` chatbot： 
 
-1. Click **Clone** on the top right of the second navigation bar. 
+1. Click **Clone** on the top right of the navigation bar. 
     ::: thumbnail
     ![enter chatbot](/images/guide/start-with-clone/click_clone.png)
     :::
 
 2. Once you click **Clone**, a pop-up window for basic chatbot settings will appear, you need to decide couple things: 
    - Choose which **Owner** organization you want to clone this project to.
-   - Optionally you can change the **Project Label** for this clone.
+   - Optionally you can change the **Project label** for this clone.
    - Decide on how you want to **Deploy** this, have OpenCUI hosting it for you or have it deployed on premise.
    - Pick which **Region** you want to deploy this chatbot to, pick one that is closer to your targeted users.
    - Click on **Clone** at the bottom of the popup.
