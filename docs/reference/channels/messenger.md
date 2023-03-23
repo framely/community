@@ -9,14 +9,14 @@ We are going to show here how to integrate OpenCUI with Messenger and deploy the
 Follow these steps to configure:
 [[toc]]
 
-## Before You Begin
+## Before you begin
 On the Messenger side, please ensure you have all of the following:
 - **Facebook Page**: A Facebook Page will be used as the identity of your Messenger experience. To create a new Page, visit [Create a Page](https://www.facebook.com/pages/create).
 - **Developer Account**: Your developer account is required to create new apps. To create a new developer account, go to the [Meta Developers](https://developers.facebook.com/) website and click the 'Get Started' button.
 - **Facebook App**: The Facebook app contains the settings for your Messenger experience, including access tokens. To create a new app, visit your [app dashboard](https://developers.facebook.com/apps) and click on 'Create App' in the top right corner.
 
 
-## Set Up Messenger
+## Set up Messenger
 1. Use [Meat App Dashboard](https://developers.facebook.com/apps) to add the Messenger product to your Meta App: 
    1. Enter the App you want to configure, click **Add Product** on the left sidebar menu. 
    2. Click **Set Up** button on **Messenger** product.
@@ -37,7 +37,7 @@ On the Messenger side, please ensure you have all of the following:
    ![generate token](/images/channelConfig/messenger/generate-token.png)
    :::
 
-## Configure Messenger From OpenCUI
+## Configure Messenger from OpenCUI
 
 1. On OpenCUI platform, go to service component [io.opencui.channel](https://build.opencui.io/org/io.opencui/agent/channel/struct/service_schema): 
    1. Click **Import** button on the second topbar.
@@ -74,7 +74,7 @@ On the Messenger side, please ensure you have all of the following:
 
 4. Before you go to next step, don't forget to merge your changes into master and deploy your chatbot.
 
-## Finish Setup Messenger
+## Finish Messenger setup
 
 1. Configure the Messenger webhook for your app. Back to your Meta App:
    1. Go to **Messenger > Settings** panel, scroll down to **Webhooks** section, click **Add Callback URL** button. 

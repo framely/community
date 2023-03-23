@@ -36,7 +36,7 @@ To review changes:
    :::
 3. Once you're satisfied with the changes, you can **Approve** them and **Merge** them into master. For more information about changes review, see [Version contorl](../reference/platform/versioncontrol.md).
 
-## Setup channels
+## Set up channels
 
 Here are the steps on how to set up and enable a channel, specifically using Messenger as an example:
 
@@ -101,4 +101,4 @@ The Deploy action allows you to publish the latest master of your chatbot to the
    ![deploy checked icon](/images/guide/pingpong/deploy_checked_icon.png)
    :::
 
-3. You can now complete the setup of your Meta app and test it out. To configure the Messenger Webhook, use the **Callback URL** and **Verify Token** values that you copied earlier and follow the instructions in the [Finish setup Messenger](../reference/channels/messenger.md#finish-setup-messenger) and [Test your chatbot](../reference/channels/messenger.md#test-your-chatbot) section.
+3. You can now complete the setup of your Meta app and test it out. To configure the Messenger Webhook, use the **Callback URL** and **Verify Token** values that you copied earlier and follow the instructions in the [Finish Messenger setup](../reference/channels/messenger.md#finish-setup-messenger) and [Test your chatbot](../reference/channels/messenger.md#test-your-chatbot) section.
