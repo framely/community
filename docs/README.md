@@ -2,8 +2,8 @@
 home: true
 title: Home
 heroImage: /images/hero.png
-tagline: Type-grounded CUI for any Services
-heroText: Component-based Approach for Chatbot Development
+tagline: Type-grounded conversations for any services
+heroText: Type-based Approach for Chatbot Development
 actions:
   - text: Start to Build
     link: https://build.opencui.io
