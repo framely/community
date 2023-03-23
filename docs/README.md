@@ -2,7 +2,7 @@
 home: true
 title: Home
 heroImage: /images/hero.png
-tagline: Type-grounded conversations for any services
+tagline: Time to deliver personalized services, via chat.
 heroText: Type-based Approach for Chatbot Development
 actions:
   - text: Start to Build
