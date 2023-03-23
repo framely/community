@@ -12,7 +12,7 @@ To test your chatbot using Debug, follow these steps:
    ::: thumbnail
    ![try it now](/images/guide/pingpong/switch_pingpong_en.png)
    :::
-2. In a language view, click **Debug** in the upper-right corner of the Build area , the debug window will slide out. 
+2. In a language view, click **Debug** in the upper-right corner of the Types area , the debug window will slide out. 
    ::: thumbnail
    ![try it now](/images/guide/pingpong/tryitnow_icon.png)
    :::
@@ -24,13 +24,13 @@ To test your chatbot using Debug, follow these steps:
 You can make modifications, such as changing the response and expression. For the change to take effect, make sure you commit and reconnect.
 
 ## Reset session
-The replies that bot generated for the user input depends on the conversation history. Sometime, you need to have a clean start to try something, you can restart your testing session by clicking the "**Reset Contexts**" icon.
+The replies that bot generated for the user input depends on the conversation history. Sometime, you need to have a clean start to try something, you can restart your testing session by clicking the "**Reset contexts**" icon.
 
 ## View log
-For coders, you can inspect the detailed log by clicking the "**View Log**" icon.
+For coders, you can inspect the detailed log by clicking the "**View log**" icon.
 
 ## Save test case
-You can save test cases by clicking the "**Save Test Case**" icon, which allow you rerun them in a later stage. For more information about Debug, refer to the [Testing](../reference/platform/testing.md) section.
+You can save test cases by clicking the "**Save test case**" icon, which allow you rerun them in a later stage. For more information about Debug, refer to the [Testing](../reference/platform/testing.md) section.
 
 ## Next steps
 Now you know how you can test a chatbot, let's see how you can [build a simple chatbot](pingpong.md).

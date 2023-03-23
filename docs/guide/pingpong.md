@@ -39,13 +39,13 @@ OpenCUI supports [5 levels of CUI](../reference/essentials/5levels-cui.md) capab
 >The OpenCUI platform can be understood as GitHub specifically for chatbots. Creating a chatbot is analogous to creating a repository on GitHub.
 
 Upon logging in, an organization (or "org" for short) will be automatically generated for you. You can create a chatbot under this org by following these steps:
-1. Within an org, click **Chatbots** on the left side menu to work on chatbots (instead of modules and providers), then click **Create** on the right side.
-2. Once you click **Create**, a pop-up window for basic chatbot settings will appear, complete the form. For this simple chatbot, you only need to fill the follow three fields:
-   - **Project Label**: the unique identifier for the chatbot, we suggest use low cased label(e.g., *pingpong*).
+1. Within an org, click **Create** on the right side and select **Create chatbot**.
+2. Once you click **Create chatbot**, a pop-up window for basic chatbot settings will appear, complete the form. For this simple chatbot, you only need to fill the follow three fields:
+   - **Project label**: the unique identifier for the chatbot, we suggest use low cased label(e.g., *pingpong*).
    - **Region**: where do you want to deploy this chatbot to. Ideally it should be close to your users. 
-   - **Add Language**: add every language you want to support.
+   - **Languages**: add every language you want to support.
 
-   After completing the form, click **Save**.
+   After completing the form, click **Create**.
 
    ::: warning Need To Know
    If you want to change a chatbot's label or region, you will need to clone it with the desired choices. Note all user session data with old chatbot will be lost.
@@ -72,7 +72,7 @@ In this tutorial, let's see how we can define a simple skill, the one without an
 ### 1. Create skill
 1. Go to the **pingpong** chatbot and ensure that you are at the **INTERACTION** level.
 2. Click **Create** button on the right side to create a new skill.
-3. Enter a label for the skill, such as `PingPong`, in the **Skill Label** field and press enter.
+3. Enter a label for the skill, such as `PingPong`, in the **Skill label** field and press enter.
    ::: warning Need To Know
    In OpenCUI, a label is not a name but an identifier that is independent of the language used. The Skill Label, being a type of label, should adhere to the following guidelines:
    - It should start with a capital letter.
@@ -93,13 +93,13 @@ A skill defines how we invoke a function through CUI, so to build a skill, we ne
 On OpenCUI platform, the CUI behavior of any type, include skills, frames and entities, can be defined in form of dialog annotation. Dialogue annotation can be attached to type as whole (on its Annotation, Response and Expression tab), or attached to its slots. Dialogue annotations need to be configured at interaction layer first before we can configure it at the language level.
 
 The pingpong skill responds a *"pong"* when the user sends the message *"ping"*.  This can be done by adding a response to the skill at interaction layer. 
-1. Navigate to the **Response** tab and select **Single Value Message** under the **Default Action** section to declare a simple reply.
+1. Navigate to the **Response** tab and select **Single value message** under the **Default action** section to declare a simple reply.
 
    ::: thumbnail
    ![add response](/images/guide/pingpong/add_response.png)
    :::
 
-2. Once you are done with change in the interaction layer, click **Propagate** in the upper-right corner of the Build area to make the interaction level change available to language level. 
+2. Once you are done with change in the interaction layer, click **Propagate** in the upper-right corner of the Types area to make the interaction level change available to language level. 
 
    ::: thumbnail
    ![commit pingpong interaction](/images/guide/pingpong/commit_pingpong_struct.png)
@@ -110,12 +110,12 @@ Most dialog annotations need to be configured at the language level, one for eac
 
 At language level, PingPong skill can be configured as follows:
 
-1. Switch to the language layer. Select the language you want to work with from the language selector in the upper-left corner of the Build area. In this case, select **EN** for English.
+1. Switch to the language layer. Select the language you want to work with from the language selector in the upper-left corner of the Types area. In this case, select **EN** for English.
    ::: thumbnail
    ![switch pingpong en](/images/guide/pingpong/switch_pingpong_en.png)
    :::
 
-2. To fill response templates, heading to the **Responses** tab, enter `Pong` in the **Single Value Message** field under the **Default Action** section, then press enter. 
+2. To fill response templates, heading to the **Responses** tab, enter `Pong` in the **Single value message** field under the **Default action** section, then press enter. 
    ::: thumbnail
    ![pingpong simple reply](/images/guide/pingpong/pingpong_simple_reply.png)
    :::
@@ -127,7 +127,7 @@ At language level, PingPong skill can be configured as follows:
    ![pingpong expression](/images/guide/pingpong/pingpong_expression.png)
    :::
    
-4. Once you have filled in all the language templates and expression exemplars, click **Commit** in the upper-right corner of the Build area to commit your changes in the language layer.
+4. Once you have filled in all the language templates and expression exemplars, click **Commit** in the upper-right corner of the Types area to commit your changes in the language layer.
    ::: thumbnail
    ![commit pingpong en](/images/guide/pingpong/commit_pingpong_en.png)
    :::
