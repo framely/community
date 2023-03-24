@@ -7,7 +7,7 @@
 This guide shows you how to reuse a module to build a table reservation chatbot. A module is a reusable CUI unit with its conversational behavior defined against some service APIs. There are two kinds of module, base module come with its own service APIs, while composite module need to import other modules to deliver some complex conversational experience.
 Notice a base module can have one or more provider that provide the implementations of the service APIs defined in that module.
 
-Import right module allow you to add new functionality to your chatbot quickly. In this guide, we demonstrate how can you add [table reservation](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent) to your restaurant chatbot. The table reservation module relies on a base module [reservation API](../reference/plugins/services/reservation/reservation-api.md) that currently has a [Google Calendar based provider](../reference/plugins/services/reservation/google-calendar-reservation.md). 
+Importing the right module allows you to add new functionality to your chatbot quickly. In this guide, we demonstrate how you can add [table reservation](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent) to your restaurant chatbot. The table reservation module relies on a base module [reservation API](../reference/plugins/services/reservation/reservation-api.md) that currently has a [Google Calendar based provider](../reference/plugins/services/reservation/google-calendar-reservation.md). 
 
 The resulting chatbot can help users to make/view/cancel table reservations, here is an example dialogue:
 
@@ -218,8 +218,8 @@ Before you can use the functionality provided by the reservation API, you should
 To set up the reservation provider:
 
 1. Enter the chatbot you just created.
-2. Heading to **Settings** page, in **Integrations** tab
-   - Click **Select Service** and select **services.opencui.reservation.IReservation**.
+2. In the navigation bar, select the **Settings** tab and head to **Integrations** page. In the **Debug service provider** section:
+   - Click **Select service** and select `services.opencui.reservation.IReservation`.
    - Follow [set up Google calendar reservation provider](../reference/plugins/services/reservation/google-calendar-reservation.md#set-up-google-calendar-reservation-provider) to complete this integration.
 
    ::: thumbnail
