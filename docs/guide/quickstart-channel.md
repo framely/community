@@ -16,35 +16,35 @@ Make sure to complete the steps outlined in the [Build a simple chatbot](./pingp
 ## Merge changes
 OpenCUI comes with a Git like version control system, that is specifically designed for the structured chatbot definition so that we can manage the definition across modules and languages accurately. If you used Git in your development, this process should be very similar.
 
-After you tested your change, t's important to ask project owner to review your changes and ensure they meet the chatbot's features and quality standards, by opening a pull request and comparing the changes across your branch. Once your change is approved, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version control](../reference/platform/versioncontrol.md) section.
+After you tested your change, it's important to ask project owner to review your changes and ensure they meet the chatbot's features and quality standards, by opening a pull request and comparing the changes across your branch. Once your change is approved, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version control](../reference/platform/versioncontrol.md) section.
 
 To create a pull request:
-1. In the second navigation bar, select the **Version** tab.
-2. Click **Pull Request** in the upper-right corner of the Version area.
+1. In the navigation bar, select the **Versions** tab.
+2. Click **Pull request** in the upper-right corner of the Versions area.
 ::: thumbnail
 ![pingpong pull request](/images/guide/pingpong/pingpong_pull_request.png)
 :::
 
 To review changes: 
-1. Click the item you want to review, and **Compare Diffs** field will slide out.
+1. Click the item you want to review, and **Compare diffs** field will slide out.
    ::: thumbnail
    ![version item](/images/guide/pingpong/version_item.png)
    :::
-2. In the **Compare Diffs** drawer, make sure all the changes you made are what you want. You can switch between different layers from the topbar.
+2. In the **Compare diffs** drawer, make sure all the changes you made are what you want. You can switch between different layers from the topbar.
    ::: thumbnail
    ![review changes](/images/guide/pingpong/review_changes.png)
    :::
-3. Once you're satisfied with the changes, you can **Approve** them and **Merge** them into master. For more information about changes review, see [Version contorl](../reference/platform/versioncontrol.md).
+3. Once you're satisfied with the changes, you can **Approve** them and **Merge** them into master. For more information about changes review, see [Version control](../reference/platform/versioncontrol.md).
 
 ## Set up channels
 
 Here are the steps on how to set up and enable a channel, specifically using Messenger as an example:
 
-1. Heading to **Settings** page, select **Integrations** tab. In the **Service Provider** section, select **channel** service, which is labeled as `io.opencui.channel.IChannel`.
+1. In the navigation bar, select the **Settings** tab and head to **Integrations** page. In the **Deploy service provider** section, select **channel** service, which is labeled as `io.opencui.channel.IChannel`.
 
    ::: thumbnail
    ![service provider section](/images/guide/pingpong/service_provider_section.png)
-   *Service provider section*
+   *Deploy service provider section*
 
    <br>
 
@@ -89,7 +89,7 @@ Once you've finished configuring the channel, the next step is to deploy your ch
 
 The Deploy action allows you to publish the latest master of your chatbot to the production environment, allowing your users to interact with it via the integrated channels. However, before deploying, you must ensure that your chatbot is integrated with at least one channel.
 
-1. When you're done configuring, switch to **Version** tab, and deploy your chatbot by clicking **Deploy** button.
+1. When you're done configuring, switch to **Versions** tab, and deploy your chatbot by clicking **Deploy** button.
 
    ::: thumbnail
    ![deploy chatbot](/images/guide/pingpong/deploy_chatbot.png)
@@ -101,4 +101,4 @@ The Deploy action allows you to publish the latest master of your chatbot to the
    ![deploy checked icon](/images/guide/pingpong/deploy_checked_icon.png)
    :::
 
-3. You can now complete the setup of your Meta app and test it out. To configure the Messenger Webhook, use the **Callback URL** and **Verify Token** values that you copied earlier and follow the instructions in the [Finish Messenger setup](../reference/channels/messenger.md#finish-setup-messenger) and [Test your chatbot](../reference/channels/messenger.md#test-your-chatbot) section.
+3. You can now complete the setup of your Meta app and test it out. To configure the Messenger Webhook, use the **Callback URL** and **Verify token** values that you copied earlier and follow the instructions in the [Finish Messenger setup](../reference/channels/messenger.md#finish-setup-messenger) and [Test your chatbot](../reference/channels/messenger.md#test-your-chatbot) section.
