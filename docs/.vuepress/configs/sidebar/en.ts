@@ -9,8 +9,8 @@ export const en = {
         '/guide/start-with-clone.md',
         '/guide/debug.md',
         '/guide/pingpong.md',
-        '/guide/quickstart-channel.md',
-        '/guide/quickstart-reservation.md'
+        '/guide/quickstart-reservation.md',
+        '/guide/quickstart-channel.md'
       ],
     }
   ],
