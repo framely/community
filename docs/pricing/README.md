@@ -22,21 +22,18 @@ cards:
       buttonText: Add Starter Plan
       link: /guide/
 
-    - package: Team
-      price: $399 
-      badge: per user / year
-      tagline: For growing teams and agencies who want stronger permissions
+    - package: Case Based
+      price: Custom
+      badge: 
+      tagline: Bring enterprise-level security, compliance and flexible deployment
       features:
-                - 'Everything included in Starter and:'
-                - Collaboration Workflow
-                - Private Projects
-                - Multi Language
-                - Omni Channel
-                - Hosting Support
-                - Private Deployed
-                - Advanced NLU Model
+                - 'Everything included in Starter and: '
+                - Different mode NLU Model
+                - Remove OpenCUI Branding
+                - Custom Integrations
+                - Advanced security, performance and customer success
       footertagline: Free projects are paused after 1 week of inactivity
-      buttonText: Add Team Plan
+      buttonText: Contact Us
       link: /guide/
 
 ---
