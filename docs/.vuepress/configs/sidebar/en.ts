@@ -2,6 +2,19 @@
 export const en = {
   '/guide/': [
     {
+      text: "Why OpenCUI",
+      collapsible: true,
+      children: [
+        '/guide/essentials/concepts.md',
+        '/guide/essentials/cooperative.md',
+        '/guide/essentials/sgcui.md',
+        '/guide/essentials/5levels-cui.md',
+        '/guide/essentials/slotfilling.md',
+        '/guide/essentials/components.md',
+        '/guide/essentials/architecture.md'
+      ]
+    },
+    {
       text: 'Step by step',
       children: [
         '/guide/are-you-ready.md',
@@ -15,18 +28,6 @@ export const en = {
     }
   ],
   '/reference/': [
-    {
-      text: "Essentials",
-      collapsible: true,
-      children: [
-        '/reference/essentials/concepts.md',
-        '/reference/essentials/cooperative.md',
-        '/reference/essentials/sgcui.md',
-        '/reference/essentials/5levels-cui.md',
-        '/reference/essentials/slotfilling.md',
-        '/reference/essentials/components.md'
-      ]
-    },
     {
       text: 'Core Components',
       collapsible: true,
@@ -86,7 +87,7 @@ export const en = {
       text: 'Runtime',
       collapsible: true,
       children: [
-        '/reference/runtime/architecture.md'
+        
       ],
     },
     {
