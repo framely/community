@@ -1,19 +1,20 @@
 
 export const en = {
-  '/guide/': [
+    '/essentials/': [
     {
       text: "Why OpenCUI",
-      collapsible: true,
       children: [
-        '/guide/essentials/concepts.md',
-        '/guide/essentials/cooperative.md',
-        '/guide/essentials/sgcui.md',
-        '/guide/essentials/5levels-cui.md',
-        '/guide/essentials/slotfilling.md',
-        '/guide/essentials/components.md',
-        '/guide/essentials/architecture.md'
+        '/essentials/concepts.md',
+        '/essentials/cooperative.md',
+        '/essentials/sgcui.md',
+        '/essentials/5levels-cui.md',
+        '/essentials/slotfilling.md',
+        '/essentials/components.md',
+        '/essentials/architecture.md'
       ]
-    },
+    }
+  ],
+  '/guide/': [
     {
       text: 'Step by step',
       children: [
