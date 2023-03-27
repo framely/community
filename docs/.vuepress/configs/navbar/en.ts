@@ -5,6 +5,10 @@ import type { NavbarConfig } from '@vuepress/theme-default'
 
 export const en = [
   {
+    text: 'Why OpenCUI',
+    link: '/guide/'
+  },
+  {
     text: 'Quickstart',
     link: '/guide/'
   },
