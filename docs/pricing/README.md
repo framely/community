@@ -39,17 +39,4 @@ cards:
       buttonText: Add Team Plan
       link: /guide/
 
-    - package: Case Based
-      price: Custom
-      badge: 
-      tagline: Bring enterprise-level security, compliance and flexible deployment
-      features:
-                - 'Everything included in Team and: '
-                - Different mode NLU Model
-                - Remove OpenCUI Branding
-                - Custom Integrations
-                - Advanced security, performance and customer success
-      footertagline: Free projects are paused after 1 week of inactivity
-      buttonText: Contact Us
-      link: /guide/
 ---
