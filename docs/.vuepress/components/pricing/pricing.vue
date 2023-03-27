@@ -60,13 +60,13 @@ defineProps({
   .cards {
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
     padding: 0 2rem 2rem 2rem;
 
     .card {
       border: 1px solid var(--c-border);
-      border-radius: 4px;
+      border-radius: 10px;
       display: flex;
       flex-direction: column;
       padding: 1em;
