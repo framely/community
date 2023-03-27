@@ -1,4 +1,4 @@
-# Cooperative Principle
+# Cooperative principle
 
 To build conversational user interface (CUI) for your service, we focus on goal oriented conversations where participants are assumed to have a common goal. In business world, this typically means both sides want to complete service transaction or businesses deliver services users want. The cooperative principle says that parties involved normally attempt to be informative, truthful, relevant and clear. The concept was introduced by a philosopher H. Paul Grice in his 1975 article "Logic and Conversation" in which he argued that "talk exchanges" were not merely a "succession of disconnected remarks," and would not be rational if they were. Grice suggested instead that meaningful dialogue is characterized by cooperation. "Each participant recognizes in them, to some extent, a common purpose or set of purposes or at least a mutually accepted direction."
 
