@@ -84,13 +84,6 @@ export const en = {
       ]
     },
     {
-      text: 'Runtime',
-      collapsible: true,
-      children: [
-        
-      ],
-    },
-    {
       text: 'CUI Components',
       collapsible: true,
       children: [
