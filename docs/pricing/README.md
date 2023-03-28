@@ -2,7 +2,7 @@
 pricing: true
 topsubtitle: 
 title: Conversational experience that works.
-tagline: When the wave arrives and you don't want to be left behind, all you have to do is pick up the right tools and paddle.
+tagline: When the wave arrives and you don't want to be left behind, all you have to do is pick up the right tools and start to build.
 
 cards:
     - package: Builder
