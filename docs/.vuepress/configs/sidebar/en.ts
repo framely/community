@@ -4,11 +4,10 @@ export const en = {
     {
       text: "Why OpenCUI",
       children: [
-        '/essentials/concepts.md',
         '/essentials/cooperative.md',
         '/essentials/sgcui.md',
-        '/essentials/5levels-cui.md',
         '/essentials/slotfilling.md',
+        '/essentials/5levels-cui.md',
         '/essentials/components.md',
         '/essentials/architecture.md'
       ]
