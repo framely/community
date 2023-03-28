@@ -1,39 +1,41 @@
 ---
 pricing: true
 topsubtitle: 
-title: Collaboration Workflow on Declarative Platform
-tagline: Clone and import public libraries, reuse and customize everything effectively and efficiently. Start with a free Starter and upgrade later if you need more. 
+title: Conversational experience that works.
+tagline: When the wave arrives and you don't want to be left behind, all you have to do is pick up the right tools and paddle.
 
 cards:
-    - package: Starter
-      price: $199
+    - package: Builder
+      price: $0
       badge: per user / year
-      tagline: For developer team and freelancers, who want building and sharing
+      tagline: For these who want to build CUI the right way and share what they build.
       features:
                 -  Public Projects
                 -  Public Libraries
                 -  CUI Components
-                -  Single Language
+                -  Multiple Language
                 -  Hosting Backoffice
                 -  Basic NLU Model
-                -  Limited Integration
+                -  Development environment
                 -  Community Support
-      footertagline: Build the conversational experience your users deserve.
-      buttonText: Add Starter Plan
+      footertagline: Have a GitHub account? Signup, and you are in.
+      buttonText: Start to build
       link: https://build.opencui.io
 
-    - package: Case Based
+    - package: Business
       price: Custom
       badge: 
       tagline: Bring enterprise-level security, compliance and flexible deployment
       features:
-                - 'Everything included in Starter and: '
-                - Different mode NLU Model
-                - Remove OpenCUI Branding
+                - Everything included in Starter and:
+                - Larger, purpose built NLU Model
+                - Channel integration
+                - Private deploy
+                - OpenCUI hosting in production environment
                 - Custom Integrations
                 - Advanced security, performance and customer success
       footertagline: Beside services, you just need a conversational experience product owner.
-      buttonText: Contact Us
+      buttonText: What are you waiting for?
       link: https://build.opencui.io
 
 ---
