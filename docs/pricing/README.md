@@ -26,7 +26,7 @@ cards:
       badge: 
       tagline: Beside services, you just need a conversational experience product owner.
       features:
-                - Everything included in Starter and:
+                - 'Everything included in Starter and: '
                 - Larger, purpose built NLU Model
                 - Channel integration
                 - Private deploy
