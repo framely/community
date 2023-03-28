@@ -13,7 +13,7 @@ export const en = [
     link: '/guide/'
   },
   {
-    text: 'Guide',
+    text: 'Reference',
     link: '/reference/'
   },
   {
