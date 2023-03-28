@@ -24,7 +24,6 @@ export const en = {
         '/guide/debug.md',
         '/guide/pingpong.md',
         '/guide/use-hours.md',
-        '/guide/quickstart-reservation.md',
         '/guide/quickstart-channel.md'
       ],
     }

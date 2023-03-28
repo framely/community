@@ -1,13 +1,11 @@
-# Use a service
+# Reuse a module
+ Modern business applications are typically broken down into a set of services, each responsible for a specific capability. A service can be developed, deployed and maintained independently of each other, but can be accessed and used by other parts of the application, or even by external systems. So it should be no surprise that all user interfacing application are built to expose service, chatbot included.
 
-[[toc]]
+On OpenCUI, a service is simply a set of function declarations that frontend can use to interact with product system. Each service needs to be declared in a module, which also typically hosts the conversational user interface for that service. Service can have one or more implementation called provider. When a service is used in a chatbot, a compatible provider needs to be wired to the service. 
 
-## Overview
+Instead of building from scratch, you import some prebuilt module to get the same functionality, which will reduce the cost and improve the conversational experience at the same time. To reuse a module in a chatbot, you need to first prepare the provider needed by that module in your org. There are two kind of providers, OpenCUI hosted providers and external providers. For the hosted provider, you also need to deploy it before it can be wired to module. Assuming the backend is based on database, you need to set up the tables, and populate these tables with into the database and API function can access the right tables. After you imported the module into your chatbot, you also need to wire it up with the service declared in the module.
 
-This guide shows you how to use a service to build a chatbot that answers users' questions about your business hours. A service is a set of interfaces that can be used to access business functionalities. A module with service can handle both service and CUI parts for you.
-
-Importing the module with [hours service](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema) lets you be able to access pre-built functionalities about business hours. With the help of [backoffice](../reference/providers/postgrest.md#access-backoffice), you can manage your business hours dynamically. Not only can you set the main business hours for each day of the week, but also add hours for special days, like holidays.
-
+This guide shows you how to reuse an existing module to answers users' questions about your business hours. The module we will be import is [hours service](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), which defines a simple services that can serve users' request on business hours in your chatbot. The provider we used for this service is Postgrest based. This provider is based on PostgreSQL, it comes with an admin interface called [backoffice](../reference/providers/postgrest.md#access-backoffice) that allow admin to populate the tables. With this provider, you can set the main business hours for each day of the week, as well as set hours for special days, like holidays.
 
 Here is an example dialogue that shows how this chatbot helps users to get business hours:
 
@@ -56,13 +54,13 @@ We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
 
 [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
-## Set up business hours
+## Prepare the provider
+Before the chatbot can serve the business hours requests, you need to make its provider ready. In this guide, we clone a Postgrest based provider into your organization, and populate the tables with your business data.
 
-Before the chatbot can display your business hours, you should set them up in the backoffice first along with the time zone of your business.
+### Clone the provider
+Postgrest provider are the OpenCUI hosted provider, so you introduce no external dependency thus make the deployment of chatbot easier. Instead of building this provider from scratch, let's clone this to save effort.
 
-**To set up business hours:**
-
-1. [Clone](../reference/platform/reusability.md#clone-1) the [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) project and change the **Project label** to _hoursProvider_.
+1. Clone the [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) project and change the **Project label** to _hoursProvider_.
 
 2. In the cloned project, go to **Versions** page and click **Pull request** in the upper-right corner of the Versions area.
 
@@ -94,19 +92,20 @@ Before the chatbot can display your business hours, you should set them up in th
    ![deploy](/images/guide/use-service/deploy.png)
    :::
 
-7. After successful deployment, go to **Configuration** page. Open the **URL** and log in with the **Admin email** and the **Admin password**.
+### Populate the table with business data 
+1. After successful deployment, go to **Configuration** page. Open the **URL** and log in with the **Admin email** and the **Admin password**.
 
    ::: thumbnail
    ![configuration](/images/guide/use-service/configuration.png)
    :::
 
-8. In backoffice, go to the **hoursProvider** section and click **Hours**. On the **hoursProvider.Hours** page, click **Create**.
+2. In backoffice, go to the **hoursProvider** section and click **Hours**. On the **hoursProvider.Hours** page, click **Create**.
 
    ::: thumbnail
    ![create business hours](/images/guide/use-service/create-business-hours.png)
    :::
 
-9. To add the **main business hours** for a day of the week:
+3. To add the **main business hours** for a day of the week:
    - Fill in the form with the following information:
       - **dayOfWeek**: select a day of the week to add business hours.
       - **ifOpen**: whether you are open on that day.
@@ -119,11 +118,11 @@ Before the chatbot can display your business hours, you should set them up in th
    ![show business hours](/images/guide/use-service/show-business-hours.png)
    :::
 
-10. Follow the same steps to add the remaining 6 days of the week.
+4. Follow the same steps to add the remaining 6 days of the week.
 
-11. **_[OPTIONAIL]_** To add business hours for a special date, use the **specialDate** column, which is the date that is not covered in the main business hours.
+5. **_[OPTIONAIL]_** To add business hours for a special date, use the **specialDate** column, which is the date that is not covered in the main business hours.
 
-12. When you finish setting up your business hours, there should be **at least 7 rows** on the **hoursProvider.Hours** page. As the screenshot below shows, the first 7 rows are the main business hours and the last one is for a special date.
+6. When you finish setting up your business hours, there should be **at least 7 rows** on the **hoursProvider.Hours** page. As the screenshot below shows, the first 7 rows are the main business hours and the last one is for a special date.
 
    ::: thumbnail
    ![business hours list](/images/guide/use-service/business-hours-list.png)
@@ -141,25 +140,25 @@ Before the chatbot can display your business hours, you should set them up in th
    ![timezone-list](/images/guide/use-service/timezone-list.png)
    :::
 
-
-## Use hours service
+## Reuse a module
 
 Now it's time to create a chatbot and use the hours service. To use a service, you need to import it into your chatbot and set up a service provider for that service.
 
-**To import the service:**
+### Import a module
+All projects can be cloned to a new organization, a module can also be imported into a new project, like chatbot, or module. 
+1. First make sure you have a target project to import the module to. You can use an existing one, or create a new one. We will clone into chatbot instead of module, as the goal here is to showcase how chatbot can reuse the conversational services defined on the module. 
 
-1. Create a chatbot and add the English language.
-2. Enter the [hours service](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema)
+2. Enter the source module: [hours service](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), you can also go in there by doing a search on the explore tab.
    - Click **Import**.
-   - Select the chatbot you just created.
+   - Select the chatbot you want to clone to.
    - Click **Save**.
 
    ::: thumbnail
    ![import service](/images/guide/use-service/import-service.png)
    :::
 
-**To set up a service provider:**
-1. Enter the chatbot you just created.
+### To set up a service provider
+1. Enter the chatbot.
 
 2. In the navigation bar, select the **Settings** tab and head to **Integrations** page. In the **Debug service provider** section, click **Select service** and select `me.quickstart.hours.IHours`.
    - Enter a unique label
@@ -172,7 +171,7 @@ Now it's time to create a chatbot and use the hours service. To use a service, y
 
 ## Test chatbot
 
-Finally, you can try to ask the chatbot for business hours. To test the chatbot, use [Debug](../reference/platform/testing.md#how-to-use).
+Finally, you can try to ask the chatbot for business hours. To play with the chatbot, use [Debug](../reference/platform/testing.md#how-to-use).
 
 1. Send "_When do you open?_" and you should get the business hours in a week starting with the current day of the week.
 

@@ -21,11 +21,8 @@ Before you deploy your bot to production environment, you can test its behavior 
 #### [Build a simple chatbot](pingpong.md)
 This guide walks you through how to create a basic chatbot on the OpenCUI platform. The sample provides a quick way to explore the functionality of a chatbot, and it can serve as a starting point for your chatbot development. 
 
-#### [Use service](use-hours.md)
-The main objective of OpenCUI is to provide conversational user interface for service APIs. This demonstrates how it should be done on the platform.
-
-#### [Import a module](quickstart-reservation.md)
-Reusable module can greatly reduce the cost of building chatbot. In this guide, we show you how to import a table reservation module, configure the provider so that you can start to provide table reservation through conversational user interface in no time.
+#### [Import a module](use-hours.md)
+The main objective of OpenCUI is to provide conversational user interface for service APIs. On OpenCUI, one can declare a service and define CUI for that service in a module, and reuse it by import. Reusable module can greatly reduce the cost of building chatbot. This demonstrates how it should be done on the platform.
 
 #### [Deploy a chatbot](quickstart-channel.md)
 This guide walks you through how to use the builtin version control system to review and merge your change to master. It explains to you how chatbot work with messaging platform like Messenger, and shows you how to configure both side using Messenger as example. After going through this, you should be able to interact with your chatbot in Messenger. 
