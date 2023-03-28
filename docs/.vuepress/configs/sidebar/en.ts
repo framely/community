@@ -15,9 +15,10 @@ export const en = {
   ],
   '/guide/': [
     {
-      text: 'Step by step',
+      text: 'Quickstart',
       children: [
         '/guide/are-you-ready.md',
+        '/guide/concepts.md',
         '/guide/signingup.md',
         '/guide/start-with-clone.md',
         '/guide/debug.md',

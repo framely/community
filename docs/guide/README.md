@@ -3,8 +3,8 @@ The OpenCUI platform can be useful at various stages of CUI development, such as
 
 To fully utilize OpenCUI, one needs to understand its type-grounded conceptual model, which may require some practice to become familiar with. To aid in this process, we have created a set of tutorials that will guide you through the steps of understanding the conceptual model and becoming skilled in utilizing OpenCUI to create outstanding conversational experiences.
 
-#### [Wha is this for?](are-you-ready.md)
-Most existing CUI platform are flow based thus is imperative in nature. Regardless whether it is no code or low code, these platform are designed to help developer. OpenCUI is designed to help product manager to declaratively define what they want, instead of how it is done. But it still takes a team to build a usable chatbot, who do you need?
+#### [Who is this platform for?](are-you-ready.md)
+Existing CUI platforms are typically flow-based and thus imperative, regardless of whether they're no-code or low-code. They primarily serve developers in implementing chatbots. In contrast, OpenCUI aims to help product managers declaratively specify their requirements without worrying too much about implementation details, which the OpenCUI runtime carries out most of the heavy lifting. Nonetheless, creating a functional chatbot still necessitates a team effort, and here are the main roles required.
 
 #### [Key concepts](concepts.md)
 In order to follow this quick start series, it is useful to get familiar with the key concepts.
@@ -20,6 +20,9 @@ Before you deploy your bot to production environment, you can test its behavior 
 
 #### [Build a simple chatbot](pingpong.md)
 This guide walks you through how to create a basic chatbot on the OpenCUI platform. The sample provides a quick way to explore the functionality of a chatbot, and it can serve as a starting point for your chatbot development. 
+
+#### [Use service](use-hours.md)
+The main objective of OpenCUI is to provide conversational user interface for service APIs. This demonstrates how it should be done on the platform.
 
 #### [Import a module](quickstart-reservation.md)
 Reusable module can greatly reduce the cost of building chatbot. In this guide, we show you how to import a table reservation module, configure the provider so that you can start to provide table reservation through conversational user interface in no time.
