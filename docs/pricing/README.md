@@ -18,9 +18,9 @@ cards:
                 -  Basic NLU Model
                 -  Limited Integration
                 -  Community Support
-      footertagline: Free projects are paused after 1 week of inactivity
+      footertagline: Build the conversational experience your users deserve.
       buttonText: Add Starter Plan
-      link: /guide/
+      link: https://build.opencui.io
 
     - package: Case Based
       price: Custom
@@ -32,8 +32,8 @@ cards:
                 - Remove OpenCUI Branding
                 - Custom Integrations
                 - Advanced security, performance and customer success
-      footertagline: Free projects are paused after 1 week of inactivity
+      footertagline: Beside services, you just need a conversational experience product owner.
       buttonText: Contact Us
-      link: /guide/
+      link: https://build.opencui.io
 
 ---
