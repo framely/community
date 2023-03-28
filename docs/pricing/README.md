@@ -18,14 +18,13 @@ cards:
                 -  Basic NLU Model
                 -  Development environment
                 -  Community Support
-      footertagline: Have a GitHub account? Signup, and you are in.
       buttonText: Start to build
       link: https://build.opencui.io
 
     - package: Business
       price: Custom
       badge: 
-      tagline: Bring enterprise-level security, compliance and flexible deployment
+      tagline: Beside services, you just need a conversational experience product owner.
       features:
                 - Everything included in Starter and:
                 - Larger, purpose built NLU Model
@@ -34,7 +33,6 @@ cards:
                 - OpenCUI hosting in production environment
                 - Custom Integrations
                 - Advanced security, performance and customer success
-      footertagline: Beside services, you just need a conversational experience product owner.
       buttonText: What are you waiting for?
       link: https://build.opencui.io
 
