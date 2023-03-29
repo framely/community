@@ -1,20 +1,20 @@
 # Who do you need
 Most existing chatbot platforms adopt a flow-based approach to define CUI, making them imperative in nature. These platforms are mainly designed to help developers or coders. OpenCUI, on the other hand, is a high-ceiling, low-code, declarative platform due to its type-grounded nature. Therefore, it is primarily designed for product managers.
 
-## Product manager: interaction logic
+## Product manager
 Interaction logic is used to decide what to respond to the user and reach the business goal, based on the conversation context, including but not limited to the current user utterance, user profile, session history, and business conditions such as inventories. Obviously, interaction logic is based on business logic, as well as general conversational experience design principles.
 
 The success of any chatbot project requires having a CUI product manager. This person should have direct access to the business owner and be able to make tradeoffs between features, the level of CUI supported, as well as cost and time. Ideally, this person should have a good understanding of your business (which is a must) and a background in CUI (which is good to have). Conversational user interfaces in OpenCUI are type-grounded, which means that interactions can be expressed and reasoned in a language-independent fashion through dialog acts. OpenCUI is opinionated, and the interaction logic defined on the platform is generally effective.
 
 So, the main task for the product manager is to declare the desired interaction logic, which is not too difficult to do. However, before that, you need to decide which services you want to expose through the chatbot, for which you need your software architect.
 
-## Architect: services
+## Architect
 A software architect is responsible for defining the service APIs. After the API is designed and implemented, the service, including the set of functions and the types required by these functions, needs to be declared on the platform before you can build a provider for these services. Providers are used to access the actual implementation, and OpenCUI supports native Java/Kotlin providers and RESTful providers, among others. To build native providers, you need your developers.
 
-## Developers: providers, or extensions
+## Developers
 If you need to work with channels, support, or services that are not currently supported by the OpenCUI runtime, you will need a developer. OpenCUI is extensible due to its plug-and-play design, so extending it is not difficult. You might also need developers to help express complex interaction logic on the platform.
 
-## Conversational user experience designer
+## Script designer
 To support each language, you need to have script designers who can express the meaning conveyed in the dialog act with appropriate style and nuance.
 
 ## Operation team
