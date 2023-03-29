@@ -1,4 +1,4 @@
-# Who is this for
+# Who do you need
 Most existing chatbot platforms adopt a flow-based approach to define CUI, making them imperative in nature. These platforms are mainly designed to help developers or coders. OpenCUI, on the other hand, is a high-ceiling, low-code, declarative platform due to its type-grounded nature. Therefore, it is primarily designed for product managers.
 
 ## Product manager: interaction logic
