@@ -54,7 +54,7 @@ We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
 
 [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
-## Prepare the provider
+## Prepare a provider
 Before the chatbot can serve the business hours requests, you need to make its provider ready. In this guide, we clone a Postgrest based provider into your organization, and populate the tables with your business data.
 
 ### Clone the provider
@@ -92,7 +92,8 @@ Postgrest provider are the OpenCUI hosted provider, so you introduce no external
    ![deploy](/images/guide/use-service/deploy.png)
    :::
 
-### Populate the table with business data 
+### Populate tables with business data 
+**To set up business hours:**
 1. After successful deployment, go to **Configuration** page. Open the **URL** and log in with the **Admin email** and the **Admin password**.
 
    ::: thumbnail
@@ -140,24 +141,24 @@ Postgrest provider are the OpenCUI hosted provider, so you introduce no external
    ![timezone-list](/images/guide/use-service/timezone-list.png)
    :::
 
-## Reuse a module
+## Reuse the module
 
 Now it's time to create a chatbot and use the hours service. To use a service, you need to import it into your chatbot and set up a service provider for that service.
 
-### Import a module
+### Import the module
 All projects can be cloned to a new organization, a module can also be imported into a new project, like chatbot, or module. 
 1. First make sure you have a target project to import the module to. You can use an existing one, or create a new one. We will clone into chatbot instead of module, as the goal here is to showcase how chatbot can reuse the conversational services defined on the module. 
 
-2. Enter the source module: [hours service](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), you can also go in there by doing a search on the explore tab.
+2. Enter the source module: [hours](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), you can also go in there by doing a search on the explore tab.
    - Click **Import**.
-   - Select the chatbot you want to clone to.
+   - Select the chatbot you want to import to.
    - Click **Save**.
 
    ::: thumbnail
    ![import service](/images/guide/use-service/import-service.png)
    :::
 
-### To set up a service provider
+### Set up a service provider
 1. Enter the chatbot.
 
 2. In the navigation bar, select the **Settings** tab and head to **Integrations** page. In the **Debug service provider** section, click **Select service** and select `me.quickstart.hours.IHours`.
@@ -169,7 +170,7 @@ All projects can be cloned to a new organization, a module can also be imported 
    :::
 
 
-## Test chatbot
+## Test a chatbot
 
 Finally, you can try to ask the chatbot for business hours. To play with the chatbot, use [Debug](../reference/platform/testing.md#how-to-use).
 
