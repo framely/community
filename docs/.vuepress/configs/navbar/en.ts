@@ -14,7 +14,7 @@ export const en = [
   },
   {
     text: 'Reference',
-    link: '/reference/'
+    link: '/reference/annotations/overview.html'
   },
   {
     text: 'Pricing',
