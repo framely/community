@@ -31,7 +31,7 @@ export const en = {
   ],
   '/reference/': [
     {
-      text: 'Core Components',
+      text: 'Annotations(CUI)',
       collapsible: true,
       children: [
         '/reference/annotations/overview.md',
