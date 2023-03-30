@@ -1,17 +1,17 @@
-# Build a service
+# Build a module
 
-This guide shows you how to build a service using a module and a Postgrest provider. A service defines a set of function interfaces that specify how business functionalities can be accessed. With a service, a chatbot can access your business logic by invoking suitable functions. In this way, CUI product managers can focus on declaring the desired interaction logic and don't need to worry about how the service is built.
+A service defines a set of function interfaces that specify how business functionalities can be accessed. By using a service as an interface, we can divide chatbot building into backend for business logic and frontend for conversational user interface, each of which can be taken care of by different teams.
 
-In the previous guide: [Reuse a module](./use-hours.md), you build a chatbot based on the service of [hours](https://build.opencui.io/org/me.quickstart/agent/hours/en/service_schema). In this guide, you will build this service by yourself. First, define the service of hours which provides business hours on a specific day or in a week. Second, build a provider like [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) to describe how business hours are stored in the database and implement the service.
+In the previous guide, we showed you how to make your chatbot field various business hours queries  your chatbot by [reuse a existing module](./use-hours.md). In this guide, we will show you first how to build a module like [hours](https://build.opencui.io/org/me.quickstart/agent/hours/en/service_schema), by declaring the service and then defining the conversational user interface for it, then how to implement the provider like [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) by yourself.
 
 ## Before you start
 
 [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
-## Define a service
+## Declare a service
 
-A service is defined in a module. To begin with, you need to create a module first. Then, you can prepare the types needed in the function interfaces, and add function interfaces with those types.
-
+A service is a set of API function declarations, it is generally defined in a module. To begin with, you need to create a module first. Then, you can prepare the types needed in the function interfaces, and add function interfaces with those types.
+r set of APIs to access hour information maintained by business owner,
 ### Create a module
 1. Within an org, click **Create** on the right side and select **Create module**.
 2. In a pop-up window, enter _hours_ in the **Project label** field and **Enable service interface**. Leave the **Languages** field empty cause the service is language-independent. Once done, click **Save**.
