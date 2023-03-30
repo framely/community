@@ -24,6 +24,7 @@ export const en = {
         '/guide/debug.md',
         '/guide/pingpong.md',
         '/guide/use-hours.md',
+        '/guide/build-service.md',
         '/guide/quickstart-channel.md'
       ],
     }
