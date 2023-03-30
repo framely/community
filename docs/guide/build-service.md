@@ -81,7 +81,6 @@ Once finished, the function interfaces should look like this:
 
 Now that you have finished defining a service. You can [view your changes](../reference/platform/versioncontrol.md#view-your-changes) and merge your branch into the master.
 
-
 ## Build a provider
 
 After you define a service, in order to make it work, you should implement the service in a provider. In this example, you will use an OpenCUI-hosted provider: [Postgrest provider](../reference/providers/postgrest.md) which allows you to define the table structures in the database and store business hours in the database by backoffice.
