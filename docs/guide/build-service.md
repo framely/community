@@ -1,26 +1,27 @@
-# Build a module
+# Build a component
 
 A service defines a set of function interfaces that specify how business functionalities can be accessed. By using a service as an interface, we can divide chatbot building into backend for business logic and frontend for conversational user interface, each of which can be taken care of by different teams.
 
-In the previous guide, we showed you how to make your chatbot field various business hours queries  your chatbot by [reuse a existing module](./use-hours.md). In this guide, we will show you first how to build a module like [hours](https://build.opencui.io/org/me.quickstart/agent/hours/en/service_schema), by declaring the service and then defining the conversational user interface for it, then how to implement the provider like [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) by yourself.
+In the previous guide, we showed you how to make your chatbot field various business hours queries  your chatbot by [reuse a existing component](./use-hours.md). In this guide, we will show you how to build a component like [hours](https://build.opencui.io/org/me.quickstart/agent/hours/en/service_schema) and [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema): First, declare a service. Second, define the conversational user interface(CUI) for it. Third, implement the postgrest provider by yourself.
 
 ## Before you start
 
 [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
-## Declare a service
+## Build a module
 
-A service is a set of API function declarations, it is generally defined in a module. To begin with, you need to create a module first. Then, you can prepare the types needed in the function interfaces, and add function interfaces with those types.
-r set of APIs to access hour information maintained by business owner,
 ### Create a module
 1. Within an org, click **Create** on the right side and select **Create module**.
-2. In a pop-up window, enter _hours_ in the **Project label** field and **Enable service interface**. Leave the **Languages** field empty cause the service is language-independent. Once done, click **Save**.
+2. In a pop-up window, enter _hours_ in the **Project label** field, add **English(en)** in the **Languaes** field, and **Enable service interface**. Once done, click **Create**.
 
    ::: thumbnail
    ![create a module](/images/guide/build-service/create-module.png)
    :::
 
-### Create a frame
+### Declare a service
+A service is a set of API function declarations to access hour information maintained by business owner, it is generally defined in a module. To begin with, you need to prepare the types needed in the function interfaces. Then, add function interfaces with those types.
+
+#### Create a frame
 To provide business hours in a week or on a specific day, the following information is needed:
 - **dayOfWeek**: the day of the week, like Monday, Tuesday, etc.
 - **ifOpen**: whether it's open on that day.
@@ -30,7 +31,7 @@ To provide business hours in a week or on a specific day, the following informat
 To cover the above information, you should create a frame. A [frame](./concepts.md#frames) is a composite data type in OpenCUI so these four factors can be composited into a frame as four slots.
 
 To create a frame:
-1. In the module you created, go to **Types** page, click **Create** on the right side, and select **Create frame**.
+1. Within the module hours, go to **Types** page, click **Create** on the right side, and select **Create frame**.
 2. Enter _BusinessHours_ as the frame label.
 3. In the **Slots** section, click **Add slot** and select **Entity** > **java.time.DayOfWeek**.
 4. Inside the entity, change the **Fill Strategy** to **Direct Fill**, and click **<** to go back to the frame page.
@@ -56,13 +57,13 @@ Once finished, the frame should look like this:
 ![show frame BusinessHours](/images/guide/build-service/show-frame.png)
 :::
 
-### Add function interfaces
+#### Add function interfaces
 To return business hours on a specific day and in a week, you need to create two function interfaces:
 1. **getHoursDay**(date:java.time.LocalDate):BusinessHours
 2. **getHoursWeek**():List\<BusinessHours\>
 
 To create function interfaces:
-1. In the module you created, go to **Service** page. In the **Functions** section, click **Add**.
+1. Within the module hours, go to **Service** page. In the **Functions** section, click **Add**.
    - Enter _getHoursDay_ as the **Function label**.
    - In the **Parameters** section, click **+** to add an input parameter. Enter _date_ as a **Name** and select **Entity** > **java.time.LocalDate** as **Type**.
    - In the **Return type** section, select **Frame** > **BusinessHours** as **Type** and turn off **Nullable**.
@@ -80,6 +81,85 @@ Once finished, the function interfaces should look like this:
 :::
 
 Now that you have finished defining a service. You can [view your changes](../reference/platform/versioncontrol.md#view-your-changes) and merge your branch into the master.
+
+### Build CUI
+OpenCUI provides [annotations](../reference/annotations) to define how the bot interacts with users. Unlike the service, CUI covers two kinds of layers: the interaction layer and the language layer. At the interaction layer, you annotate the interactions. At the language layer, you add templates and exemplars.
+
+#### Create skills
+To interact with users, use a skill as an entrance. A skill is essentially a function that a user can access through conversations for businesses. The inputs of skill are its slots and the output can be defined in its response section.
+
+You should use two different skills to manage users' questions on business hours with and without a specific date. To create skills:
+
+1. Within the module hours, go to **Types** page, click **Create** on the right side, and select **Create skill**.
+2. Enter _HoursWeek_ as the skill label. This skill provides business hours in a week.
+3. Back to the **Types** page, create another skill: _HoursDay_. This skill provides business hours on a specific day.
+4. To get a specific day from a user, use [DatePicker](../reference/plugins/components/datepicker). DatePicker is an official CUI component, so you need to import [components](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8aea6517f06c1880e3cff) to the module hours first.
+5. After successful import, go back to module hours and refresh your webpage.
+6. In the skill **HoursDay**, add a slot with type **io.opencui.components.dataEntry.DatePicker**.
+
+#### Add the service
+To access the functions in the service, you need to add the service first:
+1. Go to the skill **HoursWeek** page, in the **Services** section, click **Select service** and select **IHours**. Leave the **Service label** as default and click **Save**.
+   
+   ::: thumbnail
+   ![add service](/images/guide/build-service/add-service.png)
+   :::
+
+2. Follow the same steps to declare the service for skill **HoursDay**.
+
+#### Annotate interactions
+When a user triggers a skill, the bot follows the interactions you annotate to interact with the user. For skill HoursWeek, the bot should display business hours in a week. For skill HoursDay, on the date the user asks for, if it's open, the bot should show the business hours on that day. If not, the bot should inform the user it's closed.
+
+To annotate interactions:
+1. Go to the skill **HoursWeek** page, navigate to the **Response** tab, and select **Multiple value message** under the **Default action** section. In the **Source** section, copy and paste the following code:
+   ``` kotlin
+   hours.getHoursWeek()
+   ```
+
+2. Go to the skill **HoursDay** page, since the date is provided by a user spontaneously, the bot doesn't need to ask for the date value. Enter the slot **datePicker** and change **Fill Strategy** to [Recover only](../reference/annotations/fillstrategy.md#recover-only).
+3. Navigate to the **Response** tab and select **Single value message** under the **Default action** section to display the business hours on that day.
+4. Still, under the **Response** tab, turn on **Branching** and click **Add**.
+
+   ::: thumbnail
+   ![add a branch](/images/guide/build-service/branching.png)
+   :::
+
+5. In the **Conditions** section, copy and paste the following code:
+   ```kotlin
+   hours.getHoursDay(datePicker!!.date!!).ifOpen == false
+   ```
+
+6. In the **Action sequence** section, select **Single value message** and **Skill start**. Then, Select **HoursWeek** in the **Skill start** action.
+   - **Single value message** is to inform the user it's closed on that day.
+   - **Skill start** is used to start skill HoursWeek to provide business hours in a week, so the user knows other options.
+
+#### Add templates and exemplars
+Here comes the language part. Before you start, make sure you **propagate** all the changes to the language layer and switch from the INTERACTION layer to the **EN** layer.
+
+Go to the skill **HoursWeek** page.
+1. Under the **Response** tab, copy and paste the following content:
+   - **Header**: Our business hours in a week are
+   - **Body**:
+      - ${`it.value.dayOfWeek!!.expression()`}
+      - ${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}
+2. Under the **Expressions** tab, copy and paste the following content:
+   - **Names**: hours in a week
+   - **Expressions**: When do you open?
+
+Go to the skill **HoursDay** page.
+1. Under the **Schema** tab, in the **Slots** section, click the slot **datePicker**. Enter _date_ in the **Names** field.
+2. Under the **Response** tab
+   - In the **Single value message** section, copy and paste this: We are open on ${`datePicker!!.date!!.expression()`} from ${`hours.getHoursDay(datePicker!!.date!!).openingTime!!.expression()`} to ${`hours.getHoursDay(datePicker!!.date!!).closingTime!!.expression()`}.
+   - Enter the branch. In the **Single value message** section, copy and paste this: Sorry, but we don't open on ${`datePicker!!.date!!.expression()`}.
+3. Under the **Expressions** tab
+   - Type _hours on a day_ in the **Names** field.
+   - Type _Do you open  $datePicker$?_ in the **Expressions** field.
+
+::: warning Attention
+Do **NOT** copy and paste the value wrapped by `$`, please type the value instead.
+:::
+
+Now that you have finished building a module. You can [view your changes](../reference/platform/versioncontrol.md#view-your-changes) and merge your branch into the master.
 
 ## Build a provider
 
@@ -212,4 +292,4 @@ Finally, after the tables are ready, you can implement the service now.
    ```
    - Click **Save**.
 
-::tada:: Congratulations! You have finished building a service. You can [view your changes](../reference/platform/versioncontrol.md#view-your-changes) and merge your branch into the master. In the next step, you can [access backoffice](../reference/providers/postgrest.md#access-backoffice) to add data for testing and use [function console](../reference/providers/postgrest.md#function-console) to test this provider.
+Now that you have finished building a postgrest provider. You can [view your changes](../reference/platform/versioncontrol.md#view-your-changes) and merge your branch into the master. In the next step, you can [access backoffice](../reference/providers/postgrest.md#access-backoffice) to add data for testing and use [function console](../reference/providers/postgrest.md#function-console) to test this provider.
