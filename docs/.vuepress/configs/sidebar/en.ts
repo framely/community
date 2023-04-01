@@ -31,7 +31,7 @@ export const en = {
   ],
   '/reference/': [
     {
-      text: 'Annotations(CUI)',
+      text: 'Dialog Annotations',
       collapsible: true,
       children: [
         '/reference/annotations/overview.md',
@@ -41,7 +41,6 @@ export const en = {
         '/reference/annotations/valuecheck.md',
         '/reference/annotations/confirmation.md',
         '/reference/annotations/transition.md',
-        '/reference/annotations/systemcomponent.md'
       ],
     },
     {
@@ -90,13 +89,17 @@ export const en = {
       collapsible: true,
       children: [
         {
-          text: 'Date Picker',
+          text: 'System components',
+          link: '/reference/annotations/systemcomponent.md',
+        },
+        {
+          text: 'Date picker',
           link: '/reference/plugins/components/datepicker/',
           collapsible: true,
           children:[
             '/reference/plugins/components/datepicker/datepicker-design.md'
           ],
-        }
+        },
       ],
     },
     {
