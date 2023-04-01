@@ -1,34 +1,34 @@
 # Build a component
 
-A service defines a set of function interfaces that specify how business functionalities can be accessed. By using a service as an interface, we can divide chatbot building into backend for business logic and frontend for conversational user interface, each of which can be taken care of by different teams.
-
-In the previous guide, we showed you how to make your chatbot field various business hours queries  your chatbot by [reuse a existing component](./use-hours.md). In this guide, we will show you how to build a component like [hours](https://build.opencui.io/org/me.quickstart/agent/hours/en/service_schema) and [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema): First, declare a service. Second, define the conversational user interface(CUI) for it. Third, implement the postgrest provider by yourself.
+In the previous guide, we showed you how to make your chatbot field various business hours queries by [reuse a existing component](./use-hours.md). In this guide, we will show you how to build such a component, including exposed module [hours](https://build.opencui.io/org/me.quickstart/agent/hours/en/service_schema) and PostgREST provider [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema): First, declare a service. Second, define the conversational user interface(CUI) for it. Third, implement the PostgREST provider by yourself.
 
 ## Before you start
 
 [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
 ## Build a module
+A service defines a set of function interfaces that specify how business functionalities can be accessed. By using a service as an interface, we can divide chatbot building into backend for business logic and frontend for conversational user interface, each of which can be taken care of by different teams.
+
+On OpenCUI, we use module to expose a service through conversational user interface. To build these exposed module, we declare the service and then define the conversational user interface on top of the service. 
 
 ### Create a module
 1. Within an org, click **Create** on the right side and select **Create module**.
 2. In a pop-up window, enter _hours_ in the **Project label** field, add **English(en)** in the **Languaes** field, and **Enable service interface**. Once done, click **Create**.
 
-   ::: thumbnail
-   ![create a module](/images/guide/build-service/create-module.png)
-   :::
-
 ### Declare a service
-A service is a set of API function declarations to access hour information maintained by business owner, it is generally defined in a module. To begin with, you need to prepare the types needed in the function interfaces. Then, add function interfaces with those types.
 
-#### Create a frame
-To provide business hours in a week or on a specific day, the following information is needed:
+To declare a service means we define the function type for each API in the service. But to define these function types, we first need to define the data type for their input parameters and returns, and we have to do this recursively in case the one of these data type are composite, or use defined types. 
+
+On the OpenCUI platform, types such as skills, frames, and entities can be annotated with dialog annotations so that the chatbot can create objects of these types via conversations. Dialog acts, on the other hand, can only be used to render the language-independent meaning into the language of choice.
+
+#### Create a type: BusinessHours
+For a function return the business hours on a specific day, the following information is needed:
 - **dayOfWeek**: the day of the week, like Monday, Tuesday, etc.
 - **ifOpen**: whether it's open on that day.
 - **openingTime**: the time it opens.
 - **closingTime**: the time it closes.
 
-To cover the above information, you should create a frame. A [frame](./concepts.md#frames) is a composite data type in OpenCUI so these four factors can be composited into a frame as four slots.
+So before we can declare the function, we need to create a [frame](./concepts.md#frames) with 4 slots.
 
 To create a frame:
 1. Within the module hours, go to **Types** page, click **Create** on the right side, and select **Create frame**.
@@ -58,7 +58,7 @@ Once finished, the frame should look like this:
 :::
 
 #### Add function interfaces
-To return business hours on a specific day and in a week, you need to create two function interfaces:
+To return business hours on a specific day and in a week, lets use the following two API function:
 1. **getHoursDay**(date:java.time.LocalDate):BusinessHours
 2. **getHoursWeek**():List\<BusinessHours\>
 
@@ -80,15 +80,15 @@ Once finished, the function interfaces should look like this:
 ![show functions](/images/guide/build-service/show-functions.png)
 :::
 
-Now that you have finished defining a service. You can [view your changes](../reference/platform/versioncontrol.md#view-your-changes) and merge your branch into the master.
+Now that you have finished declaring a service. You can [view your changes](../reference/platform/versioncontrol.md#view-your-changes) and merge your branch into the master.
 
 ### Build CUI
-OpenCUI provides [annotations](../reference/annotations) to define how the bot interacts with users. Unlike the service, CUI covers two kinds of layers: the interaction layer and the language layer. At the interaction layer, you annotate the interactions. At the language layer, you add templates and exemplars.
+OpenCUI allow you to use [annotations](../reference/annotations) to define how the bot interacts with users. These annotations can be viewed in two layers: a language independent interaction layer and the language layer where you add templates and exemplars. Templates demonstrate how dialog act should be rendered in a language, and exemplars define how text should be converted to event.
 
 #### Create skills
-To interact with users, use a skill as an entrance. A skill is essentially a function that a user can access through conversations for businesses. The inputs of skill are its slots and the output can be defined in its response section.
+To expose a functionality through conversational user interface, we need to define a skill. A skill is essentially a function that a user can trigger through conversations. The input parameters of function are captured by skill's slots and the response can be defined in its response section.
 
-You should use two different skills to manage users' questions on business hours with and without a specific date. To create skills:
+You can use two different skills to manage users' questions on business hours with and without a specific date. To create skills:
 
 1. Within the module hours, go to **Types** page, click **Create** on the right side, and select **Create skill**.
 2. Enter _HoursWeek_ as the skill label. This skill provides business hours in a week.
@@ -107,8 +107,8 @@ To access the functions in the service, you need to add the service first:
 
 2. Follow the same steps to declare the service for skill **HoursDay**.
 
-#### Annotate interactions
-When a user triggers a skill, the bot follows the interactions you annotate to interact with the user. For skill HoursWeek, the bot should display business hours in a week. For skill HoursDay, on the date the user asks for, if it's open, the bot should show the business hours on that day. If not, the bot should inform the user it's closed.
+#### Define interactions
+When a user triggers a skill, the bot follows the interactions based on the annotation you attached to the skill. For skill HoursWeek, the bot should display business hours in a week. For skill HoursDay, on the date the user asks for, if it's open, the bot should show the business hours on that day. If not, the bot should inform the user it's closed.
 
 To annotate interactions:
 1. Go to the skill **HoursWeek** page, navigate to the **Response** tab, and select **Multiple value message** under the **Default action** section. In the **Source** section, copy and paste the following code:
@@ -134,7 +134,9 @@ To annotate interactions:
    - **Skill start** is used to start skill HoursWeek to provide business hours in a week, so the user knows other options.
 
 #### Add templates and exemplars
-Here comes the language part. Before you start, make sure you **propagate** all the changes to the language layer and switch from the INTERACTION layer to the **EN** layer.
+Both templates are exemplars are language dependent, and you have to set them up for each interactable type and each language you support. OpenCUI allow you to define templates and exemplars in a context dependent way. Depending on which input box you use to define them, they are used differently. You can use arbitrary kotlin expression in template directly, in exemplars, you can only reference slot.
+
+Before you start, make sure you **propagate** all the changes you made in the interaction layer to the language layer and switch from the INTERACTION layer to the **EN** layer.
 
 Go to the skill **HoursWeek** page.
 1. Under the **Response** tab, copy and paste the following content:
@@ -163,13 +165,17 @@ Now that you have finished building a module. You can [view your changes](../ref
 
 ## Build a provider
 
-After you define a service, in order to make it work, you should implement the service in a provider. In this example, you will use an OpenCUI-hosted provider: [Postgrest provider](../reference/providers/postgrest.md) which allows you to define the table structures in the database and store business hours in the database by backoffice.
+After you declared a service, you should develop a provider for it. On OpenCUI platform, the provider is used as an API stub, or connector to actual implementation of the service, also known as backend. Most providers are external where backend is developed and deployed else where and OpenCUI hosted. But there is an OpenCUI-hosted provider: [PostgREST provider](../reference/providers/postgrest.md) which allows you to use PostgreSQL as data storage, implement API function in SQL on OpenCUI platform. OpenCUI will make these functions available to your chatbot and backoffice through a restful gateway called PostgREST.
 
-### Import the module
-1. First, make sure you have a target project to import the module to. You can use an existing Postgrest provider, or create a new one.
+Let's see how we can build a PostgREST provider.
+
+### Import the module for the service
+1. First, make sure you have a target provider. You can use an existing Postgrest provider, or create a new one of this kind.
 2. Enter the module where you [defined the service](#define-a-service) and [import](../reference/platform/reusability.md#import-1) this module to the target project.
 
 ### Define tables
+With PostgREST provider, table schema is defined by adding [storage annotations](../reference/annotations/overview.md#storage-annotations) to a data type, this allows OpenCUI to create mapping between database and Kotlin code automatically after that. OpenCUI will create tables based the type definition and storage annotation in the separate database for your organization. You should definitely add [backoffice](../reference/annotations/overview.md#backoffice-annotations) to define who each column of table (slot in it corresponding type) should be display and manipulated on the backoffice.
+
 There are two things that should be stored in the database: business hours and the time zone of your business. When providing business hours in a week, you need to start from the current date. To get the right current date, the time zone of the business is important.
 
 To store business hours and a time zone, use [storage-enable frames](../reference/providers/postgrest.md#create-database-tables). A frame represents a table, and slots in this frame represent the table columns:
@@ -240,7 +246,8 @@ Take the slot **dayOfWeek** as an example and the annotations of it should look 
 :::
 
 ### Implement the service
-Finally, after the tables are ready, you can implement the service now.
+Finally, after the tables are ready, you can implement the service, or provide implementation for each function defined in the service. You can do this on the OpenCUI platform using PSQL or native Kotlin code.
+
 1. Enter the provider that imported the hours service.
 2. Go to the **Service** page, in the **Functions** section, click function **getHoursDay**.
    - Make sure the implementation is **Provider dependent**.
