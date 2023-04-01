@@ -107,8 +107,8 @@ To access the functions in the service, you need to add the service first:
 
 2. Follow the same steps to declare the service for skill **HoursDay**.
 
-#### Annotate interactions
-When a user triggers a skill, the bot follows the interactions you annotate to interact with the user. For skill HoursWeek, the bot should display business hours in a week. For skill HoursDay, on the date the user asks for, if it's open, the bot should show the business hours on that day. If not, the bot should inform the user it's closed.
+#### Define interactions
+When a user triggers a skill, the bot follows the interactions based on the annotation you attached to the skill. For skill HoursWeek, the bot should display business hours in a week. For skill HoursDay, on the date the user asks for, if it's open, the bot should show the business hours on that day. If not, the bot should inform the user it's closed.
 
 To annotate interactions:
 1. Go to the skill **HoursWeek** page, navigate to the **Response** tab, and select **Multiple value message** under the **Default action** section. In the **Source** section, copy and paste the following code:
@@ -134,7 +134,9 @@ To annotate interactions:
    - **Skill start** is used to start skill HoursWeek to provide business hours in a week, so the user knows other options.
 
 #### Add templates and exemplars
-Here comes the language part. Before you start, make sure you **propagate** all the changes to the language layer and switch from the INTERACTION layer to the **EN** layer.
+Both templates are exemplars are language dependent, and you have to set them up for each interactable type and each language you support. OpenCUI allow you to define templates and exemplars in a context dependent way. Depending on which input box you use to define them, they are used differently. You can use arbitrary kotlin expression in template directly, in exemplars, you can only reference slot.
+
+Before you start, make sure you **propagate** all the changes you made in the interaction layer to the language layer and switch from the INTERACTION layer to the **EN** layer.
 
 Go to the skill **HoursWeek** page.
 1. Under the **Response** tab, copy and paste the following content:
@@ -163,13 +165,17 @@ Now that you have finished building a module. You can [view your changes](../ref
 
 ## Build a provider
 
-After you define a service, in order to make it work, you should implement the service in a provider. In this example, you will use an OpenCUI-hosted provider: [Postgrest provider](../reference/providers/postgrest.md) which allows you to define the table structures in the database and store business hours in the database by backoffice.
+After you declared a service, you should develop a provider for it. On OpenCUI platform, the provider is used as an API stub, or connector to actual implementation of the service, also known as backend. Most providers are external where backend is developed and deployed else where and OpenCUI hosted. But there is an OpenCUI-hosted provider: [PostgREST provider](../reference/providers/postgrest.md) which allows you to use PostgreSQL as data storage, implement API function in SQL on OpenCUI platform. OpenCUI will make these functions available to your chatbot and backoffice through a restful gateway called PostgREST.
 
-### Import the module
-1. First, make sure you have a target project to import the module to. You can use an existing Postgrest provider, or create a new one.
+Let's see how we can build a PostgREST provider.
+
+### Import the module for the service
+1. First, make sure you have a target provider. You can use an existing Postgrest provider, or create a new one of this kind.
 2. Enter the module where you [defined the service](#define-a-service) and [import](../reference/platform/reusability.md#import-1) this module to the target project.
 
 ### Define tables
+With PostgREST provider, table schema is defined by adding [storage annotations](../reference/annotations/overview.md#storage-annotations) to a data type, this allows OpenCUI to create mapping between database and Kotlin code automatically after that. OpenCUI will create tables based the type definition and storage annotation in the separate database for your organization. You should definitely add [backoffice](../reference/annotations/overview.md#backoffice-annotations) to define who each column of table (slot in it corresponding type) should be display and manipulated on the backoffice.
+
 There are two things that should be stored in the database: business hours and the time zone of your business. When providing business hours in a week, you need to start from the current date. To get the right current date, the time zone of the business is important.
 
 To store business hours and a time zone, use [storage-enable frames](../reference/providers/postgrest.md#create-database-tables). A frame represents a table, and slots in this frame represent the table columns:
@@ -240,7 +246,8 @@ Take the slot **dayOfWeek** as an example and the annotations of it should look 
 :::
 
 ### Implement the service
-Finally, after the tables are ready, you can implement the service now.
+Finally, after the tables are ready, you can implement the service, or provide implementation for each function defined in the service. You can do this on the OpenCUI platform using PSQL or native Kotlin code.
+
 1. Enter the provider that imported the hours service.
 2. Go to the **Service** page, in the **Functions** section, click function **getHoursDay**.
    - Make sure the implementation is **Provider dependent**.
