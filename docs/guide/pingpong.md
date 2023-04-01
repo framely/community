@@ -1,4 +1,4 @@
-# Build a simple chatbot
+# Build a chatbot
 A chatbot is essentially an application with a conversational user interface (CUI) and the goal of a chatbot is to invoke functions for the user through a conversational user interface (CUI). The goal of a CUI is then to create an instance of a function type defined by its name and input parameters, along with their respective types. With the function identified and values for its parameters instantiated, the callable instance created can then be used to invoke the desired function for the user. This view suggests that we can build a CUI in a type-grounded fashion: first, convert user utterances into data structures (represented as frame events), then follow the interaction logic predefined by the builder to generate a structured representation of the response (called a dialog act), and finally, render such a dialog act into natural text in a given language and style.
 
    ::: thumbnail

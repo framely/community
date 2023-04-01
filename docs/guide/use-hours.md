@@ -1,16 +1,13 @@
-# Reuse a module
- Modern business applications are typically broken down into a set of services, each responsible for a specific capability. A service can be developed, deployed and maintained independently of each other, but can be accessed and used by other parts of the application, or even by external systems. So it should be no surprise that all user interfacing application are built to expose service, chatbot included.
+# Reuse a component
+ Modern business applications are typically broken down into a set of services, each responsible for a specific functionality. A service can be developed, deployed and maintained independently of each other, but can be used by other parts of the application, or even by external systems. So it should be no surprise that all user interfacing application are built to expose service, chatbot included.
 
-On OpenCUI, a service is simply a set of function declarations that frontend can use to interact with product system. Each service needs to be declared in a module, which also typically hosts the conversational user interface for that service. Service can have one or more implementation called provider. When a service is used in a chatbot, a compatible provider needs to be wired to the service. 
+On OpenCUI, you can use a module and a compatible provider to expose a service via CUI in a reusable fashion. A module is used to declare the service and define the conversational user interface for that service, while a provider is used to connect the service with the actual implementation that is usually developed separately. Together, they form a complete and self-contained component.
 
-Instead of building from scratch, you import some prebuilt module to get the same functionality, which will reduce the cost and improve the conversational experience at the same time. To reuse a module in a chatbot, you need to first prepare the provider needed by that module in your org. There are two kind of providers, OpenCUI hosted providers and external providers. For the hosted provider, you also need to deploy it before it can be wired to module. Assuming the backend is based on database, you need to set up the tables, and populate these tables with into the database and API function can access the right tables. After you imported the module into your chatbot, you also need to wire it up with the service declared in the module.
-
-This guide shows you how to reuse an existing module to answers users' questions about your business hours. The module we will be import is [hours service](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), which defines a simple services that can serve users' request on business hours in your chatbot. The provider we used for this service is Postgrest based. This provider is based on PostgreSQL, it comes with an admin interface called [backoffice](../reference/providers/postgrest.md#access-backoffice) that allow admin to populate the tables. With this provider, you can set the main business hours for each day of the week, as well as set hours for special days, like holidays.
+Instead of building a conversational experience from scratch, OpenCUI allows you to reuse a prebuilt, often higher quality component to offer the same functionality. This can be done in three simple steps: create and configure a provider in your organization, import a module into a chatbot, and finally wire the provider to the service in the chatbot configuration tab. This guide shows you how to follow these steps to reuse an existing component to field users' questions about your business hours.
 
 Here is an example dialogue that shows how this chatbot helps users to get business hours:
 
 :::: conversation
-
 ::: user User
 Hello, what time do you open?
 :::
@@ -31,15 +28,11 @@ Our business hours in a week are
 **Sat** 10:00 AM – 11:00 PM
 
 **Sun** Closed
-
 :::
-
 ::::
 
 In addition to displaying the business hours in a week, this chatbot can also show the specific business hours of a particular day, like:
-
 :::: conversation
-
 ::: user User
 Hi, are you open this Friday?
 :::
@@ -47,7 +40,6 @@ Hi, are you open this Friday?
 ::: bot Bot
 We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
 :::
-
 ::::
 
 ## Before you start
@@ -55,45 +47,48 @@ We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
 [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
 ## Prepare a provider
-Before the chatbot can serve the business hours requests, you need to make its provider ready. In this guide, we clone a Postgrest based provider into your organization, and populate the tables with your business data.
+Before the chatbot can serve requests regarding business hours, you need to prepare a provider. You can do this by creating or cloning a provider into your organization and configuring it so that it can connect to the actual backend. Additionally, you need to populate the backend with your business information.
+
+IIn this guide, we will clone a PostgREST provider. The PostgREST provider is an OpenCUI-hosted provider, which means that the backend or the actual implementation of services is also managed by OpenCUI. The PostgREST backend comes with an admin interface called [backoffice](../reference/providers/postgrest.md#access-backoffice), which allows business operators to populate the database with their business data. In this case, you can set the main business hours for each day of the week, as well as the hours for special days such as holidays. Hosted providers introduce no external dependency thus make the deployment of chatbot easier, furthermore, the connection is automatically configured so that builders doesn't need to worry about that. 
 
 ### Clone the provider
-Postgrest provider are the OpenCUI hosted provider, so you introduce no external dependency thus make the deployment of chatbot easier. Instead of building this provider from scratch, let's clone this to save effort.
+1. Clone the [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) project and set the **Project label** to _hoursProvider_ (it is ok to set to something else, but we will use this label in the quickstart).
 
-1. Clone the [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) project and change the **Project label** to _hoursProvider_.
+2. In the cloned provider, merge the cloned the content. 
+   * go to **Versions** page and click **Pull request** in the upper-right corner of the Versions area.
 
-2. In the cloned project, go to **Versions** page and click **Pull request** in the upper-right corner of the Versions area.
+      ::: thumbnail
+      ![pull request](/images/guide/use-service/pull-request.png)
+      :::
 
-   ::: thumbnail
-   ![pull request](/images/guide/use-service/pull-request.png)
-   :::
+   * Click on the request you just pulled, and **Compare diffs** field will slide out.
 
-3. Click on the request you just pulled, and **Compare diffs** field will slide out.
+      ::: thumbnail
+      ![click request](/images/guide/use-service/click-request.png)
+      :::
 
-   ::: thumbnail
-   ![click request](/images/guide/use-service/click-request.png)
-   :::
+   * In the **Compare diffs** drawer, click **Approve PR**, then click **Merge**. 
 
-4. In the **Compare diffs** drawer, click **Approve PR**, then click **Merge**. 
+      ::: thumbnail
+      ![click approve pr](/images/guide/use-service/click-approve.png)
+      :::
 
-   ::: thumbnail
-   ![click approve pr](/images/guide/use-service/click-approve.png)
-   :::
+   * Enter the **Version tag** and click **Save**.
 
-5. Enter the **Version tag** and click **Save**.
+      ::: thumbnail
+      ![version tag](/images/guide/use-service/version-tag.png)
+      :::
 
-   ::: thumbnail
-   ![version tag](/images/guide/use-service/version-tag.png)
-   :::
-
-6. Click **Deploy** in the upper-right corner of the Versions area.
+3. Click **Deploy** in the upper-right corner of the Versions area. This will create the tables defined in the cloned content, and as well as make the created tables available for both backoffice and chatbot.
 
    ::: thumbnail
    ![deploy](/images/guide/use-service/deploy.png)
    :::
 
-### Populate tables with business data 
-**To set up business hours:**
+### Populate database with business data 
+Each business needs to provide two kinds of information so that users can get correct answers tailored to their business.
+
+**Set up business hours:**
 1. After successful deployment, go to **Configuration** page. Open the **URL** and log in with the **Admin email** and the **Admin password**.
 
    ::: thumbnail
@@ -129,7 +124,7 @@ Postgrest provider are the OpenCUI hosted provider, so you introduce no external
    ![business hours list](/images/guide/use-service/business-hours-list.png)
    :::
 
-**To set up the business time zone:**
+**Set up the business time zone:**
 
 1. In the **hoursProvider** section and click **Configuration**. On the **hoursProvider.Configuration** page, click **Create**.
 
@@ -141,13 +136,13 @@ Postgrest provider are the OpenCUI hosted provider, so you introduce no external
    ![timezone-list](/images/guide/use-service/timezone-list.png)
    :::
 
-## Reuse the module
-
-Now it's time to create a chatbot and use the hours service. To use a service, you need to import it into your chatbot and set up a service provider for that service.
+## Add functionality to the chatbot
+Now it's time to add functionality to the chatbot so that users can access the hours service via conversation. It is simple:  just import the module with desired functionality into your chatbot and connect the service to a provider in your organization.
 
 ### Import the module
-All projects can be cloned to a new organization, a module can also be imported into a new project, like chatbot, or module. 
-1. First make sure you have a target project to import the module to. You can use an existing one, or create a new one. We will clone into chatbot instead of module, as the goal here is to showcase how chatbot can reuse the conversational services defined on the module. 
+Import is another way that one can reuse modules on OpenCUI. Every project can be reused in a organization by clone, but only module can be reused in a project by import. Unlike cloned project that you can modify any way you want, there are only limited things you can do to an imported module, mostly at language perception level.
+
+1. First pick a target chatbot to import the module to. You can use an existing one, or create a new one.
 
 2. Enter the source module: [hours](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), you can also go in there by doing a search on the explore tab.
    - Click **Import**.
@@ -161,7 +156,7 @@ All projects can be cloned to a new organization, a module can also be imported 
 ### Set up a service provider
 1. Enter the chatbot.
 
-2. In the navigation bar, select the **Settings** tab and head to **Integrations** page. In the **Debug service provider** section, click **Select service** and select `me.quickstart.hours.IHours`.
+2. In the navigation bar, select the **Settings** tab and head to **Integrations** page. In the **Debug service provider** section, click **Select service** and select `me.quickstart.hours.IHours`. You need to set this up again for production environment under **Deploy service provider** when you are ready for the deployment.
    - Enter a unique label
    - Click **Select service implementation** and select the provider you created by cloning.
 
@@ -172,7 +167,7 @@ All projects can be cloned to a new organization, a module can also be imported 
 
 ## Test a chatbot
 
-Finally, you can try to ask the chatbot for business hours. To play with the chatbot, use [Debug](../reference/platform/testing.md#how-to-use).
+Finally, you can try to ask the chatbot for business hours using [Debug](../reference/platform/testing.md#how-to-use).
 
 1. Send "_When do you open?_" and you should get the business hours in a week starting with the current day of the week.
 
