@@ -1,4 +1,4 @@
-# Reuse a component
+# Reuse a full-stack component
  Modern business applications are typically broken down into a set of services, each responsible for a specific functionality. A service can be developed, deployed and maintained independently of each other, but can be used by other parts of the application, or even by external systems. So it should be no surprise that all user interfacing application are built to expose service, chatbot included.
 
 On OpenCUI, you can use a module and a compatible provider to expose a service via CUI in a reusable fashion. A module is used to declare the service and define the conversational user interface for that service, while a provider is used to connect the service with the actual implementation that is usually developed separately. Together, they form a complete and self-contained component.
