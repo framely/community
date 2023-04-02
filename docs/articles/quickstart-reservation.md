@@ -1,8 +1,15 @@
-# Import a module
+---
+article: true
+date: 2023-04-02
 
-[[toc]]
+image:
+    - blog/banner/tutorial_reservation_i.png
+description:
+    - Reuse table reservation module to build a chatbot
+author: Sunny May
+---
 
-## Overview
+# How to build a reservation chatbot
 
 This guide shows you how to reuse a module to build a table reservation chatbot. A module is a reusable CUI unit with its conversational behavior defined against some service APIs. There are two kinds of module, base module come with its own service APIs, while composite module need to import other modules to deliver some complex conversational experience.
 Notice a base module can have one or more provider that provide the implementations of the service APIs defined in that module.
@@ -69,6 +76,7 @@ It only takes few steps to add a table reservation functionality to a chatbot:
 2. Set up [Google Workspace](../reference/plugins/services/reservation/google-calendar-reservation.md#set-up-google-workspace) and [service account](../reference/plugins/services/reservation/google-calendar-reservation.md#set-up-service-account).
 
 ## Set up resources
+
 Under the design of reservation API, the resource are the entity that user can book or reserve, such as table in restaurant or hairdresser. Before users can book a table, you should prepare your table resources first. Different provider has different way of define what resources are available for booking. Since we are use [Google calendar based provider](../reference/plugins/services/reservation/google-calendar-reservation.md), we use Google Admin console to define table resources and Google Calendar to store reservations.
 
 
@@ -92,7 +100,6 @@ We take the following business information as an example to show you how to set 
 
 
 ### Add resources in Admin console
-
 Sign in to your [Google Admin console](https://admin.google.com/). To add resources:
 
 1. Open the **Main menu**
@@ -142,7 +149,6 @@ Once done, your building and resources should be the same as those in the screen
 :::
 
 ### Block time in Google Calendar
-
 Make sure you are an [admin](https://support.google.com/a/answer/172176?hl=en) first, then sign in to your [Google Calendar](https://calendar.google.com). To block time:
 
 1. On Other calendars, click **+** > **Browse resources** (If there is no such option, you may need to wait for a few hours for ACL changes to take effect before you can manage these resources.)
@@ -197,7 +203,7 @@ Once done, the events in your resource calendars should be the same as those in 
 ![calendar example](/images/guide/reuse-module/calendar-example.png)
 :::
 
-## Import table reservation module
+## Import the module
 
 Now it's time to create a table reservation chatbot and reuse the table reservation module.
 
@@ -211,7 +217,7 @@ Now it's time to create a table reservation chatbot and reuse the table reservat
    ![import module](/images/guide/reuse-module/import-module.png)
    :::
 
-## Set up reservation provider
+## Set up the provider
 
 Before you can use the functionality provided by the reservation API, you should declare a reservation service first, then set up the reservation provider for that service.
 
@@ -226,7 +232,7 @@ To set up the reservation provider:
    ![set up provider](/images/guide/reuse-module/set-up-provider.png)
    :::
 
-## Test chatbot
+## Test a chatbot
 
 Finally, you can try to use your chatbot to make a table reservation. To test the chatbot:
 
@@ -246,6 +252,5 @@ The picture below shows how the reservation is made.
 ::: thumbnail
 ![message process](/images/guide/reuse-module/message-process.png)
 :::
-
 
 ::tada:: Well done! You've built up a table reservation chatbot. To explore more use cases, you can check the test cases in the [tableReservationApp](https://build.opencui.io/org/me.restaurant/agent/tableReservationApp/en/test_case) chatbot.
