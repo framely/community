@@ -192,7 +192,7 @@ Once done, the events in your resource calendars should be the same as those in 
 ![calendar example](/images/guide/reuse-module/calendar-example.png)
 :::
 
-## Import table reservation module
+## Import the module
 
 Now it's time to create a table reservation chatbot and reuse the table reservation module.
 
@@ -206,7 +206,7 @@ Now it's time to create a table reservation chatbot and reuse the table reservat
    ![import module](/images/guide/reuse-module/import-module.png)
    :::
 
-## Set up reservation provider
+## Set up the provider
 
 Before you can use the functionality provided by the reservation API, you should declare a reservation service first, then set up the reservation provider for that service.
 
@@ -221,7 +221,7 @@ To set up the reservation provider:
    ![set up provider](/images/guide/reuse-module/set-up-provider.png)
    :::
 
-## Test chatbot
+## Test a chatbot
 
 Finally, you can try to use your chatbot to make a table reservation. To test the chatbot:
 
