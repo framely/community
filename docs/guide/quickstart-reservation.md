@@ -1,4 +1,4 @@
-# Import a module
+# Reuse a module
 
 [[toc]]
 

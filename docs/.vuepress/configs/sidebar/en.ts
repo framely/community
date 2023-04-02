@@ -25,6 +25,7 @@ export const en = {
         '/guide/pingpong.md',
         '/guide/use-hours.md',
         '/guide/build-service.md',
+        '/guide/quickstart-reservation.md',
         '/guide/quickstart-channel.md'
       ],
     }
