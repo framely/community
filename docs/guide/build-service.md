@@ -83,7 +83,7 @@ Once finished, the function interfaces should look like this:
 Now that you have finished declaring a service. You can [view your changes](../reference/platform/versioncontrol.md#view-your-changes) and merge your branch into the master.
 
 ### Build CUI
-OpenCUI allow you to use [annotations](../reference/annotations) to define how the bot interacts with users. These annotations can be viewed in two layers: a language independent interaction layer and the language layer where you add templates and exemplars. Templates demonstrate how dialog act should be rendered in a language, and exemplars define how text should be converted to event.
+OpenCUI allow you to use [annotations](../reference/annotations/overview.md) to define how the bot interacts with users. These annotations can be viewed in two layers: a language independent interaction layer and the language layer where you add templates and exemplars. Templates demonstrate how dialog act should be rendered in a language, and exemplars define how text should be converted to event.
 
 #### Create skills
 To expose a functionality through conversational user interface, we need to define a skill. A skill is essentially a function that a user can trigger through conversations. The input parameters of function are captured by skill's slots and the response can be defined in its response section.
