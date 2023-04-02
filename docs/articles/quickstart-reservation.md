@@ -1,4 +1,15 @@
-# Reuse a module
+---
+article: true
+date: 2023-04-02
+
+image:
+    - blog/banner/tutorial_reservation_i.png
+description:
+    - Reuse table reservation module to build a chatbot
+author: Sunny May
+---
+
+# How to build a reservation chatbot
 
 This guide shows you how to reuse a module to build a table reservation chatbot. A module is a reusable CUI unit with its conversational behavior defined against some service APIs. There are two kinds of module, base module come with its own service APIs, while composite module need to import other modules to deliver some complex conversational experience.
 Notice a base module can have one or more provider that provide the implementations of the service APIs defined in that module.
