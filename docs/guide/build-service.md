@@ -88,75 +88,89 @@ OpenCUI allow you to use [annotations](../reference/annotations/overview.md) to 
 #### Create skills
 To expose a functionality through conversational user interface, we need to define a skill. A skill is essentially a function that a user can trigger through conversations. The input parameters of function are captured by skill's slots and the response can be defined in its response section.
 
-You can use two different skills to manage users' questions on business hours with and without a specific date. To create skills:
+To create a skill to manage users' questions on business hours with and without a specific date:
 
 1. Within the module hours, go to **Types** page, click **Create** on the right side, and select **Create skill**.
-2. Enter _HoursWeek_ as the skill label. This skill provides business hours in a week.
-3. Back to the **Types** page, create another skill: _HoursDay_. This skill provides business hours on a specific day.
-4. To get a specific day from a user, use [DatePicker](../reference/plugins/components/datepicker). DatePicker is an official CUI component, so you need to import [components](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8aea6517f06c1880e3cff) to the module hours first.
-5. After successful import, go back to module hours and refresh your webpage.
-6. In the skill **HoursDay**, add a slot with type **io.opencui.components.dataEntry.DatePicker**.
+2. Enter _ShowHours_ as the skill label. 
+3. To get a specific day from a user, use [DatePicker](../reference/plugins/components/datepicker). DatePicker is an official CUI component, so you need to import [components](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8aea6517f06c1880e3cff) to the module hours first.
+4. After successful import, go back to module hours and refresh your webpage.
+5. In the skill **ShowHours**, add a slot with type **io.opencui.components.dataEntry.DatePicker**.
 
 #### Add the service
 To access the functions in the service, you need to add the service first:
-1. Go to the skill **HoursWeek** page, in the **Services** section, click **Select service** and select **IHours**. Leave the **Service label** as default and click **Save**.
-   
-   ::: thumbnail
-   ![add service](/images/guide/build-service/add-service.png)
-   :::
 
-2. Follow the same steps to declare the service for skill **HoursDay**.
+Go to the skill **ShowHours** page, in the **Services** section, click **Select service** and select **IHours**. Leave the **Service label** as default and click **Save**.
+   
+::: thumbnail
+![add service](/images/guide/build-service/add-service.png)
+:::
+
 
 #### Define interactions
-When a user triggers a skill, the bot follows the interactions based on the annotation you attached to the skill. For skill HoursWeek, the bot should display business hours in a week. For skill HoursDay, on the date the user asks for, if it's open, the bot should show the business hours on that day. If not, the bot should inform the user it's closed.
+When a user triggers a skill, the bot follows the interactions based on the annotation you attached to the skill. When the user doesn't mention a specific date, the bot should display business hours in a week. When the user provides a date, if it's open, the bot should show the business hours on that day. If not, the bot should inform the user it's closed.
 
 To annotate interactions:
-1. Go to the skill **HoursWeek** page, navigate to the **Response** tab, and select **Multiple value message** under the **Default action** section. In the **Source** section, copy and paste the following code:
+
+1. Go to the skill **ShowHours** page, since the date is provided by a user spontaneously, the bot doesn't need to ask for the date value. Enter the slot **datePicker** and change **Fill Strategy** to [Recover only](../reference/annotations/fillstrategy.md#recover-only).
+2. To display business hours in a week:
+   - Navigate to the **Response** tab and select **Multiple value message** under the **Default action** section. 
+   - In the **Source** section, copy and paste the following code:
    ``` kotlin
    hours.getHoursWeek()
    ```
-
-2. Go to the skill **HoursDay** page, since the date is provided by a user spontaneously, the bot doesn't need to ask for the date value. Enter the slot **datePicker** and change **Fill Strategy** to [Recover only](../reference/annotations/fillstrategy.md#recover-only).
-3. Navigate to the **Response** tab and select **Single value message** under the **Default action** section to display the business hours on that day.
-4. Still, under the **Response** tab, turn on **Branching** and click **Add**.
+3. To handle the situation when the user provides a date, under the **Response** tab, turn on **Branching**.
 
    ::: thumbnail
    ![add a branch](/images/guide/build-service/branching.png)
    :::
 
-5. In the **Conditions** section, copy and paste the following code:
+4. To show the business hours on a user-mentioned date:
+   - In the **Branching** section, click **Add**.
+   - In the **Conditions** section, copy and paste the following code:
    ```kotlin
-   hours.getHoursDay(datePicker!!.date!!).ifOpen == false
+   datePicker?.date != null && hours.getHoursDay(datePicker!!.date!!).ifOpen == true
+   ```
+   - In the **Action sequence** section, select **Single value message**.
+
+5. To inform the user it's closed on a user-mentioned date:
+   - Back to the **Response** tab, in the **Branching** section, click **Add**. 
+   - In the **Conditions** section, copy and paste the following code:
+   ```kotlin
+   datePicker?.date != null && hours.getHoursDay(datePicker!!.date!!).ifOpen == false
    ```
 
-6. In the **Action sequence** section, select **Single value message** and **Skill start**. Then, Select **HoursWeek** in the **Skill start** action.
-   - **Single value message** is to inform the user it's closed on that day.
-   - **Skill start** is used to start skill HoursWeek to provide business hours in a week, so the user knows other options.
+   - In the **Action sequence** section, select **Single value message** and **Multiple value message**.
+     - **Single value message** is to inform the user it's closed on that day.
+     - **Multiple value message** is display business hours in a week, so the user can get additional information to make a choice.
 
 #### Add templates and exemplars
 Both templates are exemplars are language dependent, and you have to set them up for each interactable type and each language you support. OpenCUI allow you to define templates and exemplars in a context dependent way. Depending on which input box you use to define them, they are used differently. You can use arbitrary kotlin expression in template directly, in exemplars, you can only reference slot.
 
 Before you start, make sure you **propagate** all the changes you made in the interaction layer to the language layer and switch from the INTERACTION layer to the **EN** layer.
 
-Go to the skill **HoursWeek** page.
-1. Under the **Response** tab, copy and paste the following content:
-   - **Header**: Our business hours in a week are
-   - **Body**:
-      - ${`it.value.dayOfWeek!!.expression()`}
-      - ${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}
-2. Under the **Expressions** tab, copy and paste the following content:
-   - **Names**: hours in a week
-   - **Expressions**: When do you open?
+1. Go to the skill **ShowHours** page. Under the **Schema** tab, in the **Slots** section, click the slot **datePicker**. Enter _date_ in the **Names** field.
+2. Under the **Response** tab, in the **Default action** filed. In the **Multiple value message** section, enter the following content:
+     - **Header**: Our business hours in a week are
+     - **Body**:
+        - ${`it.value.dayOfWeek!!.expression()`}
+        - ${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}
+3. Under the **Response** tab, in the **Branching** filed, click the first branch. 
+   - In the **Single value message** section, enter this: We are open on ${`datePicker!!.date!!.expression()`} from ${`hours.getHoursDay(datePicker!!.date!!).openingTime!!.expression()`} to ${`hours.getHoursDay(datePicker!!.date!!).closingTime!!.expression()`}.
+4. Back to the **Branching** filed, click the second branch. 
+   - In the **Single value message** section, enter this: Sorry, but we don't open on ${`datePicker!!.date!!.expression()`}.
+   - In the **Multiple value message** section, enter the following content:
+     - **Header**: Our business hours in a week are
+     - **Body**:
+        - ${`it.value.dayOfWeek!!.expression()`}
+        - ${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}
 
-Go to the skill **HoursDay** page.
-1. Under the **Schema** tab, in the **Slots** section, click the slot **datePicker**. Enter _date_ in the **Names** field.
-2. Under the **Response** tab
-   - In the **Single value message** section, copy and paste this: We are open on ${`datePicker!!.date!!.expression()`} from ${`hours.getHoursDay(datePicker!!.date!!).openingTime!!.expression()`} to ${`hours.getHoursDay(datePicker!!.date!!).closingTime!!.expression()`}.
-   - Enter the branch. In the **Single value message** section, copy and paste this: Sorry, but we don't open on ${`datePicker!!.date!!.expression()`}.
-3. Under the **Expressions** tab
-   - Type _hours on a day_ in the **Names** field.
-   - Type _Do you open  $datePicker$?_ in the **Expressions** field.
 
+5. Under the **Expressions** tab, enter the following content:
+   - **Names**: show hours
+   - **Expressions**: 
+      - When do you open?
+      - _Do you open  $datePicker$?_
+     
 ::: warning Attention
 Do **NOT** copy and paste the value wrapped by `$`, please type the value instead.
 :::
