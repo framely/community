@@ -174,7 +174,7 @@ Let's see how we can build a PostgREST provider.
 2. Enter the module where you [defined the service](#define-a-service) and [import](../reference/platform/reusability.md#import-1) this module to the target project.
 
 ### Define tables
-With PostgREST provider, table schema is defined by adding [storage annotations](../reference/annotations/overview.md#storage-annotations) to a data type, this allows OpenCUI to create mapping between database and Kotlin code automatically after that. OpenCUI will create tables based the type definition and storage annotation in the separate database for your organization. You should definitely add [backoffice](../reference/annotations/overview.md#backoffice-annotations) to define who each column of table (slot in it corresponding type) should be display and manipulated on the backoffice.
+With PostgREST provider, table schema is defined by adding [storage annotations](../guide/concepts.md#storage-annotations) to a data type, this allows OpenCUI to create mapping between database and Kotlin code automatically after that. OpenCUI will create tables based the type definition and storage annotation in the separate database for your organization. You should definitely add [backoffice](../guide/concepts.md#backoffice-annotations) to define who each column of table (slot in it corresponding type) should be display and manipulated on the backoffice.
 
 There are two things that should be stored in the database: business hours and the time zone of your business. When providing business hours in a week, you need to start from the current date. To get the right current date, the time zone of the business is important.
 
