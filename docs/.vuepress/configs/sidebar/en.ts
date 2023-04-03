@@ -86,10 +86,7 @@ export const en = {
       text: 'CUI Components',
       collapsible: true,
       children: [
-        {
-          text: 'System components',
-          link: '/reference/annotations/systemcomponent.md',
-        },
+          '/reference/annotations/systemcomponent.md',
         {
           text: 'Date picker',
           link: '/reference/plugins/components/datepicker/',
