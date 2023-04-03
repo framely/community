@@ -19,7 +19,7 @@ One of the major challenges of building a CUI is that the builder does not have 
 With the business logic taken care of at the interaction layer, the main responsibility left for the language layer is the translation between structured data and natural language used by the general public. By adding some natural annotation to the types and their slots, current evidence suggests that this layer can largely be addressed through the use of large language models (LLMs) in a zero-shot learning setting. Therefore, there may be no need to hire natural language understanding talent for your team anymore.
 
 ## Mare advantages
-Better separation of concerns is already a sufficient condition to choose the technology stack. A type-based approach offers many hidden advantages that make it more attractive. 
+Better separation of concerns is a sufficient condition for choosing a technology stack. OpenCUI was built with many other considerations to make it more attractive for those who want to build a great conversational experience without incurring cost overruns.
 
 ### Reusable component
 Since all type systems have built-in support for composition, these types, along with annotations - let's call them [components](./components.md) - are naturally composable. Composability is a good thing because it enables developers to build complex systems by assembling small, reusable, and interchangeable components instead of always building from scratch. And here are some more.
