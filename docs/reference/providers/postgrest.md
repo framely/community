@@ -4,7 +4,7 @@
 
 ## Overview
 
-OpenCUI also supports the backend component in form of [postgrest provider](../glossary.md#provider). The backend component can be declaratively defined in two steps: First, create database tables needed by service by adding storage annotation to frames, secondly, provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify the operation team can access these tables via backoffice.
+OpenCUI also supports the backend component in form of postgrest provider. The backend component can be declaratively defined in two steps: First, create database tables needed by service by adding storage annotation to frames, secondly, provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify the operation team can access these tables via backoffice.
 
 There are a couple advantage of using backend component approach to build service provider. 
 1. In addition to declaratively building database as content management system, OpenCUI backend component allows you to implement the service declaratively too using SQL. This make it possible for the business analyst to build backend.

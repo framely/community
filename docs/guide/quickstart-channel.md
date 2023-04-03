@@ -8,10 +8,10 @@ Once you have developed and tested your chatbot, you can deploy it and start to 
 
 How does it work? Let's use Messenger as example. User send a message using the client software to Messenger platform, and Messenger platform forward that message to the end point that your channel implementation listens, upon get the user input, chatbot produce output, and ask channel implementation send the reply to the end point that Messenger platform listens, which will forward the reply to end user. Clearly to make this work, one have to configure on both Messenger platform side, and OpenCUI side, so that they both know where to send message to. 
 
-This guide builds on top of [Build a simple chatbot](pingpong.md), is designed to show you how to integrate your chatbot with the Messenger channel. Channel are only supported in OpenCUI production environment, and to deploy your change to production environment, you need to create the PR, and merge it into master.
+This guide builds on top of [Build a chatbot](pingpong.md), is designed to show you how to integrate your chatbot with the Messenger channel. Channel are only supported in OpenCUI production environment, and to deploy your change to production environment, you need to create the PR, and merge it into master.
 
 ## Before you start
-Make sure to complete the steps outlined in the [Build a simple chatbot](./pingpong.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
+Make sure to complete the steps outlined in the [Build a chatbot](./pingpong.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
 
 ## Merge changes
 OpenCUI comes with a Git like version control system, that is specifically designed for the structured chatbot definition so that we can manage the definition across modules and languages accurately. If you used Git in your development, this process should be very similar.

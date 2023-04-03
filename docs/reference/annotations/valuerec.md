@@ -58,7 +58,7 @@ Value recommendation is rather complex conversational component, consist of
 - **List rendering**, allow builder to customize the template that verbalize the offer list in different languages.
 
 ::: tip Note
-Don't care expressions need to be defined in another annotation, but the interactive experience will be reflected here. See more about [Don't Care](./dontcare.md).
+Don't care expressions need to be defined in another annotation, but the interactive experience will be reflected here.
 :::
 
 Aside from these main control, OpenCUI value recommendation also comes with other bells and whistles to make it easy to adapt to real world situations. For example, there is a hard and soft mode toggle, which indicates whether option or value outside what bot offers is acceptable. There is also annotation allow you customize the conversational behavior when the item list is empty or just had one entry. 

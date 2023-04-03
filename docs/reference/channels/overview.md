@@ -17,10 +17,9 @@ To set up official extension channels, you can follow these steps below:
 3. **Finish Setup Channel**. Back to the channel platform, set channel **Webhook** by using the Callback URL you copied above.
 
 However, each channel may be set up in a slightly different way, so see the specific channel documentation for details:
+- [Google Business Message](googlebusiness.md)
 - [Messenger](messenger.md)
 - [WhatsApp Business](whatsapp.md)
-- [Google Business Message](googlebusiness.md)
-- [WeChat Official Account](wpa.md)
 
 You can build a chatbot for either one of these channels or all of them, and decide each integration handles user interactions in a **universal-message** way or a **channel-specific** way. For more information about the universal-message way, see [Universal Channel](universalmessage.md).
 
