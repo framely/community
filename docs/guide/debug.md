@@ -33,4 +33,4 @@ For coders, you can inspect the detailed log by clicking the "**View log**" icon
 You can save test cases by clicking the "**Save test case**" icon, which allow you rerun them in a later stage. For more information about Debug, refer to the [Testing](../reference/platform/testing.md) section.
 
 ## Next steps
-Now you know how you can test a chatbot, let's see how you can [build a simple chatbot](pingpong.md).
+Now you know how you can test a chatbot, let's see how you can [build a chatbot](pingpong.md).

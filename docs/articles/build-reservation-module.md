@@ -15,7 +15,7 @@ author: Sunny May
 
 ## Overview
 
-This guide shows you how to document a conversational user interface (CUI) design for a table reservation, and build a module upon that CUI design with [reservation APIs](../plugins/services/reservation/reservation-api.md). 
+This guide shows you how to document a conversational user interface (CUI) design for a table reservation, and build a module upon that CUI design with [reservation APIs](../reference/plugins/services/reservation/reservation-api.md). 
 
 Table reservation is designed to help users to book/view/cancel a table at a restaurant for a number of guests at a certain time. By reusing this module, builders can provide a table reservation service for their own businesses in their own chatbots.
 
@@ -282,7 +282,7 @@ Read the following articles before starting to build a module.
 1. [Quickstart with PingPong](../reference/quickstarts/pingpong.md) teaches how to build a simple chatbot which includes the basic operation of the platform.
 2. [Key Concepts](../guide/concepts.md) helps to understand the type system and the modules.
 3. [Slot Filling](../guide/slotfilling.md) shows how the bot can interact with users.
-4. [Reservation API](../plugins/services/reservation/reservation-api.md) describes the functionality of each API in the [reservation service](https://build.opencui.io/org/services.opencui/agent/reservation/struct/service_schema).
+4. [Reservation API](../reference/plugins/services/reservation/reservation-api.md) describes the functionality of each API in the [reservation service](https://build.opencui.io/org/services.opencui/agent/reservation/struct/service_schema).
 
 ### Describe Service at Schema Level
 
@@ -302,11 +302,11 @@ In OpenCUI, you can describe your service with [type systems](../guide/concepts.
 | Label          | Type                                                                                                                   | Description                                                                                                                                                                                      | 
 |:---------------|:-----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | userIdentifier | [UserIdentifier](../reference/annotations/systemcomponent.md#user-identifier)                                          | The identifier of the user. <br> Automatically filled by the runtime.                                                                                                                            |
-| location       | [Location](../plugins/services/reservation/reservation-api.md#location)                                                | The location of the restaurant. <br> Filled by the user or the business. If it's filled by the user, you should add instances of the locations to **services.opencui.reservation.LocationName**. |
+| location       | [Location](../reference/plugins/services/reservation/reservation-api.md#location)                                      | The location of the restaurant. <br> Filled by the user or the business. If it's filled by the user, you should add instances of the locations to **services.opencui.reservation.LocationName**. |
 | resourceType   | [ResourceType](https://build.opencui.io/org/services.opencui/agent/reservation/struct/entity/63b50c47fb84b020c72ba4de) | The type of resource. <br> Filled by the user or the business. If it's filled by the user, you should add instances of the types to **services.opencui.reservation.ResourceType**.               |
 | duration       | kotlin.Int                                                                                                             | The duration of the reservation, in seconds. <br> Filled by the user or the business.                                                                                                            |
 | number         | kotlin.Int                                                                                                             | The numbers of guests. <br> Filled by the user.                                                                                                                                                  |
-| datePicker     | [DatePicker](../plugins/components/datepicker/datepicker-design.md#schema-representation)                              | The date of the reservation. <br> Filled by the user.                                                                                                                                            |
+| datePicker     | [DatePicker](../reference/plugins/components/datepicker/datepicker-design.md#schema-representation)                              | The date of the reservation. <br> Filled by the user.                                                                                                                                            |
 | timePicker     | [TimePicker](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8af37517f06c1880e3d06 )          | The start time of the reservation. <br> Filled by the user.                                                                                                                                                          |
 
 #### Add Native Functions
@@ -367,7 +367,7 @@ Now, you need to add a native function to filter the resources by the number of 
 
 ### Define Interaction 
 
-OpenCUI provides [dialog annotations](../reference/annotations#dialog-annotations) to define how the bot interacts with users, and [responses](../reference/glossary.md#response) to display the result. In this section, you add dialog annotations and responses to the **MakeReservation** skill.
+OpenCUI provides [dialog annotations](../reference/annotations/overview) to define how the bot interacts with users, and [responses](../reference/glossary.md#response) to display the result. In this section, you add dialog annotations and responses to the **MakeReservation** skill.
 
 Before you start, here are some assumptions about this business:
 1. There is only one location for this restaurant.
@@ -381,9 +381,9 @@ Under the above assumptions, location, resource type, and duration can be given 
 During the slot filling process, the following dialog annotations will be used.
 
 1. [Initialization](../reference/annotations/init.md): when a slot is filled by the business, you can use initialization to provide a value for this slot. Here are the initial values for each slot:
-   - **location** slot:  the first value in the return list from [listLocation](../plugins/services/reservation/reservation-api.md#listlocation).
+   - **location** slot:  the first value in the return list from [listLocation](../reference/plugins/services/reservation/reservation-api.md#listlocation).
    - **resourceType** slot: "table" with the right type.
-   - **duration** slot: the first duration of the first value in the return list from [listResource](../plugins/services/reservation/reservation-api.md#listresource).
+   - **duration** slot: the first duration of the first value in the return list from [listResource](../reference/plugins/services/reservation/reservation-api.md#listresource).
    
 2. [Fill Strategy](../reference/annotations/fillstrategy.md): for the slots filled by the business, their fill strategy should be Direct Fill. For the slots filled by the user, just follow the default fill strategy (Always Ask). Here is what fill strategy each slot should follow:
    - Direct Fill: **location** slot, **resourceType** slot and **duration** slot.

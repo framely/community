@@ -28,11 +28,11 @@ Thank you for contacting the virtual PingPong chatbot. Have a great day!
 :::
 ::::
 
-OpenCUI supports [5 levels of CUI](../reference/essentials/5levels-cui.md) capabilities. By completing this tutorial, you should be able to develop and debug [the first level, FAQ like](../reference/essentials/5levels-cui.md#frame-without-slot) conversational user experience, such as allowing users to check your business hours.
+OpenCUI supports [5 levels of CUI](../essentials/5levels-cui.md) capabilities. By completing this tutorial, you should be able to develop and debug [the first-level, FAQ-like](../essentials/5levels-cui.md#frame-without-slot) conversational user experience, such as allowing users to check your business hours.
 
 ## Before you start
 * [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-* It is useful to get familiar with [the type-grounded way of building chatbot](../reference/essentials/sgcui.md).
+* It is useful to get familiar with [the type-grounded way of building chatbot](../essentials/README.md).
 
 ## Create chatbot
 

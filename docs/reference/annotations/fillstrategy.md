@@ -33,7 +33,7 @@ Prompt strategy is a composite annotation, as OpenCUI provides a set of concrete
 
 ### Always
 #### Overview
-Always strategy works well with other annotations, in fact, it imposes no constraints on what you can do with the other [slot filling annotations](../../guide/slotfilling.md), including: [Initialization](init.md), [Value Recommendation](valuerec.md), [Value Check](valuecheck.md) and [Confirmation](confirmation.md). 
+Always strategy works well with other annotations, in fact, it imposes no constraints on what you can do with the other [slot filling annotations](../../essentials/slotfilling.md), including: [Initialization](init.md), [Value Recommendation](valuerec.md), [Value Check](valuecheck.md) and [Confirmation](confirmation.md). 
 Always strategy is easy to set up:
 - Set its Fill Strategy to Always
 - Fill at least one template in the Prompt text input box.
@@ -70,7 +70,7 @@ That will be $10. Please pay with ApplePay.
 #### Overview
 Conditional strategy gives builder a way to specify when or when not to prompt users for their choice on a given slot, by means of a boolean expression. As always, the slot used in this condition expression should be earlier than the current slot and bot behavior, when you reference a later slot in condition is not defined and can change without notice.
 
-Like Always strategy, the Conditional strategy is also orthogonal or casts no constrains to other annotations in the [slot filling](../../guide/slotfilling.md) pipeline with the condition expression is evaluated to true. When it is evaluated to false, however, the slot will be left with unfilled and bot will move to the next slot or response.
+Like Always strategy, the Conditional strategy is also orthogonal or casts no constrains to other annotations in the [slot filling](../../essentials/slotfilling.md) pipeline with the condition expression is evaluated to true. When it is evaluated to false, however, the slot will be left with unfilled and bot will move to the next slot or response.
 
 Conditional strategy is easy to set up:
 - Pick a slot, set its Fill Strategy to Conditional then, specify the conditional expression in Ask Condition input box, which should be a boolean expression in kotlin sense.
@@ -120,7 +120,7 @@ How about headache?
 ::::
 
 #### Overview
-Gated strategy can only be applied to frame slot. So to take advantage of this prompt strategy, you first need to define a frame to host the closely related slots. Like conditional strategy, this choice is also orthogonal to other annotations in the [slot filling](../../guide/slotfilling.md) pipeline. 
+Gated strategy can only be applied to frame slot. So to take advantage of this prompt strategy, you first need to define a frame to host the closely related slots. Like conditional strategy, this choice is also orthogonal to other annotations in the [slot filling](../../essentials/slotfilling.md) pipeline. 
 
 Boolean Gate will ask users the YES-or-NO question once, then waits for three kinds of answers:
 If the answer is Yes, OpenCUI will then follow the depth first rule and start to fill nested slots one at a time in their natural order. 

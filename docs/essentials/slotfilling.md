@@ -39,7 +39,7 @@ It should be clear that message bot send to user in a single turn can contain me
 we have message generated from confirmation from previous slot, value check failure for the current slot possibly with user existing slot mention, prompt and value recommendation in attempt to fill the slot again.
 
 ## Advanced annotations
-Slot level annotations is designed for the common use cases, so it is designed for convenience instead of flexibility. The underlying mechanism of schema grounded conversational user interface, including the 5 stage of slot filling, is modeled based on dynamic [Startchart](https://statecharts.dev/), also known as composite state machines. So, if there are CUI behavior that can not be defined by these high level annotations, one can always to look at [Beyond Slot Filling](../reference/annotations/transition.md), which offer a greater deal of control at low level: builder can directly control how bot should react given the state we are in, user input and some arbitrary condition defined on them. 
+Slot level annotations is designed for the common use cases, so it is designed for convenience instead of flexibility. The underlying mechanism of schema grounded conversational user interface, including the 5 stage of slot filling, is modeled based on dynamic [Startchart](https://statecharts.dev/), also known as composite state machines. So, if there are CUI behavior that can not be defined by these high level annotations, one can always to look at [State transition](../reference/annotations/transition.md), which offer a greater deal of control at low level: builder can directly control how bot should react given the state we are in, user input and some arbitrary condition defined on them. 
 
 
 

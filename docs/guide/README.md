@@ -18,11 +18,11 @@ Cloning an existing project is the fastest way to start play with it. This guide
 #### [Test a chatbot](debug.md)
 Before you deploy your bot to production environment, you can test its behavior using the builtin **Debug** tool.
 
-#### [Build a simple chatbot](pingpong.md)
+#### [Build a chatbot](pingpong.md)
 This guide walks you through how to create a basic chatbot on the OpenCUI platform. The sample provides a quick way to explore the functionality of a chatbot, and it can serve as a starting point for your chatbot development. 
 
 #### [Import a module](use-hours.md)
-The main objective of OpenCUI is to provide conversational user interface for service APIs. One can declare a service in the module, and build CUI on top of it. The resulting module can then be reused by different business, simply by import it into their chatbot, and create the required provider in the organization and wire it to the service. This guide show you how to add functionality to your chatbot by importing a module.
+The main objective of OpenCUI is to provide conversational user interface for service APIs. One can declare a service in the module, and build CUI on top of it. The resulting module can then be reused by different business, simply by importing it into their chatbot, and create the required provider in the organization and wire it to the service. This guide show you how to add functionality to your chatbot by importing a module.
 
 #### [Build a module, and its provider](build-service.md)
 This guide show you how to declare a service and define CUI for that service in a module, and as well as how to build a Postgrest provider for that service. Following this guide, you will understand how to build module/provider you reused in last guide.

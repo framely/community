@@ -94,7 +94,7 @@ Transition is a low level control that you can use to implement arbitrary conver
 Update action contains one or more actions in sequence, you need to define it by order. When the trigger is active, bot will respond the update action one by one according to the **top-to-bottom order**, please make sure the order of actions is the one you want.
 
 With actions, you can: 
-- Prompt Users for necessary information by **Single Value Message** and **Multiple Value Message**. See [Universal channel](../channels/messenger.md) for more details about messages;
+- Prompt Users for necessary information by **Single Value Message** and **Multiple Value Message**. See [Universal channel](../channels/universalmessage.md) for more details about messages;
 - Change the state of slot filling by **Clear Slot**, **Fill Slot** and **Recheck Slot**;
 - Transfer conversation by **Skill Start**, **Skill Abort** and **Skill End**.
 
