@@ -8,7 +8,6 @@ export const en = {
         '/essentials/sgcui.md',
         '/essentials/slotfilling.md',
         '/essentials/5levels-cui.md',
-        '/essentials/components.md',
         '/essentials/architecture.md'
       ]
     }
