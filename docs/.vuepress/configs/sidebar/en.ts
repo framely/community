@@ -1,6 +1,6 @@
 
 export const en = {
-    '/essentials/': [
+  '/essentials/': [
     {
       text: "Why OpenCUI",
       children: [
@@ -86,7 +86,7 @@ export const en = {
       text: 'CUI Components',
       collapsible: true,
       children: [
-          '/reference/annotations/systemcomponent.md',
+        '/reference/annotations/systemcomponent.md',
         {
           text: 'Date picker',
           link: '/reference/plugins/components/datepicker/',
