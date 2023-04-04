@@ -4,7 +4,7 @@ The flow-based approach is a popular method for developing graphical user interf
 However, to provide a good user experience, developers need to carefully define every possible interaction flow. This is not a problem for GUIs since users can only interact with the GUI in the ways it was designed. However, with conversational user interfaces (CUIs), users can and will freely express themselves at any given turn. Building a CUI using the flow-based approach can be problematic, as developers are faced with a choice: either try to enumerate exponentially growing conversational paths, resulting in significant cost overruns, or risk providing a bad user experience.
 
 So, how can we build a chatbot that gives users the freedom to express themselves while allowing businesses to have full control of the conversation? Let's take another look at what a chatbot really is for businesses.
-
+### Type-based approach
 The objective of chatbots is to provide services to users through a conversational user interface(CUI). A service is an interface for a business capability. From the perspective of the caller or client, a service can be viewed as a set of function interfaces, each fully defined by its type, including its name, input parameter types, and return type. These interfaces decouple the client from the provider, enabling software to be built independently and reused by different applications and systems.
 
 The objective of CUI is thus to instantiate an object or create an instance of some function type through conversations. This involves identifying the function by its name and recursively instantiating values for all its input parameters at a language-independent schema level from natural language text. 
@@ -20,7 +20,6 @@ One of the major challenges of building a CUI is that the builder does not have 
 
 With the business logic taken care of at the interaction layer, the main responsibility left for the language layer is the translation between structured data and natural language used by the general public. By adding some natural annotation to the types and their slots, current evidence suggests that this layer can largely be addressed through the use of large language models (LLMs) in a zero-shot learning setting. Therefore, there may be no need to hire natural language understanding talent for your team anymore.
 
-## More advantages
 Better separation of concerns is a sufficient condition for choosing a technology stack. OpenCUI was built with many other considerations to make it more attractive for those who want to build a great conversational experience without incurring cost overruns.
 
 ### Reusable component
@@ -44,7 +43,7 @@ One of the hallmarks of natural language is that the same word can have differen
 The flow-based approach for CUIs places the burden solely on the builder, who must define the conversational behavior for every conceivable path, or else the conversational experience will suffer. In contrast, type-grounded CUIs allow builders to declare the conversational experience they want to deliver. To support this approach, we have open-sourced a powerful [runtime](./architecture.md) that takes care of the implementation details.
 
 ## Conclusion
-According to Gates, only two technologies have ever struck him as 'revolutionary': the first is the modern graphical user interface (GUI). With its ease of use and gradually reduced cost of building GUI applications over the years, GUI applications have forever changed human civilization. Now, it is that time again - conversational user interface (CUI) has the potential to remove any barriers for any user to access any services. We hope this type-based approach can help you build the great conversational experience your user deserve, without breaking your bank. However, 
+According to Gates, only two technologies have ever struck him as 'revolutionary': the first is the modern graphical user interface (GUI). With its ease of use and gradually reduced cost of building GUI applications over the years, GUI applications have forever changed human civilization. Now, it is that time again - conversational user interface (CUI) has the potential to remove any barriers for any user to access any services. We hope this type-based approach can help you build the great conversational experience your user deserve, without breaking your bank.
 
 
 For the impatient, [you can get started now](https://build.opencui.io).
