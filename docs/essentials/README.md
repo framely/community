@@ -20,7 +20,7 @@ One of the major challenges of building a CUI is that the builder does not have 
 
 With the business logic taken care of at the interaction layer, the main responsibility left for the language layer is the translation between structured data and natural language used by the general public. By adding some natural annotation to the types and their slots, current evidence suggests that this layer can largely be addressed through the use of large language models (LLMs) in a zero-shot learning setting. Therefore, there may be no need to hire natural language understanding talent for your team anymore.
 
-## Mare advantages
+## More advantages
 Better separation of concerns is a sufficient condition for choosing a technology stack. OpenCUI was built with many other considerations to make it more attractive for those who want to build a great conversational experience without incurring cost overruns.
 
 ### Reusable component
@@ -39,9 +39,6 @@ In the spirit of separation of concerns, we developed a [maturity model for CUI]
 
 ### Implicit context management
 One of the hallmarks of natural language is that the same word can have different meanings in different contexts, a data structure that summarizes the conversation so far. Many flow-based approaches need to explicitly model context. In type-based approaches, a partially instantiated object can serve this purpose. On the OpenCUI platform, there are template and exemplar input boxes for each slot and annotation. These annotations will only work when the OpenCUI runtime tries to create an object to fill the corresponding slot, so both response rendering and language understanding are naturally context-dependent.
-
-### Composite state machine
-When the instance is not fully populated based on the information provided by the user so far, the CUI needs to guide the conversation so users can provide information to complete the instantiation. The underlying interaction logic that bot follows should be built on some sound [mathematical model](./slotfilling.md) so that it is easy to build, debug, and maintain.
 
 ### Open-soured runtime
 The flow-based approach for CUIs places the burden solely on the builder, who must define the conversational behavior for every conceivable path, or else the conversational experience will suffer. In contrast, type-grounded CUIs allow builders to declare the conversational experience they want to deliver. To support this approach, we have open-sourced a powerful [runtime](./architecture.md) that takes care of the implementation details.

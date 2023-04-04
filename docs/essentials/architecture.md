@@ -1,6 +1,6 @@
-# Runtime Under the Hood
+# Open sourced runtime
 
-OpenCUI platform is the place where builder define, share conversational components, service providers and then package these components into enjoyable conversational services. The declaration on the platform is then generated into Kotlin code where it can be compiled and deployed along with OpenCUI runtime to the environment of your choices. 
+OpenCUI platform is the place where builder define, share conversational components, service providers and then package these components into enjoyable conversational experiences. The declaration on the platform is then compiled into Kotlin code where it can be built and deployed along with open-sourced OpenCUI runtime to the environment of your choices. 
 
 ## Architecture
 The conversational interaction specified by builder declaratively in terms of the primitives offered by runtime, the execution of these interactions by the OpenCUI runtime can be depicted as follows:
