@@ -61,18 +61,6 @@ A frame represents a table, and slots in this frame represent the table columns:
 ![data management](/images/provider/postgrest/data-management.png)
 :::
 
-```sql
--- OpenCUI will create table by the rules you specify with the frame.
--- Then the SQL CREATE TABLE statement will be like this:
-
-CREATE TABLE frame_label (
-  slot_1 SQLDataType,
-  slot_2 SQLDataType,
-  slot_3 SQLDataType,
-  ...
-) ;
-```
-
 You can use **Storage Annotations** to declare constraints which are used to specify rules for the data in a table. This ensures the accuracy and reliability of the data in the table. Constraints can be column level or table level, therefore, storage annotations can be slot level or frame level. Slot level apply to a column, and frame level apply to the whole table.
 
 If the table needs to be accessed by the operation team on the admin interface, you can also specify it through **Backoffice Annotations**. 
@@ -102,7 +90,7 @@ Data types are a way to limit the kind of data that can be stored in a table: in
 
 Types that are not specified in the table above will be considered as string types, including custom entity types. String types can be one of `text`, `char(n)` and `varchar(n)`, where `n` is a positive integer. For more information about such types in PostgreSQL, click [Character Types](https://www.postgresql.org/docs/current/datatype-character.html).
 
-If the type conversion is deterministic, you don't need to worry about it, the SQL date type will be displayed automatically. Otherwise, you need to specify one.
+If the type conversion is deterministic, you don't need to worry about it, the SQL data type will be displayed automatically. Otherwise, you need to specify one.
 
 ::: thumbnail
 ![sql data type deterministic](/images/provider/postgrest/sql-data-type-deterministic.png)
