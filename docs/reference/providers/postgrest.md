@@ -15,17 +15,17 @@ There are a couple advantage of using backend component approach to build servic
 ## Create Postgrest Provider
 
 To create a postgrest provider: 
-1. Go to one of your org, select **Provider** in left side menu, click **Create** on the right side.
+1. Within an org, click **Create** on the right side and select **Create provider**.
    ::: thumbnail
    ![create provider](/images/provider/postgrest/create-provider.png)
    :::
 
 2. In the Create popup window, complete the form for basic settings: 
-   - Enter a label for your postgrest provider.
-   - Select **Postgrest** in **Provider Type** field.
-   - Select **OpenCUI-hosted** in **Deploy Mode** field as currently we only support hosted mode for postgrest provider. 
+   - Enter a **Project label** for your postgrest provider.
+   - Select **Postgrest** in **Provider type** field.
+   - Select **OpenCUI-hosted** in **Deploy mode** field as currently we only support hosted mode for postgrest provider. 
    - Specify a **Region** for your postgrest database.
-   - Click **Save**.
+   - Click **Create**.
 
    ::: thumbnail
    ![provider form](/images/provider/postgrest/provider-form.png)
@@ -53,25 +53,13 @@ With postgres provider, it is very convenient to create a database without the S
 :::
 
 A frame represents a table, and slots in this frame represent the table columns:
-- Frame label specifies the names of the table.
-- Slot label specifies the names of the columns of the table.
-- Slot type specifies the type of data the column can hold.
+- Frame label specifies the name of the table.
+- Slot label specifies the name of the column in the table.
+- Slot type maps to SQL data type that specifies the type of data the column can hold.
 
 ::: thumbnail
 ![data management](/images/provider/postgrest/data-management.png)
 :::
-
-```sql
--- OpenCUI will create table by the rules you specify with the frame.
--- Then the SQL CREATE TABLE statement will be like this:
-
-CREATE TABLE frame_label (
-  slot_1 SlotType,
-  slot_2 SlotType,
-  slot_3 SlotType,
-  ...
-) ;
-```
 
 You can use **Storage Annotations** to declare constraints which are used to specify rules for the data in a table. This ensures the accuracy and reliability of the data in the table. Constraints can be column level or table level, therefore, storage annotations can be slot level or frame level. Slot level apply to a column, and frame level apply to the whole table.
 
@@ -80,7 +68,7 @@ If the table needs to be accessed by the operation team on the admin interface, 
 When the postgres provider **Deploy** button is triggered, OpenCUI platform will update the table structure in the corresponding hosted database. 
 
 ::: tip Need To Know
-When creating a table in hosted database, OpenCUI will automatically add two columns, `ID` column and `create_at` column. So, normally, you don't need to add these two slots in a frame, but you can if you need to.
+When creating a table in hosted database, OpenCUI will automatically add two columns, `ID` column and `created_at` column. So, normally, you don't need to add these two slots in a frame, but you can if you need to.
 :::
 
 ### Data Type
@@ -96,12 +84,13 @@ Data types are a way to limit the kind of data that can be stored in a table: in
 | java.time.LocalDate     | date                        |
 | java.time.LocalDateTime | timestamp without time zone |
 | java.time.LocalTime     | time without time zone      |
+| java.time.DayOfWeek     | text                        |
 | java.time.Year          | bigint                      |
 | java.time.YearMonth     | date                        | 
 
 Types that are not specified in the table above will be considered as string types, including custom entity types. String types can be one of `text`, `char(n)` and `varchar(n)`, where `n` is a positive integer. For more information about such types in PostgreSQL, click [Character Types](https://www.postgresql.org/docs/current/datatype-character.html).
 
-If the type conversion is deterministic, you don't need to worry about it, the SQL date type will be displayed automatically. Otherwise, you need to specify one.
+If the type conversion is deterministic, you don't need to worry about it, the SQL data type will be displayed automatically. Otherwise, you need to specify one.
 
 ::: thumbnail
 ![sql data type deterministic](/images/provider/postgrest/sql-data-type-deterministic.png)
@@ -233,17 +222,16 @@ When the SQL data type is one of `text`, `varchar` and `varchar(n)`, you can cho
 ## Access Backoffice
 
 Once the table structure has been declared in OpenCUI platform, the hosted database can be accessed through **Backoffice** (the admin interface). To access the actual data source, you need to deploy the postgres provider first. 
-1. Heading to **Version** page, in the middle of the second navigation bar, select **Version** tab. 
-2. Click **Deploy** in the upper-right corner of the Version area.
+1. In the navigation bar, select the **Versions** tab.
+2. Click **Deploy** in the upper-right corner of the Versions area.
 ::: thumbnail
 ![deploy postgres provider](/images/provider/postgrest/sql-deploy.png)
 :::
 
 When the **Deploy** button is triggered, OpenCUI platform will update the table structure in the corresponding hosted database. Then, you can log in to the backoffice to access the actual data source through Postgres provider configuration information. 
 
-1. Switch to **Build** area, in the middle of the second navigation bar, select **Build** tab.
-2. In the left side menu, click **Configuration**, then you can get the configuration information.
-3. Copy and paste the **URL** to your browser, use **Admin Email** and **Admin Password** to log into backoffice.
+1. Switch to **Configuration** area, then you can get the configuration information.
+2. Copy and paste the **URL** to your browser, use **Admin Email** and **Admin Password** to log in to backoffice.
 ::: thumbnail
 ![configuration](/images/provider/postgrest/configuration.png)
 *Configuration information*
@@ -262,7 +250,7 @@ Be very careful with table schema changes, remember to manually modify data in b
 
 To provide function implementation, you need to add service interface to implement first.
 
-Back to your postgrest provider, heading to **Service** page from the left side menu. In the **Implemented** section, select the service interface you want to implement.
+Back to your postgrest provider, and head to **Service** page from the navigation bar. In the **Implemented** section, select the service interface you want to implement.
 
 :::thumbnail
 ![function implementation](/images/provider/postgrest/function-implementation.png)
@@ -333,13 +321,13 @@ return getFoodCategory()!!.map{it -> it.returnValue!!}
 
 When you finish implementing the function, before you wire it to the chatbot, you can verify whether your implementation is as expected through **Function Console**. Currently, function console can only test **Provider Dependent** implementations. To use function console, following these steps: 
 
-1. Deploy your postgres provider. In the middle of the second navigation bar, select **Version** tab, click **Deploy** in the upper-right corner of the Version area. Make sure that all changes including function implementations are merged into master and deployed successfully.
+1. Deploy your postgres provider. In the navigation bar, select **Versions** tab, click **Deploy** in the upper-right corner of the Versions area. Make sure that all changes including function implementations are merged into master and deployed successfully.
 
 ::: thumbnail
 ![deploy postgres provider](/images/provider/postgrest/sql-deploy.png)
 :::
 
-2. After deploying, switch to **Build** tab. In the upper-right corner of the **Build** area, click **Debug**. 
+2. After deploying, switch to **Service** tab. In the upper-right corner of the Service area, click **Debug**. 
 
 ::: thumbnail
 ![click test](/images/provider/postgrest/click-test.png)
@@ -349,7 +337,7 @@ When you finish implementing the function, before you wire it to the chatbot, yo
    - If you want to pass null to a parameter, just leave it empty.
    - If the type of a parameter is entity, you can type its value directly.
    - If the type of a parameter is frame, please use JSON format.
-4. Click **Execute**, then you can see the returns in **Result** section. As shown below, this function will return the reservation information. 
+4. Click **Execute**, then you can see the returns in **Result** section. As shown below, this function will return the business hours on a day. 
 
 ::: thumbnail
 ![function testing](/images/provider/postgrest/function-testing.png)
@@ -366,8 +354,8 @@ Once you have a postgrest provider running, you need to wire this implementation
 :::
 
 2. Switch to your chatbot, wire postgrest provider to its service interface.
-    1. On **STRUCT** level, click **Settings** in the left side menu. 
-    2. In **Integrations** tab, select the service interface you just imported and the postgrest provider that implements it. At the same time, a label needs to be added to show different integration.
+   - Head to **Settings** page from the navigation bar.
+   - Switch to **Integrations** tab, in the **Debug service provider** section or **Deploy service provider** section, select the service interface you just imported and the postgrest provider that implements it. At the same time, a label needs to be added to show different integration.
 
 ::: thumbnail
 ![chatbot integration](/images/provider/postgrest/chatbot-integration.png)
