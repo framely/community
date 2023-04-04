@@ -35,7 +35,7 @@ Beyond the normal operator like `+`,`-`,`*`,`/`, you can combine expressions usi
   - If the value you try to provide is conditional, try to use [if expression](https://kotlinlang.org/docs/control-flow.html). The format of if expression is like `if (a > b) a else b`.
 - [Elvis operator](./kotlinexpression.md#elvis-operator)
   - Instead of writing the complete if expression, you can also express this with the [Elvis operator](https://kotlinlang.org/docs/null-safety.html#elvis-operator) `?:`. If the expression to the left of `?:` is not null, the Elvis operator returns it, otherwise it returns the expression to the right. 
-  - For example, if an expression is `a?:b`, and `a` is null while `b` is not null, the initial value is `b`.
+  - For example, if an expression is `a?:b?:c`, and `a` is null while `b` is not null, the initial value is `b`.
 
 ## How To Use
 Initialization is an optional slot annotation. If you know that a user will most likely accept a value based on application logic or historical data, you can use initialization to instruct the bot to propose that value for the user, reducing user's effort level.
