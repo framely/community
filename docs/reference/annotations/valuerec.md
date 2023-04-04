@@ -201,11 +201,10 @@ You can use the List module to provide a text list or rich card experience at js
 
 ```kotlin
 // index
-${it.index + 1}  // index start with 0, so should '+1';
+${it.index + 1}  // index starts with 0, so should '+1';
 
 // Entity type
-${it.value.name()}  // on platform, expressions[0] stand for normalized
-${it.value.identifier()}  // on platform, entity instance label
+${it.value!!.expression()}  // on platform, expressions[0] stands for expression
 
 // Frame type
 ${it!!.value}
