@@ -33,7 +33,7 @@ Prompt strategy is a composite annotation, as OpenCUI provides a set of concrete
 
 ### Always
 #### Overview
-Always strategy works well with other annotations, in fact, it imposes no constraints on what you can do with the other [slot filling annotations](../../essentials/slotfilling.md), including: [Initialization](init.md), [Value Recommendation](valuerec.md), [Value Check](valuecheck.md) and [Confirmation](confirmation.md). 
+Always strategy works well with other annotations, in fact, it imposes no constraints on what you can do with the other [slot filling annotations](./overview.md#five-stages-of-slot-filling), including: [Initialization](init.md), [Value Recommendation](valuerec.md), [Value Check](valuecheck.md) and [Confirmation](confirmation.md). 
 Always strategy is easy to set up:
 - Set its Fill Strategy to Always
 - Fill at least one template in the Prompt text input box.
@@ -134,7 +134,9 @@ Set up gated strategy is easy, on a **frame slot**:
   - Affirmatives and Negatives: expression exemplars to help DU, see [Affirmatives and Negatives in Confirmation](./confirmation.md#affirmatives-and-negatives)
 - Provide at least one template for origin slot in its Prompt for bot to generate natural language response.
 
+::: thumbnail
 ![boolean-gate](/images/annotation/fillstrategy/booleangate.png)
+:::
 
 #### How to Use
 When there is complex subject with many details, it is more natural to use a boolean question as gate to get user permission to go into details. This can reduce the user confusion and your effort to deal with resulted unhappy conversation path. 
