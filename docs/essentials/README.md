@@ -43,7 +43,7 @@ One of the hallmarks of natural language is that the same word can have differen
 The flow-based approach for CUIs places the burden solely on the builder, who must define the conversational behavior for every conceivable path, or else the conversational experience will suffer. In contrast, type-grounded CUIs allow builders to declare the conversational experience they want to deliver. To support this approach, we have open-sourced a powerful [runtime](./architecture.md) that takes care of the implementation details.
 
 ## Conclusion
-According to Gates, only two technologies have ever struck him as 'revolutionary': the first is the modern graphical user interface (GUI). With its ease of use and gradually reduced cost of building GUI applications over the years, GUI applications have forever changed human civilization. Now, it is that time again - conversational user interface (CUI) has the potential to remove any barriers for any user to access any services. We hope this type-based approach can help you build the great conversational experience your user deserve, without breaking your bank. However, 
+According to Gates, only two technologies have ever struck him as 'revolutionary': the first is the modern graphical user interface (GUI). With its ease of use and gradually reduced cost of building GUI applications over the years, GUI applications have forever changed human civilization. Now, it is that time again - conversational user interface (CUI) has the potential to remove any barriers for any user to access any services. We hope this type-based approach can help you build the great conversational experience your user deserve, without breaking your bank.
 
 
 For the impatient, [you can get started now](https://build.opencui.io).
