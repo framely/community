@@ -67,13 +67,15 @@ If the chatbot is created successfully, it should be displayed as shown below:
 ![enter chatbot](/images/guide/pingpong/enter_chatbot.png)
 :::
 
-## Build chatbot
+## Build a chatbot
 Chatbots allow user access functions through CUI, and CUI behavior for an exposed function is defined in its corresponding skill. The input parameters of a function are represented by slots in the skill, and the type of these parameters, along with CUI behavior for these types are defined as frames and entities, with frames for composite and polymorphic types, and entities for primitive types. Service is a set of functions, so chatbot is simply a set of skills. Building a chatbot is simply building skills one at a time.
 
 
 CUI can be divided into interaction and language layer. The language layer are responsible for converting between natural language text and semantics (structured representation of meaning), interaction logic (also known as dialog management), decide how bot should react in semantics. For more information about each of the layers, see [3 layers of chatbot](3layers.md).
 
 In this tutorial, let's see how we can define a simple skill in the following 4 steps: 
+### 1. Create dependent types
+
 
 ### 1. Create skill
 1. Go to the **pingpong** chatbot and ensure that you are at the **INTERACTION** level.
@@ -97,18 +99,6 @@ A skill defines how we invoke a function through CUI, so to build a skill, we ne
 
 A simple skill like "pingpong" is parameterized with slots, which needs to respond the reply based on the information provided by the user. When there are missing informations in the user's initial utterance, chatbot will conduct conversations to collect them. This can be done by adding slots to the skill at schema tab of the interaction layer.
 
-#### 2.1 Create entity type
-
-Before adding the slot, you need to create type first. Entity types are used to control how data from user input is extracted. OpenCUI provides predefined entities that can match some common types of data. For example, there are predefined entities like `java.time.LocalDate` for matching dates, `io.opencui.core.Email` for matching email addresses, and so on. You can also create your own custom entities for matching custom data. 
-
-In this case, we need create a custom entity type. Ensure that you are in the **pingpong** chatbot and at the **INTERACTION** level:
-1. Click **Create** button on the right side, and select **Create entity** to create a new entity.
-2. Enter a label for the entity and press enter. For example, `Location`.
-3. Within the `Location` entity, click **Add** button to add entity instances, such as `seattle` in the label field and **Save**.
-
-::: thumbnail
-![create entity](/images/guide/pingpong/create_entity.png)
-:::
 
 #### 2.2 Add slot
 
