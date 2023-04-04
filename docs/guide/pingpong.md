@@ -1,14 +1,15 @@
 # Build a chatbot
-A chatbot is essentially an application with a conversational user interface (CUI) and the goal of a chatbot is to invoke functions for the user through a conversational user interface (CUI). The goal of a CUI is then to create an instance of a function type defined by its name and input parameters, along with their respective types. With the function identified and values for its parameters instantiated, the callable instance created can then be used to invoke the desired function for the user. This view suggests that we can build a CUI in a type-grounded fashion: first, convert user utterances into data structures (represented as frame events), then follow the interaction logic predefined by the builder to generate a structured representation of the response (called a dialog act), and finally, render such a dialog act into natural text in a given language and style.
+A chatbot is essentially an application with a conversational user interface (CUI). The goal of a chatbot is to invoke functions for the user through this interface. The goal of a CUI is to create an instance of a function type defined by its name and input parameters. The callable instance can then be invoked for the user. 
+
+This view suggests that we can build a CUI in a type-based fashion. First, we declare all the function types we want to expose, along with the types needed by their parameters and return values. Then, we attach dialog annotations to convert user utterances into data structures represented as frame events. Next, we attach dialog annotations to these types and their slots (parameters for functions and attributes for classes), including both interaction logic, templates, and exemplars at the language layer to help convert back and forth between semantics and natural text.
 
    ::: thumbnail
    ![create save](/images/guide/pingpong/urr.png)
    :::
-In this type-grounded way of building CUI, we start with what services/functions that we want to expose to user through CUI. For each type involved, including the function types, and parameter types for these functions, and also types needed to define these types, we attach dialog annotations that specify how chatbot can create instance of that type through conversations. 
 
-One of the major challenges of building a CUI is that the builder does not have control over what the user can express at any given turn. This can be problematic for the popular flow-based approach where the chatbot won't know what to respond if the current conversational flow is not defined by the builder. If the CUI is defined in a type-grounded fashion, the chatbot can always engage in a constructive conversation, by figuring out the next instance that it needs to create in order to invoke a function for the user. In addition, it is much easier to reuse type-grounded CUI than the flow-based ones.
+One of the major challenges of building a CUI is that the builder does not have control over what the user can express at any given turn. When the current conversation path is not defined by the builder, a flow-based chatbot won't know how to respond, which can be detrimental to the business's interests. In contrast, a type-based chatbot can always engage in a constructive conversation by greedily creating value for missing slots in order to invoke a function for the user. Additionally, it is much easier to reuse a type-based CUI than a flow-based one.
 
-This tutorial will guide you step-by-step through the process of creating and building a simple chatbot in a type-grounded fashion on the OpenCUI platform. When interacting with the chatbot, users can get a welcome message and a reply *"pong"* based on the input location. For example:
+This tutorial will guide you step-by-step through the process of creating and building a simple chatbot on the OpenCUI platform. When interacting with the chatbot, users can get a welcome message and a reply *"pong"* based on the input location. For example:
 
 :::: conversation
 ::: bot Bot
@@ -34,15 +35,14 @@ Thank you for contacting the virtual PingPong chatbot. Have a great day!
 :::
 ::::
 
-OpenCUI supports [5 levels of CUI](../essentials/5levels-cui.md) capabilities. After completing this tutorial, you will be able to develop and debug [the second-level, service-oriented](../essentials/5levels-cui.md#frame-with-slots) conversational user experience, such as allowing users to check your business hours or make a reservation.
+OpenCUI supports [5 levels of CUI](../essentials/5levels-cui.md) capabilities. After completing this tutorial, you will be able to develop [a second-level](../essentials/5levels-cui.md#frame-with-slots) conversational experience, such as allowing users to check your business hours or make a reservation.
 
 ## Before you start
 - [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-- It is useful to get familiar with [the type-grounded way of building chatbot](../essentials/README.md).
+- It is useful to get familiar with [the type-based way of building chatbot](../essentials/README.md).
+- We assume that you have finished [clone a chatbot](./start-with-clone.md).
 
 ## Create chatbot
-
->The OpenCUI platform can be understood as GitHub specifically for chatbots. Creating a chatbot is analogous to creating a repository on GitHub.
 
 Upon logging in, an organization is automatically generated for you. You can create a chatbot under this organization by following these steps:
 1. Within an organization, in the upper right corner of the project area, click **Create** and select **Create chatbot**.

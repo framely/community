@@ -24,28 +24,23 @@ User: Top Gun, please.
 ::::
 
 ## Overview
-Prompt strategy is a required slot level annotation that you can use to control when and how to prompt for slot value.
-- Strategy that decide whether or when to prompt the user to fill this slot. More importantly, it also defines how other fill annotations should work together. 
-- Prompt is customization of dialog act SlotRequest, it contains a template that can be help to verbalize the slot request dialog act. Diversity of the response can be increased by adding more templates. For the strategy that requires prompt template, builder needs to provide at least one.
+Prompt strategy is a required slot-level annotation that you can use to control when and how to prompt for a slot value. It decides whether or when to prompt the user to fill a slot. More importantly, it also defines how other fill annotations should work together. A prompt is a customization of the dialog act SlotRequest, and it contains a template that can help verbalize the slot request dialog act. The diversity of responses can be increased by adding more templates.
 
 ## How To Use
-Prompt strategy is a composite annotation, as OpenCUI provides a set of concrete strategy to cover different use cases and let's cover them one by one.
+Prompt strategy is a composite annotation, as OpenCUI provides a set of concrete strategies to cover different use cases. Let's cover them one by one.
 
 ### Always
 #### Overview
-Always strategy works well with other annotations, in fact, it imposes no constraints on what you can do with the other [slot filling annotations](./overview.md#five-stages-of-slot-filling), including: [Initialization](init.md), [Value Recommendation](valuerec.md), [Value Check](valuecheck.md) and [Confirmation](confirmation.md). 
-Always strategy is easy to set up:
-- Set its Fill Strategy to Always
-- Fill at least one template in the Prompt text input box.
- 
-#### How to Use
-If a slot is required by business logic, you should configure the prompt strategy to be Always, bot will make sure this slot is filled properly. That means if a user does not mention their preference before, bot will prompt the user for it when it is time to fill this slot. Always strategy will guarantee there will be a value for the given slot.
+The Always strategy means that if the user does not provide a value, the chatbot will always prompt the user for that slot. It is easy to set up:
+- Set its Fill Strategy to 'Always'
+- Fill in at least one template in the 'Prompt' text input box.
 
+#### How to Use
+If a slot is required by the business logic, you should configure the prompt strategy to Always. The bot will make sure that this slot is filled. That means if a user has not mentioned their preference before, or their choice is not legitimate, the bot will prompt the user to ensure that there will be a value for the given slot.
 
 ### Conditional
 #### Motivation
-Not every slot is required to be filled. For example, when a user wants to watch a movie that does not have IMAX version, we should not be asking the user about it. For example:
-If there is a Boolean slot to record whether a user wants to see the IMAX version, then for the movie with the IMAX version, bot can 
+Not every slot is required to be filled. For example, when a user wants to watch a movie that does not have IMAX version, we should not be asking the user about it. For example, if the movie has the IMAX version, bot should behave this way: 
 :::: conversation
 ::: user User
 Can I get two tickets for 8:00pm Top Gun, please?
