@@ -262,7 +262,7 @@ Be very careful with table schema changes, remember to manually modify data in b
 
 To provide function implementation, you need to add service interface to implement first.
 
-Back to your postgrest provider, head to **Service** page from the navigation bar. In the **Implemented** section, select the service interface you want to implement.
+Back to your postgrest provider, and head to **Service** page from the navigation bar. In the **Implemented** section, select the service interface you want to implement.
 
 :::thumbnail
 ![function implementation](/images/provider/postgrest/function-implementation.png)
