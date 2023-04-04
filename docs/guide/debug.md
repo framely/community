@@ -16,7 +16,7 @@ To test your chatbot using Debug, follow these steps:
    ::: thumbnail
    ![try it now](/images/guide/pingpong/tryitnow_icon.png)
    :::
-3. Click **Connect**. This may take some time to as we build and deploy the chatbot to our development environment. Once the connection is established successfully, you can test your chatbot by typing messages in the input box at bottom and press enter. For example, enter `ping` then the bot should respond with `Pong`. 
+3. Click **Connect**. This may take some time to as we build and deploy the chatbot to our development environment. Once the connection is established successfully, you can test your chatbot by typing messages in the input box at bottom and press enter. For example, enter `ping` then the bot should ask for a location, upon getting a legit location say `Seattle`, respond with `Pong Seattle`. 
    ::: thumbnail
    ![pingpong test](/images/guide/pingpong/pingpong_test.png)
    :::
