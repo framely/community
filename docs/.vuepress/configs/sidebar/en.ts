@@ -15,11 +15,9 @@ export const en = {
     {
       text: 'Quickstart',
       children: [
-        '/guide/are-you-ready.md',
-        '/guide/concepts.md',
+
         '/guide/signingup.md',
         '/guide/start-with-clone.md',
-        '/guide/debug.md',
         '/guide/pingpong.md',
         '/guide/use-hours.md',
         '/guide/build-service.md',
@@ -28,6 +26,14 @@ export const en = {
     }
   ],
   '/reference/': [
+    {
+      text: 'Are you ready?',
+      link: '/reference/are-you-ready.md',
+    },
+    {
+      text: 'Key concepts',
+      link: '/reference/concepts.md',
+    },
     {
       text: 'Dialog Annotations',
       collapsible: true,
