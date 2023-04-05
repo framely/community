@@ -1,11 +1,13 @@
 # Build a chatbot
 A chatbot is essentially an application with a conversational user interface (CUI). The goal of a chatbot is to invoke functions for the user through this interface. The goal of a CUI is to create an instance of a function type defined by its name and input parameters. The callable instance can then be invoked for the user. 
 
-This view suggests that we can build a CUI in a type-based fashion. First, we declare all the function types we want to expose, along with the types needed by their parameters and return values. Then, we attach dialog annotations to convert user utterances into data structures represented as frame events. Next, we attach dialog annotations to these types and their slots (parameters for functions and attributes for classes), including both interaction logic, templates, and exemplars at the language layer to help convert back and forth between semantics and natural text.
-
+This view suggests that we can build a CUI in a type-based fashion. First, we declare all the function types we want to expose, along with the types needed by their parameters and return values. Next, we attach dialog annotations to these types and their slots (parameters for functions and attributes for classes).
    ::: thumbnail
    ![create save](/images/guide/pingpong/urr.png)
    :::
+On the OpenCUI platform, the CUI behavior is attached to types in the form of dialog annotations. Dialog annotations can be attached to a type as a whole (on its Annotation, Response, and Expression tabs) or attached to its slots. Dialog annotations have two layers: the interaction layer, which decides things like which slot we should request from the user, and the language layer, which decides the phrasing we use to request that information in a given language.
+
+Most dialog annotation need to be configured in two stages: once at interaction layer, once for each language you want to support at language layer. You need to propagate the change you made in interaction layer to language layers before you can configure the language layer portion of the annotation. In this tutorial, we annotate one type at a time, so we will switch to language layer after we are done with interaction layer for each type. For more information about schema, interaction logic and language, check out [chatbot in 3 layers](3layers.md).
 
 One of the major challenges of building a CUI is that the builder does not have control over what the user can express at any given turn. When the current conversation path is not defined by the builder, a flow-based chatbot won't know how to respond, which can be detrimental to the business's interests. In contrast, a type-based chatbot can always engage in a constructive conversation by greedily creating value for missing slots in order to invoke a function for the user. Additionally, it is much easier to reuse a type-based CUI than a flow-based one.
 
@@ -43,7 +45,6 @@ OpenCUI supports [5 levels of CUI](../essentials/5levels-cui.md) capabilities. A
 - We assume that you have finished [clone a chatbot](./start-with-clone.md).
 
 ## Create chatbot
-
 Upon logging in, an organization is automatically generated for you. You can create a chatbot under this organization by following these steps:
 1. Within an organization, in the upper right corner of the project area, click **Create** and select **Create chatbot**.
 2. In the pop-up window, complete the form for chatbot basic settings. For this simple chatbot, you only need to fill the follow three fields:
@@ -68,17 +69,39 @@ If the chatbot is created successfully, it should be displayed as shown below:
 :::
 
 ## Build a chatbot
-Chatbots allow user access functions through CUI, and CUI behavior for an exposed function is defined in its corresponding skill. The input parameters of a function are represented by slots in the skill, and the type of these parameters, along with CUI behavior for these types are defined as frames and entities, with frames for composite and polymorphic types, and entities for primitive types. Service is a set of functions, so chatbot is simply a set of skills. Building a chatbot is simply building skills one at a time.
+Chatbots allow users to access functions through CUI, and the CUI behavior for an exposed function is defined in its corresponding skill. A chatbot can be built one skill at a time. In this tutorial, let's see how we can define a simple skill: 
 
+### 1. Build dependent types
+Before you can build a composite type, whether it is a skill or a frame, you need to build its dependent types first. The most basic type on OpenCUI is "entity". It is a primitive type with a recognition mechanism built in, so that the chatbot knows how to extract the value of this type from user input. OpenCUI provides many predefined entities, such as `java.time.LocalDate` for dates, `io.opencui.core.Email` for email addresses, and so on. Notice every type defined on the OpenCUI has direct mapping onto Java/Kotlin, so that you can use them directly anywhere a code expression is expected.
 
-CUI can be divided into interaction and language layer. The language layer are responsible for converting between natural language text and semantics (structured representation of meaning), interaction logic (also known as dialog management), decide how bot should react in semantics. For more information about each of the layers, see [3 layers of chatbot](3layers.md).
+In this case, we need build a custom entity type `Location`.
 
-In this tutorial, let's see how we can define a simple skill in the following 4 steps: 
-### 1. Create dependent types
+#### 1.1 Create entity type and add instances
+Ensure that you are inside the **pingpong** chatbot and at the **INTERACTION** view:
+1. Click **Create** button on the right side, and select **Create entity** to create a new entity.
+2. Enter a label for the entity and press enter. For example, `Location`.
+3. Within the `Location` entity, click **Add** button to add entity instances, such as `seattle` in the label field and **Save**. You can add as many instances as you need. 
 
+    ::: thumbnail
+    ![create entity](/images/guide/pingpong/create_entity.png)
+    :::
 
-### 1. Create skill
-1. Go to the **pingpong** chatbot and ensure that you are at the **INTERACTION** level.
+#### 1.2 Add annotation
+For an entity, we only need to add a language layer annotation for each language we want to support. In addition to the type name, we should add expressions (exemplars for the entity) to each instance we added in the last step so that dialog understanding can recognize it from user input.
+1. Navigate to the entity and head to the **Instances** tab. 
+2. Click the instance entry, add **Expressions** in the pop-up window.
+3. Click **Save**.     
+::: thumbnail
+![pingpong add entity instance expression](/images/guide/pingpong/pingpong_entity_instance.png)
+:::
+
+### 2. Build skill
+A skill is a conversationally exposed functionality, with input parameters represented by slots. There is no need to have a one-to-one mapping from a skill to some real service function, although it is supported. To build such a composite type on OpenCUI, we first declare its type at the schema level, then add dialog annotation. 
+
+In this tutorial, let's build a simple skill "pingpong" with one slot of Location type. A location is a required slot for this skill, so when it is missing from the user's initial utterance, chatbot will prompt user for it. Once the object of this function type is instantiated, chatbot simply produces an acknowledgement in form of `pong from ${location}`.
+
+#### 2.1 Create a skill
+1. Go to the **pingpong** chatbot and ensure that you are at the **INTERACTION** view.
 2. Click **Create** button on the right side, and select **Create skill** to create a new skill.
 3. Enter a label for the skill and press enter. For example, `PingPong`.
    ::: warning Need To Know
@@ -94,29 +117,20 @@ In this tutorial, let's see how we can define a simple skill in the following 4 
    ![intent label](/images/guide/pingpong/intent_label.png)
    :::
 
-### 2. Declare schema
-A skill defines how we invoke a function through CUI, so to build a skill, we need to first declare its schema, or signature of the corresponding function, this includes mostly the input parameters of the function. On a skill's **Schema** tab, we can add slots, functions and other services needed by this skill. 
-
-A simple skill like "pingpong" is parameterized with slots, which needs to respond the reply based on the information provided by the user. When there are missing informations in the user's initial utterance, chatbot will conduct conversations to collect them. This can be done by adding slots to the skill at schema tab of the interaction layer.
-
-
-#### 2.2 Add slot
-
-When you have created types you need, you can add them as slots to your skill. When the skill becomes active, chatbot will collect information according to the slot and handle the conversation by the fill strategy. 
-
-To add a slot to a skill:
+#### 2.1 Declare schema
+On a composite type's **Schema** tab, we can add slots, declare local functions and other services needed by this skill.
+To add a slot to a type:
 1. Navigate to the `PingPong` skill and ensure that you are at the **INTERACTION** level.
 2. Under the **Schema** tab, select the type you want to add as slot in the **Slots** section. In this case, select entity type `Location`.
+3. Pick a label for this slot, so that you can reference it in the response.
 
 ::: thumbnail
 ![add slot](/images/guide/pingpong/add_slot.png)
 :::
 
+#### 3. Annotate interactions
 
-### 3. Annotate interactions
-On OpenCUI platform, the CUI behavior of any type, include skills, frames and entities, can be defined in form of dialog annotation. Dialogue annotation can be attached to type as whole (on its Annotation, Response and Expression tab), or attached to its slots. Dialogue annotations need to be configured at interaction layer first before we can configure it at the language level.
-
-The pingpong skill responds a *"pong"* based on the location provided by the user, when the user sends the message *"ping"*. To accomplish this requires defining the slot fill strategy and adding a response to the skill at interaction layer. 
+The pingpong skill responds a *"pong"* based on the location provided by the user, when the user sends the message *"ping"*. To accomplish this, let's configure a fill strategy on the slot of Location type, and adding a response. 
 
 In the `PingPong` skill and ensure that you are at the **INTERACTION** level:
 
@@ -137,7 +151,7 @@ In the `PingPong` skill and ensure that you are at the **INTERACTION** level:
    ![commit pingpong interaction](/images/guide/pingpong/commit_pingpong_struct.png)
    :::
 
-### 4. Fill language template and exemplar
+#### 4. Fill language template and exemplar
 Most dialog annotations need to be configured at the language level, one for each language supported. There are two kind of language related annotations, templates and exemplars. The text edits for them are scattered in different context, like when bot prompt a slot, the templates and exemplars defined there will only work in these contexts. Templates define how bot should respond, and utterance similar to exemplars defined on skill expression tab will trigger bot to start that skill, and once a skill is started, bot will follow the interaction logic defined to bring skill to completion and deliver the user what they want. 
 
 At language level, PingPong skill can be configured as follows:
@@ -171,13 +185,6 @@ At language level, PingPong skill can be configured as follows:
      2. In the **Expressions** section, enter `ping` and press enter. A user utterance similar to any exemplar entered here will be considered as user want to trigger this skill.
      ::: thumbnail
      ![pingpong expression](/images/guide/pingpong/pingpong_expression.png)
-     :::
-   - For a entity, in addition to the type name, you also need to add expression for all instances:
-     1. Navigate to the entity and head to the **Instances** tab. 
-     2. Click the instance entry, add **Expressions** in the pop-up window.
-     3. Click **Save**.     
-     ::: thumbnail
-     ![pingpong add entity instance expression](/images/guide/pingpong/pingpong_entity_instance.png)
      :::
 
 4. Once you have filled in all the language templates and expression exemplars, click **Commit** in the upper-right corner of the Types area to commit your changes in the language layer.
