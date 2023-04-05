@@ -7,9 +7,15 @@ This view suggests that we can build a CUI in a type-based fashion. First, we de
    :::
 On the OpenCUI platform, the CUI behavior is attached to types in the form of dialog annotations. Dialog annotations can be attached to a type as a whole (on its Annotation, Response, and Expression tabs) or attached to its slots. Dialog annotations have two layers: the interaction layer, which decides things like which slot we should request from the user, and the language layer, which decides the phrasing we use to request that information in a given language.
 
-Most dialog annotation need to be configured in two stages: once at interaction layer, once for each language you want to support at language layer. You need to propagate the change you made in interaction layer to language layers before you can configure the language layer portion of the annotation. In this tutorial, we annotate one type at a time, so we will switch to language layer after we are done with interaction layer for each type. For more information about schema, interaction logic and language, check out [chatbot in 3 layers](3layers.md).
+Most dialog annotation need to be configured in two stages: once at interaction layer, once for each language you want to support at language layer. You need to propagate the change you made in interaction layer to language layers before you can configure the language layer portion of the annotation. In this tutorial, we will switch to language layer after we are done with interaction layer for each annotation. For more information about schema, interaction logic and language, check out [chatbot in 3 layers](3layers.md).
 
-One of the major challenges of building a CUI is that the builder does not have control over what the user can express at any given turn. When the current conversation path is not defined by the builder, a flow-based chatbot won't know how to respond, which can be detrimental to the business's interests. In contrast, a type-based chatbot can always engage in a constructive conversation by greedily creating value for missing slots in order to invoke a function for the user. Additionally, it is much easier to reuse a type-based CUI than a flow-based one.
+   ::: thumbnail
+   ![commit pingpong interaction](/images/guide/pingpong/commit_pingpong_struct.png)
+   :::
+
+   There are two kind of language related annotations, templates and exemplars. The text edits for them are scattered in different context, like when bot prompt a slot, the templates and exemplars defined there will only work in these contexts. Templates define how bot should respond, and utterance similar to exemplars defined on skill expression tab will trigger bot to start that skill, and once a skill is started, bot will follow the interaction logic defined to bring skill to completion and deliver the user what they want.
+
+   One of the major challenges of building a CUI is that the builder does not have control over what the user can express at any given turn. When the current conversation path is not defined by the builder, a flow-based chatbot won't know how to respond, which can be detrimental to the business's interests. In contrast, a type-based chatbot can always engage in a constructive conversation by greedily creating value for missing slots in order to invoke a function for the user. Additionally, it is much easier to reuse a type-based CUI than a flow-based one.
 
 This tutorial will guide you step-by-step through the process of creating and building a simple chatbot on the OpenCUI platform. When interacting with the chatbot, users can get a welcome message and a reply *"pong"* based on the input location. For example:
 
@@ -96,11 +102,14 @@ For an entity, we only need to add a language layer annotation for each language
 :::
 
 ### 2. Build skill
-A skill is a conversationally exposed functionality, with input parameters represented by slots. There is no need to have a one-to-one mapping from a skill to some real service function, although it is supported. To build such a composite type on OpenCUI, we first declare its type at the schema level, then add dialog annotation. 
+A skill is a conversationally exposed functionality, with input parameters represented by slots. There is no need to have a one-to-one mapping from a skill to some real service function, although it is supported. To build such a composite type on OpenCUI, we first declare this type at the schema level, then add dialog annotation. 
 
 In this tutorial, let's build a simple skill "pingpong" with one slot of Location type. A location is a required slot for this skill, so when it is missing from the user's initial utterance, chatbot will prompt user for it. Once the object of this function type is instantiated, chatbot simply produces an acknowledgement in form of `pong from ${location}`.
 
-#### 2.1 Create a skill
+#### 2.1 Declare a skill at schema level
+First, let's declare a skill at schema level, this includes creating skill first, and then add slots, local function and services.
+
+##### Create a skill
 1. Go to the **pingpong** chatbot and ensure that you are at the **INTERACTION** view.
 2. Click **Create** button on the right side, and select **Create skill** to create a new skill.
 3. Enter a label for the skill and press enter. For example, `PingPong`.
@@ -117,7 +126,7 @@ In this tutorial, let's build a simple skill "pingpong" with one slot of Locatio
    ![intent label](/images/guide/pingpong/intent_label.png)
    :::
 
-#### 2.1 Declare schema
+##### Add slot
 On a composite type's **Schema** tab, we can add slots, declare local functions and other services needed by this skill.
 To add a slot to a type:
 1. Navigate to the `PingPong` skill and ensure that you are at the **INTERACTION** level.
@@ -128,32 +137,17 @@ To add a slot to a type:
 ![add slot](/images/guide/pingpong/add_slot.png)
 :::
 
-#### 3. Annotate interactions
+#### 2.2 Add dialog annotation
+If user did not provide the location in the initial utterance, chatbot need to prompt user for that information. This can be accomplished by configuring the [fill strategy](../reference/annotations/fillstrategy.md).
 
-The pingpong skill responds a *"pong"* based on the location provided by the user, when the user sends the message *"ping"*. To accomplish this, let's configure a fill strategy on the slot of Location type, and adding a response. 
-
+##### 2.2.1 Interaction level
 In the `PingPong` skill and ensure that you are at the **INTERACTION** level:
-
-1. Navigate to the **Schema** tab and click into the `location` slot. Select **Always ask** in the **Fill strategy** section.
-   ::: thumbnail
-   ![define fill strategy](/images/guide/pingpong/always_ask.png)
-   :::
-
-2. Navigate to the **Response** tab and select **Single value message** under the **Default action** section to declare a simple reply.
-
-   ::: thumbnail
-   ![add response](/images/guide/pingpong/add_response.png)
-   :::
-
-3. Once you are done with change in the interaction layer, click **Propagate** in the upper-right corner of the **Types** area to make the interaction level change available to language level. 
-
-   ::: thumbnail
-   ![commit pingpong interaction](/images/guide/pingpong/commit_pingpong_struct.png)
-   :::
-
-#### 4. Fill language template and exemplar
-There are two kind of language related annotations, templates and exemplars. The text edits for them are scattered in different context, like when bot prompt a slot, the templates and exemplars defined there will only work in these contexts. Templates define how bot should respond, and utterance similar to exemplars defined on skill expression tab will trigger bot to start that skill, and once a skill is started, bot will follow the interaction logic defined to bring skill to completion and deliver the user what they want. 
-
+   - Navigate to the **Schema** tab and click into the `location` slot. Select **Always ask** in the **Fill strategy** section.
+      ::: thumbnail
+      ![define fill strategy](/images/guide/pingpong/always_ask.png)
+      :::
+   
+##### 2.2.2 Language level
 At language level, PingPong skill can be configured as follows:
 
 1. Switch to the language layer. Select the language you want to work with from the language selector in the upper-left corner of the Types area. In this case, select **EN** for English.
@@ -161,36 +155,48 @@ At language level, PingPong skill can be configured as follows:
    ![switch pingpong en](/images/guide/pingpong/switch_pingpong_en.png)
    :::
 
-2. To fill templates: 
-   - Prompt: when fill strategy is always ask, prompt is the template that must be filled, which indicates how the chatbot asks the user when the user does not provide the information required by the chatbot.
+2. To fill templates:
+    - Prompt: when fill strategy is always ask, prompt is the template that must be filled, which indicates how the chatbot asks the user when the user does not provide the information required by the chatbot.
 
-     1. Navigate to the **Schema** tab and click into the `location` slot.
-     2. Enter the sentences in **Prompts** section. For example, "*Wow. Where is the "ping" coming from?*".
-     ::: thumbnail
-     ![add prompt](/images/guide/pingpong/add_prompt.png)
-     :::
-   - Response: indicates the final service delivered by the business, so it is necessary to reply to the user through reference parameters in the response. To reference parameters or call function, you need to use `${}`. 
-     
-     <!--需要解释 template, ${} 和 expression()} -->
-   
-     Navigate to the **Responses** tab, enter `Great! Pong to ${location?.expression()}.` in the **Single value message** field and press enter. 
-     ::: thumbnail
-     ![pingpong simple reply](/images/guide/pingpong/pingpong_simple_reply.png)
-     :::
+        1. Navigate to the **Schema** tab and click into the `location` slot.
+        2. Enter the sentences in **Prompts** section. For example, "*Wow. Where is the "ping" coming from?*".
+           ::: thumbnail
+           ![add prompt](/images/guide/pingpong/add_prompt.png)
+           :::
+    - Response: indicates the final service delivered by the business, so it is necessary to reply to the user through reference parameters in the response. To reference parameters or call function, you need to use `${}`.
+
 
 3. To fill utterance exemplars:
-   - For a skill, 
-     1. Navigate to the skill and head to the **Expression** tab. 
-     1. In the **Names** section, enter `Ping Pong` for the pingpong skill display name and press enter. This field is also the examples of how this type is mentioned in different languages.
-     2. In the **Expressions** section, enter `ping` and press enter. A user utterance similar to any exemplar entered here will be considered as user want to trigger this skill.
-     ::: thumbnail
-     ![pingpong expression](/images/guide/pingpong/pingpong_expression.png)
-     :::
+    - For a skill,
+        1. Navigate to the skill and head to the **Expression** tab.
+        1. In the **Names** section, enter `Ping Pong` for the pingpong skill display name and press enter. This field is also the examples of how this type is mentioned in different languages.
+        2. In the **Expressions** section, enter `ping` and press enter. A user utterance similar to any exemplar entered here will be considered as user want to trigger this skill.
+           ::: thumbnail
+           ![pingpong expression](/images/guide/pingpong/pingpong_expression.png)
+           :::
 
-4. Once you have filled in all the language templates and expression exemplars, click **Commit** in the upper-right corner of the Types area to commit your changes in the language layer.
-   ::: thumbnail
-   ![commit pingpong en](/images/guide/pingpong/commit_pingpong_en.png)
-   :::
+
+#### 2.3 Add response
+After being triggered, the pingpong skill responds a *"pong"* based on the location provided by the user, this can be accomplished this by adding a response.
+
+##### 2.3.1 Interaction level 
+Navigate to the **Response** tab and select **Single value message** under the **Default action** section to declare a simple reply.
+
+      ::: thumbnail
+      ![add response](/images/guide/pingpong/add_response.png)
+      :::
+
+##### 2.3.2 Language level
+
+ Navigate to the **Responses** tab, enter `Great! Pong to ${location?.expression()}.` in the **Single value message** field and press enter.
+ ::: thumbnail
+ ![pingpong simple reply](/images/guide/pingpong/pingpong_simple_reply.png)
+ :::
 
 ## Test chatbot
+Once you have filled in all the language templates and expression exemplars, click **Commit** in the upper-right corner of the Types area to commit your changes in the language layer.
+::: thumbnail
+![commit pingpong en](/images/guide/pingpong/commit_pingpong_en.png)
+:::
+
 Now you can test your chatbot by **Debug** tool. Note that Debug can only test committed content, so ensure that both the interaction layer and language layer have been committed before testing.

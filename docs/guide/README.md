@@ -3,12 +3,6 @@ The OpenCUI platform can be useful at various stages of CUI development, such as
 
 To fully utilize OpenCUI, one needs to understand its type-based conceptual model, which may require some practice to become familiar with. To aid in this process, we have created a set of tutorials that will guide you through the steps of understanding the conceptual model and becoming skilled in utilizing OpenCUI to create outstanding conversational experiences.
 
-#### [Who do you need?](are-you-ready.md)
-Existing CUI platforms are typically flow-based and thus imperative, regardless of whether they're no-code or low-code. They primarily help developers in implementing chatbots. In contrast, OpenCUI aims to help product managers declaratively specify their requirements without worrying too much about implementation details, which the OpenCUI runtime carries out most of the heavy lifting. Nonetheless, creating a functional chatbot still requires a team effort, and this list the main roles required.
-
-#### [Key concepts](concepts.md)
-In order to follow this quick start series, it is useful to get familiar with the key concepts.
-
 #### [Sign up](signingup.md)
 Before we fully open up, we required you signup first so that we can get some idea on how we can help you. All you need is a GitHub account, ideally with your email verified. 
 

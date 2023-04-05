@@ -15,7 +15,6 @@ export const en = {
     {
       text: 'Quickstart',
       children: [
-
         '/guide/signingup.md',
         '/guide/start-with-clone.md',
         '/guide/pingpong.md',
