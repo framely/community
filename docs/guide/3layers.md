@@ -1,4 +1,4 @@
-# 3 layers of chatbot
+# Chatbot in 3 layers
 
 Built on the principle of separation of concerns, modern GUI library or frameworks, such as React and Vue, divides application into model, view and controller, with each specific responsibility taken care of by different group of people. These framework has made it more affordable for businesses to build functional web and mobile applications. According to Gartner, chatbot deployment costs can range from $50,000 to a few million U.S. dollars, thus is substantially more expensive. It is not surprising that chatbots are generally built by these deep pocketed business like Bank of America, for example. Is it possible to adopt the same idea to make chatbot development more cost-effective?
 
