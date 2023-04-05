@@ -3,8 +3,7 @@
 [[toc]]
 
 ## Motivation
-
-When a user orders food, the bot will need to have the user's phone number. It is ok to ask the first time user for it, but not ideal if this user is a regular customer or he is reaching out from a logged-in channel like Imessage where we can get their phone number programmatically. So instead of always asking phone number upfront, bot can be configured to propose a value for the slot based on a user's history. 
+When a user orders food, the bot will need to have the user's phone number. While it's acceptable to ask a first-time user for their number, it's not ideal for regular customers or those using a logged-in channel like iMessage, where we can get their phone number programmatically. Instead of always asking for the phone number upfront, the bot can be configured to suggest a value for the slot based on the user's history.
 
 :::: conversation
 ::: bot Bot
@@ -12,7 +11,7 @@ The order will be under the same number "1202555xxxx" as last time. Ready to pla
 :::
 ::::
 
-There are other use cases where initialization can be useful. For example, when booking a vacation, after a user has booked a flight ticket, the bot can associate that flight arrival date and city for the start date and location for the subsequent hotel booking. 
+There are other use cases where initialization can be helpful. For instance, when booking a vacation, the bot can associate a flight's arrival date and city as the start date and location for a subsequent hotel booking after a user has booked a flight ticket.
 
 :::: conversation
 ::: bot Bot
@@ -20,49 +19,37 @@ Booked a ticket from New York to Los Angeles on Feb 2, 2022. Do you want to book
 :::
 ::::
 
-In both case, initialization allows you to reduce the user effort level in acquiring service from you, thus give users a better user experience. 
+In both cases, initialization allows you to reduce the user effort level required to acquire services from you, thus providing users with a better user experience.
 
 ## Overview
-Initialization is the first stage of [Five stages of slot filling](./overview.md#five-stages-of-slot-filling). When it is time to fill a slot per prompt strategy, bot will first check whether there is initialization configured for this slot. If it finds a usable value (not null), it will skip the prompting stage and go directly to value check and confirmation phase. But if the user has provided a value before, that will be used instead. 
+Initialization is the first stage of the [Five stages of slot filling](./overview.md#five-stages-of-slot-filling). When it's time to fill a slot, the bot will first check whether initialization is configured for that slot. If it finds a usable value (not null) based on configuration, it will skip the prompting stage and move directly to the value check and confirmation phase. Note, however, that user preference always takes precedence.
 
-You can provide the slot with an initial value by defining the association of the slot. Association is defined in [code expression](./kotlinexpression.md), which includes but are not limited to the following expressions:
+You can initialize the slot with a value defined in arbitrary [kotlin code expression](./kotlinexpression.md), which includes but are not limited to the following expressions:
 - **Constant**: For example, if the type of slot is *kotlin.Int*, you may set its association to be `0`.
-- **Slot**: You can pick an earlier slot of the same type as proposed value. If you pick a later slot, the behavior is not defined, meaning the behavior might change without notice.
-- **Function call**: Regarding the first situation in [Motivation](#motivation), you can set the phone number as `getUserPhoneNumber()`, which returns the user's previous phone number.
-  
-Beyond the normal operator like `+`,`-`,`*`,`/`, you can combine expressions using:
-- [If expression](./kotlinexpression.md#if-expression)
-  - If the value you try to provide is conditional, try to use [if expression](https://kotlinlang.org/docs/control-flow.html). The format of if expression is like `if (a > b) a else b`.
-- [Elvis operator](./kotlinexpression.md#elvis-operator)
-  - Instead of writing the complete if expression, you can also express this with the [Elvis operator](https://kotlinlang.org/docs/null-safety.html#elvis-operator) `?:`. If the expression to the left of `?:` is not null, the Elvis operator returns it, otherwise it returns the expression to the right. 
-  - For example, if an expression is `a?:b?:c`, and `a` is null while `b` is not null, the initial value is `b`.
+- **Slot**: You can pick an earlier slot of the same type as proposed value. If you pick a later slot, the behavior is not defined.
+- **Function call**: You can use a function return: you can set the phone number as `getUserPhoneNumber()`, which returns the user's phone number.
 
 ## How To Use
-Initialization is an optional slot annotation. If you know that a user will most likely accept a value based on application logic or historical data, you can use initialization to instruct the bot to propose that value for the user, reducing user's effort level.
+Initialization is an optional slot annotation. If you know that a user will most likely accept a value based on business logic or historical data, you can use it to reduce the need for the user to input by providing something they might accept.
 
-The configuration of initialization is shown in the following figure, **Target slot** is the slot you want to propose a value to and **Association** is the proposed value.
-
+The configuration of initialization is shown in the following figure, and the field labeled `Value` is used for specifying the proposed value.
 ::: thumbnail
 ![initialization](/images/annotation/initialization/init.png)
 :::
 
 ### Does a user have to accept the proposed value?
-Depending on whether you give user a chance to confirm, initialization are used for two different purposes: assignment and suggestion. 
+Depending on whether you give user a chance to confirm, initialization is used for two different purposes: assignment and suggestion. 
 #### Assignment
-Sometimes, your business dictates what value can a slot take given existing user choice and business logic a user has to accept. This is assignment, where you can first enable the initialization on the slot but not configure the [explicit confirmation](../annotations/confirmation.md#explicit). This way, the bot will simply inform the user the system choice for this slot and move on to the next slot. In fact, you typically do not need to configure anything else.
+Sometimes, your business dictates what value can a slot take given existing slot fillings and business logic. This is assignment, where you can first enable the initialization on the slot but not configure the [explicit confirmation](../annotations/confirmation.md#explicit). This way, the bot will simply inform the user of the system's choice for this slot and move on to the next slot. In fact, you typically do not need to configure anything else.
 
 #### Suggestion
-Sometimes, your business wants to provide a candidate value that a user will mostly prefer based on history and statistics across users, but since you are not certain, you want to give the user a chance to confirm just in case the user might have a different idea. This is suggestion, where you can first enable the initialization on the slot, then enable the [explicit confirmation](../annotations/confirmation.md#explicit). This way, bot will simply inform the user the system choice for this slot and give the user a chance to confirm. If the user agrees, bot moves on to the next slot, if that user does not agree, bot goes back to prompting phase to ask the user again.
-
+At other times, your business may only suggest what value a slot can take, given existing user choices and business logic that a user has to accept. This is suggestion, where you can first enable initialization on the slot and then configure the [explicit confirmation](../annotations/confirmation.md#explicit). This way, the bot will inform the user of the system's suggested value for this slot and then give the user a chance to confirm. If the user agrees, the bot moves on to the next slot; if the user does not agree, the bot goes back to the prompting stage for the user to input again.
 
 ### Dos and Don'ts
 ::: tip Do's
-1. When using initialization, it is best to add an [implicit confirmation annotation](../annotations/confirmation.md) to inform the user of the choice the system provided, just to keep the user and the bot on the same page.
-2. With suggestion, you also need to configure the Prompt just in case user says no, and the bot needs to conduct conversation to extract user choice on this slot.
-:::
-
-::: warning Don'ts
-Do not make value proposed here incompatible with [value check](../annotations/valuecheck.md), minus fluctuation due to data changes, for example, the ticket is gone. Otherwise, the user will get confused with ill-triggered value check message.
+1. When using initialization, it is best to add an [implicit confirmation annotation](../annotations/confirmation.md) to inform the user of the choice that the system provided, in order to keep both the user and the bot on the same page.
+2. With suggestion, you also need to configure the prompt in case the user disagrees with the suggested value and the bot needs to extract the user's choice for this slot.
+3. Ensure that the proposed value here is compatible with the [value check](./valuecheck.md) annotation, minus any fluctuations due to data changes. For example, if the ticket is no longer available, the proposed value should reflect that. Otherwise, the user may become confused with an ill-timed value check message.
 :::
 
 
