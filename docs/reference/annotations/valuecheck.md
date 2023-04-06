@@ -40,7 +40,6 @@ If the value check fails, you can decide which slot to clear in the recovering s
 
 Suppose the order of the slots is as follows. Here are two different scenarios that use different recovering strategies.
 
-
 ::: thumbnail
 ![order of slots](/images/annotation/valuecheck/slots-order.png)
 :::

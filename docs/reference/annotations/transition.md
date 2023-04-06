@@ -1,9 +1,5 @@
 # State transition
 
-[[toc]]
-
-## Motivation
-
 The 5 stage slot filling is designed to minimize builders' effort level in building the conversational experience that get collaborative user served as fast as possible, under the favorable conditions. As such, the bot will follow a deterministic interaction logic that first determines a user's intent, triggers the corresponding skill and then aggressively fills slots of that skill one by one until it has all the required parameters to invoke the service.
 
 However, the design bias towards favorable conditions in these standard slot filling components can sometime cumbersome for interaction logic for unhappy use case. For example, when a user wants to buy a ticket, the movie he wants is sold out. Instead of asking what showtime he likes, whether he wants IMAX, it is a better experience to simply exit conversation early:
