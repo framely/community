@@ -18,10 +18,10 @@ export const en = {
         '/guide/signingup.md',
         '/guide/start-with-clone.md',
         '/guide/pingpong.md',
-        '/guide/opencui-flow.md',
         '/guide/use-hours.md',
         '/guide/build-service.md',
-        '/guide/quickstart-channel.md'
+        '/guide/quickstart-channel.md',
+        '/guide/opencui-flow.md',
       ],
     }
   ],

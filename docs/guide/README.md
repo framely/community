@@ -22,5 +22,7 @@ This guide show you how to declare a service and define CUI for that service in 
 #### [Deploy a chatbot](quickstart-channel.md)
 This guide walks you through how to use the builtin version control system to review and merge your change to master. It explains to you how chatbot work with messaging platform like Messenger, and shows you how to configure both side using Messenger as example. After going through this, you should be able to interact with your chatbot in Messenger. 
 
+#### [OpenCUI workflow](opencui-flow.md)
+We use a Git-like version control system to make it easy for builder to collaborate on the structured definition of the chatbot.
 
 For the impatient, [you can get started now](https://build.opencui.io).
