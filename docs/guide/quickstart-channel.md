@@ -13,29 +13,6 @@ This guide builds on top of [Build a chatbot](pingpong.md), is designed to show 
 ## Before you start
 Make sure to complete the steps outlined in the [Build a chatbot](./pingpong.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
 
-## Merge changes
-OpenCUI comes with a Git like version control system, that is specifically designed for the structured chatbot definition so that we can manage the definition across modules and languages accurately. If you used Git in your development, this process should be very similar.
-
-After you tested your change, it's important to ask project owner to review your changes and ensure they meet the chatbot's features and quality standards, by opening a pull request and comparing the changes across your branch. Once your change is approved, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version control](../reference/platform/versioncontrol.md) section.
-
-To create a pull request:
-1. In the navigation bar, select the **Versions** tab.
-2. Click **Pull request** in the upper-right corner of the Versions area.
-::: thumbnail
-![pingpong pull request](/images/guide/pingpong/pingpong_pull_request.png)
-:::
-
-To review changes: 
-1. Click the item you want to review, and **Compare diffs** field will slide out.
-   ::: thumbnail
-   ![version item](/images/guide/pingpong/version_item.png)
-   :::
-2. In the **Compare diffs** drawer, make sure all the changes you made are what you want. You can switch between different layers from the topbar.
-   ::: thumbnail
-   ![review changes](/images/guide/pingpong/review_changes.png)
-   :::
-3. Once you're satisfied with the changes, you can **Approve** them and **Merge** them into master. For more information about changes review, see [Version control](../reference/platform/versioncontrol.md).
-
 ## Set up channels
 
 Here are the steps on how to set up and enable a channel, specifically using Messenger as an example:
