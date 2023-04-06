@@ -76,7 +76,7 @@ In this case, there are multiple conditions that need to be set here:
 ![multiple conditions](/images/annotation/confirmation/confirmation_table.png)
 :::
  
-- One should be like `artist == "adele"` :
+- One should be like `artist!!.value == "adele"` or `artist == Artist("adele")`:
 
 ::: thumbnail
 ![condition](/images/annotation/confirmation/condition_1.png)
