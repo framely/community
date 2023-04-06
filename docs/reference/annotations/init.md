@@ -1,8 +1,5 @@
 # Initialization
 
-[[toc]]
-
-## Motivation
 When a user orders food, the bot will need to have the user's phone number. While it's acceptable to ask a first-time user for their number, it's not ideal for regular customers or those using a logged-in channel like iMessage, where we can get their phone number programmatically. Instead of always asking for the phone number upfront, the bot can be configured to suggest a value for the slot based on the user's history.
 
 :::: conversation

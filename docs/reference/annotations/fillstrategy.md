@@ -1,10 +1,6 @@
 # Fill Strategy
 
-[[toc]]
-
-## Motivation
-
-If a user did not mention which movie they want to watch when buying tickets, we need to prompt the user for them. 
+If a user does not specify which movie they want to watch when buying tickets, the bot needs to prompt the user to provide this information.
 :::: conversation
 ::: user User
 Can I get two tickets for 8:00pm please?
@@ -24,7 +20,7 @@ User: Top Gun, please.
 ::::
 
 ## Overview
-Prompt strategy is a required slot-level annotation that you can use to control when and how to prompt for a slot value. It decides whether or when to prompt the user to fill a slot. More importantly, it also defines how other fill annotations should work together. A prompt is a customization of the dialog act SlotRequest, and it contains a template that can help verbalize the slot request dialog act. The diversity of responses can be increased by adding more templates.
+Fill strategy is a required slot-level annotation that you can use to control when and how to prompt for a slot value. It decides whether or when to prompt the user to fill a slot. More importantly, it also defines how other fill annotations should work together. A prompt is a customization of the dialog act SlotRequest, and it contains a template that can help verbalize the slot request dialog act. The diversity of responses can be increased by adding more templates.
 
 ## How To Use
 Prompt strategy is a composite annotation, as OpenCUI provides a set of concrete strategies to cover different use cases. Let's cover them one by one.

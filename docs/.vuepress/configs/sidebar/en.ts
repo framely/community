@@ -38,8 +38,8 @@ export const en = {
       collapsible: true,
       children: [
         '/reference/annotations/overview.md',
-        '/reference/annotations/init.md',
         '/reference/annotations/fillstrategy.md',
+        '/reference/annotations/init.md',
         '/reference/annotations/valuerec.md',
         '/reference/annotations/valuecheck.md',
         '/reference/annotations/confirmation.md',
