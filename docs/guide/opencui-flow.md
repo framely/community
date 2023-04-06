@@ -1,21 +1,30 @@
-# OpenCUI flow
+# OpenCUI workflow
 
-OpenCUI comes with a Git like version control system, that is specifically designed for the structured chatbot definition so that we can manage the definition across modules and languages accurately. If you used Git in your development, this process should be very similar.
+OpenCUI comes with a Git like version control system, that is specifically designed for the structured definition so that we can manage the complex interaction between different views (interaction and languages) and different branches (personal and master) across modules and chatbot effectively. If you used Git in your development, this process should be very similar.
 
-OpenCUI flow is a branch-based workflow. After you tested your changes, it's important to ask project owner to review your changes and ensure they meet the chatbot's features and quality standards, by opening a pull request and comparing the changes across your branch. Once your change is approved, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version control](../reference/platform/versioncontrol.md) section.
-
+OpenCUI workflow is a branch-based workflow. After you tested your changes, it's important to ask project owner to review your changes and ensure they meet the chatbot's features and quality standards, by opening a pull request and comparing the changes across your branch. Once your change is approved, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version control](../reference/platform/versioncontrol.md) section.
 
 ## Before you start
 
 To follow OpenCUI flow, you will need to [sign up](./signingup.md#sign-up) for a OpenCUI account and log into [OpenCUI](https://build.opencui.io/login) platform. Make sure to complete the steps outlined in the [Build a chatbot](./pingpong.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
 
-## Create branch
+## Always in your branch
 
 When you start building a project, such as creating a type, adding or modifying an instance, a branch is automatically created for you based on the current master. This gives you a space to work on your changes without affecting the master. You can work on your changes in isolation from the changes that other people are making. Additionally, creating a branch gives your collaborators a chance to review your changes before you merge them into the master. In OpenCUI, you can only have one active branch per project.
 
-## Make changes
+## Propagate the changes to language layer
+Our type-based approach allow you to build CUI for your service in two steps: declare types at schema layer, attach dialog annotation  to these type declaration. Most dialog annotation need to be configured in two stages: once at interaction layer, once for each language you want to support at language layer. You need to **Propagate** the change you made in interaction layer to language layers before you can configure the language layer portion of the annotation. In this tutorial, we will switch to language layer after we are done with interaction layer for each annotation. For more information about schema, interaction logic and language, check out [chatbot in 3 layers](3layers.md).
 
-In your branch, you can make any desired changes to the project, such as the changes in [Build a chatbot](./pingpong.md) guide. If you make a mistake, you can undo your changes or revert to your latest commit. Your changes will not be added to the master branch until you merge your branch.
+   ::: thumbnail
+   ![propagate interaction change](/images/guide/pingpong/commit_pingpong_struct.png)
+   :::
+
+## Commit the changes
+In your branch, you can make any desired changes to the project, such as the changes in [Build a chatbot](./pingpong.md) guide. If you make a mistake, you can undo your changes or revert to your latest commit. Your changes will not be added to the master branch until you merge your branch. To test your change using OpenCUI **Debug** tool, you need to commit the change first.
+
+   ::: thumbnail
+   ![commit language change](/images/guide/pingpong/commit_pingpong_en.png)
+   :::
 
 ## Create a pull request
 
