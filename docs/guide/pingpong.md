@@ -182,9 +182,9 @@ After being triggered, the pingpong skill responds a *"pong"* based on the locat
 ##### 2.3.1 Interaction level 
 Navigate to the **Response** tab and select **Single value message** under the **Default action** section to declare a simple reply.
 
-      ::: thumbnail
-      ![add response](/images/guide/pingpong/add_response.png)
-      :::
+::: thumbnail
+![add response](/images/guide/pingpong/add_response.png)
+:::
 
 ##### 2.3.2 Language level
 
