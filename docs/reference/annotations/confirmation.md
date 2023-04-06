@@ -1,10 +1,5 @@
 # Confirmation
-
-[[toc]]
-
-## Motivation
-
-When ordering a spicy sandwich, the user may specify a level of spiciness that could be too intense for some people. To prevent discomfort, a bot might confirm if the user actually desires the requested spiciness level.
+When a user orders a spicy sandwich, they may specify a level of spiciness that could be too intense for some people. To prevent discomfort, a bot might confirm if the user actually desires the requested spiciness level.
 
 :::: conversation
 ::: bot Bot
@@ -20,15 +15,14 @@ We use strong Jalapeño, so level 5 is considered deadly, are you sure you want 
 
 
 ## Overview
-Even when user's choice for a slot passes value check, business can still think there are things that user might not know, thus can inform user something (implicit confirmation) or ask user to confirm their choice (explicit confirmation).
+Even when a user's choice for a slot passes the value check, the business may still feel that there are things that the user might not know. As a result, the bot can inform the user of something through implicit confirmation or ask the user to confirm their choice through explicit confirmation.
 
-With confirmation, you can control this behavior by 
-- Decide on which types of confirmation: Explicit and Implicit
-- Specify a conditional under when confirmations should be triggered.
-- Support multi-valued slot confirmation via per value confirmed
-- Provide corrections on default strategy and interruption strategy
-- Provide the way to customize the "yes/no" understanding of user utterances under this context for explicit confirmations
-
+To control this behavior, you can do the following:
+- Decide which types of confirmation to use: explicit and implicit.
+- Specify a conditional statement that triggers the confirmations.
+- Support multi-valued slot confirmation via per-value confirmation.
+- Provide corrections on the default and interruption strategies.
+- Allow for customization of the "yes/no" understanding of user utterances under this context for explicit confirmations."
 
 ## How to use
 
@@ -36,13 +30,13 @@ With confirmation, you can control this behavior by
 ![confirmation](/images/annotation/confirmation/confirmation.png)
 :::
 
-Confirmation is an optional annotation. There are two places that you can define confirmation: slot level and type level, different places have different meanings:
-- **Slot Level**: bot will confirm on each slot which is defined. 
-- **Type Level**: bot will confirm after all slots on the frame/skill have been done, just like bundle slots together for confirmation. User can accept and modify batch confirmations. 
+Confirmation is an optional annotation that can be defined at two different levels: slot level and type level, each with its own meaning:
+
+- Slot level: The bot will confirm each slot that is defined.
+- Type level: The bot will confirm after all slots on the frame/skill have been completed, bundling slots together for confirmation. Users can accept and modify batch confirmations.
 
 ### Conditions
-
-With condition, bot can confirm with the user when the set of conditions are met. You can use [Kotlin code expression](kotlinexpression.md) to express the timing of key pieces of information that should be implied or requested.
+Using conditions, the bot can confirm with the user when a set of conditions is met. [Kotlin code expressions](kotlinexpression.md) can be used to specify the timing of key pieces of information that should be implied or requested.
 
 :::: conversation
 ::: user User
@@ -59,7 +53,7 @@ Please select your seats
 :::
 ::::
 
-From the example above, you can see that bot will confirm the COVID-19 info and request a yes or no answer when the artist is Adele, while others will not: 
+In the example above, the bot will confirm the COVID-19 information and request a yes or no answer only when the artist is Adele. For other artists, this confirmation will not be triggered.
 
 :::: conversation
 ::: user User
@@ -88,11 +82,9 @@ In this case, there are multiple conditions that need to be set here:
 ![condition](/images/annotation/confirmation/condition_2.png)
 :::
 
-Bot will check the conditions according to the top-to-bottom order, and confirm when the condition is met:  
+Bot will check the conditions according to the top-to-bottom order, and ask user for confirmation when the condition is met:  
 - If the first condition is `true`, bot will respond the confirmation to the user.
 - if the first condition is `false`, bot will move on to the next condition, and so on.
-
-Explore [Kotlin code expression](kotlinexpression.md) for more information.
 
 
 ### Explicit 
@@ -101,9 +93,9 @@ Explore [Kotlin code expression](kotlinexpression.md) for more information.
 ![explicit](/images/annotation/confirmation/confirmation_condition_explicit.png)
 :::
 
-Explicit confirmation typically involves checking with the user that their input or request was understood correctly, it is very wise to confirm the critical details. Bot will not perform the action until it gets the reply from the user to confirm, usually yes/no or some synonym.
+Explicit confirmation involves checking with the user that their input or request was understood correctly. It is often used to confirm critical details, and the bot will not perform the action until it receives a reply from the user, usually in the form of a yes/no or similar response.
 
-You can double-check with the user prior to performing an action that would be difficult to undo, for example, cancel an order: 
+For example, you can double-check with the user before performing an action that would be difficult to undo, such as canceling an order.
 
 :::: conversation
 ::: user User
@@ -132,7 +124,7 @@ But there are many ways to say yes or no by the user. To handle the synonym expr
 ![implicit](/images/annotation/confirmation/confirmation_expression.png)
 :::
 
-For example, In some scenarios, "*Sorry I need to change*" represents a new intention, but in certain scenarios, this means the user says no to the confirm. So you can add all of these cases in **Affirmatives** and **Negatives**. 
+For instance, the phrase *"Sorry I need to change"* may imply a new intention in some situations, but it may signify a negative response to confirmation in other contexts. By defining all possible cases in **Affirmatives** and **Negatives**, the bot can better understand user responses and provide appropriate actions.
 
 ::: tip Note
 The common understanding of confirmation yes and no is already supported in **system skill** *`io.opencui.core.confirmation.Yes`* and *`io.opencui.core.confirmation.No`*, so no need to define it here. But if needed, you can also customize system skill behavior by adding expressions.  
@@ -144,7 +136,7 @@ The common understanding of confirmation yes and no is already supported in **sy
 ![implicit](/images/annotation/confirmation/confirmation_condition_implicit.png)
 :::
 
-Unlike explicit confirmation, implicit confirmation does not require a reply from the user. It just simply confirms the input has been received like an FYI notification, and an operation will take place without asking for user approval, although users might give one if they want to make a correction. 
+Unlike explicit confirmation, implicit confirmation does not require a reply from the user. It simply confirms that the input has been received as an FYI notification and an operation will take place without asking for user approval. Although users might give feedback if they want to make a correction.
 
 :::: conversation
 ::: user User

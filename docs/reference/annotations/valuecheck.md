@@ -1,9 +1,6 @@
 # Value check
 
-[[toc]]
-
-## Motivation
-Not all user requests can be served per business logic. For example, when booking a table for dinner, user's initial date preference might not be valid if business is closed that day. In such cause, the bot should just inform the user the closure and save user's time by not asking for party size and time. 
+Not all user requests can be accommodated based on business logic. For instance, when a user requests to book a table for dinner, their initial date preference may not be valid if the business is closed on that day. In such cases, the bot should inform the user of the closure and save their time by not asking for party size and time.
 
 :::: conversation
 ::: user User
@@ -15,34 +12,33 @@ Sorry, we are not open on Friday. Please choose another date.
 ::::
 
 ## Overview
-Capturing the invalid user input per business logic is essential to make the conversation effective, With value check, builder can define what is considered to be invalid input based on service, and have bot to offer users the chance to give alternative choice.
+Capturing invalid user input based on business logic is essential to make conversations effective. With value checks, builders can define what constitutes invalid input based on the service and have the bot offer users the chance to provide alternative choices.
 
-Use value check to check whether the option user input is servable based on business logic. When Value Check fails, you can specify the recovering:
-- How bot informs users that the input value is invalid
-- Choose which slot to be cleared so that we can restart the slot filling process from that slot again.
+Use value checks to verify whether the option entered by the user is servable based on the business logic. When the value check fails, you can specify the recovery process:
+- Decide how the bot informs users that the input value is invalid 
+- Choose which slot should be cleared so that we can restart the slot-filling process from that point again.
 
 ## How to use
-Value check is an optional slot annotation. When [Slot filling](./overview.md#five-stages-of-slot-filling) moves to value check, [Dialog manager](../glossary.md#dialog-manager-dm) will check conditions defined in value check.
-- If all conditions are true, value check passes and Slot filling moves on to the next stage.
-- If any of the conditions is false, value check fails. When value check fails, bot uses value check prompts to inform users that the value is invalid, clears the predefined target slot first and starts to conversation again from that slot.
+Value check is an optional slot level annotation. When conversation moves to the value check stage, the dialog manager checks the conditions defined in the value check.
+- If all conditions are true, the value check passes, and slot filling moves on to the next stage.
+- If any of the conditions are false, the value check fails. When the value check fails, the bot uses value check prompts to inform users that the value is invalid. The bot then clears the predefined target slot first and restarts the conversation from that slot again.
 
 ::: thumbnail
 ![value check](/images/annotation/valuecheck/value-check.png)
 ::: 
 
 ### Conditions
-Condition holds the boolean code expression that checks whether the value user input is servable by business. If all conditions are true, value check passes. If one of the conditions is false, value check fails.
+The condition holds the boolean code expression that checks whether the value entered by the user is servable by the business. If all conditions are true, the value check passes, and slot filling proceeds to the next stage. If any of the conditions are false, the value check fails.
 
-Conditions are defined in [kotlin code expression](./kotlinexpression.html), which should produce a Boolean value when evaluated, like `slot != null` , `function() == true` . You can joint the statements using `&&` or `||` , like `slot != null && slot < 3` .
+Conditions are defined in [kotlin code expression](./kotlinexpression.html), which should produce a Boolean value when evaluated, like `slot != null` , `function() == true` . You can combine the statements using logical operator such as `&&` or `||` , like `slot != null && slot < 3` .
 
 ### Inform
-When value check fails, bot informs users that the value is invalid, like bot's utterance shown in [Motivation](#motivation). You should add at least one template to inform. 
+When the value check fails, the bot informs users that the value is invalid.
 
 ### Recovering strategy
+If the value check fails, you can decide which slot to clear in the recovering strategy. The bot will then start from that slot and try to obtain the user's choice for each subsequent slot one by one again. For example, if the user's choice causes the value check to fail when all slots (party size, date, and time) have been filled, you can choose to clear the current slot's value only (which is the default) or clear an earlier slot and restart the conversation from that point again.
 
-In case value check fails, you can decide which slot to be cleared in Recovering Strategy, so that bot will start from that slot and try to get user choice for every slot after that one by one again. For example, when all the slots party size, data and time are filled but user's choice causes the slot's value check fails, you can choose to clear current slot's value only (which is default) or you can clear one of earlier slot, and start conversation from the slot being cleared again.
-
-Suppose the order of slots is as follows. Here are two different situations using different Recovering Strategy.
+Suppose the order of the slots is as follows. Here are two different scenarios that use different recovering strategies.
 
 ::: thumbnail
 ![order of slots](/images/annotation/valuecheck/slots-order.png)

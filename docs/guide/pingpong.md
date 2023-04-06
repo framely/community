@@ -7,15 +7,7 @@ This view suggests that we can build a CUI in a type-based fashion. First, we de
    :::
 On the OpenCUI platform, the CUI behavior is attached to types in the form of dialog annotations. Dialog annotations can be attached to a type as a whole (on its Annotation, Response, and Expression tabs) or attached to its slots. Dialog annotations have two layers: the interaction layer, which decides things like which slot we should request from the user, and the language layer, which decides the phrasing we use to request that information in a given language.
 
-Most dialog annotation need to be configured in two stages: once at interaction layer, once for each language you want to support at language layer. You need to propagate the change you made in interaction layer to language layers before you can configure the language layer portion of the annotation. In this tutorial, we will switch to language layer after we are done with interaction layer for each annotation. For more information about schema, interaction logic and language, check out [chatbot in 3 layers](3layers.md).
-
-   ::: thumbnail
-   ![commit pingpong interaction](/images/guide/pingpong/commit_pingpong_struct.png)
-   :::
-
-   There are two kind of language related annotations, templates and exemplars. The text edits for them are scattered in different context, like when bot prompt a slot, the templates and exemplars defined there will only work in these contexts. Templates define how bot should respond, and utterance similar to exemplars defined on skill expression tab will trigger bot to start that skill, and once a skill is started, bot will follow the interaction logic defined to bring skill to completion and deliver the user what they want.
-
-   One of the major challenges of building a CUI is that the builder does not have control over what the user can express at any given turn. When the current conversation path is not defined by the builder, a flow-based chatbot won't know how to respond, which can be detrimental to the business's interests. In contrast, a type-based chatbot can always engage in a constructive conversation by greedily creating value for missing slots in order to invoke a function for the user. Additionally, it is much easier to reuse a type-based CUI than a flow-based one.
+One of the major challenges of building a CUI is that the builder does not have control over what the user can express at any given turn. When the current conversation path is not defined by the builder, a flow-based chatbot won't know how to respond, which can be detrimental to the business's interests. In contrast, a type-based chatbot can always engage in a constructive conversation by greedily creating value for missing slots in order to invoke a function for the user. Additionally, it is much easier to reuse a type-based CUI than a flow-based one.
 
 This tutorial will guide you step-by-step through the process of creating and building a simple chatbot on the OpenCUI platform. When interacting with the chatbot, users can get a welcome message and a reply *"pong"* based on the input location. For example:
 
