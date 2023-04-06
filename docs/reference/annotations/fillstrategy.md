@@ -35,8 +35,7 @@ The Always strategy means that if the user does not provide a value, the chatbot
 If a slot is required by the business logic, you should configure the prompt strategy to Always ask. The bot will make sure that this slot is filled. That means if a user has not mentioned their preference before, or their choice is not legitimate, the bot will prompt the user to ensure that there will be a value for the given slot.
 
 ### Conditional
-#### Motivation
-Not every slot is required to be filled. For example, when a user wants to watch a movie that does not have IMAX version, we should not be asking the user about it. For example, if the movie has the IMAX version, bot should behave this way: 
+Not every slot is required. For example, when a user wants to watch a movie that does not have IMAX version, we should not be asking the user about it. For example, if the movie has the IMAX version, bot should behave this way: 
 :::: conversation
 ::: user User
 Can I get two tickets for 8:00pm Top Gun, please?
@@ -48,7 +47,7 @@ Do you want the IMAX version?
 Yes, please.
 :::
 ::::
-For a movie without IMAX version, bot can skip the otherwise silly question to ask.
+For a movie without IMAX version, bot should skip this question to avoid being silly.
 :::: conversation
 ::: user User
 Can I get two tickets for 8:00pm NomadLand, please?
@@ -59,21 +58,20 @@ That will be $10. Please pay with ApplePay.
 ::::
 
 #### Overview
-Conditional strategy gives builder a way to specify when or when not to prompt users for their choice on a given slot, by means of a boolean expression. As always, the slot used in this condition expression should be earlier than the current slot and bot behavior, when you reference a later slot in condition is not defined and can change without notice.
+Conditional strategy allows the builder to specify a code expression to decide whether to prompt users for a given slot. As always, the slot used in this conditional expression should be earlier than the current slot, and bot behavior when referencing a later slot in the condition is not defined.
 
-Like Always strategy, the Conditional strategy is also orthogonal or casts no constrains to other annotations in the [slot filling](./overview.md#five-stages-of-slot-filling) pipeline with the condition expression is evaluated to true. When it is evaluated to false, however, the slot will be left with unfilled and bot will move to the next slot or response.
+Like the Always strategy, the Conditional strategy is also orthogonal and imposes no constraints on other annotations in the [slot filling pipeline](./overview.md#five-stages-of-slot-filling) when the condition expression evaluates to true. However, when it evaluates to false, the slot will be left unfilled and the bot will move on to the next slot or response.
 
 Conditional strategy is easy to set up:
-- Pick a slot, set its Fill Strategy to **Conditional** then, specify the conditional expression in the code-entry box, which should be a boolean expression in kotlin sense.
-- Provide at least one template in Prompt for bot to generate natural language response.
+- Pick a slot, set its Fill Strategy to Conditional then, specify the Kotlin Boolean code expression in input box.
+- Add template in Prompt so bot knows how to request information from user.
 
-#### How to use
-Conditional strategy is useful for conditionally required slots. When slots are only required under some condition according to business logic, a conditional strategy can be used.
-
+#### How to Use
+The Conditional strategy is useful for slots that are conditionally required. When a slot is required only under certain conditions according to business logic, you can use the Conditional strategy.
 
 ### Gated
-#### Motivation
-Some time, the information you want to collect from user might be too heavy or considered to be intrusive, so it is customary to ask permission from a user to get into details. For example, to figure out how long a patient had fever, is it on and off? what is the highest temperature, etc, directly poking on this can be a bit odd for the user.
+Sometimes, the information you want to collect from the user might be too sensitive or intrusive, so it is customary to ask for their permission to delve into details. For example, if you want to find out how long a patient has had a fever, whether it is intermittent or continuous, and what their highest recorded temperature was, it would be considered inappropriate to ask such questions directly without asking for the user's consent first.
+
 :::: conversation
 ::: bot Bot
 Since when have you had fever?
@@ -83,7 +81,7 @@ I don't have a fever. What are you talking about?
 :::
 ::::
 
-Instead, it is useful to first open the door before we ask a question about interior.
+Instead, it is useful to first introduce the topic before asking detailed questions about it.
 :::: conversation
 ::: bot Bot
 Do you have a fever?
@@ -96,7 +94,7 @@ Since when?
 :::
 ::::
 
-Of course, user can say no so bot can move onto next slot.
+Of course, user can say no so bot need to move onto next slot.
 :::: conversation
 ::: bot Bot
 Do you have a fever?
@@ -110,32 +108,29 @@ How about headache?
 ::::
 
 #### Overview
-Gated strategy can only be applied to frame slot. So to take advantage of this prompt strategy, you first need to define a frame to host the closely related slots. Like conditional strategy, this choice is also orthogonal to other annotations in the [slot filling](./overview.md#five-stages-of-slot-filling) pipeline. 
 
-Boolean Gate will ask users the YES-or-NO question once, then waits for three kinds of answers:
-If the answer is Yes, OpenCUI will then follow the depth first rule and start to fill nested slots one at a time in their natural order. 
-If the answer is slot value, OpenCUI will assume gate is opened and start to fill nested slots with user input.
-If the answer is NO, the frame slot will simply be skipped (neither be asked nor be filled).
+The Gated strategy can only be applied to frame slots. Therefore, to take advantage of this prompt strategy, you first need to define a frame to host closely related slots. Like the Conditional strategy, this choice is also orthogonal to other annotations in the [slot filling pipeline](./overview.md#five-stages-of-slot-filling).
 
+The Boolean Gate will ask the user a yes-or-no question once and then wait for one of three types of answers.
+- If the answer is 'Yes,' OpenCUI will follow the depth-first rule and start filling nested slots one at a time in their natural order. 
+- If the answer is a slot value, OpenCUI will assume the gate is open and start filling nested slots with user input. 
+- If the answer is 'No,' the frame slot will simply be skipped (neither asked nor filled)."
 
 Set up gated strategy is easy, on a **frame slot**:
 - Set its Fill Strategy to **Gated** then configure the detail for gated strategy:
   - Prompt: template for boolean question that ask user whether he/she wants to or is able to provide slot value
-  - Affirmatives and Negatives: expression exemplars to help DU, see [Affirmatives and negatives in confirmation](./confirmation.md#affirmatives-and-negatives) for more information.
-- Provide at least one template for origin slot in its Prompt for bot to generate natural language response.
+  - Affirmatives and Negatives: expression exemplars to help dialog understanding module, see [Affirmatives and Negatives in Confirmation](./confirmation.md#affirmatives-and-negatives)
+- Provide at least one template for the Prompt of the origin slot.
 
 ::: thumbnail
 ![boolean-gate](/images/annotation/fillstrategy/booleangate.png)
 :::
 
 #### How to use
-When there is complex subject with many details, it is more natural to use a boolean question as gate to get user permission to go into details. This can reduce the user confusion and your effort to deal with resulted unhappy conversation path. 
-
+When there is a complex subject with many details, it is more natural to use a boolean question as a gate to obtain user permission to go into the details. This can reduce user confusion and the effort required to deal with an unhappy conversation path.
 
 ### Recover only
-
-#### Motivation
-When a service option might only apply to a very small subset of users, like wheelchair assistance, prompting every user for their choice is not a good user experience. But when the initial value, either from user input or initialization failed value check of confirmation, bot need to prompt user for new value. 
+When a service option might only apply to a very small subset of users, such as wheelchair assistance, prompting every user for their choice is not a good user experience. However, when the initial value, either from user input or initialization, fails value check or confirmation, the bot needs to prompt the user for a new value.
 
 :::: conversation
 ::: bot Bot
@@ -149,26 +144,23 @@ Do you have your own mobility device or do you want airport wheelchair service?
 :::
 ::::
 
-It is not appropriate to ask whether a user has own mobility cart in general, but if the user mentioned it first, we can go back and fill them.
+It is not appropriate to ask whether a user owns a mobility cart in general, but if the user mentions it first, we can go ahead and gather that information from them.
 
 #### Overview
-When a slot is configured to have recovering prompt strategy, the bot will not be prompt unless there are some prior effort to fill it, either initialization by builder or prior mention by user.
+When a slot is configured to have a recovering prompt strategy, the bot will not prompt the user unless there has been some prior effort to fill it, either through initialization by the builder or prior mention by the user.
 
-Configure the recover only is simple
+Configure the recover only is simple:
 - Set its Fill Strategy to **Recover only**.
-- Provide at least one template in Prompt for bot to generate natural language response. 
+- Provide at least one template in original slot's Prompt.
 
 #### How to use
-Recover only strategy can be useful for the following use cases:
-- Businesses have a default behaviour / choice that could satisfy most users in form of initialization, but that does not gain user's approval, this strategy kick in.
-- Businesses have a behaviour / choice they don't want to promote, but still need to handle if it's required.
-- Users might say something bot cannot understand or offer some slot value that fails the Value Check or suggestion initialization failed to get user approval. In these cases, re-prompt is needed to request the slot value from user again.
-
+The recover only strategy can be useful for the following use cases:
+- When businesses have a default behavior or choice that could satisfy most users through initialization, but it does not gain user approval, this strategy kicks in.
+- When businesses have a behavior or choice they do not want to promote, but still need to handle if it is required.
+- When users say something that the bot cannot understand or offer a slot value that fails the value check or suggestion initialization fails to get user approval, a re-prompt is needed to request the slot value from the user again."
 
 ### External event
-
-#### Motivation
-Sometimes, bot needs to rely on external event generated by trusted software to change the state of slot filling. For example, when bot needs to wait for user to execute some client action, say payment, any only resume conversation when the preconfigured third-party send expected events.
+Sometimes, the bot needs to rely on external events generated by trusted software to change the state of slot filling. For example, when the bot needs to wait for the user to execute some client action, such as payment, and only resume the conversation when the preconfigured third-party sends the expected events.
 
 :::: conversation
 ::: bot Bot
@@ -184,15 +176,14 @@ Payment completed. Thanks for your business.
 ::::
 
 #### Overview
-External Event by itself only means blocking (of course some inform is allowed before blocking). It is the builder's responsibility to configure the trusted software to send in an event to finish the blocked skill in the conversation. 
+External events, by themselves, only mean blocking (though some information is allowed before blocking). It is the builder's responsibility to configure the trusted software to send an event to finish the blocked skill in the conversation.
 
-Apart from that, if the businesses wants to interact differently depending on how well the client action has done (e.g. is it successful, failed, or timed out), it needs to do some conditional branching with the hosting slot's value, just like all the other slots did. One typical place to do this is response.
+Apart from that, if a business wants to interact differently depending on how well the client action has been done (e.g., successful, failed, or timed out), it needs to do some conditional branching with the hosting slot's value, just like it does with all the other slots. One typical place to do this is in the response.
 
 To set a slot's prompt strategy to be external:
-- Set its Prompt Strategy to **External event**.
-- Inform: provide template to inform a user the conversation state.
-- Configure the third party software to send event to resume the skill. Different third party software have different mechanism.
+- Set its prompt strategy to **External Event**.
+- Provide information: provide a template to inform the user of the conversation state.
+- Configure the third-party software to send an event to resume the skill. Different third-party software have different mechanisms
 
 #### How to use
-Whenever the bot needs to work with external software, external fill strategy is your choice. Use inform to let the user know when the ball is in somebody else's courts and continue with updated status when it got triggered by external event.
-
+Whenever the bot needs to work with external software, the external fill strategy is a good choice. Let the user know when the ball is in somebody else's court and this session is on pause, and restart with an updated status when it gets triggered by an external event.

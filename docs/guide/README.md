@@ -6,13 +6,11 @@ To fully utilize OpenCUI, one needs to understand its type-based conceptual mode
 #### [Sign up](signingup.md)
 Before we fully open up, we required you signup first so that we can get some idea on how we can help you. All you need is a GitHub account, ideally with your email verified. 
 
-#### [Clone a chatbot](start-with-clone.md)
+#### [Clone a simple chatbot](start-with-clone.md)
 Cloning an existing project is the fastest way to start play with it. This guide show you how to clone a project, so that you do not have to start from scratch.
+You can also test its behavior using the builtin **Debug** tool.
 
-#### [Test a chatbot](debug.md)
-Before you deploy your bot to production environment, you can test its behavior using the builtin **Debug** tool.
-
-#### [Build a chatbot](pingpong.md)
+#### [Build a simple chatbot](pingpong.md)
 This guide walks you through how to create a basic chatbot on the OpenCUI platform. The sample provides a quick way to explore the functionality of a chatbot, and it can serve as a starting point for your chatbot development. 
 
 #### [Import a full-stack module](use-hours.md)
