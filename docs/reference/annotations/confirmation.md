@@ -4,7 +4,7 @@
 
 ## Motivation
 
-During ordering a spicy sandwich, user might indicate a spicy level that might be too strong for many people, 
+When ordering a spicy sandwich, the user may specify a level of spiciness that could be too intense for some people. To prevent discomfort, a bot might confirm if the user actually desires the requested spiciness level.
 
 :::: conversation
 ::: bot Bot
@@ -36,9 +36,9 @@ With confirmation, you can control this behavior by
 ![confirmation](/images/annotation/confirmation/confirmation.png)
 :::
 
-Confirmation is an optional annotation. There are two places that you can define confirmation: slot level and frame level, different places have different meanings:
+Confirmation is an optional annotation. There are two places that you can define confirmation: slot level and type level, different places have different meanings:
 - **Slot Level**: bot will confirm on each slot which is defined. 
-- **Frame Level**: bot will confirm after all slots on the frame have been done, just like bundle slots together for confirmation. User can accept and modify batch confirmations. 
+- **Type Level**: bot will confirm after all slots on the frame/skill have been done, just like bundle slots together for confirmation. User can accept and modify batch confirmations. 
 
 ### Conditions
 
@@ -76,7 +76,7 @@ In this case, there are multiple conditions that need to be set here:
 ![multiple conditions](/images/annotation/confirmation/confirmation_table.png)
 :::
  
-- One should like `artist.identifier() == "adele"` :
+- One should be like `artist == "adele"` :
 
 ::: thumbnail
 ![condition](/images/annotation/confirmation/condition_1.png)

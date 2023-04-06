@@ -63,7 +63,7 @@ Don't care expressions need to be defined in another annotation, but the interac
 
 Aside from these main control, OpenCUI value recommendation also comes with other bells and whistles to make it easy to adapt to real world situations. For example, there is a hard and soft mode toggle, which indicates whether option or value outside what bot offers is acceptable. There is also annotation allow you customize the conversational behavior when the item list is empty or just had one entry. 
 
-Value recommendation can be defined both on the slot level (both entity slot or frame slot) and frame level, with frame level definition available on all the slot of that frame automatically. The configuration of value recommendation is done in the follow UI:
+Value recommendations can be defined at the slot level(both entity slot or frame slot) or type level. If it is defined at the type level, the bot will recommend the entire frame/skill based on that recommendation. The configuration of value recommendation is done in the follow UI:
 ::: thumbnail
 ![value rec popup](/images/annotation/valuerec/valuerec.png)
 :::
