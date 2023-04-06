@@ -1,4 +1,4 @@
-# Value Recommendation
+# Value recommendation
 
 [[toc]]
 
@@ -40,13 +40,13 @@ Sorry, Star Wars at 19:00pm have sold out, please choose another time.
 When a slot has a large set of potentially valid values from user side, but much more restrictive set servable from business side, it is very useful to inform user as early as possible the acceptable ones per business logic. Value recommendation is one way of communicate such restriction so that user can pick from a smaller set of values that is pre-approved by business, instead of go through multiple round of trial and error.
 
 Value recommendation is rather complex conversational component, consist of
-- **Source**, where builder can specify a code expression or skill that return a list of value of the target type.
+- **Source**: where builder can specify a code expression or skill that return a list of value of the target type.
 
-- **Paging behavior**, when list is long, it is important to support "page" navigation like interactions:
-  - *"is there more options?"* for next page
-  - *"can you go back? I like to see these options again."* for previous page. 
+- **Paging behavior**: when list is long, it is important to support "page" navigation like interactions:
+  - *"Is there more options?"* for next page.
+  - *"Can you go back? I like to see these options again."* for previous page. 
 
-- **Item picking**, provide the ability to deal with selection expressions both by index or by name: 
+- **Item picking**: provide the ability to deal with selection expressions both by index or by name: 
 
 | Selection 	| Examples 	|
 |:--	|:---	|
@@ -55,7 +55,7 @@ Value recommendation is rather complex conversational component, consist of
 | Support primitive expressions and pronoun expressions	|*"this city"*, *"over there"*	|
 | Support don't care expressions                       |*"don't care"*, *"anything will do"*	|
 
-- **List rendering**, allow builder to customize the template that verbalize the offer list in different languages.
+- **List rendering**: allow builder to customize the template that verbalize the offer list in different languages.
 
 ::: tip Note
 Don't care expressions need to be defined in another annotation, but the interactive experience will be reflected here.
@@ -68,13 +68,13 @@ Value recommendations can be defined at the slot level(both entity slot or frame
 ![value rec popup](/images/annotation/valuerec/valuerec.png)
 :::
 
-## How To Use
-There are many controls on the **Value Recommendation** component configuration page, that can be used to design conversational interface for different use case, let's go over them one by one.
+## How to use
+There are many controls on the **Value recommendation** component configuration page, that can be used to design conversational interface for different use case, let's go over them one by one.
 
-### Hard Mode
+### Hard mode
 
 When bot recommends options or candidate values for given slot to user, there are two different scenarios:
-- When servable options are small enought, it can offer an exhaustive list of servable options, for example:
+- When servable options are small enough, it can offer an exhaustive list of servable options, for example:
 :::: conversation
 ::: bot Bot
 Which color do you want on the tempo next percent? We only have white and also black left.
@@ -88,7 +88,7 @@ How can I help you today? Mr. Bond. For example, I can help you with your monthl
 :::
 ::::
 
-When the number of valid choices business can serve is small, you can turn on the **Hard Toggle** to control the conversational experience and communicate to user that the choices you offer are the only ones that will be accepted by your business:
+When the number of valid choices business can serve is small, you can turn on the **Hard toggle** to control the conversational experience and communicate to user that the choices you offer are the only ones that will be accepted by your business:
 
 ::: thumbnail
 ![valuerec-hard](/images/annotation/valuerec/valuerec_hard.png)
@@ -102,16 +102,16 @@ Sorry, we do not offer Star Wars at this time. The only available showtime for S
 ::::
 The exact script of the first part can be customized on the system skill `io.opencui.core.BadIndex` and `io.opencui.core.BadCandidate` by adding more replies. 
 
-The conversational behavior will also be customized under hard mode for cases when number of entries return the source is one or zero, which can be defined in [Single Entry Informs](./valuerec.md#single-entry) and [Zero Entry Informs](./valuerec.md#zero-entry).
+The conversational behavior will also be customized under hard mode for cases when number of entries return the source is one or zero, which can be defined in [Single entry informs](./valuerec.md#single-entry) and [Zero entry informs](./valuerec.md#zero-entry).
 
 ::: tip Note
 Customization of **system skill** will not only affect the current slot, but also the entire bot behaviors.
 :::
 
-#### Two Special Cases
+#### Two special cases
 Whenever there are limited valid options for a slot based on business data, you should enable hard mode. This will give you the customized behavior under tbe strong assumption that user can only pick options from the list of the offered options. After you turn on the hard mode for value recommendation, you can supply the template for two special cases:
 
-- ##### Single Entry
+- ##### Single entry
 
 Under the hard mode, if there are only one candidate options from the source, the entire conversational experience for the current slot will actually change to something more effective: bot will skip the prompt phase, and go directly to confirmation phase, where an implicit confirmation is required for single entry under hard mode. For example, when user want to one ticket for Star Wars without specifying the showtime:
 :::: conversation
@@ -132,7 +132,7 @@ The configuration of single entry inform can be done here:
 ![value rec single entry](/images/annotation/valuerec/valuerec_singleentry.png)
 :::
 
-- ##### Zero Entry
+- ##### Zero entry
 
 When the recommendation list is empty, the zero entry inform will be replied to users. And then bot will exit the current skill as it can not provide the service anymore. If this default behavior does not meet your expectations, you can customize this behavior with Transition annotation, or recover some value at the previous slot with [Value Check](./valuecheck.md). 
 
@@ -166,17 +166,17 @@ Running shoes for training, got it. Here are the running shoe series designed fo
 :::
 ::::
 
-In OpenCUI, each skill is abstraction of a function with conversational behavior defined on top of it, including its input parameters. Each skill has a return. When a skill has a return type of multivalued target slot type, we can use it as source for value recommendation for the slot. To specify the list of candidates via user interaction, you just need to active intern based source configuration 
+In OpenCUI, each skill is abstraction of a function with conversational behavior defined on top of it, including its input parameters. Each skill has a return. When a skill has a return type of multivalued target slot type, we can use it as source for value recommendation for the slot. To specify the list of candidates via user interaction, you just need to active intern based source configuration and proceed with specifying what skill you want, and how to initialize some of it slots before we acttive the skill to get candidate list.
+
 ::: thumbnail
 ![value rec source](/images/annotation/valuerec/valuerec_source.png)
 :::
-and proceed with specifying what skill you want, and how to initialize some of it slots before we acttive the skill to get candidate list.
 
-When number of servable options for the target slot is not that much, you can instead directly specify it via code expression. In code expression, you can call out to service functions like ` function()` or `function(input: slot!!)`, and optionally apply some post-processing in Kotlin. If the service function is implemented to return only up-to-date options, then you will offer dynamic suggestions. But you can even specify a static list if it makes business sense, for example,
+When number of servable options for the target slot is not that much, you can instead directly specify it via code expression. In code expression, you can call out to service functions like ` function()` or `function(input: slot!!)`, and optionally apply some post-processing in Kotlin. If the service function is implemented to return only up-to-date options, then you will offer dynamic suggestions. But you can even specify a static list if it makes business sense, for example:
 ```kotlin
 listOf(Color.Red, Color.Black)
 ```
-This will Offer two colors for user to choose from.
+This will offer two colors for the user to choose from.
 
 ### Display
 
@@ -195,6 +195,17 @@ Otherwise, only the list scenarios will be shown.
 
 <!-- not sure this name is good? -->
 You can use the List module to provide a text list or rich card experience at json format level. In order to simplify your definition work, some default behaviors have been provided here. If these default values can meet your application scenario, then you only need to pay attention to header, body (which will be repeated based the list, and pagination configurations) and footer, which shows the main part of display: 
+
+::: thumbnail
+![vr-dispaly-full](/images/annotation/valuerec/vr-dispaly-full.png)
+:::
+
+- **Number of entries**: defines the number of items displayed per page. The default value is `5`. It can be modified to any value, but it needs to be considered with the channel that the bot will eventually deploy.
+
+- **Delimiter**: here are two fields
+  - The first is used to define the delimiter between entries. The default value is `\n`, which indicates a line break.
+  - The second is used to define the delimiter of the last entry. It can be empty if not needed.
+  
 - **Header**: text area, defines the title content of the recommended card, such as *"Top picks for you: "*, *"Recommended for you: "*.
 
 - **Body**: text with code expression embedded, defines the recommended content body. The syntax of the body needs to follow the rules below: 
@@ -210,17 +221,7 @@ ${it.value!!.expression()}  // on platform, expressions[0] stands for expression
 ${it!!.value}
 ```
 
-::: thumbnail
-![vr-dispaly-full](/images/annotation/valuerec/vr-dispaly-full.png)
-:::
-
 - **Footer**: text area, defines the bottom content or inform of the recommendation card.
-
-- **Number of entries**: defines the number of items displayed per page. The default value is `5`. It can be modified to any value, but it needs to be considered with the channel that the bot will eventually deploy. 
-
-- **Delimiter**: here are two fields
-  - The first is used to define the delimiter between entries. The default value is `\n`, which indicates a line break. 
-  - The second is used to define the delimiter of the last entry. It can be empty if not needed.
 
 
 ::: tip Note
@@ -231,15 +232,15 @@ In theory, you can define header, body, footer as any content as you want, but i
 
 When designing value recommendations, you can also consider the pros and cons in the table below:
 
-| With Value Recommendation 	| Without Value Recommendation 	|
-|:---	|:---	|
-|<ul><li>Makes it clear what the user can say by establishing boundaries.</li><li>Minimizes confusion, easy for users to answer.</li><li>Can feel limiting to users.</li></ul>	|<ul><li>Encourages the user to respond naturally and in their own words.</li><li>Difficult for users to anticipate what answers are supported.</li><li>Set expectations too high and overpromise.</li></ul>	|
+| With value recommendation 	                                                                                                                                                  | Without value recommendation 	                                                                                                                                                                               |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <ul><li>Makes it clear what the user can say by establishing boundaries.</li><li>Minimizes confusion, easy for users to answer.</li><li>Can be limiting to users.</li></ul>	 | <ul><li>Encourages the user to respond naturally and in their own words.</li><li>Difficult for users to anticipate what answers are supported.</li><li>Set expectations too high and overpromise.</li></ul>	 |
 
 <br>
 
 Regardless where the value recommendation is defined, they can be defined for slot with either entity type or frame type. So you have to decide where to put it based on your business. 
-- **Entity Slot**: when slots are more or less independent, this give user the ability to incrementally communicate what they want.
-- **Frame Slot**: Holistic, we always recommend multi slots simultaneously, and they will be filled together. 
+- **Entity slot**: when slots are more or less independent, this give user the ability to incrementally communicate what they want.
+- **Frame slot**: holistic, we always recommend multi slots simultaneously, and they will be filled together. 
 ::: thumbnail
 ![value rec levels](/images/annotation/valuerec/valuerec_levels.png)
 *Value recommendation on different levels*

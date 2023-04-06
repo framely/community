@@ -29,7 +29,7 @@ You can initialize the slot with a value defined in arbitrary [kotlin code expre
 - **Slot**: You can pick an earlier slot of the same type as proposed value. If you pick a later slot, the behavior is not defined.
 - **Function call**: You can use a function return: you can set the phone number as `getUserPhoneNumber()`, which returns the user's phone number.
 
-## How To Use
+## How to use
 Initialization is an optional slot annotation. If you know that a user will most likely accept a value based on business logic or historical data, you can use it to reduce the need for the user to input by providing something they might accept.
 
 The configuration of initialization is shown in the following figure, and the field labeled `Value` is used for specifying the proposed value.
@@ -45,8 +45,8 @@ Sometimes, your business dictates what value can a slot take given existing slot
 #### Suggestion
 At other times, your business may only suggest what value a slot can take, given existing user choices and business logic that a user has to accept. This is suggestion, where you can first enable initialization on the slot and then configure the [explicit confirmation](../annotations/confirmation.md#explicit). This way, the bot will inform the user of the system's suggested value for this slot and then give the user a chance to confirm. If the user agrees, the bot moves on to the next slot; if the user does not agree, the bot goes back to the prompting stage for the user to input again.
 
-### Dos and Don'ts
-::: tip Do's
+### Dos and don'ts
+::: tip Dos
 1. When using initialization, it is best to add an [implicit confirmation annotation](../annotations/confirmation.md) to inform the user of the choice that the system provided, in order to keep both the user and the bot on the same page.
 2. With suggestion, you also need to configure the prompt in case the user disagrees with the suggested value and the bot needs to extract the user's choice for this slot.
 3. Ensure that the proposed value here is compatible with the [value check](./valuecheck.md) annotation, minus any fluctuations due to data changes. For example, if the ticket is no longer available, the proposed value should reflect that. Otherwise, the user may become confused with an ill-timed value check message.

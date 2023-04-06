@@ -30,7 +30,7 @@ With confirmation, you can control this behavior by
 - Provide the way to customize the "yes/no" understanding of user utterances under this context for explicit confirmations
 
 
-## How To use
+## How to use
 
 ::: thumbnail
 ![confirmation](/images/annotation/confirmation/confirmation.png)
@@ -42,7 +42,7 @@ Confirmation is an optional annotation. There are two places that you can define
 
 ### Conditions
 
-With condition, bot can confirm with the user when the set of conditions are met. You can use [kotlin Expression](kotlinexpression.md) to express the timing of key pieces of information that should be implied or requested.
+With condition, bot can confirm with the user when the set of conditions are met. You can use [Kotlin code expression](kotlinexpression.md) to express the timing of key pieces of information that should be implied or requested.
 
 :::: conversation
 ::: user User
@@ -92,7 +92,7 @@ Bot will check the conditions according to the top-to-bottom order, and confirm 
 - If the first condition is `true`, bot will respond the confirmation to the user.
 - if the first condition is `false`, bot will move on to the next condition, and so on.
 
-Know more about [kotlin Expression](kotlinexpression.md).
+Explore [Kotlin code expression](kotlinexpression.md) for more information.
 
 
 ### Explicit 

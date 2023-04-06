@@ -28,10 +28,10 @@ Transition can be configured in two parts: triggering and update actions, where 
 ![transition](/images/annotation/transition/transition.png)
 :::
 
-## Transition
- Currently, we support two kinds of transitions: event triggered transitions and condition triggered transitions.
+## Transitions
+Currently, we support two kinds of transitions: event triggered transitions and condition triggered transitions.
 
-### Event Triggered Transition
+### Event triggered transitions
 
 Given skill, the interaction logic or transition table defined by slot filling components will always try to proactively fill every it's slot, and delivery the result to user based on the filled slots. While direct slot filling is already capable for many real world use case, many advanced use cases involves no-direct slot filling.
 
@@ -55,7 +55,7 @@ The triggering part of event triggerred transition are defined by arbitrary fram
 :::
 
 
-### Condition Triggered Transition
+### Condition triggered transitions
 
 The default behavior of slot filling after one slot is filled is always moving onto fill the next slot. But sometime, this behavior is not what you want. In addition to early exit example at the beginning of this doc, condition triggerred transition can also be used for looping back. 
 
@@ -76,7 +76,7 @@ Sure, what noodle do you want? we have dry noodle or noodle soup.
 :::
 ::::
 
-Condition triggerred transition allows you to customize interaction logic based on slot values. The triggering part is defined by triggering timing and triggering condition, where timing is defined by a slot, and triggering condition can be specified by arbitrary boolean [kotlin Expression](kotlinexpression.md). When the trigger timing slot is filled and the condition expression evaluates to true, the corresponding actions will be executed. 
+Condition triggerred transition allows you to customize interaction logic based on slot values. The triggering part is defined by triggering timing and triggering condition, where timing is defined by a slot, and triggering condition can be specified by arbitrary boolean [Kotlin expression](kotlinexpression.md). When the trigger timing slot is filled and the condition expression evaluates to true, the corresponding actions will be executed. 
 ::: thumbnail
 ![transition-condition](/images/annotation/transition/transition-condition.png)
 :::
@@ -86,7 +86,7 @@ Transition is a low level control that you can use to implement arbitrary conver
 :::
 
 
-## System Action
+## System actions
 ::: thumbnail
 ![transition-action](/images/annotation/transition/transition-action.png)
 :::
@@ -94,61 +94,61 @@ Transition is a low level control that you can use to implement arbitrary conver
 Update action contains one or more actions in sequence, you need to define it by order. When the trigger is active, bot will respond the update action one by one according to the **top-to-bottom order**, please make sure the order of actions is the one you want.
 
 With actions, you can: 
-- Prompt Users for necessary information by **Single Value Message** and **Multiple Value Message**. See [Universal channel](../channels/universalmessage.md) for more details about messages;
-- Change the state of slot filling by **Clear Slot**, **Fill Slot** and **Recheck Slot**;
-- Transfer conversation by **Skill Start**, **Skill Abort** and **Skill End**.
+- Prompt users for necessary information by **Single value message** and **Multiple value message**. See [Universal channel](../channels/universalmessage.md) for more details about messages;
+- Change the state of slot filling by **Clear slot**, **Fill slot** and **Recheck slot**;
+- Transfer conversation by **Skill start**, **Skill abort** and **Skill end**.
 
-#### Single Value Message
+#### Single value message
 
 Prompt user a static text or media reply, it can be used to verbalize a single value of some type. This type of message can only support tuple (think of static list where the number of elements are known at build time).
 
-#### Multiple Value Message
+#### Multiple value message
 
 Prompt user a dynamic list reply, it is designed to verbalize multiple value of some time, where the number of elements are not know at build time. The multiple value message bind to a list of some type, and can be expressed via code expression for maximal flexibility.
 
-#### Clear Slot
+#### Clear slot
 
-Clear the target slot's value, which needs to be refilled according to the setting of slot filling stages. It is a good way to use in cooperation with **Recheck Slot**, to make sure some value still makes business sense. 
+Clear the target slot's value, which needs to be refilled according to the setting of slot filling stages. It is a good way to use in cooperation with **Recheck slot**, to make sure some value still makes business sense. 
 
-#### Fill Slot
+#### Fill slot
 
 Assign the value expressed in code expression to target slot, which supports the following expressions:
 
-- **Constant**. For example, if the type of target slot is `kotlin.Int`, you can associate the value to be `1` ; If the type of target slot is multi-valued `kotlin.Int`, you can associate the value to be `listOf(1, 2, 3) ` .
+- **Constant**: For example, if the type of target slot is `kotlin.Int`, you can associate the value with `1` ; If the type of target slot is multi-valued `kotlin.Int`, you can associate the value to be `listOf(1, 2, 3) ` .
 
-- **Slot**. You can pick an earlier slot of the same type as proposed value, for example `slotA` . If you pick a later slot, the behavior is not defined, meaning the behavior might change without notice.
+- **Slot**: You can pick an earlier slot of the same type as proposed value, for example `slotA` . If you pick a later slot, the behavior is not defined, meaning the behavior might change without notice.
 
-- **Function call**. You can set the target slot `phoneNumber` by using function label directly as `getUserPhoneNumber()` for example.
+- **Function call**: You can set the target slot `phoneNumber` by using function label directly, such as `getUserPhoneNumber()`.
 
 
-Of course, expression can be arbitrarily nested via method calls, and combined via operators, such as if expression, when expression, !! operator, Elvis operator, for more details you can see [kotlin Expression](../annotations/kotlinexpression.md).
+Of course, expression can be arbitrarily nested via method calls, and combined via operators, such as if expression, when expression, !! operator, Elvis operator, for more details you can see [Kotlin expression](../annotations/kotlinexpression.md).
 
 ::: tip Note
-When use **Fill Slot** with code expression, you should make sure assignment actually works. For example, code expression should be valid ford current context.
+When use **Fill slot** with code expression, you should ensure that assignment actually works. For instance, the code expression should be valid for the current context.
 :::
 
 
-#### Recheck Slot
+#### Recheck slot
 
 Move the stage before checking the value of target slot, to make sure it still makes business sense. OpenCUI reset every slot after slot to be cleared to be rechecked by default.
 
-#### Skill Start
+#### Skill start
 
 Start a new skill with its slot filled with assignments by code expression, when this expression is evaluated to not null, the new started skill will skip the interaction on these slots.
 
-#### Skill Abort
+#### Skill abort
 
 Abort the skill you specified. Abort is treated as abnormal termination which indicates all associated or nested skills will be affected. For example, if you provide a round-trip booking service by using composite skill which contains flight skill, and there is no suitable flight available, you can make a decision to abort skill. If the flight skill aborted, the round-trip composite skill will be assumed the same way.  
 
-#### Skill End
+#### Skill end
 
 Terminate the current skill. For example, when the ticket that the user wants to buy has been sold out, it is a better experience to simply exit conversation early with condition triggerred transition by adding skill end action. Of course, you'd better add some replies at the same time to remind the user context. Skill end will only terminate the current skill and will not affect others. 
 
-#### Hand Off
+#### Hand off
 
-Transfer the current conversation to a human agent. Please make sure you have configued [Support](../support/overview.md). 
+Transfer the current conversation to a human agent. Please make sure you have configured [Support](../support/overview.md). 
 
-#### Close Session
+#### Close session
 
 Clear the entire session. For example, if the bot gets stuck with the user, for a better experience, the bot should actively jump out of the stuck and restart with the user under pre-set conditions. 
 
