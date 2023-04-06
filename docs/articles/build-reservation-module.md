@@ -441,7 +441,7 @@ Now, add the following dialog annotations to the **MakeReservation** skill:
    filterTables(reservation.listResource(location!!, resourceType!!, datePicker!!.date!!, timePicker!!.time!!, duration!!)).isNotEmpty()
    ```
 
-**Frame annotation**:
+**Type annotation**:
 - Confirmation with the following Condition:
  ```kotlin
 number != null && datePicker!!.date != null && timePicker!!.time != null 
@@ -496,7 +496,7 @@ For dialog annotations, add the following templates:
    - Prompt: What time would you like the reservation for?
    - Value Check: There is no available table for `${number}` at `${timePicker!!.time!!.expression()}` on `${datePicker!!.date!!.expression()}`, please choose another time.
 
-**Template at frame level**:
+**Template at type level**:
 - Confirmation: Are you sure to book a table for `${number}` at `${timePicker!!.time!!.expression()}` on `${datePicker!!.date!!.expression()}`?
 
 For responses, add the following templates in **Single Value Message**:

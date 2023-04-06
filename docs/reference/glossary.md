@@ -182,7 +182,7 @@ Frame can be declared as global. A global frame can occur in more than one skill
 Schema is a static view what frame is about: common goal and information needed by that goal. Anecdotally, there are two types of frames: verb frames and noun frames. Verb frames are related to skill which describe what user wants or what provider serves (they have to agree), and noun frames are essentially composite entity. Frames commonly has slots (has-a relationship), which can be of entity or frame type, that defines some aspects of this frame.
 
 #### Annotation
-The desired dynamic behavior of component is declaratively defined in form of annotations. These are designed as "control" so builder to control the desired behavior for their chatbots. Annotations can be defined on the frame level which defines behavior of the entire frame, or slot level which define the slot specific behavior. 
+The desired dynamic behavior of component is declaratively defined in form of annotations. These are designed as "control" so builder to control the desired behavior for their chatbots. Annotations can be defined on the type level which defines behavior of the entire frame/skill, or slot level which define the slot specific behavior. 
 
 - **Dialog Annotation**: It's used to define the conversational behavior of chatbot.
 
@@ -242,7 +242,7 @@ Check whether a given value is servable based on business logic.
 To inform user something (implicit confirmation) or ask user to confirm their choice (explicit confirmation).
 
 ### Transition
-Transition is a low level annotation that give builder the ability to control the state machine directly. It is an optional frame level annotation which lets you define transitions between slots hosted directly and indirectly by hosting frame.
+Transition is a low level annotation that give builder the ability to control the state machine directly. It is an optional type level annotation which lets you define transitions between slots hosted directly and indirectly by hosting frame.
 
 
 
