@@ -19,9 +19,9 @@ Sorry all tickets are sold out today. What else can I do for you?
 ## Overview
 The 5 stage slot filling conversational interaction logic defined by chatbot builder in intentionally modeled under dynamic [state chart](https://statecharts.dev/), or dynamic composite state machines. The deterministic nature warranted by this conceptual model make it easy for business to control interaction logic for their business needs, both in building and debugging phase.
 
-In particular, each entity slot filling is essentially a deterministic state machine, that deterministically move from the start state to end state, that go through the 5 stages of slot filling based the transition table defined by corresponding CUI components. The frame slot are filled by composite state machine that also by frame level CUI component as well as the components defined on each one of its slots. 
+In particular, each entity slot filling is essentially a deterministic state machine, that deterministically move from the start state to end state, that go through the 5 stages of slot filling based the transition table defined by corresponding CUI components. The frame slots are filled by a composite state machine that also includes the type-level CUI component, as well as the components defined on each one of its slots. 
 
-Transition is a low level annotation that give builder the ability to control the state machine directly. It is an optional frame level annotation which lets you define transitions between slots hosted directly and indirectly by hosting frame.
+Transition is a low level annotation that give builder the ability to control the state machine directly. It is an optional type level annotation which lets you define transitions between slots hosted directly and indirectly by hosting frame.
 
 Transition can be configured in two parts: triggering and update actions, where triggering defines under what condition the corresponding actions sequence is executed.
 ::: thumbnail

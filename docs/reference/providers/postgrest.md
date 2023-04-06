@@ -61,7 +61,7 @@ A frame represents a table, and slots in this frame represent the table columns:
 ![data management](/images/provider/postgrest/data-management.png)
 :::
 
-You can use **Storage Annotations** to declare constraints which are used to specify rules for the data in a table. This ensures the accuracy and reliability of the data in the table. Constraints can be column level or table level, therefore, storage annotations can be slot level or frame level. Slot level apply to a column, and frame level apply to the whole table.
+You can use **Storage Annotations** to declare constraints which are used to specify rules for the data in a table. This ensures the accuracy and reliability of the data in the table. Constraints can be column level or table level, therefore, storage annotations can be slot level or type level. Slot level apply to a column, and type level apply to the whole table.
 
 If the table needs to be accessed by the operation team on the admin interface, you can also specify it through **Backoffice Annotations**. 
 
@@ -120,7 +120,7 @@ A column can be assigned a default value. When a new row is created and no value
 
 ### Unique
 
-Unique ensure that the data contained in a column, or a group of columns, is unique among all the rows in the table. It is a frame level annotation, you can have many unique constraints per table. 
+Unique ensure that the data contained in a column, or a group of columns, is unique among all the rows in the table. It is a type level annotation, you can have many unique constraints per table. 
 
 You can set one slot in one unique constraint, this specifies that all values in this column are different. You can also set a group of slots in one unique, this specifies that the combination of values in the indicated columns is unique across the whole table, though any one of the columns need not be (and ordinarily isn't) unique. For more information about unique constraints in PostgreSQL, see [Unique Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-UNIQUE-CONSTRAINTS).
 
