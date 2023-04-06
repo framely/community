@@ -1,7 +1,6 @@
 # Build a simple chatbot
 The goal of a chatbot is to deliver functionality to the user through a conversational user interface. In order to do that, it first needs to create a callable instance of some function type that can be invoked by the user. To achieve this, we need to be able to create instances conversationally for any type that is required by the parameters for functions and attributes for user defined types (both are slots on OpenCUI). This suggests that we can build a conversational user interface in a type-based fashion in two steps: 
-- Declare all the types we want to expose; OpenCUI supports skill for conversationally exposed function, frame for user defined types, and entity for primitive types. 
-
+- Declare all the types we want to expose;
 - Attach dialog annotations to these types and their slots, which describe how the whole or part of the type can be instantiated conversationally.
 
    ::: thumbnail
@@ -10,7 +9,7 @@ The goal of a chatbot is to deliver functionality to the user through a conversa
 
  To support multiple languages, dialog annotations are defined in two layers. The first layer is the interaction layer, which determines which slot should be requested for additional information from the user. The second layer is the language layer, which determines the phrasing that should be used to request that information in a given language. In this guide, we finish all the interaction layer configuration for a type before we switch to language layer but this is not required. 
 
-Notice every type defined on the OpenCUI has direct mapping onto some Java/Kotlin classes, we can also add dialog annotations to existing Java/Kotlin data types, this allows user to tap into vast Java ecosystem of any functionalities can one can think of, as well as using Kotlin code expression directly express the logic.
+OpenCUI supports skill for conversationally exposed function, frame for user defined types, and entity for primitive types. Notice every type defined on the OpenCUI has direct mapping onto some Java/Kotlin classes, we can also add dialog annotations to existing Java/Kotlin data types, this allows user to tap into vast Java ecosystem of any functionalities can one can think of, as well as using Kotlin code expression directly express the logic.
 
 This tutorial will guide you step-by-step through the process of creating and building a simple chatbot on the OpenCUI platform. When interacting with the chatbot, users will receive a welcome message and a reply of "pong" based on their input location. For example:
 
@@ -100,7 +99,7 @@ Conceptually, a skill is a conversationally exposed function, with input paramet
 #### 2.1 Declare a skill at schema level
 First, let's declare a skill at schema level, this includes creating skill first, and then add slots, local function and services.
 
-##### Create a skill
+##### 2.1.1 Create a skill
 1. Go to the **pingpong** chatbot and ensure that you are at the **INTERACTION** view.
 2. Click **Create** button on the right side, and select **Create skill** to create a new skill.
 3. Enter a label for the skill and press enter. For example, `PingPong`.
@@ -116,7 +115,7 @@ First, let's declare a skill at schema level, this includes creating skill first
    ![intent label](/images/guide/pingpong/intent_label.png)
    :::
 
-##### Add slot
+##### 2.1.2 Add slot
 On a composite type's **Schema** tab, we can add slots to this skill.
 To add a slot to a type:
 1. Navigate to the `PingPong` skill and ensure that you are at the **Interaction** level.
@@ -128,9 +127,7 @@ To add a slot to a type:
 :::
 
 #### 2.2 Add dialog annotation to type
-For any conversationally exposed composite type, we always need to add exemplars and templates at the language level. For this simple skill, in case the user did not provide the location in the initial utterance, the chatbot needs to prompt the user for that information. The exact prompt behavior is controlled by configuring the [fill strategy](../reference/annotations/fillstrategy.md) for that slot. This need to be done in both interaction layer and language layer. 
-
-As we 
+For any conversationally exposed composite type, we always need to add exemplars and templates at the language level. For this simple skill, in case the user did not provide the location in the initial utterance, the chatbot needs to prompt the user for that information. The exact prompt behavior is controlled by configuring the [fill strategy](../reference/annotations/fillstrategy.md) for that slot. This need to be done in both interaction layer and language layer.
 
 ##### 2.2.1 Interaction level
 In the `PingPong` skill and ensure that you are at the **INTERACTION** level:
