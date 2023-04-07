@@ -2,11 +2,7 @@
 
 OpenCUI is a platform designed to assist regular development teams in building natural conversational user interfaces (CUIs) for their services. To reduce the cost of building CUIs, OpenCUI adopts a type-based approach, so you can use pre-built components instead of building everything from scratch. There are two ways of reusing existing work on the OpenCUI platform: importing or cloning. This guide will show you how to begin experimenting with a chatbot by cloning.
 
-The OpenCUI platform can be thought of as a GitHub specifically for chatbots. However, instead of repositories, the work within the organization is organized into projects, including chatbots, reusable modules, and providers:
-
-- **Chatbot**: A CUI application where users can access a service through text-based or voice-based user interface.
-- **Module**: A module consists of CUI components that handle interaction for a predefined domain. Modules can be reused by chatbots or other modules. You can define a service interface in a module, which can then be used to interact with the backend.
-- **Provider**: The provider is the stub to the implementation of the module interface.
+The OpenCUI platform can be thought of as GitHub specifically for chatbots. However, instead of repositories, the organization's work is organized into projects, which include chatbots, reusable modules, and providers. In this guide, let's focus on chatbots, which are essentially applications where users can access a service through a text-based or voice-based conversational user interface.
 
 When you clone a project, you create an exact copy in your organization that you can inspect and modify. Cloning a project allows you to freely experiment with changes without affecting the original project. Cloning an existing chatbot that provides similar services is a great way to get started since you don't have to start from scratch. This guide will show you how to clone a simple chatbot.
 
