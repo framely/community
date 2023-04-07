@@ -50,7 +50,7 @@ To test your chatbot using Debug, follow these steps:
    ::: thumbnail
    ![try it now](/images/guide/pingpong/tryitnow_icon.png)
    :::
-3. Click **Connect**. This may take some time as we build and deploy the chatbot to our development environment. Once the connection is successfully established, you can test your chatbot by typing messages in the input box at the bottom and pressing enter. For example, enter `ping` then the bot should ask for a location, upon getting a legit location say `Seattle`, respond with `Pong Seattle`. 
+3. Click **Connect**. This may take some time as we build and deploy the chatbot to our development environment. Once the connection is successfully established, you can test your chatbot by typing messages in the input box at the bottom and pressing enter. For example, enter `ping` then the chatbot should ask for a location, upon getting a legit location say `Seattle`, respond with `Pong Seattle`. 
    ::: thumbnail
    ![pingpong test](/images/guide/pingpong/pingpong_test.png)
    :::
@@ -58,7 +58,7 @@ To test your chatbot using Debug, follow these steps:
 You can make modifications, such as changing the response and expression. For the change to take effect, make sure you commit and reconnect.
 
 ### Reset session
-The replies that the bot generates for user input depend on the conversation history. Sometimes, you need to have a clean start to try something new. You can restart the testing session by clicking the "**Reset contexts**" icon located in the upper right corner of the Debug area.
+The replies that the chatbot generates for user input depend on the conversation history. Sometimes, you need to have a clean start to try something new. You can restart the testing session by clicking the "**Reset contexts**" icon located in the upper right corner of the Debug area.
 
 ### View log
 For coders, you can inspect the detailed log by clicking the "**View log**" icon located in the upper right corner of the Debug area.
