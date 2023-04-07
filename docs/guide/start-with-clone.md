@@ -5,17 +5,17 @@ OpenCUI is a platform designed to assist regular development teams in building n
 The OpenCUI platform can be thought of as a GitHub specifically for chatbots. However, instead of repositories, the work within the organization is organized into projects, including chatbots, reusable modules, and providers:
 
 - **Chatbot**: A CUI application where users can access a service through text-based or voice-based user interface.
-- **Module**: A module consists of CUI components that handle interaction for a predefined domain. Modules can be reused by chatbots or other modules. You can define a service interface in a module that can be used by the module to interact with the backend.
+- **Module**: A module consists of CUI components that handle interaction for a predefined domain. Modules can be reused by chatbots or other modules. You can define a service interface in a module, which can then be used to interact with the backend.
 - **Provider**: The provider is the stub to the implementation of the module interface.
 
-When you clone a project, you create an exact copy in your organization that you can inspect and modify. Cloning a project allows you to freely experiment with changes without affecting the original project. Cloning an existing bot that provides similar services is a great way to get started since you don't have to start from scratch. This guide will show you how to clone a simple chatbot.
+When you clone a project, you create an exact copy in your organization that you can inspect and modify. Cloning a project allows you to freely experiment with changes without affecting the original project. Cloning an existing chatbot that provides similar services is a great way to get started since you don't have to start from scratch. This guide will show you how to clone a simple chatbot.
 
 ## Before you start
 
 [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
 ## Clone chatbot pingpong
-In OpenCUI, you can discover a growing number of public projects by clicking on the **Explore** tab at the top of the page, which were built by the OpenCUI community. You can inspect a project to see if it fits your needs. Once you are inside the project you want to clone, you can follow the steps below to clone it.
+In OpenCUI, you can discover a growing number of public projects by clicking on the **Explore** tab at the top of the page, which were built by the OpenCUI community and have received at least one star. You can inspect a project to see if it fits your needs. Once you are inside the project you want to clone, you can follow the steps below to clone it.
 
 In this guide, we will show you how to clone a chatbot (project for that matter) using pingpong as example. Click [here](https://build.opencui.io/org/me.quickstart/agent/pingpong/struct/intent?page=0&imported=false&search=) to go inside `me.quickstart.pingpong` chatbot： 
 
@@ -24,9 +24,9 @@ In this guide, we will show you how to clone a chatbot (project for that matter)
     ![enter chatbot](/images/guide/start-with-clone/click_clone.png)
     :::
 
-2. Once you click **Clone**, a pop-up window for basic chatbot settings will appear, you need to decide couple things: 
+2. Once you click **Clone**, a pop-up window for basic chatbot settings will appear, you need to decide a couple of things:
    - Choose which **Owner** organization you want to clone this project to.
-   - Optionally you can change the **Project label** for this clone.
+   - Optionally, you can change the **Project label** for this clone.
    - Decide on how you want to **Deploy** this, have OpenCUI hosting it for you or have it deployed on premise.
    - Pick which **Region** you want to deploy this chatbot to, pick one that is closer to your targeted users.
    - Click on **Clone** at the bottom of the popup.
@@ -34,7 +34,7 @@ In this guide, we will show you how to clone a chatbot (project for that matter)
     ![enter chatbot](/images/guide/start-with-clone/clone.png)
     :::
 
-::: warning Need To Know
+::: warning Need to know
 A project's label or region can not be changed after creation or clone, so choose it wisely. For privacy reasons, the connections and user session data will NOT be cloned.
 :::
 
@@ -50,7 +50,7 @@ To test your chatbot using Debug, follow these steps:
    ::: thumbnail
    ![try it now](/images/guide/pingpong/tryitnow_icon.png)
    :::
-3. Click **Connect**. This may take some time to as we build and deploy the chatbot to our development environment. Once the connection is established successfully, you can test your chatbot by typing messages in the input box at bottom and press enter. For example, enter `ping` then the bot should ask for a location, upon getting a legit location say `Seattle`, respond with `Pong Seattle`. 
+3. Click **Connect**. This may take some time as we build and deploy the chatbot to our development environment. Once the connection is successfully established, you can test your chatbot by typing messages in the input box at the bottom and pressing enter. For example, enter `ping` then the bot should ask for a location, upon getting a legit location say `Seattle`, respond with `Pong Seattle`. 
    ::: thumbnail
    ![pingpong test](/images/guide/pingpong/pingpong_test.png)
    :::
@@ -58,12 +58,12 @@ To test your chatbot using Debug, follow these steps:
 You can make modifications, such as changing the response and expression. For the change to take effect, make sure you commit and reconnect.
 
 ### Reset session
-The replies that bot generated for the user input depends on the conversation history. Sometime, you need to have a clean start to try something, you can restart your testing session by clicking the "**Reset contexts**" icon.
+The replies that the bot generates for user input depend on the conversation history. Sometimes, you need to have a clean start to try something new. You can restart the testing session by clicking the "**Reset contexts**" icon located in the upper right corner of the Debug area.
 
 ### View log
-For coders, you can inspect the detailed log by clicking the "**View log**" icon.
+For coders, you can inspect the detailed log by clicking the "**View log**" icon located in the upper right corner of the Debug area.
 
 ### Save test case
-You can save test cases by clicking the "**Save test case**" icon, which allow you rerun them in a later stage. For more information about Debug, refer to the [Testing](../reference/platform/testing.md) section.
+You can save test cases by clicking the "**Save test case**" icon located in the upper right corner of the Debug area, which allow you rerun them in a later stage. For more information about Debug, refer to the [Testing](../reference/platform/testing.md) section.
 
 
