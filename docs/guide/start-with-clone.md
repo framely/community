@@ -38,7 +38,7 @@ In this guide, we will show you how to clone a chatbot (project for that matter)
 A project's label or region can not be changed after creation or clone, so choose it wisely. For privacy reasons, the connections and user session data will NOT be cloned.
 :::
 
-## Test chatbot
+## Test the chatbot
 Before your chatbot is fully ready to be deployed to production environment, OpenCUI includes a built-in **Debug** tool that allows you to test your design in a development environment, so that you can uncover CUI design bugs as early as possible. There are some restrictions with this tool: you can't test your chatbot in asynchronous extensions including channels like Messenger. Furthermore, you can only test one language at a time, and only committed content in your branch.
 
 To test your chatbot using Debug, follow these steps:
@@ -57,13 +57,25 @@ To test your chatbot using Debug, follow these steps:
 
 You can make modifications, such as changing the response and expression. For the change to take effect, make sure you commit and reconnect.
 
-### Reset session
-The replies that the chatbot generates for user input depend on the conversation history. Sometimes, you need to have a clean start to try something new. You can restart the testing session by clicking the "**Reset contexts**" icon located in the upper right corner of the Debug area.
+Additionally, there are other useful operations available in the upper right corner of the Debug area that can assist you with troubleshooting your chatbot. For more information about Debug, refer to the [Testing](../reference/platform/testing.md) section.
+
+::: thumbnail
+![operation icon](/images/guide/start-with-clone/operation-icon.png)
+:::
 
 ### View log
-For coders, you can inspect the detailed log by clicking the "**View log**" icon located in the upper right corner of the Debug area.
+For coders, you can inspect the detailed log by clicking the "**View log**" icon.
 
 ### Save test case
-You can save test cases by clicking the "**Save test case**" icon located in the upper right corner of the Debug area, which allow you rerun them in a later stage. For more information about Debug, refer to the [Testing](../reference/platform/testing.md) section.
+You can save test cases by clicking the "**Save test case**" icon, which allow you rerun them in a later stage. 
+
+### View test cases
+Clicking the "**Test cases**" icon lets you compare your chatbot's behavior against expected results and identify errors that require attention.
+
+### Reset session
+The replies that the chatbot generates for user input depend on the conversation history. Sometimes, you need to have a clean start to try something new. You can restart the testing session by clicking the "**Reset contexts**" icon.
+
+
+
 
 
