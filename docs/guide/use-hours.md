@@ -5,6 +5,10 @@ On OpenCUI, you can use a module and a compatible provider to expose a service v
 
 Instead of building a conversational experience from scratch, OpenCUI allows you to reuse a prebuilt, often higher quality component to offer the same functionality. This can be done in three simple steps: create and configure a provider in your organization, import a module into a chatbot, and finally wire the provider to the service in the chatbot configuration tab. This guide shows you how to follow these steps to reuse an existing component to field users' questions about your business hours.
 
+
+- **Module**: A module consists of CUI components that handle interaction for a predefined domain. Modules can be reused by chatbots or other modules. You can define a service interface in a module, which can then be used to interact with the backend.
+- **Provider**: The provider is the stub to the implementation of the module interface.
+
 Here is an example dialogue that shows how this chatbot helps users to get business hours:
 
 :::: conversation
