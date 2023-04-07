@@ -15,7 +15,7 @@ When you clone a project, you create an exact copy in your organization that you
 [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
 ## Clone chatbot pingpong
-In OpenCUI, you can discover a growing number of public projects by clicking on the **Explore** at the top of the page, which were built by the OpenCUI community and have received at least one star. You can inspect a project to see if it fits your needs. Once you are inside the project you want to clone, you can follow the steps below to clone it.
+In OpenCUI, you can discover a growing number of public projects by clicking on the **Explore** at the top of the page, which were built by the OpenCUI community. You can inspect a project to see if it fits your needs. Once you are inside the project you want to clone, you can follow the steps below to clone it.
 
 In this guide, we will show you how to clone a chatbot (project for that matter) using pingpong as example. Click [here](https://build.opencui.io/org/me.quickstart/agent/pingpong/struct/intent?page=0&imported=false&search=) to go inside `me.quickstart.pingpong` chatbot： 
 
