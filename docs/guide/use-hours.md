@@ -13,7 +13,6 @@ Instead of building a conversational experience from scratch, OpenCUI allows you
 ![relationship](/images/guide/use-service/relationship.png)
 :::
 
-
 Here is an example dialogue that shows how this chatbot helps users to get business hours:
 
 :::: conversation
