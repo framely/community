@@ -19,7 +19,7 @@ Importing a module is another way to reuse existing work on OpenCUI. Modules are
 This guide show you how to develop the module and provider we introduced in previous guide.
 
 #### [Deploy a chatbot](quickstart-channel.md)
-This guide explains how chatbot work with channels like Messenger, and shows you how to configure chatbot and channel using Messenger as example so that they point to each other. After going through this, your chatbot will be available in Messenger. 
+Using Messenger as example, this guide shows you how to configure chatbot and channel so that they point to each other. After going through this, your chatbot will be available in Messenger. 
 
 #### [OpenCUI workflow](opencui-flow.md)
 We use a Git-like version control system to make it easy for builder to collaborate on the structured definition of the chatbot.
