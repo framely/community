@@ -9,6 +9,11 @@ Instead of building a conversational experience from scratch, OpenCUI allows you
 - **Module**: A module consists of CUI components that handle interaction for a predefined domain. Modules can be reused by chatbots or other modules. You can define a service interface in a module, which can then be used to interact with the backend.
 - **Provider**: The provider is the stub to the implementation of the module interface.
 
+::: thumbnail
+![relationship](/images/guide/use-service/relationship.png)
+:::
+
+
 Here is an example dialogue that shows how this chatbot helps users to get business hours:
 
 :::: conversation
