@@ -1,4 +1,4 @@
-# Build a full-stack component
+# Build a full-stack module
 
 In the previous guide, we showed you how to make your chatbot field various business hours queries by [reuse a existing component](./use-hours.md). In this guide, we will show you how to build such a component, including exposed module [hours](https://build.opencui.io/org/me.quickstart/agent/hours/en/service_schema) and PostgREST provider [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema): First, declare a service. Second, define the conversational user interface(CUI) for it. Third, implement the PostgREST provider by yourself.
 
