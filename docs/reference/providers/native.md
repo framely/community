@@ -1,9 +1,5 @@
 # Native Provider
 
-[[toc]]
-
-## Overview
-
 Native providers are crucial to OpenCUI chatbots, they provide the implementation to system interface like channel and support, as well as application interface or services like payments. 
 
 With the help of native providers, you can easily use extension services provided by OpenCUI or other orgs, and you can even efficiently develop new services for yourself or other builders. The process of building and wiring native provider is as following, assuming that you want to use OpenCUI platform to define the conversational user interface frontend. You can potentially use OpenCUI runtime to develop chatbot without using OpenCUI platform, it is certainly possible, but is not covered here. 
