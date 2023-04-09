@@ -1,45 +1,39 @@
 # Extension
 
-[[toc]]
+OpenCUI is built on an open architecture, making it easy to make functionality available to chatbots. The core of this architecture is the separation between interface and implementation, allowing conversational behavior to be defined on the interface while implementation can take various forms.
 
-## Overview
-
-The OpenCUI is designed to have a open architecture, so that it is easy to make functionality available to chatbot. The core of this open architecture is separation between interface and implementation, so that conversational behavior can be defined on the interface, while implementation can come in various form. 
-
-On OpenCUI, we abstract interface for every builtin functionalities that might have more than one implementations, example being channels and supports, and you are encourage to do the same thing for the application level functionalities such as payment processing. 
+On OpenCUI, we abstract the interface for every built-in functionality that might have more than one implementation, such as channels and supports, and we encourage you to do the same thing for application-level functionalities, such as payment processing.
 
 There are two kinds of extensions:
-1. External extensions are the ones that OpenCUI platform does not have access to source code, and can only be used by you with privately deployed chatbot. 
-2. Internal extensions are the ones that OpenCUI platform does have access to source code (inside opencui or framely). Chatbot using framely extensions can not be exported for private deployment. 
+- External extensions are those that the OpenCUI platform does not have access to the source code for and can only be used by you with a privately deployed chatbot.
+- Internal extensions are those that the OpenCUI platform does have access to the source code for (inside OpenCUI or Framely). Chatbots using Framely extensions cannot be exported for private deployment."
 
 ## Extend with Native Provider
 
 To develop extensions with Native Provider, you should follow these steps below. To use existing extensions, you can go [Wire and Configure](native.md#wire-and-configure) directly.
 
-### 1. Decribe interface
+1. Describe interface
 If the service interface you need has not been created yet, you should create a new one and describe its schema on OpenCUI platform. System service interfaces are already created for you, if you want to connect to other channels, you can use them directly, like `io.opencui.channel.IChannel`.
 
-### 2. Generate Code Stub
-If the service interface you need has already been created, you need to export it. When exporting, OpenCUI platform will generate stub code in kotlin and you will get the generated file which will be used in implementation.
+2. Generate Code Stub
+If the service interface you need has already been created, you need to export it. When exporting, OpenCUI platform will generate stub code in kotlin, and you will get the generated file which will be used in implementation.
 
-### 3. Develop Extension
+3. Develop Extension
 The standard way to develop extension is to do it inside extension repo. 
-```
-git clone https://github.com/opencui/extensions.git
-```
-OpenCUI use gradle as build system, so you can create a subdirectory to host your subproject. Using the existing building system in this repo will make it easy for you to contribute your native provider back OpenCUI community.  
+    ```
+    git clone https://github.com/opencui/extensions.git
+    ```
+    OpenCUI use gradle as build system, so you can create a subdirectory to host your subproject. Using the existing building system in this repo will make it easy for you to contribute your native provider back OpenCUI community.
+    The implementation can then be developed as standard Kotlin project. Make sure your project actually builds before you move to the next step.
+    ```
+    ./gradlew your_project:build
+    ```
 
-The implementation can then be developed as standard Kotlin project. Make sure your project actually builds before you move to the next step.
-```
-./gradlew your_project:build
-```
-
-### 4. Register Native Provider
-
+4. Register Native Provider
 Regardless if the extensions are external, you need to register their native provider on the platform so that OpenCUI can generate the frontend code for them. To register native provider, follow steps in the [Build Native Provider](native.md#build-native-provider) documentation to accomplish the following:
-1. Create native provider.
-2. Declare service interface.
-2. Configuration setup.
+   1. Create native provider.
+   2. Declare service interface.
+   2. Configuration setup.
 
 When you're done, make sure you merge all of your changes into master.
 
@@ -48,7 +42,7 @@ When you're done, make sure you merge all of your changes into master.
 
 Now lest's use [helloworld extension](https://github.com/opencui/extensions/tree/main/helloworld) as an example to show how extension is developed. This simple hello word extension gets name from configuration, and then simly return `hello $name`.
 
-### 1. Decribe Interface
+### Describe Interface
 
 1. **Create service interface**. Go to one of your org, select **Components** in left side menu, click **Create** on the right side. In the **Create** popup window: 
     - Enter a label for service component. For example, our hello world example uses `component_0915` as label. 
@@ -81,14 +75,14 @@ Now lest's use [helloworld extension](https://github.com/opencui/extensions/tree
 3. Review your changes and merge them into master.
 
 
-### 2. Generate Code Stub
+### Generate Code Stub
 In the service you described, click **Export** on the second navigation bar to extract the generated file. 
 
 ::: thumbnail
 ![export service component](/images/provider/extension/hello_export_service.png)
 :::
 
-### 3. Develop Extension
+### Develop Extension
 1. Clone extensions repo, create a subdirectory to host your subproject. Here we create `helloworld` under extensions.
     ```
     git clone https://github.com/opencui/extensions.git
@@ -120,8 +114,7 @@ In the service you described, click **Export** on the second navigation bar to e
 
 For a full overview, see [helloworld](https://github.com/opencui/extensions/tree/main/helloworld) in OpenCUI extensions repo.
 
-### 4. Register Native Provider
-
+### Register Native Provider
 1. Create a native provider. Go to one of your org, select **Provider** in left side menu, click **Create** on the right side. In the **Create** popup window: 
     - Enter a label for provider. For example, `test` as label. 
     - Select **Native Provider** in **Provider Type** field.
@@ -168,7 +161,7 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
 
 4. Review and merge your changes into master.
 
-### 5. Wire and Configure in Chatbot
+### Wire and Configure in Chatbot
 
 1. If you have not already created a chatbot, create one now. Inside your org, head to chatbot list page by clicking **Chatbots** in the left side menu, then click **Create** on the right side.
     - Enter your chatbot's label in the Project Label field, for example `helloworld`.

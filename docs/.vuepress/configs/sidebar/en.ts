@@ -80,18 +80,6 @@ export const en = {
       link: '/reference/providers/extension.md',
     },
     {
-      text: 'Platform',
-      collapsible: true,
-      children:[
-        '/reference/platform/multilingual.md',
-        '/reference/platform/testing.md',
-        '/reference/platform/deployment.md',
-        '/reference/platform/versioncontrol.md',
-        '/reference/platform/access.md',
-        '/reference/platform/reusability.md'
-      ]
-    },
-    {
       text: 'CUI Components',
       collapsible: true,
       children: [
@@ -107,18 +95,15 @@ export const en = {
       ],
     },
     {
-      text: 'Services',
+      text: 'Platform',
       collapsible: true,
-      children: [
-        {
-          text: 'Reservation',
-          link: '/reference/plugins/services/reservation/',
-          collapsible: true,
-          children:[
-            '/reference/plugins/services/reservation/reservation-api.md',
-            '/reference/plugins/services/reservation/google-calendar-reservation.md'
-          ],
-        }
+      children:[
+        '/reference/platform/multilingual.md',
+        '/reference/platform/testing.md',
+        '/reference/platform/deployment.md',
+        '/reference/platform/versioncontrol.md',
+        '/reference/platform/access.md',
+        '/reference/platform/reusability.md'
       ]
     },
     {

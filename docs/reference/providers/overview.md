@@ -1,6 +1,6 @@
 # Overview
 
-The goal of OpenCUI is to make it easy to build conversational user interface for functionalities. Many such functionality are not fully known at the time of initial design and implementation of OpenCUI, including application functionalities such as payment processing, and system ones such as channels to connect with users or contact center software to loop in live agents. To accommodate new requirements, OpenCUI follows an open architecture design so that new functionalities can be supported easily. 
+The goal of OpenCUI is to make it easy to build conversational user interface for services. Many such functionality are not fully known at the time of initial design and implementation of OpenCUI, including application functionalities such as payment processing, and system ones such as channels to connect with users or contact center software to loop in live agents. To accommodate new requirements, OpenCUI follows an open architecture design so that new functionalities can be supported easily. 
 
 Following the best practices, all functionalities on OpenCUI are modeled in two parts: interfaces and implementations, so that the producer and consumer of these functionalities can be developed independently. More importantly, conversational behaviors are only constructed against these interfaces, so it is possible to switch to different implementation.
 
