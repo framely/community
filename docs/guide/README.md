@@ -12,10 +12,10 @@ Cloning an existing project is the fastest way to start play with it. This guide
 #### [Build a simple chatbot](pingpong.md)
 This guide walks you through how to create the simple chatbot introduced in the previous guide.
 
-#### [Reuse a full-stack module](use-hours.md)
-Importing a module is another way to reuse existing work on OpenCUI. Modules are reusable conversational components based on their service interface. They are considered full stack when they are paired with a compatible provider. In this guide, we will show you how to add functionality to your chatbot by reusing a full-stack module.
+#### [Reuse a full-stack component](use-hours.md)
+Importing a module is another way to reuse existing work on OpenCUI. Modules are reusable conversational components based on their service interface. A full stack component is a module paired with a compatible provider. In this guide, we will show you how to add functionality to your chatbot by reusing a full-stack module.
 
-#### [Build a full-stack module](build-service.md)
+#### [Build a full-stack component](build-service.md)
 This guide show you how to develop the module and provider we introduced in previous guide.
 
 #### [Deploy a chatbot](quickstart-channel.md)
