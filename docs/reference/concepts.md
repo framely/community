@@ -3,7 +3,10 @@
 OpenCUI can be thought of as GitHub for type-based chatbots. Here are the key concepts at the organizational level, and at the chatbot level, for building chatbots.
 
 ## Projects
-Just like a repository on GitHub, on the OpenCUI platform, projects are the basic unit of work. Users can decide whether it is public or private, and what permissions each user can have on it, etc. Projects can be cloned or imported for reuse. There are three types of projects on the platform.
+Just like a repository on GitHub, on the OpenCUI platform, projects are the basic unit of work. Users can decide whether it is public or private, and what permissions each user can have on it, etc. Projects can be cloned or imported for reuse. There are three types of projects on the platform. This is typically how these projects work together.
+::: thumbnail
+![relationship](/images/guide/use-service/relationship.png)
+:::
 
 ### Chatbots
 An OpenCUI chatbot is an application with a conversational user interface that delivers services to end-users through conversations. It is essentially just a set of annotated types (components), including skills and all their dependencies such as frames, dialog acts, entities, and services.
