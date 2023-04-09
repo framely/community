@@ -181,26 +181,32 @@ Now that you have finished building a module. You can [view your changes](../ref
 
 ## Build a provider
 
-After declaring a service in a module, the next step is to develop a provider for it. On OpenCUI platform, a provider of a service is used as a backend stub to actual backend implementation of that service. Most providers are external, meaning these backends are developed and deployed else where. But there is an OpenCUI-hosted [PostgREST provider](../reference/providers/postgrest.md) which allows you to use PostgreSQL as data storage, implement API function using SQL. OpenCUI will make these functions available to your chatbot and backoffice through a RESTful gateway called PostgREST.
+After declaring a service in a module, the next step is to develop a provider for it. On OpenCUI platform, the provider serves as a backend stub to actual backend implementation of the service. Most providers are external, meaning the backend are developed and deployed elsewhere in related but separated effort. 
 
-Let's see how we can build a PostgREST provider.
+However, there is an OpenCUI-hosted provider called [PostgREST provider](../reference/providers/postgrest.md), which allows you to use PostgreSQL as data storage and implement API functions using SQL on OpenCUI platform. OpenCUI will make these functions available to your chatbot and back office through a RESTful gateway called PostgREST.
+
+To develop a backend using a database and expose functionalities through RESTful APIs, we need to address several issues conceptually:
+- At the schema level, we need to determine the necessary tables, their schemas, and types for each column. We may also need to define PostgreSQL composite types as return types for SQL functions.
+- At the business logic level, we need to decide on the functionalities we want to expose and determine how to implement them.
+- At the admin side, we need to consider how the owner can manipulate the data hosted in the database, including typical CRUD operations.
+
+On OpenCUI, you can declare a frame, or user defined composite type as basis for table, and add storage annotation to this type so that OpenCUI knows how you want to create table. You can use backoffice annotation to control how data are manipulated in admin tool. Furthermore, you can implement function using SQL, and OpenCUI will turn them into stored procedure and expose them via RESTful automatically. Let's see how we can build a PostgREST provider.
 
 ### Import the module for the service
-1. First, make sure you have a target provider. You can use an existing Postgrest provider, or create a new one of this kind.
-2. Enter the module where you [declare the service](#declare-a-service) and [import](../reference/platform/reusability.md#import-1) this module to the target project.
+To implement a service, you need to declare all the necessary types for that service. This can be done by importing the module where the service is defined. Here are the steps to follow:
+1. First, decide on a target provider. You can use an existing Postgrest provider, or create a new one.
+2. Enter the module where the service is declared and import it into the target project.
 
-### Define storage
-With PostgREST provider, table schema is defined by adding [storage annotations](../guide/concepts.md#storage-annotations) to a data type, this allows OpenCUI to create mapping between database and Kotlin code automatically after that. OpenCUI will create tables based the type definition and storage annotation in the separate database for your organization. You should definitely add [backoffice](../guide/concepts.md#backoffice-annotations) to define who each column of table (slot in it corresponding type) should be display and manipulated on the backoffice.
+### Create type needed by implementation 
+Sometimes, you need intermediate function to simplify the development, this and other reasons might require implementation specific types to be defined. For the service that you want to implement here, it is not the case, so we can skip this step.
 
-There are two things that should be stored in the database: business hours and the time zone of your business. When providing business hours in a week, you need to start from the current date. To get the right current date, the time zone of the business is important.
+### Annotate for schema and backoffice
+With the PostgREST provider, you can define a table schema by adding storage annotations to a data type. This enables OpenCUI to automatically create a mapping between the database and Kotlin code. OpenCUI will create tables based on the type definition and storage annotations in a separate database for your organization. Additionally, you should add backoffice annotations to each slot to define how the corresponding column should be displayed and manipulated in the backoffice.
 
-To store business hours and a time zone, use [storage-enable frames](../reference/providers/postgrest.md#create-database-tables). A frame represents a table, and slots in this frame represent the table columns:
-  - Frame label specifies the names of the table.
-  - Slot label specifies the names of the columns in the table.
-  - SQL data type specifies the type of data the column can hold.
+There are two things that should be stored in the database: business hours and the time zone of your business. When displaying business hours for the week, you need to start from the current date. To determine the correct current date, the time zone of the business is important.
 
-To define tables:
-1. Enter the provider that imported the hours service.
+To store business hours or a time zone, you can storage-enable frame. After this, a frame will map to a table, with its slots mapping to the corresponding table columns. The frame label specifies the name of the table, while the slot label specifies the name of the column in the table. The SQL data type specifies the type of data that the column can hold. This can be done as follows:
+1. Enter the target provider with the hours service already imported.
 2. Go to the **Types** page to create these two frames and **enable storage** for each of them.
    
 Frame: **Hours**
@@ -262,7 +268,7 @@ Take the slot **dayOfWeek** as an example and the annotations of it should look 
 :::
 
 ### Implement the service
-Finally, after the tables are ready, you can implement the service, or provide implementation for each function defined in the service. You can do this on the OpenCUI platform using PSQL or native Kotlin code.
+Finally, after the tables are ready, you can provide implementation for each function defined in the service. You can do this on the OpenCUI platform using PSQL (or native Kotlin code, but not for this service, so it is not covered here).
 
 1. Enter the provider that imported the hours service.
 2. Go to the **Service** page, in the **Functions** section, click function **getHoursDay**.
@@ -315,4 +321,4 @@ Finally, after the tables are ready, you can implement the service, or provide i
    ```
    - Click **Save**.
 
-Now that you have finished building a postgrest provider. You can [view your changes](../reference/platform/versioncontrol.md#view-your-changes) and merge your branch into the master. In the next step, you can [access backoffice](../reference/providers/postgrest.md#access-backoffice) to add data for testing and use [function console](../reference/providers/postgrest.md#function-console) to test this provider.
+Now that you have finished building a PostgREST provider. You can view your changes and merge your branch into the master. In the next step, you can use backoffice to add data for testing and use [function console](../reference/providers/postgrest.md#function-console) to test the functions that you just implemented.

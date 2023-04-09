@@ -52,7 +52,6 @@ export const en = {
       collapsible: true,
       children: [
         '/reference/providers/overview.md',
-        '/reference/providers/extension.md',
         '/reference/providers/native.md',
         '/reference/providers/postgrest.md'
       ]
@@ -75,6 +74,10 @@ export const en = {
         '/reference/support/overview.md',
         '/reference/support/Chatwoot.md'
       ],
+    },
+    {
+      text: "Extensions",
+      link: '/reference/providers/extension.md',
     },
     {
       text: 'Platform',
