@@ -1,7 +1,9 @@
-# Reuse a full-stack module
+# Reuse a full-stack component
  Modern business applications are typically broken down into a set of services, each responsible for a specific functionality. For example, airline might have a ticketing service, which includes booking, checking whether a seat is available and canceling. All user interfacing applications are built to expose these kinds of services, chatbot included.
 
-On OpenCUI, a module is a reusable conversational component commonly used to expose a service, simply a set of API functions. Each service can have one or more backend implementations that are developed and deployed separately. A provider, designed to abstract away the details of the underlying communication protocol, can make it easy to interact with the service backend. A full-stack module, or a module that is paired with a provider, is all you need to provide the service conversationally.
+A service defines a set of API functions that specify how business functionalities can be accessed. By using a service as an interface, you can divide chatbot building into backend for business logic and frontend for conversational user interface, each of which can be taken care of by different teams.
+
+On OpenCUI, a module is a reusable conversational component commonly used to expose a service. Each service can have one or more backend implementations that are developed and deployed separately. A provider, designed to abstract away the details of the underlying communication protocol, can make it easy to interact with the service backend. A module paired with a provider, or a full-stack component, is all you need to provide its service conversationally.
 
 ::: thumbnail
 ![relationship](/images/guide/use-service/relationship.png)
@@ -53,10 +55,10 @@ We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
 ## Prepare a provider
 Before the chatbot can serve requests regarding business hours using an existing module, you need to clone its provider into your organization and configuring it so that it can connect to the actual backend. Additionally, you need to populate the backend with your business information.
 
-In this guide, we will clone a PostgREST provider. The PostgREST provider is an OpenCUI-hosted provider, which means that the backend, or the actual implementation of services, is also managed by OpenCUI. This backend is essentially a PostgreSQL database with RESTful access, and comes with an admin interface called backoffice so that business operators can populate the database with their business data. In this case, you can set the main business hours for each day of the week, as well as the hours for special days such as holidays. Hosted providers introduce no external dependency, making the deployment of the chatbot easier. Furthermore, the connection is automatically configured so that builders don't need to worry about it.
+In this guide, you will clone a PostgREST provider. The PostgREST provider is an OpenCUI-hosted provider, which means that the backend, or the actual implementation of services, is also managed by OpenCUI. This backend is essentially a PostgreSQL database with RESTful access, and comes with an admin interface called backoffice so that business operators can populate the database with their business data. In this case, you can set the main business hours for each day of the week, as well as the hours for special days such as holidays. Hosted providers introduce no external dependency, making the deployment of the chatbot easier. Furthermore, the connection is automatically configured so that builders don't need to worry about it.
 
 ### Clone the provider
-1. Clone the [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) project and set the **Project label** to _hoursProvider_ (it is ok to set to something else, but we will use this label in the quickstart).
+1. Clone the [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) project and set the **Project label** to _hoursProvider_ (it is ok to set to something else, but let's use this label in the quickstart).
 
 2. In the cloned provider, merge the cloned the content. 
    * go to **Versions** page and click **Pull request** in the upper-right corner of the Versions area.

@@ -9,13 +9,12 @@ Just like a repository on GitHub, on the OpenCUI platform, projects are the basi
 An OpenCUI chatbot is an application with a conversational user interface that delivers services to end-users through conversations. It is essentially just a set of annotated types (components), including skills and all their dependencies such as frames, dialog acts, entities, and services.
 
 ### Modules
-Modules are the reusable units for getting user preferences via conversations, for example, asking user for a date can be one such module. Modules can be combined to form larger reusable modules for more complex use cases. Additionally, a module can declare a service that allows interaction logic to be defined against business logic and service APIs, resulting in better conversational experiences.
+Modules are the reusable units for getting user preferences via conversations, for example, asking user for a date can be one such module. Modules can be combined to form larger reusable modules for more complex use cases. For better conversational experiences, it is common practice that interaction logic are defined on top of some service.
 
-#### Services
-A service defines a set of function interface that specify how business functionalities can be accessed, this includes the schema or data structure needed by these API functions for input and output parameter and how these input parameters can be used to trigger these functions to get result. These services can be used during the conversation for making communicating more effective or after conversation for delivering the service. 
+A service defines a set of API functions that specify how business functionalities can be accessed, this includes the schema or data structure needed by these API functions for input and output parameter and how these input parameters can be used to trigger these functions to get result. By using a service as an interface, we can divide chatbot building into backend for business logic and frontend for conversational user interface, each of which can be taken care of by different teams.
 
 ### Providers
-Each service can have multiple provider projects that implement its functionalities. Providers are deployable and can be shared by different chatbots in the same organization. OpenCUI supports three types of providers: PostgREST(OpenCUI hosted), RESTful, and native providers.
+Each service can have multiple providers that connect to backend implementation for its functionalities. Providers can be shared by different chatbots in the same organization. OpenCUI supports three types of providers: PostgREST(OpenCUI hosted), RESTful, and native providers.
 
 ## Type systems
 Services can be described by their schema, using description languages such as [OpenAPI](https://swagger.io/docs/specification/data-models/). The core of the API schema is its type system, which is used to describe data types for the input and output parameters of service functions. OpenCUI's type system supports not only primitive types and enums, but also arrays and user-defined types with built-in inheritance and polymorphism behaviors, making it easy to build conversational interfaces for arbitrary service.

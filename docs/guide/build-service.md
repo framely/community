@@ -1,15 +1,15 @@
-# Build a full-stack module
+# Build a full-stack component
 
-In the previous guide, we showed you how to make your chatbot field various business hours queries by [reuse a existing component](./use-hours.md). In this guide, we will show you how to build such a component, including exposed module [hours](https://build.opencui.io/org/me.quickstart/agent/hours/en/service_schema) and PostgREST provider [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema): First, declare a service. Second, define the conversational user interface(CUI) for it. Third, implement the PostgREST provider by yourself.
+In the previous guide, we showed you how to enable your chatbot field various business hours queries by [reuse an existing component](./use-hours.md). In this guide, we will show you how to build such a full-stack component, including both the module and corresponding PostgREST provider. 
 
 ## Before you start
 
-[Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+- [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+- [Build a simple chatbot](./pingpong.md) for how to build a skill with entity slot.
+- [Reuse a full-stack module](./use-hours.md) to get familiar with the functionality we try to build here.
 
 ## Build a module
-A service defines a set of function interfaces that specify how business functionalities can be accessed. By using a service as an interface, we can divide chatbot building into backend for business logic and frontend for conversational user interface, each of which can be taken care of by different teams.
-
-On OpenCUI, we use module to expose a service through conversational user interface. To build these exposed module, we declare the service and then define the conversational user interface on top of the service. 
+On OpenCUI, to expose a service through conversational user interface, you create a module, declare the service in it and then define the conversational user interface on top of the service. 
 
 ### Create a module
 1. Within an org, click **Create** on the right side and select **Create module**.
@@ -17,18 +17,17 @@ On OpenCUI, we use module to expose a service through conversational user interf
 
 ### Declare a service
 
-To declare a service means we define the function type for each API in the service. But to define these function types, we first need to define the data type for their input parameters and returns, and we have to do this recursively in case the one of these data type are composite, or use defined types. 
+To declare a service means that you define the function type for each API in the service. However, in order to define these function types, you must first define the data type for their input parameters and return values, which may need to be defined recursively in case one of these data types is composite.
 
-On the OpenCUI platform, types such as skills, frames, and entities can be annotated with dialog annotations so that the chatbot can create objects of these types via conversations. Dialog acts, on the other hand, can only be used to render the language-independent meaning into the language of choice.
+#### Create required type: BusinessHours
 
-#### Create a type: BusinessHours
 For a function return the business hours on a specific day, the following information is needed:
 - **dayOfWeek**: the day of the week, like Monday, Tuesday, etc.
 - **ifOpen**: whether it's open on that day.
 - **openingTime**: the time it opens.
 - **closingTime**: the time it closes.
 
-So before we can declare the function, we need to create a [frame](./concepts.md#frames) with 4 slots.
+Before you can declare the function, let's create a [frame](../reference/concepts.md#frames) type for its return type. Since you don't need to create instance of this type through conversations, so you just need to declare this at schema level.
 
 To create a frame:
 1. Within the module hours, go to **Types** page, click **Create** on the right side, and select **Create frame**.
@@ -58,7 +57,8 @@ Once finished, the frame should look like this:
 :::
 
 #### Add function interfaces
-To return business hours on a specific day and in a week, lets use the following two API function:
+
+To return business hours on a specific day and in a week, lets use the following two API functions:
 1. **getHoursDay**(date:java.time.LocalDate):BusinessHours
 2. **getHoursWeek**():List\<BusinessHours\>
 
@@ -80,23 +80,28 @@ Once finished, the function interfaces should look like this:
 ![show functions](/images/guide/build-service/show-functions.png)
 :::
 
-Now that you have finished declaring a service. You can [view your changes](../reference/platform/versioncontrol.md#view-your-changes) and merge your branch into the master.
+Now that you have finished declaring a service. You can [view your changes and merge your branch into the master](./opencui-flow.md#review-and-merge-pull-request).
 
-### Build CUI
-OpenCUI allow you to use [annotations](../reference/annotations/overview.md) to define how the bot interacts with users. These annotations can be viewed in two layers: a language independent interaction layer and the language layer where you add templates and exemplars. Templates demonstrate how dialog act should be rendered in a language, and exemplars define how text should be converted to event.
+### Build conversational user interface for the service
 
-#### Create skills
-To expose a functionality through conversational user interface, we need to define a skill. A skill is essentially a function that a user can trigger through conversations. The input parameters of function are captured by skill's slots and the response can be defined in its response section.
+To offer a functionality through a conversational user interface, you need to define a skill. A skill is essentially a function type with dialog annotations, allowing chatbot to create a callable object to activate the service. The input parameters of the function are captured by the skill's slots, and the function's return can be displayed using its response. 
 
-To create a skill to manage users' questions on business hours with and without a specific date:
+ As always, to build a type, we should first define its dependent types. In this case, the skill you will build does not require new types, so let's show you how to define a skill that utilizes service APIs right away.
+
+#### Build a skill
+
+Although there are two API functions that need to be exposed, only one skill is necessary. To determine which API functions should be grouped together, consider their simplest description without mentioning parameters or return values. If two API functions have the same description, they should be triggered by the same skill.
+
+##### Create a skill
+To create a skill to manage users' questions on business hours:
 
 1. Within the module hours, go to **Types** page, click **Create** on the right side, and select **Create skill**.
 2. Enter _ShowHours_ as the skill label. 
 3. To get a specific day from a user, use [DatePicker](../reference/plugins/components/datepicker). DatePicker is an official CUI component, so you need to import [components](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8aea6517f06c1880e3cff) to the module hours first.
 4. After successful import, go back to module hours and refresh your webpage.
-5. In the skill **ShowHours**, add a slot with type **io.opencui.components.dataEntry.DatePicker**.
+5. In the skill **ShowHours**, add a slot with type **io.opencui.components.dataEntry.DatePicker**. The DatePicker is a CUI component that is designed to make it easier for users to enter a date.
 
-#### Add the service
+##### Add the service
 To access the functions in the service, you need to add the service first:
 
 Go to the skill **ShowHours** page, in the **Services** section, click **Select service** and select **IHours**. Leave the **Service label** as default and click **Save**.
@@ -105,13 +110,13 @@ Go to the skill **ShowHours** page, in the **Services** section, click **Select 
 ![add service](/images/guide/build-service/add-service.png)
 :::
 
-
-#### Define interactions
-When a user triggers a skill, the bot follows the interactions based on the annotation you attached to the skill. When the user doesn't mention a specific date, the bot should display business hours in a week. When the user provides a date, if it's open, the bot should show the business hours on that day. If not, the bot should inform the user it's closed.
+##### Attach dialog annotation
+When a user triggers a skill, the chatbot follows the interaction logic based on the annotations attached to the skill. For this particular skill, the desired conversational experience is as follows:
+- If the user doesn't mention a specific date, the chatbot should display the business hours for the week.
+- If the user provides a date, and the business is open on that day, the chatbot should show the business hours. If the business is closed, the chatbot should inform the user that it's closed.
 
 To annotate interactions:
-
-1. Go to the skill **ShowHours** page, since the date is provided by a user spontaneously, the bot doesn't need to ask for the date value. Enter the slot **datePicker** and change **Fill Strategy** to [Recover only](../reference/annotations/fillstrategy.md#recover-only).
+1. Go to the skill **ShowHours** page, since the date is provided by a user spontaneously, the chatbot doesn't need to ask for the date value. Enter the slot **datePicker** and change **Fill Strategy** to [Recover only](../reference/annotations/fillstrategy.md#recover-only).
 2. To display business hours in a week:
    - Navigate to the **Response** tab and select **Multiple value message** under the **Default action** section. 
    - In the **Source** section, copy and paste the following code:
