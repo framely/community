@@ -1,18 +1,15 @@
 # Postgrest
 
-[[toc]]
+OpenCUI also supports the backend component in form of postgREST provider. The backend component can be declaratively defined in two steps: First, create database tables needed by service by adding storage annotation to frames, secondly, provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify how the operation team can access these tables via backoffice.
 
-## Overview
+There are several advantages of using the backend component approach to build a service provider:
+- In addition to declaratively building a database as a content management system, the OpenCUI backend component allows you to implement the service declaratively using SQL. This makes it possible for the business analyst to build the backend.
+- Since tables are created based on the data type in the API schema, no explicit conversion code is needed, and rows in the table or view in the database are automatically converted into an object in OpenCUI.
+- The admin interface or backoffice can also be automatically created based on annotations so that the operation team can use backoffice to provide the service.
+- Backoffice components can be reused by cloning for OpenCUI hosted solutions.
 
-OpenCUI also supports the backend component in form of postgrest provider. The backend component can be declaratively defined in two steps: First, create database tables needed by service by adding storage annotation to frames, secondly, provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify the operation team can access these tables via backoffice.
 
-There are a couple advantage of using backend component approach to build service provider. 
-1. In addition to declaratively building database as content management system, OpenCUI backend component allows you to implement the service declaratively too using SQL. This make it possible for the business analyst to build backend.
-2. Since tables are created based on the data type in the API schema, so no explicit conversion code is needed, rows in the table or view in the database are automatically converted into an object in the OpenCUI.
-3. The admin interface or backoffice can also be automatically created based on annotation so that the operation team can use backoffice to provide service. 
-4. Backoffice components can be reused by cloning for OpenCUI hosted solution.
-
-## Create Postgrest Provider
+## Create PostgREST provider
 
 To create a postgrest provider: 
 1. Within an org, click **Create** on the right side and select **Create provider**.
@@ -31,9 +28,9 @@ To create a postgrest provider:
    ![provider form](/images/provider/postgrest/provider-form.png)
    :::
 
-## Declare Service Interface
+## Import service interface you want to implement
 
-When you are done with creation, you need to declare which service interface this postgrest provider implements. 
+When you are done with creation, you need to import which service interface this postgrest provider implements. 
 
 To declare the service interface:
 1. Enter the service component you want to implement.
@@ -44,7 +41,7 @@ To declare the service interface:
 ![import component](/images/provider/postgrest/import-component.png)
 :::
 
-## Create Database Tables
+## Attach PostgRest annotations
 
 With postgres provider, it is very convenient to create a database without the SQL `CREATE TABLE` statement. All you need to do is create frames or select existing frames (Local or Imported) and **Enable Storage**. 
 
@@ -71,7 +68,7 @@ When the postgres provider **Deploy** button is triggered, OpenCUI platform will
 When creating a table in hosted database, OpenCUI will automatically add two columns, `ID` column and `created_at` column. So, normally, you don't need to add these two slots in a frame, but you can if you need to.
 :::
 
-### Data Type
+### Data types
 
 Data types are a way to limit the kind of data that can be stored in a table: integer, character, date and time, binary, and so on. For sure, there will be some type conversion between OpenCUI platform and SQL date types. For an overview of the available data types: 
 
@@ -102,7 +99,7 @@ If the type conversion is deterministic, you don't need to worry about it, the S
 *Need to specify data type*
 :::
 
-### Allow Null
+### Allow null
 
 By default, a column can hold NULL values. So the Allow Null toggle is enabled by default. To enforce a column to NOT accept NULL values, disable it. For more information about this constraint in PostgreSQL, see [Not-Null Constraints](https://www.postgresql.org/docs/current/ddl-constraints.html#id-1.5.4.6.6).
 
@@ -110,7 +107,7 @@ By default, a column can hold NULL values. So the Allow Null toggle is enabled b
 ![sql allow null](/images/provider/postgrest/sql-allow-null.png)
 :::
 
-### Default Value
+### Default value
 
 A column can be assigned a default value. When a new row is created and no values are specified for some of the columns, those columns will be filled with their respective default values. The default value can be a constant or an expression. A common example is for a `java.time.LocalTime` slot, you can set default value as `now()`. For more information about default value in PostgreSQL, click [Default Values](https://www.postgresql.org/docs/current/ddl-default.html).
 
@@ -128,7 +125,7 @@ You can set one slot in one unique constraint, this specifies that all values in
 ![unique](/images/provider/postgrest/unique.png)
 :::
 
-### Input Type
+### Input type
 
 Input type is a backoffice annotation, indicating how the operation team input data values on the admin interface. Here are three options: text, dropdown and media.
 
@@ -136,117 +133,86 @@ Input type is a backoffice annotation, indicating how the operation team input d
 ![sql input type](/images/provider/postgrest/sql-input-type.png)
 :::
 
-#### Text
+- Text: An input box for the data value, allowing to enter any content.
 
-An input box for the data value, allowing to enter any content.
+   ::: thumbnail
+   ![input text](/images/provider/postgrest/input-text.png)
+   :::
 
-::: thumbnail
-![input text](/images/provider/postgrest/input-text.png)
-:::
+- Dropdown: A dropdown menu for displaying choices. To select value from options makes it easier for operators to input legit and compatible value.
 
-#### Dropdown
+   ::: thumbnail
+   ![dropdown annotation](/images/provider/postgrest/dropdown-annotation.png)
+   :::
 
-A dropdown menu for displaying choices. To select value from options makes it easier for operators to input legit and compatible value.
+   Currently dropdown only supports static options, which can be defined via JSON: 
+   - JSON Representation
+   ```json
+   [
+     {
+       "id": "value1",
+       "name": "display1"
+     },
+     {
+       "id": "value2",
+       "name": "display2"
+     }
+   ]
+   ```
+   - Fields
+   
+   | Fields         | Type   | Description |
+   |:---            |:---    |:---         |
+   | `id`           | string | *Required*. Stored as value in the database. |
+   | `name`         | string | *Required*. Displayed in backoffice (admin interface). |
 
-::: thumbnail
-![dropdown annotation](/images/provider/postgrest/dropdown-annotation.png)
-:::
+   For example, you can provide a dropdown list statically via JSON like this:
+   
+   ```json
+   [
+     {
+       "id": "imax3d",
+       "name": "IMAX 3D"
+     },
+     {
+       "id": "digital3d",
+       "name": "Digital 3D"
+     },
+     {
+       "id": "standard",
+       "name": "Standard"
+     }
+   ]
+   ```
+   
+   Then operators can select the value from the select component in backoffice like this:
+   
+   ::: thumbnail
+   ![dropdown](/images/provider/postgrest/dropdown.png)
+   :::
 
-Currently dropdown only supports static options, which can be defined via JSON: 
-- JSON Representation
-```json
-[
-  {
-    "id": "value1",
-    "name": "display1"
-  },
-  {
-    "id": "value2",
-    "name": "display2"
-  }
-]
-```
-- Fields
+- Media
 
-| Fields         | Type   | Description |
-|:---            |:---    |:---         |
-| `id`           | string | *Required*. Stored as value in the database. |
-| `name`         | string | *Required*. Displayed in backoffice (admin interface). |
-
-
-For example, you can provide a dropdown list statically via JSON like this:
-
-```json
-[
-  {
-    "id": "imax3d",
-    "name": "IMAX 3D"
-  },
-  {
-    "id": "digital3d",
-    "name": "Digital 3D"
-  },
-  {
-    "id": "standard",
-    "name": "Standard"
-  }
-]
-```
-
-Then operators can select the value from the select component in backoffice like this:
-
-::: thumbnail
-![dropdown](/images/provider/postgrest/dropdown.png)
-:::
-
-#### Media
-
-By setting input type to media, operators can upload pictures by selecting or dragging in the backoffice and the URLs of pictures will be stored in cells automatically. When you need to send rich messages to users, you can use these URLs for displaying.
-
-For example, there is a slot called _photo_ of which input type is media on OpenCUI. In its corresponding column in backoffice, you can upload a picture and view the picture in the table.
-
-::: thumbnail
-![upload picture](/images/provider/postgrest/upload-picture.png)
-*Figure 1: upload pictures*
-
-<br>
-
-![view picture](/images/provider/postgrest/view-picture.png)
-*Figure 2: view pitures in the table*
-:::
+   By setting input type to media, operators can upload pictures by selecting or dragging in the backoffice and the URLs of pictures will be stored in cells automatically. When you need to send rich messages to users, you can use these URLs for displaying.
+   
+   For example, there is a slot called _photo_ of which input type is media on OpenCUI. In its corresponding column in backoffice, you can upload a picture and view the picture in the table.
+   
+   ::: thumbnail
+   ![upload picture](/images/provider/postgrest/upload-picture.png)
+   *Figure 1: upload pictures*
+   
+   <br>
+   
+   ![view picture](/images/provider/postgrest/view-picture.png)
+   *Figure 2: view pitures in the table*
+   :::
 
 ::: tip Need To Know
 When the SQL data type is one of `text`, `varchar` and `varchar(n)`, you can choose **Media**.
 :::
 
-## Access Backoffice
 
-Once the table structure has been declared in OpenCUI platform, the hosted database can be accessed through **Backoffice** (the admin interface). To access the actual data source, you need to deploy the postgres provider first. 
-1. In the navigation bar, select the **Versions** tab.
-2. Click **Deploy** in the upper-right corner of the Versions area.
-::: thumbnail
-![deploy postgres provider](/images/provider/postgrest/sql-deploy.png)
-:::
-
-When the **Deploy** button is triggered, OpenCUI platform will update the table structure in the corresponding hosted database. Then, you can log in to the backoffice to access the actual data source through Postgres provider configuration information. 
-
-1. Switch to **Configuration** area, then you can get the configuration information.
-2. Copy and paste the **URL** to your browser, use **Admin Email** and **Admin Password** to log in to backoffice.
-::: thumbnail
-![configuration](/images/provider/postgrest/configuration.png)
-*Configuration information*
-
-<br>
-
-![backoffice](/images/provider/postgrest/backoffice.png)
-*Backoffice, the admin interface*
-:::
-
-::: warning Caution
-Be very careful with table schema changes, remember to manually modify data in backoffice that is no longer compatible.
-:::
-
-## Provide Function Implementation
+## Provide function implementation
 
 To provide function implementation, you need to add service interface to implement first.
 
@@ -317,7 +283,7 @@ There is one slot called returnValue in the frame.
 return getFoodCategory()!!.map{it -> it.returnValue!!} 
 ```
 
-## Function Console
+### Function Console
 
 When you finish implementing the function, before you wire it to the chatbot, you can verify whether your implementation is as expected through **Function Console**. Currently, function console can only test **Provider Dependent** implementations. To use function console, following these steps: 
 
@@ -343,6 +309,33 @@ When you finish implementing the function, before you wire it to the chatbot, yo
 ![function testing](/images/provider/postgrest/function-testing.png)
 :::
 
+## Access Backoffice
+
+Once the table structure has been declared in OpenCUI platform, the hosted database can be accessed through **Backoffice** (the admin interface). To access the actual data source, you need to deploy the postgres provider first. 
+1. In the navigation bar, select the **Versions** tab.
+2. Click **Deploy** in the upper-right corner of the Versions area.
+::: thumbnail
+![deploy postgres provider](/images/provider/postgrest/sql-deploy.png)
+:::
+
+When the **Deploy** button is triggered, OpenCUI platform will update the table structure in the corresponding hosted database. Then, you can log in to the backoffice to access the actual data source through Postgres provider configuration information. 
+
+1. Switch to **Configuration** area, then you can get the configuration information.
+2. Copy and paste the **URL** to your browser, use **Admin Email** and **Admin Password** to log in to backoffice.
+::: thumbnail
+![configuration](/images/provider/postgrest/configuration.png)
+*Configuration information*
+
+<br>
+
+![backoffice](/images/provider/postgrest/backoffice.png)
+*Backoffice, the admin interface*
+:::
+
+::: warning Caution
+Be very careful with table schema changes, remember to manually modify data in backoffice that is no longer compatible.
+:::
+
 ## Wire to Chatbot
 
 Once you have a postgrest provider running, you need to wire this implementation to its service interface in your chatbot that allows chatbots to communicate with data source. To wire postgrest provider to chatbot, you can follow these steps below:
@@ -361,5 +354,5 @@ Once you have a postgrest provider running, you need to wire this implementation
 ![chatbot integration](/images/provider/postgrest/chatbot-integration.png)
 :::
 
-After wired, you can also edit postgrest provider at any time. Don't forget to merge your latest changes to master.
 
+After wiring the postgREST provider, you can edit it at any time. However, it's important to remember to merge your latest changes to the master branch and redeploy the provider in order to ensure that your chatbot is using the most up-to-date version.

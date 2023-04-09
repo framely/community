@@ -53,8 +53,6 @@ Here are the steps on how to set up and enable a channel, specifically using Mes
    ![config info](/images/guide/pingpong/config_info.png)
    :::
 
-
-
 ## Deploy chatbot
 After finishing the configuration of your channel, the next step is to deploy your chatbot. The Deploy action allows you to deploy the current master of your chatbot to the production environment, enabling your users to interact with it via the integrated channels. However, before deploying, you must ensure that your chatbot is integrated with at least one channel.
 

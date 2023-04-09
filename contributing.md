@@ -15,3 +15,5 @@ Other consideration:
 - Only user numbered item list when the order actually matters, and only at the leaf level, these are local decisions, so it is easy to get right. People generally follow the order anyway.
 - Always add overview, so that reader have a sense of why and what, before we throw them into the details of how. 
 - Use "you" to refer to reader, "we" to writer, and chatbot instead of bot for clarity.
+- Use PostgREST, PostgreSQL, OpenCUI
+- 
