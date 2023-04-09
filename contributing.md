@@ -14,3 +14,4 @@ Other consideration:
 - We should carefully consider the need for introduce a hyperlink, do we really want reader to go off to new page? If we do not want user to click away, we should do simply explanation on the spot, to improve the flow. Try not to over use link so less distraction for reader.
 - Only user numbered item list when the order actually matters, and only at the leaf level, these are local decisions, so it is easy to get right. People generally follow the order anyway.
 - Always add overview, so that reader have a sense of why and what, before we throw them into the details of how. 
+- Use "you" to refer to reader, "we" to writer, and chatbot instead of bot for clarity.

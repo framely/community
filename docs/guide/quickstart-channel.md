@@ -1,20 +1,19 @@
 # Deploy a chatbot
 
-Once you have developed and tested your chatbot, you can deploy it and start to serve one or more channels. Here channels are the applications can user use to send request, sometimes in form of text message, to chatbot, live agent or even other users, for example: Messenger, iMessage, and RCS, to name a few. Channels can potentially also be voice based like Echo, Siri, to name a few. OpenCUI chatbot can be easily extended to work with any channels, as long as we develop a specifically designed software extension, also called channels on OpenCUI platform. 
+Once you have developed and tested your chatbot, you can deploy it and start serving one or more channels. A channel is an OpenCUI extension that connects to applications where users can send messages, which can be in the form of text messages (such as Messenger, iMessage, and RCS), or in the form of voice (such as Echo or Siri).
 
-::: thumbnail
-![How messenger bot works](/images/guide/how-messenger-bot-works.png)
-:::
+Let's use Messenger as an example to understand how it works. When a user sends a message using the Messenger client software, the Messenger platform forwards that message to the endpoint that your channel implementation is listening on. Once your chatbot receives the user input, it produces output and asks the channel implementation to send the reply to the endpoint that the Messenger platform is listening on, which will then forward the reply to the end user.
 
-How does it work? Let's use Messenger as example. User send a message using the client software to Messenger platform, and Messenger platform forward that message to the end point that your channel implementation listens, upon get the user input, chatbot produce output, and ask channel implementation send the reply to the end point that Messenger platform listens, which will forward the reply to end user. Clearly to make this work, one have to configure on both Messenger platform side, and OpenCUI side, so that they both know where to send message to. 
-
-This guide builds on top of [Build a chatbot](pingpong.md), is designed to show you how to integrate your chatbot with the Messenger channel. Channel are only supported in OpenCUI production environment, and to deploy your change to production environment, you need to create the PR, and merge it into master.
+To make this work, you need to configure both the external channel platform and OpenCUI so that they know where to send messages to.
+This guide shows you how to integrate your chatbot with the Messenger channel. Channel are only supported in OpenCUI production environment, and to deploy your change to production environment, you need to create the PR, and merge it into master.
 
 ## Before you start
-Make sure to complete the steps outlined in the [Build a chatbot](./pingpong.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
+The steps in this guide build upon the chatbot created in one of the previous guides.
 
 ## Set up channels
+On OpenCUI, it is possible to configure multiple channels of the same type or of different types. In this guide, we will show you how to configure one channel of the Messenger type, and you can repeat this for any number of channels you like. To learn more about each type of channel, please refer to the [Channel](../reference/channels/overview.md) section.
 
+### Set up OpenCUI side
 Here are the steps on how to set up and enable a channel, specifically using Messenger as an example:
 
 1. In the navigation bar, select the **Settings** tab and head to **Integrations** page. In the **Deploy service provider** section, select **channel** service, which is labeled as `io.opencui.channel.IChannel`.
@@ -41,33 +40,25 @@ Here are the steps on how to set up and enable a channel, specifically using Mes
    ![config popup](/images/guide/pingpong/config_popup.png)
    :::
 
-4. Configure the Messenger channel:
-   1. Follow the steps in [Set up Messenger](../reference/channels/messenger.md#set-up-messenger) to set up your Meta app, **generate access token** and copy this value to OpenCUI.
-   2. Configure the integration: 
-      - **Label**: Set a label for this channel, should be unique. 
-      - **Verify Token**: You can enter any private token you desire. Copy this value. This will be used to configure Messenger Webhook.
-      - **Page Access Token**: Enter the access token you copied when set up messenger.
-      - **Locale**: Select a locale which determines the default language used by your bot.
-      - **Callback URL**: Copy this value after setting the label and locale. This will be used to configure Messenger Webhook.
-   3. Click **Save**.
-      ::: thumbnail
-      ![config info](/images/guide/pingpong/config_info.png)
-      :::
+### Configure the Messenger channel
+1. Follow the steps in [Set up Messenger](../reference/channels/messenger.md#set-up-messenger) to set up your Meta app, **generate access token** and copy this value to OpenCUI.
+2. Configure the integration: 
+   - **Label**: Set a label for this channel, should be unique. 
+   - **Verify Token**: You can enter any private token you desire. Copy this value. This will be used to configure Messenger Webhook.
+   - **Page Access Token**: Enter the access token you copied when set up messenger.
+   - **Locale**: Select a locale which determines the default language used by your bot.
+   - **Callback URL**: Copy this value after setting the label and locale. This will be used to configure Messenger Webhook.
+3. Click **Save**.
+   ::: thumbnail
+   ![config info](/images/guide/pingpong/config_info.png)
+   :::
 
-In OpenCUI, it's possible to configure multiple channels by adding multiple items. For examples:
-- To enable the **Messenger** channel, select **channel** service (`io.opencui.channel.IChannel`), wire `io.opencui.messenger` and provide the required configuration details.
-- To enable the **WhatsApp** channel, select **channel** service (`io.opencui.channel.IChannel`), wire `io.opencui.whatsapp` and input the necessary configuration information.
 
-By adding these channels to chatbot, you can easily configure and manage multiple channels for your chatbot. To learn more about each of the channels, please refer to the [Channel](../reference/channels/overview.md) sections.
-
-Once you've finished configuring the channel, the next step is to deploy your chatbot.
 
 ## Deploy chatbot
-
-The Deploy action allows you to publish the latest master of your chatbot to the production environment, allowing your users to interact with it via the integrated channels. However, before deploying, you must ensure that your chatbot is integrated with at least one channel.
+After finishing the configuration of your channel, the next step is to deploy your chatbot. The Deploy action allows you to deploy the current master of your chatbot to the production environment, enabling your users to interact with it via the integrated channels. However, before deploying, you must ensure that your chatbot is integrated with at least one channel.
 
 1. When you're done configuring, switch to **Versions** tab, and deploy your chatbot by clicking **Deploy** button.
-
    ::: thumbnail
    ![deploy chatbot](/images/guide/pingpong/deploy_chatbot.png)
    :::
@@ -78,4 +69,4 @@ The Deploy action allows you to publish the latest master of your chatbot to the
    ![deploy checked icon](/images/guide/pingpong/deploy_checked_icon.png)
    :::
 
-3. You can now complete the setup of your Meta app and test it out. To configure the Messenger Webhook, use the **Callback URL** and **Verify token** values that you copied earlier and follow the instructions in the [Finish Messenger setup](../reference/channels/messenger.md#finish-setup-messenger) and [Test your chatbot](../reference/channels/messenger.md#test-your-chatbot) section.
+3. You can now interact with the chatbot in messenger app.
