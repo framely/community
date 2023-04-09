@@ -16,11 +16,9 @@ On OpenCUI, to expose a service through conversational user interface, you creat
 2. In a pop-up window, enter _hours_ in the **Project label** field, add **English(en)** in the **Languaes** field, and **Enable service interface**. Once done, click **Create**.
 
 ### Declare a service
-
 To declare a service means that you define the function type for each API in the service. However, in order to define these function types, you must first define the data type for their input parameters and return values, which may need to be defined recursively in case one of these data types is composite.
 
 #### Create required type: BusinessHours
-
 For a function return the business hours on a specific day, the following information is needed:
 - **dayOfWeek**: the day of the week, like Monday, Tuesday, etc.
 - **ifOpen**: whether it's open on that day.
@@ -83,53 +81,50 @@ Once finished, the function interfaces should look like this:
 Now that you have finished declaring a service. You can [view your changes and merge your branch into the master](./opencui-flow.md#review-and-merge-pull-request).
 
 ### Build conversational user interface for the service
-
 To offer a functionality through a conversational user interface, you need to define a skill. A skill is essentially a function type with dialog annotations, allowing chatbot to create a callable object to activate the service. The input parameters of the function are captured by the skill's slots, and the function's return can be displayed using its response. 
 
- As always, to build a type, we should first define its dependent types. In this case, the skill you will build does not require new types, so let's show you how to define a skill that utilizes service APIs right away.
+ As always, to build a type, we should first define its dependent types. In this case, the skill you will build does not require new types, so you can start to define a skill that utilizes service APIs right away.
 
-#### Build a skill
+#### Build _ShowHour_ skill
 
 Although there are two API functions that need to be exposed, only one skill is necessary. To determine which API functions should be grouped together, consider their simplest description without mentioning parameters or return values. If two API functions have the same description, they should be triggered by the same skill.
 
-##### Create a skill
-To create a skill to manage users' questions on business hours:
-
+##### Declare type at schema level
+To create a skill for managing users' questions on business hours, we need to create the type, add the necessary slots and services.
 1. Within the module hours, go to **Types** page, click **Create** on the right side, and select **Create skill**.
 2. Enter _ShowHours_ as the skill label. 
 3. To get a specific day from a user, use [DatePicker](../reference/plugins/components/datepicker). DatePicker is an official CUI component, so you need to import [components](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8aea6517f06c1880e3cff) to the module hours first.
 4. After successful import, go back to module hours and refresh your webpage.
 5. In the skill **ShowHours**, add a slot with type **io.opencui.components.dataEntry.DatePicker**. The DatePicker is a CUI component that is designed to make it easier for users to enter a date.
-
-##### Add the service
-To access the functions in the service, you need to add the service first:
-
-Go to the skill **ShowHours** page, in the **Services** section, click **Select service** and select **IHours**. Leave the **Service label** as default and click **Save**.
+6. Go to the skill **ShowHours** page, in the **Services** section, click **Select service** and select **IHours**. Leave the **Service label** as default and click **Save**.
    
 ::: thumbnail
 ![add service](/images/guide/build-service/add-service.png)
 :::
 
-##### Attach dialog annotation
+##### Deal with interaction level
+After declaring what you need in the schema layer, you need to add dialog annotations. This can be done by analyzing the desired conversational behavior and adding slot-level annotations for each slot, as well as a type-level annotation. For skills, you also need to configure the response.
+
+###### To annotate slot **datePicker**:
 When a user triggers a skill, the chatbot follows the interaction logic based on the annotations attached to the skill. For this particular skill, the desired conversational experience is as follows:
 - If the user doesn't mention a specific date, the chatbot should display the business hours for the week.
 - If the user provides a date, and the business is open on that day, the chatbot should show the business hours. If the business is closed, the chatbot should inform the user that it's closed.
 
-To annotate interactions:
-1. Go to the skill **ShowHours** page, since the date is provided by a user spontaneously, the chatbot doesn't need to ask for the date value. Enter the slot **datePicker** and change **Fill Strategy** to [Recover only](../reference/annotations/fillstrategy.md#recover-only).
-2. To display business hours in a week:
-   - Navigate to the **Response** tab and select **Multiple value message** under the **Default action** section. 
-   - In the **Source** section, copy and paste the following code:
-   ``` kotlin
-   hours.getHoursWeek()
-   ```
-3. To handle the situation when the user provides a date, under the **Response** tab, turn on **Branching**.
+Since the desired behavior is when user did not mention the date, chatbot should respond directly. This slot filling behavior is supported by the [Recover only](../reference/annotations/fillstrategy.md#recover-only).
+1. Go to the skill **ShowHours** page, click the slot **datePicker**
+2. Change **Fill Strategy** to Recover only.
 
+###### Add responses
+The responses for this are depending on a number of the things: whether datePicker is filled, and what is the returned value. On OpenCUI, the response can be configured to have no branching, or we can turn on the branching, and add branching. Each branching is controlled by a condition, and then a response. There are a couple of different response types supported, including multiple value messages to show list data.
+
+Responses are also first defined at interaction level. Clearly, you will need turn on the branching for Response.
+
+1. so under the **Response** tab, turn on **Branching**.
    ::: thumbnail
    ![add a branch](/images/guide/build-service/branching.png)
    :::
 
-4. To show the business hours on a user-mentioned date:
+2. To show the business hours on a user-mentioned date:
    - In the **Branching** section, click **Add**.
    - In the **Conditions** section, copy and paste the following code:
    ```kotlin
@@ -137,21 +132,25 @@ To annotate interactions:
    ```
    - In the **Action sequence** section, select **Single value message**.
 
-5. To inform the user it's closed on a user-mentioned date:
+3. To inform the user it's closed on a user-mentioned date:
    - Back to the **Response** tab, in the **Branching** section, click **Add**. 
    - In the **Conditions** section, copy and paste the following code:
    ```kotlin
    datePicker?.date != null && hours.getHoursDay(datePicker!!.date!!).ifOpen == false
    ```
-
    - In the **Action sequence** section, select **Single value message** and **Multiple value message**.
      - **Single value message** is to inform the user it's closed on that day.
      - **Multiple value message** is display business hours in a week, so the user can get additional information to make a choice.
-
+     - 
+4. Use default branch to display business hours for each day in a week:
+    - Navigate to the **Response** tab and select **Multiple value message** under the **Default action** section.
+    - In the **Source** section, copy and paste the following code:
+   ``` kotlin
+   hours.getHoursWeek()
+   ```
+   
 #### Add templates and exemplars
-Both templates are exemplars are language dependent, and you have to set them up for each interactable type and each language you support. OpenCUI allow you to define templates and exemplars in a context dependent way. Depending on which input box you use to define them, they are used differently. You can use arbitrary kotlin expression in template directly, in exemplars, you can only reference slot.
-
-Before you start, make sure you **propagate** all the changes you made in the interaction layer to the language layer and switch from the INTERACTION layer to the **EN** layer.
+Before you start, make sure you **Propagate** all the changes you made in the interaction layer to the language layer and switch from the **Interaction** layer to the **Language/En** layer.
 
 1. Go to the skill **ShowHours** page. Under the **Schema** tab, in the **Slots** section, click the slot **datePicker**. Enter _date_ in the **Names** field.
 2. Under the **Response** tab, in the **Default action** filed. In the **Multiple value message** section, enter the following content:
@@ -168,8 +167,6 @@ Before you start, make sure you **propagate** all the changes you made in the in
      - **Body**:
         - ${`it.value.dayOfWeek!!.expression()`}
         - ${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}
-
-
 5. Under the **Expressions** tab, enter the following content:
    - **Names**: show hours
    - **Expressions**: 
@@ -184,7 +181,7 @@ Now that you have finished building a module. You can [view your changes](../ref
 
 ## Build a provider
 
-After you declared a service, you should develop a provider for it. On OpenCUI platform, the provider is used as an API stub, or connector to actual implementation of the service, also known as backend. Most providers are external where backend is developed and deployed else where and OpenCUI hosted. But there is an OpenCUI-hosted provider: [PostgREST provider](../reference/providers/postgrest.md) which allows you to use PostgreSQL as data storage, implement API function in SQL on OpenCUI platform. OpenCUI will make these functions available to your chatbot and backoffice through a restful gateway called PostgREST.
+After declaring a service in a module, the next step is to develop a provider for it. On OpenCUI platform, a provider of a service is used as a backend stub to actual backend implementation of that service. Most providers are external, meaning these backends are developed and deployed else where. But there is an OpenCUI-hosted [PostgREST provider](../reference/providers/postgrest.md) which allows you to use PostgreSQL as data storage, implement API function using SQL. OpenCUI will make these functions available to your chatbot and backoffice through a RESTful gateway called PostgREST.
 
 Let's see how we can build a PostgREST provider.
 
@@ -192,7 +189,7 @@ Let's see how we can build a PostgREST provider.
 1. First, make sure you have a target provider. You can use an existing Postgrest provider, or create a new one of this kind.
 2. Enter the module where you [declare the service](#declare-a-service) and [import](../reference/platform/reusability.md#import-1) this module to the target project.
 
-### Define tables
+### Define storage
 With PostgREST provider, table schema is defined by adding [storage annotations](../guide/concepts.md#storage-annotations) to a data type, this allows OpenCUI to create mapping between database and Kotlin code automatically after that. OpenCUI will create tables based the type definition and storage annotation in the separate database for your organization. You should definitely add [backoffice](../guide/concepts.md#backoffice-annotations) to define who each column of table (slot in it corresponding type) should be display and manipulated on the backoffice.
 
 There are two things that should be stored in the database: business hours and the time zone of your business. When providing business hours in a week, you need to start from the current date. To get the right current date, the time zone of the business is important.
