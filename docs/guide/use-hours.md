@@ -53,7 +53,7 @@ We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
 [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
 ## Prepare a provider
-Before the chatbot can serve requests regarding business hours using an existing module, you need to clone its provider into your organization and configuring it so that it can connect to the actual backend. Additionally, you need to populate the backend with your business information.
+Before the chatbot can serve requests regarding business hours using an existing module, you need to clone its provider into your organization and configure it so that it can connect to the actual backend. Additionally, you need to populate the backend with your business information.
 
 In this guide, you will clone a PostgREST provider. The PostgREST provider is an OpenCUI-hosted provider, which means that the backend, or the actual implementation of services, is also managed by OpenCUI. This backend is essentially a PostgreSQL database with RESTful access, and comes with an admin interface called backoffice so that business operators can populate the database with their business data. In this case, you can set the main business hours for each day of the week, as well as the hours for special days such as holidays. Hosted providers introduce no external dependency, making the deployment of the chatbot easier. Furthermore, the connection is automatically configured so that builders don't need to worry about it.
 
@@ -148,20 +148,20 @@ On OpenCUI, importing modules is a way to build complex conversational behavior 
 Now it's time to add functionality to the chatbot so that users can access the hours service via conversation. It is simple: just import the module with desired functionality into your chatbot and connect the service to a provider in your organization.
 
 ### Import the module
-- Enter source module [hours](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), the one that you want to reuse. You can also go there by doing a search on the explore tab.
-- Click **Import**.
-- Select the chatbot or module you want to import to.
-- Click **Save**.
+1. Enter source module [hours](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), the one that you want to reuse. You can also go there by doing a search on the explore tab.
+2. Click **Import**.
+3. Select the chatbot or module you want to import to.
+4. Click **Save**.
 
   ::: thumbnail
   ![import service](/images/guide/use-service/import-service.png)
   :::
 
 ### Set up a service provider
-- Enter the chatbot.
+1. Enter the chatbot.
 
-- In the navigation bar, select the **Settings** tab and head to **Integrations** page. In the **Debug service provider** section, click **Select service** and select `me.quickstart.hours.IHours`. You need to set this up again for production environment under **Deploy service provider** when you are ready for the deployment.
-   - Enter a unique label
+2. In the navigation bar, select the **Settings** tab and head to **Integrations** page. In the **Debug service provider** section, click **Select service** and select `me.quickstart.hours.IHours`. Afterward, when you are ready to deploy your service to the production environment, you will need to set this up again under the **Deploy service provider** section.
+   - Enter a unique label.
    - Click **Select service implementation** and select the provider you created by cloning.
 
    ::: thumbnail
@@ -177,7 +177,7 @@ Finally, you can try the chatbot for business hours using [Debug](../reference/p
    ![debug hours week](/images/guide/use-service/debug-hours-week.png)
    :::
 
-2. Send "_Do you open this Friday?_" and if it's open this Friday, you will get the business hours on this Friday. If not, you will be told it's closed and the business hours in a week will be shown.
+2. Send "_Do you open this Friday?_" and you will get the business hours on this Friday if it's open this Friday. If not, you will be told it's closed and the business hours in a week will be shown.
 
    ::: thumbnail
    ![debug HoursDay if it's open](/images/guide/use-service/debug-hours-day-open.png)
