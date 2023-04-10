@@ -38,9 +38,9 @@ A project's label or region can not be changed after creation or clone, so choos
 Before your chatbot is fully ready to be deployed to production environment, OpenCUI includes a built-in **Debug** tool that allows you to test your design in a development environment, so that you can uncover CUI design bugs as early as possible. There are some restrictions with this tool: you can't test your chatbot in asynchronous extensions including channels like Messenger. Furthermore, you can only test one language at a time, and only committed content in your branch.
 
 To test your chatbot using Debug, follow these steps:
-1. Switch to a language view, in this case we switch to **EN**. 
+1. Switch to a language view, in this case we switch to **Language / en**. 
    ::: thumbnail
-   ![try it now](/images/guide/pingpong/switch_pingpong_en.png)
+   ![try it now](/images/guide/start-with-clone/switch_pingpong_en.png)
    :::
 2. In a language view, click **Debug** in the upper-right corner of the Types area , the debug window will slide out. 
    ::: thumbnail

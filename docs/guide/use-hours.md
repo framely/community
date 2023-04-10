@@ -1,5 +1,5 @@
 # Reuse a full-stack component
- Modern business applications are typically broken down into a set of services, each responsible for a specific functionality. For example, airline might have a ticketing service, which includes booking, checking whether a seat is available and canceling. All user interfacing applications are built to expose these kinds of services, chatbot included.
+Modern business applications are typically broken down into a set of services, each responsible for a specific functionality. For example, airline might have a ticketing service, which includes booking, checking whether a seat is available and canceling. All user interfacing applications are built to expose these kinds of services, chatbot included.
 
 A service defines a set of API functions that specify how business functionalities can be accessed. By using a service as an interface, you can divide chatbot building into backend for business logic and frontend for conversational user interface, each of which can be taken care of by different teams.
 

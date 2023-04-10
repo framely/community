@@ -19,6 +19,13 @@ Our type-based approach allow you to build CUI for your service in two steps: de
    ![propagate interaction change](/images/guide/pingpong/commit_pingpong_struct.png)
    :::
 
+## Switch from interaction layer to language layer
+Once you've propagated the changes to the language layer, you can then switch over to the language layer to add templates and exemplars.
+
+   ::: thumbnail
+   ![switch pingpong en](/images/guide/pingpong/switch_pingpong_en.png)
+   :::
+
 ## Commit the changes
 In your branch, you can make any desired changes to the project, such as the changes in [Build a chatbot](./pingpong.md) guide. If you make a mistake, you can undo your changes or revert to your latest commit. Your changes will not be added to the master branch until you merge your branch. To test your change using OpenCUI **Debug** tool, you need to commit the change first.
 
