@@ -4,30 +4,33 @@
 
 ## Motivation
 
-To test your bot, you can use built-in test feature **Debug** to uncover bugs and prevent regressions. You can provide user input as text step by step, or you create and execute test case as needed. 
+To test your chatbot, you can use built-in **Debug** tool to uncover bugs and prevent regressions. When entering user input, there are two methods:
+
+- Directly enter it as either text or JSON data. This method is useful for testing individual steps or simple logic flows.
+- Create and execute a test case to automate inputs. This method is ideal for testing more complex or multi-step processes, allowing you to easily repeat tests and analyze results.
 
 ::: thumbnail
-![pingpong test](/images/guide/pingpong/pingpong_test.png)
+![testing demo](/images/platform/testing/testing_demo.png)
 :::
 
-## Structure Input
+## Structure input
 
 When interacting with **Debug**, you can provide user input as text like *"Get me two tickets for Star Wars"*, or a json format represents the same semantics which is used to describe filling for some data structure or provide values for its slots. 
 
 OpenCUI dialog engine can be interacted directly in Frame Event in its json format, which allows for easier bug fixes on the interaction logic by separating the dialog understanding issues. 
 
-For example, the user utterance `Get me two tickets for Star Wars` can be encoded as following json structure:
+For example, the user utterance `Get me two tickets for Star Wars` can be encoded as the following JSON structure:
 
 ``` json
 [
   {
-    "type": "BuyTicket",
-    "packageName": "test001.BuyTicket",
+    "type": "SellTicket",
+    "packageName": "me.test.movieTheater",
     "slots": [
       {
         "value": "\"starwars\"",
         "attribute": "movie",
-        "type": "test001.BuyTicket.Movie"
+        "type": "me.test.movieTheater.Movie"
       },
       {
         "value": "2",
@@ -39,31 +42,40 @@ For example, the user utterance `Get me two tickets for Star Wars` can be encode
 ]
 ```
 
-In **Debug**, you can set this structure in the **Structure Input** field: 
-- Before connecting
+In **Debug**, you can input JSON structures in the **Structure input** field both before and after connecting.
 
 ::: thumbnail
 ![before connect](/images/platform/testing/before_connect.png)
-:::
+*Before connecting*
 
-- After connecting
+<br>
 
-::: thumbnail
 ![after connect](/images/platform/testing/after_connect.png)
+*After connecting*
 :::
 
-Then you can get the conversation in **Debug** like: 
+For instance, if you input a JSON structure after connecting, the conversation will be displayed in a view similar to this screenshot:
 
 ::: thumbnail
 ![structure input](/images/platform/testing/structure_input.png)
 :::
 
-## Test Cases
+## Test cases
 
-The goal of [golden test cases](https://en.wikipedia.org/wiki/Characterization_test) is to help you verify that the modifications made to your bot did not modify its behavior in unwanted or undesirable ways. In other words, test case execution verifies that chatbot responses have not changed for the same inputs. 
+The goal of [golden test cases](https://en.wikipedia.org/wiki/Characterization_test) is to help you verify that the modifications made to your chatbot did not modify its behavior in unwanted or undesirable ways. In other words, test case execution verifies that chatbot responses have not changed for the same inputs. 
 
-To create a test case, you should simulate the path of the conversation you want to save in **Debug** and provide a test case display name. After saving, you can view them in the left sidebar menu **Test Cases**, which shows the test name, the latest test time and the latest test result. 
+To create a test case, you should simulate the path of the conversation you want to save in **Debug** and provide a test case display name. To access saved test cases in the **Debug** area, click **Test cases** located in the upper-right corner of the panel. These elements allow you to access and view saved tests before and after establishing a connection.
+::: thumbnail
+![structure input](/images/platform/testing/test_cases_entrance_1.png)
+*Before connecting*
 
+<br>
+
+![structure input](/images/platform/testing/test_cases_entrance_2.png)
+*After connecting*
+:::
+
+The test cases list will appear and can be viewed for either situation. 
 ::: thumbnail
 ![test cases](/images/platform/testing/test_cases.png)
 :::
@@ -73,31 +85,32 @@ To run the test case, you can select the one you want to run. The test engine wi
 - Test will **Fail** when the actual output does not match the contents of the golden test case. You then need to figure out whether this is a bug or an intentional change.
 
 
-## How To Use
+## How to use
 
-**Debug** will only test the instances you committed, so you need to commit your chatbot on both structure side and language side. This means that whenever there are new changes, **Commit** is required, and the new changes will be tested in debug. Otherwise you will still test the past performance.
+When using **Debug**, it is important to commit your chatbot changes in both the structure view and language view. Only the declaration that you have committed will be tested in debug, so committing regularly ensures that you are testing the latest version of your chatbot.
 
+To commit your changes made in the structure view and make them available in the language view, click **Propagate**. To commit changes in the language view, simply click **Commit**.
 ::: thumbnail
-![commit struct](/images/guide/pingpong/commit_struct.png)
-*Figure 1: click commit on STRUCT side*
+![commit struct](/images/platform/testing/commit_struct.png)
+*Click **Propagate** in the structure view*
 
 <br>
 
-![commit lang](/images/guide/pingpong/commit_lang.png)
-*Figure 2: click commit on EN side*
+![commit lang](/images/platform/testing/commit_lang.png)
+*Click **Commit** in the language view*
 :::
 
 The instructions below show you how to test your bot.
 
 ### Debug
 
-1. Select the language bot you want to test, click **Commit** in the upper-right corner of the **Build** area.
+1. To test a specific language chatbot, navigate to the corresponding language view, and click **Commit** in the upper-right corner of the **Types** area.
 
 ::: thumbnail
-![testing commit](/images/platform/testing/testing_commit.png)
+![commit lang](/images/platform/testing/commit_lang.png)
 :::
 
-2. Click **Debug** in the upper-right corner of the **Build** area, then the test field will slide out.
+2. Click **Debug** in the upper-right corner of the **Types** area, then the test field will slide out.
 
 ::: thumbnail
 ![testing try it now](/images/platform/testing/testing_try_it_now.png)
@@ -109,7 +122,7 @@ The instructions below show you how to test your bot.
 ![testing connect](/images/platform/testing/testing_connect.png)
 :::
 
-4. Chat with the bot to create a conversation that covers the functionality you want to test. 
+4. Chat with the chatbot to create a conversation that covers the functionality you want to test. 
 
 ::: thumbnail
 ![testing conversation](/images/platform/testing/testing_conversation.png)
@@ -121,7 +134,7 @@ The instructions below show you how to test your bot.
 ![testing state](/images/platform/testing/testing_state.png)
 :::
 
-### Create a Test Case
+### Create a test case
 
 1. Click the **Save Test Case** icon in the topbar to save a conversation as a test case.
 
@@ -129,7 +142,7 @@ The instructions below show you how to test your bot.
 ![save test case](/images/platform/testing/save_testcase.png)
 :::
 
-2. Enter a test case display name, for example `happy path`, click **Save** to save the test case..
+2. Enter a test case display name, and click **Save** to save the test case.
 
 ::: thumbnail
 ![enter name](/images/platform/testing/enter_name.png)
@@ -141,12 +154,17 @@ The instructions below show you how to test your bot.
 ![reset](/images/platform/testing/reset.png)
 :::
 
-### Run Test Case
+### Run test case
 
-1. Click **Test Cases** in the left sidebar menu.
-
+1. Click **Test cases** located in the upper-right corner of the **Debug** panel.
 ::: thumbnail
-![run testcase](/images/platform/testing/run_testcase.png)
+![structure input](/images/platform/testing/test_cases_entrance_1.png)
+*Before connecting*
+
+<br>
+
+![structure input](/images/platform/testing/test_cases_entrance_2.png)
+*After connecting*
 :::
 
 2. Select the test cases you want to run, and click **Run**.
