@@ -1,27 +1,27 @@
 # From Beginner to Master
-The OpenCUI platform is designed to help you build conversational user interface for your service, and we assume that the service is defined and implemented separately. Once the service is declared on [the platform](https://build.opencui.io), you can build the conversational user interface for those services declaratively.
+OpenCUI is a platform that helps you build conversational user interface for your services. It assumes that your services are defined and implemented separately. Once you declare your services on the [platform](https://build.opencui.io), you can build the conversational user interface for them declaratively.
 
-To fully utilize OpenCUI, one needs to understand its type-based conceptual model, which is a sharp deviation from the popular flow-based approach. We have created a set of tutorials that will guide you through the steps of understanding the conceptual model and becoming skilled in utilizing OpenCUI to create outstanding conversational experiences.
+To get the most out of OpenCUI, it is important to understand its type-based conceptual model. This is a significant departure from the more popular flow-based approach. We have created a set of tutorials that will walk you through the steps of understanding the conceptual model and becoming proficient in using OpenCUI to create outstanding conversational experiences.
 
 #### [Sign up](signingup.md)
-Before we fully open up, we required you signup first so that we can get some idea on how we can help you. All you need is a GitHub account, ideally with your email verified. 
+We're still in beta, so we need you to sign up first. This will help us get to know you better and make sure you have the best possible experience. All you need is a GitHub account, and it's best if your email is verified.
 
 #### [Clone a simple chatbot](start-with-clone.md)
-Cloning an existing project is the fastest way to start play with it. This guide show you how to clone a simple chatbot, and then how to test its behavior using the builtin **Debug** tool.
+Here's a quick way to get started: clone an existing project. This guide will walk you through the steps of cloning a simple chatbot and testing its behavior using the built-in debug tool.
 
 #### [Build a simple chatbot](pingpong.md)
-This guide walks you through how to create the simple chatbot introduced in the previous guide.
+This guide will walk you through the process of creating the simple chatbot that was introduced in the previous guide.
 
 #### [Reuse a full-stack component](use-hours.md)
-Importing a module is another way to reuse existing work on OpenCUI. Modules are reusable conversational components based on their service interface. A full stack component is a module paired with a compatible provider. In this guide, we will show you how to add functionality to your chatbot by reusing a full-stack module.
+Importing a module is another way to reuse existing work on OpenCUI. Modules are reusable conversational components based on their service interface. A full stack component is a module paired with a compatible provider. This guide will show you how to add functionality to your chatbot by reusing a full-stack module.
 
 #### [Build a full-stack component](build-service.md)
-This guide show you how to develop the module and provider we introduced in previous guide.
+This guide will show you how to develop the module and provider that were introduced in the previous guide.
 
 #### [Deploy a chatbot](quickstart-channel.md)
-Using Messenger as example, this guide shows you how to configure chatbot and channel so that they point to each other. After going through this, your chatbot will be available in Messenger. 
+Using Messenger as an example, this guide will show you how to configure chatbot and channel so that they point to each other. Once you have completed these steps, your chatbot will be available in Messenger.
 
 #### [OpenCUI workflow](opencui-flow.md)
-We use a Git-like version control system to make it easy for builder to collaborate on the structured definition of the chatbot.
+OpenCUI uses a Git-like version control system to make collaboration on projects easy. This guide will show you the workflow for using it.
 
 For the impatient, [you can get started now](https://build.opencui.io).
