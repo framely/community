@@ -4,7 +4,7 @@
 
 ## Motivation
 
-To test your chatbot, you can use built-in test feature **Debug** to uncover bugs and prevent regressions. When entering user input, there are two methods:
+To test your chatbot, you can use built-in **Debug** tool to uncover bugs and prevent regressions. When entering user input, there are two methods:
 
 - Directly enter it as either text or JSON data. This method is useful for testing individual steps or simple logic flows.
 - Create and execute a test case to automate inputs. This method is ideal for testing more complex or multi-step processes, allowing you to easily repeat tests and analyze results.
@@ -87,9 +87,9 @@ To run the test case, you can select the one you want to run. The test engine wi
 
 ## How to use
 
-When using **Debug**, it is important to commit your chatbot changes in both the structure view and language view. Only the instances that you have committed will be tested in debug, so committing regularly ensures that you are testing the latest version of your chatbot.
+When using **Debug**, it is important to commit your chatbot changes in both the structure view and language view. Only the declaration that you have committed will be tested in debug, so committing regularly ensures that you are testing the latest version of your chatbot.
 
-To commit changes in the structure view, click **Propagate**. This will commit your changes and propagate them to the language view. To commit changes in the language view, simply click **Commit**.
+To commit your changes made in the structure view and make them available in the language view, click **Propagate**. To commit changes in the language view, simply click **Commit**.
 ::: thumbnail
 ![commit struct](/images/platform/testing/commit_struct.png)
 *Click **Propagate** in the structure view*
