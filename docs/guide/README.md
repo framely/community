@@ -13,7 +13,7 @@ Here's a quick way to get started: clone an existing project. This guide will wa
 This guide will walk you through the process of creating the simple chatbot that was introduced in the previous guide.
 
 #### [Reuse a full-stack component](use-hours.md)
-Importing a module is another way to reuse existing work on OpenCUI. Modules are reusable conversational components based on their service interface. A full stack component is a module paired with a compatible provider. This guide will show you how to add functionality to your chatbot by reusing a full-stack module.
+Importing a module is another way to reuse existing work on OpenCUI. Modules are reusable conversational components based on their service interface. A full stack component is a module paired with a compatible provider. This guide will show you how to add functionality to your chatbot by reusing a full-stack component.
 
 #### [Build a full-stack component](build-service.md)
 This guide will show you how to develop the module and provider that were introduced in the previous guide.
