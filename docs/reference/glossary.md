@@ -22,10 +22,10 @@ Builders describe what are needed and computer figure out how to do it.
 ### Cooperative Principle
 This assumes users are engaged in the conversation with bot for a common goal: user want to access some services that bot want to provide, thus it is user's interest to get what they want in the lowest effort possible.
 
-### Application Logic
+### Application logic
 Also known as business logic, defines what and how services should be delivered.
 
-### Interaction Logic
+### Interaction logic
 Defines how interaction should be carried out based on users input event. Interaction logic are defined by underlying application logic.
 
 ### Frontend
@@ -78,7 +78,7 @@ An application with conversational user interface(CUI), where user can access se
 
 - **Channel Layer**: Different channels have different ways to encode the conversation relevant information, implementation for channels are defined in this layer to make sure the same bot can be accessed from different channel.
 
-### Component 
+### Module
 The composable architecture of OpenCUI allows you to build encapsulated component that handles interaction for some predefined purpose, and then wire these into bigger and bigger ones for what you need. And some components contain service APIs, which can be used as basis to declaratively build the backend.  
 
 #### Service
