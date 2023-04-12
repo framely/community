@@ -134,7 +134,15 @@ The instructions below show you how to test your bot.
 ![testing state](/images/platform/testing/testing_state.png)
 :::
 
+### View log
+For coders, you can inspect the detailed log by clicking the "**View log**" icon. This will show you a log of all the interactions that have taken place between your chatbot and the user. This can be helpful for troubleshooting problems.
+
+### Reset session
+The replies that the chatbot generates for user input depend on the conversation history. Sometimes, you need to have a clean start to try something new. You can restart the testing session by clicking the "**Reset contexts**" icon.
+
 ### Create a test case
+
+You can save test cases by clicking the "**Save test case**" icon. This will save the current interaction as a test case. You can then use this test case to reproduce the interaction later. 
 
 1. Click the **Save Test Case** icon in the topbar to save a conversation as a test case.
 
@@ -153,6 +161,9 @@ The instructions below show you how to test your bot.
 ::: thumbnail
 ![reset](/images/platform/testing/reset.png)
 :::
+
+### View test cases
+Clicking the "**Test cases**" icon lets you compare your chatbot's behavior against expected results and identify errors that require attention.
 
 ### Run test case
 
