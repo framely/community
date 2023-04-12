@@ -21,7 +21,7 @@ OpenCUI adopts a [5 levels maturity model](../essentials/5levels-cui.md) for CUI
 ## Before you start
 - [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 - It is useful to get familiar with [the type-based way of building chatbot](../essentials/README.md).
-- We assume that you have finished [clone a chatbot,](./start-with-clone.md) so you know what to build.
+- We assume that you have finished [clone a chatbot,](./clone-simple-chatbot.md) so you know what to build.
 
 
 ## Create a chatbot project

@@ -7,19 +7,19 @@ To get the most out of OpenCUI, it is important to understand its type-based con
 Before we fully open up, we required you signup first so that we can allocate resources. All you need is a GitHub account, ideally with your email verified. 
 
 
-#### [Clone a simple chatbot](start-with-clone.md)
+#### [Clone a simple chatbot](clone-simple-chatbot.md)
 Here's a quick way to get started: clone an existing project. This guide will walk you through the steps of cloning a simple chatbot and testing its behavior using the built-in debug tool.
 
-#### [Build a simple chatbot](pingpong.md)
+#### [Build a simple chatbot](build-simple-chatbot.md)
 This guide will walk you through the process of creating the simple chatbot that was introduced in the previous guide.
 
-#### [Reuse a full-stack component](use-hours.md)
+#### [Reuse a full-stack component](reuse-component.md)
 Importing a module is another way to reuse existing work on OpenCUI. Modules are reusable conversational components based on their service interface. A full stack component is a module paired with a compatible provider. This guide will show you how to add functionality to your chatbot by reusing a full-stack component.
 
-#### [Build a full-stack component](build-service.md)
+#### [Build a full-stack component](build-component.md)
 This guide will show you how to develop the module and provider that were introduced in the previous guide.
 
-#### [Deploy a chatbot](quickstart-channel.md)
+#### [Deploy a chatbot](deploy-to-channel.md)
 Using Messenger as an example, this guide will show you how to configure chatbot and channel so that they point to each other. Once you have completed these steps, your chatbot will be available in Messenger.
 
 #### [OpenCUI workflow](opencui-flow.md)
