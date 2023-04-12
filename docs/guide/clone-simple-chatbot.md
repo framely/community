@@ -1,77 +1,72 @@
 # Clone a simple chatbot
 
-OpenCUI is a platform designed to assist regular development teams in building natural conversational user interfaces (CUIs) for their services. To reduce the cost of building CUIs, OpenCUI adopts a type-based approach, so you can use pre-built components instead of building everything from scratch. There are two ways of reusing existing work on the OpenCUI platform: importing or cloning. This guide will show you how to begin experimenting with a chatbot by cloning.
+OpenCUI is a platform that makes it easy to build conversational user interfaces (CUIs) for your services. It uses a type-based approach, so you can use pre-built components instead of building everything from scratch. This can save you time and effort, and it can help you create more consistent and reliable CUIs. 
 
-The OpenCUI platform can be thought of as GitHub specifically for chatbots. However, instead of repositories, the organization's work is organized into projects, which include chatbots, reusable modules, and providers. In this guide, let's focus on chatbots, which are essentially applications where users can access a service through a text-based or voice-based conversational user interface.
+The OpenCUI platform is organized into projects. A project is a collection of functionalities and resources that are used to build a CUI. Projects can include chatbots, reusable modules, and providers. 
 
-When you clone a project, you create an exact copy in your organization that you can inspect and modify. Cloning a project allows you to freely experiment with changes without affecting the original project. Cloning an existing chatbot that provides similar services is a great way to get started since you don't have to start from scratch. This guide will show you how to clone a simple chatbot.
+There are two ways to reuse existing work on the OpenCUI platform: **Import** and **Clone**. 
+- Import, allows you reuse the pre-built components in your own project. For more information about import, see [ruese a full-stack commponet](reuse-component.md).
+- Clone, creates an exact copy of the project in your organization. This allows you to freely experiment with changes without affecting the original project.
+
+In this guide, we will focus on cloning projects. Cloning projects is a great way to get started with OpenCUI. You can quickly and easily create a working project based on an existing one by cloning projects. First, let's focus on chatbots, which are essentially applications where users can access a service through a text-based or voice-based conversational user interface.
 
 ## Before you start
 
 [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 
 ## Clone chatbot pingpong
-In OpenCUI, you can discover a growing number of public projects by clicking on the **Explore** at the top of the page, which were built by the OpenCUI community. You can inspect a project to see if it fits your needs. Once you are inside the project you want to clone, you can follow the steps below to clone it.
 
-In this guide, we will show you how to clone a chatbot (project for that matter) using pingpong as example. Click [here](https://build.opencui.io/org/me.quickstart/agent/pingpong/struct/intent?page=0&imported=false&search=) to go inside `me.quickstart.pingpong` chatbot： 
+OpenCUI has a growing number of public projects that you can discover by clicking on the **Explore** tab at the top of the page. These projects were built by the OpenCUI community, and you can inspect them to see if they fit your needs. Once you are inside the project you want to clone, you can follow the steps below to clone it.
 
-1. Click **Clone** on the top right of the navigation bar. 
+This guide will show you how to clone a chatbot using `me.quickstart.pingpong` as an example. Click [here](https://build.opencui.io/org/me.quickstart/agent/pingpong/struct/intent?page=0&imported=false&search=) to navigate to the chatbot： 
+
+1. In the top-right corner of the page, click **Clone**. 
     ::: thumbnail
     ![enter chatbot](/images/guide/start-with-clone/click_clone.png)
     :::
 
-2. Once you click **Clone**, a pop-up window for basic chatbot settings will appear, you need to decide a couple of things:
+2. After clicking Clone, a pop-up window will appear with basic chatbot settings. You will need to decide a few things: 
    - Choose which **Owner** organization you want to clone this project to.
    - Optionally, you can change the **Project label** for this clone.
    - Decide on how you want to **Deploy** this, have OpenCUI hosting it for you or have it deployed on premise.
    - Pick which **Region** you want to deploy this chatbot to, pick one that is closer to your targeted users.
-   - Click on **Clone** at the bottom of the popup.
     ::: thumbnail
     ![enter chatbot](/images/guide/start-with-clone/clone.png)
     :::
 
-::: warning Need to know
+3. Click on **Clone** at the bottom of the popup. Once you have cloned the chatbot, you can test it directly.
+
+::: warning Caution
 A project's label or region can not be changed after creation or clone, so choose it wisely. For privacy reasons, the connections and user session data will NOT be cloned.
 :::
 
 ## Test the chatbot
-Before your chatbot is fully ready to be deployed to production environment, OpenCUI includes a built-in **Debug** tool that allows you to test your design in a development environment, so that you can uncover CUI design bugs as early as possible. There are some restrictions with this tool: you can't test your chatbot in asynchronous extensions including channels like Messenger. Furthermore, you can only test one language at a time, and only committed content in your branch.
 
-To test your chatbot using Debug, follow these steps:
+OpenCUI includes a built-in Debug tool that allows you to test your chatbot in a development environment before deploying it to production. This can help you identify and fix CUI design bugs early on. However, there are some restrictions with this tool:
+- You cannot test your chatbot in asynchronous extensions including channels, such as Messenger. 
+- You can only test one language at a time.
+- You can only test content that has been committed in your branch.
+
+Despite these restrictions, the Debug tool is a valuable tool for testing your chatbot before deployment. It can help you catch bugs and improve the overall quality of your chatbot. 
+
+To use the built-in debug tool, you can follow these steps:
 1. Switch to a language view, in this case we switch to **Language / en**. 
    ::: thumbnail
    ![try it now](/images/guide/start-with-clone/switch_pingpong_en.png)
    :::
-2. In a language view, click **Debug** in the upper-right corner of the Types area , the debug window will slide out. 
+2. In **Language / en**, click **Debug** in the upper-right corner of the Types area , the debug window will slide out. 
    ::: thumbnail
    ![try it now](/images/guide/pingpong/tryitnow_icon.png)
    :::
-3. Click **Connect**. This may take some time as we build and deploy the chatbot to our development environment. Once the connection is successfully established, you can test your chatbot by typing messages in the input box at the bottom and pressing enter. For example, enter `ping` then the chatbot should ask for a location, upon getting a legit location say `Seattle`, respond with `Pong Seattle`. 
+3. Click **Connect**. This may take some time as we build and deploy the chatbot to our development environment. Once the connection is successfully established, you can test your chatbot by typing messages in the input box at the bottom and pressing enter. 
+   
+   For example, enter `ping` then the chatbot should ask for a location, upon getting a legit location say `Seattle`, respond with `Pong Seattle`. 
    ::: thumbnail
    ![pingpong test](/images/guide/pingpong/pingpong_test.png)
    :::
+   Additionally, there are other useful operations available in the upper right corner of the Debug area, such as viewing the log, saving a test case, and resetting the session. These operations can help you troubleshoot your chatbot. For more information about the Debug tool, please refer to the [Testing](../reference/platform/testing.md) section.
+   ::: thumbnail
+   ![operation icon](/images/guide/start-with-clone/operation-icon.png)
+   :::
 
-You can make modifications, such as changing the response and expression. For the change to take effect, make sure you commit and reconnect.
-
-Additionally, there are other useful operations available in the upper right corner of the Debug area that can assist you with troubleshooting your chatbot. For more information about Debug, refer to the [Testing](../reference/platform/testing.md) section.
-
-::: thumbnail
-![operation icon](/images/guide/start-with-clone/operation-icon.png)
-:::
-
-### View log
-For coders, you can inspect the detailed log by clicking the "**View log**" icon.
-
-### Save test case
-You can save test cases by clicking the "**Save test case**" icon, which allow you rerun them in a later stage. 
-
-### View test cases
-Clicking the "**Test cases**" icon lets you compare your chatbot's behavior against expected results and identify errors that require attention.
-
-### Reset session
-The replies that the chatbot generates for user input depend on the conversation history. Sometimes, you need to have a clean start to try something new. You can restart the testing session by clicking the "**Reset contexts**" icon.
-
-
-
-
-
+In addition, you can make modifications to your chatbot, such as changing the response and expression. For the changes to take effect, be sure to commit and reconnect. For more information about workflow, see [OpenCUI workflow](opencui-flow.md).
