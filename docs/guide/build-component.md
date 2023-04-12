@@ -1,12 +1,12 @@
 # Build a full-stack component
 
-In the previous guide, we showed you how to enable your chatbot to field various business hours queries by [reusing an existing component](./use-hours.md). In this guide, we will show you how to build such a full-stack component, including both the module and the corresponding PostgREST provider. 
+In the previous guide, we showed you how to enable your chatbot to field various business hours queries by [reusing an existing component](./reuse-component.md). In this guide, we will show you how to build such a full-stack component, including both the module and the corresponding PostgREST provider. 
 
 ## Before you start
 
 - [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-- [Build a simple chatbot](./pingpong.md) for how to build a skill with entity slots.
-- [Reuse a full-stack module](./use-hours.md) to get familiar with the functionality we try to build here.
+- [Build a simple chatbot](./build-simple-chatbot.md) for how to build a skill with entity slots.
+- [Reuse a full-stack module](./reuse-component.md) to get familiar with the functionality we try to build here.
 
 ## Build a module
 On OpenCUI, to expose a service through a conversational user interface, you need to create a module, declare the service in it and define the conversational user interface on top of the service. 

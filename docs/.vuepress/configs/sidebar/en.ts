@@ -16,12 +16,13 @@ export const en = {
       text: 'Quickstart',
       children: [
         '/guide/signingup.md',
-        '/guide/start-with-clone.md',
-        '/guide/pingpong.md',
-        '/guide/use-hours.md',
-        '/guide/build-service.md',
-        '/guide/quickstart-channel.md',
+        '/guide/clone-simple-chatbot.md',
+        '/guide/build-simple-chatbot.md',
+        '/guide/reuse-component.md',
+        '/guide/build-component.md',
+        '/guide/deploy-to-channel.md',
         '/guide/opencui-flow.md',
+        '/guide/concepts.md',
       ],
     }
   ],
@@ -29,10 +30,6 @@ export const en = {
     {
       text: 'Are you ready?',
       link: '/reference/are-you-ready.md',
-    },
-    {
-      text: 'Key concepts',
-      link: '/reference/concepts.md',
     },
     {
       text: 'Dialog Annotations',
