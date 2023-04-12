@@ -44,11 +44,11 @@ To test your chatbot using Debug, follow these steps:
    :::
 2. In a language view, click **Debug** in the upper-right corner of the Types area , the debug window will slide out. 
    ::: thumbnail
-   ![try it now](/images/guide/pingpong/tryitnow_icon.png)
+   ![try it now](/images/guide/start-with-clone/tryitnow_icon.png)
    :::
 3. Click **Connect**. This may take some time as we build and deploy the chatbot to our development environment. Once the connection is successfully established, you can test your chatbot by typing messages in the input box at the bottom and pressing enter. For example, enter `ping` then the chatbot should ask for a location, upon getting a legit location say `Seattle`, respond with `Pong Seattle`. 
    ::: thumbnail
-   ![pingpong test](/images/guide/pingpong/pingpong_test.png)
+   ![pingpong test](/images/guide/start-with-clone/pingpong_test.png)
    :::
 
 You can make modifications, such as changing the response and expression. For the change to take effect, make sure you commit and reconnect.
