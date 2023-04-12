@@ -81,7 +81,7 @@ Ensure that you are inside the **pingpong** chatbot and under the **Structure** 
 #### Language layer
 To enable the chatbot to extract user mentions and create instances for an entity type from user utterances, one or more recognizers must be configured for that type. User-defined entities come with a list-based recognizer, which requires the builder to [enumerate common expressions](../reference/annotations/templateandexemplar.md#expression-for-entity-instance) for each instance that was added for this type in the previous step.
 
-Before beginning work on the language layer, be sure to [propagate](./opencui-flow.md#propagate-the-changes-to-language-layer) the changes made in the interaction layer to the language layer, and then [switch over to the language layer](./opencui-flow.md#switch-from-interaction-layer-to-language-layer).
+Before beginning work on the language layer, be sure to [propagate](./opencui-flow.md#propagate-the-changes-to-language-layer) the changes made in the interaction layer to the language layer, and then switch over to the language layer.
 
 ##### Add expressions for instance
 For each instance, we need to enumerate the common expressions that might refer to the instance.
@@ -143,8 +143,9 @@ For any conversationally exposed composite type, we always need to add exemplars
    ![define fill strategy](/images/guide/pingpong/always_ask.png)
    :::
    
-##### Language layer
-Be sure to [propagate](opencui-flow.md#propagate-the-changes-to-language-layer) the changes made in the interaction layer to the language layer before [switching over to the language layer](./opencui-flow.md#switch-from-interaction-layer-to-language-layer). At language layer, configure the following annotations:
+
+##### Language level
+Be sure to [propagate](opencui-flow.md#propagate-the-changes-to-language-layer) the changes made in the interaction layer to the language layer before switching over to the language layer. At language layer, configure the following annotations:
 
 1. Within the `location` slot of `PingPong` skill, ensure that you are at the **Language / en** level.
 2. Fill templates for Prompt. When fill strategy of slot is always ask, you must add at least one template to [Prompt](../reference/annotations/templateandexemplar.md#prompt). 
@@ -170,7 +171,7 @@ After being triggered, the pingpong skill responds a *"pong"* based on the locat
 :::
 
 ##### Language layer
-Be sure to [propagate](opencui-flow.md#propagate-the-changes-to-language-layer) the changes made in the interaction layer to the language layer before [switching over to the language layer](./opencui-flow.md#switch-from-interaction-layer-to-language-layer).
+Be sure to [propagate](opencui-flow.md#propagate-the-changes-to-language-layer) the changes made in the interaction layer to the language layer before switching over to the language layer.
 
 1. Under to the **Responses** tab, enter `Great! Pong to ${location?.expression()}.` in the **Single value message** field and press enter.
 ::: thumbnail

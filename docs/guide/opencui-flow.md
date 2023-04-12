@@ -1,6 +1,6 @@
 # OpenCUI workflow
 
-OpenCUI comes with a Git like version control system, that is specifically designed for the structured definition so that we can manage the complex interaction between different views (interaction and languages) and different branches (personal and master) across modules and chatbot effectively. If you used Git in your development, this process should be very similar.
+OpenCUI comes with a version control system that is similar to Git. It is designed for structured definition and to manage the complex interaction between different views (structure and language) and different branches (personal and master) across modules and chatbots effectively. If you have used Git in your development, this process should be very familiar to you.
 
 OpenCUI workflow is a branch-based workflow. After you tested your changes, it's important to ask project owner to review your changes and ensure they meet the chatbot's features and quality standards, by opening a pull request and comparing the changes across your branch. Once your change is approved, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version control](../reference/platform/versioncontrol.md) section.
 
@@ -12,16 +12,19 @@ To follow OpenCUI flow, you will need to [sign up](./signingup.md#sign-up) for a
 
 When you start building a project, such as creating a type, adding or modifying an instance, a branch is automatically created for you based on the current master. This gives you a space to work on your changes without affecting the master. You can work on your changes in isolation from the changes that other people are making. Additionally, creating a branch gives your collaborators a chance to review your changes before you merge them into the master. In OpenCUI, you can only have one active branch per project.
 
-## Propagate the changes to language layer
-Our type-based approach allow you to build CUI for your service in two steps: declare types at schema layer, attach dialog annotation  to these type declaration. Most dialog annotation need to be configured in two stages: once at interaction layer, once for each language you want to support at language layer. You need to **Propagate** the change you made in interaction layer to language layers before you can configure the language layer portion of the annotation. In this tutorial, we will switch to language layer after we are done with interaction layer for each annotation. For more information about schema, interaction logic and language, check out [chatbot in 3 layers](3layers.md).
+## Propagate the changes to language view
 
+When you start building a project that includes language-specific parts, such as chatbots and modules, OpenCUI can help you create a consistent experience across all languages by propagating changes. This means that you don't need to duplicate your work or repeat the process for each language which makes it easy to create and maintain language-specific parts.
+
+You can simply define the schema layer and interaction layer data you need in the structure view, and then propagate those changes to all of the language views. This will ensure that all of your language-specific parts are always in sync and that you don't have to waste time duplicating your work, you can simply fill in the blanks with the appropriate language. 
+
+To propagate the changes to language view:
+
+1. In the **Structure** view, click **Propagate** in the upper-right corner of the Types area.
    ::: thumbnail
    ![propagate interaction change](/images/guide/pingpong/commit_pingpong_struct.png)
    :::
-
-## Switch from interaction layer to language layer
-Once you've propagated the changes to the language layer, you can then switch over to the language layer to add templates and exemplars.
-
+2. Once you have propagated the changes to the language view, you can switch to the specific language in the **Language Selector**. Then, you can fill in the blanks with different languages.
    ::: thumbnail
    ![switch pingpong en](/images/guide/pingpong/switch_pingpong_en.png)
    :::
