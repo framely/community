@@ -29,7 +29,7 @@ export const en = {
   ],
   '/reference/': [
     {
-      text: 'Are you ready?',
+      text: 'Got team?',
       link: '/reference/are-you-ready.md',
     },
     {
