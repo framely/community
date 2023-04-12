@@ -1,6 +1,6 @@
-# Postgrest
+# PostgREST provider
 
-OpenCUI also supports the backend component in form of postgREST provider. The backend component can be declaratively defined in two steps: First, create database tables needed by service by adding storage annotation to frames, secondly, provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify how the operation team can access these tables via backoffice.
+OpenCUI also supports the backend component in form of PostgREST provider. The backend component can be declaratively defined in two steps: First, create database tables needed by service by adding storage annotation to frames, secondly, provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify how the operation team can access these tables via backoffice.
 
 There are several advantages of using the backend component approach to build a service provider:
 - In addition to declaratively building a database as a content management system, the OpenCUI backend component allows you to implement the service declaratively using SQL. This makes it possible for the business analyst to build the backend.
@@ -9,7 +9,7 @@ There are several advantages of using the backend component approach to build a 
 - Backoffice components can be reused by cloning for OpenCUI hosted solutions.
 
 
-## Create PostgREST provider
+## Create a PostgREST provider
 
 To create a postgrest provider: 
 1. Within an org, click **Create** on the right side and select **Create provider**.
@@ -28,7 +28,7 @@ To create a postgrest provider:
    ![provider form](/images/provider/postgrest/provider-form.png)
    :::
 
-## Import service interface you want to implement
+## Import service interfaces
 
 When you are done with creation, you need to import which service interface this postgrest provider implements. 
 
@@ -41,7 +41,7 @@ To declare the service interface:
 ![import component](/images/provider/postgrest/import-component.png)
 :::
 
-## Attach PostgRest annotations
+## Create tables
 
 With postgres provider, it is very convenient to create a database without the SQL `CREATE TABLE` statement. All you need to do is create frames or select existing frames (Local or Imported) and **Enable Storage**. 
 
@@ -64,7 +64,7 @@ If the table needs to be accessed by the operation team on the admin interface, 
 
 When the postgres provider **Deploy** button is triggered, OpenCUI platform will update the table structure in the corresponding hosted database. 
 
-::: tip Need To Know
+::: tip Need to know
 When creating a table in hosted database, OpenCUI will automatically add two columns, `ID` column and `created_at` column. So, normally, you don't need to add these two slots in a frame, but you can if you need to.
 :::
 
@@ -207,7 +207,7 @@ Input type is a backoffice annotation, indicating how the operation team input d
    *Figure 2: view pitures in the table*
    :::
 
-::: tip Need To Know
+::: tip Need to know
 When the SQL data type is one of `text`, `varchar` and `varchar(n)`, you can choose **Media**.
 :::
 
@@ -247,7 +247,7 @@ END
 ```
 Besides, [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) also supports [simple loops](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONTROL-STRUCTURES-LOOPS) and [conditionals](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONDITIONALS).
 
-::: tip Need To Know
+::: tip Need to know
 If the return value is not a storage-enabled frame and the type of slot in the frame is **builder-define entity** or ***kotlin.String***, check whether the type of its corresponding column is *text* in PostgreSQL. If not, use `::text` to convert the type of column into *text*.
 
 For example, the return value is consist of *dishId* and *dishName*. The type of *dishName* is *customized entity* and its corresponding column is *varchar(50)* in PostgreSQL. Add `::text` behind *dishName* to convert *varchar(50)* to *text*, so that the conversion between OpenCUI and PostgreSQL can work smoothly.
@@ -355,4 +355,4 @@ Once you have a postgrest provider running, you need to wire this implementation
 :::
 
 
-After wiring the postgREST provider, you can edit it at any time. However, it's important to remember to merge your latest changes to the master branch and redeploy the provider in order to ensure that your chatbot is using the most up-to-date version.
+After wiring the PostgREST provider, you can edit it at any time. However, it's important to remember to merge your latest changes to the master branch and redeploy the provider in order to ensure that your chatbot is using the most up-to-date version.
