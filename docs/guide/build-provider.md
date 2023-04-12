@@ -7,7 +7,7 @@ To develop a backend using a database and expose functionalities through RESTful
 - At the business logic level, we need to decide on the functionalities we want to expose and determine how to implement them.
 - On the admin side, we need to consider how the owner can manipulate the data hosted in the database, including typical CRUD operations.
 
-On OpenCUI, you can declare a frame, or user defined composite type as basis for table, and add storage annotation to this type so that OpenCUI knows how you want to create table. You can use backoffice annotation to control how data are manipulated in admin tool. Furthermore, you can implement functions using SQL, and OpenCUI will turn them into stored procedures and expose them via RESTful automatically. Let's see how we can build a PostgREST provider.
+On OpenCUI, you can declare a frame, or build-defined composite type as basis for table, and add storage annotation to this type so that OpenCUI knows how you want to create table. You can use backoffice annotation to control how data are manipulated in admin tool. Furthermore, you can implement functions using SQL, and OpenCUI will turn them into stored procedures and expose them via RESTful automatically. Let's see how we can build a PostgREST provider.
 
 In the previous guide, we showed you how to build an hours module including declaring a service and building CUI. In this guide, we will show you how to develop a provider for that service using a PostgREST provider.
 
