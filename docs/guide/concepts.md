@@ -2,7 +2,7 @@
 
 OpenCUI is a platform for chatbot builder to build and manage type-based chatbots. Here are the key concepts for building chatbots on OpenCUI.
 
-### Organization
+#### Organization
 There are two kinds of accounts on the OpenCUI, personal account and organization account. Organization account is like a container for your team's shared work, and it also manages each person's access to these shared work. Each person will have their own personal OpenCUI account. People can collaborate on projects by joining the hosting organization account. 
 
 #### Projects

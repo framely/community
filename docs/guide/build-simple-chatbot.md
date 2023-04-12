@@ -34,7 +34,7 @@ When you sign up for OpenCUI, a personal organization is automatically created f
 
 3. After completing the form, click **Create**.
 
-   ::: warning Need To Know
+   ::: tip Need to know
    If you want to change a chatbot's label or region, you will need to clone it with the desired choices. Note all user session data with old chatbot will be lost.
    :::
 
@@ -48,7 +48,7 @@ If the chatbot is created successfully, it should be displayed as shown below:
 ![enter chatbot](/images/guide/pingpong/enter_chatbot.png)
 :::
 
-::: Tip
+::: tip Need to know
 Dialog annotations can be attached to a type, either in type-level annotation or to its slot in slot-level annotation.
 In this series of quickstart guides, you will complete all the interaction layer configurations for a slot (or a type if it has no slot) before moving on to the language layer. This is not the only way to do it, but we hope it is the easiest to follow. To annotate a type, follow these steps:
 1. Add the slot level annotation, one slot at a time.
@@ -71,12 +71,12 @@ The most basic type in OpenCUI is 'entity'. It is a primitive type that the chat
 #### Schema layer: create entity and add instances
 Ensure that you are inside the **pingpong** chatbot and under the **Structure** view:
 1. Click **Create** button on the right side, and select **Create entity** to create a new entity.
-2. Enter a label for the entity type and press enter. For example, `Location`.
+2. Enter a label for the entity type and press enter. For example, `location`.
 3. Within the `Location` entity, click **Add** button to add entity instances, you are required to provide a language independent label for each instance, such as `seattle` in the label field and **Save**. You can add as many instances as you need. No spaces are allowed in the instance label, or in any label at all.
 
-    ::: thumbnail
-    ![create entity](/images/guide/pingpong/create_entity.png)
-    :::
+::: thumbnail
+![create entity](/images/guide/pingpong/create_entity.png)
+:::
 
 #### Language layer
 To enable the chatbot to extract user mentions and create instances for an entity type from user utterances, one or more recognizers must be configured for that type. User-defined entities come with a list-based recognizer, which requires the builder to [enumerate common expressions](../reference/annotations/templateandexemplar.md#expression-for-entity-instance) for each instance that was added for this type in the previous step.
@@ -86,19 +86,19 @@ Before beginning work on the language layer, be sure to [propagate](./opencui-fl
 ##### Add expressions for instance
 For each instance, we need to enumerate the common expressions that might refer to the instance.
 1. Navigate to the entity and head to the **Instances** tab. 
-2. For each instance, click to add expressions** in the pop-up window.
+2. For each instance, click to add **Expressions** in the pop-up window.
 3. Click **Save**.
-    ::: thumbnail
-    ![pingpong add entity instance expression](/images/guide/pingpong/pingpong_entity_instance.png)
-    :::
+::: thumbnail
+![pingpong add entity instance expression](/images/guide/pingpong/pingpong_entity_instance.png)
+:::
 
 ##### Add name for entity type
 For type itself, we should also provide the expression or name for the given language.
 1. Within the `Location` entity, head to the **Expression** tab.
 2. In the **Names** section, enter `Location` for the Location entity display name and press enter. This field also provides examples of how this type is mentioned in different languages.
-    ::: thumbnail
-    ![pingpong add entity expression](/images/guide/pingpong/pingpong_entity_expression.png)
-    :::
+::: thumbnail
+![pingpong add entity expression](/images/guide/pingpong/pingpong_entity_expression.png)
+:::
 
 ### Build a skill
 Conceptually, a skill is a conversationally exposed functions, with input parameters represented by its slots. In this tutorial, let's build a simple skill "pingpong" with a single slot of Location type. A location is a required slot for this skill, so when it is missing from the user's initial utterance, the chatbot will prompt the user for it. Once the instance of this function type is created, the chatbot simply produces an acknowledgement in the form of `pong to ${location}`.
@@ -110,14 +110,13 @@ At this layer, we create the skill, add all its slots that represents input para
 Inside the **pingpong** chatbot, head to **Types** page and make sure you are under the **Structure** view.
 2. Click **Create** button on the right side, and select **Create skill** to create a new skill.
 3. Enter a label for the skill and press enter. For example, `PingPong`.
-   ::: warning Need To Know
+   ::: tip Need to know
    In OpenCUI, a label is not a name but an identifier that is independent of the language used. The Skill Label, being a type of label, should adhere to the following guidelines:
    - It should start with a capital letter.
    - It should be between 2 and 100 characters in length.
    - It should only contain letters, digits, and underscores.
-   <br>
-
    :::
+   
    ::: thumbnail
    ![intent label](/images/guide/pingpong/intent_label.png)
    :::
@@ -138,26 +137,29 @@ For any conversationally exposed composite type, we always need to add exemplars
 
 ##### Interaction layer
 1. Inside the `PingPong` skill, ensure that you are under the **Structure** view.
-2. Within the `location` slot of `PingPong` skill, select **Always ask** in the **Fill strategy** section.
-   ::: thumbnail
-   ![define fill strategy](/images/guide/pingpong/always_ask.png)
-   :::
+2. Within the `location` slot of `PingPong` skill, navigate to **Annotation** tab and select **Always ask** in the **Fill strategy** section.
+::: thumbnail
+![define fill strategy](/images/guide/pingpong/always_ask.png)
+:::
    
 
-##### Language level
+##### Language layer
 Be sure to [propagate](opencui-flow.md#propagate-the-changes-to-language-layer) the changes made in the interaction layer to the language layer before switching over to the language layer. At language layer, configure the following annotations:
 
 1. Within the `location` slot of `PingPong` skill, ensure that you are at the **Language / en** level.
 2. Fill templates for Prompt. When fill strategy of slot is always ask, you must add at least one template to [Prompt](../reference/annotations/templateandexemplar.md#prompt). 
    - Head to the **Annotation** tab.
    - Enter the sentences in **Prompts** section. For example, "*Wow. Where is the "ping" coming from?*".
+   ::: thumbnail
+   ![add prompt](/images/guide/pingpong/add_prompt.png)
+   :::
+
 3. Add names for `location` slot. 
    - Head to the **Expression** tab.
    - Enter the names in **Names** section, such as "Location".
-   
-::: thumbnail
-![add prompt](/images/guide/pingpong/add_prompt.png)
-:::
+   ::: thumbnail
+   ![add prompt](/images/guide/pingpong/add_name.png)
+   :::
    
 #### Configure response for the skill
 After being triggered, the pingpong skill responds a *"pong"* based on the location provided by the user, this behavior is controlled by a response. Responses are executed after the chatbot has all the slots filled per Interaction logic defined by attached dialog annotations. In reality, we should call out the service APIs and render the return back to user in natural text. It is often necessary to reference slots and functions in the response, which can be easily done using `${}` since all templates on OpenCUI are Kotlin string templates.
@@ -174,9 +176,9 @@ After being triggered, the pingpong skill responds a *"pong"* based on the locat
 Be sure to [propagate](opencui-flow.md#propagate-the-changes-to-language-layer) the changes made in the interaction layer to the language layer before switching over to the language layer.
 
 1. Under to the **Responses** tab, enter `Great! Pong to ${location?.expression()}.` in the **Single value message** field and press enter.
-::: thumbnail
-![pingpong simple reply](/images/guide/pingpong/pingpong_simple_reply.png)
-:::
+   ::: thumbnail
+   ![pingpong simple reply](/images/guide/pingpong/pingpong_simple_reply.png)
+   :::
 
 2. Add utterance exemplars to help dialog understanding module to convert utterance into event, some structured representation of meaning.
    - Navigate to the `PingPong` skill and head to the **Expression** tab.
