@@ -4,7 +4,7 @@ The OpenCUI platform is designed to help you build conversational user interface
 To fully utilize OpenCUI, one needs to understand its type-based conceptual model, which is a sharp deviation from the popular flow-based approach. We have created a set of tutorials that will guide you through the steps of understanding the conceptual model and becoming skilled in utilizing OpenCUI to create outstanding conversational experiences.
 
 #### [Sign up](signingup.md)
-Before we fully open up, we required you signup first so that we can get some idea on how we can help you. All you need is a GitHub account, ideally with your email verified. 
+Before we fully open up, we required you signup first so that we can allocate resources. All you need is a GitHub account, ideally with your email verified. 
 
 #### [Clone a simple chatbot](start-with-clone.md)
 Cloning an existing project is the fastest way to start play with it. This guide show you how to clone a simple chatbot, and then how to test its behavior using the builtin **Debug** tool.

@@ -1,56 +1,28 @@
 # Build a simple chatbot
-The goal of a chatbot is to deliver functionality to the user through a conversational user interface. In order to do that, it first needs to create a callable instance of some conceptual function type that can be invoked by the user. To achieve this, we further need to be able to create instances conversationally for any type that is required by the parameters for functions and attributes for user defined types (both are slots on OpenCUI). This suggests that we can build a conversational user interface in a type-based fashion in two steps: 
-1. Declare all the types we want to expose;
-2. Attach dialog annotations to these types and their slots, which describe how the whole or part of the type can be instantiated conversationally. 
+A chatbot is an application that provides services to users through a conversational user interface (CUI). A service is an interface for a business capability that usually consists of a set of Application Programming Interface(API) functions. These interfaces decouple the client from the provider, allowing software to be developed independently and reused across various applications and systems.
+
+In order to invoke API functions in a conversational manner, the chatbot needs to create an instance of a function type through conversations, which implies that chatbot also needs to create instances for the input parameters of the function or attributes of composite types in a more general sense. This suggests that we can build a conversational user interface in a type-based fashion in two steps:
+
+1. Declare all the types for which you want to create instances conversationally;
+2. Attach dialog annotations to these types and their slots to describe how the whole or part of these types can be instantiated conversationally.
 
    ::: thumbnail
    ![create save](/images/guide/pingpong/urr.png)
    :::
 
- To support multiple languages, dialog annotations are defined in two layers. The first layer is the Interaction layer, which determines which slot should be requested for additional information from the user. The second layer is the language layer, which determines the phrasing that should be used to request that information in a given language. Dialog annotation can be attached to type directly, or onto its slot. 
+OpenCUI is designed to support most APIs that can be defined by OpenAPI, a widely used standard for documenting RESTful APIs. This means you can add dialog annotation to not only primitive types like Int, String, but also array, user defined type with polymorphism support, making it easy to build conversational interfaces for arbitrary service APIs. On OpenCUI, functions are represented by skills, user-defined types by frames, and primitive type by entities. Types declared in OpenCUI can be either internal or external. For internal types, OpenCUI generates a Kotlin class, while for external types, it uses existing Java/Kotlin types, ensuring that every type has a direct representation at the Java/Kotlin level. This allows users to tap into the vast Java ecosystem and leverage any available functionality, as well as use Kotlin code expressions to directly express logic.
 
-In this series of quickstart guides, we complete all the interaction layer configurations for a slot (or a type if it has no slot) before moving on to the language layer. This is not the only way to do it, but we hope it is the easiest to follow. To attach dialog annotations to a type, follow these steps:
-1. Configure the slot level annotation one slot at a time.
-2. Configure the type level annotation.
-3. Configure the response for the skill.
+After a type is declared in OpenCUI, dialog annotations are attached in two layers. In the interaction layer, the annotation determines how conversation is conducted in the language-independent semantic layer. For each supported language, the annotation in the language layer determines how to map the text in the target language to structured semantics and vice versa. As a result, conversation-exposed types are typically defined in three layers: schema, interaction, and language, with entities only in two layers: schema and language.
 
+This tutorial will guide you step-by-step through the process of creating and building a simple chatbot on the OpenCUI platform. The chatbot you build will be able to carry out conversation detailed in the last guide.
 
-OpenCUI supports a complete modern type system, including skills for functions, frames for user-defined types, and entities for primitive types. Types declared in OpenCUI can be either internal or external. For internal types, OpenCUI generates a Kotlin class, while for external types, it uses existing Java/Kotlin types, ensuring that every type has a direct representation at the Java/Kotlin level. 
-
-Dialog annotations can be added to any type, including existing Java/Kotlin data types. This allows users to tap into the vast Java ecosystem and leverage any available functionality, as well as use Kotlin code expressions to directly express logic.
-
-This tutorial will guide you step-by-step through the process of creating and building a simple chatbot on the OpenCUI platform. When interacting with the chatbot, users will receive a welcome message and a "pong to" reply based on their input location. For example:
-
-:::: conversation
-::: bot Bot
-Hi! I'm a virtual PingPong chatbot. How can I assist you today?
-:::
-::: user User
-ping
-:::
-::: bot Bot
-Wow. Where is the "ping" coming from?
-:::
-::: user User
-Seattle
-:::
-::: bot Bot
-Great! Pong to Seattle. What else can I do for you? 
-:::
-::: user User
-No, thanks
-:::
-::: bot Bot
-Thank you for contacting the virtual PingPong chatbot. Have a great day! 
-:::
-::::
-
-OpenCUI adopts a [5 levels maturity model](../essentials/5levels-cui.md) for CUI capabilities. After completing this tutorial, you will be able to develop [skills with slots](../essentials/5levels-cui.md#frame-with-slots) conversational experience, enough to allow users to check your business hours or make a reservation.
+OpenCUI adopts a [5 levels maturity model](../essentials/5levels-cui.md) for CUI capabilities. This tutorial will guide you step-by-step through the process of building the same chatbot you played in last guide. After completing this tutorial, you will be able to develop [skills with slots](../essentials/5levels-cui.md#frame-with-slots) conversational experience, enough to allow users to check your business hours or make a reservation.
 
 ## Before you start
 - [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 - It is useful to get familiar with [the type-based way of building chatbot](../essentials/README.md).
 - We assume that you have finished [clone a chatbot,](./start-with-clone.md) so you know what to build.
+
 
 ## Create a chatbot project
 When you sign up for OpenCUI, a personal organization is automatically created for you. You can create a chatbot under this organization (or any other organization) following these steps:
@@ -76,6 +48,15 @@ If the chatbot is created successfully, it should be displayed as shown below:
 ![enter chatbot](/images/guide/pingpong/enter_chatbot.png)
 :::
 
+::: Tip
+Dialog annotations can be attached to a type, either in type-level annotation or to its slot in slot-level annotation.
+In this series of quickstart guides, you will complete all the interaction layer configurations for a slot (or a type if it has no slot) before moving on to the language layer. This is not the only way to do it, but we hope it is the easiest to follow. To annotate a type, follow these steps:
+1. Add the slot level annotation, one slot at a time.
+2. Add the type level annotation.
+3. If the type is a skill, configure the response for it.
+::: 
+
+
 ## Build a chatbot
 Since chatbots can be thought of as a set of independent functionalities, each of these conversationally exposed functions is defined by a skill. We can build a chatbot by building skills, one skill at a time. To build a composite type like skill, we first need to build its dependent types, recursively. 
 
@@ -86,9 +67,8 @@ The conversational experience you will build in the guide require a skill `pingp
 ### Build entity: Location
 The most basic type in OpenCUI is 'entity'. It is a primitive type that the chatbot knows how to extract the value of from the user's utterance. OpenCUI provides many predefined entities, such as `java.time.LocalDate` for dates, `io.opencui.core.Email` for email addresses, and so on. In this case, let's build a custom entity type `Location`. 
 
-Normally, the conversational exposed types like skills and frames can be defined in three layers: schema, interaction and language. But entity can be defined two layers: schema and language 
 
-#### Schema layer: create an entity and add instances
+#### Schema layer: create entity and add instances
 Ensure that you are inside the **pingpong** chatbot and under the **Structure** view:
 1. Click **Create** button on the right side, and select **Create entity** to create a new entity.
 2. Enter a label for the entity type and press enter. For example, `Location`.
@@ -112,7 +92,7 @@ For each instance, we need to enumerate the common expressions that might refer 
     ![pingpong add entity instance expression](/images/guide/pingpong/pingpong_entity_instance.png)
     :::
 
-##### Add name for entity 
+##### Add name for entity type
 For type itself, we should also provide the expression or name for the given language.
 1. Within the `Location` entity, head to the **Expression** tab.
 2. In the **Names** section, enter `Location` for the Location entity display name and press enter. This field also provides examples of how this type is mentioned in different languages.
@@ -153,19 +133,17 @@ To add a slot to a type:
 ![add slot](/images/guide/pingpong/add_slot.png)
 :::
 
-
-
 #### Add annotations to the slot
 For any conversationally exposed composite type, we always need to add exemplars and templates at the language level. For this simple skill, in case the user did not provide the location in the initial utterance, the chatbot needs to prompt the user for that information. The exact prompt behavior is controlled by configuring the [fill strategy](../reference/annotations/fillstrategy.md) for that slot. This needs to be done in both Interaction layer and language layer.
 
-##### Interaction level
+##### Interaction layer
 1. Inside the `PingPong` skill, ensure that you are under the **Structure** view.
 2. Within the `location` slot of `PingPong` skill, select **Always ask** in the **Fill strategy** section.
    ::: thumbnail
    ![define fill strategy](/images/guide/pingpong/always_ask.png)
    :::
    
-##### Language level
+##### Language layer
 Be sure to [propagate](opencui-flow.md#propagate-the-changes-to-language-layer) the changes made in the interaction layer to the language layer before [switching over to the language layer](./opencui-flow.md#switch-from-interaction-layer-to-language-layer). At language layer, configure the following annotations:
 
 1. Within the `location` slot of `PingPong` skill, ensure that you are at the **Language / en** level.
@@ -180,7 +158,7 @@ Be sure to [propagate](opencui-flow.md#propagate-the-changes-to-language-layer) 
 ![add prompt](/images/guide/pingpong/add_prompt.png)
 :::
    
-#### Add annotations to the skill
+#### Configure response for the skill
 After being triggered, the pingpong skill responds a *"pong"* based on the location provided by the user, this behavior is controlled by a response. Responses are executed after the chatbot has all the slots filled per Interaction logic defined by attached dialog annotations. In reality, we should call out the service APIs and render the return back to user in natural text. It is often necessary to reference slots and functions in the response, which can be easily done using `${}` since all templates on OpenCUI are Kotlin string templates.
 
 ##### Interaction layer
