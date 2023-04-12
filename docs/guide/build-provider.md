@@ -1,16 +1,6 @@
 # Build an hours provider
 
-In the previous guide, we showed you how to enable your chatbot to field various business hours queries by [reusing an existing component](./reuse-component.md). In this guide, we will show you how to build such a full-stack component, including both the module and the corresponding PostgREST provider. 
-
-## Before you start
-
-- [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-- [Build a simple chatbot](./build-simple-chatbot.md) for how to build a skill with entity slots.
-- [Reuse a full-stack module](./reuse-component.md) to get familiar with the functionality we try to build here.
-
-After declaring a service in a module, the next step is to develop a provider for it. On OpenCUI platform, the provider serves as a backend stub to actual backend implementation of the service. Most providers are external, meaning the backend is developed and deployed elsewhere in related but separated effort. 
-
-However, there is an OpenCUI-hosted provider called [PostgREST provider](../reference/providers/postgrest.md), which allows you to use PostgreSQL as data storage and implement API functions using SQL on OpenCUI platform. OpenCUI will make these functions available to your chatbot and back office through a RESTful gateway called PostgREST.
+On OpenCUI, a provider serves as a backend stub to actual backend implementation of the service. Most providers are external, meaning the backend is developed and deployed elsewhere in related but separated effort. However, there is an OpenCUI-hosted provider called [PostgREST provider](../reference/providers/postgrest.md), which allows you to use PostgreSQL as data storage and implement API functions using SQL on OpenCUI platform. OpenCUI will make these functions available to your chatbot and back office through a RESTful gateway called PostgREST.
 
 To develop a backend using a database and expose functionalities through RESTful APIs, we need to address several issues conceptually:
 - At the schema level, we need to determine the necessary tables, their schemas, and types for each column. We may also need to define PostgreSQL composite types as return types for SQL functions.
@@ -19,21 +9,29 @@ To develop a backend using a database and expose functionalities through RESTful
 
 On OpenCUI, you can declare a frame, or user defined composite type as basis for table, and add storage annotation to this type so that OpenCUI knows how you want to create table. You can use backoffice annotation to control how data are manipulated in admin tool. Furthermore, you can implement functions using SQL, and OpenCUI will turn them into stored procedures and expose them via RESTful automatically. Let's see how we can build a PostgREST provider.
 
+In the previous guide, we showed you how to build an hours module including declaring a service and building CUI. In this guide, we will show you how to develop a provider for that service using a PostgREST provider.
+
+## Before you start
+
+- [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+- [Build a simple chatbot](./build-simple-chatbot.md) for how to build a skill with entity slots.
+- [Reuse a full-stack module](./reuse-component.md) to get familiar with the functionality we try to build here.
+
 ## Import the module for the service
 To implement a service, you need to declare all the necessary types for that service. This can be done by importing the module where the service is defined. Here are the steps to follow:
 1. First, decide on a target provider. You can use an existing Postgrest provider, or create a new one.
-2. Enter the module where the service is declared and import it into the target project.
+2. Enter the `hours` module where the service is declared and import it into the target provider.
 
 ## Create type needed by implementation 
 Sometimes, to simplify development, you may need intermediate functions. This, along with other reasons, may require defining specific types for implementation. For the service that you want to implement here, it is not the case, so we can skip this step.
 
-## Annotate for schema and backoffice
+## Add backend annotations
 With the PostgREST provider, you can define a table schema by adding storage annotations to a data type. This enables OpenCUI to automatically create a mapping between the database and Kotlin code. OpenCUI will create tables based on the type definition and storage annotations in a separate database for your organization. Additionally, you should add backoffice annotations to each slot to define how the corresponding column should be displayed and manipulated in the backoffice.
 
 There are two things that should be stored in the database: business hours and the time zone of your business. When displaying business hours for the week, you need to start from the current date. To determine the correct current date, the time zone of the business is important.
 
 To store business hours or a time zone, you can storage-enable frame. After this, a frame will map to a table, with its slots mapping to the corresponding table columns. The frame label specifies the name of the table, while the slot label specifies the name of the column in the table. The SQL data type specifies the type of data that the column can hold. This can be done as follows:
-1. Enter the target provider with the hours service already imported.
+1. Enter the target provider with the `hours` module already imported.
 2. Go to the **Types** page to create these two frames and **enable storage** for each of them.
    
 Frame: **Hours**
@@ -53,8 +51,8 @@ Frame: **Configuration**
 | timeZone   | java.time.ZoneId  | text                   |A time zone of business.                                                                                             |
 
 Since there are some columns that can not be empty, and **dayOfWeek** can only be selected in only seven days of the week, the following annotations should be added to set the constraints.
-1. Turn off [Allow null](../reference/providers/postgrest.md#allow-null) for these slots: **dayOfWeek**, **ifOpen** and **timeZone**.
-2. Switch the [Input type](../reference/providers/postgrest.md#input-type) to **Dropdown** for **dayOfWeek**, and add this JSON array:
+1. Turn off [Allow null](../reference/providers/postgrest.md#allow-null) for these slots: `dayOfWeek`, `ifOpen` and `timeZone`.
+2. Switch the [Input type](../reference/providers/postgrest.md#input-type) to **Dropdown** for `dayOfWeek`, and add this JSON array:
    ```json
    [
     {
@@ -88,17 +86,17 @@ Since there are some columns that can not be empty, and **dayOfWeek** can only b
    ]
    ```
 
-Take the slot **dayOfWeek** as an example and the annotations of it should look like this:
+Take the `dayOfWeek` slot as an example and the annotations of it should look like this:
 
 ::: thumbnail
 ![dayOfWeek annotations](/images/guide/build-service/dayofweek-annotation.png)
 :::
 
 ## Implement the service
-Finally, after the tables are ready, you can provide implementation for each function defined in the service. You can do this on the OpenCUI platform using PSQL (or native Kotlin code, but not for this service, so it is not covered here).
+Finally, after the tables are ready, you can provide implementation for each function defined in the service. You can do this on the OpenCUI platform using [PL/pgSQL](https://www.postgresql.org/docs/current/plpgsql.html) or native Kotlin code.
 
-1. Enter the provider that imported the hours service.
-2. Go to the **Service** page, in the **Functions** section, click function **getHoursDay**.
+1. Enter the provider that imported the `hours` module.
+2. Go to the **Service** page, in the **Functions** section, select `getHoursDay` function.
    - Make sure the implementation is **Provider dependent**.
    - Copy and paste the following code:
      ```sql
@@ -132,7 +130,7 @@ Finally, after the tables are ready, you can provide implementation for each fun
       ```
    - Click **Save**.
 
-4. In the **Functions** section, click function **getHoursWeek**
+4. In the **Functions** section, select `getHoursWeek` function.
    - Select **Kotlin** as the **Implementation**.
    - Copy and paste the following code: 
    ```kotlin
