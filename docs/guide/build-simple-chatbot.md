@@ -191,9 +191,9 @@ Inside the `PingPong` skill and the **Expression** tab, under the **Language/en*
 2. Add names for `PingPong` skill:
    - Click the **Names** field, 
    - Enter `Ping Pong` for the PingPong skill display name and press enter.
-::: thumbnail
-![PingPong expression](/images/guide/pingpong/pingpong_expression.png)
-:::
+   ::: thumbnail
+   ![PingPong expression](/images/guide/pingpong/pingpong_expression.png)
+   :::
 
 ###### Language layer: add expression
 Inside the `PingPong` skill and the **Expression** tab, under the **Language/en** view:
@@ -215,6 +215,10 @@ Inside the `PingPong` skill and the **Responses** tab, under the **Language/en**
    ::: thumbnail
    ![PingPong simple reply](/images/guide/pingpong/pingpong_simple_reply.png)
    :::
+
+::: tip
+To render a slot value in a language dependent fashion, use `${location?.expression()}` instead of `${location}`, the OpenCUI runtime will render the language independent label for the second expression. 
+:::
 
 ## Test a chatbot
 Before you begin testing your newly defined chatbot using the **Debug** tool, click **Commit** in the upper-right corner to commit your changes in the language layer. Note that Debug can only be used to test committed content for current language, per [OpenCUI workflow](opencui-flow.md#commit-the-changes).
