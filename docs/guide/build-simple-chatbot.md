@@ -54,11 +54,10 @@ This tutorial will guide you step-by-step through the process of building the sa
 ## Create a project
 You can create a chatbot under any organization, following these steps:
 1. Within an organization, in the upper right corner of the project area, click **Create** and select **Create chatbot**.
-2. In the pop-up window, complete the form for chatbot basic settings. For this simple chatbot, you only need to fill in the following three fields:
+2. In the pop-up window, complete the form for chatbot basic settings and click **Create**.. For this simple chatbot, you only need to fill in the following three fields:
    - **Project label**: the unique identifier for the chatbot. Type a short, memorable label for your chatbot. We suggest using a lowercase label. For example, "*pingpong*".
    - **Region**: where you want to deploy this chatbot. Ideally, it should be close to your users. 
    - **Languages**: the languages your chatbot supports, you can add multiple languages. Multilingual chatbots assume you deliver the same service to each user in their native languages.
-3. Click **Create**.
 
 ::: warning Caution: Project label and region are immutable.
 Choose your project label and region carefully, because you cannot change them after creation. You can, however, clone and rename a project. When you do this, the connections and user session data for the project will not be cloned, for privacy reasons.
@@ -76,11 +75,18 @@ Under type-based chatbot development, building a chatbot can be achieved by defi
 ### Build entity: Location
 The most basic type in OpenCUI is 'entity'. It is a primitive type that the chatbot knows how to extract the value of from the user's utterance. OpenCUI provides many predefined entities, such as `java.time.LocalDate` for dates, `io.opencui.core.Email` for email addresses, and so on. In this case, let's build a custom entity type `Location` in schema layer and language layer as follows.
 
-#### Schema Layer: create entity type and add instances
+#### Create entity type: Location
 Inside the **pingpong** chatbot and **Types** page, under the **Structure** view:
 1. Click **Create** button on the right side, and select **Create entity** to create a new entity.
-2. Enter a label for the entity type and press enter. For example, `location`.
-3. Within the `Location` entity, click **Add** button to add entity instances, you are required to provide a language independent label for each instance, such as `seattle` in the label field and **Save**. You can add as many instances as you need. No spaces are allowed in the instance label, or in any label at all.
+2. Enter a label for the entity type and press enter. For example, `Location`.
+
+##### Schema layer: Add instances
+You are required to provide a language independent label for each instance. 
+
+Inside the `Location` entity and **Instances** tab, under the **Structure** view:
+For each instance you want to add:
+1. Click **Add** button to add an instances;
+2. Fill the **Label** field in the pop-up window, for example `seattle` or `paloAlto`, and click **Save**. 
 
 ::: thumbnail
 ![create entity](/images/guide/pingpong/create_entity.png)
@@ -98,17 +104,19 @@ To enable the chatbot to extract user mentions and create instances for an entit
 Inside the **Location** entity and **Instances** tab, under the **Language/en** view:
 
 For each instance, you need to enumerate the common expressions that might refer to the instance:
-- Click on the instance to add expressions into **Expressions** in the pop-up window and **Save**
+1. Click on the instance you want to add expressions to;
+2. Add expressions into **Expressions** field in the pop-up window, for example, `Palo Alto` for `paloAlto`, and **Save**
 
 ::: thumbnail
 ![PingPong add entity instance expression](/images/guide/pingpong/pingpong_entity_instance.png)
 :::
 
-##### Names for entity type
-Inside the **Location** entity and **expression** tab, under the **Language/en** view:
+##### Names for type
+You need to provide the expression of the entity type itself in the form of names. Names are language-dependent representations of the entity type, and they will be used for both detecting mentions of this type from the user's utterance and displaying the use of this type to the user. Note this need to be done for every type.
 
-For type itself, you should also provide the expression in form of name for the given language.
-- In the **Names** section, enter `Location` for the Location entity display name and press enter. This field also provides examples of how this type is mentioned in different languages.
+Inside the **Location** entity and **expression** tab, under the **Language/en** view:
+1. In the **Names** field, enter `location` for the Location entity and press enter.
+
 ::: thumbnail
 ![PingPong add entity expression](/images/guide/pingpong/pingpong_entity_expression.png)
 :::
@@ -173,16 +181,22 @@ Inside the `PingPong/location` slot, under the **Language/en** view.
    :::
 
 ##### Add type level annotation
-For this simple skill, only one type level annotation: utterance exemplars, is required. Utterance only needs to be configured at language layer.
+For this simple skill, only two type level annotations: names, utterance exemplars, is required. Both only need to be configured at language layer. If a user's utterance is semantically similar to any of the exemplars entered here, it will be considered as an intention to trigger this skill. OpenCUI dialog understanding (DU) module are large language model based, so you do not need to enumerate all possible different utterances that can imply this skill. You just need to add some representative one, or the ones that was understood wrong so that DU can hot fix it.
 
 ###### Language layer
 Inside the `PingPong` skill and the **Expression** tab, under the **Language/en** view:
-- In the **Names** section, enter `Ping Pong` for the PingPong skill display name and press enter. This field also provides examples of how this type is mentioned in different languages.
-- In the **Expressions** section, enter `ping` and press enter. If a user's utterance matches any of the exemplars entered here, it will be considered as an intention to trigger this skill.
-  
+1. Add expression for `PingPong` skill:
+   - Click the **Expressions** field
+   - Enter `ping` and press enter.
+2. Add names for `PingPong` skill:
+   - Click the **Names** field, 
+   - Enter `Ping Pong` for the PingPong skill display name and press enter.
 ::: thumbnail
 ![PingPong expression](/images/guide/pingpong/pingpong_expression.png)
 :::
+
+###### Language layer: add expression
+Inside the `PingPong` skill and the **Expression** tab, under the **Language/en** view:
 
 ##### Configure response
 After being triggered, the PingPong skill responds a *"pong"* based on the location provided by the user, this behavior is controlled by a response. Responses are executed after the chatbot has all the slots filled per interaction logic defined by attached dialog annotations. In reality, chatbot should call out the service APIs and render the return back to user in natural text. It is often necessary to reference slots and function values in the response. In OpenCUI, this can be easily achieved using `${}` with arbitrary Kotlin code expression inside.

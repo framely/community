@@ -15,8 +15,11 @@ This guide will walk you through the process of creating the simple chatbot that
 #### [Reuse a full-stack component](reuse-component.md)
 Importing a module is another way to reuse existing work on OpenCUI. Modules are reusable conversational components based on their service interface. A full stack component is a module paired with a compatible provider. This guide will show you how to add functionality to your chatbot by reusing a full-stack component.
 
-#### [Build a full-stack component](build-component.md)
-This guide will show you how to develop the module and provider that were introduced in the previous guide.
+#### [Build a simple module](build-module.md)
+This guide will show you how to develop the module that were introduced in the [reuse component](#reuse-a-full-stack-component) guide.
+
+#### [Build a simple provider](build-provider.md)
+This guide will show you how to develop the provider that were introduced in the [reuse component](#reuse-a-full-stack-component) guide.
 
 #### [Deploy a chatbot](deploy-to-channel.md)
 Using Messenger as an example, this guide will show you how to configure chatbot and channel so that they point to each other. Once you have completed these steps, your chatbot will be available in Messenger.
