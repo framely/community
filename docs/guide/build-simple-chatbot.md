@@ -50,10 +50,10 @@ This tutorial will guide you step-by-step through the process of building the sa
 - We assume that you have finished [clone a simple chatbot](clone-simple-chatbot.md), so you get a better understanding of what to build.
 
 ## Create a project
-You can create a chatbot under any organization,   following these steps:
+You can create a chatbot under any organization, following these steps:
 1. Within an organization, in the upper right corner of the project area, click **Create** and select **Create chatbot**.
 2. In the pop-up window, complete the form for chatbot basic settings. For this simple chatbot, you only need to fill in the following three fields:
-   - **Project label**: the unique identifier for the chatbot. Type a short, memorable label for your chatbot. We suggest using a lowercase label. For example, "*PingPong*".
+   - **Project label**: the unique identifier for the chatbot. Type a short, memorable label for your chatbot. We suggest using a lowercase label. For example, "*pingpong*".
    - **Region**: where you want to deploy this chatbot. Ideally, it should be close to your users. 
    - **Languages**: the languages your chatbot supports, you can add multiple languages. Multilingual chatbots assume you deliver the same service to each user in their native languages.
 3. Click **Create**.
@@ -69,7 +69,7 @@ If the chatbot is created successfully, it should be displayed as below:
 :::
 
 ## Build types
-Under type-based chatbot development, building a chatbot is simply a matter of constructing all the types required by it. The conversational experience you will create in this guide requires a skill called 'Pingpong' and a primitive type called 'Location'. As always, you should build types with the least dependencies first.
+Under type-based chatbot development, building a chatbot is simply a matter of constructing all the types required by it. The conversational experience you will create in this guide requires a skill called 'PingPong' and a primitive type called 'Location'. As always, you should build types with the least dependencies first.
 
 ### Build entity: Location
 Entity type are built in schema layer and language layer as follows.
@@ -107,8 +107,8 @@ For type itself, we should also provide the expression or name for the given lan
 ![PingPong add entity expression](/images/guide/pingpong/pingpong_entity_expression.png)
 :::
 
-### Build skill: Pingpong
-Conceptually, a skill is a conversationally exposed functions, with input parameters represented by its slots. In this tutorial, let's build a simple skill "Pingpong" with a single slot of Location type. A location is a required slot for this skill, so when it is missing from the user's initial utterance, the chatbot will prompt the user for it. Once the instance of this function type is created, the chatbot simply produces an acknowledgement in the form of `pong to ${location}`.
+### Build skill: PingPong
+Conceptually, a skill is a conversationally exposed functions, with input parameters represented by its slots. In this tutorial, let's build a simple skill "PingPong" with a single slot of Location type. A location is a required slot for this skill, so when it is missing from the user's initial utterance, the chatbot will prompt the user for it. Once the instance of this function type is created, the chatbot simply produces an acknowledgement in the form of `pong to ${location}`.
 
 #### Schema layer: declare a skill
 At this layer, we create the skill, add all its slots that represents input parameters for the corresponding function, as well as local functions and services. 
@@ -139,8 +139,8 @@ To add a slot to a type:
 ![add slot](/images/guide/pingpong/add_slot.png)
 :::
 
-####  Annotate type: Pingpong
-Let's annotate `Pingpong` skill per procedure defined in [here](#add-dialog-annotations-for-type). 
+####  Annotate type: PingPong
+Let's annotate `PingPong` skill per procedure defined in [here](#add-dialog-annotations-for-type). 
 ::: tip
 Both schema layer and interaction layer are defined under **Structure** view, but language layer is under corresponding language view, for example, for English, it should be under "Language/en".
 :::
