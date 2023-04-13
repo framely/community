@@ -18,38 +18,49 @@ In the previous guide, we showed you how to enable your chatbot to field various
 ## Declare a service
 Declaring a service means that you define the function type for each API in the service. However, in order to define these function types, you must first define the data type for their input parameters and return values, which may need to be defined recursively in case one of these data types is composite.
 
-### Build frame: _BusinessHours_
+### Build frame: BusinessHours
 For a function returning the business hours on a specific day, the following information is needed:
 - **dayOfWeek**: the day of the week, like Monday, Tuesday, etc.
 - **ifOpen**: whether it's open on that day.
 - **openingTime**: the time it opens.
 - **closingTime**: the time it closes.
 
-Before you can declare the function, let's create a [frame](../reference/concepts.md#frames) type for its return type. Since you don't need to create instances of this type through conversations, you just need to declare this under the **Structure** view.
+Before you can declare the function, let's declare a [frame](../reference/concepts.md#frames) type for its return type. Since you don't need to create instances of this type through conversations, you just need to declare this under the **Structure** view.
 
-To build a frame:
-1. Within the `hours` module, go to the **Types** page, click **Create** on the right side, and select **Create frame**. Enter _BusinessHours_ as the frame label.
-2. Inside the `BusinessHours` frame, in the **Slots** section, add `dayOfWeek` slot with type **java.time.DayOfWeek**.
-3. Within the `dayOfWeek` entity, go to **Annotation** tab, change the **Fill Strategy** to **Direct Fill**.
-   ::: thumbnail
-   ![change fill strategy](/images/guide/build-service/change-fill-strategy.png)
-   :::
+#### Schema layer: declare a frame
 
-4. Back to the `BusinessHours` frame, add another slot with type **kotlin.Boolean** and change its slot label to _ifOpen_.
+##### Create a frame
+Within the `hours` module, go to the **Types** page.
+1. Click **Create** button on the right side, and select **Create frame** to create a new frame.
+2. Enter a label for the frame type and press enter. For example, `BusinessHours`.
+
+##### Add slots
+1. Inside the `BusinessHours` frame, in the **Slots** section, add `dayOfWeek` slot with type **java.time.DayOfWeek**.
+2. Back to the `BusinessHours` frame, add another slot with type **kotlin.Boolean** and change its slot label to _ifOpen_.
    ::: thumbnail
    ![change slot label](/images/guide/build-service/change-slot-label.png)
    :::
 
-5. Within the `ifOpen` entity, go to **Annotation** tab, change the **Fill Strategy** to **Direct Fill**.
+3. Follow the same steps to add the other two slots:
+    - `openingTime` with type **java.time.LocalTime**
+    - `closingTime` with type **java.time.LocalTime**
 
-6. Follow the same steps to add the other two slots (For each slot, change **Fill Strategy** to **Direct Fill**):
-   - `openingTime` with type **java.time.LocalTime**
-   - `closingTime` with type **java.time.LocalTime**
-   
 Once finished, the frame should look like this:
 ::: thumbnail
 ![show frame BusinessHours](/images/guide/build-service/show-frame.png)
 :::
+
+#### Annotate type: BusinessHours
+Let's annotate `BusinessHours` frame per procedure. 
+
+##### Interaction layer
+1. Inside the `BusinessHours` frame, select the `dayOfWeek` entity.
+2. Within the `dayOfWeek` entity, go to the **Annotation** tab, change the **Fill Strategy** to **Direct Fill**.
+   ::: thumbnail
+   ![change fill strategy](/images/guide/build-service/change-fill-strategy.png)
+   :::
+
+3. Follow the same steps to change the **Fill Strategy** to **Direct Fill** for the remaining three slots.
 
 ### Add function interfaces
 
@@ -81,37 +92,77 @@ To offer a functionality through a conversational user interface (CUI), you need
 
 As always, to build a type, we should first define its dependent types. In this case, the skill you will build does not require new types, so you can start to define a skill that utilizes service APIs right away.
 
-### Build skill: _ShowHour_
+### Build skill: ShowHour
 
 Although there are two API functions that need to be exposed, only one skill is necessary. To determine which API functions should be grouped together, consider their simplest description without mentioning parameters or return values. If two API functions have the same description, they should be triggered by the same skill.
 
-#### Declare type at schema layer
+#### Schema layer: declare a skill
 To create a skill for managing users' questions on business hours, we need to create the type, add the necessary slots and services.
-1. Within the `hours` module, go to the **Types** page, create a `ShowHours` skill.
-2. To get a specific day from a user, use [DatePicker](../reference/plugins/components/datepicker) that is designed to make it easier for users to enter a date. DatePicker is an official CUI component, so you need to import [components](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8aea6517f06c1880e3cff) to the `hours` module first.
-3. After successful import, go back to `hours` module and refresh your webpage.
-4. In the `ShowHours` skill, add a slot with type **io.opencui.components.dataEntry.DatePicker**. 
-5. Back to the `ShowHours` skill, in the **Services** section, click **Select service** and select **IHours**. Leave the **Service label** as default and click **Save**.
-::: thumbnail
-![add service](/images/guide/build-service/add-service.png)
-:::
 
-#### Deal with interaction layer
+##### Create a skill
+1. Within the `hours` module, go to the **Types** page and make sure you are under the **Structure** view.
+2. Create a skill and enter its label as `ShowHours`.
+
+##### Add slots
+To get a specific day from a user, use [DatePicker](../reference/plugins/components/datepicker), which is designed to make it easier for users to enter a date. DatePicker is an official CUI component declared in the `components` module.
+
+1. If there is no `components` module under the **Dependencies** tab, import [components module](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8aea6517f06c1880e3cff) to the `hours` module first.
+2. After successful import, go back to `hours` module and refresh your webpage.
+3. Within the `ShowHours` skill, in the **Slots** section, add a slot with a **frame** type labeled **io.opencui.components.dataEntry.DatePicker**. 
+4. Back to the `ShowHours` skill, in the **Services** section, click **Select service** and select **IHours**. Leave the **Service label** as default and click **Save**.
+   ::: thumbnail
+   ![add service](/images/guide/build-service/add-service.png)
+   :::
+
+#### Annotate type: ShowHour
 After declaring what you need in the schema layer, you need to add dialog annotations. This can be done by analyzing the desired conversational behavior and adding slot-level annotations for each slot, as well as a type-level annotation. For skills, you also need to configure the response.
 
-##### Annotate slot: _datePicker_
+::: tip
+Both schema layer and interaction layer are defined under the **Structure** view, but language layer is under corresponding language view, for example, for English, it should be under the **Language / en** view.
+:::
+
+##### Add slot level annotation
+
+###### Interaction layer
 When a user triggers a skill, the chatbot follows the interaction logic based on the annotations attached to the skill. For this particular skill, the desired conversational experience is as follows:
 - If the user doesn't mention a specific date, the chatbot should display the business hours for the week.
 - If the user provides a date, and the business is open on that day, the chatbot should show the business hours. If the business is closed, the chatbot should inform the user that it's closed.
 
 Since the desired behavior is when the user does not mention the date, the chatbot should respond directly, this slot filling behavior should be supported by [Recover only](../reference/annotations/fillstrategy.md#recover-only).
-1. Go to the `ShowHours` skill, select the `datePicker` slot.
-2. Within the `datePicker` slot, under the **Annotation** tab, change **Fill Strategy** to Recover only.
+1. Within the `hours` module, go to the **Types** page and make sure you are under the **Structure** view.
+2. Go to the `ShowHours` skill, select the `datePicker` slot.
+3. Within the `datePicker` slot, under the **Annotation** tab, change **Fill Strategy** to Recover only.
 
-##### Add responses
+::: tip Remember to propagate
+Before beginning work on the language layer, be sure to [propagate](./opencui-flow.md#propagate-the-changes-to-language-layer) the changes made under the Structure view to the **Language / en** view.
+:::
+
+###### Language layer
+1. Within the `datePicker` slot of the `ShowHours` skill, ensure that you are at the **Language / en** view.
+2. Under the **Expression** tab, enter the names in **Names** section, such as `date`.
+
+##### Add type level annotation
+For the `ShowHours` skill, we only require one type level annotation. To add utterance exemplars to help dialog understanding module to convert utterance into event, some structured representation of meaning.
+
+###### Language layer
+1. Navigate to the `ShowHours` skill and ensure that you are at the **Language / en** view.
+2. under the **Expressions** tab, enter the following content:
+   - **Names**: show hours
+   - **Expressions**:
+       - _When do you open?_
+       - _Do you open  $datePicker$?_
+
+::: warning Attention
+Do **NOT** copy and paste the value wrapped by `$`. Please type the value instead.
+:::
+
+##### Configure response
 The responses for this skill depend on a number of the things: whether datePicker is filled and what the returned value is. On OpenCUI, the response can be configured to have no branching, or we can turn on the branching, and add branching. Each branching is controlled by a condition, and then a response. There are a couple of different response types supported, including multiple value messages to show list data.
 
-1. To turn on the branching for responses, go to the `ShowHours` skill, under the **Response** tab, and turn on **Branching**.
+###### Interaction layer
+Within the `ShowHours` skill, make sure you are under the **Structure** view.
+
+1. To turn on the branching for responses, under the **Response** tab, turn on **Branching**.
    ::: thumbnail
    ![add a branch](/images/guide/build-service/branching.png)
    :::
@@ -139,39 +190,25 @@ The responses for this skill depend on a number of the things: whether datePicke
    ``` kotlin
    hours.getHoursWeek()
    ```
-   
-### Add templates and exemplars
-Before you start, make sure you **Propagate** all the changes you made under the structure view to the language view and switch from the **Structure** view to the **Language / en** view.
 
-1. Go to the `ShowHours` skill, under the **Schema** tab, select `datePicker`slot. 
+###### Language layer
+Within the `ShowHours` skill, make sure you are under the **Language / en** view.
 
-2. Within the `datePicker`slot, in the **Names** field, enter _date_.
-
-3. Go back to the `ShowHours` skill and navigate to the **Response** tab. In the **Default action** field, under the **Multiple value message** section, enter the following content:
+1. Navigate to the **Response** tab. In the **Default action** field, under the **Multiple value message** section, enter the following content:
      - **Header**: _Our business hours in a week are_
      - **Body**:
         - _${`it.value.dayOfWeek!!.expression()`}_
         - _${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}_
        
-4. Under the **Response** tab, in the **Branching** field, click the first branch. 
+2. Under the **Response** tab, in the **Branching** field, click the first branch. 
    - In the **Single value message** section, enter this: _We are open on ${`datePicker!!.date!!.expression()`} from ${`hours.getHoursDay(datePicker!!.date!!).openingTime!!.expression()`} to ${`hours.getHoursDay(datePicker!!.date!!).closingTime!!.expression()`}._
 
-5. Back to the **Response** tab, in the **Branching** field, click the second branch. 
+3. Back to the **Response** tab, in the **Branching** field, click the second branch. 
    - In the **Single value message** section, enter this: _Sorry, but we don't open on ${`datePicker!!.date!!.expression()`}._
    - In the **Multiple value message** section, enter the following content:
      - **Header**: _Our business hours in a week are_
      - **Body**:
        _${`it.value.dayOfWeek!!.expression()`}_
        _${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}_
-
-6. Within the `ShowHours` skill, under the **Expressions** tab, enter the following content:
-   - **Names**: show hours
-   - **Expressions**: 
-      - _When do you open?_
-      - _Do you open  $datePicker$?_
-     
-::: warning Attention
-Do **NOT** copy and paste the value wrapped by `$`. Please type the value instead.
-:::
 
 Now that you have finished building a module, you can [create a pull request](./opencui-flow.md#create-a-pull-request), [view it and merge it into the master](./opencui-flow.md#review-and-merge-pull-request). In the next guide, we will show you how to build a provider that implements the service in the module
