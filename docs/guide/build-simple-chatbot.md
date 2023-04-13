@@ -6,7 +6,6 @@ A chatbot is an application with a conversational user interface (CUI). It is de
 
 In order to invoke API functions in a conversational manner, the chatbot needs to create an instance of a function type through conversations, which implies that chatbot also needs to create instances for the input parameters of the function or attributes of composite types in a more general sense. 
 
-
 A type is conversationally exposed if chatbot knows how to create an instance of it conversationally, potentially in multiple turns. This suggests a different way of building chatbots: start by identifying the API function types that you want to expose to users. Then, make all of their dependent types, both direct and indirect, conversationally exposed. 
 
 A type-based chatbot with multiple language support can then function in the following way: 
@@ -187,7 +186,7 @@ Navigate to the `PingPong` skill and head to the **Expression** tab under the **
 :::
 
 ##### Configure response
-After being triggered, the PingPong skill responds a *"pong"* based on the location provided by the user, this behavior is controlled by a response. Responses are executed after the chatbot has all the slots filled per interaction logic defined by attached dialog annotations. In reality, chatbot should call out the service APIs and render the return back to user in natural text. It is often necessary to reference slots and function values in the response, this can be easily done using `${}` on OpenCUI.
+After being triggered, the PingPong skill responds a *"pong"* based on the location provided by the user, this behavior is controlled by a response. Responses are executed after the chatbot has all the slots filled per interaction logic defined by attached dialog annotations. In reality, chatbot should call out the service APIs and render the return back to user in natural text. It is often necessary to reference slots and function values in the response. In OpenCUI, this can be easily achieved using `${}` with arbitrary Kotlin code expression inside.
 
 ###### Interaction layer
 Inside the `PingPong` skill, ensure that you are under the **Structure** view.
