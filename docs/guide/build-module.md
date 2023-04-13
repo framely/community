@@ -1,4 +1,4 @@
-# Build an hours module
+# Build a simple module
 
 On OpenCUI, to expose a service through a conversational user interface, you need to create a module, declare the service in it and define the conversational user interface on top of the service. 
 

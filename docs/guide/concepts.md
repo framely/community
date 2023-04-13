@@ -56,7 +56,7 @@ Entity is your primitive type in OpenCUI, and it is basic building block for com
 For each entity type, there are many entity entries. Each entity entry provides a set of expressions that are considered to be trigger for that entry, or when one of expression is mentioned, we consider user prefer the corresponding entry. 
 
 #### Annotations
-After these types are defined at schema level, builder can add annotation on top of it to control the every aspect of this component. An example will be what if a user did not specify a value for a required slot, how do we prompt them in a given language. As a declarative platform for building a full stack chatbot, different categories of annotations are supported: dialog annotation. 
+After these types are defined at schema level, builder can add annotation on top of it to control the every aspect of this component. An example will be what if a user did not specify a value for a required slot, how do we prompt them in a given language.
 
 ##### Dialog annotations
 In cases where users do not provide all the information needed in a single utterance, you need to design a conversation to help chatbot get the user's preference for a given option. This can be done in OpenCUI by adding various dialog annotations. 

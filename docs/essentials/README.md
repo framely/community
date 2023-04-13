@@ -12,6 +12,10 @@ In order to invoke API functions in a conversational manner, the chatbot needs t
 
 To do this, we first convert the user's utterance into an event. Given the event and the current dialog state, we then generate a dialog act by following interaction logic that greedily tries to complete the instantiation of the function type. Both events and dialog acts are language-independent representations of meaning, so the interaction logic can be reused for different languages. Once a function object is instantiated, the chatbot can invoke it and wrap the return in a dialog act. Finally, dialog acts are rendered back to the user in natural language.
 
+::: thumbnail
+![create save](/images/guide/pingpong/urr.png)
+:::
+
 ### Three layers
 Clearly, this type-based conversation can be built in three layers: we declare types at the schema layer, attach dialog annotations onto these types at the interaction logic layer, and finally complete dialog annotations at the language layer by adding templates and exemplars. This separation of concerns allows developers to focus on specific tasks without worrying about the implementation details of other modules or layers, which can lead to more efficient development, easier debugging, greater code reuse, and reduced costs.
 
