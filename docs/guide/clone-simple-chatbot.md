@@ -4,7 +4,7 @@ OpenCUI is a platform that makes it easy to build conversational user interfaces
 
 On OpenCUI platform, organization is like a container for your team's shared work, and these work are organized into projects. A project is a collection of functionalities and resources that are used to build a CUI. Projects can include chatbots, reusable modules, and providers. Chatbots are essentially applications where users can access services through a text-based or voice-based conversational user interface. Modules and providers help to simplify chatbot development. 
 
-There are two ways to reuse existing work on the OpenCUI platform: **Import** and **Clone**.
+There are two ways to reuse existing work on the OpenCUI platform: **Clone** and **Import**. 
 - Clone, creates an exact copy of the project in your organization. This allows you to freely experiment with changes without affecting the original project.
 - Import, allows you reuse the pre-built components in your own project.
 
