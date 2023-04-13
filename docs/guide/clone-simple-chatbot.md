@@ -2,7 +2,7 @@
 
 OpenCUI is a platform that makes it easy to build conversational user interfaces (CUIs) for your services. It uses a type-based approach, so you can use pre-built components instead of building everything from scratch. This can save you time and effort, and it can help you create more consistent and reliable CUIs. 
 
-The OpenCUI platform is organized into projects. A project is a collection of functionalities and resources that are used to build a CUI. Projects can include chatbots, reusable modules, and providers. Chatbots are essentially applications where users can access services through a text-based or voice-based conversational user interface. Modules and providers help to simplify chatbot development. 
+On OpenCUI platform, organization is like a container for your team's shared work, and these work are organized into projects. A project is a collection of functionalities and resources that are used to build a CUI. Projects can include chatbots, reusable modules, and providers. Chatbots are essentially applications where users can access services through a text-based or voice-based conversational user interface. Modules and providers help to simplify chatbot development. 
 
 There are two ways to reuse existing work on the OpenCUI platform: **Import** and **Clone**.
 - Clone, creates an exact copy of the project in your organization. This allows you to freely experiment with changes without affecting the original project.
@@ -12,7 +12,7 @@ Cloning projects is a great way to get started with OpenCUI. You can easily get 
 
 ## Before you start
 
-[Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+[Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login). A personal organization will be created for you when you sign up.
 
 ## Clone chatbot pingpong
 
