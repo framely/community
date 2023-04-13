@@ -48,8 +48,7 @@ This tutorial will guide you step-by-step through the process of building the sa
 
 ## Before you start
 - [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-- It is helpful to get familiar with [the type-based way of building chatbot](../essentials/README.md).
-- We assume that you have finished [clone a simple chatbot](clone-simple-chatbot.md), so you get a better understanding of what to build.
+- We assume that you have finished [clone a simple chatbot](clone-simple-chatbot.md), so you get some idea of what to build.
 
 ## Create a project
 You can create a chatbot under any organization, following these steps:
@@ -217,7 +216,7 @@ Inside the `PingPong` skill and the **Responses** tab, under the **Language/en**
    :::
 
 ::: tip
-To render a slot value in a language dependent fashion, use `${location?.expression()}` instead of `${location}`, the OpenCUI runtime will render the language independent label for the second expression. 
+To render a slot value in a language dependent fashion, use `${location?.expression()}` instead of `${location}` which will be rendered to a language independent label. 
 :::
 
 ## Test a chatbot
