@@ -121,7 +121,7 @@ After declaring what you need in the schema layer, you need to add dialog annota
 Both schema layer and interaction layer are defined under the **Structure** view, but language layer is under corresponding language view, for example, for English, it should be under the **Language / en** view.
 :::
 
-##### Add slot level annotation
+##### Add slot level annotation: datePicker
 
 ###### Interaction layer
 When a user triggers a skill, the chatbot follows the interaction logic based on the annotations attached to the skill. For this particular skill, the desired conversational experience is as follows:
