@@ -181,7 +181,7 @@ Inside the `PingPong/location` slot, under the **Language/en** view.
    :::
 
 ##### Add type level annotation
-For this simple skill, only two type level annotations: names, utterance exemplars, is required. Both only need to be configured at language layer. If a user's utterance is semantically similar to any of the exemplars entered here, it will be considered as an intention to trigger this skill. OpenCUI dialog understanding (DU) module are large language model based, so you do not need to enumerate all possible different utterances that can imply this skill. You just need to add some representative one, or the ones that was understood wrong so that DU can hot fix it.
+For this simple skill, only two type level annotations: names, utterance exemplars, are required. Both only need to be configured at language layer. If a user's utterance is semantically similar to any of the exemplars entered here, it will be considered as an intention to trigger this skill. OpenCUI dialog understanding (DU) module are large language model based, so you do not need to enumerate all possible different utterances that can imply this skill. You just need to add some representative one, or the ones that was understood wrong so that DU can hot fix it.
 
 ###### Language layer
 Inside the `PingPong` skill and the **Expression** tab, under the **Language/en** view:
