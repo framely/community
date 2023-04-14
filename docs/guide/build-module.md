@@ -125,21 +125,21 @@ Before proceeding, ensure that a `components` module exists under the **Dependen
 #### Annotate type: ShowHours
 After declaring what you need in the schema layer, you need to add dialog annotations. This can be done by analyzing the desired conversational behavior and adding slot-level annotations for each slot, as well as type-level annotations. For skills, you also need to configure the response.
 
-::: tip
-Both schema layer and interaction layer are defined under the **Structure** view, but language layer is under corresponding language view, for example, for English, it should be under the **Language / en** view.
-:::
-
 ##### Add slot level annotation to: datePicker
-
-###### Interaction layer
 When a user triggers a skill, the chatbot follows the interaction logic based on the annotations attached to the skill. For this particular skill, the desired conversational experience is as follows:
 - If the user doesn't mention a specific date, the chatbot should display the business hours for the week.
 - If the user provides a date, and the business is open on that day, the chatbot should show the business hours. If the business is closed, the chatbot should inform the user that it's closed.
 
 Since the desired behavior is when the user does not mention the date, the chatbot should respond directly, this slot filling behavior should be supported by [Recover only](../reference/annotations/fillstrategy.md#recover-only).
-1. Within the `ShowHours` skill, make sure you are under the **Structure** view.
-2. In the **Slots** section, select the `datePicker` slot.
-3. Within the `datePicker` slot, under the **Annotation** tab, set the **Fill Strategy** to **Recover only**.
+
+::: tip
+Both schema layer and interaction layer are defined under the **Structure** view, but language layer is under corresponding language view, for example, for English, it should be under the **Language / en** view.
+:::
+
+###### Interaction layer
+Inside the `ShowHours/datePicker` slot and **Annotation** tab, under the **Structure** view.
+
+- Select **Recover only** in the **Fill strategy** section.
 
 ::: tip Remember to propagate
 Before beginning work on the language layer, be sure to [propagate](./opencui-flow.md#propagate-the-changes-to-language-layer) the changes made under the Structure view to the **Language / en** view.
