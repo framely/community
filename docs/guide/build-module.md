@@ -56,11 +56,10 @@ Once finished, the frame should look like this:
 #### Annotate type: BusinessHours
 Let's annotate `BusinessHours` frame per procedure. 
 
-##### Add slot level annotation to: dayOfWeek
-
-###### Interaction layer
+##### Add slot level annotation
 Given that this type is primarily used as a return type for functions, all slots within this frame must be filled directly. OpenCUI provides the **Direct Fill** strategy to facilitate this process.
 
+###### Interaction layer
 1. Inside the `BusinessHours` frame, select the `dayOfWeek` entity.
 2. In the `dayOfWeek` entity, under the **Annotation** tab, select **Direct fill** in the **Fill strategy** section.
    ::: thumbnail
@@ -125,7 +124,7 @@ Before proceeding, ensure that a `components` module exists under the **Dependen
 #### Annotate type: ShowHours
 After declaring what you need in the schema layer, you need to add dialog annotations. This can be done by analyzing the desired conversational behavior and adding slot-level annotations for each slot, as well as type-level annotations. For skills, you also need to configure the response.
 
-##### Add slot level annotation to: datePicker
+##### Add slot level annotation to datePicker
 When a user triggers a skill, the chatbot follows the interaction logic based on the annotations attached to the skill. For this particular skill, the desired conversational experience is as follows:
 - If the user doesn't mention a specific date, the chatbot should display the business hours for the week.
 - If the user provides a date, and the business is open on that day, the chatbot should show the business hours. If the business is closed, the chatbot should inform the user that it's closed.
