@@ -50,7 +50,7 @@ It is common for composite types to have slots, and then you have to decide whet
 You can create a chatbot under any organization, following these steps:
 1. Within an organization, in the upper right corner of the project area, click **Create** and select **Create chatbot**.
 2. In the pop-up window, complete the form for chatbot basic settings and click **Create**. For this simple chatbot, you only need to fill in the following three fields:
-   - **Project label**: the unique identifier for the chatbot. Type a short, memorable label for your chatbot. We suggest using a lowercase label. For example, "*pingpong*".
+   - **Project label**: the unique identifier for the chatbot. Type a short, memorable label for your chatbot. We suggest using a lowercase label. For example, `pingpong`.
    - **Region**: where you want to deploy this chatbot. Ideally, it should be close to your users. 
    - **Languages**: the languages your chatbot supports, you can add multiple languages. Multilingual chatbots assume you deliver the same service to each user in their native languages.
 
@@ -68,10 +68,10 @@ If the chatbot is created successfully, it should be displayed in the organizati
 Under type-based chatbot development, building a chatbot can be achieved by defining every type required by it in a "least dependencies first" approach. The conversational experience you will create in this guide requires a dependent entity type called 'Location' and a skill called 'PingPong'. 
 
 ### Build entity: Location
-The most basic type in OpenCUI is 'entity'. It is a primitive type that the chatbot knows how to extract the value of from the user's utterance. OpenCUI provides many predefined entities, such as `java.time.LocalDate` for dates, `io.opencui.core.Email` for email addresses, and so on. In this case, let's build a custom entity type `Location` in schema layer and language layer as follows.
+The most basic type in OpenCUI is "entity". It is a primitive type that the chatbot knows how to extract the value of from the user's utterance. OpenCUI provides many predefined entities, such as `java.time.LocalDate` for dates, `io.opencui.core.Email` for email addresses, and so on. In this case, let's build a custom entity type `Location` in schema layer and language layer as follows.
 
 #### Create entity type: Location
-Inside the **pingpong** chatbot and **Types** page, under the **Structure** view.
+Inside the `pingpong` chatbot and **Types** page, under the **Structure** view.
 1. Click **Create** button on the right side, and select **Create entity** to create a new entity.
 2. Enter a label for the entity type and press enter. For example, `Location`.
 
@@ -88,13 +88,14 @@ For each instance you want to add:
 ![create entity](/images/guide/pingpong/create_entity.png)
 :::
 
-::: tip Remember to propagate the changes you made under the Structure view
-- Both schema layer and interaction layer are defined under **Structure** view, but language layer is under corresponding language view, for example, for English, it should be under "Language/en".
-- Before beginning work on the language layer, always [propagate](./opencui-flow.md#propagate-the-changes-to-language-layer) the changes made so far to the language layer, and then switch over to the corresponding language view.
+::: tip Always propagate changes made under the Structure view to the Languages before beginning work on the Language layer
+- Both schema layer and interaction layer are defined under **structure view**, but language layer is under **corresponding language view**. For example, for English, it should be under "Language/en".
+- When you make changes to the Structure view, those changes are NOT automatically propagated to the Language layer. You need to manually propagate the changes by clicking **Propagate** in the top-right corner of the Structure view.
+- Once you have propagated the changes, you can switch to the corresponding Language view to work on the language-specific aspects of your project.
 ::: 
 
 #### Language layer: add expressions
-To enable the chatbot to create instances for an entity type based on user mentions, user-defined entities require the builder to enumerate common expressions for each instance that was added for this entity type in the previous step.
+To enable the chatbot to create instances for an entity type based on user mentions, you must enumerate common expressions for each instance of the user-defined entity type that was added in the previous step.
 
 ##### Expressions for instance
 Inside the **Location** entity and **Instances** tab, under the **Language/en** view. 
@@ -110,26 +111,26 @@ For each instance, you need to enumerate the common expressions that might refer
 ##### Names for type
 You need to provide the expression of the entity type itself in the form of names. Names are language-dependent representations of the entity type, and they will be used for both detecting mentions of this type from the user's utterance and displaying the use of this type to the user. Note this need to be done for every type.
 
-Inside the **Location** entity and **Expression** tab, under the **Language/en** view. 
+Inside the `Location` entity and **Expression** tab, under the **Language/en** view. 
 1. In the **Names** section, enter `location` for the Location entity and press enter.
 ::: thumbnail
 ![PingPong add entity expression](/images/guide/pingpong/pingpong_entity_expression.png)
 :::
 
 ### Build skill: PingPong
-Conceptually, a skill is a function exposed in a conversational manner, with input parameters represented by its slots. In this tutorial, you will construct a basic skill called "PingPong" that has a single slot of type 'Location'. Once an instance of this function type is created, the chatbot will respond with an acknowledgment in the form of `pong to ${location}`.
+Conceptually, a skill is a function exposed in a conversational manner, with input parameters represented by its slots. In this tutorial, you will construct a basic skill called "PingPong" that has a single slot of type "Location". Once an instance of this function type is created, the chatbot will respond with an acknowledgment in the form of `pong to ${location}`.
 
 #### Schema layer: declare a skill
 At this layer, you will create the skill and add all its slots that represent input parameters for the corresponding function. Although not necessary for this particular simple skill, this layer is also where you can declare any required local functions and services, and implement these native local functions as well.
 
 ##### Create the skill
-Inside the **pingpong** chatbot and **Types** page, under the **Structure** view.
+Inside the `pingpong` chatbot and **Types** page, under the **Structure** view.
 1. Click **Create** button on the right side, and select **Create skill** to create a new skill.
 2. Enter a label for the skill and press enter. For example, `PingPong`.
    ::: tip Need to know
-   In OpenCUI, a label is not a name but an identifier that is independent of the language used. The Skill Label, being a type of label, should adhere to the following guidelines:
+   In OpenCUI, a label is an identifier that is independent of the language used. The skill label, being a type of label, should follow these guidelines:
    - It should start with a capital letter.
-   - It should be between 2 and 100 characters in length.
+   - It should be between 2 and 100 characters long.
    - It should only contain letters, digits, and underscores.
    :::
    ::: thumbnail
@@ -146,10 +147,10 @@ Inside the `PingPong` skill and **Schema** tab, under the **Structure** view.
 :::
 
 #### Annotate type: PingPong
-Let's annotate `PingPong` skill following [this guide](#annotate-a-composite-type). You will only configure it for English, but configuring it for other languages should be identical.  
+Let's annotate `PingPong` skill following [this guide](#annotate-a-composite-type). You will only configure it for "Language/en", but the configuration for other languages should be identical.  
 
 ##### Add slot level annotations to location
-In case the user did not tell chatbot which location is he from in the initial utterance, the chatbot needs to prompt the user for that information. You need to select **Always ask** for [fill strategy](../reference/annotations/fillstrategy.md) for this slot. For this choice, **Prompt** field become required, you must add at least one template to it. 
+In case the user did not tell chatbot which location is he from in the initial utterance, the chatbot needs to prompt the user for that information. To do this, you need to select **Always ask** for [fill strategy](../reference/annotations/fillstrategy.md) for this slot. This will make the **Prompt** field required, and you will need to add at least one template to it.
 
 ::: tip
 What needs to be configured in the language layer are decided by the decisions you made at the interaction layer. 
@@ -166,13 +167,13 @@ Inside the `PingPong/location` slot and  **Annotation** tab, under the **Structu
 Inside the `PingPong/location` slot, under the **Language/en** view.
 1. Fill templates for Prompt.
    - Under the **Annotation** tab.
-   - Enter the sentences in **Prompts** section. For example, "*Wow. Where is the "ping" coming from?*".
+   - Enter the sentences in **Prompts** section. For example, `Wow. Where is the "ping" coming from?`.
    ::: thumbnail
    ![add prompt](/images/guide/pingpong/add_prompt.png)
    :::
 2. Add names for `location` slot. 
    - Under the **Expression** tab.
-   - Enter the names in **Names** section, such as "Location".
+   - Enter the names in **Names** section, such as `Location`.
    ::: thumbnail
    ![add prompt](/images/guide/pingpong/add_name.png)
    :::
@@ -214,4 +215,4 @@ To render a slot value in a language dependent fashion, use `${location?.express
 :::
 
 ## Test a chatbot
-Before you begin testing your newly defined chatbot using the **Debug** tool, click **Commit** in the upper-right corner to commit your changes in the language layer. Note that Debug can only be used to test committed content for current language, per [OpenCUI workflow](opencui-flow.md#commit-the-changes).
+Before you start testing your newly defined chatbot using the built-in **Debug** tool, click **Commit** in the upper-right corner to commit your changes in the language layer. Keep in mind that Debug can only be used to test committed content for current language, as per [OpenCUI workflow](opencui-flow.md#commit-the-changes).
