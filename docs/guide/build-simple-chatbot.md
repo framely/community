@@ -78,7 +78,9 @@ Inside the **pingpong** chatbot and **Types** page, under the **Structure** view
 #### Schema layer: add instances
 You are required to provide a language-independent label for each instance. One reason for this is to ensure that you can reference them in the interaction logic and make the conversational experience language independent.
 
-Inside the `Location` entity and **Instances** tab, under the **Structure** view. For each instance you want to add:
+Inside the `Location` entity and **Instances** tab, under the **Structure** view. 
+
+For each instance you want to add:
 1. Click **Add** button to add an instances;
 2. Fill the **Label** field in the pop-up window, for example `seattle` or `paloAlto`, and save it. 
 
@@ -95,7 +97,9 @@ Inside the `Location` entity and **Instances** tab, under the **Structure** view
 To enable the chatbot to create instances for an entity type based on user mentions, user-defined entities require the builder to enumerate common expressions for each instance that was added for this entity type in the previous step.
 
 ##### Expressions for instance
-Inside the **Location** entity and **Instances** tab, under the **Language/en** view. For each instance, you need to enumerate the common expressions that might refer to the instance:
+Inside the **Location** entity and **Instances** tab, under the **Language/en** view. 
+
+For each instance, you need to enumerate the common expressions that might refer to the instance:
 1. Click on the instance you want to add expressions to;
 2. Add expressions into **Expressions** field in the pop-up window, for example, `Palo Alto` for `paloAlto`, then save it.
 
@@ -106,8 +110,9 @@ Inside the **Location** entity and **Instances** tab, under the **Language/en** 
 ##### Names for type
 You need to provide the expression of the entity type itself in the form of names. Names are language-dependent representations of the entity type, and they will be used for both detecting mentions of this type from the user's utterance and displaying the use of this type to the user. Note this need to be done for every type.
 
-Inside the **Location** entity and **Expression** tab, under the **Language/en** view. In the **Names** section, enter `location` for the Location entity and press enter.
+Inside the **Location** entity and **Expression** tab, under the **Language/en** view. 
 
+1. In the **Names** section, enter `location` for the Location entity and press enter.
 ::: thumbnail
 ![PingPong add entity expression](/images/guide/pingpong/pingpong_entity_expression.png)
 :::
@@ -152,8 +157,8 @@ What needs to be configured in the language layer are decided by the decisions y
 :::
 
 ###### Interaction layer
-Inside the `PingPong/location` slot and  **Annotation** tab, under the **Structure** view. Select **Always ask** in the **Fill strategy** section.
-  
+Inside the `PingPong/location` slot and  **Annotation** tab, under the **Structure** view. 
+1. Select **Always ask** in the **Fill strategy** section. 
 ::: thumbnail
 ![define fill strategy](/images/guide/pingpong/always_ask.png)
 :::
@@ -178,14 +183,12 @@ For this simple skill, only two type level annotations: names, utterance exempla
 
 Inside the `PingPong` skill and the **Expression** tab, under the **Language/en** view.
 1. Add expression for `PingPong` skill:
-   - Under the **Expressions** tab.
-   - Enter `ping` and press enter.
+   - In the **Expressions** section, enter `ping` and press enter.
 2. Add names for `PingPong` skill:
-   - Under the **Names** tab. 
-   - Enter `Ping Pong` for the PingPong skill display name and press enter.
-   ::: thumbnail
-   ![PingPong expression](/images/guide/pingpong/pingpong_expression.png)
-   :::
+   - In the **Names** section, enter `Ping Pong` for the PingPong skill display name and press enter.
+::: thumbnail
+![PingPong expression](/images/guide/pingpong/pingpong_expression.png)
+:::
 
 ##### Configure response
 After being triggered, the PingPong skill responds a *"pong"* based on the location provided by the user, this behavior is controlled by a response. Responses are executed after the chatbot has all the slots filled per interaction logic defined by attached dialog annotations. In reality, chatbot should call out the service APIs and render the return back to user in natural text. It is often necessary to reference slots and function values in the response. In OpenCUI, this can be easily achieved using `${}` with arbitrary Kotlin code expression inside.
