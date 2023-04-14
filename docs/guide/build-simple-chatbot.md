@@ -111,7 +111,6 @@ For each instance, you need to enumerate the common expressions that might refer
 You need to provide the expression of the entity type itself in the form of names. Names are language-dependent representations of the entity type, and they will be used for both detecting mentions of this type from the user's utterance and displaying the use of this type to the user. Note this need to be done for every type.
 
 Inside the **Location** entity and **Expression** tab, under the **Language/en** view. 
-
 1. In the **Names** section, enter `location` for the Location entity and press enter.
 ::: thumbnail
 ![PingPong add entity expression](/images/guide/pingpong/pingpong_entity_expression.png)
