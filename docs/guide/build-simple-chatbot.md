@@ -78,7 +78,7 @@ Inside the `pingpong` chatbot and **Types** page, under the **Structure** view.
 #### Schema layer: add instances
 You are required to provide a language-independent label for each instance. One reason for this is to ensure that you can reference them in the interaction logic and make the conversational experience language independent.
 
-Inside the **Location** entity and **Instances** tab, under the **Structure** view. 
+Inside the `Location` entity and **Instances** tab, under the **Structure** view. 
 
 For each instance you want to add:
 1. Click **Add** button to add an instances;
