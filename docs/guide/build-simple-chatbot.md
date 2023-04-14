@@ -65,7 +65,7 @@ If the chatbot is created successfully, it should be displayed in the organizati
 :::
 
 ## Build types
-Under type-based chatbot development, building a chatbot can be achieved by defining every type required by it in a "least dependencies first" approach. The conversational experience you will create in this guide requires a skill called 'PingPong' and a dependent entity type called 'Location'. 
+Under type-based chatbot development, building a chatbot can be achieved by defining every type required by it in a "least dependencies first" approach. The conversational experience you will create in this guide requires a dependent entity type called 'Location' and a skill called 'PingPong'. 
 
 ### Build entity: Location
 The most basic type in OpenCUI is 'entity'. It is a primitive type that the chatbot knows how to extract the value of from the user's utterance. OpenCUI provides many predefined entities, such as `java.time.LocalDate` for dates, `io.opencui.core.Email` for email addresses, and so on. In this case, let's build a custom entity type `Location` in schema layer and language layer as follows.
@@ -75,19 +75,18 @@ Inside the **pingpong** chatbot and **Types** page, under the **Structure** view
 1. Click **Create** button on the right side, and select **Create entity** to create a new entity.
 2. Enter a label for the entity type and press enter. For example, `Location`.
 
-##### Schema layer: Add instances
+#### Schema layer: add instances
 You are required to provide a language-independent label for each instance. One reason for this is to ensure that you can reference them in the interaction logic and make the conversational experience language independent.
 
-Inside the `Location` entity and **Instances** tab, under the **Structure** view:
-- For each instance you want to add:
-   1. Click **Add** button to add an instances;
-   2. Fill the **Label** field in the pop-up window, for example `seattle` or `paloAlto`, and save it. 
+Inside the `Location` entity and **Instances** tab, under the **Structure** view. For each instance you want to add:
+1. Click **Add** button to add an instances;
+2. Fill the **Label** field in the pop-up window, for example `seattle` or `paloAlto`, and save it. 
 
 ::: thumbnail
 ![create entity](/images/guide/pingpong/create_entity.png)
 :::
 
-::: tip Remember to propagate the change you made under the **Structure** view
+::: tip Remember to propagate the changes you made under the Structure view
 - Both schema layer and interaction layer are defined under **Structure** view, but language layer is under corresponding language view, for example, for English, it should be under "Language/en".
 - Before beginning work on the language layer, always [propagate](./opencui-flow.md#propagate-the-changes-to-language-layer) the changes made so far to the language layer, and then switch over to the corresponding language view.
 ::: 
@@ -96,9 +95,7 @@ Inside the `Location` entity and **Instances** tab, under the **Structure** view
 To enable the chatbot to create instances for an entity type based on user mentions, user-defined entities require the builder to enumerate common expressions for each instance that was added for this entity type in the previous step.
 
 ##### Expressions for instance
-Inside the **Location** entity and **Instances** tab, under the **Language/en** view:
-
-For each instance, you need to enumerate the common expressions that might refer to the instance:
+Inside the **Location** entity and **Instances** tab, under the **Language/en** view. For each instance, you need to enumerate the common expressions that might refer to the instance:
 1. Click on the instance you want to add expressions to;
 2. Add expressions into **Expressions** field in the pop-up window, for example, `Palo Alto` for `paloAlto`, then save it.
 
