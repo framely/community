@@ -66,7 +66,7 @@ Within the `Hours` frame, add the following slots:
 
 #### Annotate type: Hours
 
-##### Add slot level annotation: dayOfWeek
+##### Add slot level annotation to: dayOfWeek
 Since the `dayOfWeek` column can not be empty, and it can only be selected in only seven days of the week, the following annotations should be added to set the constraints.
 
 1. Within the `dayOfWeek` slot of the `Hours` frame, navigate to the **Annotation** tab.
@@ -111,7 +111,7 @@ When it's done, the `dayOfWeek` slot should look like this:
 ![dayOfWeek annotations](/images/guide/build-service/dayofweek-annotation.png)
 :::
 
-##### Add slot level annotation: ifOpen
+##### Add slot level annotation to: ifOpen
 As the `ifOpen` column can not be empty, in the `ifOpen` slot, turn off **Allow null** as well.
 
 ### Build frame: Configuration
@@ -127,7 +127,7 @@ When displaying business hours for the week, you need to start from the current 
 Within the `Hours` frame, add a `timeZone` slot with type **java.time.ZoneId**.
 
 #### Annotate type: Configuration
-##### Add slot level annotation: timeZone
+##### Add slot level annotation to: timeZone
 Since the timezone can not be empty, you need to turn off **Allow null** for the `timeZone` slot.
 
 ## Implement the service

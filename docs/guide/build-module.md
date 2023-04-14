@@ -56,7 +56,9 @@ Once finished, the frame should look like this:
 #### Annotate type: BusinessHours
 Let's annotate `BusinessHours` frame per procedure. 
 
-##### Interaction layer
+##### Add slot level annotation to: dayOfWeek
+
+###### Interaction layer
 Given that this type is primarily used as a return type for functions, all slots within this frame must be filled directly. OpenCUI provides the **Direct Fill** strategy to facilitate this process.
 
 1. Inside the `BusinessHours` frame, select the `dayOfWeek` entity.
@@ -127,7 +129,7 @@ After declaring what you need in the schema layer, you need to add dialog annota
 Both schema layer and interaction layer are defined under the **Structure** view, but language layer is under corresponding language view, for example, for English, it should be under the **Language / en** view.
 :::
 
-##### Add slot level annotation: datePicker
+##### Add slot level annotation to: datePicker
 
 ###### Interaction layer
 When a user triggers a skill, the chatbot follows the interaction logic based on the annotations attached to the skill. For this particular skill, the desired conversational experience is as follows:
