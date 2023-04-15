@@ -15,7 +15,7 @@ Backend implementations of a service are typically also deployed separately. A p
 
 A full-stack component, consisting of a module of a service and a compatible provider, is all you need to provide this service conversationally. These pre-built, often higher quality full stack components is a very cost-effective way for you to introduce conversational experiences to your chatbot. This reuse can be done in three simple steps:
 1. Decide on a service you want to expose, make sure the module and provider are of high quality; 
-2. Clone a compatible provider into your organization and configure it;
+2. Set up a compatible provider into your organization and configure it, by cloning;
 3. Import the module of that service into the chatbot of your choice; 
 4. finally wire the provider to the service in the chatbot configuration; 
 
@@ -68,36 +68,38 @@ We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
 :::
 ::::
 
-## Prepare a provider
+## Set up a provider
 To allow a module to interact with its service implementation, you need to set up a compatible provider in your organization and configure it so that it can connect to the actual backend. Additionally, you need to populate the backend with your business information.
 
-In this guide, you will clone a PostgREST provider to host your business hour data. The PostgREST provider is OpenCUI-hosted, which means that the corresponding backend implementation of services is also built and managed by OpenCUI. This backend is essentially a PostgreSQL database with RESTful APIs for its stored procedures. Additionally, this backend comes with an admin interface called backoffice, which allows business operators to populate the database with their business data.
+Instead of setting up a provider from scratch, in this guide, you will clone a PostgREST provider. The PostgREST provider is hosted by OpenCUI, which means that the corresponding backend implementation of services is also built and managed by OpenCUI. This backend is essentially a PostgreSQL database with RESTful implementation for the service API using its stored procedures. Additionally, this backend comes with an admin interface called "backoffice," which allows business operators to populate the database with their business data.
 
-In this case, you can set the main business hours for each day of the week, as well as the hours for special occasions. OpenCUI-hosted providers introduce no external dependencies, making the deployment of the chatbot easier. Furthermore, the connection is automatically configured, so builders don't need to worry about it.
+As an OpenCUI-hosted provider, the project contains not only a stub that abstracts the complexities of communication to masquerade remote services as local function calls, but also the schema needed to create the database, as well as function definitions that can be turned into stored procedures. This allows OpenCUI to build and deploy a fully functional backend for each deployed PostgREST provider. The PostgREST provider is automatically configured and introduces no external dependencies, making it a very convenient way to provide full-stack behavior.
+
+Once deployed, you need to inject the business data into the backend. For this use case, you set the business hours for each day of the week, as well as the hours for special occasions.
 
 ### Clone the provider
 1. Clone the [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) project and set the **Project label** to _hoursProvider_ (it is ok to set to something else, but let's use this label in the quickstart).
 
-2. In the cloned provider, merge the cloned the content. 
-   * go to **Versions** page and click **Pull request** in the upper-right corner of the Versions area.
+2. In the just cloned provider, merge the initial definition. 
+   1. go to **Versions** page and click **Pull request** in the upper-right corner of the Versions area.
 
       ::: thumbnail
       ![pull request](/images/guide/use-service/pull-request.png)
       :::
 
-   * Click on the request you just pulled, and **Compare diffs** field will slide out.
+   2. Click on the request you just pulled, and **Compare diffs** field will slide out.
 
       ::: thumbnail
       ![click request](/images/guide/use-service/click-request.png)
       :::
 
-   * In the **Compare diffs** drawer, click **Approve PR**, then click **Merge**. 
+   3. In the **Compare diffs** drawer, click **Approve PR**, then click **Merge**. 
 
       ::: thumbnail
       ![click approve pr](/images/guide/use-service/click-approve.png)
       :::
 
-   * Enter the **Version tag** and click **Save**.
+   4. Enter the **Version tag** and click **Save**.
 
       ::: thumbnail
       ![version tag](/images/guide/use-service/version-tag.png)
@@ -109,23 +111,25 @@ In this case, you can set the main business hours for each day of the week, as w
    ![deploy](/images/guide/use-service/deploy.png)
    :::
 
-### Populate database with business data 
-Business hours are defined by two kinds of information: business hours and timezone. Let's see how to set them up using the provided [backoffice](../reference/providers/postgrest.md#access-backoffice).
+### Populate database
+Before the backend can serve relevant information, you need to populate the databased with: your business hours and timezone. You can do this using the provided [backoffice](../reference/providers/postgrest.md#access-backoffice). 
 
-#### Set up business hours
-1. After successful deployment, go to **Configuration** page. Open the **URL** and log in with the **Admin email** and the **Admin password**.
+For every organization that uses at least PostgREST provider, OpenCUI also created web application for this organization to manage the data in the backend. You can get there as superuser by clicking the **URL** and log in with the **Admin email** and the **Admin password**.
 
    ::: thumbnail
    ![configuration](/images/guide/use-service/configuration.png)
    :::
 
-2. In backoffice, go to the **hoursProvider** section and click **Hours**. On the **hoursProvider.Hours** page, click **Create**.
+Everything is organized into tables in PostgREST backend, and table can be referenced by provider followed by a type, such as **hoursProvider.Hours**. To get here, simply select the **hoursProvider** section and click **Hours**.
+
+#### Set up business hours
+1. On the **hoursProvider.Hours** page, click **Create**.
 
    ::: thumbnail
    ![create business hours](/images/guide/use-service/create-business-hours.png)
    :::
 
-3. To add the **main business hours** for a day of the week:
+2. To add the **main business hours** for each day of the week:
    - Fill in the form with the following information:
       - **dayOfWeek**: select a day of the week to add business hours.
       - **ifOpen**: whether you are open on that day.
@@ -138,71 +142,51 @@ Business hours are defined by two kinds of information: business hours and timez
    ![show business hours](/images/guide/use-service/show-business-hours.png)
    :::
 
-4. Follow the same steps to add the remaining 6 days of the week.
-
-5. **_[OPTIONAIL]_** To add business hours for a special date, use the **specialDate** column, which is the date that is not covered in the main business hours.
-
-6. When you finish setting up your business hours, there should be **at least 7 rows** on the **hoursProvider.Hours** page. As the screenshot below shows, the first 7 rows are the main business hours and the last one is for a special date.
+3. **_[OPTIONAIL]_** To add business hours for a special date, use the **specialDate** column, which is the date that is not covered in the main business hours. Any day that you will be out of service, including holidays, can be covered in this way.
 
    ::: thumbnail
    ![business hours list](/images/guide/use-service/business-hours-list.png)
    :::
 
-#### Set up the business time zone
+#### Set up time zone
 
-1. In the **hoursProvider** section and click **Configuration**. On the **hoursProvider.Configuration** page, click **Create**.
+1. On the **hoursProvider.Configuration** page, click **Create**.
 
-2. Enter the time zone of your business. Formatted as an [IANA Time Zone Database](http://www.iana.org/time-zones) name, e.g. "_America/Los_Angeles_".
-
-3. Once done, click **Save**.
-
+2. Enter the time zone of your business and save. Formatted as an [IANA Time Zone Database](http://www.iana.org/time-zones) name, e.g. "_America/Los_Angeles_".
    ::: thumbnail
    ![timezone-list](/images/guide/use-service/timezone-list.png)
    :::
 
-## Add functionality to the chatbot
-On OpenCUI, importing modules is a way to build complex conversational behavior out of simpler parts. Unlike a cloned project where you can modify any things you want, with an import module, there are only limited things, mostly at the language level, that you can change in order to make module upgradable.
+## Import module to the chatbot
+On OpenCUI, importing modules is another way to reuse conversational experience. Unlike a cloned project where you use existing work as a starting point, modify any thing in order to fit your need, but you can not benefit any improvement that will be introduced to source project after you clone. With an import module, it has to fit your need from get go, as there are only limited things, mostly at the language layer, that you can customerize. On the other hand, you can always upgrade imported module to newer version with bugs fixed, and experience improved. 
 
-Now it's time to add functionality to the chatbot so that users can access the hours service via conversation. It is simple: just import the module with desired functionality into your chatbot and connect the service to a provider in your organization.
+Reusing the conversational experience in module is simple: just import the module with desired functionality into your chatbot and connect the service to a provider in your organization.
 
 ### Import the module
 1. Enter source module [hours](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), the one that you want to reuse. You can also go there by doing a search on the explore tab.
 2. Click **Import**.
-3. Select the chatbot or module you want to import to.
-4. Click **Save**.
+3. Select the chatbot or module you want to import to and save.
 
   ::: thumbnail
   ![import service](/images/guide/use-service/import-service.png)
   :::
 
-### Set up a service provider
-1. Enter the chatbot.
+### Wire the provider
+For each service that is referenced in the chatbot, you need to wire a provider to it so that the chatbot, or the module imported into the chatbot, can actually access the service implementation. You can wire different providers to the same service under different environments.
 
-2. In the navigation bar, select the **Settings** tab and head to **Integrations** page. In the **Debug service provider** section, click **Select service** and select `me.quickstart.hours.IHours`. Afterward, when you are ready to deploy your service to the production environment, you will need to set this up again under the **Deploy service provider** section.
-   - Enter a unique label.
-   - Click **Select service implementation** and select the provider you created by cloning.
+Under the chatbot's **Settings** tab, inside **Integrations** page. 
+- Inside the **Debug service provider** section.
+  1. Click **Select service** and select `me.quickstart.hours.IHours`. 
+  2. Enter a unique label, this can be useful for debugging.
+  3. Select a provider for this service, from all compatible providers in this organization.
+
+When you are ready to deploy your service to the production environment, you need do it again under the **Deploy service provider** section.
 
    ::: thumbnail
    ![set up provider](/images/guide/use-service/set-up-provider.png)
    :::
 
 ## Test a chatbot
-Finally, you can try the chatbot for business hours using built-in [Debug](../reference/platform/testing.md#how-to-use) tool.
-
-1. Send "_When do you open?_" and you should get the business hours in a week starting with the current day of the week.
-
-   ::: thumbnail
-   ![debug hours week](/images/guide/use-service/debug-hours-week.png)
-   :::
-
-2. Send "_Do you open this Friday?_" and you will get the business hours on this Friday if it's open this Friday. If not, you will be told it's closed and the business hours in a week will be shown.
-
-   ::: thumbnail
-   ![debug HoursDay if it's open](/images/guide/use-service/debug-hours-day-open.png)
-   *If it's Open this Friday*
-
-   <br>
-
-   ![debug HoursDay if it's closed](/images/guide/use-service/debug-hours-day-closed.png)
-   *If it's closed this Friday*
-   :::
+Finally, you can try the chatbot for business hours using built-in [Debug](../reference/platform/testing.md#how-to-use) tool:
+- Send "When do you open?" and you should receive the business hours for the entire week starting with the current day of the week.
+- Send "Do you open this Friday?" and you will receive the business hours for this Friday if it is open. If not, you will be informed that it is closed and the weekly business hours will be shown.
