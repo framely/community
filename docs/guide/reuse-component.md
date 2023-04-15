@@ -69,9 +69,11 @@ We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
 ::::
 
 ## Prepare a provider
-Before the chatbot can serve requests regarding business hours using an existing module, you need to clone its provider into your organization and configure it so that it can connect to the actual backend. Additionally, you need to populate the backend with your business information.
+To allow a module to interact with its service implementation, you need to set up a compatible provider in your organization and configure it so that it can connect to the actual backend. Additionally, you need to populate the backend with your business information.
 
-In this guide, you will clone a PostgREST provider. The PostgREST provider is an OpenCUI-hosted provider, which means that the backend, or the actual implementation of services, is also managed by OpenCUI. This backend is essentially a PostgreSQL database with RESTful access, and comes with an admin interface called backoffice so that business operators can populate the database with their business data. In this case, you can set the main business hours for each day of the week, as well as the hours for special days such as holidays. Hosted providers introduce no external dependency, making the deployment of the chatbot easier. Furthermore, the connection is automatically configured so that builders don't need to worry about it.
+In this guide, you will clone a PostgREST provider to host your business hour data. The PostgREST provider is OpenCUI-hosted, which means that the corresponding backend implementation of services is also built and managed by OpenCUI. This backend is essentially a PostgreSQL database with RESTful APIs for its stored procedures. Additionally, this backend comes with an admin interface called backoffice, which allows business operators to populate the database with their business data.
+
+In this case, you can set the main business hours for each day of the week, as well as the hours for special occasions. OpenCUI-hosted providers introduce no external dependencies, making the deployment of the chatbot easier. Furthermore, the connection is automatically configured, so builders don't need to worry about it.
 
 ### Clone the provider
 1. Clone the [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) project and set the **Project label** to _hoursProvider_ (it is ok to set to something else, but let's use this label in the quickstart).
