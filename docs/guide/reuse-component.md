@@ -28,7 +28,9 @@ A full-stack component, consisting of a module of a service and a compatible pro
 ## Pick a full-stack component
 OpenCUI is designed to promote reusability for both frontend and provider. When you want to add some functionalities to your chatbot, it is a good idea to see if there are full-stack components available that can meet your needs. Reusing a full-stack component allows you to quickly increase the scope of the service that you offer conversationally, without incurring the high costs and long lead times associated with developing from scratch.
 
-This guide shows you how to follow these steps to reuse an existing full-stack module to field users' questions about your business hours. Here is an example dialogue that shows how this chatbot helps users get business hours:
+This guide shows you how to follow these steps to reuse an existing full-stack component, consisting of [hours module](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema)) and [hours provider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema), to field users' questions about your business hours. 
+
+Here is an example dialogue that shows how this chatbot helps users get business hours:
 
 :::: conversation
 ::: user User
