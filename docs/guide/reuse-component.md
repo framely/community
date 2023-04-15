@@ -1,17 +1,24 @@
 # Reuse a full-stack component
-Modern business applications are typically broken down into a set of services, each responsible for a specific functionality. For example, airline might have a ticketing service, which includes booking, checking whether a seat is available and canceling. All user interfacing applications are built to expose these kinds of services, chatbot included.
 
-A service defines a set of API functions that specify how business functionalities can be accessed. By using a service as an interface, you can divide chatbot building into backend for business logic and frontend for conversational user interface, each of which can be taken care of by different teams.
+A full-stack component is a self-contained, reusable functionality that encompasses both user-interfacing frontend and business logic backend implementation. This tutorial will show you how to add conversational functionality to your chatbot through the reuse of a full-stack component.
 
-On OpenCUI, a module is a reusable conversational component commonly used to expose a service. Each service can have one or more backend implementations that are developed and deployed separately. A provider, designed to abstract away the details of the underlying communication protocol, can make it easy to interact with the service backend. A module paired with a provider, or a full-stack component, is all you need to provide its service conversationally.
+### Background
+Modern business applications are typically broken down into a set of services, each responsible for a specific functionality. For example, an airline might have a ticketing service, which includes booking, checking seat availability, and canceling. A service is an interface for a business capability that usually consists of a set of Application Programming Interface (API) functions. In the context of a chatbot, these interfaces decouple the conversational frontend from the backend implementation of the service, allowing them to be developed independently, making it easier to update and reuse.
+
+On OpenCUI, similar to a chatbot, a module is a frontend project commonly used to expose a service conversationally. However, a module does not have the special skill "Main" like a chatbot does, so it cannot be deployed on its own. Modules are like libraries; they need to be imported into an application like a chatbot to be effective.
+
+Backend implementations of a service are typically also deployed separately. A provider is designed to offer a convenient way for the frontend to interact with a remote service implementation as if it were a local function call, while handling the necessary network communication details behind the scenes. You need to configure a provider so that it has the correct endpoints and required credentials to be usable. Once configured, it can be used by every chatbot in the organization. Here is how chatbots, modules and providers are typically working together. 
 
 ::: thumbnail
 ![relationship](/images/guide/use-service/relationship.png)
 :::
 
-OpenCUI allows you to reuse a pre-built, often higher quality component to offer some functionality. This can be done in three simple steps: clone and configure a provider in your organization, import a module into a chatbot, and finally wire the provider to the service in the chatbot configuration. This guide shows you how to follow these steps to reuse an existing full-stack module to field users' questions about your business hours.
+A full-stack component, consisting of a module of a service and a compatible provider, is all you need to provide this service conversationally. These pre-built, often higher quality full stack components is a very cost-effective way for you to introduce conversational experiences to your chatbot. This reuse can be done in three simple steps:
+1. Pick a service to you want to expose conversationally, import the module of that service into the chatbot of your choice, 
+2. Clone a compatible provider into your organization and configure it.
+3. finally wire the provider to the service in the chatbot configuration. 
 
-Here is an example dialogue that shows how this chatbot helps users get business hours:
+This guide shows you how to follow these steps to reuse an existing full-stack module to field users' questions about your business hours. Here is an example dialogue that shows how this chatbot helps users get business hours:
 
 :::: conversation
 ::: user User
@@ -169,7 +176,7 @@ Now it's time to add functionality to the chatbot so that users can access the h
    :::
 
 ## Test a chatbot
-Finally, you can try the chatbot for business hours using [Debug](../reference/platform/testing.md#how-to-use).
+Finally, you can try the chatbot for business hours using built-in [Debug](../reference/platform/testing.md#how-to-use) tool.
 
 1. Send "_When do you open?_" and you should get the business hours in a week starting with the current day of the week.
 
