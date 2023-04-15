@@ -14,11 +14,23 @@ Backend implementations of a service are typically also deployed separately. A p
 :::
 
 A full-stack component, consisting of a module of a service and a compatible provider, is all you need to provide this service conversationally. These pre-built, often higher quality full stack components is a very cost-effective way for you to introduce conversational experiences to your chatbot. This reuse can be done in three simple steps:
-1. Pick a service to you want to expose conversationally, import the module of that service into the chatbot of your choice, 
-2. Clone a compatible provider into your organization and configure it.
-3. finally wire the provider to the service in the chatbot configuration. 
+1. Decide on a service you want to expose, make sure the module and provider are of high quality; 
+2. Clone a compatible provider into your organization and configure it;
+3. Import the module of that service into the chatbot of your choice; 
+4. finally wire the provider to the service in the chatbot configuration; 
 
-This guide shows you how to follow these steps to reuse an existing full-stack module to field users' questions about your business hours. Here is an example dialogue that shows how this chatbot helps users get business hours:
+
+## Before you start
+- [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+- We assume that you have finished [clone a simple chatbot](clone-simple-chatbot.md).
+- We assume that you have finished [build a simple chatbot](build-simple-chatbot.md).
+
+## Pick a full-stack component
+OpenCUI is designed to promote reusability for both frontend and provider. When you want to add some functionalities to your chatbot, it is a good idea to see if there are full-stack components available that can meet your needs. Reusing a full-stack component allows you to quickly increase the scope of the service that you offer conversationally, without incurring the high costs and long lead times associated with developing from scratch.
+
+This guide shows you how to follow these steps to reuse an existing full-stack component, consisting of [hours module](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema)) and [hours provider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema), to field users' questions about your business hours. 
+
+Here is an example dialogue that shows how this chatbot helps users get business hours:
 
 :::: conversation
 ::: user User
@@ -43,7 +55,8 @@ Our business hours in a week are
 **Sun** Closed
 :::
 ::::
-In addition to displaying the business hours for the week, this chatbot can also show the specific business hours of a particular day. For example:
+
+In addition to displaying the business hours for the week, this chatbot can also show the business hours for a particular day. For example:
 
 :::: conversation
 ::: user User
@@ -55,14 +68,12 @@ We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
 :::
 ::::
 
-## Before you start
-
-[Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-
 ## Prepare a provider
-Before the chatbot can serve requests regarding business hours using an existing module, you need to clone its provider into your organization and configure it so that it can connect to the actual backend. Additionally, you need to populate the backend with your business information.
+To allow a module to interact with its service implementation, you need to set up a compatible provider in your organization and configure it so that it can connect to the actual backend. Additionally, you need to populate the backend with your business information.
 
-In this guide, you will clone a PostgREST provider. The PostgREST provider is an OpenCUI-hosted provider, which means that the backend, or the actual implementation of services, is also managed by OpenCUI. This backend is essentially a PostgreSQL database with RESTful access, and comes with an admin interface called backoffice so that business operators can populate the database with their business data. In this case, you can set the main business hours for each day of the week, as well as the hours for special days such as holidays. Hosted providers introduce no external dependency, making the deployment of the chatbot easier. Furthermore, the connection is automatically configured so that builders don't need to worry about it.
+In this guide, you will clone a PostgREST provider to host your business hour data. The PostgREST provider is OpenCUI-hosted, which means that the corresponding backend implementation of services is also built and managed by OpenCUI. This backend is essentially a PostgreSQL database with RESTful APIs for its stored procedures. Additionally, this backend comes with an admin interface called backoffice, which allows business operators to populate the database with their business data.
+
+In this case, you can set the main business hours for each day of the week, as well as the hours for special occasions. OpenCUI-hosted providers introduce no external dependencies, making the deployment of the chatbot easier. Furthermore, the connection is automatically configured, so builders don't need to worry about it.
 
 ### Clone the provider
 1. Clone the [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) project and set the **Project label** to _hoursProvider_ (it is ok to set to something else, but let's use this label in the quickstart).
