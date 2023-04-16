@@ -158,9 +158,9 @@ Everything is organized into tables in PostgREST backend, and table can be refer
    :::
 
 ## Import module to the chatbot
-On OpenCUI, importing modules is another way to reuse conversational experience. Unlike a cloned project where you use existing work as a starting point, modify any thing in order to fit your need, but you can not benefit any improvement that will be introduced to source project after you clone. With an import module, it has to fit your need from get go, as there are only limited things, mostly at the language layer, that you can customerize. On the other hand, you can always upgrade imported module to newer version with bugs fixed, and experience improved. 
+On OpenCUI, importing modules is another way to reuse conversational experiences. Unlike cloning a project where you use existing work as a starting point and modify anything to fit your needs, but you cannot benefit from any improvements that will be introduced to the source project after you clone it. With an imported module, it has to fit your needs from the get-go, as there are only limited things, mostly at the language layer, that you can customize. On the other hand, you can always upgrade an imported module to a newer version with bugs fixed and improved experiences.
 
-Reusing the conversational experience in module is simple: just import the module with desired functionality into your chatbot and connect the service to a provider in your organization.
+Reusing the conversational experience in a module is simple: just import the module with the desired functionality into your chatbot and connect the service to a configured provider in your organization.
 
 ### Import the module
 1. Enter source module [hours](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), the one that you want to reuse. You can also go there by doing a search on the explore tab.
