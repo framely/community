@@ -1,8 +1,8 @@
 # Build a simple module
 
-On OpenCUI, to expose a service through a conversational user interface, you need to create a module, declare the service in it and define the conversational user interface on top of the service. 
+On OpenCUI, a module is designed to conversationally expose a service in a way that can be reused by other people. Building a module is very similar to building a chatbot, but you center on a service: you declare the service within the module and then define the conversational experience that are directly based on that service. 
 
-In the previous guide, we showed you how to enable your chatbot to field various business hours queries by using an existing module and provider, namely a full-stack component. In this guide, we will show you how to build such an hours module. For more detailed instructions on building a provider that implements the service in the module, please refer to the next guide.
+In the previous guide, we showed how your chatbot can field various business hours queries by using hours module. In this guide, we will show you how to build such a module. 
 
 ## Before you start
 
