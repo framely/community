@@ -1,39 +1,38 @@
 # Build a simple module
+On OpenCUI, a module is reusable conversational functionality. While it is possible for a module to be self-contained, modules are commonly just frontends that conversationally expose a single service, with the actual implementation of the service developed and deployed separately. Using services to decouple the frontend and backend development has many benefits and is widely adopted for building user-facing applications.
 
-On OpenCUI, a module is designed to conversationally expose a service in a way that can be reused by other people. Building a module is very similar to building a chatbot, but you center on a service: you declare the service within the module and then define the conversational experience that are directly based on that service. 
+The Service is a special singleton type in a module with service enabled. It allows you to declare a set of API functions that can be directly accessed by other types. With the service declared, you can define the conversational user interface to expose these functionalities in the same module. Such a module, when paired with a compatible provider, can add conversational functionality to any chatbot with little effort.
 
-In the previous guide, we showed how your chatbot can field various business hours queries by using hours module. In this guide, we will show you how to build such a module. 
+In the previous guide, we showed how your chatbot can handle various business hours queries using the "hours" module. In this guide, we will show you how to build such a module in two parts: first declare the service, then define the conversational user interface on top of that. Both essentially involve defining a set of types, with types needed by the service requiring no dialog annotations.
 
 ## Before you start
-
 - [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 - [Build a simple chatbot](./build-simple-chatbot.md) for how to build a skill with entity slots.
-- [Reuse a full-stack module](./reuse-component.md) to get familiar with the functionality we try to build here.
+- [Reuse a full-stack component](./reuse-component.md) to get familiar with the functionality you will build here.
 
+## Create module: hours
+You need to create a module with service support, so you can solely focus on the conversational user interface, leaving the management of business information, like hours, as a separate concern.
 
-## Create a project
-You can create a module under any organization, following these steps:
-1. Within an organization, in the upper right corner of the project area, click **Create** and select **Create module**.
-2. In the pop-up window, complete the form for module basic settings and click **Create**. For this simple module, you only need to configure the following three fields: 
+Within an organization, in the project list page.
+1. click **Create** and select **Create module**.
+2. In the pop-up window, fill out the form for following basic settings and click **Create**:
    - **Project label**: enter `hours`.
    - **Languages**: add **English(en)**.
-   - **Enable service interface**: turn on this toggle.
+   - **Enable service interface**: turn this toggle on for service support.
 
-## Declare a service
-Declaring a service means that you define the function type for each API in the service. However, in order to define these function types, you must first define the data type for their input parameters and return values, which may need to be defined recursively in case one of these data types is composite.
+## Declare service
+Declaring a service means that you define the function type for each API in the service. However, in order to define these function types, you must first define the data types for their input parameters and return values, which may need to be defined recursively in case one of these data types is composite. On OpenCUI, a frame is a standard user defined composite type with support for polymorphism behaviors, and a entity is a primitive type. 
 
 ### Build frame: BusinessHours
-Before you can declare the function, you should prepare a frame type for its return type. On OpenCUI, a frame is a standard object-oriented class type with support for composition and polymorphism behaviors. Frames typically map to parameter types for your function at schema level.
-
-As this type is primarily used as a return type for functions, instances of this type do not need to be created through conversations. You only need to declare this frame under the **Structure** view.
-
-#### Schema layer: declare a frame
-If you require a function that returns the business hours on a specific day, you'll need to provide the following information in your frame declaration:
+If you require a function that returns the business hours on a specific day, you'll need to provide the following information:
 - **dayOfWeek**: the day of the week, like Monday, Tuesday, etc.
 - **ifOpen**: whether it's open on that day.
 - **openingTime**: the time it opens.
 - **closingTime**: the time it closes.
 
+This suggests that you define a frame as type to represent the function return, since a OpenCUI frame is a standard user defined composite type.
+
+#### Schema layer: declare a frame
 At this layer, you will create a frame and add all of the required slots.
 
 ##### Create the frame

@@ -5,7 +5,7 @@ A full-stack component is a self-contained, reusable functionality that encompas
 ### Background
 Modern business applications are typically broken down into a set of services, each responsible for a specific functionality. For example, an airline might have a ticketing service, which includes booking, checking seat availability, and canceling. A service is an interface for a business capability that usually consists of a set of Application Programming Interface (API) functions. In the context of a chatbot, these interfaces decouple the conversational frontend from the backend implementation of the service, allowing them to be developed independently, making it easier to update and reuse.
 
-On OpenCUI, similar to a chatbot, a module is a frontend project commonly used to expose a service conversationally. However, a module does not have the special skill "Main" like a chatbot does, so it cannot be deployed on its own. Modules are like libraries; they need to be imported into an application like a chatbot to be effective.
+Similar to a chatbot, a module is also an OpenCUI frontend project, but it is commonly used to expose a single service conversationally. However, a module does not have the special skill "Main" like a chatbot does, so it cannot be deployed on its own. Modules are like libraries; they need to be imported into an application like a chatbot to be effective.
 
 Backend implementations of a service are typically also deployed separately. A provider is designed to offer a convenient way for the frontend to interact with a remote service implementation as if it were a local function call, while handling the necessary network communication details behind the scenes. You need to configure a provider so that it has the correct endpoints and required credentials to be usable. Once configured, it can be used by every chatbot in the organization. Here is how chatbots, modules and providers are typically working together. 
 
@@ -71,9 +71,9 @@ We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
 ## Set up a provider
 To allow a module to interact with its service implementation, you need to set up a compatible provider in your organization and configure it so that it can connect to the actual backend. Additionally, you need to populate the backend with your business information.
 
-Instead of setting up a provider from scratch, in this guide, you will clone a PostgREST provider. The PostgREST provider is hosted by OpenCUI, which means that the corresponding backend implementation of services is also built and managed by OpenCUI. This backend is essentially a PostgreSQL database with RESTful implementation for the service API using its stored procedures. Additionally, this backend comes with an admin interface called "backoffice," which allows business operators to populate the database with their business data.
+Instead of setting up a provider from scratch, in this guide, you will clone a SQL provider. The SQL provider is hosted by OpenCUI, which means that the corresponding backend implementation of services is also built and managed by OpenCUI. This backend is essentially a relational database with service APIs implemented in SQL and made available in RESTful. Additionally, this backend comes with an admin interface called "backoffice," which allows business operators to populate the database with their business data.
 
-As an OpenCUI-hosted provider, the project contains not only a stub that abstracts the complexities of communication to masquerade remote services as local function calls, but also the schema needed to create the database, as well as function definitions that can be turned into stored procedures. This allows OpenCUI to build and deploy a fully functional backend for each deployed PostgREST provider. The PostgREST provider is automatically configured and introduces no external dependencies, making it a very convenient way to provide full-stack behavior.
+SQL provider contains not only a stub that abstracts the complexities of communication to masquerade remote services as local function calls, but also the schema needed to create the database, as well as function definitions that can be turned into stored procedures. This allows OpenCUI to build and deploy a fully functional backend for a SQL provider upon request. The SQL provider is automatically configured and introduces no external dependencies, making it a very convenient way to provide full-stack behavior for small and medium-sized businesses.
 
 Once deployed, you need to inject the business data into the backend. For this use case, you set the business hours for each day of the week, as well as the hours for special occasions.
 
@@ -105,7 +105,7 @@ Once deployed, you need to inject the business data into the backend. For this u
       ![version tag](/images/guide/use-service/version-tag.png)
       :::
 
-3. Click **Deploy** in the upper-right corner of the Versions area. For the PostgREST provider, this will create the tables and composite types defined in the cloned provider in the managed PostgreSQL instance for your organization if they have not been created before (or update schema when changes are needed), and make these tables available for both the backoffice and chatbot through RESTful APIs.
+3. Click **Deploy** in the upper-right corner of the Versions area. For the SQL provider, this will create the tables and composite types defined in the cloned provider in the managed PostgreSQL instance for your organization if they have not been created before (or update schema when changes are needed), and make these tables available for both the backoffice and chatbot through RESTful APIs.
 
    ::: thumbnail
    ![deploy](/images/guide/use-service/deploy.png)
@@ -114,13 +114,13 @@ Once deployed, you need to inject the business data into the backend. For this u
 ### Populate database
 Before the backend can serve relevant information, you need to populate the databased with: your business hours and timezone. You can do this using the provided [backoffice](../reference/providers/postgrest.md#access-backoffice). 
 
-For every organization that uses at least PostgREST provider, OpenCUI also created web application for this organization to manage the data in the backend. You can get there as superuser by clicking the **URL** and log in with the **Admin email** and the **Admin password**.
+For every organization that uses at least SQL provider, OpenCUI also created web application for this organization to manage the data in the backend. You can get there as superuser by clicking the **URL** and log in with the **Admin email** and the **Admin password**.
 
    ::: thumbnail
    ![configuration](/images/guide/use-service/configuration.png)
    :::
 
-Everything is organized into tables in PostgREST backend, and table can be referenced by provider followed by a type, such as **hoursProvider.Hours**. To get here, simply select the **hoursProvider** section and click **Hours**.
+Everything is organized into tables in SQL backend, and table can be referenced by provider followed by a type, such as **hoursProvider.Hours**. To get here, simply select the **hoursProvider** section and click **Hours**.
 
 #### Set up business hours
 1. On the **hoursProvider.Hours** page, click **Create**.
