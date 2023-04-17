@@ -111,19 +111,18 @@ Once deployed, you need to inject the business data into the backend. For this u
    :::
 
 ### Populate database
-Before the backend can serve relevant information, you need to populate the databased with your business hours. You can do this using the provided [backoffice](../reference/providers/postgrest.md#access-backoffice). 
+Before the backend can serve relevant information, you need to populate the database with your business hours. You can do this using the [backoffice](../reference/providers/postgrest.md#access-backoffice). 
 
-For every organization that uses at least PostgreSQL provider, OpenCUI also created web application for this organization to manage the data in the backend. You can get there as superuser by clicking the **URL** and log in with the **Admin email** and the **Admin password**.
+For every organization that uses at least one PostgreSQL provider, OpenCUI also created web application for this organization to manage the data in the backend. You can access it:
+1. Inside deployed PostgreSQL provider, go to **Settings**, click on **Configuration** on the left sidebar.
+2. Login backoffice as superuser by clicking the **URL** and log in with the **Admin email** and the **Admin password**. 
 
-   ::: thumbnail
-   ![configuration](/images/guide/use-service/configuration.png)
-   :::
-
-Everything is organized into tables in SQL backend, and table can be referenced by provider followed by a type, such as **hoursProvider.Hours**. To get here, simply select the **hoursProvider** section and click **Hours**.
+<!--Need to add the screen shot back if we decide, my suggestion is NOT, as it is not helping with ui element alignment. -->
 
 #### Set up business hours
-1. On the **hoursProvider.Hours** page, click **Create**.
+In the PostgreSQL backoffice, tables are grouped into a database section on the left sidebar. The database is identified by a provider label, and the table is referenced by a type label.
 
+1. Inside the **hoursProvider** database, and on page for **Hours** table, click **Create**.
    ::: thumbnail
    ![create business hours](/images/guide/use-service/create-business-hours.png)
    :::
