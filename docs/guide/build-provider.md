@@ -14,8 +14,8 @@ In the previous guide, we showed you how to build an hours module including decl
 ## Before you start
 
 - [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-- [Build a simple chatbot](./build-simple-chatbot.md) for how to build a skill with entity slots.
-- [Reuse a full-stack module](./reuse-component.md) to get familiar with the functionality we try to build here.
+- Review the [example dialogue](./reuse-component.md#pick-a-full-stack-component) to get familiar with the functionality you will build here.
+<!--build provider 需要了解的是 reuse component 中关于功能介绍的部分，或许可以不用知道其他部分。关于 function 和 BusinessHours frame 的描述，我用 comment 的形式添加在 hours module 中了-->
 
 ## Import the module for the service
 To implement a service, you need to declare all the necessary types for that service. This can be done by importing the module where the service is defined. Here are the steps to follow:
