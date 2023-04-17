@@ -1,6 +1,6 @@
-# PostgREST provider
+# PostgreSQL provider
 
-OpenCUI also supports the backend component in form of PostgREST provider. The backend component can be declaratively defined in two steps: First, create database tables needed by service by adding storage annotation to frames, secondly, provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify how the operation team can access these tables via backoffice.
+OpenCUI also supports the backend component in form of PostgreSQL provider. The backend component can be declaratively defined in two steps: First, create database tables needed by service by adding storage annotation to frames, secondly, provide function implementation using SQL to express business logic. Using backoffice annotation, you can specify how the operation team can access these tables via backoffice.
 
 There are several advantages of using the backend component approach to build a service provider:
 - In addition to declaratively building a database as a content management system, the OpenCUI backend component allows you to implement the service declaratively using SQL. This makes it possible for the business analyst to build the backend.
@@ -9,19 +9,19 @@ There are several advantages of using the backend component approach to build a 
 - Backoffice components can be reused by cloning for OpenCUI hosted solutions.
 
 
-## Create a PostgREST provider
+## Create a PostgreSQL provider
 
-To create a postgrest provider: 
+To create a PostgreSQL provider: 
 1. Within an org, click **Create** on the right side and select **Create provider**.
    ::: thumbnail
    ![create provider](/images/provider/postgrest/create-provider.png)
    :::
 
 2. In the Create popup window, complete the form for basic settings: 
-   - Enter a **Project label** for your postgrest provider.
-   - Select **Postgrest** in **Provider type** field.
-   - Select **OpenCUI-hosted** in **Deploy mode** field as currently we only support hosted mode for postgrest provider. 
-   - Specify a **Region** for your postgrest database.
+   - Enter a **Project label** for your PostgreSQL provider.
+   - Select **PostgreSQL** in **Provider type** field.
+   - Select **OpenCUI-hosted** in **Deploy mode** field as currently we only support hosted mode for PostgreSQL provider. 
+   - Specify a **Region** for your PostgreSQL database.
    - Click **Create**.
 
    ::: thumbnail
@@ -30,12 +30,12 @@ To create a postgrest provider:
 
 ## Import service interfaces
 
-When you are done with creation, you need to import which service interface this postgrest provider implements. 
+When you are done with creation, you need to import which service interface this PostgreSQL provider implements. 
 
 To declare the service interface:
 1. Enter the service component you want to implement.
 2. Click **Import** on right side of the second navigation bar. 
-3. In the popup window, select your postgrest provider and **Save**.
+3. In the popup window, select your PostgreSQL provider and **Save**.
 
 ::: thumbnail
 ![import component](/images/provider/postgrest/import-component.png)
@@ -216,7 +216,7 @@ When the SQL data type is one of `text`, `varchar` and `varchar(n)`, you can cho
 
 To provide function implementation, you need to add service interface to implement first.
 
-Back to your postgrest provider, and head to **Service** page from the navigation bar. In the **Implemented** section, select the service interface you want to implement.
+Back to your PostgreSQL provider, and head to **Service** page from the navigation bar. In the **Implemented** section, select the service interface you want to implement.
 
 :::thumbnail
 ![function implementation](/images/provider/postgrest/function-implementation.png)
@@ -236,7 +236,7 @@ Then all the functions on the service interface will be shown. To implement a fu
 
 ### PL/pgSQL
 
-For Postgrest providers, the provider dependent language is [PL/pgSQL](https://www.postgresql.org/docs/current/plpgsql.html). If you are familiar with [SQL](https://www.postgresql.org/docs/14/sql.html), writing SQL commands within a PL/pgSQL function will be easy. 
+For PostgreSQL providers, the provider dependent language is [PL/pgSQL](https://www.postgresql.org/docs/current/plpgsql.html). If you are familiar with [SQL](https://www.postgresql.org/docs/14/sql.html), writing SQL commands within a PL/pgSQL function will be easy. 
 
 For example, if you've stored your customers' information in your database and you want to get a customer's name by their user ID, which is an input parameter named *userId_parameter*,  the code will be like this:
 ``` sql
@@ -338,21 +338,21 @@ Be very careful with table schema changes, remember to manually modify data in b
 
 ## Wire to Chatbot
 
-Once you have a postgrest provider running, you need to wire this implementation to its service interface in your chatbot that allows chatbots to communicate with data source. To wire postgrest provider to chatbot, you can follow these steps below:
+Once you have a PostgreSQL provider running, you need to wire this implementation to its service interface in your chatbot that allows chatbots to communicate with data source. To wire PostgreSQL provider to chatbot, you can follow these steps below:
 
-1. Declare service interface implemented by this postgrest provider in chatbot. It means you need to import service component into your chatbot. Click into the service component, and **import** it into your chatbot.
+1. Declare service interface implemented by this PostgreSQL provider in chatbot. It means you need to import service component into your chatbot. Click into the service component, and **import** it into your chatbot.
 
 ::: thumbnail
 ![import service into chatbot](/images/provider/postgrest/import-service-into-chatbot.png)
 :::
 
-2. Switch to your chatbot, wire postgrest provider to its service interface.
+2. Switch to your chatbot, wire PostgreSQL provider to its service interface.
    - Head to **Settings** page from the navigation bar.
-   - Switch to **Integrations** tab, in the **Debug service provider** section or **Deploy service provider** section, select the service interface you just imported and the postgrest provider that implements it. At the same time, a label needs to be added to show different integration.
+   - Switch to **Integrations** tab, in the **Debug service provider** section or **Deploy service provider** section, select the service interface you just imported and the PostgreSQL provider that implements it. At the same time, a label needs to be added to show different integration.
 
 ::: thumbnail
 ![chatbot integration](/images/provider/postgrest/chatbot-integration.png)
 :::
 
 
-After wiring the PostgREST provider, you can edit it at any time. However, it's important to remember to merge your latest changes to the master branch and redeploy the provider in order to ensure that your chatbot is using the most up-to-date version.
+After wiring the PostgreSQL provider, you can edit it at any time. However, it's important to remember to merge your latest changes to the master branch and redeploy the provider in order to ensure that your chatbot is using the most up-to-date version.
