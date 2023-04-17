@@ -22,7 +22,7 @@ For more details, see [Native Provider](native.md) or [extensions](extension.md)
  
 Sometimes, the backend implementations of a service are accessible through some scripted language like SQL or JSON instead of native code. The providers for these backends, known as scripted providers, come in two types: hosted provider type and stub provider type.
 
-- OpenCUI currently supports only one hosted provider: PostgREST. When we say 'hosted,' we mean that OpenCUI manages the backend implementation, which includes the database, tables, and SQL-based function implementation.
+- OpenCUI currently supports only one hosted provider: PostgreSQL. When we say 'hosted,' we mean that OpenCUI manages the backend implementation, which includes the database, tables, and SQL-based function implementation.
 - For stub providers, OpenCUI does not host any data or have explicit knowledge about the data schema. Instead, OpenCUI handles function invocation through them. There will be many stub provider types available, including a Google Sheets-based provider.
 - 
 Scripted providers are typically defined in three steps:
@@ -31,4 +31,4 @@ Scripted providers are typically defined in three steps:
 2. Decide on the provider type you want. The provider type determines how to access the actual data source and what scripting language to use for each function implementation declared in the service interface.
 3. Use the scripting language required by the provider type to implement the service functions. Functions can also be implemented in Kotlin, known as native functions.
 
-See [PostgREST Provider](postgrest.md) for details.
+See [PostgreSQL Provider](postgrest.md) for details.

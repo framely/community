@@ -24,7 +24,7 @@ To help the chatbot create instances for arbitrary types, OpenCUI allows builder
 Modules are reusable conversational components. For example, a CUI date picker is a simple module that gets the user's preferred date. Modules can be combined to form larger modules for more complex use cases, or they can be imported into the chatbot to add new conversational experiences.
 
 ##### Providers
-A service can have one or more providers that connect the chatbot to the backend implementation for its functionalities. Providers can be shared by different chatbots in the same organization. OpenCUI supports three types of providers: PostgREST (OpenCUI hosted), RESTful, and native providers.
+A service can have one or more providers that connect the chatbot to the backend implementation for its functionalities. Providers can be shared by different chatbots in the same organization. OpenCUI supports three types of providers: PostgreSQL (OpenCUI hosted), RESTful, and native providers.
 
 #### Type systems
 Services can be described by their schema, using description languages such as [OpenAPI](https://swagger.io/docs/specification/data-models/). Such language requires a type system because APIs involve the exchange of data between different systems or components, and data types provide a way to ensure that the exchanged data is well-formed, consistent, and interoperable. OpenCUI's type system supports not only primitive types and enums, but also lists and user-defined types with polymorphism support, making it easy to build conversational interfaces for arbitrary services.

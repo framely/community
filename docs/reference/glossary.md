@@ -85,9 +85,9 @@ The composable architecture of OpenCUI allows you to build encapsulated componen
 The API for collection of functions that chatbot can use to access business data and logic.
 
 ### Provider
-Provider is implementation for APIs. Depending on who defines APIs, there are two kind of providers: system providers that implements OpenCUI defined APIs like Channel/Support interface and service providers that implements business APIs defined by builder. You can implement providers in Kotlin code. Or you can choose one of scripted provider, and use the corresponding script language to define business logic. OpenCUI currently provides the following scripted provider: Postgrest, RESTful and Google Sheets.
+Provider is implementation for APIs. Depending on who defines APIs, there are two kind of providers: system providers that implements OpenCUI defined APIs like Channel/Support interface and service providers that implements business APIs defined by builder. You can implement providers in Kotlin code. Or you can choose one of scripted provider, and use the corresponding script language to define business logic. OpenCUI currently provides the following scripted provider: PostgreSQL, RESTful and Google Sheets.
 
-- **Postgrest Provider**: Postgrest provider are OpenCUI hosted. In addition to define application logic using SQL, you also need to define database schema using storage annotation. OpenCUI also allow you to define the admin interface to the backend using backoffice annotation. So it possible to the entire backend using this provider.
+- **PostgreSQL Provider**: PostgreSQL provider are OpenCUI hosted. In addition to define application logic using SQL, you also need to define database schema using storage annotation. OpenCUI also allow you to define the admin interface to the backend using backoffice annotation. So it possible to the entire backend using this provider.
 
 - **RESTful Provider**: Service can also be accessed via restful API, with restful provider one can describe the mapping of the collected input parameter to actual Json format needed by endpoint.
 
