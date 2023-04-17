@@ -58,38 +58,23 @@ Once finished, the frame should look like this:
 :::
 
 #### Annotate type: BusinessHours
-Let's annotate the `BusinessHours` frame.
+Since this type does not need to be exposed conversationally, there is no need to add dialog annotation.
 
-##### Add slot level annotations to all the slots
-Given that this type is primarily used as a return type for functions, all slots within this frame must be filled directly. You need to select **Direct fill** for [fill strategy](../reference/annotations/fillstrategy.md) for all the slots in this frame.
-
-###### Interaction layer
-Inside the `BusinessHours` frame and **Schema** tab, under the **Structure** view.
-
-1. Select the `dayOfWeek` entity.
-2. Under the **Annotation** tab, select **Direct fill** in the **Fill strategy** section.
-3. Back to the `BusinessHours` frame, follow the same steps to set the fill strategy to **Direct fill** for the remaining three slots.
-
-### Add function interfaces
-
-To return business hours on a specific day and in a week, let's use the following two API functions:
+### Declare function interfaces
+To retrieve business hours for a specific day or in general, we can utilize the following two API functions:
 1. **getHoursDay**(date:java.time.LocalDate):BusinessHours
 2. **getHoursWeek**():List\<BusinessHours\>
 
-To create function interfaces:
 
 Inside the **hours** module and **Service** page, under the **Structure** view.
-
 1. In the **Functions** section, click **Add**.
    - Enter `getHoursDay` as the **Function label**.
    - In the **Parameters** section, click **+** to add an input parameter. Enter `date` as a **Name** and select **Entity** > **java.time.LocalDate** as **Type**.
-   - In the **Return type** section, select **Frame** > **BusinessHours** as **Type** and turn off **Nullable**.
-   - Click **Save**.
+   - In the **Return type** section, select **Frame** > **BusinessHours** as **Type** and turn off **Nullable**, then save.
 
 2. In the **Functions** section, click **Add**.
    - Enter `getHoursWeek` as the **Function label**.
-   - In the **Return type** section, select **Frame** > **BusinessHours** as **Type**. Turn on **Multi-value**d and turn off **Nullable**.
-   - Click **Save**.
+   - In the **Return type** section, select **Frame** > **BusinessHours** as **Type**. Turn on **Multi-value**d and turn off **Nullable**, then save.
 
 Once finished, the function interfaces should look like this:
 ::: thumbnail
@@ -97,15 +82,15 @@ Once finished, the function interfaces should look like this:
 :::
 
 ## Build CUI for the service
-To offer a functionality through a conversational user interface (CUI), you need to define a skill. A skill is essentially a function type with dialog annotations, allowing chatbot to create a callable object to activate the service. The input parameters of the function are captured by the skill's slots, and the function's return can be displayed using its response. 
+To provide functionality through a conversational user interface (CUI), you need to define a skill. A skill is essentially a function type with dialog annotations, allowing the chatbot to create a callable object for triggering the service through conversation. The input parameters of the function are captured by the skill's slots, and the function's return can be displayed using its response.
 
-As always, to build a type, we should first define its dependent types. In this case, the skill you will build does not require new types, so you can start to define a skill that utilizes service APIs right away.
+As always, when building a type, you should first define its dependent types, but all the types required by the skill are already defined, so you are good.
 
 ### Build skill: ShowHours
 Although there are two API functions that need to be exposed, only one skill is necessary. To determine which API functions should be grouped together, consider their simplest description without mentioning parameters or return values. If two API functions share the same description, they must be triggered by the same skill.
 
 #### Schema layer: declare a skill
-To create a skill for managing users' questions on business hours, we need to create the type, add the necessary slots and services.
+To create a skill for managing users' questions on business hours, you need to create the type, add the necessary slots and services.
 
 ##### Create the skill
 Inside the **hours** module and **Types** page, under the **Structure** view.
@@ -129,7 +114,7 @@ Inside the `ShowHours` skill and **Schema** tab, under the **Structure** view.
    :::
 
 #### Annotate type: ShowHours
-After declaring what you need in the schema layer, you need to add dialog annotations. This can be done by analyzing the desired conversational behavior and adding slot level annotations for each slot, as well as type level annotations.
+ Based on analysis of the desired conversational behavior and business logic, pick the right annotation to add for desired conversation experience.
 
 ##### Add slot level annotation to datePicker
 When a user triggers a skill, the chatbot follows the interaction logic based on the annotations attached to the skill. For this particular skill, the desired conversational experience is as follows:
@@ -224,4 +209,4 @@ Inside the `ShowHours` skill and the **Responses** tab, under the **Language/en*
        _${`it.value.dayOfWeek!!.expression()`}_
        _${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}_
 
-Now that you have finished building a module, you can [create a pull request](./opencui-flow.md#create-a-pull-request), [view it and merge it into the master](./opencui-flow.md#review-and-merge-pull-request). In the next guide, we will show you how to build a provider that implements the service in the module
+Now that you have finished building a module, you can  [create a pull request](./opencui-flow.md#create-a-pull-request), [merge it into the master](./opencui-flow.md#review-and-merge-pull-request). You can replace the module you imported with this one in the chatbot you used in the last guide, and experiment with it. 
