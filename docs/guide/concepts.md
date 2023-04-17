@@ -64,18 +64,17 @@ In cases where users do not provide all the information needed in a single utter
 Dialog annotations can be defined both on slot and type level. Slot level annotations defines how individual slot can be filled. This includes whether the slot can take multiple values, whether it needs confirmation. For frame slot, whether the polymorphism is allowed. Type level annotations are related to multi-slot filling where values for slots need to collectively make business sense. This includes annotations like value recommendations and value check. Value recommendation provides a user with candidate list so that they can pick one from that instead of input something that is invalid. Value check makes sure agent catch user input error as early as possible so that conversation can be efficient. Dialog annotations are naturally separated into interaction related and language related, each can be handled by different set of people. This makes multiple language support easy.
 
 ##### Backend annotations
-OpenCUI allow you to build hosted provider declaratively: you can define the data type first, and then add storage annotation to help OpenCUI infer corresponding table schema, and you can use backoffice annotation to specify various aspect of admin interface to the type, including look and feel, and input mode. You can use PSQL to implement function and expose these functions via PostgREST restful.
+OpenCUI allow you to build hosted SQL provider declaratively using annotations and SQL. 
+- Declare all data types first required the service APIs and their implementation helper functions;
+- Add storage annotation to help OpenCUI infer corresponding table schema;
+- Use SQL to implement the service APIs; 
+- Add backoffice annotation to define admin interface, including look and feel, and input mode. 
 
-- Storage annotations
+Once you have decided on the data frame that you want to persist, you can simply turn on the storage annotation for that frame. When the storage annotation is turned on for a frame, OpenCUI will automatically create a corresponding table with each slot mapped to a column in the hosting database. You can precisely control how these columns are created, using annotations such as:
+- Not Null: indicates whether a column can host a null value;
+- Default Value: defines the default value for the column;
+- Unique: indicates whether a value in the column needs to be unique and can potentially serve as a key.
 
-    In OpenCUI, builders can also define the backend component or service provider. They can do this declaratively in two steps: first, by adding the storage annotation to the frames defined in the service, and then by creating a restful function implementation by simply providing a SQL statement as application logic. While this is the only way to create the storage layer for the data model, it is certainly one way of doing it, particularly if one wants to start from scratch, as these component service providers can be easily reused by cloning.
-    
-    To create the data model needed by the service implementation, we can simply turn on the storage annotation on the corresponding frames inside the service provider. This essentially creates an isomorphic database table with each slot mapped to a column in it. When the storage annotation is turned on for the frame, we will automatically create the corresponding tables in the hosting database. Builders can precisely control how that table is created by using the SQL Data Type to specify the database data type for the corresponding column for each slot. For most cases, builders can rely on the default strategy. Not Null is used to indicate whether a column can host a null value. Default Value defines the default value for the column. Unique is used to indicate whether a value in the column needs to be unique and can potentially serve as a key.
-    
-    After the builder specifies the data model, they can then define the function implementation in the provider by providing a SQL statement that captures the application logic. Such function definition is automatically turned into a restful API on top of the database.
-
-- Backoffice annotations
-
-    In addition to serving users via a chatbot, the business data also needs to be accessed and manipulated by the operations team. For the PostgRest provider, they can do so through the back office, which is automatically created based on the back office annotation. In particular, the user experience of the admin interface can be controlled by the following annotations among others:
-    Sortable: whether one can sort the entire table by the given column.
-    Input Mode: whether we can have a dropdown menu for inputting this column and what the choices are.
+The data in these tables also needs to be accessed and manipulated by your operations team. For the SQL provider, they can do so through a web interface called "back office". The back office is automatically created based on the back office annotation, and its user experience can be controlled by annotations such as:
+- Sortable: indicating whether one can sort the entire table by the given column.
+- Input Mode: determining whether a dropdown menu can be used for inputting this column and specifying the available choices.

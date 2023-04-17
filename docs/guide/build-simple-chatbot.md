@@ -46,7 +46,7 @@ It is common for composite types to have slots, and then you have to decide whet
 - [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 - We assume that you have finished [clone a simple chatbot](clone-simple-chatbot.md), so you get some idea of what to build.
 
-## Create a project
+## Create chatbot: pingpong
 You can create a chatbot under any organization, following these steps:
 1. Within an organization, in the upper right corner of the project area, click **Create** and select **Create chatbot**.
 2. In the pop-up window, complete the form for chatbot basic settings and click **Create**. For this simple chatbot, you only need to fill in the following three fields:
