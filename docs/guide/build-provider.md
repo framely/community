@@ -1,15 +1,10 @@
 # Build a simple provider
 
-On OpenCUI, a provider serves as a backend stub to actual backend implementation of the service. Most providers are external, meaning the backend is developed and deployed elsewhere in related but separated effort. However, there is an OpenCUI-hosted provider called [PostgREST provider](../reference/providers/postgrest.md), which allows you to use PostgreSQL as data storage and implement API functions using SQL on OpenCUI platform. OpenCUI will make these functions available to your chatbot and back office through a RESTful gateway called PostgREST.
+On OpenCUI, a provider serves as a backend stub to the actual backend implementation of the service. Most providers are external, meaning that the backend is developed and deployed elsewhere as a related but separate effort. However, the PostgreSQL provider is hosted on OpenCUI. It allows you to use PostgreSQL as a data storage and implement API functions using SQL on the OpenCUI platform. OpenCUI will make these functions available to your chatbot and back office via RESTful APIs.
 
-To develop a backend using a database and expose functionalities through RESTful APIs, we need to address several issues conceptually:
-- At the schema level, we need to determine the necessary tables, their schemas, and types for each column. We may also need to define PostgreSQL composite types as return types for SQL functions.
-- At the business logic level, we need to decide on the functionalities we want to expose and determine how to implement them.
-- On the admin side, we need to consider how the owner can manipulate the data hosted in the database, including typical CRUD operations.
+On OpenCUI, you can declare a frame as basis for table, and add storage annotation to this type so that OpenCUI knows how you want to create table based on this frame. You can use backoffice annotation to control how data are manipulated in backoffice. Furthermore, you can implement functions using SQL, and OpenCUI will turn them into stored procedures and expose them via RESTful automatically. Let's see how we can build a PostgreSQL provider.
 
-On OpenCUI, you can declare a frame, or build-defined composite type as basis for table, and add storage annotation to this type so that OpenCUI knows how you want to create table. You can use backoffice annotation to control how data are manipulated in admin tool. Furthermore, you can implement functions using SQL, and OpenCUI will turn them into stored procedures and expose them via RESTful automatically. Let's see how we can build a PostgREST provider.
-
-In the previous guide, we showed you how to build an hours module including declaring a service and building CUI. In this guide, we will show you how to develop a provider for that service using a PostgREST provider.
+In the previous guide, you learned how to use a cloned PostgreSQL provider in conjunction with "hour" module to answer questions on business hours. In this guide, we will show you how to develop such a backend for that service using a PostgreSQL provider.
 
 ## Before you start
 
@@ -17,23 +12,29 @@ In the previous guide, we showed you how to build an hours module including decl
 - [Build a simple chatbot](./build-simple-chatbot.md) for how to build a skill with entity slots.
 - [Reuse a full-stack module](./reuse-component.md) to get familiar with the functionality we try to build here.
 
+## Create PostgreSQL provider: hoursProvider
+You can create a provider under any organization, following these steps:
+1. Within an organization, in the upper right corner of the project area, click **Create** and select **Create provider**.
+2. In the pop-up window, complete the form for chatbot basic settings and click **Create**. For this provider, you only need to fill in the following fields:
+   - **Project label**: the unique identifier for the chatbot. Type a short, memorable label for your chatbot. We suggest using a lowercase label. For example, `hoursProvider`.
+   - **Region**: where you want to deploy this chatbot. Ideally, it should be close to your users.
+
+Keep the **Provider type** to be PostgreSQL, and **Deploy mode** to be OpenCUI-hosted per default.
+
 ## Import the module for the service
-To implement a service, you need to declare all the necessary types for that service. This can be done by importing the module where the service is defined. Here are the steps to follow:
-1. First, decide on a target provider. You can use an existing Postgrest provider, or create a new one.
-2. Enter the **hours** module where the service is declared and import it into the target provider.
+To implement a service, you need definitions for all types required by that service. This can be done by importing the module where the service is defined. Here are the steps to follow:
+1. Enter the **hours** module where the service is declared and import it into the provider you just created.
 
 ## Create type needed by implementation
-Sometimes, to simplify development, you may need intermediate functions. This, along with other reasons, may require defining specific types for implementation. For the service that you want to implement here, it is not the case, so we can skip this step.
+Sometimes, to simplify development, you may need intermediate functions. This, along with other reasons, may require defining additional types. However, for the service you want to implement here, this is not necessary, so we can skip this step.
 
 ## Build tables
-With the PostgREST provider, you can define a table schema by adding storage annotations to a data type. This enables OpenCUI to automatically create a mapping between the database and Kotlin code. OpenCUI will create tables based on the type definition and storage annotations in a separate database for your organization. Additionally, you should add backoffice annotations to each slot to define how the corresponding column should be displayed and manipulated in the backoffice.
-
-To store business hours in the database, you can enable storage for frames. After this, a frame will map to a table, with its slots mapping to the corresponding table columns. The frame label specifies the name of the table, while the slot label specifies the name of the column in the table. The SQL data type specifies the type of data that the column can hold.
+With the PostgreSQL provider, you can define a table schema by adding storage annotations to a data type. Generally, a frame will map to a table, with its slots mapping to the corresponding table columns. The frame label specifies the name of the table, while the slot label specifies the name of the column in the table. The SQL data type specifies the type of data that the column can hold. These annotations help OpenCUI automatically create a mapping between the database and Kotlin code. OpenCUI will create tables based on the type definition and storage annotations in a separate database for your organization. Additionally, you should add backoffice annotations to define how the corresponding column should be displayed and manipulated in the backoffice.
 
 ### Build frame: Hours
-To accurately track business hours, it's essential to create a table that records whether the business is open on each day of the week, along with its respective opening and closing times. Since most businesses have consistent operating hours from week to week, it's only necessary to store the business hours for each day of the week. However, in cases where there are deviations from the typical schedule, such as holiday closures, these special dates should also be included in the table.
+Since most businesses have consistent operating hours from week to week, it is enough to record whether the business is open on each day of the week, along with its respective opening and closing times. These, along with hours for special dates such as holidays, should be stored in a table.
 
-To effectively represent business hours in a database, the following columns are necessary:
+To effectively encode business hours, the following columns are necessary:
 - `dayOfWeek`: The day of the week.
 - `ifOpen`: Whether the business is open on that day.
 - `openingTime`: The time when the business opens on that day. Required when **ifOpen** is true.
@@ -43,7 +44,7 @@ To effectively represent business hours in a database, the following columns are
 To define this table, you will build an `Hours` frame with slots corresponding to the above columns.
 
 #### Schema layer: declare a frame
-To generate a table with columns for business hours data, you will first create an `Hours` frame and enable storage. Then, you will add corresponding slots to the frame, where the slot type specifies the column type.
+To create a table for storing business hours data, you will first create an `Hours` frame and enable storage. Then, you will add corresponding slots to the frame, where the slot type specifies the column type.
 
 ##### Create the frame
 Inside the **target provider** with the hours module already imported and **Types** page.
@@ -57,7 +58,6 @@ Inside the **target provider** with the hours module already imported and **Type
 
 ##### Add slots
 Inside the `Hours` frame and **Schema** tab.
-
 - In the **Slots** section, add the following slots:
   - `dayOfWeek` with type **java.time.DayOfWeek**
   - `ifOpen` with type **kotlin.Boolean**
@@ -71,8 +71,9 @@ Based on the [columns description](#build-frame-hours) provided, it's important 
 Backend annotations can optimize frames with storage enabled. To ensure completeness of data, turn off **Allow null** for columns that should not be empty. In addition, you can use the **Dropdown** input type to restrict columns to only accept specific options.
 
 ##### Add slot level annotations to dayOfWeek
-Inside the `Hours/dayOfWeek` slot and **Annotation** tab.
 
+
+Inside the `Hours/dayOfWeek` slot and **Annotation** tab.
 1. Turn off **Allow null**.
 2. Switch the **Input type** to **Dropdown**, and add this JSON array:
    ```json
