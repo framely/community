@@ -71,9 +71,9 @@ We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
 ## Set up a provider
 To allow a module to interact with its service implementation, you need to set up a compatible provider in your organization and configure it so that it can connect to the actual backend. Additionally, you need to populate the backend with your business information.
 
-Instead of setting up a provider from scratch, in this guide, you will clone a Postgres provider. The Postgres provider is hosted by OpenCUI, which means that the corresponding backend implementation of services is also built and managed by OpenCUI. This backend is essentially a relational database with service APIs implemented in SQL and made available in RESTful. Additionally, this backend comes with an admin interface called "backoffice," which allows business operators to populate the database with their business data.
+Instead of setting up a provider from scratch, in this guide, you will clone a PostgreSQL provider. The PostgreSQL provider is hosted by OpenCUI, which means that the corresponding backend implementation of services is also built and managed by OpenCUI. This backend is essentially a relational database with service APIs implemented in SQL and made available in RESTful. Additionally, this backend comes with an admin interface called "backoffice," which allows business operators to populate the database with their business data.
 
-Postgres provider contains not only a stub that abstracts the complexities of communication to masquerade remote services as local function calls, but also the schema needed to create the database, as well as function definitions that can be turned into stored procedures. This allows OpenCUI to build and deploy a fully functional backend for a Postgres provider upon request. The Postgres provider is automatically configured and introduces no external dependencies, making it a very convenient way to provide full-stack behavior for small and medium-sized businesses.
+PostgreSQL provider contains not only a stub that abstracts the complexities of communication to masquerade remote services as local function calls, but also the schema needed to create the database, as well as function definitions that can be turned into stored procedures. This allows OpenCUI to build and deploy a fully functional backend for a PostgreSQL provider upon request. The PostgreSQL provider is automatically configured and introduces no external dependencies, making it a very convenient way to provide full-stack behavior for small and medium-sized businesses.
 
 Once deployed, you need to inject the business data into the backend. For this use case, you set the business hours for each day of the week, as well as the hours for special occasions.
 
@@ -105,7 +105,7 @@ Once deployed, you need to inject the business data into the backend. For this u
       ![version tag](/images/guide/use-service/version-tag.png)
       :::
 
-3. Click **Deploy** in the upper-right corner of the Versions area. For the Postgres provider, this will create the tables and composite types defined in the cloned provider in the managed PostgreSQL instance for your organization if they have not been created before (or update schema when changes are needed), and make these tables available for both the backoffice and chatbot through RESTful APIs.
+3. Click **Deploy** in the upper-right corner of the Versions area. For the PostgreSQL provider, this will create the tables and composite types defined in the cloned provider in the managed PostgreSQL instance for your organization if they have not been created before (or update schema when changes are needed), and make these tables available for both the backoffice and chatbot through RESTful APIs.
 
    ::: thumbnail
    ![deploy](/images/guide/use-service/deploy.png)
@@ -114,7 +114,7 @@ Once deployed, you need to inject the business data into the backend. For this u
 ### Populate database
 Before the backend can serve relevant information, you need to populate the databased with: your business hours and timezone. You can do this using the provided [backoffice](../reference/providers/postgrest.md#access-backoffice). 
 
-For every organization that uses at least Postgres provider, OpenCUI also created web application for this organization to manage the data in the backend. You can get there as superuser by clicking the **URL** and log in with the **Admin email** and the **Admin password**.
+For every organization that uses at least PostgreSQL provider, OpenCUI also created web application for this organization to manage the data in the backend. You can get there as superuser by clicking the **URL** and log in with the **Admin email** and the **Admin password**.
 
    ::: thumbnail
    ![configuration](/images/guide/use-service/configuration.png)
