@@ -1,23 +1,26 @@
 # Reuse a full-stack component
-
-A full-stack component is a self-contained, reusable functionality that encompasses both user-interfacing frontend and business logic backend implementation. This tutorial will show you how to add conversational functionality to your chatbot through the reuse of a full-stack component.
+<!--A full-stack component is a functionality 这句话是对的吗？还是应该是 A full-stack component is a unit of functionality? -->
+<!--预期修改为：A full-stack component is a self-contained, reusable unit of functionality that encompasses both the user-facing frontend and the business logic backend implementation.-->
+A full-stack component is a self-contained, reusable functionality that encompasses both user-interfacing frontend and business logic backend implementation. This tutorial will show you how to add conversational functionality to your chatbot by reusing a full-stack component.
 
 ### Background
-Modern business applications are typically broken down into a set of services, each responsible for a specific functionality. For example, an airline might have a ticketing service, which includes booking, checking seat availability, and canceling. A service is an interface for a business capability that usually consists of a set of Application Programming Interface (API) functions. In the context of a chatbot, these interfaces decouple the conversational frontend from the backend implementation of the service, allowing them to be developed independently, making it easier to update and reuse.
+Modern business applications are typically divided into a set of services, each of which is responsible for a specific functionality. For example, an airline might have a ticketing service that includes booking, checking seat availability, and canceling. A service is an interface for a business capability that usually consists of a set of Application Programming Interface (API) functions. In the context of a chatbot, these interfaces decouple the conversational frontend from the backend implementation of the service, allowing them to be developed independently, which makes them easier to update and reuse.
 
-Similar to a chatbot, a module is also an OpenCUI frontend project, but it is commonly used to expose a single service conversationally. However, a module does not have the special skill "Main" like a chatbot does, so it cannot be deployed on its own. Modules are like libraries; they need to be imported into an application like a chatbot to be effective.
+Similar to a chatbot, a module is also an OpenCUI frontend project, but it is commonly used to expose a single service conversationally. However, a module does not have the special skill "Main" like a chatbot does, so it cannot be deployed on its own. Modules are like libraries, they need to be imported into an application like a chatbot to be effective.
 
-Backend implementations of a service are typically also deployed separately. A provider is designed to offer a convenient way for the frontend to interact with a remote service implementation as if it were a local function call, while handling the necessary network communication details behind the scenes. You need to configure a provider so that it has the correct endpoints and required credentials to be usable. Once configured, it can be used by every chatbot in the organization. Here is how chatbots, modules and providers are typically working together. 
+Backend implementations of a service are typically also deployed separately. A provider is designed to offer a convenient way for the frontend to interact with a remote service implementation as if it were a local function call, while handling the necessary network communication details behind the scenes. You need to configure a provider so that it has the correct endpoints and required credentials to be usable. Once configured, it can be used by every chatbot in the organization. 
+
+The following diagram shows how chatbots, modules, and providers typically work together:
 
 ::: thumbnail
 ![relationship](/images/guide/use-service/relationship.png)
 :::
 
-A full-stack component, consisting of a module of a service and a compatible provider, is all you need to provide this service conversationally. These pre-built, often higher quality full stack components is a very cost-effective way for you to introduce conversational experiences to your chatbot. This reuse can be done in three simple steps:
-1. Decide on a service you want to expose, make sure the module and provider are of high quality; 
-2. Set up a compatible provider into your organization and configure it, by cloning;
-3. Import the module of that service into the chatbot of your choice; 
-4. finally wire the provider to the service in the chatbot configuration; 
+A full-stack component, consisting of a module of a service and a compatible provider, is all you need to provide this service conversationally. These pre-built, often higher quality full stack components is a very cost-effective way for you to introduce conversational experiences to your chatbot. Here are the steps involved:
+1. Decide on a service you want to expose, make sure the module and provider are of high quality.
+2. Set up a compatible provider into your organization and configure it, by cloning.
+3. Import the module of that service into the chatbot of your choice.
+4. Wire the provider to the service in the chatbot configuration. 
 
 
 ## Before you start
