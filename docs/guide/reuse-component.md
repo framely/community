@@ -22,8 +22,8 @@ A full-stack component, consisting of a module of a service and a compatible pro
 
 ## Before you start
 - [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-- We assume that you have finished [clone a simple chatbot](clone-simple-chatbot.md).
-- We assume that you have finished [build a simple chatbot](build-simple-chatbot.md).
+- [Clone a simple chatbot](./clone-simple-chatbot.md) for how to clone a project and test a chatbot.
+<!--Reuse a full-stack component 不涉及 build types，是不是不用阅读 build a simple chatbot?-->
 
 ## Pick a full-stack component
 OpenCUI is designed to promote reusability for both frontend and provider. When you want to add some functionalities to your chatbot, it is a good idea to see if there are full-stack components available that can meet your needs. Reusing a full-stack component allows you to quickly increase the scope of the service that you offer conversationally, without incurring the high costs and long lead times associated with developing from scratch.
