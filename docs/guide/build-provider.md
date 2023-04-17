@@ -119,38 +119,12 @@ When it's done, the `dayOfWeek` slot should look like this:
 Inside the `Hours/ifOpen` slot and **Annotation** tab.
 1. Turn off **Allow null**.
 
-### Build frame: Configuration
-To display business hours for a week, you should start from the current date. To obtain the correct date and time, it's important to store the time zone of your business in a table.
-
-To define this table, you will build a `Configuration` frame that includes a `timeZone` slot. 
-
-#### Schema layer: declare a frame
-To generate a table with a column for time zone data, you will first create a `Configuration` frame and enable storage. Then, you will add a `timeZone` slot to the frame, where the slot type specifies the column type.
-
-##### Create the frame
-Inside the **target provider** with the hours module already imported and **Types** page.
-
-1. Click **Create** button on the right side, and select **Create frame** to create a new frame.
-2. Enter `Configuration` as a label for the frame type and press enter.
-3. Inside the `Configuration` frame, turn on **Storage enabled**.
-
-##### Add slots
-Inside the `Hours` frame and **Schema** tab.
-1. Add a `timeZone` slot with type **java.time.ZoneId**.
-
-#### Annotate type: Configuration
-It's important to note that `timeZone` column should not be left empty since time zone data is necessary for accurate business hour display. To enforce this requirement, turn off the **Allow null** for this column.
-
-##### Add slot level annotation to timeZone
-Inside the `Configuration/timeZone` slot and **Annotation** tab.
-1. Turn off **Allow null**.
-
 ## Implement the service
 Finally, after the tables are ready, you can provide implementation for each function defined in the service. You can do this on the OpenCUI platform using [PL/pgSQL](https://www.postgresql.org/docs/current/plpgsql.html) or native Kotlin code.
 
 Inside the **target provider** with the hours module already imported and **Service** page.
 
-1. In the **Functions** section, select `getHoursDay` function.
+- In the **Functions** section, select `getHoursDay` function.
    - Make sure the implementation is **Provider dependent**.
    - Copy and paste the following code:
      ```sql
@@ -172,19 +146,7 @@ Inside the **target provider** with the hours module already imported and **Serv
      ```
     - Click **Save**.
 
-2. To get business hours in a week, the current date needs to be determined first, which means you should get the time zone from the database. To get the time zone, in the **Functions** section, add this function：
-   - **Function label**: _getTimeZone_
-   - **Return type**: Frame / Configuration
-   - **Implementation**: Provider dependent
-     ```sql
-      BEGIN
-         RETURN QUERY
-         SELECT "Configuration"."timeZone" FROM "Configuration" LIMIT 1;
-      END
-      ```
-   - Click **Save**.
-
-3. In the **Functions** section, select `getHoursWeek` function.
+- In the **Functions** section, select `getHoursWeek` function.
    - Select **Kotlin** as the **Implementation**.
    - Copy and paste the following code: 
    ```kotlin

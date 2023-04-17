@@ -3,21 +3,20 @@
 A full-stack component is a self-contained, reusable functionality that encompasses both user-interfacing frontend and business logic backend implementation. This tutorial will show you how to add conversational functionality to your chatbot through the reuse of a full-stack component.
 
 ### Background
-Modern business applications are typically broken down into a set of services, each responsible for a specific functionality. For example, an airline might have a ticketing service, which includes booking, checking seat availability, and canceling. A service is an interface for a business capability that usually consists of a set of Application Programming Interface (API) functions. In the context of a chatbot, these interfaces decouple the conversational frontend from the backend implementation of the service, allowing them to be developed independently, making it easier to update and reuse.
+Modern business applications are typically broken down into a set of services, each responsible for a specific functionality. For example, an airline might have a ticketing service, which includes booking, checking seat availability, and canceling. As interfaces to business capabilities, these services decouple the frontend from the backend implementation of the service, allowing them to be developed independently, making it easier to update and reuse.
 
 Similar to a chatbot, a module is also an OpenCUI frontend project, but it is commonly used to expose a single service conversationally. However, a module does not have the special skill "Main" like a chatbot does, so it cannot be deployed on its own. Modules are like libraries; they need to be imported into an application like a chatbot to be effective.
 
-Backend implementations of a service are typically also deployed separately. A provider is designed to offer a convenient way for the frontend to interact with a remote service implementation as if it were a local function call, while handling the necessary network communication details behind the scenes. You need to configure a provider so that it has the correct endpoints and required credentials to be usable. Once configured, it can be used by every chatbot in the organization. Here is how chatbots, modules and providers are typically working together. 
-
+Backend implementations of a service are typically also deployed separately. A provider is designed to offer a convenient way for the frontend to interact with a remote service implementation as if it were a local function call, while handling the necessary network communication details behind the scenes. You need to configure a provider so that it has the correct endpoints and required credentials to be usable. Once configured, it can be used by every chatbot in the organization. The following diagram shows how chatbots, modules, and providers typically work together:
 ::: thumbnail
 ![relationship](/images/guide/use-service/relationship.png)
 :::
 
-A full-stack component, consisting of a module of a service and a compatible provider, is all you need to provide this service conversationally. These pre-built, often higher quality full stack components is a very cost-effective way for you to introduce conversational experiences to your chatbot. This reuse can be done in three simple steps:
-1. Decide on a service you want to expose, make sure the module and provider are of high quality; 
-2. Set up a compatible provider into your organization and configure it, by cloning;
-3. Import the module of that service into the chatbot of your choice; 
-4. finally wire the provider to the service in the chatbot configuration; 
+A full-stack component, consisting of a module of a service and a compatible provider, is all you need to provide this service conversationally. These pre-built, often higher quality full stack components is a very cost-effective way for you to introduce conversational experiences to your chatbot. Here are the steps involved:
+1. Decide on a service you want to expose, make sure the module and provider are of high quality.
+2. Set up a compatible provider into your organization and configure it, by cloning.
+3. Import the module of that service into the chatbot of your choice.
+4. Wire the provider to the service in the chatbot configuration.
 
 
 ## Before you start
@@ -112,7 +111,7 @@ Once deployed, you need to inject the business data into the backend. For this u
    :::
 
 ### Populate database
-Before the backend can serve relevant information, you need to populate the databased with: your business hours and timezone. You can do this using the provided [backoffice](../reference/providers/postgrest.md#access-backoffice). 
+Before the backend can serve relevant information, you need to populate the databased with your business hours. You can do this using the provided [backoffice](../reference/providers/postgrest.md#access-backoffice). 
 
 For every organization that uses at least PostgreSQL provider, OpenCUI also created web application for this organization to manage the data in the backend. You can get there as superuser by clicking the **URL** and log in with the **Admin email** and the **Admin password**.
 
@@ -146,15 +145,6 @@ Everything is organized into tables in SQL backend, and table can be referenced 
 
    ::: thumbnail
    ![business hours list](/images/guide/use-service/business-hours-list.png)
-   :::
-
-#### Set up time zone
-
-1. On the **hoursProvider.Configuration** page, click **Create**.
-
-2. Enter the time zone of your business and save. Formatted as an [IANA Time Zone Database](http://www.iana.org/time-zones) name, e.g. "_America/Los_Angeles_".
-   ::: thumbnail
-   ![timezone-list](/images/guide/use-service/timezone-list.png)
    :::
 
 ## Import module to the chatbot
