@@ -7,8 +7,10 @@ In the previous guide, we showed how your chatbot can handle various business ho
 
 ## Before you start
 - [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-- [Build a simple chatbot](./build-simple-chatbot.md) for how to build a skill with entity slots.
-- [Reuse a full-stack component](./reuse-component.md) to get familiar with the functionality you will build here.
+- Read [build a simple chatbot](./build-simple-chatbot.md) to learn how to build a skill with entity slots.
+- Review the [example dialogue](./reuse-component.md#pick-a-full-stack-component) to get familiar with the functionality you will build here.
+<!--build module 需要了解的是 reuse component 中关于功能介绍的部分，或许可以不用知道如何 set up provider 或者 import module 等-->
+
 
 ## Create module: hours
 You need to create a module with service support, so you can solely focus on the conversational user interface, leaving the management of business information, like hours, as a separate concern.
