@@ -150,8 +150,7 @@ Inside the **target provider** with the hours module already imported and **Serv
    - Select **Kotlin** as the **Implementation**.
    - Copy and paste the following code: 
    ```kotlin
-   val zoneId = getTimeZone().timeZone!!
-   val currentDate = java.time.ZonedDateTime.now(zoneId).toLocalDate()
+   val currentDate = java.time.ZonedDateTime.now().toLocalDate()
    var hoursList = mutableListOf<BusinessHours>()
    
    for(i in 0..6){
