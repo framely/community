@@ -79,28 +79,28 @@ Once deployed, you need to populate the backend with business data. For this use
 ### Clone the provider
 1. **Clone** the [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) project and set its **Project label** to `hoursProvider` (it is ok to set to something else, but let's use this label in the quickstart).
 
-2. **Deploy PostgreSQL provider** by clicking **Deploy** button in the upper-right corner of the Versions area. For the PostgreSQL provider, this will create the tables and composite types defined in the cloned provider in the managed PostgreSQL instance for your organization if they have not been created before (or update schema when changes are needed), and make these tables available for both the backoffice and chatbot through RESTful APIs.
-
+2. **Deploy PostgreSQL provider** by clicking **Deploy** button in the upper-right corner of the Versions area. For the PostgreSQL provider, this will trigger OpenCUI to create a managed PostgreSQL instance for your organization and deploy the backend based on that. This includes but is not limited to the following tasks:
+   - Creating the tables for hosting data for the first time, or altering table structure based on changed annotations.
+   - Deleting all composite types and creating them again for use as function parameters or returns.
+   - Making these tables available for both the back office and chatbot through RESTful APIs.
+   
    ::: thumbnail
    ![deploy](/images/guide/use-service/deploy.png)
    :::
 
 ### Populate database
-Before the backend can serve relevant information, you need to populate the database with your business hours. You can do this using the [backoffice](../reference/providers/postgrest.md#access-backoffice). 
-
-For every organization that uses at least one PostgreSQL provider, OpenCUI also created web application for this organization to manage the data in the backend. You can access it:
+Before the backend can serve relevant information, you need to populate the database with your business hours. You can do this using the [backoffice](../reference/providers/postgrest.md#access-backoffice). For every organization that uses at least one PostgreSQL provider, OpenCUI also creates a web application for that organization to manage the data in the backend. You can access the back office as follows:
 1. Inside the provider `hoursProvider`, select the **Settings** tab, click **Configuration** on the left sidebar.
 2. Copy and paste the **URL** to your browser, use **Admin email** and **Admin password** to log into backoffice. 
 
 <!--Need to add the screen shot back if we decide, my suggestion is NOT, as it is not helping with ui element alignment. -->
 
+In the PostgreSQL backoffice, tables are grouped into a namespace on the left sidebar. The namespace is identified by a provider label, and the table is referenced by a frame type label. 
+
 #### Set up business hours
-In the PostgreSQL backoffice, tables are grouped into a database section on the left sidebar. The database is identified by a provider label, and the table is referenced by a frame type label. <!--This paragraph only describe the high level rules, so maybe we should move them into ### Populate database-->
+Each business has different hours and unique special days. This provider uses a table called 'Hours' to keep a record of this business-specific hours information. Before serving actual user queries, you need to populate this table with your hours.
 
-
-<!--In set up business hours, what is hours table? why builder should care? what should builder do? should describe here first. 而不是一上来让我 click create, fill form，至于为什么全凭猜，至于 table 整个功能要读完这段文档才能猜出来。。。-->
-To add business hours for each day of the week, follow these steps:
-
+To set business hours for each day of the week and for special days, follow these steps:
 1. Inside the `hoursProvider` database, click **Create** on the `Hours` table.
    ::: thumbnail
    ![create business hours](/images/guide/use-service/create-business-hours.png)
@@ -111,8 +111,8 @@ To add business hours for each day of the week, follow these steps:
    - **ifOpen** (*Required*): Select **True** if you are open on that day, or **False** if you are closed.
    - **openingTime** (*Required if `ifOpen` is `True`*): The time when you open on that day.
    - **closingTime** (*Required if `ifOpen` is `True`*): The time when you close on that day.
-   - **specialDate**  (*Optional*): If you have special business hours that are different from your main business hours such as holidays, you can add them using this column. Leave this field empty for main business hours.
-
+   - **specialDate**  (*Optional*): If you have special days, such as holidays, on which you do not hold regular hours, you can set them up using this column.
+   
    ::: thumbnail
    ![business hours list](/images/guide/use-service/business-hours-list.png)
    :::
