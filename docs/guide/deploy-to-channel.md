@@ -34,20 +34,21 @@ In the **Settings** tab and under **Integrations** page.
 
 
 ### Configure the Messenger channel
-1. Follow the steps in [Set up Messenger](../reference/channels/messenger.md#set-up-messenger) to set up your Meta app, copy the token from **generate access token** for use in OpenCUI.
-2. Configure the integration: 
+To integrate the Messenger into OpenCUI, we need to set up both side together. 
+1. Follow the steps in [Set up Messenger](../reference/channels/messenger.md#set-up-messenger) to set up your Meta application, remember to copy the token from **generate access token**, as you will need that here in OpenCUI.
+2. Configure this channel in the window just popped up and save: 
    - **Label**: Set a label for this channel type, should be unique in the chatbot. 
    - **Verify Token**: You can enter any private token you desire. This value will be needed to configure Messenger Webhook on Meta side.
    - **Page Access Token**: Enter the access token you copied from Messenger when set up Messenger.
    - **Locale**: Select a locale which determines the default language used by your bot.
    - **Callback URL**: Copy this value after setting the label and locale. This will be needed to configure Messenger Webhook.
-3. Click **Save**.
+
    ::: thumbnail
    ![config info](/images/guide/pingpong/config_info.png)
    :::
 
 ## Deploy chatbot
-After finishing the configuration of your channel, the next step is to deploy your chatbot. The Deploy action allows you to deploy the current master of your chatbot to the production environment, enabling your users to interact with it via the integrated channels. However, before deploying, you must ensure that your chatbot is integrated with at least one channel.
+After finishing the configuration of your channel, the next step is to deploy your chatbot. You always deploy the current master of your chatbot to the production environment, enabling your users to interact with it via the integrated channels.
 
 1. When you're done configuring, switch to **Versions** tab, and deploy your chatbot by clicking **Deploy** button.
    ::: thumbnail
@@ -60,4 +61,4 @@ After finishing the configuration of your channel, the next step is to deploy yo
    ![deploy checked icon](/images/guide/pingpong/deploy_checked_icon.png)
    :::
 
-3. You can now interact with the chatbot in messenger app.
+3. You can now interact with your chatbot in Messenger app.
