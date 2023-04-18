@@ -1,5 +1,13 @@
-# Contributing guide
-Thanks for taking the time to contribute!
+# Welcome to OpenCUI docs contributing guide
+Thank you for investing your time in contributing to our documentation! Any contribution you make will be reflected on [opencui.io](https://opencui.io/)
+
+## Guidelines
+- Don't make sentences wordy. 
+- Please break up the long sentence into shorter and simpler sentences.
+- Please simplify the language and make it more concise.
+- Please add more details to the steps, so that it is easier to follow.
+- Please use more transition words or commas to make the relationship between the two sentences clear.
+- Please use more transition words and phrases to make the paragraph flow more smoothly.
 
 ## Requirement of screenshots
 1. 截图的内容宽度应当使内容清晰呈现，避免为节省空间等问题造成本应在不同区域的内容挤在一起
