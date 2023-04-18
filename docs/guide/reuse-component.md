@@ -81,7 +81,7 @@ Once deployed, you need to inject the business data into the backend. For this u
 
 2. In the just cloned provider, merge the initial definition. 
    1. go to **Versions** page and click **Pull request** in the upper-right corner of the Versions area.
-
+   
       ::: thumbnail
       ![pull request](/images/guide/use-service/pull-request.png)
       :::
