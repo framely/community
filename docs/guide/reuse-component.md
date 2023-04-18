@@ -97,7 +97,7 @@ Before the backend can serve relevant information, you need to populate the data
 
 <!--Need to add the screen shot back if we decide, my suggestion is NOT, as it is not helping with ui element alignment. -->
 
-In the PostgreSQL backoffice, tables are grouped into a namespace on the left sidebar. The namespace is identified by a provider label, and the table is referenced by a frame type label. 
+In the PostgreSQL backoffice, tables are grouped into namespaces on the left sidebar. The namespace is identified by a provider label, and the table is referenced by a frame type label. 
 
 ##### Set up business hours
 Each business has different hours and unique special days. This provider uses a table called 'Hours' to keep a record of this business-specific hours information. Before serving actual user queries, you need to populate this table with your hours.
