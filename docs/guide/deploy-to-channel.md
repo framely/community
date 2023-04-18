@@ -13,22 +13,18 @@ The steps in this guide build upon the chatbot created in one of the previous gu
 ## Set up channels
 On OpenCUI, it is possible to configure multiple channels of the same type or of different types. In this guide, we will show you how to configure one channel of the Messenger type, and you can repeat this for any number of channels you like. To learn more about each type of channel, please refer to the [Channel](../reference/channels/overview.md) section.
 
-### Set up OpenCUI side
-Here are the steps on how to set up and enable a channel, specifically using Messenger as an example:
+### Create a Messenger channel
+Here are the steps on how to set up and enable a Messenger channel:
 
-1. In the navigation bar, select the **Settings** tab and head to **Integrations** page. In the **Deploy service provider** section, select **channel** service, which is labeled as `io.opencui.channel.IChannel`.
+In the **Settings** tab and under **Integrations** page. 
+1. In the **Deploy service provider** section, select `io.opencui.channel.IChannel` for setting up channel.
 
    ::: thumbnail
    ![service provider section](/images/guide/pingpong/service_provider_section.png)
    *Deploy service provider section*
-
-   <br>
-
-   ![select channel](/images/guide/pingpong/select_channel.png)
-   *Select io.opencui.channel.IChannel*
    :::
 
-2. A popup window will appear where you'll need to select **messenger**, which is labeled as `io.opencui.messenger`.
+2. A popup window will appear where you select `io.opencui.messenger` as channel type.
 
    ::: thumbnail
    ![select provider](/images/guide/pingpong/select_provider.png)
@@ -36,18 +32,15 @@ Here are the steps on how to set up and enable a channel, specifically using Mes
 
 3. The popup window will then display the necessary configuration information required by the Messenger channel.
 
-   ::: thumbnail
-   ![config popup](/images/guide/pingpong/config_popup.png)
-   :::
 
 ### Configure the Messenger channel
-1. Follow the steps in [Set up Messenger](../reference/channels/messenger.md#set-up-messenger) to set up your Meta app, **generate access token** and copy this value to OpenCUI.
+1. Follow the steps in [Set up Messenger](../reference/channels/messenger.md#set-up-messenger) to set up your Meta app, copy the token from **generate access token** for use in OpenCUI.
 2. Configure the integration: 
-   - **Label**: Set a label for this channel, should be unique. 
-   - **Verify Token**: You can enter any private token you desire. Copy this value. This will be used to configure Messenger Webhook.
-   - **Page Access Token**: Enter the access token you copied when set up messenger.
+   - **Label**: Set a label for this channel type, should be unique in the chatbot. 
+   - **Verify Token**: You can enter any private token you desire. This value will be needed to configure Messenger Webhook on Meta side.
+   - **Page Access Token**: Enter the access token you copied from Messenger when set up Messenger.
    - **Locale**: Select a locale which determines the default language used by your bot.
-   - **Callback URL**: Copy this value after setting the label and locale. This will be used to configure Messenger Webhook.
+   - **Callback URL**: Copy this value after setting the label and locale. This will be needed to configure Messenger Webhook.
 3. Click **Save**.
    ::: thumbnail
    ![config info](/images/guide/pingpong/config_info.png)
