@@ -125,7 +125,7 @@ Now, you need to add a native function to filter the resources by the number of 
    }
    ```
 
-#### Annotate type: PingPong
+#### Annotate type: MakeReservation
 
 OpenCUI provides [dialog annotations](../reference/annotations/overview) to define how the chatbot interacts with users, and [responses](../reference/glossary.md#response) to display the result. In this section, you add dialog annotations and responses to the **MakeReservation** skill.
 
