@@ -29,6 +29,8 @@ In this case, a `hours` service provides information about the business hours of
 - A function `getHoursWeek` to get the week of hours.
 - A function `getHoursDay` to return a specific day's business hour based on the specific date. 
 
+The `getHoursWeek` and `getHoursDay` functions can also be one function. We could have written a single function that takes a date as input and returns `BusinessHours`. However, for the demo, we chose to split the function into two functions. This is because it makes the code more modular and easier to understand.
+
 Here are the steps on how to declare the `hours` service in OpenCUI.
 -->
 
