@@ -185,6 +185,10 @@ Inside the `ShowHours` skill and the **Response** tab, under the **Structure** v
 
 Now you can define each branch one at a time, first in interaction layer, then in language layer, once for each language you want to support. But this guide assume only English is supported. 
 
+::: tip
+Remember to propagate the change in the structure view before you switch to language view, to make sure the annotation you can fill language part is made available.
+:::
+
 ##### Define branch: for an open day
 To show the business hours on a user-mentioned date.
 ###### Interaction layer
