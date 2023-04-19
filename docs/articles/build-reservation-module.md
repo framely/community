@@ -49,7 +49,7 @@ Then add a slot called **capacity** with type **kotlin.Int**. This feature shows
 Since this type does not need to be exposed conversationally, there is no need to add dialog annotation.
 
 
-### Build frame: MakeReservation
+### Build skill: MakeReservation
 
 #### Schema layer: declare a skill
 
