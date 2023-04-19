@@ -21,28 +21,25 @@ To create a module with service support, follow these steps:
    - **Enable service interface**: Enable service interface to define a service interface in a module that can be used by the module to interact with the backend.
 
 ## Declare service
-Declaring a service means that you define the function type for each API in the service. However, in order to define these function types, you must first define the data types for their input parameters and return values, which may need to be defined recursively in case one of these data types is composite. In OpenCUI, a frame is a standard user-defined composite type with support for polymorphism behaviors, and a entity is a primitive type. 
+Declaring a service means that you declare the function type for each API in the service, which include function label, its input parameters and return. Clearly, you must first declare the data types for their input parameters and return values, which may need to be done recursively in case one of these data types is composite. 
 
-<!--这部分讲的应该是类似 API 的部分，需要整体介绍一下，hours service 需要提供的体验是什么样子的，因为这样的体验所以需要定义哪些 frame 和 function。比如:
 In this case, a `hours` service provides information about the business hours of a specific business, typically consists of the following: 
-- A data structure `BusinessHours` to represent the business hours on a specific day.
-- A function `getHoursWeek` to get the week of hours.
-- A function `getHoursDay` to return a specific day's business hour based on the specific date. 
+- A data type `BusinessHours` to represent the business hours on a specific day.
+- A function `getHoursWeek` to get the hours for the week.
+- A function `getHoursDay` to return business hour for the specific date. 
 
-The `getHoursWeek` and `getHoursDay` functions can also be one function. We could have written a single function that takes a date as input and returns `BusinessHours`. However, for the demo, we chose to split the function into two functions. This is because it makes the code more modular and easier to understand.
+The `getHoursWeek` and `getHoursDay` functions can also be merged into one function. However, for the demo, we keep them separated to make the code more modular and easier to understand.
 
-Here are the steps on how to declare the `hours` service in OpenCUI.
--->
+Here are the steps on how to declare the `hours` service in OpenCUI. 
 
 ### Build frame: BusinessHours
-If you need a function that returns the business hours on a specific day, you'll need to provide the following information:
-<!--The data structure `BusinessHours` used to represent the business hours on a specific day can be a simple object with the following properties:-->
+To return the business hours on a specific day, you'll need a data type contains the following information:
 - **dayOfWeek**: The day of the week, like "Monday", "Tuesday", etc.
 - **ifOpen**: Whether it's open on that day.
 - **openingTime**: The time it opens.
 - **closingTime**: The time it closes.
 
-This suggests that you define a frame as type to represent the function return, since a OpenCUI frame is a standard user-defined composite type.
+You will define a "BusinessHours" frame for this purpose since a OpenCUI frame is an user defined composite type. 
 
 #### Schema layer: declare a frame
 At this layer, you will create a frame and add all of the necessary slots.
@@ -72,11 +69,7 @@ Once finished, the frame should look like this:
 #### Annotate type: BusinessHours
 Since this type does not need to be exposed conversationally, there is no need to add dialog annotation.
 
-### Declare function interfaces
-
-<!--我的预期：
-#### getHoursWeek
-
+### Declare function: getHoursWeek
 The function `getHoursWeek` gets the week of hours. It returns a list of `BusinessHours`, where each represents the business hours for a specific day. To declare this function interface: 
 
 Inside the **hours** module and **Service** page, under the **Structure** view.
@@ -84,7 +77,7 @@ Inside the **hours** module and **Service** page, under the **Structure** view.
 2. Enter `getHoursWeek` as the **Function label**.
 3. In the **Return type** section, select **Frame** > **BusinessHours** as **Type**. Turn on **Multi-value**d and turn off **Nullable**, then save.
 
-#### getHoursDay
+### Declare function: getHoursDay
 
 The function `getHoursDay` returns a specific day's business hour based on the specific date provided by customers. It takes a date as input and returns one `BusinessHours`, where the frame represents the business hours for the specified day. To declare this function interface: 
 
@@ -96,22 +89,6 @@ Inside the **hours** module and **Service** page, under the **Structure** view.
    - Select **Entity** > **java.time.LocalDate** as **Type**.
 4. In the **Return type** section, select **Frame** > **BusinessHours** as **Type** and turn off **Nullable**, then save.
 
--->
-
-To retrieve business hours for a specific day or in general, we can utilize the following two API functions:
-1. **getHoursDay**(date:java.time.LocalDate):BusinessHours
-2. **getHoursWeek**():List\<BusinessHours\>
-
-
-Inside the **hours** module and **Service** page, under the **Structure** view.
-1. In the **Functions** section, click **Add**.
-   - Enter `getHoursDay` as the **Function label**.
-   - In the **Parameters** section, click **+** to add an input parameter. Enter `date` as a **Name** and select **Entity** > **java.time.LocalDate** as **Type**.
-   - In the **Return type** section, select **Frame** > **BusinessHours** as **Type** and turn off **Nullable**, then save.
-
-2. In the **Functions** section, click **Add**.
-   - Enter `getHoursWeek` as the **Function label**.
-   - In the **Return type** section, select **Frame** > **BusinessHours** as **Type**. Turn on **Multi-value**d and turn off **Nullable**, then save.
 
 Once finished, the function interfaces should look like this:
 ::: thumbnail
