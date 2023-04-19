@@ -1,7 +1,7 @@
 # From Beginner to Master
-OpenCUI is a platform that helps you build conversational user interface for your services. It assumes that your services are defined and implemented separately. Once you declare your services on the [platform](https://build.opencui.io), you can build the conversational user interface for them declaratively.
+OpenCUI is a platform that helps you create conversational interfaces for your services. It assumes that your services are already developed and deployed. Once you declare your services on the [platform](https://build.opencui.io), you can use a declarative approach to build the conversational interface for them.
 
-To get the most out of OpenCUI, it is important to understand its type-based conceptual model. This is a significant departure from the more popular flow-based approach. We have created a set of tutorials that will walk you through the steps of understanding the conceptual model and becoming proficient in using OpenCUI to create outstanding conversational experiences.
+To make the most of OpenCUI, it's important to understand its type-based conceptual model, which is different from the more common flow-based approach. We have created a series of tutorials that will guide you through the process of understanding the conceptual model and becoming skilled at using OpenCUI to create excellent conversational experiences.
 
 #### [Sign up](signingup.md)
 We're still in beta, so we need you to sign up before you can use our service. This will help us allocate resources and make sure you have the best possible experience. All you need is a GitHub account, and it's best if your email is verified.
@@ -12,8 +12,8 @@ Here's a quick way to get started: clone an existing project. This guide will wa
 #### [Build a simple chatbot](build-simple-chatbot.md)
 This guide will walk you through the process of creating the simple chatbot that was introduced in the previous guide.
 
-#### [Reuse a full-stack component](reuse-component.md)
-Importing a module is another way to reuse existing work on OpenCUI. Modules are reusable conversational components based on their service interface. A full stack component is a module paired with a compatible provider. This guide will show you how to add functionality to your chatbot by reusing a full-stack component.
+#### [Reuse a module](reuse-component.md)
+Importing a module is another way to reuse existing work on OpenCUI. Modules are reusable conversational components based on their service interface. This guide will show you how to add functionality to your chatbot by reusing a module paired with a compatible provider.
 
 #### [Build a simple module](build-module.md)
 This guide will show you how to develop the module that were introduced in the [reuse component](#reuse-a-full-stack-component) guide.
