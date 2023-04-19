@@ -21,7 +21,7 @@ To help the chatbot create instances for arbitrary types, OpenCUI allows builder
 
 ##### Modules
 
-Modules are reusable conversational components. For example, a CUI date picker is a simple module that gets the user's preferred date. Modules can be combined to form larger modules for more complex use cases, or they can be imported into the chatbot to add new conversational experiences.
+Modules are reusable conversational components. For example, a CUI date picker is a simple module that gets the user's preferred date. Modules can be combined to form larger modules for more complex use cases, or they can be imported into the chatbot to add new conversational functionalities.
 
 ##### Providers
 A service can have one or more providers that connect the chatbot to the backend implementation for its functionalities. Providers can be shared by different chatbots in the same organization. OpenCUI supports three types of providers: PostgreSQL (OpenCUI hosted), RESTful, and native providers.
