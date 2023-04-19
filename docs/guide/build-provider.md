@@ -12,7 +12,7 @@ In the previous guide, you learned how to use a cloned PostgreSQL provider in co
 - [Build a simple chatbot](./build-simple-chatbot.md) for how to build a skill with entity slots.
 - [Reuse a full-stack module](./reuse-component.md) to get familiar with the functionality we try to build here.
 
-## Create PostgreSQL provider: hoursProvider
+## Create provider: hoursProvider
 You can create a provider under any organization, following these steps:
 1. Within an organization, in the upper right corner of the project area, click **Create** and select **Create provider**.
 2. In the pop-up window, complete the form for chatbot basic settings and click **Create**. For this provider, you only need to fill in the following fields:
@@ -21,11 +21,11 @@ You can create a provider under any organization, following these steps:
 
 Keep the **Provider type** to be PostgreSQL, and **Deploy mode** to be OpenCUI-hosted per default.
 
-## Import the module for the service
+## Import the service
 To implement a service, you need definitions for all types required by that service. This can be done by importing the module where the service is defined. Here are the steps to follow:
 1. Enter the **hours** module where the service is declared and import it into the provider you just created.
 
-## Create type needed by implementation
+## Create local types
 Sometimes, to simplify development, you may need intermediate functions. This, along with other reasons, may require defining additional types. However, for the service you want to implement here, this is not necessary, so we can skip this step.
 
 ## Build tables
