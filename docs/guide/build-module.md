@@ -167,7 +167,18 @@ Do **NOT** copy and paste the value wrapped by `$`. Please type the value instea
 :::
 
 #### Configure response
-On OpenCUI, response comes with a default catch-all branch that has no triggering condition. You can also turn on the additional branching if you need to handle complex use cases. When branching is enabled, you can add one for more branches, each with a triggering condition and the corresponding action. Note the ordering of these branches matters, OpenCUI runtime will go from top to bottom, and find the first branch with its triggering condition evaluated to true and execute its action. If no additional branch is triggered, OpenCUI will execute the actions in the default branch.
+On OpenCUI, response comes with a default catch-all branch that has no triggering condition. You can also turn on the additional branching if you need to handle complex use cases. When branching is enabled, you can add one or more branches, each with a triggering condition and the corresponding action. 
+
+OpenCUI supports two types of actions: messages and system actions. System actions are related to dialog management, such as closing the current session. Messages are used to render some structured data into natural language. 
+
+If the data you want to render is a single item, you should use a single value message. A single value message only needs a template to demonstrate how that data item should be rendered into natural language. 
+
+If the data you want to render is a list of items, you need to use a multiple value message. Such message requires you configure a source and a template structure. The source should be a Kotlin code expression that evaluates to a list of items of some data type. The template structure consists of a header, a body, and a footer, each used for a different purpose:
+- The header helps users quickly understand the purpose and context of the list.
+- The body contains the rendering of one item in the list. You can use "it" to reference the item itself.
+- The footer provides additional context or actions related to the list.
+
+When there are multiple branches, the ordering of these branches matters, OpenCUI runtime will go from top to bottom, and find the first branch with its triggering condition evaluated to true and execute its action. If no additional branch is triggered, OpenCUI will execute the actions in the default branch.
 
 The responses for this skill depend on a number of the things: whether `datePicker` slot is filled and whether the business is open on that day. In particular, there should be three branches:
 - If the specific date provided by the customer is closed, inform customers it closed and show the business hours for the week.
