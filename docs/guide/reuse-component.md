@@ -82,10 +82,10 @@ While the backend for other provider is managed as completely separate concern. 
 Once deployed, you need to populate the backend with business data. For this use case, you set the business hours for each day of the week, as well as the hours for special occasions.
 
 ### Clone provider: Hours
-- **Clone** the [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) project and set its **Project label** to `hoursProvider` (it is ok to set to something else, but let's use this label in the quickstart).
+To clone the Hours provider, inside [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema), click **Clone** and set its **Project label** to `hoursProvider` (it is ok to set to something else, but let's use this label in the quickstart).
 
 ### Deploy PostgreSQL provider
-- **Deploy PostgreSQL provider** by clicking **Deploy** button in the upper-right corner of the Versions area.
+To deploy PostgreSQL provider, clicking **Deploy** button in the upper-right corner of the Versions area.
    ::: thumbnail
    ![deploy](/images/guide/use-service/deploy.png)
    :::
@@ -127,11 +127,11 @@ Reusing the conversational experience in a module is simple: just import the mod
 ### Import the module
 To import the module that meets your needs into a chatbot, follow these steps:
 1. In the [hours module](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), click **Import** in the top-right corner of the page.
-3. Select the chatbot you want to import into and **Save**. If you don't have a chatbot yet, you need to create or clone one before importing. 
+2. Select the chatbot you want to import into and **Save**. If you don't have a chatbot yet, you need to create or clone one before importing. 
 
-  ::: thumbnail
-  ![import service](/images/guide/use-service/import-service.png)
-  :::
+::: thumbnail
+![import service](/images/guide/use-service/import-service.png)
+:::
 
 #### Wire the provider
 For each service that is referenced in the chatbot, you need to wire a provider to it so that the chatbot, or the module imported into the chatbot, can actually access the service implementation. You can wire different providers to the same service under different environments.
@@ -145,9 +145,9 @@ To wire the provider `hoursProvider` to the module `hours` service in chatbot's 
 
 When you are ready to deploy your service to the production environment, you need to repeat the steps above in the **Deploy service provider** section.
 
-   ::: thumbnail
-   ![set up provider](/images/guide/use-service/set-up-provider.png)
-   :::
+::: thumbnail
+![set up provider](/images/guide/use-service/set-up-provider.png)
+:::
 
 ### Test a chatbot
 Finally, you can try the chatbot for business hours using the built-in [Debug](../reference/platform/testing.md#how-to-use) tool. To do this, send the following messages to the chatbot:
