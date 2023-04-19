@@ -1,4 +1,4 @@
-# Reuse a module
+# Reuse a simple module
 
 This tutorial will show you how to add conversational functionality to your chatbot through the reuse of a module paired with a compatible provider.
 
@@ -24,8 +24,8 @@ A module of a service paired with a compatible provider is all you need to provi
 - We assume that you have finished [clone a simple chatbot](clone-simple-chatbot.md).
 - We assume that you have finished [build a simple chatbot](build-simple-chatbot.md).
 
-## Pick a paired module
-OpenCUI is designed to promote reusability of both frontend and provider. There are many modules available, so take some time to choose one that meets your needs when you want to add some functionalities to your chatbot. Reusing a module allows you to quickly increase the scope of the service that you offer conversationally, without incurring the high costs and long lead times associated with developing from scratch.
+## Pick a module
+OpenCUI is designed to promote reusability of both frontend and provider. There are many modules available, so take some time to choose one that meets your needs when you want to add some functionalities to your chatbot. Make sure the module of choice has compatible provider, preferably OpenCUI hosted ones like PostgreSQL provider so that you can try them with the least effort. Reusing a module allows you to quickly increase the scope of the service that you offer conversationally, without incurring the high costs and long lead times associated with developing from scratch.
 
 This guide will show you how to reuse an existing module-provider pair, consisting of [hours module](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema) and [hours provider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema), to field users' questions about your business hours. 
 

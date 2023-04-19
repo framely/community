@@ -12,7 +12,7 @@ Here's a quick way to get started: clone an existing project. This guide will wa
 #### [Build a simple chatbot](build-simple-chatbot.md)
 This guide will walk you through the process of creating the simple chatbot that was introduced in the previous guide.
 
-#### [Reuse a module](reuse-component.md)
+#### [Reuse a simple module](reuse-component.md)
 Importing a module is another way to reuse existing work on OpenCUI. Modules are reusable conversational components based on their service interface. This guide will show you how to add functionality to your chatbot by reusing a module paired with a compatible provider.
 
 #### [Build a simple module](build-module.md)
