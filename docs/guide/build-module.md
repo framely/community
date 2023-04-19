@@ -166,74 +166,85 @@ Inside the `ShowHours` skill and the **Expressions** tab, under the **Language/e
 Do **NOT** copy and paste the value wrapped by `$`. Please type the value instead.
 :::
 
-##### Configure response
-The responses for this skill depend on a number of the things: whether `datePicker` slot is filled and what the returned value is. OpenCUI allows you to configure responses with or without branching. When branching is enabled, you can specify conditions to control the response of the skill. Each condition has corresponding actions, such as displaying a list of values using multiple value message.
+#### Configure response
+On OpenCUI, response comes with a default catch-all branch that has no triggering condition. You can also turn on the additional branching if you need to handle complex use cases. When branching is enabled, you can add one for more branches, each with a triggering condition and the corresponding action. Note the ordering of these branches matters, OpenCUI runtime will go from top to bottom, and find the first branch with its triggering condition evaluated to true and execute its action. If no additional branch is triggered, OpenCUI will execute the actions in the default branch.
 
-<!--需要一个整体的介绍，比如：
-In this case, there will be three branches:
-1. If the specific date provided by the customer is closed, inform customers it closed and show the business hours for the week.
-2. If the specific date provided by the customer is open, show the business hours for the specific date.
-3. No specific date is provided, show the business hours for the week.
--->
+The responses for this skill depend on a number of the things: whether `datePicker` slot is filled and whether the business is open on that day. In particular, there should be three branches:
+- If the specific date provided by the customer is closed, inform customers it closed and show the business hours for the week.
+- If the specific date provided by the customer is open, show the business hours for the specific date.
+- No specific date is provided, show the business hours for the week.
 
-<!--
-【Discussion！！】感觉 branch 应当以 branch 为单位来写，而不是先写所有的 structure view 再写 language view。否则会很乱。
-1. 现在只有 3 个 branch 就对应不起来了，如果有 10 个，就更乱了
-2. 在 language layer 里，click the first branch、second branch 是不恰当的：其一，builder 不一定按顺序定义；其二，（不太确定现在 branch 是否有顺序，如果有顺序）在 builder 业务中的 first 和 second 可能和示例是不同的。
--->
+Clearly, you need to turn on the branching:
 
+Inside the `ShowHours` skill and the **Response** tab, under the **Structure** view.
+- turn on **Branching**.
+
+::: thumbnail
+![add a branch](/images/guide/build-service/branching.png)
+:::
+
+Now you can define each branch one at a time, first in interaction layer, then in language layer, once for each language you want to support. But this guide assume only English is supported. 
+
+##### Define branch: for an open day
+To show the business hours on a user-mentioned date.
 ###### Interaction layer
 Inside the `ShowHours` skill and the **Response** tab, under the **Structure** view.
-
-1. To configure responses with branching, turn on **Branching**.
-   ::: thumbnail
-   ![add a branch](/images/guide/build-service/branching.png)
-   :::
-
-2. To show the business hours on a user-mentioned date:
-   - In the **Branching** section, click **Add**.
-   - Inside a branch:
-      - In the **Conditions** section, copy and paste the following code:
-      ```kotlin
-      datePicker?.date != null && hours.getHoursDay(datePicker!!.date!!).ifOpen == true
-      ```
-      - In the **Action sequence** section, select **Single value message**.
-
-3. To inform the user it's closed on a user-mentioned date:
-   - Back to the **Response** tab, in the **Branching** section, click **Add**. 
-   - Inside a branch:
-     - In the **Conditions** section, copy and paste the following code:
-     ```kotlin
-     datePicker?.date != null && hours.getHoursDay(datePicker!!.date!!).ifOpen == false
-     ```
-   - In the **Action sequence** section, select **Single value message** and **Multiple value message**.
-     - **Single value message** is used to inform the user it's closed on that day.
-     - **Multiple value message** is used to display a list of business hours in a week, so the user can get additional information to make a choice.
-4. If no date is mentioned, use the default branch to display business hours for each day of the week:
-    - Back to the **Response** tab, in the **Default action** section, select **Multiple value message**.
-    - In the **Source** section, copy and paste the following code:
-   ``` kotlin
-   hours.getHoursWeek()
+1. In the **Branching** section, click **Add**.
+2. Inside a branch:
+   - In the **Conditions** section, copy and paste the following code:
+   ```kotlin
+   datePicker?.date != null && hours.getHoursDay(datePicker!!.date!!).ifOpen == true
    ```
+   - In the **Action sequence** section, select **Single value message**.
 
 ###### Language layer
 Inside the `ShowHours` skill and the **Responses** tab, under the **Language/en** view.
+In the **Single value message** section, enter this:
+_We are open on ${`datePicker!!.date!!.expression()`} from ${`hours.getHoursDay(datePicker!!.date!!).openingTime!!.expression()`} to ${`hours.getHoursDay(datePicker!!.date!!).closingTime!!.expression()`}._
 
-1. In the **Multiple value message** field, enter the following content:
-     - **Header**: _Our business hours in a week are_
-     - **Body**:
-        - _${`it.value.dayOfWeek!!.expression()`}_
-        - _${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}_
-       
-2. In the **Branching** section, click the first branch. 
-   - In the **Single value message** section, enter this: _We are open on ${`datePicker!!.date!!.expression()`} from ${`hours.getHoursDay(datePicker!!.date!!).openingTime!!.expression()`} to ${`hours.getHoursDay(datePicker!!.date!!).closingTime!!.expression()`}._
 
-3. Back to the **Response** tab, in the **Branching** field, click the second branch. 
-   - In the **Single value message** section, enter this: _Sorry, but we don't open on ${`datePicker!!.date!!.expression()`}._
-   - In the **Multiple value message** section, enter the following content:
-     - **Header**: _Our business hours in a week are_
-     - **Body**:
-       _${`it.value.dayOfWeek!!.expression()`}_
-       _${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}_
+##### Define branch: for a closed day
+When you are closed on the date that users are interested in, you first inform that it is closed, then you list regular weekly hours. 
 
-Now that you have finished building a module, you can  [create a pull request](./opencui-flow.md#create-a-pull-request), [merge it into the master](./opencui-flow.md#review-and-merge-pull-request). You can replace the module you imported with this one in the chatbot you used in the last guide, and experiment with it. 
+###### Interaction layer
+Inside the `ShowHours` skill and the **Response** tab, under the **Structure** view.
+To inform the user it's closed on a user-mentioned date:
+- Back to the **Response** tab, in the **Branching** section, click **Add**. 
+- Inside a branch:
+  - In the **Conditions** section, copy and paste the following code:
+  ```kotlin
+  datePicker?.date != null && hours.getHoursDay(datePicker!!.date!!).ifOpen == false
+  ```
+- In the **Action sequence** section, select **Single value message** and **Multiple value message**.
+  - **Single value message** is used to inform the user it's closed on that day.
+  - **Multiple value message** is used to display a list of business hours in a week, so the user can get additional information to make a choice.
+
+###### Language layer
+Inside the `ShowHours` skill and the **Responses** tab, under the **Language/en** view.
+- In the **Single value message** section, enter this:
+_Sorry, but we don't open on ${`datePicker!!.date!!.expression()`}._
+- In the **Multiple value message** section, enter the following content:
+  - **Header**: _Our business hours in a week are_
+  - **Body**:
+    _${`it.value.dayOfWeek!!.expression()`}_
+    _${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}_
+  - 
+##### Default branch: for the week
+If user did not give chatbot a date, simply response with regular weekly hours.
+###### Interaction layer
+Inside the `ShowHours` skill and the **Response** tab, under the **Structure** view.
+If no date is mentioned, use the default branch to display business hours for each day of the week:
+- In the **Default action** section, select **Multiple value message**.
+- In the **Source** section, copy and paste the following code:
+   ``` kotlin
+   hours.getHoursWeek()
+   ```
+###### Language layer
+Inside the `ShowHours` skill and the **Responses** tab, under the **Language/en** view.
+In the **Multiple value message** field, enter the following content:
+- **Header**: _Our business hours in a week are_
+- **Body**:
+   - _${`it.value.dayOfWeek!!.expression()`}_
+   - _${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}_
+
+Now that you have finished building a module, you can  [create a pull request](./opencui-flow.md#create-a-pull-request), [merge it into the master](./opencui-flow.md#review-and-merge-pull-request). You can then go back to the chatbot you used in the last guide, replace the module you imported with this one, and experiment with it. 

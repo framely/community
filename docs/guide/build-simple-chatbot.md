@@ -191,10 +191,10 @@ Inside the `PingPong` skill and the **Expression** tab, under the **Language/en*
 ![PingPong expression](/images/guide/pingpong/pingpong_expression.png)
 :::
 
-##### Configure response
+#### Configure response
 After being triggered, the PingPong skill responds a *"pong"* based on the location provided by the user, this behavior is controlled by a response. Responses are executed after the chatbot has all the slots filled per interaction logic defined by attached dialog annotations. In reality, chatbot should call out the service APIs and render the return back to user in natural text. It is often necessary to reference slots and function values in the response. In OpenCUI, this can be easily achieved using `${}` with arbitrary Kotlin code expression inside.
 
-###### Interaction layer
+##### Interaction layer
 Inside the `PingPong` skill and the **Response** tab, under the **Structure** view. 
 1. Select **Single value message** under the **Default action** section to declare a simple reply.
 
@@ -202,7 +202,7 @@ Inside the `PingPong` skill and the **Response** tab, under the **Structure** vi
 ![add response](/images/guide/pingpong/add_response.png)
 :::
 
-###### Language layer
+##### Language layer
 Inside the `PingPong` skill and the **Responses** tab, under the **Language/en** view. 
 1. Enter `Great! Pong to ${location?.expression()}.` in the **Single value message** field and press enter.
 
