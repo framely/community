@@ -1,11 +1,11 @@
 ---
 article: true
-date: 2023-03-02
+date: 2023-04-19
 
 image:
     - blog/banner/tutorial_reservation_cui.png
 description:
-    - We show you the way to build a reservation module step by step
+    - Document high-level design by contextual snippets
 author: Sunny May
 ---
 
