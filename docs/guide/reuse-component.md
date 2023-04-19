@@ -1,8 +1,8 @@
-# Reuse a full-stack component
+# Reuse a simple module
 
-A full-stack component is a self-contained, reusable functionality that encompasses both user-interfacing frontend and business logic backend implementation. This tutorial will show you how to add conversational functionality to your chatbot through the reuse of a full-stack component.
+This tutorial will show you how to add conversational functionality to your chatbot through the reuse of a module paired with a compatible provider.
 
-### Background
+## Background
 Modern business applications are typically broken down into a set of services, each responsible for a specific functionality. For example, an airline might have a ticketing service, which includes booking, checking seat availability, and canceling. As interfaces to business capabilities, these services decouple the frontend from the backend implementation of the service, allowing them to be developed independently, making it easier to update and reuse.
 
 Similar to a chatbot, a module is also an OpenCUI frontend project, but it is commonly used to expose a single service conversationally. However, a module does not have the special skill "Main" like a chatbot does, so it cannot be deployed on its own. Modules are like libraries, they need to be imported into an application like a chatbot to be effective.
@@ -12,22 +12,22 @@ Backend implementations of a service are typically also deployed separately. A p
 ![relationship](/images/guide/use-service/relationship.png)
 :::
 
-A full-stack component, consisting of a module of a service and a compatible provider, is all you need to provide this service conversationally. These pre-built, often higher quality full stack components is a very cost-effective way for you to introduce conversational experiences to your chatbot. Here are the steps involved:
+A module of a service paired with a compatible provider is all you need to provide this service conversationally. These pre-built, often higher quality module is a very cost-effective way for you to introduce conversational experiences to your chatbot. Here are the steps involved:
 1. Decide on a service you want to expose. Make sure the module and provider are of high quality.
 2. Set up a compatible provider into your organization and configure it. You can do this by cloning the provider.
 3. Import the module of that service into the chatbot of your choice.
 4. Wire the provider to the service in the chatbot configuration.
 
 
-### Before you start
+## Before you start
 - [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
 - We assume that you have finished [clone a simple chatbot](clone-simple-chatbot.md).
 - We assume that you have finished [build a simple chatbot](build-simple-chatbot.md).
 
-### Pick a full-stack component
-OpenCUI is designed to promote reusability of both frontend and provider. There are many full-stack components available, so take some time to choose one that meets your needs when you want to add some functionalities to your chatbot. Reusing a full-stack component allows you to quickly increase the scope of the service that you offer conversationally, without incurring the high costs and long lead times associated with developing from scratch.
+## Pick a module
+OpenCUI is designed to promote reusability of both frontend and provider. There are many modules available, so take some time to choose one that meets your needs when you want to add some functionalities to your chatbot. Make sure the module of choice has compatible provider, preferably OpenCUI hosted ones like PostgreSQL provider so that you can try them with the least effort. Reusing a module allows you to quickly increase the scope of the service that you offer conversationally, without incurring the high costs and long lead times associated with developing from scratch.
 
-This guide will show you how to reuse an existing full-stack component, consisting of [hours module](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema) and [hours provider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema), to field users' questions about your business hours. 
+This guide will show you how to reuse an existing module-provider pair, consisting of [hours module](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema) and [hours provider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema), to field users' questions about your business hours. 
 
 Here is an example that illustrates how this chatbot can helps users get business hours:
 
@@ -67,7 +67,7 @@ We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
 :::
 ::::
 
-### Set up a provider
+## Set up a provider
 To allow a module to interact with its service implementation, you need to set up a compatible provider in your organization and configure it so that it can connect to the actual backend. Additionally, you need to populate the backend with your business information.
 
 Instead of setting up a provider from scratch, in this guide, you will clone a PostgreSQL provider. The PostgreSQL provider is hosted by OpenCUI, which means that the corresponding backend implementation of services is also built and managed by OpenCUI. This backend is essentially a relational database with service APIs implemented in SQL and made available in RESTful. Additionally, this backend comes with an admin interface called "backoffice," which allows business operators to populate the database with their business data.
@@ -81,16 +81,16 @@ While the backend for other provider is managed as completely separate concern. 
    
 Once deployed, you need to populate the backend with business data. For this use case, you set the business hours for each day of the week, as well as the hours for special occasions.
 
-#### Clone provider: Hours
+### Clone provider: Hours
 - **Clone** the [hoursProvider](https://build.opencui.io/org/me.quickstart/agent/hoursProvider/struct/service_schema) project and set its **Project label** to `hoursProvider` (it is ok to set to something else, but let's use this label in the quickstart).
 
-#### Deploy PostgreSQL provider
+### Deploy PostgreSQL provider
 - **Deploy PostgreSQL provider** by clicking **Deploy** button in the upper-right corner of the Versions area.
    ::: thumbnail
    ![deploy](/images/guide/use-service/deploy.png)
    :::
 
-#### Populate database
+### Populate database
 Before the backend can serve relevant information, you need to populate the database with your business hours. You can do this using the [backoffice](../reference/providers/postgrest.md#access-backoffice). For every organization that uses at least one PostgreSQL provider, OpenCUI also creates a web application for that organization to manage the data in the backend. You can access the back office as follows:
 1. Inside the provider `hoursProvider`, select the **Settings** tab, click **Configuration** on the left sidebar.
 2. Copy and paste the **URL** to your browser, use **Admin email** and **Admin password** to log into backoffice. 
@@ -99,7 +99,7 @@ Before the backend can serve relevant information, you need to populate the data
 
 In the PostgreSQL backoffice, tables are grouped into namespaces on the left sidebar. The namespace is identified by a provider label, and the table is referenced by a frame type label. 
 
-##### Set up business hours
+#### Set up business hours
 Each business has different hours and unique special days. This provider uses a table called 'Hours' to keep a record of this business-specific hours information. Before serving actual user queries, you need to populate this table with your hours.
 
 To set business hours for each day of the week and for special days, follow these steps:
@@ -119,12 +119,12 @@ To set business hours for each day of the week and for special days, follow thes
    ![business hours list](/images/guide/use-service/business-hours-list.png)
    :::
 
-### Reuse module in chatbot
+## Reuse module in chatbot
 On OpenCUI, importing modules is another way to reuse conversational experiences. Unlike cloning a project where you use existing work as a starting point and modify anything to fit your needs, but you cannot benefit from any improvements that will be introduced to the source project after you clone it. With an imported module, it has to fit your needs from the get-go, as there are only limited things, mostly at the language layer, that you can customize. On the other hand, you can always upgrade an imported module to a newer version with bugs fixed and improved experiences. <!--This paragraph should be in ## Import the module-->
 
 Reusing the conversational experience in a module is simple: just import the module with the desired functionality into your chatbot and connect the service to a configured provider in your organization.
 
-#### Import the module
+### Import the module
 To import the module that meets your needs into a chatbot, follow these steps:
 1. In the [hours module](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), click **Import** in the top-right corner of the page.
 3. Select the chatbot you want to import into and **Save**. If you don't have a chatbot yet, you need to create or clone one before importing. 
