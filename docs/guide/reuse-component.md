@@ -135,7 +135,8 @@ To import the module that meets your needs into a chatbot, follow these steps:
 ![import service](/images/guide/use-service/import-service.png)
 :::
 
-#### Wire the provider
+### Wire the provider
+<!-- Wire the provider 好像应该和 import the module 是同一个层级的 -->
 For each service that is referenced in the chatbot, you need to wire a provider to it so that the chatbot, or the module imported into the chatbot, can actually access the service implementation. You can wire different providers to the same service under different environments.
 
 To wire the provider `hoursProvider` to the module `hours` service in chatbot's debug environment, follow these steps:
