@@ -86,7 +86,7 @@ To clone the Hours provider, inside [hoursProvider](https://build.opencui.io/org
 
 ### Deploy PostgreSQL backend
 <!-- change this line if we change the button from deploy to deploy backend -->
-To deploy PostgreSQL backend, click **Deploy** button in the upper-right corner of the Versions area.
+To deploy PostgreSQL backend, click **Deploy backend** button in the upper-right corner of the Versions area.
 
 ::: thumbnail
 ![deploy](/images/guide/use-service/deploy.png)
