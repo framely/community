@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
+    "build-old": "tsc -b tsconfig.build.json",
     "clean": "lerna run clean --stream",
     "copy": "lerna run copy --stream",
     "copy-watch": "lerna run copy --parallel -- --watch",
-    "dev": "yarn copy-watch & yarn build --watch",
+    "dev-old": "yarn copy-watch & yarn build --watch",
     "docs:build": "vuepress build docs --clean-cache",
     "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "docs:dev": "vuepress dev docs",
@@ -14,7 +14,10 @@
     "prepare": "husky install",
     "release": "yarn lint && yarn clean && yarn copy && yarn build && yarn test && lerna publish prerelease --dist-tag next",
     "test": "jest --runInBand",
-    "test:coverage": "yarn copy && yarn build && yarn test --coverage"
+    "test:coverage": "yarn copy && yarn build && yarn test --coverage",
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "notice": "sh scripts/notice.sh"
   },
   "lint-staged": {
     "*.{js,ts,vue}": "eslint --fix",
@@ -58,5 +61,8 @@
   "main": "index.js",
   "repository": "https://github.com/framely/community.git",
   "author": "Xiaoyun Wu <xiaoyun.wu@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "vitepress": "^1.0.0-alpha.65"
+  }
 }

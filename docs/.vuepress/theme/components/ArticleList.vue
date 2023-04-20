@@ -9,27 +9,27 @@
     </div> -->
 
     <article v-for="{ info, path } in items" :key="info">
-      
+
       <!-- New layout -->
       <RouterLink :to="path">
-      <div class="blog-card">
-        <div >
-          <img class="blog-card-image" :src="info.image" />
+        <div class="blog-card">
+          <div>
+            <img class="blog-card-image" :src="info.image" />
+          </div>
+          <div class="blog-card-info">
+            <div v-if="info.title">
+              <!-- <RouterLink :to="path"> -->
+              <h2 class="blog-card-info-title">{{ info.title }}</h2>
+            </div>
+            <div v-if="info.description">
+              <p class="blog-card-info-description">{{ info.description[0] }}</p>
+            </div>
+            <div class="blog-card-info-bottom">
+              <div class="author">{{ info.author }}</div>
+              <div v-if="info.date">{{ new Date(info.date).toLocaleDateString() }}</div>
+            </div>
+          </div>
         </div>
-        <div class="blog-card-info">
-          <div v-if="info.title">
-            <!-- <RouterLink :to="path"> -->
-            <h2 class="blog-card-info-title">{{ info.title }}</h2>
-          </div>
-          <div v-if="info.description">
-            <p class="blog-card-info-description">{{ info.description[0] }}</p>
-          </div>
-          <div class="blog-card-info-bottom">
-            <div class="author">{{ info.author }}</div>
-            <div v-if="info.date">{{ new Date(info.date).toLocaleDateString() }}</div> 
-          </div>
-        </div>
-      </div>
       </RouterLink>
       <!-- End new layout -->
 
@@ -55,82 +55,87 @@ defineProps({
   grid-row-gap: 2rem;
   grid-column-gap: 4rem;
 
-    .blog-card {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      position: relative;
-      top: 0;
-      transition: top ease 0.5s;
-      &:hover {
-        border-radius: 6px;
-        top: -10px;
-      }
-      margin-bottom: 4rem;
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+
+    &:hover {
+      border-radius: 6px;
+      top: -10px;
     }
+
+    margin-bottom: 4rem;
+  }
+
+  .blog-card-image {
+    width: 100%;
+    height: 10rem;
+    border-radius: 6px;
+    object-fit: cover;
+    background-color: var(--c-bg-light);
+  }
+
+  .blog-card-info {
+    display: flex;
+    flex-direction: column;
+    color: var(--c-text);
+    padding-top: 1rem;
+  }
+
+  .blog-card-info-title {
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 700;
+    border-bottom: none;
+  }
+
+  .blog-card-info-description {
+    color: var(--c-text-lighter);
+    margin-top: 0px;
+    font-weight: normal;
+  }
+
+  .blog-card-info-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    color: var(--c-text-lighter);
+    font-size: 12px;
+    font-weight: normal;
+  }
+
+  .author {
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width:960px) {
+  .article-wrapper {
+    padding: 0 2rem;
+    grid-column-gap: 2rem;
 
     .blog-card-image {
-      width: 100%;
-      height: 10rem;
-      border-radius: 6px;
-      object-fit: cover;
-      background-color: var(--c-bg-light);
+      height: 12rem;
     }
-
-    .blog-card-info {
-      display: flex;
-      flex-direction: column;
-      color: var(--c-text);
-      padding-top: 1rem;
-    }      
-
-    .blog-card-info-title {
-      text-transform: capitalize;
-      font-size: 20px;
-      font-weight: 700;
-      border-bottom: none;
-    }
-
-    .blog-card-info-description {
-      color: var(--c-text-lighter);
-      margin-top: 0px;
-      font-weight: normal;
-    }
-
-    .blog-card-info-bottom {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 0.5rem;
-      color: var(--c-text-lighter);
-      font-size: 12px;
-      font-weight: normal;
-    }
-
-    .author{
-      text-transform: uppercase;
-    }
-}
-@media (max-width:960px){
-  .article-wrapper {
-    padding:0 2rem;
-    grid-column-gap: 2rem;
-      .blog-card-image {
-        height: 12rem;
-      }
   }
 }
-@media (max-width:719px){
+
+@media (max-width:719px) {
   .article-wrapper {
-    grid-template-columns:1fr ;
+    grid-template-columns: 1fr;
     align-items: center;
   }
+
   .blog-card {
     border: 1px solid var(--c-border);
     border-radius: 6px;
     padding: 2rem;
   }
-   
-}
-</style>
+
+}</style>

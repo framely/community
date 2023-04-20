@@ -13,7 +13,7 @@
           </div>
           <ArticleList :items="articles.items" />
         </div>
-          <Footer />
+        <Footer />
       </main>
     </template>
   </ParentLayout>
@@ -39,6 +39,7 @@ const articles = useBlogType('article')
   .page {
     max-width: 100%;
   }
+
   /*.article-page{
   width: 100%;
   margin: auto;
