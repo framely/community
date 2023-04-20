@@ -108,7 +108,7 @@ Before you start, make sure you sign in to your [Google Admin console](https://a
    1. From the **Main Menu** in the Google Admin console, select **Directory** > **Buildings and resources** > **Manage resources**.
    2. Click **ADD BUILDING**.
    ::: thumbnail
-   ![resource management](/images/guide/reuse-module/resource-management.png)
+   ![resource management](/images/blog/tutorial-reuse-reservation/resource-management.png)
    :::
 
 2. To add a building:
@@ -121,7 +121,7 @@ Before you start, make sure you sign in to your [Google Admin console](https://a
    3. Click **ADD BUILDING**.
    4. Switch back to **Resources**.
    ::: thumbnail
-   ![add building](/images/guide/reuse-module/add-building.png)
+   ![add building](/images/blog/tutorial-reuse-reservation/add-building.png)
    :::
 
 #### Add resources
@@ -135,7 +135,7 @@ Before you start, make sure you sign in to your [Google Admin console](https://a
        - **Description (internal)**: `{"@class":"me.restaurant.tableReservation.Table", "durations": [3600], "capacity": 2}`
    3. Click **ADD RESOURCE**.
    ::: thumbnail
-   ![add resource](/images/guide/reuse-module/add-resource.png)
+   ![add resource](/images/blog/tutorial-reuse-reservation/add-resource.png)
    :::
 
 2. To add the other two resources, repeat the same steps but change each value in the **Description** field.
@@ -144,7 +144,7 @@ Before you start, make sure you sign in to your [Google Admin console](https://a
 
 After completing these steps, your building and resources should look like the screenshot below.
 ::: thumbnail
-![resources example](/images/guide/reuse-module/resources-example.png)
+![resources example](/images/blog/tutorial-reuse-reservation/resources-example.png)
 :::
 
 ### Block time in Google Calendar
@@ -168,7 +168,7 @@ Before you start, make sure you are an [admin](https://support.google.com/a/answ
      - (table)-My First Restaurant-1-Small table
 
    ::: thumbnail
-   ![add event](/images/guide/reuse-module/add-event.png)
+   ![add event](/images/blog/tutorial-reuse-reservation/add-event.png)
    :::
 
 3. Repeat step 6 to create additional events with the following details, then adjust the **time** and **Repeat** fields as needed:
@@ -182,22 +182,22 @@ Before you start, make sure you are an [admin](https://support.google.com/a/answ
 #### Add resources calendar
 1. On Other calendars, click **+** > **Browse resources**. If you don't see this option, wait a few hours for ACL changes to take effect before managing resources.
    ::: thumbnail
-   ![browse resources](/images/guide/reuse-module/browse-resources.png)
+   ![browse resources](/images/blog/tutorial-reuse-reservation/browse-resources.png)
    :::
 
 2. Tick the table resources you need.
    ::: thumbnail
-   ![tick resources](/images/guide/reuse-module/tick-resources.png)
+   ![tick resources](/images/blog/tutorial-reuse-reservation/tick-resources.png)
    :::
 
 3. Back to your calendars, choose one resource calendar, and click **Settings and sharing**.
    ::: thumbnail
-   ![click resoure](/images/guide/reuse-module/click-resoure.png)
+   ![click resoure](/images/blog/tutorial-reuse-reservation/click-resoure.png)
    :::
 
 4. Ensure the resource calendar's timezone matches its location to avoid scheduling errors.
    ::: thumbnail
-   ![check timezone](/images/guide/reuse-module/check-timezone.png)
+   ![check timezone](/images/blog/tutorial-reuse-reservation/check-timezone.png)
    :::
 
 5. Repeat steps 3-4 to check the timezone of the other two resource calendars.
@@ -208,7 +208,7 @@ Before you start, make sure you are an [admin](https://support.google.com/a/answ
 
 After completing these steps, your resource calendars should resemble the example below.
 ::: thumbnail
-![calendar example](/images/guide/reuse-module/calendar-example.png)
+![calendar example](/images/blog/tutorial-reuse-reservation/calendar-example.png)
 :::
 
 ## Import the module
@@ -234,18 +234,18 @@ Finally, you can try to use your chatbot to make a table reservation. To test th
 1. Use [Debug](../reference/platform/testing.md#debug) to send "_I want to book a table_" to start making a reservation. Then provide the number of guests, date and time. If there is an available table, you can book it successfully. For example:
 
    ::: thumbnail
-   ![example conversation](/images/guide/reuse-module/example-conversation.png)
+   ![example conversation](/images/blog/tutorial-reuse-reservation/example-conversation.png)
    :::
 
 2. Once you've made a reservation, you can go to your Google Calendar and check that reservation. Here is the reservation made by the above example:
 
    ::: thumbnail
-   ![example reservation](/images/guide/reuse-module/example-reservation.png)
+   ![example reservation](/images/blog/tutorial-reuse-reservation/example-reservation.png)
    :::
 
 The picture below shows how the reservation is made. 
 ::: thumbnail
-![message process](/images/guide/reuse-module/message-process.png)
+![message process](/images/blog/tutorial-reuse-reservation/message-process.png)
 :::
 
 ::tada:: Well done! You've built up a table reservation chatbot. To explore more use cases, you can check the [Test cases](../reference/platform/testing.md#test-cases) in the [tableReservationApp](https://build.opencui.io/org/me.restaurant/agent/tableReservationApp/en/type?page=0&imported=false&search=&category=ALL) chatbot.
