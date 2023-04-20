@@ -23,7 +23,7 @@ Keep the **Provider type** to be PostgreSQL, and **Deploy mode** to be OpenCUI-h
 
 ## Import the service
 To implement a service, you need definitions for all types required by that service. This can be done by importing the module where the service is defined. Here are the steps to follow:
-1. Enter the **hours** module where the service is declared and import it into the provider you just created.
+- Enter the [hours module](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema) where the service is declared, and **Import** it into the provider you just created.
 
 ## Create local types
 Sometimes, to simplify development, you may need intermediate functions. This, along with other reasons, may require defining additional types. However, for the service you want to implement here, this is not necessary, so we can skip this step.
@@ -49,7 +49,7 @@ To create a table for storing business hours data, you will first create an `Hou
 ##### Create the frame
 Inside the **target provider** with the hours module already imported and **Types** page.
 
-1. Click **Create** button on the right side, and select **Create frame** to create a new frame.
+1. Click **Create** button on the right side, and select **Create frame**.
 2. Enter `Hours` as a label for the frame type and press enter.
 3. Inside the `Hours` frame, turn on **Storage enabled**.
    ::: thumbnail
@@ -59,11 +59,11 @@ Inside the **target provider** with the hours module already imported and **Type
 ##### Add slots
 Inside the `Hours` frame and **Schema** tab.
 - In the **Slots** section, add the following slots:
-  - `dayOfWeek` with type **java.time.DayOfWeek**
-  - `ifOpen` with type **kotlin.Boolean**
-  - `openingTime` with type **java.time.LocalTime**
-  - `closingTime` with type **java.time.LocalTime**
-  - `specialDate` with type **java.time.LocalDate**
+  - Type **java.time.DayOfWeek** with label `dayOfWeek`.
+  - Type **kotlin.Boolean** with label `ifOpen`.
+  - Type **java.time.LocalTime** with label `openingTime`.
+  - Type **java.time.LocalTime** with label `closingTime`.
+  - Type **java.time.LocalDate** with label `specialDate`.
 
 #### Annotate type: Hours
 Based on the [columns description](#build-frame-hours) provided, it's important to note that the `dayOfWeek` and `ifOpen` columns should not be left empty. Additionally, since there are only seven days of the week, you need to apply constraints to ensure that the `dayOfWeek` column accepts valid input.
@@ -75,7 +75,7 @@ Backend annotations can optimize frames with storage enabled. To ensure complete
 
 Inside the `Hours/dayOfWeek` slot and **Annotation** tab.
 1. Turn off **Allow null**.
-2. Switch the **Input type** to **Dropdown**, and add this JSON array:
+2. Switch the **Input type** to **Dropdown**, and add the following JSON array:
    ```json
    [
     {
@@ -117,24 +117,24 @@ When it's done, the `dayOfWeek` slot should look like this:
 
 ##### Add slot level annotation to ifOpen
 Inside the `Hours/ifOpen` slot and **Annotation** tab.
-1. Turn off **Allow null**.
+- Turn off **Allow null**.
 
 ## Implement the service
 Finally, after the tables are ready, you can provide implementation for each function defined in the service. You can do this on the OpenCUI platform using [PL/pgSQL](https://www.postgresql.org/docs/current/plpgsql.html) or native Kotlin code.
 
 Inside the **target provider** with the hours module already imported and **Service** page.
 
-- In the **Functions** section, select `getHoursDay` function.
-   - Make sure the implementation is **Provider dependent**.
-   - Copy and paste the following code:
-     ```sql
-     BEGIN
+- In the **Functions** section, click into `getHoursDay` function.
+   1. Make sure the implementation is **Provider dependent**.
+   2. Add **Implementation** and **Save**. This function will return the business hour for the specific date, so the implementation can be like this:
+      ```sql
+      BEGIN
         RETURN QUERY
         SELECT "Hours"."dayOfWeek", "Hours"."ifOpen", "Hours"."openingTime", "Hours"."closingTime" FROM "Hours"
         WHERE
            (CASE
-             WHEN (SELECT DISTINCT "Hours"."ifOpen" FROM "Hours" WHERE "specialDate" = date) IS NULL
-            THEN "Hours"."dayOfWeek"
+               WHEN (SELECT DISTINCT "Hours"."ifOpen" FROM "Hours" WHERE "specialDate" = date) IS NULL
+               THEN "Hours"."dayOfWeek"
             END) = (SELECT EXTRACT(ISODOW FROM date))::text
         OR
            (CASE
@@ -142,24 +142,22 @@ Inside the **target provider** with the hours module already imported and **Serv
                THEN "specialDate"
             END) = date
         LIMIT 1;
-     END    
-     ```
-    - Click **Save**.
+      END    
+      ```
 
-- In the **Functions** section, select `getHoursWeek` function.
-   - Select **Kotlin** as the **Implementation**.
-   - Copy and paste the following code: 
-   ```kotlin
-   val currentDate = java.time.ZonedDateTime.now().toLocalDate()
-   var hoursList = mutableListOf<BusinessHours>()
-   
-   for(i in 0..6){
-       var date = currentDate.plusDays(i.toLong())
-       hoursList.add(getHoursDay(date))
-   }
-   
-   return hoursList
-   ```
-   - Click **Save**.
+- In the **Functions** section, click into `getHoursWeek` function.
+   1. Select **Kotlin** as the **Implementation**.
+   2. Add **Implementation** and **Save**. This function will get the business hours for the week, so the implementation can be like this:
+      ```kotlin
+      val currentDate = java.time.ZonedDateTime.now().toLocalDate()
+      var hoursList = mutableListOf<BusinessHours>()
+     
+      for(i in 0..6){
+         var date = currentDate.plusDays(i.toLong())
+         hoursList.add(getHoursDay(date))
+      }
+     
+      return hoursList
+      ```
 
-Now that you have finished building a PostgREST provide, you can [create a pull request](./opencui-flow.md#create-a-pull-request), [view it and merge it into the master](./opencui-flow.md#review-and-merge-pull-request). In the next step, you can use backoffice to add data for testing and use [function console](../reference/providers/postgrest.md#function-console) to test the functions that you just implemented.
+After you have finished building a PostgREST provide, you can [create a pull request](./opencui-flow.md#create-a-pull-request), [review changes and merge them into the master](./opencui-flow.md#review-and-merge-pull-request). In the next step, you can use backoffice to add data and use [function console](../reference/providers/postgrest.md#function-console) to test the functions you just implemented.
