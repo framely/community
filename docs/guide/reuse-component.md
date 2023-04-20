@@ -86,7 +86,7 @@ To clone the Hours provider, inside [hoursProvider](https://build.opencui.io/org
 
 ### Deploy PostgreSQL backend
 <!-- change this line if we change the button from deploy to deploy backend -->
-To deploy PostgreSQL backend, click **Deploy** button in the upper-right corner of the Versions area.
+To deploy PostgreSQL backend, click **Deploy backend** button in the upper-right corner of the Versions area.
 
 ::: thumbnail
 ![deploy](/images/guide/use-service/deploy.png)
@@ -116,6 +116,10 @@ To set business hours for each day of the week and for special days, follow thes
    - **openingTime** (*Required if `ifOpen` is `True`*): The time when you open on that day.
    - **closingTime** (*Required if `ifOpen` is `True`*): The time when you close on that day.
    - **specialDate**  (*Optional*): If you have special days, such as holidays, on which you do not hold regular hours, you can set them up using this column.
+
+   ::: tip Need to know
+   Currently, only one set of business hours can be set per day as the service is only designed for simple use cases.
+   :::
    
    ::: thumbnail
    ![business hours list](/images/guide/use-service/business-hours-list.png)
