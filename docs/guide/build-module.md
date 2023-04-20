@@ -245,6 +245,17 @@ _Sorry, but we don't open on ${`datePicker!!.date!!.expression()`}._
     _${`if (it.value.ifOpen == true) it.value.openingTime!!.expression() + " ⁠– " + it.value.closingTime!!.expression() else "Closed"`}_
   - 
 ##### Default branch: for the week
+<!-- 目前分成 3 个 branch 清楚许多了，不过 Default branch 的格式好像和前面 define branch 的格式不太一致，或许可以都以动词开头？比如可以考虑修改为
+- Option A:
+   Define branch: for an open day
+   Define branch: for a closed day
+   Define default branch: for the week
+
+- Option B:
+   Add branch: for an open day
+   Add branch: for a closed day
+   Define default branch: for the week
+-->
 If user did not give chatbot a date, simply response with regular weekly hours.
 ###### Interaction layer
 Inside the `ShowHours` skill and the **Response** tab, under the **Structure** view.
