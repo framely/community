@@ -117,8 +117,8 @@ To set business hours for each day of the week and for special days, follow thes
    - **closingTime** (*Required if `ifOpen` is `True`*): The time when you close on that day.
    - **specialDate**  (*Optional*): If you have special days, such as holidays, on which you do not hold regular hours, you can set them up using this column.
 
-   ::: warning Caution
-   Only one set of business hours can be set per day. Please avoid setting multiple sets of business hours for the same day, as this provider does not currently support this functionality.
+   ::: tip Need to know
+   Currently, only one set of business hours can be set per day as the service is only designed for simple use cases.
    :::
    
    ::: thumbnail
