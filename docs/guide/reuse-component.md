@@ -135,7 +135,7 @@ To import the module that meets your needs into a chatbot, follow these steps:
 ![import service](/images/guide/use-service/import-service.png)
 :::
 
-#### Wire the provider
+### Wire the provider
 For each service that is referenced in the chatbot, you need to wire a provider to it so that the chatbot, or the module imported into the chatbot, can actually access the service implementation. You can wire different providers to the same service under different environments.
 
 To wire the provider `hoursProvider` to the module `hours` service in chatbot's debug environment, follow these steps:
@@ -151,7 +151,7 @@ When you are ready to deploy your service to the production environment, you nee
 ![set up provider](/images/guide/use-service/set-up-provider.png)
 :::
 
-### Test a chatbot
+## Test a chatbot
 Finally, you can try the chatbot for business hours using the built-in [Debug](../reference/platform/testing.md#how-to-use) tool. To do this, send the following messages to the chatbot:
 - *"When do you open?"* - This will return the business hours for the entire week, starting with the current day of the week.
 - *"Do you open this Friday?"* - This will return the business hours for this Friday, if it is open. If it is closed, you will be informed and the weekly business hours will be shown.
