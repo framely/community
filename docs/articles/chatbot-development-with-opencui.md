@@ -25,6 +25,6 @@ To build conversational user interface for any service, OpenCUI uses a data syst
 We also introduced other tools to make building full-fledged chatbot easier, like using [contextual snippet](https://opencui.io/articles/document-requirement-for-cui.html) for documenting user interaction requirement and design, using SQL to implement service provider directly. Here is a list of the tutorials that demonstrates how to build chatbot with OpenCUI. 
 
 1. Build a table reservation chatbot from scratch. You can learn how to reuse a table reservation module to build a chatbot. Then, try to build a table reservation module by yourself.
-    1. [Requirements on reservation chatbot](build-reservation-module.md#cui-design)
-    2. [Reuse table reservation to build a chatbot](quickstart-reservation.md)
-    3. [Build table reservation module](build-reservation-module.md#build-module) 
+   1. [Requirements on reservation chatbot](reservation-cui-desgin.md)
+   2. [Reuse table reservation to build a chatbot](reuse-reservation-module.md)
+   3. [Build table reservation module](build-reservation-module.md) 
