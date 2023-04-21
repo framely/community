@@ -19,8 +19,8 @@ The table reservation module is intended to help users to book, view or cancel r
 We will take [making a reservation](./reservation-cui-desgin.md#make-a-reservation) as an example to show you the steps to build a module. To know how the last two services are built, you can check the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent) to learn more information.
 
 ## Before you start
-1. [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-2. We assume that you are already familiar with the procedures on the platform. If not, we recommend that you read the [Quickstart guide](../guide/README.md) first.
+1. [Sign up](./../guide/signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+2. We assume that you are already familiar with the procedures on the platform. If not, we recommend that you read the [Quickstart guide](../guide/index.md) first.
 
 ## Create module: tableReservation
 To begin with, create a module and fill out the creating-project form following these settings:
