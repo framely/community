@@ -20,7 +20,7 @@ layout: home
 },{
     info: {
       title:'How To Build A Reservation Chatbot',
-      description: 'Reuse table reservation module to build a chatbot',
+      description: ['Reuse table reservation module to build a chatbot'],
       image: './../images/blog/banner/tutorial_reservation_i.png',
       author: 'Sunny May'
     },
@@ -28,7 +28,7 @@ layout: home
 },{
     info: {
       title:'How To Build A Reservation Chatbot',
-      description: 'Reuse table reservation module to build a chatbot',
+      description: ['Reuse table reservation module to build a chatbot'],
       image: './../images/blog/banner/tutorial_reservation_i.png',
       author: 'Sunny May'
     },
@@ -36,7 +36,7 @@ layout: home
 },{
     info: {
       title:'How To Build A Reservation Chatbot',
-      description: 'Reuse table reservation module to build a chatbot',
+      description: ['Reuse table reservation module to build a chatbot'],
       image: './../images/blog/banner/tutorial_reservation_i.png',
       author: 'Sunny May'
     },
@@ -44,7 +44,7 @@ layout: home
 },{
     info: {
       title:'How To Build A Reservation Chatbot',
-      description: 'Reuse table reservation module to build a chatbot',
+      description: ['Reuse table reservation module to build a chatbot'],
       image: './../images/blog/banner/tutorial_reservation_i.png',
       author: 'Sunny May'
     },
@@ -52,7 +52,7 @@ layout: home
 },{
     info: {
       title:'How To Build A Reservation Chatbot',
-      description: 'Reuse table reservation module to build a chatbot',
+      description: ['Reuse table reservation module to build a chatbot'],
       image: './../images/blog/banner/tutorial_reservation_i.png',
       author: 'Sunny May'
     },
@@ -60,7 +60,7 @@ layout: home
 },{
     info: {
       title:'How To Build A Reservation Chatbot',
-      description: 'Reuse table reservation module to build a chatbot',
+      description: ['Reuse table reservation module to build a chatbot'],
       image: './../images/blog/banner/tutorial_reservation_i.png',
       author: 'Sunny May'
     },
