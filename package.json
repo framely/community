@@ -17,6 +17,7 @@
     "test:coverage": "yarn copy && yarn build && yarn test --coverage",
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
     "notice": "sh scripts/notice.sh"
   },
   "lint-staged": {
