@@ -45,9 +45,9 @@ To integrate the Messenger into OpenCUI, both sides need to be set up simultaneo
 
 ## Deploy chatbot
 
-Channels are only supported in the OpenCUI production environment, so you need to deploy your chatbot to production environment. Once you have finished configuring your channel, the next step is to deploy your chatbot. Only current master of your chatbot is deployed to the production environment, so make sure you merge your change into master before you deploy.
+After you finish configuring your channel, the next step is to deploy your chatbot into the OpenCUI production environment, since channels are only supported there. Furthermore, only the master branch can be deployed to the production environment, so make sure that you merge all your changes into the master branch before deploying.
 
-1. When you're done configuring, switch to **Versions** tab, and deploy your chatbot by clicking **Deploy** button.
+1. Under **Versions** tab, and deploy your chatbot by clicking **Deploy** button.
    ::: thumbnail
    ![deploy chatbot](/images/guide/pingpong/deploy_chatbot.png)
    :::
