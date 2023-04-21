@@ -26,5 +26,5 @@ node_modules/
 .idea
 yarn.lock
 package-log.json
-docs/.vitepress/dist
-docs/.vitepress/cache
+docs/.vitepress/dist/
+docs/.vitepress/cache/
