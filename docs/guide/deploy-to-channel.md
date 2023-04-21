@@ -4,6 +4,10 @@ Once you have developed and tested your chatbot, you can deploy it and start ser
 
 Let's use Messenger as an example to understand how it works. When a user sends a message using the Messenger client software, the Messenger platform forwards that message to the endpoint that your channel implementation is listening on. Once your chatbot receives the user input, it produces output and asks the channel implementation to send the reply to the endpoint that the Messenger platform is listening on, which will then forward the reply to the end user. Clearly, you need to configure both the external channel platform and OpenCUI so that they know where to send messages to.
 
+::: thumbnail
+![deploy](/images/guide/pingpong/deploy_chatbot_channel.png)
+:::
+
 ## Before you start
 The steps in this guide build upon the chatbot created in one of the previous guides.
 
