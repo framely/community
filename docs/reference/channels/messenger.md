@@ -2,9 +2,9 @@
 ::: right
 ![test](/images/channelConfig/messenger/test.png)
 :::
-The [Messenger Platform](https://developers.facebook.com/docs/messenger-platform/introduction) is meant for businesses to handle inquiries from their customers. Using the Facebook Messenger integration, you can create a Facebook Messenger bot to interact with your end-users within your business. 
+Using the Facebook Messenger integration, you can create a Facebook Messenger chatbot to interact with your end-users within your business. The chatbot need to be configured on the [Messenger Platform](https://developers.facebook.com/docs/messenger-platform/introduction), so Facebook knows where to forward user messages for your chatbot to handle.
 
-We are going to show here how to integrate OpenCUI with Messenger and deploy the chatbot to a OpenCUI hosted environment. For the private deployment, please consult systems in your organization.
+We are going to show you how to integrate Messenger with an OpenCUI chatbot in an OpenCUI hosted environment. For private deployment, please check with the DevOps team in your organization.
 
 Follow these steps to configure:
 [[toc]]
