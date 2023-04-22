@@ -20,8 +20,8 @@ The design and implementation of this module are based on the following two assu
 To make a reservation, the following information is needed (captured by slots):
 1. `useId` to uniquely identify the user making the reservation, with type **String**, 
 2. `numberOfGuests` for the number of guests attending, with type **Int**
-3. `reservationDate` for the reservation, with type **LocalDate**
-4. `reservationTime` for the reservation, with type **LocalTime**
+3. `date` for the reservation, with type **LocalDate**
+4. `time` for the reservation, with type **LocalTime**
 
 The service's conversational behavior is described in the following [contextual snippets](document-requirement-for-cui.md):
 
@@ -41,22 +41,22 @@ The service's conversational behavior is described in the following [contextual 
    - 🙂 Yes.
    - 🤖 Your reservation has been made. We'll see you at 3:00 PM on Sunday, December 25, 2022. You can check the reservation under your ID: xxxx.
 
-4. End state: Slots `useId`, `numberOfGuests`, `reservationDate` and `reservationTime` are filled, `complete` = true.
+4. End state: Slots `useId`, `numberOfGuests`, `date` and `time` are filled, `complete` = true.
 
 
 ### Inform reservation failure
 1. Description: Informs the user when there is a failure to create a reservation.
-2. Precondition: Slots `useId`, `numberOfGuests`, `reservationDate` and `reservationTime` are all filled, `complete` = true
+2. Precondition: Slots `useId`, `numberOfGuests`, `date` and `time` are all filled, `complete` = true
 3. Annotated conversation:
 
    - 🤖 Are you sure to book a table for 2 at 3:00 PM on Sunday, December 25, 2022?
    - 🙂 Yes.
    - 🤖 Sorry, the table you want to book is not available at present. You may change to another time or date, and try it again.
 
-4. End state: keep the filling for slots `useId` and `numberOfGuests`, clear up slot: `reservationDate`, `reservationTime` and `complete`.
+4. End state: keep the filling for slots `useId` and `numberOfGuests`, clear up slot: `date`, `time` and `complete`.
 
 ### Handle invalid input
-Using the `reservationDate` as example, the conversational experience should be as follows.
+Using the `date` as example, the conversational experience should be as follows.
 1. Description: Asks the user to provide another date when the date provided is not serviceable.
 2. Precondition: Slots `useId` and `numberOfGuests` are filled, `complete` = false
 3. Annotated conversation:
@@ -65,18 +65,18 @@ Using the `reservationDate` as example, the conversational experience should be 
    - 🙂 This Sunday.
    - 🤖 Sunday, December 25, 2022 is not available. Please choose another date. Which day will you be joining us on?
 
-4. End state: Slots `useId` and `numberOfGuests` are filled, slot `reservationDate` are active, `complete` = false.
+4. End state: Slots `useId` and `numberOfGuests` are filled, slot `date` are active, `complete` = false.
 
 ### Support updating value 
-Again using `reservationDate` as example:
+Again using `date` as example:
 1. Description: Updates the slot with new value when the user requests a change.
-2. Precondition: slot `useId`, `numberOfGuests` and `reservationDate` are filled, `complete` = false.
+2. Precondition: slot `useId`, `numberOfGuests` and `date` are filled, `complete` = false.
 3. Annotated conversation:
 
    - 🙂 Can I change the date to this Saturday?
    - 🤖 Sure, the date is changed from Sunday, December 25, 2022 to Saturday, December 24, 2022.
 
-4. End state: slot `reservationDate` is filled with new value, `complete` = false.
+4. End state: slot `date` is filled with new value, `complete` = false.
 
 ## View reservations
 To view all valid reservations a user has so far, chatbot needs to identify the user whose reservations are being viewed. The service schema should have the following slot:
