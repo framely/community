@@ -42,11 +42,11 @@ Inside your chatbot, in the **Settings** tab and under **Integrations** page.
 
 1. In the **Deploy service provider** section, select `io.opencui.channel.IChannel` for setting up channel.
    ::: thumbnail
-   ![select the service](/images/channelConfig/overview/select-service.png)
+   ![select the service](/images/channelConfig/messenger/select-service.png)
    :::
 2. A popup window will appear. In the **Service provider** dropdown, select `io.opencui.messenger`. Then the necessary configuration information required by the Messenger channel will be displayed in the same window.
    ::: thumbnail
-   ![select a channel](/images/channelConfig/overview/select-channel.png)
+   ![select a channel](/images/channelConfig/messenger/select-channel.png)
    :::
 3. Continue inside the popup window, configure the following settings and save: 
    - **Label**: Set a label for this channel type, should be unique in the chatbot.
