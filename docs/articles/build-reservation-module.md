@@ -12,11 +12,11 @@ author: Sunny May
 # How to build a reservation module
 <!--添加和 quickstart 中的对照，build simple moudle 创建的是 base module，这里要创建的是 composite module, 前者要定义 service，后者要使用 service-->
 
-This guide shows you how to build a module under the [reservation CUI design](./reservation-cui-desgin.md). Since [reservation APIs](../reference/plugins/services/reservation/reservation-api.md) offer service interfaces that cover typical booking scenarios, we will use these APIs to create a reservation system in a specific domain, such as table reservations.
+This guide shows you how to build a module under the [reservation CUI design](./reservation-cui-design.md). Since [reservation APIs](../reference/plugins/services/reservation/reservation-api.md) offer service interfaces that cover typical booking scenarios, we will use these APIs to create a reservation system in a specific domain, such as table reservations.
 
 The table reservation module is intended to help users to book, view or cancel reservation for specific dates and times with a set number of guests.  Its reusable nature allows builders to customize the table reservation service within their chatbots. For instance, builders can configure their own table types and capacities that fit their specific restaurant.
 
-We will take [making a reservation](./reservation-cui-desgin.md#make-a-reservation) as an example to show you the steps to build a module. To know how the last two services are built, you can check the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/intent) to learn more information.
+We will take [making a reservation](./reservation-cui-design.md#make-a-reservation) as an example to show you the steps to build a module. To know how the last two services are built, you can check the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type) to learn more information.
 
 ## Before you start
 1. [Sign up](./../guide/signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
