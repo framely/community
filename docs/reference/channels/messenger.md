@@ -1,13 +1,11 @@
 # Messenger
-::: right
+The [Messenger Platform](https://developers.facebook.com/docs/messenger-platform/introduction) allows your app to send and receive messages between your Facebook Page and your customers. Messenger from Meta is a messaging service that allows a business' Facebook Page to respond to messages from customers. By integrating Messenger with OpenCUI, businesses can use OpenCUI's chatbot to handle customer messages more quickly and efficiently.
+
+This tutorial will show you how to integrate Messenger with an OpenCUI chatbot in the OpenCUI production environment. For private deployments, please check with your organization's DevOps team.
+
+::: thumbnail
 ![test](/images/channelConfig/messenger/test.png)
 :::
-Using the Facebook Messenger integration, you can create a Facebook Messenger chatbot to interact with your end-users within your business. The chatbot need to be configured on the [Messenger Platform](https://developers.facebook.com/docs/messenger-platform/introduction), so Facebook knows where to forward user messages for your chatbot to handle.
-
-We are going to show you how to integrate Messenger with an OpenCUI chatbot in the OpenCUI production environment. For private deployment, please check with the DevOps team in your organization.
-
-Follow these steps to configure:
-[[toc]]
 
 ## Before you begin
 On the Messenger side, please ensure you have all of the following:
@@ -17,7 +15,7 @@ On the Messenger side, please ensure you have all of the following:
 
 
 ## Set up Messenger
-1. Use [Meat App Dashboard](https://developers.facebook.com/apps) to add the Messenger product to your Meta App: 
+1. Use [Meta App Dashboard](https://developers.facebook.com/apps) to add the Messenger product to your Meta App: 
    1. Enter the App you want to configure, click **Add Product** on the left sidebar menu. 
    2. Click **Set Up** button on **Messenger** product.
 
@@ -38,54 +36,40 @@ On the Messenger side, please ensure you have all of the following:
    :::
 
 ## Configure Messenger from OpenCUI
+OpenCUI allows you to configure multiple Messenger channels. This section will show you how to configure a single channel, but you can repeat the process for any number of channels you need. 
 
-1. On OpenCUI platform, go to service component [io.opencui.channel](https://build.opencui.io/org/io.opencui/agent/channel/struct/service_schema): 
-   1. Click **Import** button on the second topbar.
-   2. Select the chatbot you want to configure Messenger channel and **Save**.
+Inside your chatbot, in the **Settings** tab and under **Integrations** page.
 
-   ::: thumbnail
-   ![import channel component](/images/channelConfig/overview/import-channel.png)
-   :::
-
-2. Once you have done, switch to your chatbot to wire Messenger channel:
-   1. On **STRUCT** level, head to **Settings** page, in the **Integrations** tab, select the service you just import. In this case, please select **io.opencui.channel.IChannel**.
-   2. A configuration dialog opens, at **Service Provider** field, select **io.opencui.messenger** to wiring Messenger channel.
-
+1. In the **Deploy service provider** section, select `io.opencui.channel.IChannel` for setting up channel.
    ::: thumbnail
    ![select the service](/images/channelConfig/overview/select-service.png)
-   *Select service io.opencui.channel.IChannel*
-
-   <br>
-
-   ![select a channel](/images/channelConfig/overview/select-channel.png)
-   *Wire Messenger channel*
    :::
-
-3. Continue inside the dialog, configure Messenger integration as following: 
-   - **Label**: Enter channel label, should be **unique**.
-   - **Verify Token**: Enter any private token you desire. :clipboard: Copy this value. This will be used to configure the Messenger Webhook. 
-   - **Page Access Token**: Paste the access token you copied during the Facebook app setup above.
-   - **Locale**: Select locale which determines the default language used by your bot.
-   - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the Messenger Webhook. 
+2. A popup window will appear. In the **Service provider** dropdown, select `io.opencui.messenger`. Then the necessary configuration information required by the Messenger channel will be displayed in the same window.
+   ::: thumbnail
+   ![select a channel](/images/channelConfig/overview/select-channel.png)
+   :::
+3. Continue inside the popup window, configure the following settings and save: 
+   - **Label**: Set a label for this channel type, should be unique in the chatbot.
+   - **Verify Token**: Enter any private token you desire. This value will be needed to configure Messenger Webhook on Meta's side.
+   - **Page Access Token**: Enter the access token you copied from Messenger when you set it up.
+   - **Locale**: Select a locale that determines the default language used by your chatbot.
+   - **Callback URL**: Copy this value after setting the label and locale. This will be needed to configure Messenger Webhook.
 
    ::: thumbnail
    ![add channel](/images/channelConfig/messenger/add-channel.png)
    :::
 
-4. Before you go to next step, don't forget to merge your changes into master and deploy your chatbot.
+4. Before you move on to the next step, be sure to deploy your chatbot to the OpenCUI production environment.
 
 ## Finish Messenger setup
 
-1. Configure the Messenger webhook for your app. Back to your Meta App:
-   1. Go to **Messenger > Settings** panel, scroll down to **Webhooks** section, click **Add Callback URL** button. 
-   2. A Webhook setting dialog opens, use the **Callback URL** and **Verify Token** values you copied above, click **Verify and Save** button. 
-
+Configure the Messenger webhook for your app. Back to your Meta App:
+1. Go to **Messenger > Settings** panel, scroll down to **Webhooks** section, click **Add Callback URL** button. 
+2. A Webhook setting dialog opens, use the **Callback URL** and **Verify Token** values you copied above, then click **Verify and Save**. 
    ::: thumbnail
    ![config webhook](/images/channelConfig/messenger/config-webhook.png)
    :::
-
-2. In the **Webhooks** section, click **Add subscriptions** button and enable `messages` and `messaging_postbacks` in the page subscriptions.
-
+3. In the **Webhooks** section, click **Add subscriptions** button and enable `messages` and `messaging_postbacks` in the page subscriptions.
    ::: thumbnail
    ![add subscriptions](/images/channelConfig/messenger/add-subscriptions.png)
    :::
