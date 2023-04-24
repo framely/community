@@ -7,7 +7,7 @@ Follow the following steps to get a OpenCUI account. Let's begin:
 
 [[toc]]
 
-### Sign up for an account
+## Sign up for an account
 
 To create your starter OpenCUI account, please visit the [Sign up page](https://docs.google.com/forms/d/e/1FAIpQLSeYGRXfYnB_uDKTS4hUfcD3w1f9LDI9swcC5Qhy71PTS_JANA/viewform):
 > If you already had access to OpenCUI, you can skip this step and [log in to your account](#log-in-to-your-account) directly. 
@@ -36,7 +36,7 @@ After submitting, if you get the response *“Thanks for taking the time to fill
 
 You will wait for an Email notification, which will inform you that you now have access to OpenCUI with your GitHub account, and you can log into your OpenCUI account now 🎉.
 
-### Log in to your account
+## Log in to your account
 
 To log in to your OpenCUI with your GitHub account, you should open the [Login page](https://build.opencui.io/login) and click the **Sign in with GitHub** button: 
 
@@ -50,7 +50,7 @@ If you don't have account yet, you can click the hyperlink **Click to sign up** 
 ![click to sign up](/images/guide/signup/click-to-sign-up.png)
 :::
 
-### Are you ready
+## Are you ready
 
 Before beginning to build your first chatbot, you should be familiar with the following materials:
 
