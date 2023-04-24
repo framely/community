@@ -1,5 +1,4 @@
 # Value check
-
 Not all user requests can be accommodated based on business logic. For instance, when a user requests to book a table for dinner, their initial date preference may not be valid if the business is closed on that day. In such cases, the bot should inform the user of the closure and save their time by not asking for party size and time.
 
 :::: conversation

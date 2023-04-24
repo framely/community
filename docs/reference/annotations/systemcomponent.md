@@ -1,7 +1,6 @@
-# System CUI Components
+# System CUI components
 
 ## Motivation
-
 One of the design goal of OpenCUI is to automatically handle many conversational issues: where user digress, how we bring them back on track, or where there are ambiguity, how we disambiguate through dynamically scheduled clarification. 
 
 Ideally we expect that you don‘t need to worry how they are triggered, and for most part you do not even need to do much as system CUI components will provide good default behaviors. But if needed you can customize the expression and script to tinker the behavior. 
@@ -11,7 +10,7 @@ And the OpenCUI solution is based on aspect oriented programming. It does so by 
 ## Clarification
 Often time, user might say something that dialog understanding did not fully understand, for example, there are multiple possibilities. These are the time when we can trigger system skill to engage in the conversation for user to clarify what they really meant. There are couple variants of this:
 
-### Value Clarification
+### Value clarification
 During the slot filling, particularly when we try to find value from the conversation history, there might be multiple values that can be used to fill the slot. This CUI component is used to ask user decide which one is what they want.
 
 For example, on the way to booking a flight, if the user asks about the weather and the bot cannot determine which city the user is asking about as there are more than one cities in the context. **Value Clarification** can help the bot to ask the user for disambiguation.
@@ -36,7 +35,7 @@ Beijing
 :::
 ::::
 
-### Slot Clarification
+### Slot clarification
 When a user mentions a value that can fill more than one open slot, instead of just filling a slot directly and moving on, the bot should perform the act of disambiguation by asking which slot the user wants to fill with the help of Slot Clarification.
 
 For example, when a user says something like *"book a flight, beijing"*, in some cases, the bot might need to say "what do you mean by beijing, departure or destination?" instead of filling one slot with Beijing randomly.
@@ -50,7 +49,7 @@ What do you mean by beijing, departure or destination?
 :::
 ::::
 
-### Intent Clarification
+### Intent clarification
 Intent Clarification is a simple intent clarification mechanism that can automatically resolve stuck conversations when DU is not 100% sure about its understanding of user utterance. It will be triggered when there are multiple possibly-good answers. 
 
 For example, when a user says: *"I am hungry"* to a virtual restaurant chatbot and there are potentially multiple understanding candidates for this utterance, the bot will clarify the right one with the user by showing the list of understanding candidates like "do you want me to order food or reserve a table at your favorite restaurant?"
@@ -65,8 +64,7 @@ Do you want me to order food or reserve a table at your favorite restaurant?
 ::::
 
 
-## Slot Update
-
+## Slot update
 Slot update is a system skill that is designed to provide the default behavior for users wanting to modify the value of the previous specified slot. For example, when a user changes his mind during booking a flight, the user might say *"I need to change the destination from Beijing to Shanghai"*. Then the bot will modify the value of destination and always execute the same interaction logic as if that slot is filled for the first time.
 
 :::: conversation
@@ -95,7 +93,7 @@ So you want to change your destination to Shanghai?
 :::
 ::::
 
-## Binary Gate
+## Binary gate
 Binary Gate is an interaction that needs the user to answer boolean questions for different purposes, so that bot can know whether it needs to collect predefined slots or not. 
 
 While it is possible to add a boolean slot to act like binary gate for some slot, and use its value `true` or `false` to control whether the bot prompts users for that slot or takes an action. But the bot also needs to know the answer other than yes/no, such as the value of the nested slots. 
@@ -157,7 +155,6 @@ Let's find a one-way ticket for you. Which date do you want to fly?
 ::::
 
 ### confirmation
-
 `confirmation` is a well known component which asks the user to verify that they want to proceed with an action. It may be paired with a warning or critical information related to that action. For example, when a user wants to cancel an order, you should double-check with the user prior to performing an action that would be difficult to undo:
 
 :::: conversation
@@ -184,7 +181,6 @@ I have cancelled the order for you.
 Where *"yes"* continues the action, *"no"* renews the slot, *"value"* changes the old value then confirm with the user. For more information about confirmation annotation, see [Confirmation](confirmation.md). 
 
 ### booleanGate
-
 `booleanGate` is a component which is mainly used as a binary gate to decide whether it needs to fill the nested slot or skip the nested slot. For example, when checking out, the bot will ask the user whether to use some coupon. While some people might not have it, this binary gate could be useful: 
 
 :::: conversation
@@ -229,8 +225,7 @@ Do you have some promo code?
 
 For more information about Boolean Gate annotation, see [Gated](fillstrategy.md#gated). 
 
-## User Identifier
-
+## User identifier
 User identifier is a system frame that provides basic information of the user in a channel-dependent way. Once you've added a slot of which type is [`user.UserIdentifier`](https://build.opencui.io/org/io.opencui/agent/core/struct/frame/633f953f28e4f04b5f84453e), when the user chats with bot in a channel, the bot can access the user ID, the type and the label of the channel. For example, in the [WhatsApp](../channels/whatsapp.md) channel, the user ID is the same as the user's phone number, the type of the channel is *whatsApp* and the label of the channel is defined by the chatbot builder.
 
 With the information from user identifier, it's convenient for business to manage users along with their requests. For example, when the bot has confirmed the reservation information with users, it could store the reservation under the user ID and send the user ID back to the user. When the user comes for dinner, that ID can be used to get the reserved table.

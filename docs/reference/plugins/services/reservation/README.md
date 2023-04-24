@@ -1,5 +1,4 @@
 # Overview
-
 Reservation is a common scenario in many businesses and services, whether it's a restaurant, a hotel, a doctor's office, or a hair salon. Customers often need to make appointments or reservations in advance to ensure they can get the service they need at a specific time. With the rise of chatbots and conversational interfaces, businesses have an opportunity to make the reservation process even more convenient and user-friendly for customers by allowing them to book services through a chatbot which can increase efficiency for your businesses.
 
 For instance, if you're a restaurant owner, you may want to offer a hassle-free and convenient way for customers to book tables. By integrating a chatbot into your website or mobile app, customers can easily make reservations without having to call or email the restaurant. The chatbot can gather necessary details such as date, time, number of people, and dietary restrictions, and confirm the reservation with the customer.

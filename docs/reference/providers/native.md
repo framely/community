@@ -1,16 +1,16 @@
-# Native Provider
+# Native provider
 
 Native providers are crucial to OpenCUI chatbots, they provide the implementation to system interface like channel and support, as well as application interface or services like payments. 
 
 With the help of native providers, you can easily use extension services provided by OpenCUI or other orgs, and you can even efficiently develop new services for yourself or other builders. The process of building and wiring native provider is as following, assuming that you want to use OpenCUI platform to define the conversational user interface frontend. You can potentially use OpenCUI runtime to develop chatbot without using OpenCUI platform, it is certainly possible, but is not covered here. 
 
-## Build Native Provider
+## Build native provider
 
 As we know before, provider provides the implementation of service interface. But unlike other providers, the implementation of native provider is defined outside the platform. Therefore, when registering a native provider, you need to declare whether its source is accessible to OpenCUI or not.
 
 These native provider can be registered as private deployment, in which case, you do not need to make its source available to OpenCUI platform. A chatbot that relies on even one private deploy provider can NOT be hosted by OpenCUI, instead you need export the generated kotlin project, and build and deploy it per their devops rules. 
 
-### 1. Create Native Provider
+### 1. Create native provider
 
 To create a native provider:
 
@@ -30,7 +30,7 @@ To create a native provider:
     ![create provider popup](/images/provider/nativeprovider/create_provider_popup.png)
     :::
 
-### 2. Declare Service Interface
+### 2. Declare service interface
 
 When you are done with creation, you need to declare which service interface this native provider implements. To declare the service interface, follow these steps:
 
@@ -70,7 +70,7 @@ When you are done with creation, you need to declare which service interface thi
    *Done with selection*
    :::
 
-### 3. Configuration Setup
+### 3. Configuration setup
 
 Configuration is the way you declare the Implementation dependencies for a build. 
      
@@ -78,7 +78,7 @@ Configuration is the way you declare the Implementation dependencies for a build
 ![configuration](/images/provider/nativeprovider/configuration.png)
 :::
 
-#### Provider Class Name
+#### Provider class name
 
 For implementation build, you need to let OpenCUI know the implementation class that implements the service interface. So a provider class name is the fully qualified name of this class. 
 
@@ -94,7 +94,7 @@ Configuration Meta can help you setup the information needed when wiring this pr
 ![configuration meta](/images/provider/nativeprovider/configuration_meta.png)
 :::
 
-##### JSON Representation
+##### JSON representation
 
 ``` json
 [
@@ -205,7 +205,7 @@ Therefore, the Implementation should look like `io.opencui.extensions:helloworld
 :::
 
 
-## Wire and Configure
+## Wire and configure
 After a native provider is registered on platform, anyone can use it by wiring the implementation to its interface in chatbot's integration and configure it. To wire and configure native provider, you can follow these steps below:
 
 1. **Declare service interface.** Click into the service component implemented by the native provider you will use, and import it into your chatbot.

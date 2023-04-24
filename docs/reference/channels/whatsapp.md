@@ -9,15 +9,14 @@ We are going to show here how to integrate OpenCUI with WhatsApp and deploy the 
 Follow these steps to configure:
 [[toc]]
 
-## Before You Begin
+## Before you begin
 On the WhatsApp side, please ensure you have all of the following:
 - [Developer Account](https://developers.facebook.com/)
 - [A Meta Business Type App](https://developers.facebook.com/docs/development/create-an-app/)
 
-## Set Up WhatsApp
+## Set up WhatsApp
 
-### Add WhatsApp Product
-
+### Add WhatsApp product
 1. Use [Meat App Dashboard](https://developers.facebook.com/apps) to add the WhatsApp product to your Meta App: 
    1. Enter the App you want to configure, click **Add Product** on the left sidebar menu. 
    2. Click **Set Up** button on **WhatsApp** product.
@@ -35,8 +34,7 @@ On the WhatsApp side, please ensure you have all of the following:
    ![add phone number](/images/channelConfig/whatsapp/add-phone-number.png)
    :::
 
-### Get Access Token
-
+### Get access token
 In the Business Manager, go to your [Business Settings](https://business.facebook.com/settings) page.
 1. Go to **Users > System Users** panel, click **Add** button to add a system users.
 2. Once you have added a system user, click **Generate New Token**. 
@@ -54,8 +52,7 @@ In the Business Manager, go to your [Business Settings](https://business.faceboo
    ![add people](/images/channelConfig/whatsapp/add-people.png)
    :::
 
-## Configure WhatsApp From OpenCUI
-
+## Configure WhatsApp from OpenCUI
 1. On OpenCUI platform, go to service component [io.opencui.channel](https://build.opencui.io/org/io.opencui/agent/channel/struct/service_schema): 
    1. Click **Import** button on the second topbar.
    2. Select the chatbot you want to configure WhatsApp channel and **Save**.
@@ -92,8 +89,7 @@ In the Business Manager, go to your [Business Settings](https://business.faceboo
 
 4. Before you go to next step, don't forget to merge your changes into master and deploy your chatbot.
 
-## Finish Setup WhatsApp
-
+## Finish WhatsApp setup
 1. Configure the WhatsApp webhook for your app. Back to your Meta App:
    1. Go to **WhatsApp > Configuration** panel, in **Webhooks** section, click **Edit** button. 
    2. A Webhook setting dialog opens, use the **Callback URL** and **Verify Token** values you copied above, click **Verify and Save** button. 
@@ -103,6 +99,5 @@ In the Business Manager, go to your [Business Settings](https://business.faceboo
    ![config webhook](/images/channelConfig/whatsapp/config-webhook.png)
    ::: 
 
-## Test Your Chatbot
-
+## Test your chatbot
 To test your chatbot, open WhatsApp and send a message to your business phone number. If you get a response, you have fully set up your app for receiving messages! :tada:

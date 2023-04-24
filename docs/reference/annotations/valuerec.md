@@ -1,5 +1,4 @@
 # Value recommendation
-
 When you need to ask for a user's preference on a slot that has many potential values, it is often a good idea to offer the user a list of candidate values based on the application logic. This makes it easier for the user to converge to a workable choice. For example,
 :::: conversation
 ::: user User
@@ -175,7 +174,6 @@ listOf(Color.Red, Color.Black)
 This will offer two colors for the user to choose from.
 
 ### Display
-
 ::: thumbnail
 ![value rec display](/images/annotation/valuerec/valuerec_display.png)
 :::
@@ -188,7 +186,6 @@ Display defines how the bot renders the list of options to the user. If the hard
 Otherwise, only the list scenarios will be shown. 
 
 #### Multiple entries
-
 You can use the Multiple Entries module to provide a text list or a rich card experience at the JSON format level. To simplify the definition work, some default behaviors have been provided. If these default values can meet your application scenario, then you only need to pay attention to the header, body (which will be repeated based on the list), pagination configurations, and footer. These parts make up the main part of the display:
 
 ::: thumbnail
@@ -225,7 +222,6 @@ If you build a reusable component, these should be defined in a generic way so i
 :::
 
 ### Considerations
-
 Here are the pros and cons to keep in mind when you decide whether to use Value recommendation.
 
 | With value recommendation 	                                                                                                                                                  | Without value recommendation 	                                                                                                                                                                               |

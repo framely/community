@@ -3,7 +3,6 @@
 [[toc]]
 
 ## Motivation
-
 To test your chatbot, you can use built-in **Debug** tool to uncover bugs and prevent regressions. When entering user input, there are two methods:
 
 - Directly enter it as either text or JSON data. This method is useful for testing individual steps or simple logic flows.
@@ -14,7 +13,6 @@ To test your chatbot, you can use built-in **Debug** tool to uncover bugs and pr
 :::
 
 ## Structure input
-
 When interacting with **Debug**, you can provide user input as text like *"Get me two tickets for Star Wars"*, or a json format represents the same semantics which is used to describe filling for some data structure or provide values for its slots. 
 
 OpenCUI dialog engine can be interacted directly in Frame Event in its json format, which allows for easier bug fixes on the interaction logic by separating the dialog understanding issues. 
@@ -61,7 +59,6 @@ For instance, if you input a JSON structure after connecting, the conversation w
 :::
 
 ## Test cases
-
 The goal of [golden test cases](https://en.wikipedia.org/wiki/Characterization_test) is to help you verify that the modifications made to your chatbot did not modify its behavior in unwanted or undesirable ways. In other words, test case execution verifies that chatbot responses have not changed for the same inputs. 
 
 To create a test case, you should simulate the path of the conversation you want to save in **Debug** and provide a test case display name. To access saved test cases in the **Debug** area, click **Test cases** located in the upper-right corner of the panel. These elements allow you to access and view saved tests before and after establishing a connection.
@@ -86,7 +83,6 @@ To run the test case, you can select the one you want to run. The test engine wi
 
 
 ## How to use
-
 When using **Debug**, it is important to commit your chatbot changes in both the structure view and language view. Only the declaration that you have committed will be tested in debug, so committing regularly ensures that you are testing the latest version of your chatbot.
 
 To commit your changes made in the structure view and make them available in the language view, click **Propagate**. To commit changes in the language view, simply click **Commit**.
@@ -103,7 +99,6 @@ To commit your changes made in the structure view and make them available in the
 The instructions below show you how to test your bot.
 
 ### Debug
-
 1. To test a specific language chatbot, navigate to the corresponding language view, and click **Commit** in the upper-right corner of the **Types** area.
 
 ::: thumbnail
@@ -141,7 +136,6 @@ For coders, you can inspect the detailed log by clicking the "**View log**" icon
 The replies that the chatbot generates for user input depend on the conversation history. Sometimes, you need to have a clean start to try something new. You can restart the testing session by clicking the "**Reset contexts**" icon.
 
 ### Create a test case
-
 You can save test cases by clicking the "**Save test case**" icon. This will save the current interaction as a test case. You can then use this test case to reproduce the interaction later. 
 
 1. Click the **Save Test Case** icon in the topbar to save a conversation as a test case.
@@ -166,7 +160,6 @@ You can save test cases by clicking the "**Save test case**" icon. This will sav
 Clicking the "**Test cases**" icon lets you compare your chatbot's behavior against expected results and identify errors that require attention.
 
 ### Run test case
-
 1. Click **Test cases** located in the upper-right corner of the **Debug** panel.
 ::: thumbnail
 ![structure input](/images/platform/testing/test_cases_entrance_1.png)

@@ -38,7 +38,6 @@ On the Messenger side, please ensure you have all of the following:
    :::
 
 ## Configure Messenger from OpenCUI
-
 1. On OpenCUI platform, go to service component [io.opencui.channel](https://build.opencui.io/org/io.opencui/agent/channel/struct/service_schema): 
    1. Click **Import** button on the second topbar.
    2. Select the chatbot you want to configure Messenger channel and **Save**.
@@ -75,7 +74,6 @@ On the Messenger side, please ensure you have all of the following:
 4. Before you go to next step, don't forget to merge your changes into master and deploy your chatbot.
 
 ## Finish Messenger setup
-
 1. Configure the Messenger webhook for your app. Back to your Meta App:
    1. Go to **Messenger > Settings** panel, scroll down to **Webhooks** section, click **Add Callback URL** button. 
    2. A Webhook setting dialog opens, use the **Callback URL** and **Verify Token** values you copied above, click **Verify and Save** button. 
@@ -90,8 +88,7 @@ On the Messenger side, please ensure you have all of the following:
    ![add subscriptions](/images/channelConfig/messenger/add-subscriptions.png)
    :::
 
-## Test Your Chatbot
-
+## Test your chatbot
 1. To test that your app setup was successful, go to your page and send a message to yourself. If you get a response, you have fully set up your app for receiving messages! :tada:
 2. To make the app accessible to the public, switch to [live mode](https://developers.facebook.com/docs/development/build-and-test/app-modes#live-mode).
 

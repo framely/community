@@ -1,36 +1,32 @@
-# Version Control
+# Version control
 
 [[toc]]
 
 ## Motivation
-
 Work collaboratively with multiple team members, you probably work together with your teammates in a shared folder on the same set of files, which always keep in sync automatically and instantly display the changes across all users' instances. It easy to work with but operates only on single files. Meanwhile, only one user can work on a file at a time, because when editing the same file at the same time, there will be conflicts. It is very easy to accidentally overwrite an important file you never mean to.
 
 So OpenCUI provides a [Version Control](https://en.wikipedia.org/wiki/Version_control) system, which do not rely on a shared central project and allow users to maintain independent project and communicate revisions via changesets. Everybody on the team is able to work absolutely freely on any project at any time. You know what exactly is different in these versions, your teams work faster and smarter.
 
 For more information about providing team members with access, see [Access Control](access.md).
 
-## Working with Branch
-
+## Working with branch
 OpenCUI platform is a version control system. You can collaborate with multiple members independently without affecting others. When you start building, such as adding or modifying some instances, a **Branch** is automatically created for you based on the current master(we call it **Base**). Then you can work on this branch in isolation from changes that other people are making to the project.
 
-### Branch Changes
+### Branch changes
 While you are working, you can compare the changes you made with **Base** through **Diffs**. During a comparison, if you are not satisfied with these changes or have some new ideas, you can restore your changes by **Revert** operation. If you are satisfied with these changes, you can save these small groups of meaningful changes via **Commit** and prepare for [Testing]().
 
-### Keep Branch in Sync
+### Keep branch in sync
 Typically, when you are working, your teammates may push some changes and merge them into master. The version of master will be updated, which will cause your branch out of date. Keeping your branch up to date with the current master can help you catch problems prior. You can synchronize at any time you need via **Rebase**, but it's best to do this before committing and testing. 
 
-### Resolve Merge Conflict 
+### Resolve merge conflict 
 There are conflicting changes, when people make different changes to the same field of the same component, or when one edits an instance and another deletes it. Sometimes, when you merge branch that have competing changes, you need to decide which changes to incorporate in the final merge. You need to resolve all conflicts before you can move to the next step via **Resolve Conflict** by selecting the changes that you want to keep. 
 
-## Open Pull Request
-
+## Open pull request
 Once you're satisfied with your work, you can open a pull request to tell others about changes you've pushed in a project. Pull requests display diffs to compare the changes you made in your branch against the base master, which indicates you are willing to merge them into master. Others can review your proposed changes and submit reviews by marking Approve or Close.
 
 Pull requests can only be opened when there are differences between branch and master, and you have already committed these differences. Only approved change can be merged into master.
 
 ## Terms
-
 - **Branch**: Where you work in isolation from changes that other people are making to the project. One always works with a branch and can keep one active branch for each project.
 - **Base**: The latest merged master when the branch was created. Each branch has a base.
 - **Rebase**: When the master version is upgraded, synchronizing the latest master to your branch. 
@@ -38,14 +34,13 @@ Pull requests can only be opened when there are differences between branch and m
 - **Commit**: Confirm your branch chagens and ready to start testing. 
 - **Pull Request**: Pull requests display diffs to compare the changes you made in your branch against the base master, which indicates you are willing to merge them into master.
 
-## How To Use
-
+## How to use
 This guide walks you through version control workflow:
 
-### Create Branch
+### Create branch
 To create branch, you can just modify your project, for example you can create a skill. And then all your work will be done in your branch. 
 
-### View Your Changes
+### View your changes
 1. To view your changes, click **Diff** in the upper-right corner of the Build area.
 
 ::: thumbnail
@@ -64,8 +59,7 @@ To create branch, you can just modify your project, for example you can create a
 ![commit](/images/platform/versioncontrol/commit.png)
 :::
 
-### Sync Up with Master
-
+### Sync up with master
 During your working, if the version of master has changed, **Rebase** with its icon in the upper-right corner of the Build area will light up and turn red. 
 1. Click **Rebase** to merge the latest changes from the master into your branch.
 
@@ -85,8 +79,7 @@ During your working, if the version of master has changed, **Rebase** with its i
 ![resolve conflict](/images/platform/versioncontrol/resolve_conflict.png)
 :::
 
-### Review Changes
-
+### Review changes
 To review changes, you should switch to **Version** page. In the middle of the second navigation bar, select **Version** tab: 
 
 1. If you are ready to be reviewed, you can create a pull request with your changes. 

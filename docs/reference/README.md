@@ -4,7 +4,7 @@ Just like their web and mobile counterparts, conversational apps, including chat
 
 Why most businesses can afford to build a web app, but not the conversational one with the same functionalities? This simple question motivated us to take on the challenge of democratizing conversational user experiences. Since user interface is largely business logic dependent, business logic can and will vary from business to business, instead of building entire conversational app for businesses, we aim to provide conversational interface building tools that empower business developer to build conversational experience themselves.
 
- Users interact with a business because it can do something better or cheaper, so there is no need to respond intelligently to all possible user utterances. For any given business, it is enough to focus only on the conversations related to the service that business provides, which is defined by its API schema. OpenCUI is a framework for building schema grounded conversational interface. In this schema ground approach, the goal is to build conversational interface for data types required by API schema, natural language text and voice are converted into schemas first, which represents what service users want and how they want it. Structured data returned from business logic is then rendered into natural text in the given language and style.
+Users interact with a business because it can do something better or cheaper, so there is no need to respond intelligently to all possible user utterances. For any given business, it is enough to focus only on the conversations related to the service that business provides, which is defined by its API schema. OpenCUI is a framework for building schema grounded conversational interface. In this schema ground approach, the goal is to build conversational interface for data types required by API schema, natural language text and voice are converted into schemas first, which represents what service users want and how they want it. Structured data returned from business logic is then rendered into natural text in the given language and style.
 
 ## Why Build CUI in OpenCUI Way
 To make building conversational app as cost-effective as building graphical user interface (GUI) app, we follow the same principles such as [Separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), [model-view-controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) and the same workflow such as [version control using git](https://en.wikipedia.org/wiki/Git) for collaboration. If these principles and best practices worked well for building GUI apps, why change them? Frameworks like Vue allow a domain expert with reasonable programming training to build great web apps, why we do not have such framework for building CUI? After all CUI and GUI can be just different user interface to the same services.
@@ -27,14 +27,10 @@ Under the hood, we take advantage of the state of the art deep learning based na
 ### End to End
 Chatbots are developed to deliver services with good user experiences. However, good user experience alone may not be enough motivation for a business to build one.
 
-:::: conversation
-::: user User
-I would like some iced coffee.
-:::
-::: bot Bot
-Sorry, we ran out, but the Starbucks next door has some excellent choices.
-:::
-::::
+```json
+Use: "I would like some iced coffee."
+Chatbot: "Sorry, we ran out, but the Starbucks next door has some excellent choices."
+```
 
 It is good user experience alright, but as a coffee shop owner, you might not want to invest towards this chatbot. To achieve your business goal, you need to have direct and full control of your chatbot so that you can react to ever-changing business conditions.
 
