@@ -24,21 +24,15 @@ Let's go through the steps to get a multilingual chatbot up.
 ### Add multi-language
 When creating a chatbot, you can add multiple languages in **Add Language** filed. 
 
-::: thumbnail
 ![add language](/images/platform/multilingual/add_language.png)
-:::
 
 Or head to the **Settings** page, add multiple languages in **Chatbot Language** filed.
 
-::: thumbnail
 ![setting language](/images/platform/multilingual/setting_language.png)
-:::
 
 After saved, depending on the language you choose, the corresponding language bot will be created automatically. To access language-specific bot, click the **Language Selector** above the left sidebar menu.
 
-::: thumbnail
 ![switch language](/images/platform/multilingual/switch_language.png)
-:::
 
 ### Remove language
 Remove a language means you will delete the corresponding language bot. To delete a language-specific bot: 
@@ -46,9 +40,7 @@ Remove a language means you will delete the corresponding language bot. To delet
 2. Head to the **Settings** page
 3. Scroll down to the bottom of the page and click **Delete Project**.
 
-::: thumbnail
 ![delete language](/images/platform/multilingual/delete_language.png)
-:::
 
 ::: danger Caution 
 Deleting a chatbot cannot be undone. This will permanently destroy all corresponding data, and remove all collaborator associations.
@@ -57,6 +49,4 @@ Deleting a chatbot cannot be undone. This will permanently destroy all correspon
 ### Integrations
 When configuring a channel, you can choose a locale as the default locale. While bot will be able to understand all the languages you set, it will reply to users in this locale.
 
-::: thumbnail
 ![default language](/images/platform/multilingual/default_language.png)
-:::

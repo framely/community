@@ -1,5 +1,4 @@
 # Extension
-
 OpenCUI is built on an open architecture, making it easy to make functionality available to chatbots. The core of this architecture is the separation between interface and implementation, allowing conversational behavior to be defined on the interface while implementation can take various forms.
 
 On OpenCUI, we abstract the interface for every built-in functionality that might have more than one implementation, such as channels and supports, and we encourage you to do the same thing for application-level functionalities, such as payment processing.
@@ -9,7 +8,7 @@ There are two kinds of extensions:
 - Internal extensions are those that the OpenCUI platform does have access to the source code for (inside OpenCUI or Framely). Chatbots using Framely extensions cannot be exported for private deployment."
 
 ## Extend with native provider
-To develop extensions with Native Provider, you should follow these steps below. To use existing extensions, you can go [Wire and Configure](native.md#wire-and-configure) directly.
+To develop extensions with Native Provider, you should follow these steps below. To use existing extensions, you can go [Wire and configure](native.md#wire-and-configure) directly.
 
 1. Describe interface
 If the service interface you need has not been created yet, you should create a new one and describe its schema on OpenCUI platform. System service interfaces are already created for you, if you want to connect to other channels, you can use them directly, like `io.opencui.channel.IChannel`.
@@ -29,13 +28,12 @@ The standard way to develop extension is to do it inside extension repo.
     ```
 
 4. Register Native Provider
-Regardless if the extensions are external, you need to register their native provider on the platform so that OpenCUI can generate the frontend code for them. To register native provider, follow steps in the [Build Native Provider](native.md#build-native-provider) documentation to accomplish the following:
+Regardless if the extensions are external, you need to register their native provider on the platform so that OpenCUI can generate the frontend code for them. To register native provider, follow steps in the [Build native provider](native.md#build-native-provider) documentation to accomplish the following:
    1. Create native provider.
    2. Declare service interface.
    2. Configuration setup.
 
 When you're done, make sure you merge all of your changes into master.
-
 
 ## Quickstart with Helloworld
 Now lest's use [helloworld extension](https://github.com/opencui/extensions/tree/main/helloworld) as an example to show how extension is developed. This simple hello word extension gets name from configuration, and then simly return `hello $name`.
@@ -47,37 +45,26 @@ Now lest's use [helloworld extension](https://github.com/opencui/extensions/tree
     - No need to add language. As a service that provides an interface for extensions does not need to add language.
     - Click **Save**.
 
-    ::: thumbnail
     ![create service component](/images/provider/extension/hello_create_service_component.png)
     *Click Create*
-    
-    <br>
 
     ![create service component popup](/images/provider/extension/hello_service_popup.png)
     *Create popup window*
-    :::
 
 2. **Declare function**. Head to **Service** page, in the **Functions** section, click **Add** to declare function signature. In helloworld example, we declare a simple function labeled as `testFunction`, which takes a string as input parameter named `str`, and return a string.
 
-    ::: thumbnail
     ![add function](/images/provider/extension/hello_add_function.png)
     *Click add function*
-    
-    <br>
 
     ![function popup window](/images/provider/extension/hello_test_function.png)
     *Function popup window*
-    :::
 
 3. Review your changes and merge them into master.
-
 
 ### Generate code stub
 In the service you described, click **Export** on the second navigation bar to extract the generated file. 
 
-::: thumbnail
 ![export service component](/images/provider/extension/hello_export_service.png)
-:::
 
 ### Develop extension
 1. Clone extensions repo, create a subdirectory to host your subproject. Here we create `helloworld` under extensions.
@@ -117,26 +104,22 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
     - Select **Native Provider** in **Provider Type** field.
     - Select **OpenCUI-hosted** in **Deploy Mode** field as `helloworld` is one of OpenCUI extensions.
     - Click **Save**.
-
-    ::: thumbnail
+    
     ![create native provider](/images/provider/extension/hello_create_native.png)
     *Click Create*
-    
-    <br>
 
     ![create native provider popup](/images/provider/extension/hello_create_native_popup.png)
     *Create popup window*
-    :::
 
 2. Declare service interface `component_0915` in native provider: 
-    - Go to service `component_0915`, click **Import** on the second navigation bar. In the popup window, select your native provider, in this case we select `test`, and **Save**. 
-        ::: thumbnail
-        ![import component0915 to native provider](/images/provider/extension/hello_import_component0915.png)
-        :::
+    - Go to service `component_0915`, click **Import** on the second navigation bar. In the popup window, select your native provider, in this case we select `test`, and **Save**.
+        
+      ![import component0915 to native provider](/images/provider/extension/hello_import_component0915.png)
+
     - Back to the `test` native provider, heading to **Service** page from the left side menu. In the **Implemented** section, select `component_0915`.
-        ::: thumbnail
-        ![select service in native provider](/images/provider/extension/hello_select_service.png)
-        :::
+
+      ![select service in native provider](/images/provider/extension/hello_select_service.png)
+
 
 3. Configuration setup, heading to **Configuration** page from the left side menu:
     - Enter **Provider Class Name**, a fully qualified name of this implementation class. In this case, enter `me.test.component_0915.HelloWorldProvider`. 
@@ -151,10 +134,8 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
         ]
         ```
     - Enter `io.opencui.extensions:helloworld:1.0-SNAPSHOT` in **Implementation** field. The format of this field should be `group:project:version`. Normally, the `group` and `version` field can be found in the **build.gradle** file.
-
-    ::: thumbnail
-    ![configuration setup](/images/provider/extension/hello_configuration_setup.png)
-    :::
+    
+      ![configuration setup](/images/provider/extension/hello_configuration_setup.png)
 
 4. Review and merge your changes into master.
 
@@ -163,34 +144,25 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
     - Enter your chatbot's label in the Project Label field, for example `helloworld`.
     - Select your preferred Region.
     - Select the languages for your chatbot in the **Add Language** field, we selcet `English(en)` here.
-
-    ::: thumbnail
+    
     ![create chatbot](/images/provider/extension/hello_create_chatbot.png)
     *Create chatbot*
-    
-    <br>
 
     ![create chatbot popup window](/images/provider/extension/hello_create_chatbot_popup.png)
     *Create popup window*
-    :::
 
 2. Import service `component_0915` into chatbot `helloworld`. Go to service `component_0915`, click **Import** on the second navigation bar. In the popup window, select your chatbot, in this case we select `helloworld`, and save. 
 
-    ::: thumbnail
     ![import component0915 to chatbot](/images/provider/extension/hello_import_component0915.png)
-    :::
 
 3. Switch to your `helloworld` chatbot, wiring the implementation and configure the integration. 
     - Heading to **Settings** page, in **Integrations** tab, select the service interface you just imported and the native provider that implements it. 
-    - Finish the configuration form and save. 
-    ::: thumbnail
+    - Finish the configuration form and save.
+
     ![chatbot integration](/images/provider/extension/hello_chatbot_integration.png)
     *Wired the implementatio*
-    
-    <br>
 
     ![configuration popup window](/images/provider/extension/hello_configuration.png)
     *Configuration popup window*
-    :::
 
 4. Don't forget to merge your latest changes to master.

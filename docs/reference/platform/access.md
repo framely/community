@@ -49,21 +49,16 @@ To invite a member to join your org:
 
 1. Head to the organization **Settings** page, select the **Team Members** tab, click **Add Member**.
 
-::: thumbnail
-![add org member](/images/platform/access/add_org_member.png)
-:::
+   ![add org member](/images/platform/access/add_org_member.png)
 
 2. In the popup, type the email address of the person you want to invite and click **Add**.
 
-::: thumbnail
-![type email](/images/platform/access/type_email.png)
-:::
+   ![type email](/images/platform/access/type_email.png)
 
 3. To manage members, find the person whose role you'd like to change, hover “**…**” icon on the right side. You can set a member as **Owner**, convert internal memeber to **Collaborator** or **Remove Member**. 
 
-::: thumbnail
-![manage member](/images/platform/access/manage_member.png)
-:::
+    ![manage member](/images/platform/access/manage_member.png)
+
 
 ::: warning Need To Know
 - When you removing members from your organization, all project corresponding datas of their branch will be permanently destroy. The paid license count does not automatically downgrade.
@@ -76,18 +71,12 @@ To give a member specific access to a project:
 
 1. Head to the project **Settings** page, select the **Access** tab, click **Add Member**.
 
-::: thumbnail
-![project access](/images/platform/access/project_access.png)
-:::
+   ![project access](/images/platform/access/project_access.png)
 
 2. In the popup, type the email address of the person you want to add and click **Save**. You can allow the person who is not a member of your organization to access projects that your org owns, who will be an outside collaborator. Adding an outside collaborator to a project will use one of your paid licenses.
 
-::: thumbnail
-![project type email](/images/platform/access/project_type_email.png)
-:::
+   ![project type email](/images/platform/access/project_type_email.png)
 
 3. To manage member access, find the person whose access you'd like to change. Hover “**…**” icon on the right side, select and click the new role. 
 
-::: thumbnail
-![manage project access](/images/platform/access/manage_project_access.png)
-:::
+   ![manage project access](/images/platform/access/manage_project_access.png)

@@ -1,19 +1,15 @@
 # Initialization
 When a user orders food, the bot will need to have the user's phone number. While it's acceptable to ask a first-time user for their number, it's not ideal for regular customers or those using a logged-in channel like iMessage, where we can get their phone number programmatically. Instead of always asking for the phone number upfront, the bot can be configured to suggest a value for the slot based on the user's history.
 
-:::: conversation
-::: bot Bot
-The order will be under the same number "1202555xxxx" as last time. Ready to place the order?
-:::
-::::
+```json
+Bot: "The order will be under the same number "1202555xxxx" as last time. Ready to place the order?"
+```
 
 There are other use cases where initialization can be helpful. For instance, when booking a vacation, the bot can associate a flight's arrival date and city as the start date and location for a subsequent hotel booking after a user has booked a flight ticket.
 
-:::: conversation
-::: bot Bot
-Booked a ticket from New York to Los Angeles on Feb 2, 2022. Do you want to book a hotel in Los Angeles from Feb 2, 2022?
-:::
-::::
+```json
+Bot: "Booked a ticket from New York to Los Angeles on Feb 2, 2022. Do you want to book a hotel in Los Angeles from Feb 2, 2022?"
+```
 
 In both cases, initialization allows you to reduce the user effort level required to acquire services from you, thus providing users with a better user experience.
 
@@ -29,12 +25,12 @@ You can initialize the slot with a value defined in arbitrary [kotlin code expre
 Initialization is an optional slot annotation. If you know that a user will most likely accept a value based on business logic or historical data, you can use it to reduce the need for the user to input by providing something they might accept.
 
 The configuration of initialization is shown in the following figure, and the field labeled `Value` is used for specifying the proposed value.
-::: thumbnail
+
 ![initialization](/images/annotation/initialization/init.png)
-:::
 
 ### Does a user have to accept the proposed value?
 Depending on whether you give user a chance to confirm, initialization is used for two different purposes: assignment and suggestion. 
+
 #### Assignment
 Sometimes, your business dictates what value can a slot take given existing slot fillings and business logic. This is assignment, where you can first enable the initialization on the slot but not configure the [explicit confirmation](../annotations/confirmation.md#explicit). This way, the bot will simply inform the user of the system's choice for this slot and move on to the next slot. In fact, you typically do not need to configure anything else.
 
@@ -43,7 +39,7 @@ At other times, your business may only suggest what value a slot can take, given
 
 ### Dos and don'ts
 ::: tip Dos
-1. When using initialization, it is best to add an [implicit confirmation annotation](../annotations/confirmation.md) to inform the user of the choice that the system provided, in order to keep both the user and the bot on the same page.
+1. When using initialization, it is best to add an [implicit confirmation annotation](../annotations/confirmation.md#implicit) to inform the user of the choice that the system provided, in order to keep both the user and the bot on the same page.
 2. With suggestion, you also need to configure the prompt in case the user disagrees with the suggested value and the bot needs to extract the user's choice for this slot.
 3. Ensure that the proposed value here is compatible with the [value check](./valuecheck.md) annotation, minus any fluctuations due to data changes. For example, if the ticket is no longer available, the proposed value should reflect that. Otherwise, the user may become confused with an ill-timed value check message.
 :::

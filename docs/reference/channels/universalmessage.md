@@ -15,14 +15,12 @@ Universal Message offers a way for you to offer a richer in-conversation experie
 
 Universal Messages defined on OpenCUI can be classified into two classes depending on what they try to verbalize: 
 1. **Single value message**, it can be used to verbalize a single value of some type. This type of message can only support tuple (think of static list where the number of elements are known at build time).
-    ::: thumbnail
+
     ![Single value message](/images/channelConfig/universal/single-value-message.png)
-    :::
 
 2. **Multiple value message**, it is designed to verbalize multiple value of some time, where the number of elements are not know at build time.  The multiple value message bind to a list of some type, and can be expressed via code expression for maximal flexibility.
-    ::: thumbnail
+
     ![Multiple value message](/images/channelConfig/universal/multiple-value-message.png)
-    :::
 
 We also support standard events on univerval channel to make user experience a bit more natural. The main events that we try to support is following :
 1. **Message delivered (DELIVERED)**: This event indicates that a message has been delivered. To users, this event appears as a delivery receipt for a specific message. The RBM platform automatically sends DELIVERED events when it receives messages from users. Your agent can't control these events.
@@ -161,9 +159,7 @@ For more information, you can jump into the following reference documentations:
 ##### Inside actions
 When you need to send a chunk of related information, media, or suggestions, you should send a rich card with inside actions. A rich message card can contain any or all of the listed items, but must contain at least a title and description to be valid. 
 
-::: thumbnail
 ![inside actions](/images/channelConfig/universal/inside-actions.png)
-:::
 
 The following code sends a rich message card with an image and suggested inside actions. 
 
@@ -195,9 +191,7 @@ The following code sends a rich message card with an image and suggested inside 
 
 When you need to present a user with dynamic options to choose between, you can also use a rich message card. Suitable for cases where selections do not need to show details.
 
-::: thumbnail
 ![dynamic inside actions](/images/channelConfig/universal/dynamic-inside-actions.png)
-:::
 
 The following code sends a rich message card with dynamic suggested inside actions. 
 
@@ -228,9 +222,7 @@ The following code sends a rich message card with dynamic suggested inside actio
 ##### Float actions
 Float actions guide users through conversations by providing replies that your chatbot knows how to react to. When a user taps a suggested float action, your chatbot receives a message that contains the reply's text and postback data.
 
-::: thumbnail
 ![float actions](/images/channelConfig/universal/float-actions.png)
-:::
 
 The following code sends text with two suggested float actions.
 

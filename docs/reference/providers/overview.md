@@ -1,5 +1,4 @@
 # Overview
-
 The goal of OpenCUI is to make it easy to build conversational user interfaces for services. Following best practices, all services on OpenCUI are modeled in two parts: interfaces and implementations, so that the producers and consumers of these functionalities can be developed independently. More importantly, conversational behaviors are based only on these interfaces, which makes it possible to switch to different implementations.
 
 The implementations of interfaces, which we call providers, are available in two kinds: native providers and scripted providers. Native providers are implementations developed in Java/Kotlin, and system-level interfaces are typically implemented in the form of native providers. Scripted providers allow builders to implement in other script languages, such as SQL or JSON. Application-related interfaces, which we call services, are typically implemented in scripted providers.
@@ -16,7 +15,7 @@ Native providers are developed in the form of extensions, which are software mod
 
 These native providers can be registered as external, in which case the builder does not need to make its source available to the OpenCUI platform. However, if a chatbot relies on even one external provider, it cannot be hosted by OpenCUI. Instead, the builder needs to export the generated Kotlin project and build and deploy it according to their DevOps rules. Regardless of whether the providers are external, extension builders need to register their providers on the platform so that we can generate the frontend code for them.
 
-For more details, see [Native Provider](native.md) or [extensions](extension.md).
+For more details, see [Native Provider](native.md) or [extension](extension.md).
 
 ## Scripted providers
  
@@ -24,11 +23,11 @@ Sometimes, the backend implementations of a service are accessible through some 
 
 - OpenCUI currently supports only one hosted provider: PostgreSQL. When we say 'hosted,' we mean that OpenCUI manages the backend implementation, which includes the database, tables, and SQL-based function implementation.
 - For stub providers, OpenCUI does not host any data or have explicit knowledge about the data schema. Instead, OpenCUI handles function invocation through them. There will be many stub provider types available, including a Google Sheets-based provider.
-- 
+
 Scripted providers are typically defined in three steps:
 
 1. Define the service application-dependent interface on the platform.
 2. Decide on the provider type you want. The provider type determines how to access the actual data source and what scripting language to use for each function implementation declared in the service interface.
 3. Use the scripting language required by the provider type to implement the service functions. Functions can also be implemented in Kotlin, known as native functions.
 
-See [PostgreSQL Provider](postgrest.md) for details.
+See [PostgreSQL provider](postgrest.md) for details.

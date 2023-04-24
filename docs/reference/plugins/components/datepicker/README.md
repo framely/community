@@ -31,7 +31,7 @@ It is absolutely necessary to understand direct utterance such as “I like to l
 
 2. **Companion slot**: Another common way of expressing constraint is to add logic operation to existing date type. For example: *“but I am not available on June 19th”*.
 
-Of course to fully support these expression, we will need backend provide APIs that can make use these additional ways of expressing the constraints on the date preference.
+Of course to fully support these expressions, we will need backend provide APIs that can make use these additional ways of expressing the constraints on the date preference.
 
 Furthermore, it is possible that users might change their ideas after they made the initial selection, so we need to support these use cases as well. For example: *“Oh, just noticed that that I actually can not do June 19th, got a whole day training that I can not skip.”*
 
@@ -41,5 +41,5 @@ Just like GUI counterpart, getting a user’s choice on a date is actually not a
 Reference:
 1. [Date Picker - Goldman Sachs Design](https://design.gs.com/components/date-picker)
 2. [CUI Component, a requirement analysis](https://opencui.medium.com/component-approach-for-chatbot-dca67b36d888)
-3. [5 Levels of Conversational UI](/guide/5levels-cui.md)
+3. [5 Levels of Conversational UI](../../../../essentials/5levels-cui.md)
 4. [3 Layers of Chatbot](https://opencui.medium.com/4-layers-of-chatbot-658ccceea382)
