@@ -37,41 +37,41 @@ export const en = {
       text: 'Dialog Annotations',
       collapsible: true,
       items: [
-        { text: 'Cost-effective conversational experience', link: '/reference/annotations/overview.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/annotations/fillstrategy.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/annotations/init.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/annotations/valuerec.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/annotations/valuecheck.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/annotations/confirmation.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/annotations/transition.md' },
+        { text: 'Overview', link: '/reference/annotations/overview.md' },
+        { text: 'Fill strategy', link: '/reference/annotations/fillstrategy.md' },
+        { text: 'Initialization', link: '/reference/annotations/init.md' },
+        { text: 'Value recommendation', link: '/reference/annotations/valuerec.md' },
+        { text: 'Value check', link: '/reference/annotations/valuecheck.md' },
+        { text: 'Confirmation', link: '/reference/annotations/confirmation.md' },
+        { text: 'State transition', link: '/reference/annotations/transition.md' },
       ],
     },
     {
       text: 'Providers',
       collapsible: true,
       items: [
-        { text: 'Cost-effective conversational experience', link: '/reference/providers/overview.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/providers/native.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/providers/postgrest.md' }
+        { text: 'Overview', link: '/reference/providers/overview.md' },
+        { text: 'Native provider', link: '/reference/providers/native.md' },
+        { text: 'PostgreSQL provider', link: '/reference/providers/postgrest.md' }
       ]
     },
     {
       text: 'Channels',
       collapsible: true,
       items: [
-        { text: 'Cost-effective conversational experience', link: '/reference/channels/overview.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/channels/universalmessage.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/channels/googlebusiness.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/channels/messenger.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/channels/whatsapp.md' },
+        { text: 'Overview', link: '/reference/channels/overview.md' },
+        { text: 'Universal Channel', link: '/reference/channels/universalmessage.md' },
+        { text: 'Google Business Message', link: '/reference/channels/googlebusiness.md' },
+        { text: 'Messenger', link: '/reference/channels/messenger.md' },
+        { text: 'WhatsApp', link: '/reference/channels/whatsapp.md' },
       ],
     },
     {
       text: 'Supports',
       collapsible: true,
       items: [
-        { text: 'Cost-effective conversational experience', link: '/reference/support/overview.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/support/Chatwoot.md' }
+        { text: 'Overview', link: '/reference/support/overview.md' },
+        { text: 'Chatwoot', link: '/reference/support/Chatwoot.md' }
       ],
     },
     {
@@ -82,13 +82,13 @@ export const en = {
       text: 'CUI Components',
       collapsible: true,
       items: [
-        '/reference/annotations/systemcomponent.md',
+        { text: 'System CUI components', link: '/reference/annotations/systemcomponent.md' },
         {
           text: 'Date picker',
-          link: '/reference/plugins/components/datepicker/',
+          link: '/reference/plugins/components/datepicker/README.md',
           collapsible: true,
           items: [
-            { text: 'Cost-effective conversational experience', link: '/reference/plugins/components/datepicker/datepicker-design.md' }
+            { text: 'CUI design', link: '/reference/plugins/components/datepicker/datepicker-design.md' }
           ],
         },
       ],
@@ -97,12 +97,12 @@ export const en = {
       text: 'Platform',
       collapsible: true,
       items: [
-        { text: 'Cost-effective conversational experience', link: '/reference/platform/multilingual.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/platform/testing.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/platform/deployment.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/platform/versioncontrol.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/platform/access.md' },
-        { text: 'Cost-effective conversational experience', link: '/reference/platform/reusability.md' }
+        { text: 'Multilingual', link: '/reference/platform/multilingual.md' },
+        { text: 'Testing', link: '/reference/platform/testing.md' },
+        { text: 'Deployment', link: '/reference/platform/deployment.md' },
+        { text: 'Version control', link: '/reference/platform/versioncontrol.md' },
+        { text: 'Access control', link: '/reference/platform/access.md' },
+        { text: 'Reusability', link: '/reference/platform/reusability.md' }
       ]
     },
     {
@@ -112,11 +112,11 @@ export const en = {
   ],
   '/policy/': [
     {
-      text: 'Terms of Service',
+      text: 'Terms of service',
       link: '/policy/terms.md'
     },
     {
-      text: 'Privacy Policy',
+      text: 'Privacy policy',
       link: '/policy/privacy.md'
     }
   ]
