@@ -21,50 +21,43 @@ You can simply define the schema layer and interaction layer data you need in th
 To propagate the changes to language view:
 
 1. In the **Structure** view, click **Propagate** in the upper-right corner of the Types area.
-   ::: thumbnail
+
    ![propagate interaction change](/images/guide/pingpong/commit_pingpong_struct.png)
-   :::
+
 2. Once you have propagated the changes to the language view, you can switch to the specific language in the **Language Selector**. Then, you can fill in the blanks with different languages.
-   ::: thumbnail
+
    ![switch pingpong en](/images/guide/pingpong/switch_pingpong_en.png)
-   :::
 
 ## Commit the changes
 In your branch, you can make any desired changes to the project, such as the changes in [Build a chatbot](./build-simple-chatbot.md) guide. If you make a mistake, you can undo your changes or revert to your latest commit. Your changes will not be added to the master branch until you merge your branch. To test your change using OpenCUI **Debug** tool, you need to commit the change first.
 
-   ::: thumbnail
    ![commit language change](/images/guide/pingpong/commit_pingpong_en.png)
-   :::
 
 ## Create a pull request
-
 Once you're ready to share your work, you can create a pull request to get feedback on your changes from your collaborators. Pull requests show the changes you made in your branch compared to the master branch, which indicates that you're ready to merge your changes into the master branch.
 
 To create a pull request:
 1. In the navigation bar, select the **Versions** tab.
 2. Click **Pull request** in the upper-right corner of the Versions area.
-::: thumbnail
+
 ![pingpong pull request](/images/guide/pingpong/pingpong_pull_request.png)
-:::
 
 ## Review and merge pull request
-
 Collaborators can review pull request and submit reviews by marking **Approve** or **Close**.
 
 To review changes: 
 1. Click the item you want to review, and **Compare diffs** field will slide out.
-   ::: thumbnail
+
    ![version item](/images/guide/pingpong/version_item.png)
-   :::
+
 2. In the **Compare diffs** drawer, make sure all the changes are what you want. You can switch between different layers from the topbar.
-   ::: thumbnail
+
    ![review pull request](/images/guide/pingpong/review_changes.png)
-   :::
+
 3. Once you're satisfied with the changes, you can **Approve** them. 
-   ::: thumbnail
+
    ![approve pull request](/images/guide/pingpong/approve_changes.png)
-   :::
+
 4. Once the pull request is approved, you can **Merge** this pull request. OpenCUI will tell you if your pull request has conflicts that must be resolved before merging. For more information, see [Resolve Merge Conflict](../reference/platform/versioncontrol.md#resolve-merge-conflict).
-   ::: thumbnail
+
    ![merge pull request](/images/guide/pingpong/merge_changes.png)
-   :::
