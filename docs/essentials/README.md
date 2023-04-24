@@ -6,7 +6,7 @@ The flow-based approach is a popular method for developing graphical user interf
 
 Can a chatbot be built in a way that gives users the freedom to express themselves while allowing businesses to have full control over the conversation? Let's take a closer look at what a chatbot really is for businesses.
 
-### Type-based approach
+## Type-based approach
 A chatbot is an application that provides services to users through a conversational user interface (CUI). As interfaces to business capabilities, these services decouple the client from the provider, allowing software to be developed independently and reused across various applications and systems.
 
 A service essentially is just a set of Application Programming Interface (API) functions. In order to invoke one of these API functions in a conversational manner, the chatbot needs to create an instance of this function type through conversations. This implies that the chatbot also needs to create instances for the input parameters of the function or recursively for attributes of composite types in a more general sense.
@@ -20,7 +20,7 @@ A type-based chatbot with multiple language support can then function in the fol
 ![create save](/images/guide/pingpong/urr.png)
 :::
 
-### Three layers
+## Three layers
 This type-based conversation can be built in three layers: we declare types at the schema layer, attach dialog annotations onto these types at the interaction logic layer, and finally complete dialog annotations at the language layer by adding templates and exemplars. This allows developers to focus on specific tasks without worrying about the implementation details of other layers. As a result, it can lead to more efficient development, easier debugging, greater code reuse, and reduced costs.
 
 Grounding CUI development in types or schema has several key advantages over conversation-driven development. The API schema defines a natural scope for both design and implementation, making it easy to determine whether a given conversation is relevant to the business. Additionally, the API schema is typically designed to be minimal and orthogonal through careful deliberation between the product owner and software architect. As a result, similar functionalities are generally serviced by the same APIs, so the task for CUI is simply to map language to the appropriate APIs.
@@ -29,26 +29,26 @@ Furthermore, the explosion of possible interaction paths presents no challenge f
 
 With the business logic taken care of at the interaction layer, the primary responsibility of the language layer is to translate between structured data and the natural language used by your users. By adding natural language annotations to the types and slots, it is suggested that this layer can be largely addressed through the use of large language models (LLMs) in a zero-shot learning setting. Therefore, there may no longer be a need to hire natural language understanding talent for your team.
 
-### Benefits, benefits, benefits!
+## Benefits, benefits, benefits!
 A better separation of concerns is just one of the many advantages of choosing OpenCUI as your technology stack for building conversational user interfaces. Designed with cost-efficiency in mind, OpenCUI offers a range of features that make it an attractive choice for those seeking to create exceptional conversational experiences without exceeding their budgets.
 
-#### Reusable component
+### Reusable component
 One of thd cardinal sin in software development is to build everything from scratch. All type systems have built-in support for composition, so dialog-annotated types, - let's call them [components](./components.md) - are naturally composable. Composability is great because it allows developers to build complex systems by assembling reusable, and interchangeable components without the burden of maintaining them. This reduces development time and effort, while also promoting modularity and code reuse.
 
-#### A proper type system simplify modeling
+### A proper type system simplify modeling
 A type system is at core of OpenAPI, a widely adopted standard for declaring language-agnostic contracts for APIs, since APIs involve the exchange of data between different systems or components, and data types provide a way to ensure that the exchanged data is well-formed, consistent, and interoperable. The [OpenAPI type system](https://swagger.io/docs/specification/data-models/) supports modern concepts such as containers, inheritance, and polymorphism, in addition to user-defined data types.
 
 While it is possible to simulate conversational behavior using a flow-based approach for these type system features, doing so puts a burden on the CUI builder and greatly increases the cost of building a good conversational experience. OpenCUI supports every type system feature defined by OpenAPI 3.x at the CUI level for both input and output. It does so by using skills to conversationally expose functions, frames to classes, and entity to primitive types and enums. This way, the builder can focus on modeling the application level problem at an abstract level permitted by modern type systems, instead emulate the type system behavior at core of programming language.
 
 While it is possible to emulate conversational behavior for these type system features using a flow-based approach, this places a heavy burden on the CUI builder and can significantly increase the cost of creating a quality conversational experience. OpenCUI, on the other hand, supports almost every type system feature defined by OpenAPI 3.x at the CUI level for both input and output. This is achieved by using skills to conversationally expose functions, frames to classes, and entities to primitive types and enums. As a result, the builder can focus on modeling the problem at an abstract level that is permitted by modern type systems.
 
-#### A maturity model for CUI only
+### A maturity model for CUI only
 We also developed a [5 level maturity model for CUI](./5levels-cui.md). By taking the backend implementation out of the picture, this maturity model offers greater resolution on CUI-related issues. This makes it easier for businesses to balance cost and conversational experience, and provides a roadmap for continuous improvement on the conversational frontend.
 
-#### Implicit context management
+### Implicit context management
 One of the defining characteristics of natural language is that the same word can have different meanings in different contexts. In flow-based approaches, context modeling typically requires explicit representation. By contrast, type-based approaches can leverage partially instantiated objects to serve this purpose. On the OpenCUI platform, there are template and exemplar input boxes for each slot and annotation. These annotations only come into play when the OpenCUI runtime attempts to create an object to fill the corresponding slot, which means that both response rendering and language understanding are inherently context-dependent.
 
-#### Open-soured runtime
+### Open-soured runtime
 The flow-based approach for CUIs requires builders to imperatively define the conversational behavior for every possible path. Without this level of specificity, the conversational experience may suffer. In contrast, type-grounded CUIs allow builders to declare the desired conversational experience for each slot of each type using localized annotations. With this information, our open-sourced runtime can determine how to guide the conversation by greedily trying to complete the instantiation of some type, regardless of how the conversation has progressed up to the current turn.
 
 ## Conclusion
