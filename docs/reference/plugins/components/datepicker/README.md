@@ -42,5 +42,5 @@ Just like GUI counterpart, getting a user’s choice on a date is actually not a
 Reference:
 1. [Date Picker - Goldman Sachs Design](https://design.gs.com/components/date-picker)
 2. [CUI Component, a requirement analysis](https://opencui.medium.com/component-approach-for-chatbot-dca67b36d888)
-3. [5 Levels of Conversational UI](../../../../essentials/5levels-cui.md)
+3. [5 Levels of Conversational UI](/guide/5levels-cui.md)
 4. [3 Layers of Chatbot](https://opencui.medium.com/4-layers-of-chatbot-658ccceea382)
