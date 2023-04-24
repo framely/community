@@ -15,7 +15,7 @@ For more information about providing team members with access, see [Access Contr
 OpenCUI platform is a version control system. You can collaborate with multiple members independently without affecting others. When you start building, such as adding or modifying some instances, a **Branch** is automatically created for you based on the current master(we call it **Base**). Then you can work on this branch in isolation from changes that other people are making to the project.
 
 ### Branch Changes
-While you are working, you can compare the changes you made with **Base** through **Diffs**. During a comparison, if you are not satisfied with these changes or have some new ideas, you can restore your changes by **Revert** operation. If you are satisfied with these changes, you can save these small groups of meaningful changes via **Commit** and prepare for [Testing](testing.md).
+While you are working, you can compare the changes you made with **Base** through **Diffs**. During a comparison, if you are not satisfied with these changes or have some new ideas, you can restore your changes by **Revert** operation. If you are satisfied with these changes, you can save these small groups of meaningful changes via **Commit** and prepare for [Testing]().
 
 ### Keep Branch in Sync
 Typically, when you are working, your teammates may push some changes and merge them into master. The version of master will be updated, which will cause your branch out of date. Keeping your branch up to date with the current master can help you catch problems prior. You can synchronize at any time you need via **Rebase**, but it's best to do this before committing and testing. 
