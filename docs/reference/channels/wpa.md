@@ -1,7 +1,6 @@
 # WeChat Official Account
-::: right
 ![test](/images/channelConfig/wechat/test.png)
-:::
+
 A WeChat Official Account exists in the form of a Wechat user's contact and chat is the basis for the interaction between the Official Account and its users.
 
 We are going to show here how to integrate OpenCUI with WeChat and deploy the chatbot to a OpenCUI hosted environment. For the private deployment, please consult systems in your organization.
@@ -36,25 +35,19 @@ If you used *Developer Password(AppSecret)* before but didn't store it, you can 
    1. Click **Import** button on the second topbar.
    2. Select the chatbot you want to configure WeChat channel and **Save**.
 
-   ::: thumbnail
    ![import channel component](/images/channelConfig/overview/import-channel.png)
-   :::
 
 2. Once you have done, switch to your chatbot to wire WeChat channel:
    1. On **STRUCT** level, head to **Settings** page, in the **Integrations** tab, select the service you just import. In this case, please select **io.opencui.channel.IChannel**.
    2. A configuration dialog opens, at **Service Provider** field, select **io.opencui.wechatOfficialAccount** to wiring WeChat channel.
 
-   ::: thumbnail
    ![select the service](/images/channelConfig/overview/select-service.png)
    *Select service io.opencui.channel.IChannel*
 
-   <br>
-
    ![select a channel](/images/channelConfig/overview/select-channel.png)
    *Wire WeChat channel*
-   :::
 
-2. Continue inside the dialog, configure WeChat integration as following: 
+3. Continue inside the dialog, configure WeChat integration as following: 
    - **Label**: Enter channel label, should be **unique**.
    - **App ID**: Paste the developer ID you copied during the WeChat Official Account setup above.
    - **App Secret**: Paste the developer password you copied during the WeChat Official Account setup above.
@@ -63,9 +56,7 @@ If you used *Developer Password(AppSecret)* before but didn't store it, you can 
    - **Locale**: Select locale which determines the default language used by your bot.
    - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the WeChat Server Configuration.
 
-   ::: thumbnail
    ![add channel](/images/channelConfig/wechat/add-channel.png)
-   :::
 
 4. Before you go to next step, don't forget to merge your changes into master and deploy your chatbot.
 

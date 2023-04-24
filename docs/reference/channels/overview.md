@@ -1,5 +1,4 @@
 # Overview
-
 With channel integrations, your customers can message you through their preferred channel, which is convenient for them. Your bot can start conversations with customers in minutes, send customer care notifications or purchase updates, and offer your customers a level of personalized service. 
 
 In OpenCUI, channels are essentially [Extensions](../providers/extension.md). There are two kinds of channel extensions: 

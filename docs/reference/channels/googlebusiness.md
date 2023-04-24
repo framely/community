@@ -47,23 +47,17 @@ Your browser downloads the service account key. Store it in a secure location. Y
    1. Click **Import** button on the second topbar.
    2. Select the chatbot you want to configure Google Business Message channel and **Save**.
 
-   ::: thumbnail
    ![import channel component](/images/channelConfig/overview/import-channel.png)
-   :::
 
 2. Once you have done, switch to your chatbot to wire Google Business Message channel:
    1. On **STRUCT** level, head to **Settings** page, in the **Integrations** tab, select the service you just import. In this case, please select **io.opencui.channel.IChannel**.
    2. A configuration dialog opens, at **Service Provider** field, select **io.opencui.googleBusinessMessage** to wiring Google Business Message channel.
 
-   ::: thumbnail
    ![select the service](/images/channelConfig/overview/select-service.png)
    *Select service io.opencui.channel.IChannel*
 
-   <br>
-
    ![select a channel](/images/channelConfig/overview/select-channel.png)
    *Wire Google Business Message channel*
-   :::
 
 3. Continue inside the dialog, configure Google Business Message integration as following: 
 
@@ -73,9 +67,7 @@ Your browser downloads the service account key. Store it in a secure location. Y
     - **Locale**: Select locale which determines the default language used by your bot.
     - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the Google Business Message Webhook. 
 
-    ::: thumbnail
     ![add channel](/images/channelConfig/googlebusiness/add-channel.png)
-    :::
 
 4. Before you go to next step, don't forget to merge your changes into master and deploy your chatbot.
 

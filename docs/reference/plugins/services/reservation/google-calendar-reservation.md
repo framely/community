@@ -17,26 +17,21 @@ Each Google Workspace app or integration has its own Google Cloud project where 
 
 For further information on Google Cloud projects, refer to [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
 
-::: thumbnail
 ![create cloud project](/images/plugins/reservation/googlecalendar/create_cloud_project.png)
-:::
 
 ### Enable Google Workspace APIs
 To make Google Calendar Reservation extension work, you need to enable APIs below in your Google Cloud project:
 1. In the Google Cloud console, go to **Menu** > **More products** > **Google Workspace** > **Product Library**.
 
-    ::: thumbnail
     ![product library](/images/plugins/reservation/googlecalendar/product_library.png)
-    :::
 
 2. Enable **Admin SDK API** and **Google Calendar API** :
     1. Click the API that you want to turn on.
     2. On the detail page of this API, click **Enable**.
     3. Repeat these steps to enable another.
 
-    ::: thumbnail
     ![enable APIs](/images/plugins/reservation/googlecalendar/enable_apis.png)
-    :::
+
 
 ## Set up service account
 > The Google OAuth 2.0 system supports server-to-server interactions such as those between a web application and a Google service. For this scenario you need a service account, which is an account that belongs to your application instead of to an individual end user. For more information, see [Using OAuth 2.0 for Server to Server Applications](https://developers.google.com/identity/protocols/oauth2/service-account#delegatingauthority).
@@ -59,9 +54,7 @@ If your application doesn't run on Google App Engine or Google Compute Engine, y
 6. Optional: Under **Grant users access to this service account**, add the users or groups that are allowed to use and manage the service account.
 7. Click **Done**.
 
-::: thumbnail
 ![create service account](/images/plugins/reservation/googlecalendar/create_service_account.png)
-:::
 
 #### 2. Create a service account key
 1. Click the email address for the service account you created.
@@ -69,9 +62,7 @@ If your application doesn't run on Google App Engine or Google Compute Engine, y
 3. In the **Add key** drop-down list, select **Create new key**.
 4. Select **JSON** key type and click **Create**. Your new public/private key pair is generated and downloaded to your machine; it serves as the only copy of the private key. You are responsible for storing it securely. If you lose this key pair, you will need to generate a new one.
 
-::: thumbnail
 ![create service account key](/images/plugins/reservation/googlecalendar/create_service_account_key.png)
-:::
 
 You can return to the [API Console](https://console.developers.google.com/) at any time to view the email address, public key fingerprints, and other information, or to generate additional public/private key pairs. 
 
@@ -80,15 +71,11 @@ To delegate domain-wide authority to a service account, a super administrator of
 1. From your Google Workspace domain's [Admin console](https://admin.google.com/), go to **Menu** > **Security** > **Access and data control** > **API Controls**.
 2. In the **Domain wide delegation** pane, select **Manage Domain Wide Delegation**.
 
-    ::: thumbnail
     ![domain wide delegation](/images/plugins/reservation/googlecalendar/domain_wide_delegation.png)
-    :::
 
 3. Click **Add new**.
 
-    ::: thumbnail
     ![add new](/images/plugins/reservation/googlecalendar/add_new.png)
-    :::
 
 4. In the **Add a new client ID** popup window:
    1. In the **Client ID** field, enter the service account's **Client ID**. You can find your service account's client ID (*OAuth 2 Client ID*) in the [Service accounts page](https://console.developers.google.com/iam-admin/serviceaccounts).
@@ -99,9 +86,7 @@ To delegate domain-wide authority to a service account, a super administrator of
       ```
    3. Click **Authorize**.
 
-    ::: thumbnail
     ![Authorize](/images/plugins/reservation/googlecalendar/authorize.png)
-    :::
 
 The app should be available for use within an hour, but might take up to 24 hours.
 
@@ -112,9 +97,7 @@ To use Google Calendar Reservation Provider, you can follow steps in [Wire and C
 2. Wire Google Calendar Reservation Provider (*services.opencui.googlCalendarReservation*) to this service interface.
 3. Configuration the integration.
 
-::: thumbnail
 ![configuration information](/images/plugins/reservation/googlecalendar/configuration_information.png)
-:::
 
 To set up the configuration information:
 - **Label**: the integration label.
@@ -123,11 +106,10 @@ To set up the configuration information:
 - **Customer ID**: Admin account setting's Customer ID.
    1. From your Google Workspace domain's [Admin console](https://admin.google.com/), go to **Menu** > **Account** > **Account settings**. 
    2. In the **Profile** pane, copy **Customer ID**.
-    ::: thumbnail
-    ![Customer ID](/images/plugins/reservation/googlecalendar/customer_id.png)
-    :::
-- **Delegated User**: specify an email address of the user account in your Google Workspace domain that the service account will impersonate. For example: *user@example.com*.
 
+    ![Customer ID](/images/plugins/reservation/googlecalendar/customer_id.png)
+
+- **Delegated User**: specify an email address of the user account in your Google Workspace domain that the service account will impersonate. For example: *user@example.com*.
 
 ## Resources management
 
@@ -139,24 +121,22 @@ Now sign in to your [Google Admin console](https://admin.google.com/), do the fo
 #### 1. Add buildings
 1. In the Admin console, go to **Menu** > **Directory** > **Buildings and resources**, click **Manage resources**. 
 2. In the Manage resources section, click **Add building**.  
-    ::: thumbnail
+
     ![add building](/images/plugins/reservation/googlecalendar/add_building.png)
-    :::
+
 3. In the Buildings section, click **Add building**. Enter the building information in the popup window and click **Add building**.
-    ::: thumbnail
+
     ![add building popup](/images/plugins/reservation/googlecalendar/add_building_popup.png)
-    :::
 
 #### 2. Add resources
 1. In the Admin console, go to **Menu** > **Directory** > **Buildings and resources**, click **Manage resources**. 
 2. In the Manage resources section, click **Add new resource**.  
-    ::: thumbnail
+
     ![add resource](/images/plugins/reservation/googlecalendar/add_resource.png)
-    :::
+
 3. Enter the resource information in the popup window. And click **Add Resources**.
-    ::: thumbnail
+
     ![add resource popup](/images/plugins/reservation/googlecalendar/add_resource_popup.png)
-    :::
 
 ### Resources in OpenCUI
 As reservation service interface declares abstract **Resource**, you need to specify your concrete resources in your Module or Chatbot by declaring subclasses of Resource abstract frame. If you want to add any features to your resource, such as table size, nickname, service items, etc., which can be used to interact with customers and filter on the business side, you need to add them as slots for your concrete resources.
@@ -166,24 +146,22 @@ Now sign in to [OpenCUI project](https://build.opencui.io/), do the following:
 #### 1. Declare subclass of Resource
 1. **Create** a concrete frame. Go to **Frames** page, click **Create**, type the frame Label and press the ENTER/RETURN key.
 2. **Implement** Resource. In the **Implemented** section, **select** *services.opencui.reservation.Resource*. 
-::: thumbnail
+
 ![resource subclass](/images/plugins/reservation/googlecalendar/resource_subclass.png)
-:::
 
 #### 2. Declare features of Resource
 To add features as slots for your concrete resource:
 1. **Create** entity types for your features. 
    1. Go to **Entities** page, click **Create**, type the entity Label and press the ENTER/RETURN key. (e.g. HairdresserName).
    2. **Add** entity instances you need. (*e.g. tony, zhangsan*) Don't forget to configure the expression at the language level.
-    ::: thumbnail
+
     ![add entity](/images/plugins/reservation/googlecalendar/add_entity.png)
-    :::
+
 2. Add entity types as slots. 
    1. Back to your concrete frame page.
    2. In the **Slots** section, click **Add Slots** selector and select the entity type you want to add.  
-    ::: thumbnail
+
     ![add slot](/images/plugins/reservation/googlecalendar/add_slot.png)
-    :::
 
 ### Specify required properties
 When you are done with setting up resources in both Calendar and OpenCUI, you need to specify the required properties of them in [Google Admin console](https://admin.google.com/).
@@ -202,9 +180,7 @@ Each building configured in calendar needs to set a `timezone` in building's **D
 |:---        |:---    |:---         | :---    |
 | `timezone` | String | Required. The time zone of this building, also represents the timezone of each resource. (Formatted as an [IANA Time Zone Database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)) | *America/New_York* |
 
-::: thumbnail
 ![building description](/images/plugins/reservation/googlecalendar/building_description.png)
-:::
 
 #### 2. Associate features with resources
 Each resource configured in calendar needs to be associated with a JSON format in resource **Description(internal)**, which will deserialize to OpenCUI concrete frame object (the subclass of resource frame type). At the same time, you can set the corresponding features for each resource through key-value pairs, which can be used for filtering. 
@@ -233,10 +209,7 @@ For example:
 {"@class": "me.quickstart.reservationTest.Hairdresser", "defaultDuration": [3600,7200], "hairdresserName": "tony"}
 ```
 
-::: thumbnail
 ![resource description](/images/plugins/reservation/googlecalendar/resource_description.png)
-:::
-
 
 ## Testing
 When you're done with the setup above, before defining the full interactions, you can run a simple test to make sure you have setup successfully. To run a simple test, you can create a PingPong skill and call these functions in response or input these request parameters dynamically through slots. 
@@ -249,29 +222,28 @@ Now let's use `getResourceInfo` as an example.
 
 1. In your chatbot, create a testing skill, for example, *Ping*.
 2. Use services. Go to **Schema** tab, in the **Services** section, select *services.opencui.reservation*, click **Save**.
-    ::: thumbnail
+
     ![testing add service](/images/plugins/reservation/googlecalendar/testing_add_service.png)
-    :::
+
 3. Add actions. Go to **Response** tab, in the **Default Action** section, add the actions you need. In this case, we add **Single Value Message**.
-    ::: thumbnail
+
     ![testing add reply](/images/plugins/reservation/googlecalendar/testing_add_reply.png)
-    :::
+
 4. Click **Commit**, and switch to language level.
 5. Add language template and exemplar:
     1. Go to **Expression** tab, add **Names** and **Expressions**.
-    ::: thumbnail
+
     ![testing add expression](/images/plugins/reservation/googlecalendar/testing_add_expression.png)
-    :::
+
     2. Go to **Response** tab, add the reply and call the `getResourceInfo` function.
     ```kotlin
     // change "xxxxxxxx" to your resource id
     This is Resource id xxxxxxxx's info: 
     ${ (reservation.getResourceInfo("xxxxxxxx") as Hairdresser)!!.hairdresserName!!.expression() }
     ```
-    ::: thumbnail
+
     ![testing call function](/images/plugins/reservation/googlecalendar/testing_call_function.png)
-    :::
+
 7. Click **Commit**, and test it in **Debug**. If you get the correct response, congratulations, you have successfully completed the configuration.
-    ::: thumbnail
+
     ![testing debug](/images/plugins/reservation/googlecalendar/testing_debug.png)
-    :::
