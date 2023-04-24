@@ -1,5 +1,4 @@
 # Overview
-
 We understand no matter how well you build your chatbot, there will always be user requests that are beyond the design and implementation scope, and we need to handoff the conversation to human support team. Support is a software where human agents can handle the conversation when bot has failed or upon user requirement. OpenCUI understand that your human support team already have their favorite support software, so instead of reinventing wheels, OpenCUI is designed to play well with others when it comes to support system, as long as they can provide some basic APIs. 
 
 
@@ -26,7 +25,6 @@ To reduce the effort level on the user side, we support the conversation routing
 ## Configure Support
 
 ### Before You Begin
-
 1. Make sure all the owners in your organization have verified their emails first otherwise you won't be able to get Chatwoot support.
 
 ::: tip How to Verify Your Email?
@@ -40,7 +38,6 @@ To reduce the effort level on the user side, we support the conversation routing
 3. We show here how to integrate your chatbots with Chatwoot in OpenCUI hosted environment. For private deploy, please consult systems in your organization.
 
 ### Enable Support
-
 Click **Setting** > **Integrations**. In the **Support** field, enable the support you need. To configure Chatwoot, see [Chatwoot Configuration](Chatwoot.md#configuration)
 
 ![enable-chatwoot](/images/Chatwoot/enable-chatwoot.png)
@@ -50,7 +47,6 @@ If you enable Chatwoot for the first time in your organization, check your email
 :::
 
 ### Set Up Routing Priority
-
 To make skill based routing work, you need to set up routing priority. When there are unfinished skills in the conversation, we follow routing priority to decide which team we should route the conversation to.\
 If an unfinished skill is one of the associate skills in routing priority, we route the conversation to the corresponding team. Otherwise, we route the conversation to default team.
 

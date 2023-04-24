@@ -3,7 +3,6 @@
 [[toc]]
 
 ## Motivation
-
 Reusability is one of the key design goals for OpenCUI to help business to reduce the cost of building personalized services. In this way, you can use existing components instead of starting from scratch, and always create once, reuse often. There are four different mechanisms available: [Import](#import), [Clone](#clone), [Inherit](#inherit) and [Compose](#compose).
 
 ## Import
@@ -33,10 +32,9 @@ In OpenCUI, interface frame can inherit many interfaces, every function on the i
 ## Compose
 The composition also provides reusability. When there is already a frame that includes the instances and behaviors you want, you can reuse the existing frame as a slot, or use the frame directly in a skill. By doing so, you can get bigger and bigger behaviors.
 
-## How To Use
+## How to use
 
 ### Import
-
 To import a component to your project, please follow the subsequent directions: 
 1. Click into the component which you would like to import.
 2. On the second navigation bar, click **Import**.
@@ -53,7 +51,6 @@ To import a component to your project, please follow the subsequent directions:
 :::
 
 ### Clone
-
 To clone a project to your org, please follow the subsequent directions: 
 1. Click into the project which you would like to clone.
 2. On the second navigation bar, click **Clone**.
@@ -70,7 +67,6 @@ To clone a project to your org, please follow the subsequent directions:
 :::
 
 ### Inherit
-
 To inherit or implement frames:
 1. Navigate to the target frame.
 2. Under the **Schema** tab, select the frame you would like to inherit or implement in the **Implemented** section. 
@@ -83,7 +79,6 @@ To inherit or implement frames:
 :::
 
 ### Compose
-
 1. To add a frame slot, navigate to the target frame. Under the **Schema** tab, select the frame you want to reuse in the **Slots** section. 
 ::: thumbnail
 ![compose](/images/platform/reusability/compose.png)

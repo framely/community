@@ -6,7 +6,7 @@ The implementations of interfaces, which we call providers, are available in two
 
 Once you have a provider and the corresponding backend running, you need to wire this provider to its service interface in your chatbot, which allows the chatbot to communicate with the backend.
 
-## Native Providers
+## Native providers
 Native providers are developed in the form of extensions, which are software modules developed to supply one or more providers to the platform. OpenCUI is implemented in Kotlin, so these extensions are naturally developed as standard Kotlin modules using standard toolchains like Gradle and popular framework Spring Boot. Extensions are developed in four simple steps:
 
 1. Define the interface on the OpenCUI platform (builders can only do this at the application level for services).
@@ -18,7 +18,7 @@ These native providers can be registered as external, in which case the builder 
 
 For more details, see [Native Provider](native.md) or [extensions](extension.md).
 
-## Scripted Providers
+## Scripted providers
  
 Sometimes, the backend implementations of a service are accessible through some scripted language like SQL or JSON instead of native code. The providers for these backends, known as scripted providers, come in two types: hosted provider type and stub provider type.
 

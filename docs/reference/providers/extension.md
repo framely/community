@@ -8,8 +8,7 @@ There are two kinds of extensions:
 - External extensions are those that the OpenCUI platform does not have access to the source code for and can only be used by you with a privately deployed chatbot.
 - Internal extensions are those that the OpenCUI platform does have access to the source code for (inside OpenCUI or Framely). Chatbots using Framely extensions cannot be exported for private deployment."
 
-## Extend with Native Provider
-
+## Extend with native provider
 To develop extensions with Native Provider, you should follow these steps below. To use existing extensions, you can go [Wire and Configure](native.md#wire-and-configure) directly.
 
 1. Describe interface
@@ -39,11 +38,9 @@ When you're done, make sure you merge all of your changes into master.
 
 
 ## Quickstart with Helloworld
-
 Now lest's use [helloworld extension](https://github.com/opencui/extensions/tree/main/helloworld) as an example to show how extension is developed. This simple hello word extension gets name from configuration, and then simly return `hello $name`.
 
-### Describe Interface
-
+### Describe interface
 1. **Create service interface**. Go to one of your org, select **Components** in left side menu, click **Create** on the right side. In the **Create** popup window: 
     - Enter a label for service component. For example, our hello world example uses `component_0915` as label. 
     - Turn on service toggle, enable service.
@@ -75,14 +72,14 @@ Now lest's use [helloworld extension](https://github.com/opencui/extensions/tree
 3. Review your changes and merge them into master.
 
 
-### Generate Code Stub
+### Generate code stub
 In the service you described, click **Export** on the second navigation bar to extract the generated file. 
 
 ::: thumbnail
 ![export service component](/images/provider/extension/hello_export_service.png)
 :::
 
-### Develop Extension
+### Develop extension
 1. Clone extensions repo, create a subdirectory to host your subproject. Here we create `helloworld` under extensions.
     ```
     git clone https://github.com/opencui/extensions.git
@@ -114,7 +111,7 @@ In the service you described, click **Export** on the second navigation bar to e
 
 For a full overview, see [helloworld](https://github.com/opencui/extensions/tree/main/helloworld) in OpenCUI extensions repo.
 
-### Register Native Provider
+### Register native provider
 1. Create a native provider. Go to one of your org, select **Provider** in left side menu, click **Create** on the right side. In the **Create** popup window: 
     - Enter a label for provider. For example, `test` as label. 
     - Select **Native Provider** in **Provider Type** field.
@@ -161,8 +158,7 @@ For a full overview, see [helloworld](https://github.com/opencui/extensions/tree
 
 4. Review and merge your changes into master.
 
-### Wire and Configure in Chatbot
-
+### Wire and configure in chatbot
 1. If you have not already created a chatbot, create one now. Inside your org, head to chatbot list page by clicking **Chatbots** in the left side menu, then click **Create** on the right side.
     - Enter your chatbot's label in the Project Label field, for example `helloworld`.
     - Select your preferred Region.

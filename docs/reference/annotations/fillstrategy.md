@@ -108,7 +108,6 @@ How about headache?
 ::::
 
 #### Overview
-
 The Gated strategy can only be applied to frame slots. Therefore, to take advantage of this prompt strategy, you first need to define a frame to host closely related slots. Like the Conditional strategy, this choice is also orthogonal to other annotations in the [slot filling pipeline](./overview.md#five-stages-of-slot-filling).
 
 The Boolean Gate will ask the user a yes-or-no question once and then wait for one of three types of answers.

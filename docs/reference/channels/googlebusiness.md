@@ -6,10 +6,9 @@ We are going to show here how to integrate Google Business Message into OpenCUI 
 Follow these steps to configure:
 [[toc]]
 
-## Set Up Google Business Message
+## Set up Google Business Message
 
-### Register As a Partner
-
+### Register as a partner
 1. Open the [Business Communications Developer Console](https://business-communications.cloud.google.com/?utm_source=/business-communications/business-messages/guides/quickstarts/echo-agent&utm_medium=devsite&utm_campaign=business-messages).
 2. Under **Business Messages**, click **Create partner account**.
 3. Enter your partner information:
@@ -26,7 +25,6 @@ Follow these steps to configure:
 ![register](/images/channelConfig/googlebusiness/register.png)
 
 ### Create a service account
-
 1. On the [Console](https://business-communications.cloud.google.com/?utm_source=/business-communications/business-messages/guides/quickstarts/echo-agent&utm_medium=devsite&utm_campaign=business-messages) home page, click **Partner account settings**.
 2. In the left navigation, click **Service account**.
 3. Click **Create key**, then click **Create**.
@@ -36,7 +34,6 @@ Your browser downloads the service account key. Store it in a secure location. Y
 ![create key](/images/channelConfig/googlebusiness/create-key.png)
 
 ### Create a brand and an agent
-
 1. Open the [Console](https://business-communications.cloud.google.com/?utm_source=/business-communications/business-messages/guides/quickstarts/echo-agent&utm_medium=devsite&utm_campaign=business-messages) and sign in with your Business Messages Google account.
 2. Click **Create agent**.
 3. Enter values for **Brand name** and **Agent name**.
@@ -45,8 +42,7 @@ Your browser downloads the service account key. Store it in a secure location. Y
 
 ![create agent](/images/channelConfig/googlebusiness/create-agent.png)
 
-## Configure Google Business Message From OpenCUI
-
+## Configure Google Business Message from OpenCUI
 1. On OpenCUI platform, go to service component [io.opencui.channel](https://build.opencui.io/org/io.opencui/agent/channel/struct/service_schema): 
    1. Click **Import** button on the second topbar.
    2. Select the chatbot you want to configure Google Business Message channel and **Save**.
@@ -83,11 +79,10 @@ Your browser downloads the service account key. Store it in a secure location. Y
 
 4. Before you go to next step, don't forget to merge your changes into master and deploy your chatbot.
 
-## Finish Setup Google Business Message
-
+## Finish Google Business Message setup
 A webhook is a partner-created HTTPS callback that specifies how your agent should respond to messages and events. You can set your webhook either at the partner level or at the agent level. Partner-level webhooks apply to every agent you maintain, while agent-level webhooks each apply to one individual agent.
 
-### Set Your Partner-level Webhook
+### Set your partner-level webhook
 1. Open the [Account settings](https://business-communications.cloud.google.com/console/partner/settings?utm_source=/business-communications/business-messages/guides/quickstarts/echo-agent&utm_medium=devsite&utm_campaign=business-messages) in the Console.
 2. Make sure the correct partner account is selected.
 3. Set **Technical point of contact**.
@@ -98,7 +93,7 @@ A webhook is a partner-created HTTPS callback that specifies how your agent shou
 
 ![set webhook](/images/channelConfig/googlebusiness/set-webhook.png)
 
-### Set an Agent-level Webhook
+### Set an agent-level webhook
 1. Click your agent.
 2. In the left navigation, click **Integrations**.
 3. For **Webhook**, click **Configure**.
@@ -108,7 +103,7 @@ A webhook is a partner-created HTTPS callback that specifies how your agent shou
 
 ![set webhook agent](/images/channelConfig/googlebusiness/set-webhook-agent.png)
 
-## Test Your Chatbot
+## Test your chatbot
 1. Open the [Business Communications Developer Console](https://business-communications.cloud.google.com/?utm_source=/business-communications/business-messages/guides/quickstarts/echo-agent&utm_medium=devsite&utm_campaign=business-messages).
 2. Under **Agent test URLs**, click the **Android button** or **iOS button**.
     - Scan the QR code with the corresponding mobile device, or click **Copy Android URL** or **Copy iOS URL** to copy the agent's test URL.

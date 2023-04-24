@@ -9,20 +9,19 @@ We are going to show here how to integrate OpenCUI with WeChat and deploy the ch
 Follow these steps to configure:
 [[toc]]
 
-## Before You Begin
+## Before you begin
 If you don't have WeChat Official Account, set up one first.
 1. Go to [WeChat Official Account Platform](https://mp.weixin.qq.com/?lang=en_US&token=), click **Register Now**
 2. Select **Service Account** or **Subscription Account**, and follow the instructions that are provided on the screen to complete the process.
 
 ![register](/images/channelConfig/wechat/register.png)
 
-## Set Up WeChat Official Account
+## Set up WeChat Official Account
 1. Go to [WeChat Official Account Platform](https://mp.weixin.qq.com) and log in with your WeChat Official Account.
 2. In the **Setting and Development** field, click **Basic configuration**.
 3. In the **Official Account development information** field, :clipboard: copy *Developer ID(AppID)* and *Developer Password(AppSecret)*
 
 ![set up wechat official account](/images/channelConfig/wechat/set-up-account.png)
-
 
 ::: tip Notice
 If you used *Developer Password(AppSecret)* before but didn't store it, you can click **Reset** to get a new one.
@@ -32,8 +31,7 @@ If you used *Developer Password(AppSecret)* before but didn't store it, you can 
 
 ![config whitelist](/images/channelConfig/wechat/config-whitelist.png)
 
-## Configure WeChat From OpenCUI
-
+## Configure WeChat from OpenCUI
 1. On OpenCUI platform, go to service component [io.opencui.channel](https://build.opencui.io/org/io.opencui/agent/channel/struct/service_schema): 
    1. Click **Import** button on the second topbar.
    2. Select the chatbot you want to configure WeChat channel and **Save**.
@@ -71,8 +69,7 @@ If you used *Developer Password(AppSecret)* before but didn't store it, you can 
 
 4. Before you go to next step, don't forget to merge your changes into master and deploy your chatbot.
 
-## Finish Setup WeChat Official Account
-
+## Finish WeChat Official Account setup
 1. Back to [WeChat Official Account Platform](https://mp.weixin.qq.com), In the **Server Configuration** (服务器配置) field, click **Change Configuration**. Paste *Callback URL* and *Token* you copied.
 
 ![config server](/images/channelConfig/wechat/config-server.png)
@@ -81,6 +78,5 @@ If you used *Developer Password(AppSecret)* before but didn't store it, you can 
 
 ![generate key](/images/channelConfig/wechat/generate-key.png)
 
-## Test Your Chatbot
-
+## Test your chatbot
 Once you deploy successfully, you can try to send messages to your WeChat Official Account to test your chatbot now. If you get a response, you have fully set up your app for receiving messages! :tada:

@@ -131,7 +131,6 @@ The common understanding of confirmation yes and no is already supported in **sy
 :::
 
 ### Implicit
-
 ::: thumbnail
 ![implicit](/images/annotation/confirmation/confirmation_condition_implicit.png)
 :::
