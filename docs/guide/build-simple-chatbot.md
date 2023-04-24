@@ -1,7 +1,7 @@
 # Build a simple chatbot
 This tutorial will guide you step-by-step through the process of building the same chatbot you played within the last guide. After completing this tutorial, you will be able to develop a [level 2](../essentials/5levels-cui.md#frame-with-slots) conversational experience, which is sufficient for allowing users to check your business hours or make a reservation. But let's start with a bit of background, as you will be using a new and more effective approach to build the chatbot.
 
-### Background
+## Background
 A chatbot is an application with a conversational user interface (CUI). It is developed to provide user services, including answering informational questions and completing transactional tasks. A service is an interface for a business capability that usually consists of a set of Application Programming Interface (API) functions. These interfaces decouple the front end, like the chatbot, from the backend implementation of the service, so that they can be developed independently.
 
 In order to invoke API functions in a conversational manner, the chatbot needs to create an instance of a function type through conversations, which implies that chatbot also needs to create instances for the input parameters of the function or attributes of composite types in a more general sense.
