@@ -13,33 +13,23 @@ The conversational UI is responsible for converting what the user said into a se
 ## Frame without Slot
 At this level, a user can express what they want in the form of a frame without slots. This type of frame is typically communicated in a single sentence, and conversations can be completed in a single turn. An example of this level is frequently asked questions.
 
-:::: conversation
-::: user User
-what is your hours?
-:::
-::: bot Bot
-We open every day from 5:00pm to 9:00pm.
-:::
-::::
+```json
+User: "What is your hours?"
+Chatbot: "We open every day from 5:00pm to 9:00pm."
+```
+
 Since such a frame has no structure, its expressive power is limited. For example, if there are multiple branches, a separate frame is needed for each branch to answer a question about their hours. The response is always atomic and context-independent, and the text generation simply forwards the actual answer to the user without any processing.
 
 ## Frame with Slots
 In this level, user frame has structure, or it is parameterized with slots. For example, buying flight ticket needs information on departure, destination and date. When there are missing information in the user's initial utterance, the chatbot will conduct conversations to collect them, potentially in multiple turns. 
 
-:::: conversation
-::: user User
-I like to buy a ticket to Shanghai.
-:::
-::: bot Bot
-When do you want to leave?
-:::
-::: user User
-How about this Friday.
-:::
-::: bot Bot
-...
-:::
-::::
+```json
+User: "I like to buy a ticket to Shanghai."
+Chatbot: "When do you want to leave?"
+User: "How about this Friday."
+Chatbot: "..."
+```
+
 A chatbot can only talk about a single topic at a time at this level. Additionally, there is no support for modifications yet, making this level a happy path only. However, this does not mean that this level is easy. When there are polymorphic use cases (i.e., different symptoms requiring different conversations) and multi-values (i.e., asking about other symptoms), support for this level can become complex. When there are not a lot of slots, starting over is not too prohibitive. Many existing service-oriented chatbots are at this level.
 
 At this level, a chatbot can generate a response based on a frame. For example, based on time, user gender, and last name, we can generate the following response: "Good morning (or afternoon or evening), Mr. (or Ms., Mrs.) Page (or any other last name). How can I help you?" There are two possible implementations for this kind of text generation: template-based for exact wording but less diversity and model-based for more diversity.
@@ -47,41 +37,25 @@ At this level, a chatbot can generate a response based on a frame. For example, 
 ## CRUD Support 
 One of the limitations of last level is that a user can not make mistakes or change mind, this can be a problem when there are many slots in the frame. Conversational UI in this level can conduct conversations so that user can correct their mistake or change their mind on the fly, removes the need to start from scratch every time there is an issue.
 
-:::: conversation
-::: user User
-I like to buy a ticket to Shanghai.
-:::
-::: bot Bot
-When do you want to leave?
-:::
-::: user User
-Wait, I meant Shenzhen.
-:::
-::: bot Bot
-Shenzhen it is. When do you want to leave?
-:::
-::::
-
+```json
+User: "I like to buy a ticket to Shanghai."
+Chatbot: "When do you want to leave?"
+User: "Wait, I meant Shenzhen."
+Chatbot: "Shenzhen it is. When do you want to leave?"
+```
 
 When there are many slots, or multiple values involved in a single multi-value slot, users are bound to make mistakes or change their minds. Being able to hold a modification conversation can greatly increase the effectiveness of the conversational UI and improve the overall user experience. This level is considered the minimum usable level for many real-world use cases. Unfortunately, the cost of building and operating these CRUD (create, read, update, and delete) operations is still high, so they are not as commonly available as they should be. To illustrate the potential difficulty associated with CRUD, consider the following case: After a user puts three drinks in their shopping cart, they may say, "Can you add sugar to the large cold drink?" The same text generation as the last level is required.
 
 ##  Multiple Topics
 When the task a user wants to achieve becomes even more complex, they might need to juggle between multiple services simultaneously. At this level, a chatbot can naturally switch between different frames, and a user can switch frames without providing all the required information. The chatbot can use conversational history to automatically complete user utterances and figure out what they want.
 
-:::: conversation
-::: user User
-I like to buy a ticket to Shanghai.
-:::
-::: bot Bot
-When do you want to leave?
-:::
-::: user User
-This friday. By the way, how is the weather like over there?
-:::
-::: bot Bot
-It is clear sky in Shanghai this friday, in mid 20s.
-:::
-::::
+```json
+User: "I like to buy a ticket to Shanghai."
+Chatbot: "When do you want to leave?"
+User: "This friday. By the way, how is the weather like over there?"
+Chatbot: "It is clear sky in Shanghai this friday, in mid 20s."
+```
+
 Clarification is another example of topic switching. For service-oriented conversations, this level presents a very usable user experience. Building this type of conversational experience still requires significant effort. However, once achieved, we can finally move past the stage where chatbots feel artificially limited. The same text generation as in the last level is required.
 
 ## Sentimental Analysis
