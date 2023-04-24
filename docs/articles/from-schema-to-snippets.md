@@ -22,44 +22,20 @@ Given the advent of ChatGPT, what is the recommended approach to chatbot design 
 
 The foundation of a chatbot is its service, which determines the tasks it can perform and how it interacts with customers. For example, a restaurant owner developing a chatbot to assist customers in booking reservations needs to design the service logic to ensure that the chatbot can accurately identify available time slots, check for scheduling conflicts with the restaurant's tables, and confirm bookings with customers.
 
-:::: conversation
-::: user User
-Hi, I'd like to make a reservation for two people tonight at 7 pm.
-:::
-::: bot Bot
-Great, we'd be happy to help you make a reservation. I have checked our availability and unfortunately we are fully booked at 7 pm tonight. However, we do have availability at 6 pm or 8 pm. Would either of those times work for you?
-:::
-::: user User
-Hmm, neither of those times work for me. How about 7:30 pm?
-:::
-::: bot Bot
-Let me check. I'm sorry, but we don't have any available tables at 7:30 pm either. Would you like me to check other days or times for you?
-:::
-::: user User
-How about Thursday at 7 pm?
-:::
-::: bot Bot
-I'm sorry, we're fully booked on Thursday at 7 pm as well. However, we do have availability on Friday at 7 pm. Would you like to reserve a table for Friday instead?
-:::
-::: user User
-Yes, that works.
-:::
-::: bot Bot
-Great! I have reserved a table for you at our restaurant on Friday at 7 pm. Can I confirm your reservation under the name of John?
-:::
-::: user User
-Yes, that's correct.
-:::
-::: bot Bot
-Perfect! Your reservation is confirmed and we look forward to seeing you on Friday. Is there anything else I can assist you with?
-:::
-::: user User
-No, that's all. Thank you so much for your help!
-:::
-::: bot Bot
-You're welcome. Have a great day and we'll see you on Friday!
-:::
-::::
+``` json 
+User: "Hi, I'd like to make a reservation for two people tonight at 7 pm."
+Chatbot: "Great, we'd be happy to help you make a reservation. I have checked our availability and unfortunately we are fully booked at 7 pm tonight. However, we do have availability at 6 pm or 8 pm. Would either of those times work for you?"
+User: "Hmm, neither of those times work for me. How about 7:30 pm?"
+Chatbot: "Let me check. I'm sorry, but we don't have any available tables at 7:30 pm either. Would you like me to check other days or times for you?"
+User: "How about Thursday at 7 pm?"
+Chatbot: "I'm sorry, we're fully booked on Thursday at 7 pm as well. However, we do have availability on Friday at 7 pm. Would you like to reserve a table for Friday instead?"
+User: "Yes, that works."
+Chatbot: "Great! I have reserved a table for you at our restaurant on Friday at 7 pm. Can I confirm your reservation under the name of John?"
+User: "Yes, that's correct."
+Chatbot: "Perfect! Your reservation is confirmed and we look forward to seeing you on Friday. Is there anything else I can assist you with?"
+User: "No, that's all. Thank you so much for your help!"
+Chatbot: "You're welcome. Have a great day and we'll see you on Friday!"
+```
 
 To achieve consistency, logic, and helpfulness in chatbot interactions, it is important to adopt a service-driven design approach. This approach provides a clear framework for chatbot responses, addressing questions such as when to present options, seek clarification, or confirm requests. To accomplish this, chatbots need to recognize key user request types, such as number of people, date, and time, and declare specific interactions using CUI (conversational user interface) components, like prompts, recommendations, confirmations and value clarifications.
 
@@ -73,10 +49,8 @@ Starting with a schema representation of the service can be helpful to ensure th
 
 For example, a restaurant reservation chatbot might require slots for the number of people, date and time, and any special requests or dietary restrictions. Similarly, a healthcare appointment scheduling chatbot might require slots for the type of appointment, preferred date and time, location, and insurance information. 
 
-::: thumbnail
 ![start from schema](/images/blog/from-schema-to-snippets/start-from-schema.png)
 *The scheme representation of a simple restaurant reservation service*
-:::
 
 By starting with the schema, the chatbot can ensure that it collects all the necessary information in a logical and efficient manner. Once the schema is established, the chatbot can move on to determining the logic of the interaction, which will help to further refine the conversational experience for customers.
 
@@ -93,10 +67,8 @@ The conversational behaviors that are commonly used in interactions can be imple
 
 By using these CUI components, chatbots can deliver a more effective and satisfying conversational experience for customers.
 
-::: thumbnail
 ![interaction logic](/images/blog/from-schema-to-snippets/interaction-logic.png)
 *The interaction logic for a restaurant reservation service*
-:::
 
 After determining the interaction logic, language-related components such as templates for text generation and utterance exemplars for dialog understanding become essential. By optimizing the use of language model technology, such as ChatGPT, for structured conversations that follow a predetermined framework or utilizing magic zero-shot learning to improve chatbots' understanding of user inquiries, businesses can reduce the cost of building functional chatbots significantly. This approach enables businesss to focus solely on interaction logic, leading to a more efficient and cost-effective chatbot building process.
 
@@ -116,28 +88,22 @@ Let's use a restaurant reservation service as an example:
 
 Starting with the happy path is a good approach, and as you encounter rare corner cases, you can gradually incorporate their requirements. It is not necessary to modify the happy path requirement to accommodate these new corner cases. The common use cases may look like the following:
 
-::: thumbnail
 ![snippet 1](/images/blog/from-schema-to-snippets/snippet1.png)
 *Snippet 1: Happy path*
-:::
 
 ### Error handling
 
 Designing error handling and recovery procedures is crucial for situations when tables are unavailable or customers provide incorrect information. The chatbot should gracefully handle such issues and provide helpful responses to customers. Consider the following examples:
 
-::: thumbnail
 ![snippet 2](/images/blog/from-schema-to-snippets/snippet2.png)
 *Snippet 2: Specified information does not pass validation*
-:::
 
 ### Make changes
 
 The process of modifying or cancelling a reservation should be made simple and user-friendly for customers. For instance, in case a customer decides to alter their reservation: 
 
-::: thumbnail
 ![snippet 3](/images/blog/from-schema-to-snippets/snippet3.png)
 *Snippet 3: Customer changes mind*
-:::
 
 The above is just an example, you can expand your snippet according to actual scenarios.
 

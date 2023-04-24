@@ -46,9 +46,9 @@ At this layer, you will create a "Table" frame to represent that resource, inher
 Inside `tableReservation` module
 1. Create a frame labeled as `Table`.
 2. Inside the `Table` frame, inherit `services.opencui.reservation.Resource`.
-   ::: thumbnail
+
    ![inherit](/images/blog/tutorial-build-reservation/inherit.png)
-   :::
+
 ##### Add slots
 Then add a slot called **capacity** with type **kotlin.Int**. This feature shows the maximum number of guests that the table seats.
 

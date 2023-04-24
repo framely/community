@@ -95,7 +95,7 @@ The service's conversational behavior is described in the following contextual s
 
 4. End state: `user id` = "xxxx", `complete` = true.
 
-#### No reservations found
+### No reservations found
 1. Description: informs the user that there are no valid reservations associated with their account.
 2. Precondition: `complete` = false.
 3. Annotated conversation:
