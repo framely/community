@@ -112,11 +112,11 @@ export const en = {
   ],
   '/policy/': [
     {
-      text: 'Terms of Service',
+      text: 'Terms of service',
       link: '/policy/terms.md'
     },
     {
-      text: 'Privacy Policy',
+      text: 'Privacy policy',
       link: '/policy/privacy.md'
     }
   ]
