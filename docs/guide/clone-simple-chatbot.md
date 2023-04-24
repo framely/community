@@ -18,7 +18,7 @@ Cloning projects is a great way to get started with OpenCUI. You can easily get 
 
 OpenCUI has a growing number of public projects that you can discover by clicking on the **Explore** tab at the top of the page. These projects were built by the OpenCUI community, and you can inspect them to see if they fit your needs. Once you are inside the project you want to clone, you can follow the steps below to clone it.
 
-This guide will show you how to clone a chatbot using `me.quickstart.pingpong` as an example. Click [here](https://build.opencui.io/org/me.quickstart/agent/pingpong/struct/type) to navigate to the chatbot： 
+This guide will show you how to clone a chatbot using `me.quickstart.pingpong` as an example. Click [here](https://build.opencui.io/org/me.quickstart/agent/pingpong/struct/intent?page=0&imported=false&search=) to navigate to the chatbot： 
 
 1. In the top-right corner of the page, click **Clone**. 
     ::: thumbnail
