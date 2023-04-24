@@ -8,9 +8,7 @@ There are two kinds of accounts on the OpenCUI, personal account and organizatio
 #### Projects
 Projects are the basic unit of work on OpenCUI. Builder can decide whether their projects are public or private. Projects can be copied (cloned) or imported. There are three types of projects: chatbots, modules and providers. Here is a diagram for how they are typically used together to provide conversational experience:
 
-::: thumbnail
 ![relationship](/images/guide/use-service/relationship.png)
-:::
 
 ##### Chatbots
 A chatbot is an application that provides services to users through a conversational user interface (CUI). A service is an interface for a business capability that usually consists of a set of Application Programming Interface(API) functions. These interfaces decouple the client from the provider, allowing software to be developed independently and reused across various applications and systems.

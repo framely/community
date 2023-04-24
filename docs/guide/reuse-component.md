@@ -8,9 +8,8 @@ Modern business applications are typically broken down into a set of services, e
 Similar to a chatbot, a module is also an OpenCUI frontend project, but it is commonly used to expose a single service conversationally. However, a module does not have the special skill "Main" like a chatbot does, so it cannot be deployed to serve users on its own. Modules are like libraries, they need to be imported into an application like a chatbot to be effective.
 
 Backend implementations of a service are typically deployed separately. A provider is designed to offer a convenient way for the frontend to interact with a remote service implementation as if it were a local function, while handling the necessary network communication details behind the scenes. For a provider to be usable, it needs to be configured so that it has the correct endpoints and required credentials. Once configured, it can be used by every chatbot in the organization. The following diagram shows how chatbots, modules, and providers typically work together:
-::: thumbnail
+
 ![relationship](/images/guide/use-service/relationship.png)
-:::
 
 A module of a service paired with a compatible provider is all you need to provide this service conversationally. These pre-built, often higher quality modules are a cost-effective way for you to introduce conversational functionalities to your chatbot. Here are the steps involved:
 1. Decide on a service you want to expose. Make sure the module and provider are of high quality.
@@ -31,41 +30,24 @@ This guide will show you how to reuse an existing [module](https://build.opencui
 
 Here is an example that illustrates how this chatbot can helps users get business hours:
 
-:::: conversation
-::: user User
-Hello, what time do you open?
-:::
-
-::: bot Bot
-Our business hours in a week are
-
-**Mon** 10:00 AM – 11:00 PM
-
-**Tue** Closed
-
-**Wed** 10:00 AM – 11:00 PM
-
-**Thu** 10:00 AM – 11:00 PM
-
-**Fri** 10:00 AM – 11:00 PM
-
-**Sat** 10:00 AM – 11:00 PM
-
-**Sun** Closed
-:::
-::::
+```json
+User: "Hello, what time do you open?"
+Chatbot: "Our business hours in a week are
+          Mon 10:00 AM – 11:00 PM
+          Tue Closed
+          Wed 10:00 AM – 11:00 PM
+          Thu 10:00 AM – 11:00 PM
+          Fri 10:00 AM – 11:00 PM
+          Sat 10:00 AM – 11:00 PM
+          Sun Closed"
+```
 
 This chatbot can also show the business hours for a particular day, in addition to the business hours for the week. For example:
 
-:::: conversation
-::: user User
-Hi, are you open this Friday?
-:::
-
-::: bot Bot
-We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM.
-:::
-::::
+```json
+User: "Hi, are you open this Friday?"
+Chatbot: "We are open on Friday, March 31, 2023 from 10:00 AM to 11:00 PM."
+```
 
 ## Set up a provider
 To allow a module to interact with a backend service implementation that is already deployed, you need to set up a compatible provider in your organization and configure it so that it can connect to the actual backend.
@@ -88,9 +70,7 @@ To clone the Hours provider, inside [hoursProvider](https://build.opencui.io/org
 <!-- change this line if we change the button from deploy to deploy backend -->
 To deploy PostgreSQL backend, click **Deploy backend** button in the upper-right corner of the Versions area.
 
-::: thumbnail
 ![deploy](/images/guide/use-service/deploy.png)
-:::
 
 ### Populate database
 Before the backend can serve relevant information, you need to populate the database with your business hours. You can do this using the [backoffice](../reference/providers/postgrest.md#access-backoffice). For every organization that uses at least one PostgreSQL provider, OpenCUI also creates a web application for that organization to manage the data in the backend. You can access the back office as follows:
@@ -106,9 +86,8 @@ Each business has different hours and unique special days. This provider uses a 
 
 To set business hours for each day of the week and for special days, follow these steps:
 1. Inside the `hoursProvider` database, click **Create** on the `Hours` table.
-   ::: thumbnail
+
    ![create business hours](/images/guide/use-service/create-business-hours.png)
-   :::
 
 2. Fill in the following information in the form and click **Save**:
    - **dayOfWeek** (*Required*): The day of the week to add business hours.
@@ -120,10 +99,8 @@ To set business hours for each day of the week and for special days, follow thes
    ::: tip Need to know
    Currently, only one set of business hours can be set per day as the service is only designed for simple use cases.
    :::
-   
-   ::: thumbnail
+
    ![business hours list](/images/guide/use-service/business-hours-list.png)
-   :::
 
 ## Reuse module in chatbot
 On OpenCUI, importing modules is another way to reuse conversational functionalities. Unlike cloning a project where you use existing work as a starting point and modify anything to fit your needs, but you cannot benefit from any improvements that will be introduced to the source project after you clone it. With an imported module, it has to fit your needs from the get-go, as there are only limited things, mostly at the language layer, that you can customize. On the other hand, you can always upgrade an imported module to a newer version with bugs fixed and improved experiences. <!--This paragraph should be in ## Import the module-->
@@ -135,9 +112,7 @@ To import the module that meets your needs into a chatbot, follow these steps:
 1. In the [hours module](https://build.opencui.io/org/me.quickstart/agent/hours/struct/service_schema), click **Import** in the top-right corner of the page.
 2. Select the chatbot you want to import into and **Save**. If you don't have a chatbot yet, you need to create or clone one before importing. 
 
-::: thumbnail
 ![import service](/images/guide/use-service/import-service.png)
-:::
 
 ### Wire the provider
 For each service that is referenced in the chatbot, you need to wire a provider to it so that the chatbot, or the module imported into the chatbot, can actually access the service implementation. You can wire different providers to the same service under different environments.
@@ -151,9 +126,7 @@ To wire the provider `hoursProvider` to the module `hours` service in chatbot's 
 
 When you are ready to deploy your service to the production environment, you need to repeat the steps above in the **Deploy service provider** section.
 
-::: thumbnail
 ![set up provider](/images/guide/use-service/set-up-provider.png)
-:::
 
 ## Test a chatbot
 Finally, you can try the chatbot for business hours using the built-in [Debug](../reference/platform/testing.md#how-to-use) tool. To do this, send the following messages to the chatbot:

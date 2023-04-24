@@ -21,18 +21,16 @@ OpenCUI has a growing number of public projects that you can discover by clickin
 This guide will show you how to clone a chatbot using `me.quickstart.pingpong` as an example. Click [here](https://build.opencui.io/org/me.quickstart/agent/pingpong/struct/type) to navigate to the chatbot： 
 
 1. In the top-right corner of the page, click **Clone**. 
-    ::: thumbnail
+
     ![enter chatbot](/images/guide/start-with-clone/click_clone.png)
-    :::
 
 2. After clicking Clone, a pop-up window will appear with basic chatbot settings. You will need to decide a few things: 
    - Choose which **Owner** organization you want to clone this project to.
    - Optionally, you can change the **Project label** for this clone.
    - Decide on how you want to **Deploy** this, have OpenCUI hosting it for you or have it deployed on premise.
    - Pick which **Region** you want to deploy this chatbot to, pick one that is closer to your targeted users.
-    ::: thumbnail
+
     ![enter chatbot](/images/guide/start-with-clone/clone.png)
-    :::
 
 3. Click on **Clone** at the bottom of the popup. Once you have cloned the chatbot, you can test it directly.
 
@@ -51,22 +49,21 @@ Despite these restrictions, the Debug tool is a valuable tool for testing your c
 
 To use the built-in debug tool, you can follow these steps:
 1. Switch to a language view, in this case we switch to **Language / en**. 
-   ::: thumbnail
+
    ![try it now](/images/guide/start-with-clone/switch_pingpong_en.png)
-   :::
+
 2. In **Language / en**, click **Debug** in the upper-right corner of the Types area , the debug window will slide out. 
-   ::: thumbnail
+
    ![try it now](/images/guide/start-with-clone/tryitnow_icon.png)
-   :::
+
 3. Click **Connect**. This may take some time as we build and deploy the chatbot to our development environment. Once the connection is successfully established, you can test your chatbot by typing messages in the input box at the bottom and pressing enter. 
    
    For example, enter `ping` then the chatbot should ask for a location, upon getting a legit location say `Seattle`, respond with `Pong Seattle`. 
-   ::: thumbnail
+
    ![pingpong test](/images/guide/start-with-clone/pingpong_test.png)
-   :::
+
    Additionally, there are other useful operations available in the upper right corner of the Debug area, such as viewing the log, saving a test case, and resetting the session. These operations can help you troubleshoot your chatbot. For more information about the Debug tool, please refer to the [Testing](../reference/platform/testing.md) section.
-   ::: thumbnail
+
    ![operation icon](/images/guide/start-with-clone/operation-icon.png)
-   :::
 
 In addition, you can make modifications to your chatbot, such as changing the response and expression. For the changes to take effect, be sure to commit and reconnect. For more information about workflow, see [OpenCUI workflow](opencui-flow.md).

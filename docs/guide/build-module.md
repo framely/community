@@ -58,9 +58,8 @@ Inside the `BusinessHours` frame and **Schema** tab, under the **Structure** vie
    - Type **java.time.LocalTime** with the label `closingTime`.
 
 Once finished, the frame should look like this:
-::: thumbnail
+
 ![show frame BusinessHours](/images/guide/build-service/show-frame.png)
-:::
 
 #### Annotate type: BusinessHours
 Since this type does not need to be exposed conversationally, there is no need to add dialog annotation.
@@ -74,7 +73,6 @@ Inside the `hours` module and **Service** page, under the **Structure** view.
 3. In the **Return type** section, select **Frame** > **BusinessHours** as **Type**. Turn on **Multi-value**d and turn off **Nullable**, then save.
 
 ### Declare function: getHoursDay
-
 The function `getHoursDay` returns business hour based on the specific date provided by customers. It takes a date as input and returns one `BusinessHours`, where the frame represents the business hours for the specified day. To declare this function interface: 
 
 Inside the `hours` module and **Service** page, under the **Structure** view.
@@ -87,9 +85,8 @@ Inside the `hours` module and **Service** page, under the **Structure** view.
 
 
 Once finished, the function interfaces should look like this:
-::: thumbnail
+
 ![show functions](/images/guide/build-service/show-functions.png)
-:::
 
 ## Build CUI for the service
 To provide functionality through a conversational user interface (CUI), you need to define a skill. A skill is essentially a function type with dialog annotations, allowing the chatbot to create a callable object for triggering the service through conversation. The input parameters of the function are captured by the skill's slots, and the function's return can be displayed using its response.
@@ -116,9 +113,8 @@ Inside the `ShowHours` skill and **Schema** tab, under the **Structure** view.
 
 1. In the **Slots** section, add a slot of type **io.opencui.components.dataEntry.DatePicker** with the label `datePicker`. 
 2. To access functions, in the **Services** section, select **IHours** with the label `hours` and **Save**.
-   ::: thumbnail
+
    ![add service](/images/guide/build-service/add-service.png)
-   :::
 
 #### Annotate type: ShowHours
  Based on analysis of the desired conversational behavior and business logic, pick the right annotation to add for desired conversation experience.
@@ -180,9 +176,8 @@ Clearly, you need to enable **Branches**:
 
 Inside the `ShowHours` skill and the **Response** tab, under the **Structure** view.
 - Turn on **Branches**.
-  ::: thumbnail
+
   ![add a branch](/images/guide/build-service/branching.png)
-  :::
 
 Now you can define each branch one at a time, first in interaction layer, then in language layer, once for each language you want to support. However, this guide assumes that only English is supported.
 

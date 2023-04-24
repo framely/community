@@ -10,9 +10,7 @@ Furthermore, layers are interact with other layer through predefined interfaces 
 ### Chatbot in 3 layers
 Generally, businesses build chatbot to provide their services through conversational user interface. As more and more business use chatbot as way to directly communicate with their users, regardless which channel they come from and what language they speak, it becomes clear that chatbot should be modeled in the 3 layers as follows.
 
-::: thumbnail
 ![three layers](/images/guide/pingpong/3layers.png)
-:::
 
 #### Service schema
 Services are typically implemented in the back-end, and exposed by a set of API functions. These functions can be defined by some API scheme, mainly details the function signature, including data types for their parameters and returns. While there are new APIs specifically designed because of chatbots, all service APIs can be shared between different frontends: including web and mobile apps. So one can safely assume the back-end service is already available, or it can be taken care of as a separate concern.
@@ -32,5 +30,6 @@ The semantic space capture refers to the way in which we understand user utteran
 “I have a meeting in Beijing on Tuesday morning.”
 can be interpreted into “{destination=beijing, time < Tuesday}” by the travel agent when he hears this from his client. Clearly, use implied meaning as semantic space can reduce the effort level down the road.
 How do chatbot developer develop and hot fix the understanding problem? Traditionally, chatbot developer need to train a separate ML model for each chatbot, and fix the understanding under this paradigm can be extremely time-consuming. With recent advance in zero-shot learning based on large language model, it is now possible that chatbot developer can develop and hot fix understanding module without knowing how to training a machine learning model.
+
 ### Summary
 The three-layered approach for building GUI applications has been successful and widely adopted, including on desktop, web, and mobile. We believe this same approach can be applied to building chatbots, specifically using our 3-layered CUI framework OpenCUI. OpenCUI focused on using zero-shot learning towards implied meaning, and entirely do away with training, our dogfooding have found it to be cost-effective in developing CUI’s. Give it a try today.

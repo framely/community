@@ -52,9 +52,8 @@ Inside the **target provider** with the hours module already imported and **Type
 1. Click **Create** button on the right side, and select **Create frame**.
 2. Enter `Hours` as a label for the frame type and press enter.
 3. Inside the `Hours` frame, turn on **Storage enabled**.
-   ::: thumbnail
+
    ![enable storage](/images/guide/build-service/enable-storage.png)
-   :::
 
 ##### Add slots
 Inside the `Hours` frame and **Schema** tab.
@@ -71,8 +70,6 @@ Based on the [columns description](#build-frame-hours) provided, it's important 
 Backend annotations can optimize frames with storage enabled. To ensure completeness of data, turn off **Allow null** for columns that should not be empty. In addition, you can use the **Dropdown** input type to restrict columns to only accept specific options.
 
 ##### Add slot level annotations to dayOfWeek
-
-
 Inside the `Hours/dayOfWeek` slot and **Annotation** tab.
 1. Turn off **Allow null**.
 2. Switch the **Input type** to **Dropdown**, and add the following JSON array:
@@ -111,9 +108,7 @@ Inside the `Hours/dayOfWeek` slot and **Annotation** tab.
 
 When it's done, the `dayOfWeek` slot should look like this:
 
-::: thumbnail
 ![dayOfWeek annotations](/images/guide/build-service/dayofweek-annotation.png)
-:::
 
 ##### Add slot level annotation to ifOpen
 Inside the `Hours/ifOpen` slot and **Annotation** tab.
