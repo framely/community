@@ -3,13 +3,12 @@ export const en = {
   '/essentials/': [
     {
       text: "Why OpenCUI",
-      collapsed: false,
       items: [
-        { text: 'Cost-effective conversational experience', link: '/essentials/README.md' },
-        { text: 'Cooperative principle', link: '/essentials/cooperative.md' },
-        { text: '5 levels of CUI', link: '/essentials/5levels-cui.md' },
-        { text: 'Open sourced runtime', link: '/essentials/architecture.md' },
-        { text: 'Document CUI design', link: '/essentials/document-requirement-for-cui.md' }
+        { text: 'Cost-effective conversational experience', link: '/essentials/README' },
+        { text: 'Cooperative principle', link: '/essentials/cooperative' },
+        { text: '5 levels of CUI', link: '/essentials/5levels-cui' },
+        { text: 'Open sourced runtime', link: '/essentials/architecture' },
+        { text: 'Document CUI design', link: '/essentials/document-requirement-for-cui' }
       ]
     }
   ],
@@ -18,107 +17,107 @@ export const en = {
       text: 'Quickstart',
       items: [
         { text: 'Sign up', link: '/guide/signingup' },
-        { text: 'Clone a simple chatbot', link: '/guide/clone-simple-chatbot.md' },
-        { text: 'Build a simple chatbot', link: '/guide/build-simple-chatbot.md' },
-        { text: 'Reuse a simple module', link: '/guide/reuse-component.md' },
-        { text: 'Build a simple module', link: '/guide/build-module.md' },
-        { text: 'Build a simple provider', link: '/guide/build-provider.md' },
-        { text: 'Deploy a chatbot', link: '/guide/deploy-to-channel.md' },
-        { text: 'OpenCUI workflow', link: '/guide/opencui-flow.md' },
-        { text: 'Key concepts', link: '/guide/concepts.md' },
+        { text: 'Clone a simple chatbot', link: '/guide/clone-simple-chatbot' },
+        { text: 'Build a simple chatbot', link: '/guide/build-simple-chatbot' },
+        { text: 'Reuse a simple module', link: '/guide/reuse-component' },
+        { text: 'Build a simple module', link: '/guide/build-module' },
+        { text: 'Build a simple provider', link: '/guide/build-provider' },
+        { text: 'Deploy a chatbot', link: '/guide/deploy-to-channel' },
+        { text: 'OpenCUI workflow', link: '/guide/opencui-flow' },
+        { text: 'Key concepts', link: '/guide/concepts' },
       ],
     }
   ],
   '/reference/': [
     {
       text: 'Got team?',
-      link: '/reference/are-you-ready.md',
+      link: '/reference/are-you-ready',
     },
     {
       text: 'Dialog Annotations',
-      collapsible: true,
+      collapsed: false,
       items: [
-        { text: 'Overview', link: '/reference/annotations/overview.md' },
-        { text: 'Fill strategy', link: '/reference/annotations/fillstrategy.md' },
-        { text: 'Initialization', link: '/reference/annotations/init.md' },
-        { text: 'Value recommendation', link: '/reference/annotations/valuerec.md' },
-        { text: 'Value check', link: '/reference/annotations/valuecheck.md' },
-        { text: 'Confirmation', link: '/reference/annotations/confirmation.md' },
-        { text: 'State transition', link: '/reference/annotations/transition.md' },
+        { text: 'Overview', link: '/reference/annotations/overview' },
+        { text: 'Fill strategy', link: '/reference/annotations/fillstrategy' },
+        { text: 'Initialization', link: '/reference/annotations/init' },
+        { text: 'Value recommendation', link: '/reference/annotations/valuerec' },
+        { text: 'Value check', link: '/reference/annotations/valuecheck' },
+        { text: 'Confirmation', link: '/reference/annotations/confirmation' },
+        { text: 'State transition', link: '/reference/annotations/transition' },
       ],
     },
     {
       text: 'Providers',
-      collapsible: true,
+      collapsed: false,
       items: [
-        { text: 'Overview', link: '/reference/providers/overview.md' },
-        { text: 'Native provider', link: '/reference/providers/native.md' },
-        { text: 'PostgreSQL provider', link: '/reference/providers/postgrest.md' }
+        { text: 'Overview', link: '/reference/providers/overview' },
+        { text: 'Native provider', link: '/reference/providers/native' },
+        { text: 'PostgreSQL provider', link: '/reference/providers/postgrest' }
       ]
     },
     {
       text: 'Channels',
-      collapsible: true,
+      collapsed: false,
       items: [
-        { text: 'Overview', link: '/reference/channels/overview.md' },
-        { text: 'Universal Channel', link: '/reference/channels/universalmessage.md' },
-        { text: 'Google Business Message', link: '/reference/channels/googlebusiness.md' },
-        { text: 'Messenger', link: '/reference/channels/messenger.md' },
-        { text: 'WhatsApp', link: '/reference/channels/whatsapp.md' },
+        { text: 'Overview', link: '/reference/channels/overview' },
+        { text: 'Universal Channel', link: '/reference/channels/universalmessage' },
+        { text: 'Google Business Message', link: '/reference/channels/googlebusiness' },
+        { text: 'Messenger', link: '/reference/channels/messenger' },
+        { text: 'WhatsApp', link: '/reference/channels/whatsapp' },
       ],
     },
     {
       text: 'Supports',
-      collapsible: true,
+      collapsed: false,
       items: [
-        { text: 'Overview', link: '/reference/support/overview.md' },
-        { text: 'Chatwoot', link: '/reference/support/Chatwoot.md' }
+        { text: 'Overview', link: '/reference/support/overview' },
+        { text: 'Chatwoot', link: '/reference/support/Chatwoot' }
       ],
     },
     {
       text: "Extensions",
-      link: '/reference/providers/extension.md',
+      link: '/reference/providers/extension',
     },
     {
       text: 'CUI Components',
-      collapsible: true,
+      collapsed: false,
       items: [
-        { text: 'System CUI components', link: '/reference/annotations/systemcomponent.md' },
+        { text: 'System CUI components', link: '/reference/annotations/systemcomponent' },
         {
           text: 'Date picker',
-          link: '/reference/plugins/components/datepicker/README.md',
-          collapsible: true,
+          link: '/reference/plugins/components/datepicker/README',
+          collapsed: true,
           items: [
-            { text: 'CUI design', link: '/reference/plugins/components/datepicker/datepicker-design.md' }
+            { text: 'CUI design', link: '/reference/plugins/components/datepicker/datepicker-design' }
           ],
         },
       ],
     },
     {
       text: 'Platform',
-      collapsible: true,
+      collapsed: false,
       items: [
-        { text: 'Multilingual', link: '/reference/platform/multilingual.md' },
-        { text: 'Testing', link: '/reference/platform/testing.md' },
-        { text: 'Deployment', link: '/reference/platform/deployment.md' },
-        { text: 'Version control', link: '/reference/platform/versioncontrol.md' },
-        { text: 'Access control', link: '/reference/platform/access.md' },
-        { text: 'Reusability', link: '/reference/platform/reusability.md' }
+        { text: 'Multilingual', link: '/reference/platform/multilingual' },
+        { text: 'Testing', link: '/reference/platform/testing' },
+        { text: 'Deployment', link: '/reference/platform/deployment' },
+        { text: 'Version control', link: '/reference/platform/versioncontrol' },
+        { text: 'Access control', link: '/reference/platform/access' },
+        { text: 'Reusability', link: '/reference/platform/reusability' }
       ]
     },
     {
       text: "Glossary",
-      link: '/reference/glossary.md'
+      link: '/reference/glossary'
     }
   ],
   '/policy/': [
     {
       text: 'Terms of service',
-      link: '/policy/terms.md'
+      link: '/policy/terms'
     },
     {
       text: 'Privacy policy',
-      link: '/policy/privacy.md'
+      link: '/policy/privacy'
     }
   ]
 }
