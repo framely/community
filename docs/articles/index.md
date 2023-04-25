@@ -28,15 +28,6 @@ layout: home
     path:'./reuse-reservation-module.html'
 },{
     info: {
-      title:'How to build a reservation module',
-      description: ['We show you the way to build a reservation module step by step'],
-      image: './../images/blog/banner/tutorial_reservation_module.png',
-      author: 'Sunny May',
-      date: '3/2/2023'
-    },
-    path:'./build-reservation-module.html'
-},{
-    info: {
       title:'From Schema to Snippets: A Blueprint for Chatbot',
       description: ['The 3 Essential Steps Every Business Should Follow After ChatGPT'],
       image: './../images/blog/banner/from-schema-to-snippets.png',
