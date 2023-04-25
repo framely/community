@@ -14,16 +14,24 @@ actions:
 features:
   - title: CUI for your APIs
     details: Building valuable services is hard, and we can not help with that. But if you already have APIs, building conversational user interface for it should be easy, with OpenCUI.
-    icon: /images/featureIcons/cui.svg
+    icon: 
+        src: /images/featureIcons/cui.svg
+        height: 32
   - title: Separation of Concerns
     details: Decompose chatbot building into multiple concerns like service, interaction and language perception, so different aspects can be handled by different people.
-    icon: /images/featureIcons/separate.svg
+    icon: 
+        src: /images/featureIcons/separate.svg
+        height: 32
   - title: Component-Based
     details: Never build from scratch, build complex behavior by reusing black-box components, so you can focus on what you want instead of how to implement it.
-    icon: /images/featureIcons/component.svg
+    icon:
+        src: /images/featureIcons/component.svg
+        height: 32
   - title: Hot Fixable NLU 
     details: Accuracy is not the most important metric when it comes to dialog understanding. To deploy a chatbot into production, every thing need to be hot fixable by the operation team.
-    icon: /images/featureIcons/hotfix.svg
+    icon:
+        src: /images/featureIcons/hotfix.svg
+        height: 32
   - title: Open Source Runtime
     details: Reactjs enables teams to focus on their application dependent interaction logic, instead of reinventing wheels. OpenCUI is doing the same for chatbots. 
     icon: /images/featureIcons/open-source-line.svg
