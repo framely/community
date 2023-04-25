@@ -8,7 +8,8 @@ export const en = {
         { text: 'Cost-effective conversational experience', link: '/essentials/README.md' },
         { text: 'Cooperative principle', link: '/essentials/cooperative.md' },
         { text: '5 levels of CUI', link: '/essentials/5levels-cui.md' },
-        { text: 'Open sourced runtime', link: '/essentials/architecture.md' }
+        { text: 'Open sourced runtime', link: '/essentials/architecture.md' },
+        { text: 'Document CUI design', link: '/essentials/document-requirement-for-cui.md' }
       ]
     }
   ],

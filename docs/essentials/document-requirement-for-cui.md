@@ -1,4 +1,4 @@
-# Document CUI Design
+# Document CUI design
 ![Banner](/images/blog/banner/document_requirement.png)
 
 While service chatbots can improve customer experience, their development can be complex and costly. To minimize these costs and risks, it's important to answer many questions before writing any code, such as what exactly needs to be built, who can provide assistance, how much specific features will cost, and when they will be available. Holding several rounds of discussions with all stakeholders is necessary to answer these questions. Effective communication of requirements and design is crucial for making these discussions productive.
@@ -24,7 +24,7 @@ In order to provide a service to a user, a chatbot and the user must first agree
 
 A good strategy for filling the slots of a service so that the chatbot can deliver what the user wants is to proceed deterministically by going through the slots in a predefined order. For each slot, the chatbot can follow a set of stages, including initialization, prompting, value recommendation, value check, and confirmation. These stages can interact with the production system through service APIs, engaging in a systematic conversation with the user based on both API return values and user input. For example, after receiving a user's initial choice for a movie title, the chatbot can check with the production system to see if there are still available showtimes or seats. Based on this information, the chatbot can then either move on to the next slot or prompt the user for a new movie title.
 
-## Contextual Snippet
+## Contextual snippet
 The conversational behavior of the chatbot for a given service can be described using a set of contextual snippets, along with the schema representation of that service. The schema representation of a service is simply a label for the service and all its required slots, along with their types that define what value can be used to fill each slot. A contextual snippet for the service consists of a label, description, precondition, annotated dialog snippet, and an end state. The preconditions are defined by the dialog states in the form of slot/value pairs, along with the service API's result, and annotated dialog snippets showcase how the chatbot should behave under such conditions. The end state defines the dialog state the chatbot ends up with after the sample conversation snippet is completed.
 
 Let's use movie ticket selling service as an example. The schema representation of the service can be sketched as follows:
@@ -33,7 +33,7 @@ Let's use movie ticket selling service as an example. The schema representation 
 | :---        | :---               |
 | **Sell Movie Ticket**   | <ol><li>`movie title`, with type **MovieTitle** entity.</li><li>`showtime`, with type **LocalTime**.</li><li>`format`, with type **MovieFormat**, e.g. *IMAX 3D*, *Digital 3D*, *Standard*.</li><li>`number of ticket`, with type **Integer**.</li></ol>  | 
 
-### Contextual Snippet 1: Happy Path
+### Contextual snippet 1: Happy path
 
 | Snippet 1                  | Happy Path                                    | 
 | :---                       | :---                                          | 
@@ -42,7 +42,7 @@ Let's use movie ticket selling service as an example. The schema representation 
 | **Annotated Conversation** | <ul><li> :blush: : Two tickets for the Star Wars, please. </li><li> :robot: : Do you want watch IMAX for that?</li><li> :blush: : Yes, please. </li><li> :robot: : There are two available showtimes: 6:00pm and 10:00pm, which one do you like? </li><li> :blush: : 6:00pm please. </li><li> :robot: : That is two tickets for 6:00pm IMAX Star Wars, total $24, please. </li></ul> | 
 | **End State**              | <ul><li>title = `Star Wars`, </li><li>showtime = `6:00pm`, </li><li>format = `IMAX`, </li><li>number of tickets = `2`, </li><li>complete = `true`. </li></ul> | 
 
-### Contextual Snippet 2: IMAX is NOT available any more, but user are OK with standard form
+### Contextual snippet 2: IMAX is NOT available any more, but user are OK with standard form
 
 | Snippet 2                  | IMAX is NOT available, but user are OK with standard form | 
 | :---                       | :---                                                      | 
@@ -55,5 +55,5 @@ Let's use movie ticket selling service as an example. The schema representation 
 
 Contextual snippets allow you to describe the requirements for a conversational user interface in a piecemeal fashion. You can start with just the happy path and gradually add requirements for rarer and rarer corner cases. The happy path requirements do not need to be changed with these new corner cases. The stability provided by this way of documenting requirements allows us to build better and better conversational experiences.
 
-## Parting Words
+## Parting words
 Good requirement and design documentation makes it possible for stakeholders to discuss what should be built without writing a single line of code. Assuming that the chatbot should work on one service at a time and deterministically follow a predefined strategy to fill the slots, we introduce contextual snippets as a method to document requirements for the conversational user interface (CUI) frontend. This method is easy to pick up, can precisely document the expected conversational behavior for delivering a service, and is useful regardless of which platform is used to build the conversational user interface. While there is no explicit global view of all possible interactions, this localized requirement documentation method allows for incrementally building the conversational experience. We hope that this systematic way of documenting CUI requirements can reduce the risk and associated cost in building your next chatbot and make your customers happier.
