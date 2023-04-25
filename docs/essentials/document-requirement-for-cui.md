@@ -1,6 +1,4 @@
 # Document CUI design
-![Banner](/images/blog/banner/document_requirement.png)
-
 While service chatbots can improve customer experience, their development can be complex and costly. To minimize these costs and risks, it's important to answer many questions before writing any code, such as what exactly needs to be built, who can provide assistance, how much specific features will cost, and when they will be available. Holding several rounds of discussions with all stakeholders is necessary to answer these questions. Effective communication of requirements and design is crucial for making these discussions productive.
 
 Flow diagrams, such as wireflows, are a popular way of documenting requirements and designs for graphical user interaction. These diagrams document both user choices and desired system responses in a series of turns, with system responses defined based on the entire interaction flow up to that point. A flow-based documentation can precisely describe the design or requirements and is easily modifiable since users can only interact with the GUI app in the ways that have been designed for them. However, conversational interaction can result in an exponentially larger number of possible conversational flows, which raises the question of whether a flow-based approach is still suitable for designing and documenting conversational interaction. If not, what is?
@@ -29,29 +27,51 @@ The conversational behavior of the chatbot for a given service can be described 
 
 Let's use movie ticket selling service as an example. The schema representation of the service can be sketched as follows:
 
-| Service     | Slots  | 
-| :---        | :---               |
-| **Sell Movie Ticket**   | <ol><li>`movie title`, with type **MovieTitle** entity.</li><li>`showtime`, with type **LocalTime**.</li><li>`format`, with type **MovieFormat**, e.g. *IMAX 3D*, *Digital 3D*, *Standard*.</li><li>`number of ticket`, with type **Integer**.</li></ol>  | 
+1. `movieTitle` **MovieTitle** Required. The title of the movie.
+2. `showtime` **LocalTime** Required. The time and date of the movie showing.
+3. `format` **MovieFormat** Required. The format of the movie, e.g. IMAX 3D, Digital 3D, Standard.
+4. `numberOfTicket` **Integer** Required. The number of tickets being purchased.
+
+The service's conversational behavior is described in the following contextual snippets:
 
 ### Contextual snippet 1: Happy path
 
-| Snippet 1                  | Happy Path                                    | 
-| :---                       | :---                                          | 
-| **Description**            | Defines what happens if everything goes well. | 
-| **Precondition**           | complete: `false`                             | 
-| **Annotated Conversation** | <ul><li> :blush: : Two tickets for the Star Wars, please. </li><li> :robot: : Do you want watch IMAX for that?</li><li> :blush: : Yes, please. </li><li> :robot: : There are two available showtimes: 6:00pm and 10:00pm, which one do you like? </li><li> :blush: : 6:00pm please. </li><li> :robot: : That is two tickets for 6:00pm IMAX Star Wars, total $24, please. </li></ul> | 
-| **End State**              | <ul><li>title = `Star Wars`, </li><li>showtime = `6:00pm`, </li><li>format = `IMAX`, </li><li>number of tickets = `2`, </li><li>complete = `true`. </li></ul> | 
+This snippet shows how the chatbot can successfully complete a transaction for a user who wants to buy movie tickets. The chatbot asks for the user's preferred showtime and number of tickets, and then confirms the purchase with the user before processing the payment.
 
-### Contextual snippet 2: IMAX is NOT available any more, but user are OK with standard form
+1. Description: Defines what happens if everything goes well.
+2. Precondition: N/A
+3. Annotated conversation
+   ```json
+   User: "Two tickets for the Star Wars, please."
+   Chatbot: "Great choice! Do you want watch IMAX for that?"
+   User: "Yes, please."
+   Chatbot: "There are two available showtimes: 6:00pm and 10:00pm, which one do you like?"
+   User: "6:00pm please."
+   Chatbot: "That is two tickets for 6:00pm IMAX Star Wars, total $24. Would you like to proceed with the purchase?"
+   User: "Yes."
+   ```
+4. End state: Slots `movieTitle`, `showtime`, `format` and `numberOfTicket` are filled.
+   ```json
+   {
+   "movieTitle": "Star Wars",
+   "showtime": "18:00",
+   "format": "IMAX",
+   "numberOfTicket": 2
+   }
+   ```
 
-| Snippet 2                  | IMAX is NOT available, but user are OK with standard form | 
-| :---                       | :---                                                      | 
-| **Description**            | After user specify title, there is no imax available.     | 
-| **Precondition**           | <ul><li>title = `"Star Wars"`, </li><li>complete = `false`, </li><li>Services APIs says IMAX is sold out. </li></ul> | 
-| **Annotated Conversation** | <ul><li> :robot: : IMAX are sold out today. There are two available showtimes in standard format: 6:00pm and 10:00pm, which one do you like? </li><li> :blush: : 6:00pm please. </li></ul> | 
-| **End State**              | <ul><li>title = `"Star Wars"`, </li><li>showtime = `"6:00pm"`, </li><li>format = `"Standard"`, </li><li>number of tickets = `2`, </li><li>complete = `true`. </li></ul> | 
+### Contextual snippet 2: Invalid input
 
-<br>
+This snippet shows how the chatbot can handle invalid input successfully complete service. In this case, when there are no IMAX tickets available, the chatbot offers the user tickets in standard format instead.
+
+1. Description: When the chatbot receives a value for a slot that is not serviceable, it will provide another value if it can or ask the user to provide another value. Using the `format` as an example.
+2. Precondition: Slots `movieTitle` is filled.
+3. Annotated conversation
+   ```json
+   Chatbot: "IMAX are sold out today. There are two available showtimes in standard format: 6:00pm and 10:00pm, which one do you like?"
+   User: "6:00pm please."
+   ```
+4. End state: Slots `movieTitle`, `showtime` and `format` are filled.
 
 Contextual snippets allow you to describe the requirements for a conversational user interface in a piecemeal fashion. You can start with just the happy path and gradually add requirements for rarer and rarer corner cases. The happy path requirements do not need to be changed with these new corner cases. The stability provided by this way of documenting requirements allows us to build better and better conversational experiences.
 
