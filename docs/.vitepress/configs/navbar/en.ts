@@ -17,10 +17,6 @@ export const en = [
     link: '/reference/annotations/overview.html'
   },
   {
-    text: 'Pricing',
-    link: '/pricing/'
-  },
-  {
     text: 'Blog',
     link: '/articles/'
   }
