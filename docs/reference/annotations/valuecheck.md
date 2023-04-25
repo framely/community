@@ -1,15 +1,10 @@
 # Value check
-
 Not all user requests can be accommodated based on business logic. For instance, when a user requests to book a table for dinner, their initial date preference may not be valid if the business is closed on that day. In such cases, the bot should inform the user of the closure and save their time by not asking for party size and time.
 
-:::: conversation
-::: user User
-I want to book a table this Friday.
-:::
-::: bot Bot
-Sorry, we are not open on Friday. Please choose another date.
-:::
-::::
+```json
+User: "I want to book a table this Friday."
+Chatbot: "Sorry, we are not open on Friday. Please choose another date."
+```
 
 ## Overview
 Capturing invalid user input based on business logic is essential to make conversations effective. With value checks, builders can define what constitutes invalid input based on the service and have the bot offer users the chance to provide alternative choices.
@@ -23,9 +18,7 @@ Value check is an optional slot level annotation. When conversation moves to the
 - If all conditions are true, the value check passes, and slot filling moves on to the next stage.
 - If any of the conditions are false, the value check fails. When the value check fails, the bot uses value check prompts to inform users that the value is invalid. The bot then clears the predefined target slot first and restarts the conversation from that slot again.
 
-::: thumbnail
 ![value check](/images/annotation/valuecheck/value-check.png)
-::: 
 
 ### Conditions
 The condition holds the boolean code expression that checks whether the value entered by the user is servable by the business. If all conditions are true, the value check passes, and slot filling proceeds to the next stage. If any of the conditions are false, the value check fails.
@@ -40,40 +33,24 @@ If the value check fails, you can decide which slot to clear in the recovering s
 
 Suppose the order of the slots is as follows. Here are two different scenarios that use different recovering strategies.
 
-::: thumbnail
 ![order of slots](/images/annotation/valuecheck/slots-order.png)
-:::
 
 **Case 1 - Clear the input value of current slot** <Badge text="Default" vertical="middle"/>
 
-:::: conversation
-::: user User
-Can I book a table for 2 this Friday?
-:::
-::: bot Bot
-What time would you like to book?
-:::
-::: user User
-5:00 pm.
-:::
-::: bot Bot
-Sorry, small table at 5 pm on Friday is not available. Please choose another **time**.
-:::
-::::
+```json
+User: "Can I book a table for 2 this Friday?"
+Chatbot: "What time would you like to book?"
+User: "5:00 pm."
+Chatbot: "Sorry, small table at 5 pm on Friday is not available. 
+          Please choose another time."
+```
 
 **Case 2 - Keep the input value of current slot and clear another slot**
 
-:::: conversation
-::: user User
-Can I reserve a table for two this Friday?
-:::
-::: bot Bot
-What time would you like to book?
-:::
-::: user User
-5:00 pm.
-:::
-::: bot Bot
-Sorry, small table at 5 pm on Friday is not available. Please choose another **date**.
-:::
-::::
+```json
+User: "Can I reserve a table for two this Friday?"
+Chatbot: "What time would you like to book?"
+User: "5:00 pm."
+Chatbot: "Sorry, small table at 5 pm on Friday is not available. 
+          Please choose another date."
+```

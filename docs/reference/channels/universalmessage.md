@@ -1,9 +1,7 @@
-# Universal Channel
-
+# Universal channel
 Users interact with chatbot through channel, for example Facebook Messenger. On OpenCUI, channels are integration plugin module that listen for user request for given channel, extract the input, and then triggers chatbot for the structured response, where channel plugin need to encode that response in the channel required format and send it out to user. 
 
 ## Motivation
-
 OpenCUI focuses on supporting popular rich media channels like Facebook Messenger, WhatsApp, WeChat, and Google Business Message. Furthermore, OpenCUI Runtime is designed be extensible so supporting new channels are easy, expect more and more channels will be supported down the road. 
 
 Different channels obviously have different rendering capabilities when it comes to message types. and even when they support the same message type, channels usually do it using different syntax. To support multiple channels at the same time, and to make omnichannel possible, each message can be defined on a per-channel basis. 
@@ -13,19 +11,16 @@ While it is ok to describe the response messages specifically for each channel t
 In OpenCUI, we support universal channel. Messages supported in this channel is called universal messages, and they are a set of messages that are abstracted from commonly supported message type from popular channels like Messenger, WhatsApp, WeChat, iMessage and RCS and so on. These universal message will be translated into channel dependent format before we send it out through that channel, so that chatbot builder only need define the response once in universal channel. Of course, if they absolutely need the native experience, they can define response in that channel which will be used over the universal channel. 
 
 ## Overview
-
 Universal Message offers a way for you to offer a richer in-conversation experience than standard text messages by integrating clickable buttons, images, lists, and more alongside text a single message. Universal Message can be used for many purposes, such as displaying product information, providing the message recipient to choose from a set of options, and showing search results.
 
 Universal Messages defined on OpenCUI can be classified into two classes depending on what they try to verbalize: 
 1. **Single value message**, it can be used to verbalize a single value of some type. This type of message can only support tuple (think of static list where the number of elements are known at build time).
-    ::: thumbnail
+
     ![Single value message](/images/channelConfig/universal/single-value-message.png)
-    :::
 
 2. **Multiple value message**, it is designed to verbalize multiple value of some time, where the number of elements are not know at build time.  The multiple value message bind to a list of some type, and can be expressed via code expression for maximal flexibility.
-    ::: thumbnail
+
     ![Multiple value message](/images/channelConfig/universal/multiple-value-message.png)
-    :::
 
 We also support standard events on univerval channel to make user experience a bit more natural. The main events that we try to support is following :
 1. **Message delivered (DELIVERED)**: This event indicates that a message has been delivered. To users, this event appears as a delivery receipt for a specific message. The RBM platform automatically sends DELIVERED events when it receives messages from users. Your agent can't control these events.
@@ -34,14 +29,12 @@ We also support standard events on univerval channel to make user experience a b
 
 3. **Typing (IS_TYPING)**: To your agent, this event indicates that a user is typing. To a user, this event appears as a typing indicator and lets them know that your agent is composing a message. The typing indicator expires after a short time (approximately 20 seconds) or when the user's device receives a new message from your agent. Your agent can send multiple IS_TYPING events to reset the typing indicator's expiration timer.
 
-## How To Use
-
+## How to use
 Message is a structure encoding of how information should be rendered to user on the channel. On OpenCUI, regardless which channel the message is defined for, it is just a templated string that encodes some json object.
 
 Use the following guides to learn how to send messages to your customers by using universal message.
 
-### Rich Message
-
+### Rich message
 ![rich message](/images/channelConfig/universal/rich-message.png)
 
 Rich Message allows you to send a structured message that includes information, media and suggested actions. Rich message can contain the following items:
@@ -50,8 +43,7 @@ Rich Message allows you to send a structured message that includes information, 
 - `richMedia` *Optional*.
 - A list of suggested actions, including `insideActions` or `floatActions`. *Optional*, actions of rich message can only one of them.
 
-#### JSON Representation
-
+#### JSON representation
 ``` json
 {
     // Universal message type
@@ -110,8 +102,7 @@ Rich Message allows you to send a structured message that includes information, 
 
 #### Properties
 
-##### Message Payload
-
+##### Message payload
 | Fields            | Type                                     | Description                                                              |
 |:---               |:---                                      |:---                                                                      |
 | `type`            | string                                   | *Required*. Universal message type, value must be `rich`.                |
@@ -122,7 +113,6 @@ Rich Message allows you to send a structured message that includes information, 
 | `floatActions[]`  | object ([floatActions](#floatactions))   | *Optional*. List of suggested replies float on top of rich message card. | 
 
 ##### richMedia
-
 | Fields         | Type    | Description |
 |:---            |:---     |:---         |
 | `height`       | enum    | *Required*. The height of the media within a rich card, value including `SHORT`, `MEDIUM`, `TALL`, should be only one of them. |
@@ -132,7 +122,6 @@ Rich Message allows you to send a structured message that includes information, 
 | `forceRefresh` | boolean | *Optional*. If set, the platform fetches the file and thumbnail from the specified URLs, even if the platform has cached copies of the file (and/or of the thumbnail). |
 
 ##### insideActions
-
 | Fields        | Type   | Description |
 |:---           |:---    |:---         |
 | `type`        | string | *Required*. Must be one of the following <ul><li>`reply`: A suggestion for the user to reply with specified text. </li><li>`click`: Opens the specified URL when the buttons is tapped. </li><li>`call`: Opens the user's default dialer app with the specified phone number filled in. </li></ul> |
@@ -142,7 +131,6 @@ Rich Message allows you to send a structured message that includes information, 
 | `phoneNumber` | string | *Required when `type` is `call`*. The specified phone number, in [RFC 3966](https://www.rfc-editor.org/rfc/rfc3966) format. For example, "+1-201-555-0123". |
 
 ##### floatActions
-
 | Fields        | Type   | Description |
 |:---           |:---    |:---         |
 | `type`        | string | *Required*. Only supported type is `reply`. |
@@ -150,7 +138,6 @@ Rich Message allows you to send a structured message that includes information, 
 | `payload`     | string | *Required*. The string that the agent receives when a user taps the suggested action. |
 
 #### Limitations
-
 Since different channels have different restrictions on the same field, we list them for you in the table below. You can decide how to use them based on your situation: 
 
 | Fields            | Messenger                | Google Business Message  | WhatsApp Business Platform |
@@ -169,13 +156,10 @@ For more information, you can jump into the following reference documentations:
 
 #### Examples
 
-##### Inside Actions
-
+##### Inside actions
 When you need to send a chunk of related information, media, or suggestions, you should send a rich card with inside actions. A rich message card can contain any or all of the listed items, but must contain at least a title and description to be valid. 
 
-::: thumbnail
 ![inside actions](/images/channelConfig/universal/inside-actions.png)
-:::
 
 The following code sends a rich message card with an image and suggested inside actions. 
 
@@ -207,9 +191,7 @@ The following code sends a rich message card with an image and suggested inside 
 
 When you need to present a user with dynamic options to choose between, you can also use a rich message card. Suitable for cases where selections do not need to show details.
 
-::: thumbnail
 ![dynamic inside actions](/images/channelConfig/universal/dynamic-inside-actions.png)
-:::
 
 The following code sends a rich message card with dynamic suggested inside actions. 
 
@@ -237,13 +219,10 @@ The following code sends a rich message card with dynamic suggested inside actio
 ```
 
 
-##### Float Actions
-
+##### Float actions
 Float actions guide users through conversations by providing replies that your chatbot knows how to react to. When a user taps a suggested float action, your chatbot receives a message that contains the reply's text and postback data.
 
-::: thumbnail
 ![float actions](/images/channelConfig/universal/float-actions.png)
-:::
 
 The following code sends text with two suggested float actions.
 

@@ -1,5 +1,4 @@
-# Kotlin Expression
-
+# Kotlin expression
 In Kotlin, an [expression](https://kotlinlang.org/spec/expressions.html) consists of variables, operators, methods calls etc. that can be evaluated to a single value. Expression can be arbitrarily nested via method calls, and combined via operators. Since frame on the OpenCUI is directly mapped as Kotlin class, and slot become property of that class, we can use Kotlin expression on platform directly when need some value, for example, various condition needs boolean valued expression, and value rec needs list of object of given types. Using Kotlin expression to express condition for example can give builder the raw expressive power, thus make it possible to encode arbitrary business logic. 
 
 It should be fairly easy to write Kotlin expression to specify some value, even if you do not know Kotlin that much buy understand some modern language, here are the common thing that might help you.

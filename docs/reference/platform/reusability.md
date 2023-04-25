@@ -3,7 +3,6 @@
 [[toc]]
 
 ## Motivation
-
 Reusability is one of the key design goals for OpenCUI to help business to reduce the cost of building personalized services. In this way, you can use existing components instead of starting from scratch, and always create once, reuse often. There are four different mechanisms available: [Import](#import), [Clone](#clone), [Inherit](#inherit) and [Compose](#compose).
 
 ## Import
@@ -33,69 +32,58 @@ In OpenCUI, interface frame can inherit many interfaces, every function on the i
 ## Compose
 The composition also provides reusability. When there is already a frame that includes the instances and behaviors you want, you can reuse the existing frame as a slot, or use the frame directly in a skill. By doing so, you can get bigger and bigger behaviors.
 
-## How To Use
+## How to use
 
 ### Import
-
 To import a component to your project, please follow the subsequent directions: 
 1. Click into the component which you would like to import.
 2. On the second navigation bar, click **Import**.
-::: thumbnail
-![import icon](/images/platform/reusability/import-icon.png)
-:::
+
+   ![import icon](/images/platform/reusability/import-icon.png)
+
 3. In the popup window, **select** the project where you want to import this component.
-::: thumbnail
-![import project](/images/platform/reusability/import-project.png)
-:::
+
+   ![import project](/images/platform/reusability/import-project.png)
+
 4. Click **Save**.
-::: thumbnail
-![import save](/images/platform/reusability/import-save.png)
-:::
+
+   ![import save](/images/platform/reusability/import-save.png)
 
 ### Clone
-
 To clone a project to your org, please follow the subsequent directions: 
 1. Click into the project which you would like to clone.
 2. On the second navigation bar, click **Clone**.
-::: thumbnail
-![clone icon](/images/platform/reusability/clone-icon.png)
-:::
+   
+   ![clone icon](/images/platform/reusability/clone-icon.png)
+
 3. In the popup window, **select** the organization where you want to clone this project.
-::: thumbnail
-![clone project](/images/platform/reusability/clone-project.png)
-:::
+
+   ![clone project](/images/platform/reusability/clone-project.png)
+
 4. Click **Save**. 
-::: thumbnail
-![clone save](/images/platform/reusability/clone-save.png)
-:::
+
+   ![clone save](/images/platform/reusability/clone-save.png)
 
 ### Inherit
-
 To inherit or implement frames:
 1. Navigate to the target frame.
 2. Under the **Schema** tab, select the frame you would like to inherit or implement in the **Implemented** section. 
-::: thumbnail
-![inherit](/images/platform/reusability/inherit.png)
-:::
+
+   ![inherit](/images/platform/reusability/inherit.png)
+
 3. To declare a frame as an interface, turn on the **Interface** toggle in the top-right corner of this frame.  
-::: thumbnail
-![inherit interface](/images/platform/reusability/inherit-interface.png)
-:::
+
+   ![inherit interface](/images/platform/reusability/inherit-interface.png)
 
 ### Compose
-
 1. To add a frame slot, navigate to the target frame. Under the **Schema** tab, select the frame you want to reuse in the **Slots** section. 
-::: thumbnail
-![compose](/images/platform/reusability/compose.png)
-*1. In Slots section*
 
-<br>
+   ![compose](/images/platform/reusability/compose.png)
+   *1. In Slots section*
 
-![compose frame](/images/platform/reusability/compose-frame.png)
-*2. Add frame as slot*
-:::
+   ![compose frame](/images/platform/reusability/compose-frame.png)
+   *2. Add frame as slot*
 
 2. To use a frame, navigate to the target skill. Under the **Schema** tab, select the frame you want to reuse in the **Use Frame** section.
-::: thumbnail
-![use frame](/images/platform/reusability/use-frame.png)
-:::
+
+   ![use frame](/images/platform/reusability/use-frame.png)

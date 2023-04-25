@@ -12,9 +12,9 @@ On OpenCUI, all skills are implementations of a special runtime interface `IInte
 The behavior of slot filling, or creating an instance for a slot, is controlled by the [Fill strategy](./fillstrategy.md). This strategy determines how the slot should be filled, including whether users can be prompted for their choice. 
 
 When a slot is configured to be filled by user interaction, the OpenCUI framework uses a five-stage slot filling process designed to help users effortlessly converge on a servable request. This filling process can be easily configured via corresponding annotations based on business logic. The stages are as follows:
-1. [Initialization](init.md): Tries to fill the slots based on business logic first.
+1. [Initialization](./init.md): Tries to fill the slots based on business logic first.
 2. [Prompt](./templateandexemplar.md#prompt): Allows you to provide the template for the SlotRequest dialog act to request user choice for the given slot.
-3. [Value recommendation](valuerec.md): Provides a list of candidates per business production system for users to choose from. This can avoid wasted user effort in filling slots with an unservable choice.
+3. [Value recommendation](./valuerec.md): Provides a list of candidates per business production system for users to choose from. This can avoid wasted user effort in filling slots with an unservable choice.
 4. [Value check](./valuecheck.md): Examines the proposed value to determine if it is servable based on business rules.
 5. [Confirmation](./confirmation.md): Gives users a second chance to verify the proposed value.
 

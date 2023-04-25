@@ -7,7 +7,6 @@ The Reservation API ([services.opencui.reservation.IReservation](https://build.o
 - To invoke this service, ensure that your project has imported it and used it within your target skill/frame type.
 
 ## Location
-
 The places where bookable resources are located. For example, restaurants, hotels, or hair salons.
 
 - Fields
@@ -25,7 +24,6 @@ The places where bookable resources are located. For example, restaurants, hotel
   | [listLocation](#listlocation) | Returns a list of locations for the reservation services. | 
 
 ### listLocation
-
 Returns a list of locations for the reservation services. 
 
 - **Parameters**
@@ -48,7 +46,6 @@ Returns a list of locations for the reservation services.
 
 
 ## Resource
-
 The bookable resources are provided for customers, such as tables in a restaurant, doctors in a hospital, hairdressers in a hair salon, etc. Resource object is an abstract object. 
 
 - Fields
@@ -72,7 +69,6 @@ The bookable resources are provided for customers, such as tables in a restauran
 
 
 ### getResourceInfo
-
 Gets information about one resource based on resource id. 
 
 - **Parameters**
@@ -96,7 +92,6 @@ Gets information about one resource based on resource id.
   ```
 
 ### listResource
-
 Returns a list of resources on the specified type for one location. 
 
 - **Parameters**
@@ -130,7 +125,6 @@ Returns a list of resources on the specified type for one location.
   ```
 
 ### resourceAvailable
-
 Checks whether there are available resources, and returns [ValidationResult](#validationresult).
 
 - **Parameters**
@@ -159,7 +153,6 @@ Checks whether there are available resources, and returns [ValidationResult](#va
 ## Date
 
 ### availableDates
-
 Returns a list of available dates on the specified resource.
 
 - **Parameters**
@@ -192,7 +185,6 @@ Returns a list of available dates on the specified resource.
 ## Time
 
 ### availableTimes
-
 Returns a list of available times on the specified resource.
 
 - **Parameters**
@@ -223,7 +215,6 @@ Returns a list of available times on the specified resource.
 
 
 ## Reservation
-
 A reservation represents the booking of one resource at one location. Each reservation is a unique booking created by a customer.
 
 - Fields
@@ -249,7 +240,6 @@ A reservation represents the booking of one resource at one location. Each reser
   | [reservationUpdatable](#cancelreservation) | Checks whether a reservation can be updated. | 
 
 ### makeReservation
-
 Creates a reservation. 
 
 - **Parameters**
@@ -284,7 +274,6 @@ Creates a reservation.
   ```
 
 ### listReservation
-
 Returns a list of reservations for the specified customer.
 
 - **Parameters**
@@ -313,7 +302,6 @@ Returns a list of reservations for the specified customer.
   ```
 
 ### cancelReservation
-
 Deletes a reservation, and returns the [ValidationResult](#validationresult) object indicating whether the status of the cancellation operation was successful.
 
 - **Parameters**
@@ -333,7 +321,6 @@ Deletes a reservation, and returns the [ValidationResult](#validationresult) obj
   ```
 
 ### updateReservation
-
 Update a reservation, and returns the [ValidationResult](#validationresult) object indicating whether the status of the update operation was successful.
 
 - **Parameters**
@@ -361,7 +348,6 @@ Update a reservation, and returns the [ValidationResult](#validationresult) obje
   ```
 
 ### reservationCancelable
-
 Checks whether a reservation can be cancelled, and returns the [ValidationResult](#validationresult) object indicating whether the specified reservation can be cancelled.
 
 - **Parameters**
@@ -381,7 +367,6 @@ Checks whether a reservation can be cancelled, and returns the [ValidationResult
   ```
 
 ### reservationUpdatable
-
 Checks whether a reservation can be updated, and returns the [ValidationResult](#validationresult) object indicating whether the specified reservation can be updated.
 
 - **Parameters**
@@ -410,7 +395,6 @@ Checks whether a reservation can be updated, and returns the [ValidationResult](
 
 
 ## ValidationResult
-
 The result object indicates whether the verification or the operation was successful.
 
   | Property           | Type            | Description | 
