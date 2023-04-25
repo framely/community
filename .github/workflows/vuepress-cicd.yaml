@@ -1,4 +1,4 @@
-name: CI-NEW
+name: CICD
 on:
   push:
     branches: [vitepress]
@@ -30,8 +30,7 @@ jobs:
         env:
           CICD_TOKEN: ${{ secrets.CICD }}
         run: |
-          set -ex 
-          npm install && yarn build
+          set -ex
           cd docs/.vitepress/dist
           echo "opencui.io" > CNAME
           git config --global user.name  "github action"
