@@ -10,10 +10,9 @@ author: Sunny May
 ---
 
 # How to reuse reservation module to build chatbot
-This guide shows you how to build a table reservation chatbot by reusing a module. A module is a reusable CUI (Conversational User Interface) unit whose conversational behavior is defined against some service APIs. There are two kinds of module, base module, which come with their own service APIs, and composite modules, which need to import other modules to deliver a complex conversational experience.
-Notice that a base module can have one or more providers that provide the implementations of the service APIs defined in that module.
+This guide shows you how to build a table reservation chatbot by reusing a module. A module is a reusable conversational user interface(CUI) component whose conversational behavior is defined on top of some service APIs. Service can have one or more backend implementations, each can be accessed via its corresponding provider.
 
-By importing the right module, you can quickly add new functionality to your chatbot. In this guide, we demonstrate how you can add table reservation to your restaurant chatbot using the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type). The table reservation module relies on a base module called the [reservation API](../reference/plugins/services/reservation/reservation-api.md), which currently has a [Google Calendar based provider](../reference/plugins/services/reservation/google-calendar-reservation.md). 
+Modules can be composed into bigger ones to provide more comprehensive conversational experience. By importing the right module into your chatbot, you can quickly add new conversational functionality. In this guide, we demonstrate how you can add table reservation to your chatbot using the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type). The table reservation module relies on a base module called the [reservation API](../reference/plugins/services/reservation/reservation-api.md), which currently has a [Google Calendar based provider](../reference/plugins/services/reservation/google-calendar-reservation.md). 
 
 The resulting chatbot can help users make, view, and cancel table reservations. Here is an example dialogue to show how the chatbot works:
 
@@ -30,26 +29,25 @@ User: "Yes."
 Chatbot: "Your reservation has been made. We'll see you at 3:00 PM on Sunday, December 25, 2022. You can check the reservation under your ID: xxxx."
 ```
 
-The detailed CUI design for table reservation can be found [here](../articles/reservation-cui-design.md).
+The detailed CUI design for table reservation can be found [here](reservation-cui-design).
 
 It only takes a few steps to add table reservation functionality to a chatbot:
 
-1. **Set up** resources in Google platform (where "resource" refers to the booked table).
+1. **Set up** resources in Google platform (where "resource" refers to the bookable table).
 2. **Import** a table reservation module to your chatbot. 
 3. **Set up** the provider in your chatbot to access to your resources.
 
 ## Before you start
-1. [Sign up](../guide/signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-2. We assume that you are already familiar with the procedures on the platform. If not, we recommend that you read the [Quickstart guide](../guide/index.md) first.
-3. Set up [Google Workspace](../reference/plugins/services/reservation/google-calendar-reservation.md#set-up-google-workspace) and [service account](../reference/plugins/services/reservation/google-calendar-reservation.md#set-up-service-account).
+1. [Sign up](../guide/signingup#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+2. We assume that you already followed through the [quickstart guide](../guide/index).
+3. Set up [Google Workspace](../reference/plugins/services/reservation/google-calendar-reservation#set-up-google-workspace) and [service account](../reference/plugins/services/reservation/google-calendar-reservation#set-up-service-account).
 
 ## Set up resources
-Under the design of reservation API, resources are the entities that users can book or reserve, such as tables in a restaurant or appointments with a hairdresser. Before users can book a table, you need to prepare your table resources first. Different providers have different ways of defining what resources are available for booking. Since we are using [Google Calendar based provider](../reference/plugins/services/reservation/google-calendar-reservation.md), we will use Google Admin console to define table resources and Google Calendar to store reservations.
+Under the design of the reservation API, resources are the entities that users can book, reserve or make appointment, such as tables in a restaurant or hairdressers. Resources are always associated with a specific location, and before users can book a resource, you need to first prepare the business-specific locations and resources in the backend. Different backends may have different ways of defining which resources are available for booking. [Google Calendar based backend](../reference/plugins/services/reservation/google-calendar-reservation) use Google Admin console to define table resources and Google Calendar to store reservations.
 
-To set up your table resources, follow these two steps:
-
-1. In the **Google Admin console**, add buildings and resources to make them available for users to book when making reservations through the chatbot.
-2. In the **Google Calendar**, set your business hours by adding block time when users cannot book tables (e.g., when you are not open).
+To set up your table resources:
+1. In the **Google Admin console**, add buildings as locations first and then add resources for each location to make them available for users to book.
+2. In the **Google Calendar**, set your business hours, including blocking off times when users cannot book tables (e.g., when you are closed)."
 
 We will use the following business information as an example to show you how to set up your resources.
 
@@ -68,8 +66,7 @@ We will use the following business information as an example to show you how to 
 
 
 ### Add resources in Admin console
-In order to add resources, it is important to specify the building they belong to. Once a building has been added, you can go ahead and add the desired resources.
-
+To add resources, it is important to specify the location, or building in Google Calendar, they belong to. Once you have added a building, you can then add the desired resources.
 Before you start, make sure you sign in to your [Google Admin console](https://admin.google.com/).
 
 #### Add a building
@@ -81,7 +78,7 @@ Before you start, make sure you sign in to your [Google Admin console](https://a
 
 2. To add a building:
    1. In the Buildings section, click **Add building**.
-   2. Fill in the form with the following information:
+   2. Fill in the form with the following information and add:
        - **Id**: 1
        - **Name**: My First Restaurant
        - **Description**: `{"timezone": "America/Los_Angeles"}`
@@ -113,12 +110,14 @@ After completing these steps, your building and resources should look like the s
 ![resources example](/images/blog/tutorial-reuse-reservation/resources-example.png)
 
 ### Block time in Google Calendar
-In order to avoid users making reservations when the restaurant is closed, you should block off any times outside of its opening hours. To do this, follow these three steps, using the business hours mentioned in the [business information](#set-up-resources) as an example:
+In order to prevent users making reservations when the restaurant is closed, you should block off any times outside of its opening hours. To do this:
 
+[//]:<>(should we explain what is the primary calendar and resource calendar so that they know their way around?)
 1. Add events in your primary calendar to block time.
 2. Add resource calendars to your calendar so you can manage events in those calendars.
-3. Respond to event invitations in thos calendars to confirm that the time slots are blocked off.
+3. Respond to event invitations in those calendars to confirm that the time slots are blocked off.
 
+[//]:<>(Should we make this a tip)
 Before you start, make sure you are an [admin](https://support.google.com/a/answer/172176?hl=en) first, then sign in to your [Google Calendar](https://calendar.google.com).
 
 #### Add events to block time
@@ -134,7 +133,7 @@ Before you start, make sure you are an [admin](https://support.google.com/a/answ
 
    ![add event](/images/blog/tutorial-reuse-reservation/add-event.png)
 
-
+[//]:<>(step 6?)
 3. Repeat step 6 to create additional events with the following details, then adjust the **time** and **Repeat** fields as needed:
    - Event 2
        - **Time**: `10:00pm` to `11:59am` (Select appropriate start and end dates based on the current date.)
@@ -148,21 +147,17 @@ Before you start, make sure you are an [admin](https://support.google.com/a/answ
 
    ![browse resources](/images/blog/tutorial-reuse-reservation/browse-resources.png)
 
-
 2. Tick the table resources you need.
 
    ![tick resources](/images/blog/tutorial-reuse-reservation/tick-resources.png)
-
 
 3. Back to your calendars, choose one resource calendar, and click **Settings and sharing**.
 
    ![click resoure](/images/blog/tutorial-reuse-reservation/click-resoure.png)
 
-
 4. Ensure the resource calendar's timezone matches its location to avoid scheduling errors.
 
    ![check timezone](/images/blog/tutorial-reuse-reservation/check-timezone.png)
-
 
 5. Repeat steps 3-4 to check the timezone of the other two resource calendars.
 
@@ -210,4 +205,4 @@ The picture below shows how the reservation is made.
 ![message process](/images/blog/tutorial-reuse-reservation/message-process.png)
 
 
-::tada:: Well done! You've built up a table reservation chatbot. To explore more use cases, you can check the [Test cases](../reference/platform/testing.md#test-cases) in the [tableReservationApp](https://build.opencui.io/org/me.restaurant/agent/tableReservationApp/en/type?page=0&imported=false&search=&category=ALL) chatbot.
+::tada:: Well done! You've built a table reservation chatbot. To explore more use cases, you can check the [Test cases](../reference/platform/testing.md#test-cases) in the [tableReservationApp](https://build.opencui.io/org/me.restaurant/agent/tableReservationApp/en/type?page=0&imported=false&search=&category=ALL) chatbot.
