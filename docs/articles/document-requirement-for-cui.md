@@ -12,16 +12,9 @@ author: Sean Wu, Bird Zeng
 # Document CUI Design
 ![Banner](/images/blog/banner/document_requirement.png)
 
+While service chatbots can improve customer experience, their development can be complex and costly. To minimize these costs and risks, it's important to answer many questions before writing any code, such as what exactly needs to be built, who can provide assistance, how much specific features will cost, and when they will be available. Holding several rounds of discussions with all stakeholders is necessary to answer these questions. Effective communication of requirements and design is crucial for making these discussions productive.
 
-While building service chatbots can improve customer experience and lower operation costs, the process of creating them can be complex and costly. To minimize the cost and risk, many questions need to be answered before any code is written: what exactly we will build, and who can help with what, how much a particular feature will cost, and when it will be available, etc. Answering these questions requires inputs from multiple people and often involves multiple rounds of discussion. Effective communication of requirements and design is crucial to ensuring productive discussions when answering these questions.
-
-
-::: thumbnail
-![requirement](/images/blog/requirement-for-cui/requirement.png)
-*The ugly fact about requirements engineering - from www.projectcartoon.com*
-:::
-
-A flow diagram, such as wireflow, is often used to document low-fidelity designs for graphical user interfaces (GUIs) because users can only interact with the app in the ways that have been designed for them. Therefore, a flow-based documentation can precisely describe the design or requirements and is easily modifiable. However, since users can say anything at any given turn, documenting conversational interaction using a flow-based approach can result in an exponentially larger number of possible conversational paths as user choice need to be part of flow. Therefore, the question becomes: how do we design and document conversational interaction?
+Flow diagrams, such as wireflows, are a popular way of documenting requirements and designs for graphical user interaction. These diagrams document both user choices and desired system responses in a series of turns, with system responses defined based on the entire interaction flow up to that point. A flow-based documentation can precisely describe the design or requirements and is easily modifiable since users can only interact with the GUI app in the ways that have been designed for them. However, conversational interaction can result in an exponentially larger number of possible conversational flows, which raises the question of whether a flow-based approach is still suitable for designing and documenting conversational interaction. If not, what is?
 
 ::: thumbnail
 ![wireflow](/images/blog/requirement-for-cui/wireflow.png)
@@ -29,18 +22,15 @@ A flow diagram, such as wireflow, is often used to document low-fidelity designs
 
 ## Service driven design
 
-Conversational driven design focuses on analyzing the conversation history, which can be useful in discovering new services or products that your user might be interested in. However, a chatbot can only offer services that a business provides. Focusing on what users want but the business does not offer can be wasteful. Additionally, subtle semantic distinctions between utterances can lead to unnecessary confusion if they are not grounded in the available services. For instance, phrases such as "Are you guys open now?", "What are your hours on Tuesday?", and "When do you guys close?" may appear to have different intents, but they could all be served by the same query to the same knowledge base. 
+Conversational driven design involves analyzing the conversation history. However, subtle semantic differences between utterances can lead to unnecessary deliberation if they are not grounded to available services. For example, phrases like "Are you guys open now?", "What are your hours on Tuesday?", and "When do you guys close?" may appear to have different intents, but they could all be served by invoking the same service. Documenting user intents can be useful in requirement exploration, but it has little production value if user intent can be fulfilled by one of the existing services.
 
-::: thumbnail
-![conversationflow](/images/blog/requirement-for-cui/conversationflow.png)
-:::
-
-Making even simple service available requires a large team, including an architect, developers, database management, and devops. As a result, there are typically significantly fewer service APIs compared to the number of possible intents. Additionally, the goal of a service chatbot is to quickly get users the service they want. Therefore, we can use the service as the basic unit for chatbot requirement analysis and simply consider the chatbot as a set of services. This simplification does not limit a chatbot's capability. Users can still engage in conversations for more than one service, but the chatbot can keep only one of them active at a time by focusing on completing the current active service before switching to another. This approach allows us to design one service at a time.
+A better approach is to design a conversational user interface based on the services that a business wants to expose. This is because creating even a simple service requires a large team of experts, including architects, developers, database managers, and devops personnel. Compared to user intentions, service APIs generally have less redundancy. By focusing on how user intention can be grounded to available services, it becomes easier to determine whether an intention is distinct and can be served by one API or not. Additionally, it is possible to identify whether a particular conversation flow requires special attention or not, as the service to be invoked does not depend on the order in which the user specifies their preferences.
 
 ## Structured Conversation
-To deliver what users need or guide them to a different choice when their choice is not serviceable, it is essential for chatbots to acquire users' preferences on various service slots that define how they want the service to be customized. For example, to sell the correct movie tickets, the chatbot needs information about the movie title, showtime, format, and number of tickets. It is common for users to not provide all the necessary information at once, so chatbots must conduct effective conversations with users to gather this information. To provide a consistent and predictable experience for all users and make it easy to program, chatbots should conduct structured conversations.
+To deliver a service to a user, a chatbot and user must first agree on the service configuration, including the service name and values for its customization parameters. For example, to sell movie tickets, the chatbot needs to ensure that the user wants to buy a movie ticket and acquire the user's preferences for movie title, showtime, format, and number of tickets. It is common for users to not provide all the necessary information at once, so chatbots must conduct effective conversations to gather this information from the user.
 
-Conversations can be inspected at two layers: the interaction logic layer and the language layer. By "structured," we mean that the conversations are deterministic at the interaction logic layer. This does not mean that the chatbot should always say the exact same message, but rather that it can produce diverse text responses that convey the same meaning.
+At API level, to invoke a service function for the user, a chatbot must create a callable instance of that function type based on the conversation with the user. This, in turn, requires the recursive creation of instances for the types of input parameters and their component types. Ideally, the language user speak should not change the way chatbot conduct the conversation, so conversational user interface are typically modeled in two separate layers: language and interaction. Where the language layer is responsible for converting user utterance into structural representation of meaning, which can be used as whole or part to create the instance.
+
 
 | Schema | Interaction Logic | Language Perception | 
 | :---    | :---        |:---            |                     
@@ -50,7 +40,6 @@ Conversations can be inspected at two layers: the interaction logic layer and th
 | number of tickets | ... | ... | 
 
 
-By structured, we also mean that chatbot generates responses based on a set of  composite rules that can be used to break down even the most complex use cases into simpler ones. The compositional nature of structured conversations makes it easy to reuse the same conversational behavior, often in the form of CUI components. Using existing, high-quality components to build a conversational user interface (CUI) rather than starting from scratch allows for the creation of a good conversational experience at a lower cost.
 
 ## Contextual Snippet
 A good strategy for filling the slots of a service so that the chatbot can deliver what the user wants should be deterministic by going through the slots in a predefined order and, for each slot, going through the stages of initialization, prompting, value recommendation, value check, and confirmation. These stages can interact with the production system through service APIs, engaging in a systematic conversation with the user based on both API return values and user input. For example, after receiving a user's initial choice for a movie title, the chatbot can check with the production system to see if there are still available showtimes or seats, and either move on to the next slot or prompt the user for a new movie title.
