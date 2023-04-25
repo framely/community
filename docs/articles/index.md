@@ -44,14 +44,5 @@ layout: home
       date: '1/3/2023'
     },
     path:'./chatbot-development-with-opencui.html'
-},{
-    info: {
-      title:'Set Up a Blog with VuePress v2.0.0',
-      description: ['We will create a blog using vuepress2 for various use cases'],
-      image: './../images/blog/banner/set_up_vuepress.png',
-      author: 'karani',
-      date: '4/13/2022'
-    },
-    path:'./set-up-vuepress-blog.html'
 }]
 }" />
