@@ -1,14 +1,3 @@
----
-article: true
-date: 2022-12-27
-
-image:
-    - blog/banner/document_requirement.png
-description:
-    - We devised an effective way to communicate CUI design
-author: Sean Wu, Bird Zeng
----
-
 # Document CUI Design
 ![Banner](/images/blog/banner/document_requirement.png)
 
@@ -26,27 +15,23 @@ Conversational driven design involves analyzing the conversation history. Howeve
 
 A better approach is to design a conversational user interface based on the services that a business wants to expose. This is because creating even a simple service requires a large team of experts, including architects, developers, database managers, and devops personnel. Compared to user intentions, service APIs generally have less redundancy. By focusing on how user intention can be grounded to available services, it becomes easier to determine whether an intention is distinct and can be served by one API or not. Additionally, it is possible to identify whether a particular conversation flow requires special attention or not, as the service to be invoked does not depend on the order in which the user specifies their preferences.
 
-## Structured Conversation
-To deliver a service to a user, a chatbot and user must first agree on the service configuration, including the service name and values for its customization parameters. For example, to sell movie tickets, the chatbot needs to ensure that the user wants to buy a movie ticket and acquire the user's preferences for movie title, showtime, format, and number of tickets. It is common for users to not provide all the necessary information at once, so chatbots must conduct effective conversations to gather this information from the user.
-
-At API level, to invoke a service function for the user, a chatbot must create a callable instance of that function type based on the conversation with the user. This, in turn, requires the recursive creation of instances for the types of input parameters and their component types. Ideally, the language user speak should not change the way chatbot conduct the conversation, so conversational user interface are typically modeled in two separate layers: language and interaction. Where the language layer is responsible for converting user utterance into structural representation of meaning, which can be used as whole or part to create the instance.
-
+## Slot filling
+In order to provide a service to a user, a chatbot and the user must first agree on the service configuration, which includes the service name and slot values required by that service. For instance, to sell movie tickets, the chatbot needs to confirm with the user that they want to purchase a movie ticket and then gather their preferences regarding the movie title, showtime, format, and number of tickets. As users often do not provide all the necessary information at once, chatbots must engage in effective conversations to gather these missing information.
 
 | Schema | Interaction Logic | Language Perception | 
 | :---    | :---        |:---            |                     
 | movie title | <ul><li> Required. </li><li> Provide options.</li><li> Need verified.</li></ul> | <ul><li> Which movie do you want to see? </li><li> Which film are you interested in watching? </li><li> What movie do you have in mind? </li><li> Which film are you considering going to see? </li><li> ... </li></ul> | 
 | showtime | <ul><li> Required. </li><li> Provide options.</li><li> Need verified.</li></ul> | <ul><li> Which showtime would you like? </li><li> At what time would you like to see the show? </li><li> What time would you like to go to the movie? </li><li> ... </li></ul> | 
 | format | ... | ... | 
-| number of tickets | ... | ... | 
+| number of tickets | ... | ... |
 
-
+A good strategy for filling the slots of a service so that the chatbot can deliver what the user wants is to proceed deterministically by going through the slots in a predefined order. For each slot, the chatbot can follow a set of stages, including initialization, prompting, value recommendation, value check, and confirmation. These stages can interact with the production system through service APIs, engaging in a systematic conversation with the user based on both API return values and user input. For example, after receiving a user's initial choice for a movie title, the chatbot can check with the production system to see if there are still available showtimes or seats. Based on this information, the chatbot can then either move on to the next slot or prompt the user for a new movie title.
 
 ## Contextual Snippet
-A good strategy for filling the slots of a service so that the chatbot can deliver what the user wants should be deterministic by going through the slots in a predefined order and, for each slot, going through the stages of initialization, prompting, value recommendation, value check, and confirmation. These stages can interact with the production system through service APIs, engaging in a systematic conversation with the user based on both API return values and user input. For example, after receiving a user's initial choice for a movie title, the chatbot can check with the production system to see if there are still available showtimes or seats, and either move on to the next slot or prompt the user for a new movie title.
 
-The conversational behavior of the chatbot for that service can then be described using a set of contextual snippets along with the schema representation of that service. The schema representation of a service is simply an label for the service, and all its required slots along with their types that defines what value can be used to fill such slot. A contextual snippet for the service consists of label, description, precondition, annotated dialog snippet and an end state. The preconditions are defined by the dialog states in the form of slot/value pairs, along with service APIs result, and annotated dialog snippets showcase how chatbot should behave in such entering condition. The end states defines dialog state chatbot ends up with after the sample conversation snippet is done.  
+The conversational behavior of the chatbot for a given service can be described using a set of contextual snippets, along with the schema representation of that service. The schema representation of a service is simply a label for the service and all its required slots, along with their types that define what value can be used to fill each slot. A contextual snippet for the service consists of a label, description, precondition, annotated dialog snippet, and an end state. The preconditions are defined by the dialog states in the form of slot/value pairs, along with the service API's result, and annotated dialog snippets showcase how the chatbot should behave under such conditions. The end state defines the dialog state the chatbot ends up with after the sample conversation snippet is completed.
 
-Let's use movie ticket selling service as example, the scheme representation of the service can be sketched as follows:
+Let's use movie ticket selling service as an example. The schema representation of the service can be sketched as follows:
 
 | Service     | Slots  | 
 | :---        | :---               |
@@ -72,8 +57,7 @@ Let's use movie ticket selling service as example, the scheme representation of 
 
 <br>
 
-Contextual snippets allow you to describe the requirement for conversational user interface in a piece meal fashion. You can start with just happy path, and gradually add requirement for rarer and rarer corner cases. The happy path requirement does not need to be changed with these new corner case. The stability provided by this way of document requirement allow us to build better and better conversational experiences. 
+Contextual snippets allow you to describe the requirements for a conversational user interface in a piecemeal fashion. You can start with just the happy path and gradually add requirements for rarer and rarer corner cases. The happy path requirements do not need to be changed with these new corner cases. The stability provided by this way of documenting requirements allows us to build better and better conversational experiences.
 
 ## Parting Words
-
-Good requirement documentation make it possible to stakeholders to discussion what should be built without writing a single line of code. Assuming that chatbot should work on one service at a time, and deterministically follow predefined strategy to fill the slots, we introduce contextual snippets as a method to document requirement for CUI frontend. This method is very easy to pick up, can precisely document what is expected conversational behavior for delivering service, and is useful regardless which platform is used to build conversational user interface. While there is no explicit global view of all possible interactions, this localized requirement documentation method allows for incrementally building conversational experience. We hope this systematic way of document CUI requirement can reduce the risk and thus associated cost in building your next chatbot, and make your customer happier.
+Good requirement and design documentation makes it possible for stakeholders to discuss what should be built without writing a single line of code. Assuming that the chatbot should work on one service at a time and deterministically follow a predefined strategy to fill the slots, we introduce contextual snippets as a method to document requirements for the conversational user interface (CUI) frontend. This method is easy to pick up, can precisely document the expected conversational behavior for delivering a service, and is useful regardless of which platform is used to build the conversational user interface. While there is no explicit global view of all possible interactions, this localized requirement documentation method allows for incrementally building the conversational experience. We hope that this systematic way of documenting CUI requirements can reduce the risk and associated cost in building your next chatbot and make your customers happier.
