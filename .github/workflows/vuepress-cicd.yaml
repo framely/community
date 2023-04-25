@@ -1,13 +1,12 @@
 name: CI-NEW
 on:
   push:
-    branches: [fy]
+    branches: [vitepress]
   pull_request:
-    branches: [fy]
+    branches: [vitepress]
 
 jobs:
   deploy:
-    # if: startsWith(github.event.head_commit.message, 'Merge pull request')
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -20,18 +19,24 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Command
+      - name: CI Command
         env:
           CICD_TOKEN: ${{ secrets.CICD }}
         run: |
           set -ex 
-          ls -lh 
+          npm install && yarn build
+      - name: CD Command
+        if: startsWith(github.event.head_commit.message, 'Merge pull request')
+        env:
+          CICD_TOKEN: ${{ secrets.CICD }}
+        run: |
+          set -ex 
           npm install && yarn build
           cd docs/.vitepress/dist
-          echo "dev-dev.opencui.io" > CNAME
+          echo "opencui.io" > CNAME
           git config --global user.name  "github action"
           git config --global user.email "hui.cheng@naturali.io"
           git init
           git add -A
           git commit -m 'deploy'
-          git push -f https://${GITHUB_ACTOR}:${CICD_TOKEN}@github.com/framely/opencui-dev.github.io master:gh-pages
+          git push -f https://${GITHUB_ACTOR}:${CICD_TOKEN}@github.com/framely/framely.github.io master:gh-pages
