@@ -55,15 +55,6 @@ layout: home
     path:'./chatbot-development-with-opencui.html'
 },{
     info: {
-      title:'Document CUI Design',
-      description: ['We devised an effective way to communicate CUI design'],
-      image: './../images/blog/banner/document_requirement.png',
-      author: 'Sean Wu, Bird Zeng',
-      date: '12/27/2022'
-    },
-    path:'./document-requirement-for-cui.html'
-},{
-    info: {
       title:'Set Up a Blog with VuePress v2.0.0',
       description: ['We will create a blog using vuepress2 for various use cases'],
       image: './../images/blog/banner/set_up_vuepress.png',
