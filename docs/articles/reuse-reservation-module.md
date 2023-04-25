@@ -194,14 +194,12 @@ Finally, you can try to use your chatbot to make a table reservation. To test th
 
    ![example conversation](/images/blog/tutorial-reuse-reservation/example-conversation.png)
 
-
 2. Once you've made a reservation, you can go to your Google Calendar and check that reservation. Here is the reservation made by the above example:
 
    ![example reservation](/images/blog/tutorial-reuse-reservation/example-reservation.png)
 
 
-The picture below shows how the reservation is made. 
-
+The picture below shows how the reservation is made.
 ![message process](/images/blog/tutorial-reuse-reservation/message-process.png)
 
 
