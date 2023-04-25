@@ -11,7 +11,7 @@ import { sidebar } from "./configs"
 export default {
   base: '/', // 项目的基础路径
   title: 'OpenCUI', // 文档的标题，会显示在
-  description: '前端技术文档', // 文档描述
+  description: 'Type-based Approach for Chatbot Development', // 文档描述
   lastUpdated: '上次更新时间', // string | boolean
   docsDir: 'docs',
   themeConfig: {
@@ -32,11 +32,6 @@ export default {
         text: 'Reference',
         link: '/reference/annotations/overview.html',
         activeMatch: '/reference/',
-      },
-      {
-        text: 'Pricing',
-        link: '/pricing/README.md',
-        activeMatch: '/pricing/',
       },
       {
         text: 'Blog',
