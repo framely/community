@@ -192,7 +192,7 @@ To show the business hours on a user-mentioned date if it's open on that day.
 Inside the `ShowHours` skill and the **Response** tab, under the **Structure** view.
 
 In the **Branches** section, click **Add**:
-1. Set a branch label, such as `OpenDay`, for the business being open on the user-mentioned date.
+1. Set branch label, such as `OpenDay`.
 2. Set **Conditions**:
    ```kotlin
    // If the date you are open
@@ -202,7 +202,6 @@ In the **Branches** section, click **Add**:
 
 ###### Language layer
 Inside the `OpenDay` branch, under the **Language/en** view.
-
 - Configure **Single value message**:
   ```kotlin
   We are open on ${datePicker!!.date!!.expression()} from ${hours.getHoursDay(datePicker!!.date!!).openingTime!!.expression()} to ${hours.getHoursDay(datePicker!!.date!!).closingTime!!.expression()}.
@@ -212,14 +211,12 @@ Inside the `OpenDay` branch, under the **Language/en** view.
 If you are closed on the date that users are interested in, you will first inform them that you are closed, and then list regular weekly hours. 
 
 To add this branch, repeat the steps in the previous branch, but only the key points are listed here.
-
-1. Set a branch label, such as `ClosedDay`, for the business being closed on the user-mentioned date.
+1. Set branch label, such as `ClosedDay`.
 2. Set **Conditions**: 
    ```kotlin
    // If the date you are closed
    datePicker?.date != null && hours.getHoursDay(datePicker!!.date!!).ifOpen == false
    ```
-
 3. Add **Action sequence**:
    1. **Single value message**, this will inform users that your business is closed.
       ```kotlin

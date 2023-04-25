@@ -22,7 +22,7 @@ Today, most software are developed in procedure-based paradigms, where developer
 
 To build conversational user interface for any service, OpenCUI uses a data system that is based on the OpenAPI, with support for user defined data type, list, inheritance and polymorphism. With this type system, we can define function signatures (known as services in OpenCUI), and parameter type (known as frames and entities). OpenCUI provides a set of system components known as annotations, by simply configuring annotation on the function signature or required parameter type, builder can specify how API functions can be triggered through conversation. 
 
-We also introduced other tools to make building full-fledged chatbot easier, like using [contextual snippet](document-requirement-for-cui.md#contextual-snippet) for documenting user interaction requirement and design, using SQL to implement service provider directly. Here is a list of the tutorials that demonstrates how to build chatbot with OpenCUI. 
+We also introduced other tools to make building full-fledged chatbot easier, like using [contextual snippet](../essentials/document-requirement-for-cui.md#contextual-snippet) for documenting user interaction requirement and design, using SQL to implement service provider directly. Here is a list of the tutorials that demonstrates how to build chatbot with OpenCUI. 
 
 1. Build a table reservation chatbot from scratch. You can learn how to reuse a table reservation module to build a chatbot. Then, try to build a table reservation module by yourself.
    1. [Requirements on reservation chatbot](reservation-cui-design.md)
