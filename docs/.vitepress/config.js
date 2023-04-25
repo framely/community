@@ -6,7 +6,7 @@ const pkg = require('vitepress/package.json')
 
 
 import { sidebar } from "./configs"
-
+import { navbar } from "./configs"
 
 export default {
   base: '/', // 项目的基础路径
@@ -16,34 +16,7 @@ export default {
   docsDir: 'docs',
   themeConfig: {
     logo: '/images/logo.png',
-    // 顶部右侧导航
-    nav: [
-      {
-        text: 'Why OpenCUI',
-        link: '/essentials/README.md',
-        activeMatch: '/essentials/',
-      },
-      {
-        text: 'Quickstart',
-        link: '/guide/',
-        activeMatch: '/guide/',
-      },
-      {
-        text: 'Reference',
-        link: '/reference/annotations/overview.html',
-        activeMatch: '/reference/',
-      },
-      {
-        text: 'Blog',
-        link: '/articles/',
-        activeMatch: '/articles/',
-      },
-      {
-        text: 'Start to build',
-        link: 'https://build.opencui.io',
-        target: '_blank',
-      }
-    ],
+    navbar: navbar.en,
     sidebar: sidebar.en,
   },
 }
