@@ -1,9 +1,9 @@
-# Privacy Policy
+# Privacy policy
 Effective date: March 09, 2023
 
 Thanks for entrusting OpenCUI, Inc. (“OpenCUI”, “we”, "us" or "our") with your source code, your projects, and your personal data. This Privacy Statement explains our practices regarding the collection, use, and disclosure of your data, including any personal data we collect and process in connection with our website and any applications, software, products, and services provided by OpenCUI, including any Beta Previews (collectively, the “Service(s)”).
 
-All capitalized terms have their definition in GitHub’s [Terms of Service](terms.md), unless otherwise noted here.
+All capitalized terms have their definition in GitHub’s [Terms of service](terms.md), unless otherwise noted here.
 
 ## 1. What “Personal Information” means
 In this Policy, “Personal Information” means information or an information set that identifies or could be used to identify an individual directly or indirectly. Except as described in this Policy, OpenCUI will not give, sell, rent, or loan any Personal Information to any third party.

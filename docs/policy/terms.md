@@ -1,4 +1,4 @@
-# Terms of Service
+# Terms of service
 Effective date: March 09, 2023
 
 Thank you for visiting the websites and associated domains of [www.opencui.io](https://opencui.io/) (collectively, the “Sites”) and/or using [OpenCUI’s software-as-a-service platform](https://build.opencui.io/) and the products, services, and features we make available to you as part of the platform (collectively, the “Service”). 
@@ -7,15 +7,15 @@ These Terms of Service ("Terms") govern your access to and use of OpenCUI’s Si
 
 Please read this Terms of Service agreement carefully before accessing or using OpenCUI. Because it is such an important contract between us and our users, we have tried to keep the Terms as straightforward as possible. If you have any comments or questions about these Terms, please email us and let us know.
 
-## 1. Your Account
+## 1. Your account
 
 ### 1.1 Eligibility
 The Service is available only for individuals aged 13 years or older or the digital age of consent in your country, if older. If you are age 13 or older but under the age of 18, or the legal age of majority where you reside (if that jurisdiction has an older age of majority), then you agree to review these Terms with your parent or guardian to make sure that both you and your parent or guardian understand these Terms and you agree to have your parent or guardian review and accept these Terms on your behalf. If you are a parent or guardian and are agreeing to these Terms for the benefit of a child over the age of 13 (or the digital age of consent in your country, if older), then you agree to accept full responsibility for that child’s use of the Service, including all financial charges and legal liability that they may incur. We may, in our sole discretion, refuse to offer the Service to any person or entity and change the eligibility criteria for using the Service at any time. The right to access the Service is revoked where these Terms or use of the Service is prohibited or to the extent any offer, sale, or provision of the Service conflicts with any applicable law, rule or regulation.
 
-### 1.2 Signing Up
+### 1.2 Signing up
 To access and use the Service, you must register for an account with OpenCUI (“Account”). To complete your Account registration, you agree to provide us with complete and accurate information and to keep that information current so that we can communicate with you about your Account. We may need to send you notices about important updates (like changes to these Terms or our Privacy Policy), or to inform you of legal inquiries we receive about your use of the Service so you can make informed choices in response. We encourage you to provide your own (or your company’s) contact and billing details, including your valid, current email address, as we may use it to identify and determine the actual and true owner of the Account and/or User Content (as defined below). OpenCUI reserves the right to reclaim usernames on behalf of businesses or individuals that hold legal claim or trademark to those usernames.
 
-### 1.3 Account Security
+### 1.3 Account security
 Please safeguard your Account and make sure others don't have access to your passwords and/or other authentication credentials (e.g., your Primary Email Address). You are responsible for taking all steps to ensure that no unauthorized person shall have access to your Account or Primary Email Address. If anyone other than yourself accesses your Account, they may perform any actions available to you and make changes to your Account and User Content. You agree that OpenCUI shall have no liability for any loss or damage resulting from your failure to maintain the security of your Account information. You agree to immediately notify us of any unauthorized use of your Account or password. If we believe your Account has been compromised, we may suspend or disable it until such time that the matter has been resolved.
 
 ### 1.4 Disputes
@@ -26,41 +26,41 @@ If there is a dispute about Account or User Content ownership, we reserve the ri
 - **1.4.3** For Accounts that have paid any Fees (as defined in Section 8) for any use of the Service, OpenCUI may consider the owner of such Account and/or User Content created thereunder to be the person or entity whose billing details were used to pay such Fees.
 - **1.4.4** Notwithstanding the foregoing, if OpenCUI deems that the circumstances justify, OpenCUI shall have the exclusive right to adjudicate the ownership dispute of an Account and/or User Content in its sole discretion based on any information in its possession, including the factors set forth above.
 
-## 2. Your User Content
+## 2. Your user content
 
-### 2.1 Uploading User Content
+### 2.1 Uploading user content
 You may create or upload User-Generated Content while using the Service. To the maximum extent permitted by law, you agree to be fully responsible for the User Content that you create or submit to the Service and you further agree not to use the Service to create or submit any User Content that does not comply with the Agreement, including, but not limited to, OpenCUI’s Acceptable Use Policy.
 
 For the purposes of this Agreement, “Intellectual Property Rights” means all patent rights, copyright rights, moral rights, rights of publicity, trademark, trade dress and service mark rights, goodwill, trade secret rights and other intellectual property rights as may now exist or hereafter come into existence, and all applications therefore and registrations, renewals, and extensions thereof, under the laws of any state, country, territory, or other jurisdiction.
 
-### 2.2 Rights you Grant
+### 2.2 Rights you grant
 You retain ownership of your User Content. However, in order to provide the Service to you and others we need certain rights from you, as more fully described below. You alone are responsible for any of your User Content that may be lost or unrecoverable through your use of the Service. Accordingly, we encourage you to archive your User Content regularly and frequently. We have no obligation to store, maintain, or provide you a copy of your User Content.
 
 ### 2.3 License to OpenCUI
 By providing User Content to the Service, you grant OpenCUI (including our third party hosting providers acting on our behalf) a non-exclusive, royalty-free, transferable, sub-licensable, worldwide right and license to use, modify, reproduce, display, and distribute your User Content on the Service for the limited purposes of operating and providing the Service to you (“User Content License”). You understand and agree that the Service is a public platform and other users may search for, see, use, and/or re-post any User Content that you make publicly available on the Internet via the Service.
 
-### 2.4 Featuring your User Content and Marks
+### 2.4 Featuring your user content and marks
 
 Notwithstanding the above, in our discretion, OpenCUI may choose to feature your User Content and/or your name, trade names, trademarks, logos, and other similarly identifying indicia included on your User Content (collectively, “Marks”). You hereby grant us, a non-exclusive, revocable, royalty free, worldwide right and license to display or otherwise use your published User Content or Marks for the limited purpose of OpenCUI marketing and promotional activities (e.g., we may feature your User Content or Marks on our website in our customer lists or social media accounts, etc.). You agree to waive any claims against us relating to any moral rights, artists’ rights, or any other similar rights worldwide that you may have in or to your User Content or Marks and any right of inspection or approval of any such use. All goodwill related to the use of your Marks by OpenCUI will inure to the benefit of the owner of such Marks. This Section does not affect any rights you may have under applicable data protection laws. For clarity, you can revoke the licenses to OpenCUI to use and display your User Content and/or Marks by emailing us at contact@opencui.io to notify us.
 
-### 2.5 Removal of User Content by You
+### 2.5 Removal of user content by you
 You may remove your User Content from and discontinue your use of the Service at any time. You must remove your User Content if you no longer have the rights required by these Terms.
 
-### 2.6 Removal of User Content by OpenCUI
+### 2.6 Removal of user content by OpenCUI
 If any of your User Content (1) breaches the terms of this Agreement, including but not limited to the Acceptable Use Policy, or (2) causes or may cause harm to OpenCUI, our users, or third parties, we reserve the right to limit, remove, or otherwise disable some or all of such User Content in our sole discretion. We will use reasonable efforts to notify you prior to taking any such action unless we reasonably believe that doing so would: (a) breach the law or the direction of a legal enforcement authority, or would otherwise risk legal liability for OpenCUI; (b) compromise the integrity or operation of the Service; or (c) cause harm to any user, other third party, or OpenCUI.
 
-## 3. Your Responsibilities
+## 3. Your responsibilities
 
-### 3.1 Rights to User Content
+### 3.1 Rights to user content
 You represent and warrant that you own or otherwise have obtained and shall maintain all necessary licenses, authorizations, rights, approvals, and permissions necessary to enter into and perform your obligations or exercise your rights hereunder, including without limitation the rights to display your User Content in the manner set forth in this Agreement. You represent and warrant that your User Content, and any use of your User Content by OpenCUI as authorized under this Agreement, will not infringe, misappropriate, or otherwise violate the Intellectual Property Rights or other rights of any third party.
 
-### 3.2 Compliance with Applicable Law
+### 3.2 Compliance with applicable law
 You represent and warrant that your use of the Service, including your User Content, shall comply with all applicable laws, rules, and regulations, including without limitation applicable privacy and data protection laws and applicable export or import controls, regulations, and sanctions.
 
-### 3.3 Compliance with our Acceptable Use Policy
+### 3.3 Compliance with our acceptable use policy
 You represent and warrant that your use of the Service, including any User Content you create or publish via the Service shall comply with our Acceptable Use Policy.
 
-### 3.4 End Users
+### 3.4 End users
 1. **Roles.** For the purposes of this Agreement, OpenCUI is acting as a “service provider” to you, and you are a “customer” of the Service, regardless of whether you pay fees to obtain the Service. Any natural persons accessing or using your User Content are deemed your “End Users.” You agree that OpenCUI does not have a direct relationship with any of your End Users and OpenCUI is not responsible for how you process or otherwise handle any End User information. You acknowledge and agree that you are solely responsible for (1) providing any required notices and (2) obtaining all End User consents required under applicable data protection and marketing laws.
 
 2. **Applicable laws.** You may have additional obligations under local law other than those described in these Terms, particularly if you or your End Users are located outside of the United States. Such obligations may be more restrictive than these Terms. Use of the Service does not ensure compliance with such laws, nor is OpenCUI responsible for your compliance with such laws. 
@@ -73,19 +73,19 @@ You represent and warrant that your use of the Service, including any User Conte
 
 6. ‍**Notice.** You agree to provide and adhere to a privacy policy for your use of the Service that: (i) complies with all applicable laws, rules, and regulations, (ii) is conspicuously displayed to all End Users, and (iii) clearly and accurately describes to End Users what information you collect (such as login information, contact form data, cookies, etc.) and how you use and share such information (including for marketing and advertising) with OpenCUI and other third parties.
 
-### 3.5 Use of Software
+### 3.5 Use of software
 To the extent you access or use any downloadable software components related to the Service (“Software”), such access or use shall be governed by the terms of the license agreement that accompanies the Software or is posted with the Software on the Sites where the Software can be accessed; however, if no such license agreement is made available, we grant you a limited, revocable, worldwide, royalty-free, non-assignable, non-sublicensable, and non-exclusive license to use the object code of such Software for your personal, noncommercial use in accordance with these Terms. In the event of any inconsistency between these Terms and any license agreement, the license agreement shall govern in relation to the Software.
 
 You may not decompile, reverse engineer, or otherwise attempt to discover the source code of the Software. You do not have the right to sublicense the Service, download or modify any portion of the Service, or resell the Service. If you violate the Terms, we reserve the right to terminate your access to the Service without notice.
 
 The Software may automatically update from time to time. These updates are designed to improve, enhance, and further develop the software and may take the form of bug fixes, enhanced functions, new software modules, and completely new versions. You agree to receive such updates (and permit us to deliver these to you with or without your knowledge) as part of your use of the Software.
 
-## 4. Third-Party Services and User Content
+## 4. Third-party services and user content
 
-### 4.1 Third-Party Services
+### 4.1 Third-party services
 The Service may integrate with various third party services and applications (collectively, “Third-Party Services”) that may make their content, products, or services available to you. Examples of Third-Party Services include certain domain name registration services, social media platforms, E-Commerce Payment Processors (as defined below), and other integrations or extensions, stock images and email service subscriptions for sale via the Service and other integration partners and service providers. These Third-Party Services may have their own terms and policies, and your use of them will be governed by those terms and policies. Any information that a Third-Party Service collects, stores and processes from you or your Account will be subject to such Third-Party Service’s terms of service, privacy notice, or similar terms, and will not be subject to our Privacy Policy or Data Processing Addendum. Therefore, please evaluate and ensure you trust each Third-Party Service prior to connecting Your Site to its services. Each Third-Party Service is solely responsible for providing all support, maintenance and technical assistance to you with respect to their services (including their interoperation with your Account and User Content). When using Third-Party Services, your security is your responsibility. We don't control Third-Party Services, and we’re not liable for Third-Party Services or for any transaction you may enter into with them, or for what they do. We may receive a revenue share from Third-Party Services that we recommend to you or that you otherwise engage via the Service. You agree that we may, at any time and in our sole discretion, and without any notice to you, suspend, disable access to, or remove any Third-Party Services and OpenCUI shall not be liable for any losses, damages, or liabilities stemming from such suspension, disabling or removal, including without limitation for any loss of profits, revenue, data, goodwill or other intangible losses, or business disruption, costs or expenses you may incur or otherwise experience as a result (except where prohibited by applicable law).
 
-### 4.2 User Content; No Responsibility of OpenCUI
+### 4.2 User content; no responsibility of OpenCUI
 To the extent permitted by law, you acknowledge and agree that OpenCUI is not undertaking and assumes no responsibility, obligation or liability relating to User Content that you or any other user or third party posts or sends via the Service. OpenCUI, its successors, assigns, employees, agents, directors, officers, and stockholders (i) do not undertake or assume any duty to monitor the Service for inappropriate or unlawful content and (ii) assume and shall have no responsibility or liability which may arise from your or any other user’s User Content, including, but not limited to, third-party claims for defamation, libel, slander, infringement, invasion of privacy and publicity rights, obscenity, pornography, profanity, fraud, or misrepresentation. You agree that you are solely responsible for your User Content and the consequences of posting or publishing it, and that OpenCUI is only acting as a passive conduit and service provider for the online distribution and publication of your User Content. Notwithstanding the foregoing, OpenCUI reserves the right to take down User Content at any time in our sole discretion.
 
 For the avoidance of doubt, we have not reviewed, and cannot review, all of the User Content published to or made available through the Service by our users or anyone else. We are not responsible for and do not necessarily hold the opinions expressed by our customers, users, content contributors, and third parties; such opinions and other statements are theirs alone, not opinions of OpenCUI. User Content created by users or third parties is the sole responsibility of such users or third parties and its accuracy and completeness are not endorsed or guaranteed. You may find certain User Content offensive, indecent, or objectionable; includes technical inaccuracies, typographical mistakes, or other errors; or violates or infringes the privacy, publicity rights, intellectual property rights, or other proprietary rights of third parties. We do not endorse any User Content or represent that any User Content is accurate, useful, or not harmful. 
@@ -93,7 +93,7 @@ For the avoidance of doubt, we have not reviewed, and cannot review, all of the 
 ### 4.3 Links
 We may provide links to third-party websites. We do not recommend or endorse the content of any third-party website. We are not responsible for the content of linked third-party websites and we do not make any representations or warranties regarding their content or accuracy. Your use of third-party websites is at your own risk and subject to the terms and conditions of use for such website. You expressly release us from any and all liability arising from your use of any third-party website.
 
-## 5. What We Own
+## 5. What we own
 
 ### 5.1 OpenCUI IP
 Except for your User Content, all materials on or inherent to the Service, including the mini-applications that allow integrations with other applications and services (“Recipes”), the Service itself, and all Intellectual Property Rights contained therein or related thereto, including text, graphics, user and visual interfaces, photographs, trademarks, logos, sounds, music, artwork, applications, computer code and associated documentation (collectively, “OpenCUI IP”), including but not limited to the design, structure, arrangement, and “look and feel” of OpenCUI IP, is owned by or licensed to us and our licensors and is protected by copyright, trademark, and other Intellectual Property Rights and laws.
@@ -105,18 +105,18 @@ Subject to the terms and conditions of this Agreement, OpenCUI provides you with
 ### 5.2 Feedback
 We welcome your feedback, ideas or suggestions (collectively, “Feedback”), but you agree that we may use your non-confidential Feedback without any restriction or obligation to you, even after this Agreement is terminated. This Section does not limit or affect any rights you may have under applicable data protection laws.
 
-### 5.3 Beta Services
+### 5.3 Beta services
 From time to time, OpenCUI may, in our sole discretion, invite you to use, on a trial basis, pre-release or beta features that are in development and not yet available to all customers (“Beta Services”). Beta Services are not part of the Service, and your use of any Beta Services is entirely optional at your election. Beta Services may be subject to additional terms and conditions, which OpenCUI will provide to you prior to your use of the Beta Services. Such Beta Services and all associated conversations and materials relating thereto will be considered OpenCUI IP and subject to this Agreement. Without limiting the generality of the foregoing, you agree that you will not make any public statements or otherwise disclose your participation in the Beta Services without OpenCUI’s prior written consent. OpenCUI makes no representations or warranties as to how the Beta Services will function. OpenCUI may discontinue the Beta Services at any time in its sole discretion. OpenCUI will have no liability for any harm or damage arising out of or in connection with a Beta Service. The Beta Services may not work in the same way as a final version. OpenCUI may change or not release a final or commercial version of a Beta Service in our sole discretion.
 
-## 6. Our Rights
+## 6. Our rights
 
-### 6.1 Important Things We Can Do
+### 6.1 Important things we can do
 We reserve these rights, which we may exercise at any time and in our sole discretion, and without liability or notice to you (except where prohibited by applicable law): (a) we may change parts or all of the Service and its functionality; (b) we may suspend or discontinue parts or all of the Service; (c) we may terminate, suspend, restrict or disable your access to or use of parts or all of the Service; (d) we may terminate, suspend, restrict or disable access to your Account or parts, some of, or all of your User Content; and (e) we may change our eligibility criteria to use the Service (and if such eligibility criteria changes are prohibited by law where you live, we may revoke your right to use the Service in that jurisdiction).
 
-### 6.2 Ownership Disputes
+### 6.2 Ownership disputes
 Sometimes ownership of an Account or site is disputed between third parties, such as a business and its employees, or a web designer and a client. We try not to get involved in these disputes. However, we reserve the right, at any time and in our sole discretion, and without notice to you, to determine the rightful Account or site owner and to transfer an Account or site to such owner. Our decision in that respect is final. If we feel that we can’t reasonably determine the rightful owner, we reserve the right to suspend or disable an Account and its related User Content until the disputing parties reach a resolution. We also may request documentation to help determine the rightful owner, including but not limited to a government-issued photo ID, credit card invoice, or business license.
 
-## 7. Billing and Payment
+## 7. Billing and payment
 
 Users of the Service may be required to provide their credit card details to OpenCUI or the payment service provider retained by OpenCUI (the “PSP”). Users will be responsible for paying all applicable fees related to their use of the Service (the “Fees”). You are solely responsible for all federal, state, and local taxes, including sales, use, VAT, or similar transaction taxes imposed on your paid subscription to the Service, unless you provide OpenCUI with a valid tax exemption certificate (“Taxes”). All Taxes payable by you will be separately stated and exclusive of the Fees. Notwithstanding the foregoing, you will have no liability for taxes that are statutorily imposed on OpenCUI, including taxes or fees based on OpenCUI’s net or gross income.
 
@@ -132,23 +132,23 @@ To the extent your use of the Service exceeds the usage limits provided for in y
 
 We reserve the right to change our fees and to institute new charges at any time (including, for clarity, for any renewal), upon notice to you via email notice, written or hard copy notice, or through posting of such notice on our website, as determined by OpenCUI in our sole discretion. Your use of the Service following such notification constitutes your acceptance of any new or increased fees. 
 
-## 8. Intellectual Property Policy
+## 8. Intellectual property policy
 
 OpenCUI respects the intellectual property of others, and expects users to do the same. If you believe, in good faith, that any materials provided on or in connection with the Service infringe upon your copyright, trademark, or other intellectual property right, please review our Copyright Policy and Trademark Policy and fill out the applicable Copyright (DMCA) Takedown Form or Trademark Takedown Form or send the information detailed in the Copyright Policy to OpenCUI's Copyright Agent.
 
 ## 9. Confidentiality
 
-### 9.1 Confidential Information‍
+### 9.1 Confidential information‍
 We (the “Discloser”) have disclosed or may disclose proprietary or non-public business, technical, financial, or other information (“Confidential Information”) to you (the “Recipient”). Our Confidential Information expressly includes non-public information regarding features, functionality, and performance of the Services, including security and reliability related information.
 
 ### 9.2 Obligations‍
 The Recipient will use the Discloser’s Confidential Information only for the purpose of evaluating whether or not to use (or continue to use) the Services. The Recipient will not disclose the Discloser’s Confidential Information to parties other than the Recipient’s employees, contractors, affiliates, agents, or professional advisors (“Representatives”) who need to know it and who have a legal obligation to keep it confidential. The Recipient will ensure that its Representatives are subject to no less restrictive confidentiality obligations than those herein. Notwithstanding the foregoing, the Recipient may disclose the Discloser’s Confidential Information: (a) if directed by Discloser; or (b) to the extent required by applicable legal process, provided that the Recipient uses commercially reasonable efforts to (i) promptly notify the Discloser in advance, to the extent permitted by law, and (ii) comply with the Discloser’s reasonable requests regarding its efforts to oppose the disclosure. The obligations set forth herein will survive for so long as these Terms are in effect between the parties and for five years thereafter.
 
-## 10. Changes to the Service
+## 10. Changes to the service
 
 OpenCUI is constantly innovating and finding ways to provide our users with new features and services. Therefore, we may, without prior notice, change the Service, add features, stop providing the Service or features of the Service to you or to users generally, or create usage limits for the Service. We may permanently or temporarily terminate, downgrade, suspend, or prohibit your access to the Service without prior notice and liability for any or no reason, including if, in our sole determination, you violate any provision of this Agreement. You may discontinue or terminate your use of the Service at any time.
 
-## 11. Amendments, Notification Procedures, and Updates to the Agreement
+## 11. Amendments, notification procedures, and updates to the agreement
 
 We reserve the right, in our sole discretion, to modify, update, or change these Terms from time to time (such modified Terms, the "Updated Terms"), so we encourage you to review this page periodically. Notwithstanding, when we change the Agreement in a material manner, we will update the “Last Modified” date at the top of this page and use reasonable efforts to provide you with reasonable advance notice before the Updated Terms become effective. OpenCUI may provide such notifications, whether the notifications are required by law or are for marketing or other business-related purposes, to you via email notice, written or hard copy notice, or through posting of such notice on the Service, as determined by OpenCUI in our sole discretion. We reserve the right to determine the form and means of providing notifications to our users, provided that you may opt out of certain means of notification by contacting us at contact@OpenCUI.io. You may be required to click-to-accept or otherwise agree to these Updated Terms, but in any event your continued use or access of the Service after the effective date of the Updated Terms (or engaging in such other conduct as we may reasonably specify) constitutes your agreement to the Updated Terms. Therefore, you should review these Terms and any Updated Terms before using the Service. Updated Terms will be effective as of the date specified in the “Last Modified” date at the top of this page, and will apply to your use of the Service from that point forward. The previous Terms (or Updated Terms) will govern any disputes arising before the effective date of the applicable Updated Terms. If you do not agree to these Terms or any future Updated Terms, you may not use or access (and must discontinue any use or access to) the Service. OpenCUI is not responsible for any automatic filtering you or your network provider may apply to email notifications we send to the email address you provide us.
 
