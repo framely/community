@@ -477,7 +477,10 @@ body {
     max-width: 100%;
   }
 
-
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
   .navbar-items {
     padding: 0.5rem 0 0.75rem;
 
