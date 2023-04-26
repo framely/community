@@ -5,10 +5,10 @@
     <div class="article-page">
       <div class="top-info">
         <div class="top-info-title">
-          <h1>Blog</h1>
+          <h1>CUI Corner</h1>
         </div>
         <div class="top-info-desc">
-          <p>Machine intelligence for user experience</p>
+          <p>Democratizing great conversational experiences, one blog at a time. </p>
         </div>
       </div>
       <ArticleList :items="articles.items" />
