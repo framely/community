@@ -16,7 +16,7 @@ export default {
   docsDir: 'docs',
   themeConfig: {
     logo: '/images/logo.png',
-    outline: [2,3],
+    outline: 'deep',
     // 顶部右侧导航
     nav: [
       {
