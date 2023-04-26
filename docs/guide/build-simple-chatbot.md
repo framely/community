@@ -1,4 +1,4 @@
-# Build a simple chatbot
+# Build an echo chatbot
 This tutorial will guide you step-by-step through the process of building the same chatbot you played within the last guide. After completing this tutorial, you will be able to develop a [level 2](../essentials/5levels-cui.md#frame-with-slots) conversational experience, which is sufficient for allowing users to check your business hours or make a reservation. But let's start with a bit of background, as you will be using a new and more effective approach to build the chatbot.
 
 ## Background

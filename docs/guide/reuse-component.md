@@ -1,4 +1,4 @@
-# Reuse a simple module
+# Reuse a hours module
 
 This tutorial will show you how to add conversational functionality to your chatbot through the reuse of a module.
 
