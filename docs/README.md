@@ -46,8 +46,6 @@ cta :
     title: Get Started
     link: /guide/
     
-
-footerHtml: true 
 ---
 
 

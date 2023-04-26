@@ -18,7 +18,6 @@
 <script setup >
 
 import ArticleList from './ArticleList.vue'
-import Footer from './../footer/footer.vue'
 
 defineProps({
   frontmatter: {

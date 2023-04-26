@@ -61,11 +61,9 @@ cta :
     link: /guide/
     
 
-footerHtml: true 
 ---
 
 <script setup>
-  import Footer from './components/footer/footer.vue';
   import Cta from './components/cta/callToAction.vue';
 </script>
 <Cta :frontmatter="[
@@ -76,4 +74,3 @@ footerHtml: true
   }
 ]"
 />
-<Footer />

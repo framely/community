@@ -4,7 +4,6 @@ layout: home
 ---
 <script setup>
   import Article from './../components/blog/Article.vue';
-  // import Footer from '../components/footer/footer.vue';
 </script>
 
 <Article :articles="{
