@@ -11,25 +11,30 @@
     <article v-for="{ info, path } in items" :key="info">
 
       <!-- New layout -->
-      <a :href="path">
-        <div class="blog-card">
-          <div>
-            <img class="blog-card-image" :src="info.image" />
+      <!-- <a :href="path"> -->
+      <div class="blog-card-divider"></div>
+      <div class="blog-card">
+        <!-- <div>
+          <img class="blog-card-image" :src="info.image" />
+        </div> -->
+        <div class="blog-card-time">{{ info.date }}</div>
+        <div class="blog-card-info">
+          <div v-if="info.title">
+            <h2 class="blog-card-info-title">{{ info.title }}</h2>
           </div>
-          <div class="blog-card-info">
-            <div v-if="info.title">
-              <h2 class="blog-card-info-title">{{ info.title }}</h2>
-            </div>
-            <div v-if="info.description">
-              <p class="blog-card-info-description">{{ info.description[0] }}</p>
-            </div>
-            <div class="blog-card-info-bottom">
-              <div class="author">{{ info.author }}</div>
-              <div v-if="info.date">{{ new Date(info.date).toLocaleDateString() }}</div>
-            </div>
+          <div v-if="info.description">
+            <p class="blog-card-info-description">{{ info.description[0] }}</p>
           </div>
+          <div class="blog-card-info-bottom">
+            <!-- <div class="author">{{ info.author }}</div> -->
+            <!-- <div v-if="info.date">{{ new Date(info.date).toLocaleDateString() }}</div> -->
+          </div>
+          <a :href="path">
+            Read more →
+          </a>
         </div>
-      </a>
+      </div>
+      <!-- </a> -->
       <!-- End new layout -->
 
     </article>
@@ -49,16 +54,23 @@ defineProps({
 </script>
 <style lang="scss">
 .article-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  margin: 2rem auto;
-  grid-row-gap: 2rem;
-  grid-column-gap: 4rem;
+  display: flex;
+  flex-direction: column;
+  // grid-template-columns: 1fr 1fr 1fr;
+  // grid-template-rows: 1fr;
+  // margin: 2rem auto;
+  // grid-row-gap: 2rem;
+  // grid-column-gap: 4rem;
+
+  .blog-card-divider {
+    height: 1px;
+    margin-bottom: 24px;
+    background-color: var(--vp-c-divider);
+  }
 
   .blog-card {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: stretch;
     position: relative;
     top: 0;
@@ -69,7 +81,12 @@ defineProps({
       top: -10px;
     }
 
-    margin-bottom: 4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-card-time {
+    width: 16rem;
+    padding: 1rem;
   }
 
   .blog-card-image {
@@ -85,6 +102,10 @@ defineProps({
     flex-direction: column;
     color: var(--c-text);
     padding-top: 1rem;
+
+    >a {
+      color: var(--vp-c-brand);
+    }
   }
 
   .blog-card-info-title {
@@ -92,12 +113,14 @@ defineProps({
     font-size: 20px;
     font-weight: 700;
     border-bottom: none;
+    margin-bottom: 1.5rem;
   }
 
   .blog-card-info-description {
     color: var(--c-text-lighter);
     margin-top: 0px;
     font-weight: normal;
+    margin-bottom: 1.5rem;
   }
 
   .blog-card-info-bottom {

@@ -3,11 +3,9 @@
   <!-- <template #page> -->
   <main class="page">
     <div class="article-page">
-      <div class="top-info">
+      <div class="blog-title">
         <div class="top-info-title">
           <h1>Blog</h1>
-        </div>
-        <div class="top-info-desc">
           <p>Machine intelligence for user experience</p>
         </div>
       </div>
@@ -44,10 +42,20 @@ defineProps({
   flex-direction: column;
 }
 
-.top-info-title {
+.blog-title {
+  display: block;
+
   h1 {
-    font-weight: 600;
+    font-weight: 700;
     line-height: 3.0;
+    text-align: left;
+    font-size: 20px;
+  }
+
+  p {
+    text-align: left;
+    color: var(--c-text-lightest);
+    padding-bottom: 1rem;
   }
 }
 
