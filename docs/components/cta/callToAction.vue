@@ -27,12 +27,18 @@ const cta = computed(() => {
 <style lang="scss" scoped>
 .container-s {
   div {
+    max-width: 1152px;
+    margin: 112px auto 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 380px;
-    // background-color: var(--c-bg-cta);
+    background-color: var(--vp-c-bg-soft);
+    border: 1px solid var(--vp-c-bg-soft);
+    border-radius: 12px;
     justify-content: center;
+    
+    
 
     h2 {
       border: none;
@@ -41,7 +47,7 @@ const cta = computed(() => {
       font-size: 36px;
       padding-left: 1.5rem;
       padding-right: 1.5rem;
-      margin-bottom: 48px;
+      margin-bottom: 68px;
     }
   }
 }

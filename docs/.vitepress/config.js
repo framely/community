@@ -20,5 +20,10 @@ export default {
     // 顶部右侧导航
     nav: navbar.en,
     sidebar: sidebar.en,
+    // footer
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'OpenCUI, Inc © 2023 All rights reserved. &nbsp;&nbsp;<a href="/policy/terms.html">Terms</a>&nbsp;&nbsp;<a href="/policy/privacy.html">Privacy</a>'
+    },
   },
 }

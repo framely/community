@@ -4,7 +4,6 @@ layout: home
 ---
 <script setup>
   import Pricing from '../components/pricing/pricing.vue';
-  import Footer from '../components/footer/footer.vue';
 </script>
 
 <Pricing :frontmatter="{
