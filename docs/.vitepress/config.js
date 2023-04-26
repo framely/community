@@ -5,7 +5,7 @@ const require = createRequire(import.meta.url)
 const pkg = require('vitepress/package.json')
 
 
-import { sidebar } from "./configs"
+import { sidebar, navbar } from "./configs"
 
 
 export default {
@@ -18,33 +18,7 @@ export default {
     logo: '/images/logo.png',
     outline: 'deep',
     // 顶部右侧导航
-    nav: [
-      {
-        text: 'Why OpenCUI',
-        link: '/essentials/README.md',
-        activeMatch: '/essentials/',
-      },
-      {
-        text: 'Quickstart',
-        link: '/guide/',
-        activeMatch: '/guide/',
-      },
-      {
-        text: 'Reference',
-        link: '/reference/annotations/overview.html',
-        activeMatch: '/reference/',
-      },
-      {
-        text: 'Blog',
-        link: '/articles/',
-        activeMatch: '/articles/',
-      },
-      {
-        text: 'Start to build',
-        link: 'https://build.opencui.io',
-        target: '_blank',
-      }
-    ],
+    nav: navbar.en,
     sidebar: sidebar.en,
   },
 }
