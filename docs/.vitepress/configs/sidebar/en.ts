@@ -23,16 +23,13 @@ export const en = {
         { text: 'Build a hours module', link: '/guide/build-module' },
         { text: 'Build a hours provider', link: '/guide/build-provider' },
         { text: 'Deploy a chatbot', link: '/guide/deploy-to-channel' },
+        { text: 'Get a team', link: '/guide/are-you-ready' },
         { text: 'OpenCUI workflow', link: '/guide/opencui-flow' },
         { text: 'Key concepts', link: '/guide/concepts' },
       ],
     }
   ],
   '/reference/': [
-    {
-      text: 'Got team?',
-      link: '/reference/are-you-ready',
-    },
     {
       text: 'Dialog Annotations',
       collapsed: false,
