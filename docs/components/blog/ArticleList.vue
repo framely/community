@@ -14,11 +14,8 @@
       <!-- <a :href="path"> -->
       <div class="blog-card-divider"></div>
       <div class="blog-card">
-        <!-- <div>
-          <img class="blog-card-image" :src="info.image" />
-        </div> -->
-        <div class="blog-card-time">{{ info.date }}</div>
         <div class="blog-card-info">
+          <div class="blog-card-time">{{ info.date }}</div>
           <div v-if="info.title">
             <h2 class="blog-card-info-title">{{ info.title }}</h2>
           </div>
@@ -32,6 +29,9 @@
           <a :href="path">
             Read more →
           </a>
+        </div>
+        <div>
+          <img class="blog-card-image" :src="info.image" />
         </div>
       </div>
       <!-- </a> -->
@@ -71,7 +71,8 @@ defineProps({
   .blog-card {
     display: flex;
     flex-direction: row;
-    align-items: stretch;
+    // align-items: stretch;
+    justify-content: space-between;
     position: relative;
     top: 0;
     transition: top ease 0.5s;
@@ -85,16 +86,17 @@ defineProps({
   }
 
   .blog-card-time {
-    width: 16rem;
-    padding: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .blog-card-image {
-    width: 100%;
+    width: 16rem;
     height: 10rem;
     border-radius: 6px;
     object-fit: cover;
     background-color: var(--c-bg-light);
+    margin-top: 4.5rem;
+    margin-left: 1.5rem;
   }
 
   .blog-card-info {
