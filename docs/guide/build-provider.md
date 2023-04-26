@@ -1,4 +1,4 @@
-# Build a simple provider
+# Build a hours provider
 
 On OpenCUI, a provider serves as a backend stub to the actual backend implementation of the service. Most providers are external, meaning that the backend is developed and deployed elsewhere as a related but separate effort. However, the PostgreSQL provider is hosted on OpenCUI. It allows you to use PostgreSQL as a data storage and implement API functions using SQL on the OpenCUI platform. OpenCUI will make these functions available to your chatbot and back office via RESTful APIs.
 

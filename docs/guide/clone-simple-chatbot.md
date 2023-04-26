@@ -1,4 +1,4 @@
-# Clone a simple chatbot
+# Clone an echo chatbot
 
 OpenCUI is a platform that makes it easy to build conversational user interfaces (CUIs) for your services. It uses a type-based approach, so you can use pre-built components instead of building everything from scratch. This can save you time and effort, and it can help you create more consistent and reliable CUIs. 
 
