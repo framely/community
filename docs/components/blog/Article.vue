@@ -5,8 +5,8 @@
     <div class="article-page">
       <div class="blog-title">
         <div class="top-info-title">
-          <h1>Blog</h1>
-          <p>Machine intelligence for user experience</p>
+          <h1>CUI Corner</h1>
+          <p>Democratizing great conversational experiences, one blog at a time.</p>
         </div>
       </div>
       <ArticleList :items="articles.items" />
