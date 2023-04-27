@@ -10,9 +10,10 @@ author: Bird Zeng
 ---
 
 # From Schema to Snippets: A Blueprint for Chatbot
-![Banner](/images/blog/banner/from-schema-to-snippets.png)
-
 > Building Efficient Chatbots: The 3 Essential Steps Every Business Should Follow After ChatGPT
+
+![start from schema](/images/blog/from-schema-to-snippets/start-from-schema.png)
+*The scheme representation of a simple restaurant reservation service*
 
 When designing conversational user experiences, there is often a focus on making chatbots smart, intelligent, and human-like. However, this approach can be driven more by technology constraints than the actual services being provided. While language models like ChatGPT can enhance customer experience, they can not determine the business logic of the chatbot, which requires a deep understanding of specific industry requirements and goals.
 
