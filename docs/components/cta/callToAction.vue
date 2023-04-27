@@ -17,7 +17,7 @@ const cta = computed(() => {
     <div v-for="cta in cta" :key="cta.details">
       <h2>{{ cta.details }}</h2>
       <a :href="cta.link" target="_blank" rel="noopener noreferrer">
-        <button class="button-small">{{ cta.title }}</button>
+        <button class="button-cta">{{ cta.title }}</button>
       </a>
     </div>
   </div>
@@ -26,27 +26,40 @@ const cta = computed(() => {
 .container-s {
   div {
     max-width: 1152px;
-    margin: 112px auto 0 auto;
+    margin: 128px auto 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 380px;
     background-color: inherit;
     // border: 1px solid var(--vp-c-bg-soft);
     border-radius: 12px;
     justify-content: center;
-
-
+    padding: 0 24px;
 
     h2 {
-      border: none;
-      font-weight: 600;
+      //border: none;
+      font-weight: 500;
       text-align: center;
-      font-size: 36px;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-      margin-bottom: 68px;
+      line-height: 36px;
+      font-size: 24px;
+      color: var(--vp-c-text-2);
+      margin-bottom: 32px;
     }
+  }
+}
+.button-cta {
+  padding: 0 20px;
+  line-height: 38px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 20px;
+  border: 1px solid var(--vp-c-text-2);
+  color: var(--vp-c-text-2);
+  background-color: inherit;
+  &:hover {
+    color: var(--vp-c-brand);
+    background: var(--vp-c-bg);
+    border-color: var(--vp-c-brand-light);
   }
 }
 </style>
