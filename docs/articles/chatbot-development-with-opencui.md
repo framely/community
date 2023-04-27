@@ -10,8 +10,6 @@ author: Sean Wu
 ---
 
 # Chatbot Development with OpenCUI
-![Banner](/images/blog/banner/chatbot_development_with_opencui.png)
-
 Modern graphical user interface (GUI) applications are typically decomposed into frontend and backend, which are connected by predefined service APIs. Backends provide the implementation of these APIs, which are then consumed by frontends developed on mobile, web and messaging platforms. Frontends are further decomposed into perception layer and interaction logic layer according to model-view-controller design pattern. Different tasks can then be handled by different people who specialized in that task. Specializing allows individuals to become more skilled and efficient at that task, which can result in reduced costs and improved quality. Unfortunately, while there are frontend framework Vue or SwiftUI make division of labor possible for GUI development, we do not have something equivalent for conversational user interface (CUI) development, that is until OpenCUI.
 
 OpenCUI is open source CUI framework designed to greatly reduce the complexity of building functional chatbot that deliver business result. It promotes a [3 layers approach](https://opencui.medium.com/4-layers-of-chatbot-658ccceea382) so that business can benefit from division of labor when implementing chatbot. Since chatbot are CUI based instead of GUI based, we have to make some adaptations. 
