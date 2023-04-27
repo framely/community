@@ -1,11 +1,9 @@
 <script setup >
-// import { usePageFrontmatter } from '@vuepress/client'
-// import { isArray } from '@vuepress/shared'
 import { computed } from 'vue'
 import { useData } from 'vitepress'
-// import type { DefaultThemeHomePageFrontmatter } from '../../shared'
+
 const { site, frontmatter } = useData()
-// const frontmatter = usePageFrontmatter < DefaultThemeHomePageFrontmatter > ()
+
 const cta = computed(() => {
   if (Array.isArray(frontmatter.value.cta)) {
     return frontmatter.value.cta
@@ -33,12 +31,12 @@ const cta = computed(() => {
     flex-direction: column;
     align-items: center;
     height: 380px;
-    background-color: var(--vp-c-bg-soft);
-    border: 1px solid var(--vp-c-bg-soft);
+    background-color: inherit;
+    // border: 1px solid var(--vp-c-bg-soft);
     border-radius: 12px;
     justify-content: center;
-    
-    
+
+
 
     h2 {
       border: none;
