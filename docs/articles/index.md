@@ -22,9 +22,18 @@ layout: home
       description: ['Reuse table reservation module to build a chatbot'],
       image: './../images/blog/banner/tutorial_reservation_chatbot.png',
       author: 'Sunny May',
-      date: '4/2/2023'
+      date: '4/27/2023'
     },
     path:'./reuse-reservation-module.html'
+},{
+    info: {
+      title:'Build a reservation module',
+      description: ['We show you the way to build a reservation module step by step'],
+      image: './../images/blog/banner/tutorial_reservation_module.png',
+      author: 'Sunny May',
+      date: '3/2/2023'
+    },
+    path:'./build-reservation-module.html'
 },{
     info: {
       title:'From Schema to Snippets: A Blueprint for Chatbot',
