@@ -9,59 +9,57 @@ description:
 author: Sunny May
 ---
 
-# How to build a reservation module
-<!--添加和 quickstart 中的对照，build simple moudle 创建的是 base module，这里要创建的是 composite module, 前者要定义 service，后者要使用 service. 除此之外，这里还涉及了 slot filling 的annotation
-You will lean how to use the generic functions interfaces to build your own CUI.
--->
+# Build a reservation module
+In the previous guide on [build a hours module](../guide/build-module.md), we showed you how to declare a service and build a conversational user interface (CUI) in a module. In this guide, we'll demonstrate how to use a predefined service to build CUI in a module, customizing it based on your CUI design.
 
-This guide shows you how to build a module under the [reservation CUI design](./reservation-cui-design.md). Since [reservation APIs](../reference/plugins/services/reservation/reservation-api.md) offer service interfaces that cover typical booking scenarios, we will use these APIs to create a reservation system in a specific domain, such as table reservations.
+As the [reservation APIs](../reference/plugins/services/reservation/reservation-api.md) offer service that covers typical booking scenarios, we will utilize this service to create a reservation system in a specific domain, such as table reservations.
 
-The table reservation module is intended to help users to book, view or cancel reservation for specific dates and times with a set number of guests.  Its reusable nature allows builders to customize the table reservation service within their chatbots. For instance, builders can configure their own table types and capacities that fit their specific restaurant.
+The table reservation module assists users in booking, viewing, or canceling reservations for specific dates and times with a specific number of guests. Its reusable nature enables builders to customize the table reservation service within their chatbots. For instance, builders can configure their own table types and capacities that fit their specific restaurant. You can learn more details in [how to reuse a reservation module to build chatbot](./reuse-reservation-module.md).
 
-We will take [making a reservation](./reservation-cui-design.md#make-a-reservation) as an example to show you the steps to build a module. To know how the last two services are built, you can check the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type) to learn more information.
+This guide will use "[making a reservation](./reservation-cui-design.md#make-a-reservation)" as an example to demonstrate the steps to build a module. For information on building the last two services, refer to the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type) to learn more information.
 
 ## Before you start
 1. [Sign up](./../guide/signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-2. We assume that you are already familiar with the procedures on the platform. If not, we recommend that you read the [Quickstart guide](../guide/index.md) first.
+2. If you're not yet familiar with the platform procedures, we recommend reading the [Quickstart guide](../guide/index.md) before proceeding.
 
 ## Create module: tableReservation
-To begin with, create a module and fill out the creating-project form following these settings:
-- **Project label**: enter `tableReservation`.
-- **Template**: select **LibraryWithCore**. We need to use types from io.opencui.core libraray, this template imported that library.
-- **Languages**: add **English(en)**.
-- **Enable service interface**: turn this toggle off. We will reuse existing service, so there is no service needed to be declared in this module.
+To create a module, fill out the project creation form with the following settings:
+- **Project label**: Enter `tableReservation`.
+- **Template**: Select **LibraryWithCore**. This template has already imported the necessary types from the `io.opencui.core` library.
+- **Languages**: Add **English(en)**.
+- **Enable service interface**: Turn this toggle off. We won't need to declare a new service for this module as we'll be reusing an existing one.
 
 ## Import the service
-In order to use functions declared in the reservation APIs, you need to import that service first.
+To use functions declared in the reservation APIs, you need to import that service first.
 1. Enter the [reservation module](https://build.opencui.io/org/services.opencui/agent/reservation/struct/service_schema) where the service is declared and import it into the `tableReservation` module you just created.
 
-## Create local types for the service
-Based on the service, you may need to create some local types which are decided by your own business logic. For example, some services provide abstract types, so business can create their own types inheriting those interfaces. On one hand, these local types inherit the features of the parent types, on the other hand, you can add other features to these types. Moreover, your business may require extra processing of the return data which needs a new type to describe its schema.
+## Prepare types for the service
+Based on the service, you may need to create local types based on your business logic. For example, some services provide abstract types, allowing businesses to create their own types that inherit those interfaces. The resulting local types inherit the features of the parent types while also enabling the addition of new features. In addition, your business may require new types to describe return data schema.
 
 ### Build frame: Table
-According to the description of [Resource](../reference/plugins/services/reservation/reservation-api.md#resource) type from reservation APIs, it's an abstract type which means you can create resource,  inherit this type and add features based on your own business. In this guide, it's about table reservation business, so the resource we're talking about here is table. Apart from those existing properties in the **Resource** type, your table resource should also have its own property like capacity, which represents how many guests this table can hold.
+For our table reservation business, we'll be creating a resource type named `Table`. This resource will represent a table, and in addition to the existing properties in the [Resource](../reference/plugins/services/reservation/reservation-api.md#resource) type provided by the reservation APIs, each table resource should also have its own property representing capacity – the number of guests it can hold.
 
 #### Schema layer: declare a frame
 At this layer, you will create a "Table" frame to represent that resource, inherit **Resource** frame and add its own property as a slot.
 
 ##### Create the frame
 Inside the `tableReservation` module
-1. Create a frame labeled as `Table`.
+1. Create a frame labeled `Table`.
 2. Inside the `Table` frame, inherit `services.opencui.reservation.Resource`.
 
    ![inherit](/images/blog/tutorial-build-reservation/inherit.png)
 
 ##### Add slots
-Then add a slot of type **kotlin.Int** with the label `capacity` . This feature shows the maximum number of guests that the table seats.
+Next, add a slot of type **kotlin.Int** with the label `capacity`, representing the maximum number of guests that the table can seat.
 
 #### Annotate type: Table
-Since this type does not need to be exposed conversationally, there is no need to add dialog annotation.
+Since this type doesn't need to be exposed conversationally, there's no need to add dialog annotation.
 
 ## Build CUI for the service
-Based on the given service interfaces, you need to figure out how to use them to build CUI for your service. On OpenCUI, you will use skills to build CUI. Before you create a skill, based on the reservation APIs and your CUI design, determine which slots should be added to this skill.
+On OpenCUI, skills are used to build CUI. Before creating a skill, determine which slots to add to it based on the reservation APIs and the CUI design.
 
 ### Build skill: MakeReservation
-According to the slots mentioned in the [make a reservation](./reservation-cui-design.md#make-a-reservation) and [makeReservation](../reference/plugins/services/reservation/reservation-api.md#makereservation) functions and [listResource](../reference/plugins/services/reservation/reservation-api.md#listresource) functions, the following info is needed.
+Based on the slots mentioned in the [make a reservation](./reservation-cui-design.md#make-a-reservation) function and [makeReservation](../reference/plugins/services/reservation/reservation-api.md#makereservation) and [listResource](../reference/plugins/services/reservation/reservation-api.md#listresource) functions, the following information is required.
 - `userIdentifier`: A unique identifier for the user making the reservation.
 - `location`: The specified place that owns resources. Here, it should be the location of your restaurant.
 - `resourceType`: The type of the resource. Here, it should be "table".
@@ -70,20 +68,20 @@ According to the slots mentioned in the [make a reservation](./reservation-cui-d
 - `date`: The date of the reservation.
 - `time`: The time of the reservation.
 
-In this module, we follow such a **rule**: the number of guests determines which capacity of the table the user books. If the number of guests is 2 and there is a table of which capacity is 2, no matter whether that table is available, the user isn't allowed to book any table of which capacity is more than 2.
+For this module, the following rule applies: the number of guests determines which capacity of the table the user can book. If the number of guests is 2 and there is a table with a capacity of 2, then the user cannot book any table with a capacity greater than 2.
 
 #### Schema layer: declare a skill
-To create a skill for help users to make reservations, you need to create the type, add the necessary slots, and define functions needed by CUI.
+To create a skill that helps users make reservations, you need to create the type, add the necessary slots, and define functions needed by the CUI.
 
 ##### Create the skill
 Inside the `tableReservation` module and **Types** page, under the **Structure** view.
 1. Create a skill labeled as `MakeReservation`.
 
 ##### Add slots
-To prompt a user for a specific day, use the [DatePicker](../reference/plugins/components/datepicker/README.md) frame. Before proceeding, ensure that the `components` module exists under the **Dependencies** tab. If it doesn't, import [components module](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8aea6517f06c1880e3cff) to the `hours` module first. 
+To prompt a user for a specific day, use the [DatePicker](../reference/plugins/components/datepicker/README.md) frame. Ensure that the `components` module exists under the **Dependencies** tab before proceeding. If it does not, import the [components module](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8aea6517f06c1880e3cff) to the `tableReservation` module first. 
 
 Inside the `MakeReservation` skill and **Schema** tab, under the **Structure** view.
-1. In the **Slots** section, add the following slots.
+1. In the **Slots** section, add the following slots:
    - Type **Frame / io.opencui.core.user.UserIdentifier** with label `userIdentifier`.
    - Type **Entity / services.opencui.reservation.Location** with label `location`.
    - Type **Entity / services.opencui.reservation.ResourceType** with label `resourceType`.
@@ -91,16 +89,16 @@ Inside the `MakeReservation` skill and **Schema** tab, under the **Structure** v
    - Type **Entity / kotlin.Int** with label `number`.
    - Type **Frame / io.opencui.components.dataEntry.DatePicker** with label `datePicker`.
    - Type **Frame / io.opencui.components.dataEntry.TimePicker** with label `timePicker`.
-2. To access functions, in the **Services** section, select **services.opencui.reservation.IReservation** with the label `reservation` and **Save**.
+2. In the **Services** section, select **services.opencui.reservation.IReservation** with the label `reservation` to access functions, then click **Save**.
 
 ##### Define functions
-Since we use the reservation APIs which is generally defined, we need to add native functions to support the CUI design in our own domain. As the functions are defined in the skill, the function can get access to the slots in this skill directly, without passing them as input parameters.
+Since we use the predefined reservation APIs, we need to add native functions to support the CUI design in our own domain. These functions are defined within the skill, allowing them to access the slots in this skill directly, without passing them as input parameters.
 
 To support the contextual snippets in [Make a reservation](./reservation-cui-design.md#make-a-reservation) service, add these functions:
 1. `filterTables(resourceList:List<Resource>):List<Resource>`
-    - Follow the [rule](#build-skill-makereservation) mentioned above to filter the table resources based on the number of people.
+    - Filter the table resources based on the number of people according to the [rule](#build-skill-makereservation) mentioned above.
 2. `isTableAvailable(date:LocalDate?, time: LocalTime?):Boolean`
-    - Based on the number of people and the input parameters, check if there is a available table. When an input parameter is null, it means the date/time won't be regarded as a filter.
+    - Check if there is an available table based on the number of people and the input parameters. If an input parameter for date or time is null, the function will not use it as a filter when checking table availability.
 3. `makeReservation():Boolean`
    - Select a table resource meets the user's requirement and call the **reservation.makeReservation** passing that resource along with other required information to make a reservation.
 
@@ -174,31 +172,31 @@ Inside the `MakeReservation` skill and **Schema** tab, under the **Structure** v
      ```
 
 #### Annotate type: MakeReservation
-OpenCUI provides [dialog annotations](../reference/annotations/overview) to define how the chatbot interacts with users, and [responses](../reference/glossary.md#response) to display the result. In this section, you add dialog annotations and responses to the **MakeReservation** skill.
+To define how the chatbot interacts with users and displays results, OpenCUI provides dialog annotations. In this section, you will add dialog annotations the MakeReservation skill.
 
 Before you start, here are some assumptions about this business:
 1. There is only one location for this restaurant.
 2. For table reservation, the type of resource should be "table".
 3. There is only one duration among all the resources.
-  
-Under the above assumptions, location, resource type, and duration can be given by the business.
+
+Given these assumptions, the business can provide the location, resource type, and duration for the reservation process.
 
 During the slot filling process, the following dialog annotations will be used.
 
-1. [Fill Strategy](../reference/annotations/fillstrategy.md): for the slots filled by the business, their fill strategy should be Direct Fill. For the slots filled by the user, just follow the default fill strategy (Always Ask). Here is what fill strategy each slot should follow:
-    - Direct Fill: **location** slot, **resourceType** slot and **duration** slot.
-    - Always Ask: **number** slot, **datePicker** slot and **timePicker** slot.
-2. [Initialization](../reference/annotations/init.md): when a slot is filled by the business, you can use initialization to provide a value for this slot. Here are the initial values for each slot:
-   - **location** slot:  the first value in the return list from [listLocation](../reference/plugins/services/reservation/reservation-api.md#listlocation).
-   - **resourceType** slot: "table" with the right type.
-   - **duration** slot: the first duration of the first value in the return list from [listResource](../reference/plugins/services/reservation/reservation-api.md#listresource).
+1. [Fill strategy](../reference/annotations/fillstrategy.md): The fill strategy for each slot depends on who fills it. The slots filled by the business should have a direct fill strategy, while the slots filled by the user should follow the default always ask strategy. Here are the fill strategies for each slot:
+    - Direct fill: `location` slot, `resourceType` slot and `duration` slot.
+    - Always ask: `number` slot, `datePicker` slot and `timePicker` slot.
+2. [Initialization](../reference/annotations/init.md): When the business fills a slot, you can use initialization to provide a value for that slot. Here are the initial values for each slot:
+   - `location`: The first value in the list returned by [listLocation](../reference/plugins/services/reservation/reservation-api.md#listlocation).
+   - `resourceType`: "table" with the right type.
+   - `duration`: The first duration of the first value in the list returned by [listResource](../reference/plugins/services/reservation/reservation-api.md#listresource).
 
-3. [Value Check](../reference/annotations/valuecheck.md): when a slot value is provided by the user, you can use value check to validate this value. In this guide, following the default recovering strategy would be fine. Here are the rules that make each slot valid:
-   - **number** slot: there is at least one table which can seat this number of people.
-   - **datePicker** slot: there is at least one table under the restrictions provided by business and the values (number and date) provided by the user.
-   - **timePicker** slot: there is at least one table under the restrictions provided by business and the values (number, date and time) provided by the user.
+3. [Value check](../reference/annotations/valuecheck.md): When the user provides a slot value, you can use value check to validate it. For this guide, following the default recovery strategy is sufficient. Here are the rules for each slot to be considered valid:
+   - `number`: There is at least one table that can seat the requested number of guests.
+   - `datePicker`: There is at least one table available within the business's restrictions and the values (number and date) provided by the user.
+   - `timePicker`: There is at least one table available within the business's restrictions and the values (number, date, and time) provided by the user.
    
-4. [Confirmation](../reference/annotations/confirmation.md): when the user has provided all the values needed, you can ask the user to confirm their choice.
+4. [Confirmation](../reference/annotations/confirmation.md): Once the user has provided all required values, you can ask them to confirm their choices.
 
 Now, add the following dialog annotations to the **MakeReservation** skill:
 
@@ -283,25 +281,24 @@ Do **NOT** copy and paste the value wrapped by `$`, please type the value instea
 :::
 
 #### Configure response
-When a user has provided all the information needed to make a reservation, the chatbot should inform the user whether the reservation has been made successfully.
+Once the user has provided all necessary information for a reservation, the chatbot should inform the user whether the reservation has been made successfully. To do this, we will define two branches and configure their respective responses.
 
 ##### Define branch: InformFailure
-Turn on **Branches** and add **Single Value Message** actions in the branches.
-- The condition of the branch:
-  ```kotlin
-  makeReservation() == false
-  ```
-- Single Value Message:
-  ```kotlin
-  Sorry, the table you want to book is not available at present. You may change to another time or date, and try it again.
-  ```
+1. Turn on **Branches** and add a branch labeled `InformFailure`.
+2. Inside the `InformFailure` branch, add a **Single Value Message** action. Configure this action as follows:
+   - The condition of the branch:
+     ```kotlin
+     makeReservation() == false
+     ```
+   - Single Value Message:
+     ```kotlin
+     Sorry, the table you want to book is currently unavailable. You may change to another time or date, and try it again.
+     ```
 
 ##### Default branch
-In the **Default branch** section, add **Single Value Message** actions, and add this template:
+In the **Default branch** section, add a **Single Value Message** action, and add this template:
 ```kotlin
-Your reservation has been made. We'll see you at `${timePicker!!.time!!.expression()}` on `${datePicker!!.date!!.expression()}`. You can check the reservation under your ID: `${userIdentifier?.userId}`.
+Your reservation has been made! We'll see you at `${timePicker!!.time!!.expression()}` on `${datePicker!!.date!!.expression()}`. You can check your reservation under your ID: `${userIdentifier?.userId}`.
 ```
-
-When all is done, be sure to [view all the changes](../reference/platform/versioncontrol.md#review-changes) and **merge them into the master**.
 
 ::tada:: Congratulations! You've built up a reservation module.
