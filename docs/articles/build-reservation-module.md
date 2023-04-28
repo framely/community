@@ -10,13 +10,9 @@ author: Sunny May
 ---
 
 # Build a reservation module
-In the previous guide on [build a hours module](../guide/build-module.md), we showed you how to declare a service and build a conversational user interface (CUI) in a module. In this guide, we'll demonstrate how to use a predefined service to build CUI in a module, customizing it based on your CUI design.
+In the previous guide on [build a hours module](../guide/build-module.md), we showed you how to declare a service and build a conversational user interface (CUI) in a module. In this guide, we'll demonstrate how to build CUI for a specific use case, table reservation in particular, on top of a predefined [generic reservation service](../reference/plugins/services/reservation/reservation-api.md).
 
-As the [reservation APIs](../reference/plugins/services/reservation/reservation-api.md) offer service that covers typical booking scenarios, we will utilize this service to create a reservation system in a specific domain, such as table reservations.
-
-The table reservation module assists users in booking, viewing, or canceling reservations for specific dates and times with a specific number of guests. Its reusable nature enables builders to customize the table reservation service within their chatbots. For instance, builders can configure their own table types and capacities that fit their specific restaurant. You can learn more details in [how to reuse a reservation module to build chatbot](./reuse-reservation-module.md).
-
-This guide will use "[making a reservation](./reservation-cui-design.md#make-a-reservation)" as an example to demonstrate the steps to build a module. For information on building the last two services, refer to the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type) to learn more information.
+The table reservation module assists users in booking, viewing, or canceling reservations in a restaurant setting. This guide will use "[making a reservation](./reservation-cui-design.md#make-a-reservation)" as an example to demonstrate the steps to conversationally expose a service in a module. Exposing viewing and canceling reservations should be similar, and you can check the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type) to see how it is done.
 
 ## Before you start
 1. [Sign up](./../guide/signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
@@ -34,13 +30,15 @@ To use functions declared in the reservation APIs, you need to import that servi
 1. Enter the [reservation module](https://build.opencui.io/org/services.opencui/agent/reservation/struct/service_schema) where the service is declared and import it into the `tableReservation` module you just created.
 
 ## Prepare types for the service
-Based on the service, you may need to create local types based on your business logic. For example, some services provide abstract types, allowing businesses to create their own types that inherit those interfaces. The resulting local types inherit the features of the parent types while also enabling the addition of new features. In addition, your business may require new types to describe return data schema.
+It is common for APIs to be designed to be as generic as possible, so that the same backend can be used for different domains. Typically, these APIs are defined using abstract types which can then be customized into different concrete types for different domains. The Reservation API is designed based on this principle. In particular, it introduces an abstract type called 'Resource' to represent things that can be booked ahead of time, which can map to concrete types such as hairdresser or table.
+
+Booking resources is about pairing user with a resource that has particular properties. Therefore, each resource has some read-only properties, such as the capacity of a particular table, which should be set up in the backend by the operations team. During the booking process, the chatbot needs to find out the user's preferences on certain criteria, such as party size, so that it can provide the users with what they need.
 
 ### Build frame: Table
-For our table reservation business, we'll be creating a resource type named `Table`. This resource will represent a table, and in addition to the existing properties in the [Resource](../reference/plugins/services/reservation/reservation-api.md#resource) type provided by the reservation APIs, each table resource should also have its own property representing capacity – the number of guests it can hold.
+For restaurant business, the bookable resource is `Table` which represents a table in a restaurant. In addition to the existing properties defined in the [Resource](../reference/plugins/services/reservation/reservation-api.md#resource), each table resource should also have its property representing capacity – the number of guests it can hold.
 
 #### Schema layer: declare a frame
-At this layer, you will create a "Table" frame to represent that resource, inherit **Resource** frame and add its own property as a slot.
+At this layer, you will create a "Table" frame to represent that resource, inherit **Resource** frame.
 
 ##### Create the frame
 Inside the `tableReservation` module
