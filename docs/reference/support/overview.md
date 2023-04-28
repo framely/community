@@ -38,11 +38,11 @@ To reduce the effort level on the user side, we support the conversation routing
 Inside your chatbot, in the **Settings** tab and under **Integrations** page.
 1. In the **Deploy service provider** section, select `io.opencui.support.ISupport` for setting up channel.
 
-   ![select the service](/images/chatwoot/select-service.png)
+   ![select the service](/images/Chatwoot/select-service.png)
 
 2. A popup window will appear. In the **Service provider** dropdown, select `io.opencui.chatwoot`. 
 
-   ![select the chatwoot support](/images/chatwoot/select-support.png)
+   ![select the chatwoot support](/images/Chatwoot/select-support.png)
 
 ::: tip
 If you enable Chatwoot for the first time in your organization, check your email to get your user name and password so you can log into [Chatwoot](https://chatwoot.naturali.io/).
@@ -58,7 +58,7 @@ Inside your chatbot, in the **Settings** tab and under **Routing priority** page
 1. Click the **Default** team, input team id of the default team. 
 2. If you have more than one team, click **Add** to add more teams. The format of **Associate skill** is `Organization.Project.Skill`, e.g. `me.test.supportDemo.TestSkill`.
 
-![routing-priority](/images/chatwoot/routing-priority.png)
+![routing-priority](/images/Chatwoot/routing-priority.png)
 
 ::: tip
 To get team id in Chatwoot, see [How to Get Team Id](Chatwoot.md#how-to-get-team-id).
