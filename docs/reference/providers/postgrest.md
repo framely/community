@@ -238,11 +238,11 @@ return getFoodCategory()!!.map{it -> it.returnValue!!}
 ```
 
 ### Function Console
-When you finish implementing the function, before you wire it to the chatbot, you can verify whether your implementation is as expected through **Function Console**. Currently, function console can only test **Provider Dependent** implementations. To use function console, following these steps: 
+When you finish implementing the function, before you wire it to the chatbot, you can verify whether your implementation is as expected through **Function Console**. Currently, function console can only test **Provider dependent** implementations. To use function console, following these steps: 
 
-1. Deploy your postgres provider. In the navigation bar, select **Versions** tab, click **Deploy** in the upper-right corner of the Versions area. Make sure that all changes including function implementations are merged into master and deployed successfully.
+1. Deploy your postgres provider. In the navigation bar, select **Versions** tab, click **Deploy backend** in the upper-right corner of the Versions area. Make sure that all changes including function implementations are merged into master and deployed successfully.
 
-    ![deploy postgres provider](/images/provider/postgrest/sql-deploy.png)
+   ![depl hours provider](/images/provider/postgrest/deploy-hours.png)
 
 2. After deploying, switch to **Service** tab. In the upper-right corner of the Service area, click **Debug**. 
 
@@ -263,9 +263,9 @@ Once the table structure has been declared in OpenCUI platform, the hosted datab
 
 ![deploy postgres provider](/images/provider/postgrest/sql-deploy.png)
 
-When the **Deploy** button is triggered, OpenCUI platform will update the table structure in the corresponding hosted database. Then, you can log in to the backoffice to access the actual data source through Postgres provider configuration information. 
+When the **Deploy backend** button is triggered, OpenCUI platform will update the table structure in the corresponding hosted database. Then, you can log in to the backoffice to access the actual data source through Postgres provider configuration information. 
 
-1. Switch to **Configuration** area, then you can get the configuration information.
+1. Switch to **Settings** tab, then in the **Backoffice** section, you can get the configuration information.
 2. Copy and paste the **URL** to your browser, use **Admin Email** and **Admin Password** to log in to backoffice.
 
 ![configuration](/images/provider/postgrest/configuration.png)
