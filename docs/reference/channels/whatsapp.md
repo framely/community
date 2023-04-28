@@ -1,12 +1,9 @@
 # WhatsApp
-![test](/images/channelConfig/whatsapp/test.png)
-
 The [WhatsApp Business Platform](https://developers.facebook.com/docs/whatsapp) gives medium to large businesses the ability to connect with customers at scale. You can start conversations with customers in minutes, send customer care notifications or purchase updates, offer your customers a level of personalized service and provide support in the channel that your customers prefer to be reached on.
 
 We are going to show here how to integrate OpenCUI with WhatsApp and deploy the chatbot to a OpenCUI hosted environment. For the private deployment, please consult systems in your organization.
 
-Follow these steps to configure:
-[[toc]]
+![test](/images/channelConfig/whatsapp/test.png)
 
 ## Before you begin
 On the WhatsApp side, please ensure you have all of the following:
@@ -48,27 +45,23 @@ In the Business Manager, go to your [Business Settings](https://business.faceboo
    ![add people](/images/channelConfig/whatsapp/add-people.png)
 
 ## Configure WhatsApp from OpenCUI
-1. On OpenCUI platform, go to service component [io.opencui.channel](https://build.opencui.io/org/io.opencui/agent/channel/struct/service_schema): 
-   1. Click **Import** button on the second topbar.
-   2. Select the chatbot you want to configure WhatsApp channel and **Save**.
+OpenCUI allows you to configure multiple WhatsApp channels. This section will show you how to configure a single channel, but you can repeat the process for any number of channels you need.
 
-   ![import channel component](/images/channelConfig/overview/import-channel.png)
+Inside your chatbot, in the **Settings** tab and under **Integrations** page.
 
-2. Once you have done, switch to your chatbot to wire WhatsApp channel:
-   1. On **STRUCT** level, head to **Settings** page, in the **Integrations** tab, select the service you just import. In this case, please select **io.opencui.channel.IChannel**.
-   2. A configuration dialog opens, at **Service Provider** field, select **io.opencui.whatsapp** to wiring WhatsApp channel.
+1. In the **Deploy service provider** section, select `io.opencui.channel.IChannel` for setting up channel.
 
-   ![select the service](/images/channelConfig/overview/select-service.png)
-   *Select service io.opencui.channel.IChannel*
+   ![select the service](/images/channelConfig/whatsapp/select-service.png)
 
-   ![select a channel](/images/channelConfig/overview/select-channel.png)
-   *Wire WhatsApp channel*
+2. A popup window will appear. In the **Service provider** dropdown, select `io.opencui.whatsapp`. Then the necessary configuration information required by the Messenger channel will be displayed in the same window.
+
+   ![select a channel](/images/channelConfig/whatsapp/select-channel.png)
 
 3. Continue inside the dialog, configure WhatsApp integration as following: 
    - **Label**: Enter channel label, should be **unique**.
-   - **Verify Token**: Enter any verify token you desire. :clipboard: Copy this value. This will be used to configure the WhatsApp Webhook.
-   - **Access Token**: Paste the token you copied during the WhatsApp setup above.
-   - **Phone Number ID**: Paste the Phone Number ID you copied during the WhatsApp setup above.
+   - **Verify token**: Enter any verify token you desire. :clipboard: Copy this value. This will be used to configure the WhatsApp Webhook.
+   - **Access token**: Paste the token you copied during the WhatsApp setup above.
+   - **Phone number ID**: Paste the Phone Number ID you copied during the WhatsApp setup above.
    - **Locale**: Select locale which determines the default language used by your bot.
    - **Callback URL**: :clipboard: Copy this value after setting the label and locale. This will be used to configure the WhatsApp Webhook.
 
