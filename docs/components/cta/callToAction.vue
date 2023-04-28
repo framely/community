@@ -53,13 +53,11 @@ const cta = computed(() => {
   text-align: center;
   font-weight: 600;
   border-radius: 20px;
-  border: 1px solid var(--vp-c-text-2);
-  color: var(--vp-c-text-2);
-  background-color: inherit;
+  border: 1px solid var(--vp-button-brand-border);
+  color: var(--vp-button-brand-text);
+  background-color: var(--vp-c-brand);
   &:hover {
-    color: var(--vp-c-brand);
-    background: var(--vp-c-bg);
-    border-color: var(--vp-c-brand-light);
+    background: var(--vp-c-brand-light);
   }
 }
 </style>
