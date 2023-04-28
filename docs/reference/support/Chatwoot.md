@@ -4,7 +4,7 @@ When a user demands talking to a human agent, we can forward the conversation to
 ## How it works
 1. When an end-user demands talking to a human agent.
 
-![how-it-works-1](/images**/chatwoot/**how-it-works-1.png)
+![how-it-works-1](/images/chatwoot/how-it-works-1.png)
 
 2. An agent will get notified when the conversation is assigned to him.
 
