@@ -2,16 +2,7 @@
   <div class="article-wrapper">
 
     <div v-if="!items.length">Nothing in here.</div>
-    <!-- <div class="container-article" v-for="{ info, path } in items" :key="info">
-      <div class="sticky" v-if="info.sticky">
-        {{info.title}}
-      </div>
-    </div> -->
-
     <article v-for="{ info, path } in items" :key="info">
-
-      <!-- New layout -->
-      <!-- <a :href="path"> -->
       <div class="blog-card-divider"></div>
       <div class="blog-card">
         <div class="blog-card-info">
@@ -23,8 +14,6 @@
             <p class="blog-card-info-description">{{ info.description[0] }}</p>
           </div>
           <div class="blog-card-info-bottom">
-            <!-- <div class="author">{{ info.author }}</div> -->
-            <!-- <div v-if="info.date">{{ new Date(info.date).toLocaleDateString() }}</div> -->
           </div>
           <a :href="path">
             Read more →
@@ -34,33 +23,22 @@
           <img class="blog-card-image" :src="info.image" />
         </div>
       </div>
-      <!-- </a> -->
-      <!-- End new layout -->
-
     </article>
   </div>
 </template>
 
 <script setup>
-// import { RouterLink, useRoute } from 'vue-router'
-// import { useRouter } from 'vitepress'
 defineProps({
   items: {
     type: Array,
     default: () => [],
   },
-  // router: useRouter()
 })
 </script>
 <style lang="scss">
 .article-wrapper {
   display: flex;
   flex-direction: column;
-  // grid-template-columns: 1fr 1fr 1fr;
-  // grid-template-rows: 1fr;
-  // margin: 2rem auto;
-  // grid-row-gap: 2rem;
-  // grid-column-gap: 4rem;
 
   .blog-card-divider {
     height: 1px;
@@ -71,7 +49,6 @@ defineProps({
   .blog-card {
     display: flex;
     flex-direction: row;
-    // align-items: stretch;
     justify-content: space-between;
     position: relative;
     top: 0;
@@ -111,7 +88,6 @@ defineProps({
   }
 
   .blog-card-info-title {
-    text-transform: capitalize;
     font-size: 20px;
     font-weight: 700;
     border-bottom: none;
