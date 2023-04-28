@@ -15,8 +15,7 @@ To reduce the effort level on the user side, it is important that we route user 
 5. We can transfer the conversation from bot to specified team by department statically or dynamically, potentially based on , so that a user can be served effectively. 
 6. After human agent is done with a service, next time, a user  starts interacting with bot again. Simply invoke CloseSession should be enough.  
 
-In the OpenCUI hosted environment, we are mainly interested in the external mode, currently we provide the great open source support system chatwoot as the only option, but this can change when someone starts to build the connection with other system and open source it. 
-
+In the OpenCUI hosted environment, we are mainly interested in the external mode, currently we provide the great open source support system chatwoot as the only option, but this can change when someone starts to build the connection with other system and open source it.
 
 ### Skill based routing under external mode
 To reduce the effort level on the user side, we support the conversation routing based on skill. Essentially, skills are grouped into multiple set, each maps to a particular team. When there are unfinished skills in the conversation, that skills can be used to decide which team should we route the conversation to, based on the builder supplied information. When there is no unfinished skill, we can also ask user to provide one, so that they can be transferred to right team directly.
@@ -31,15 +30,19 @@ To reduce the effort level on the user side, we support the conversation routing
 2. Click "!" icon in the **E-mail** box and follow the instructions to verify your email.
    :::
 
-
 2. Make sure you have configured your channel first. Learn more about channel configuration, see [Channels](../channels/overview.md).
 
 3. We show here how to integrate your chatbots with Chatwoot in OpenCUI hosted environment. For private deploy, please consult systems in your organization.
 
 ### Enable support
-Click **Setting** > **Integrations**. In the **Support** field, enable the support you need. To configure Chatwoot, see [Chatwoot Configuration](Chatwoot.md#configuration)
+Inside your chatbot, in the **Settings** tab and under **Integrations** page.
+1. In the **Deploy service provider** section, select `io.opencui.support.ISupport` for setting up channel.
 
-![enable-chatwoot](/images/Chatwoot/enable-chatwoot.png)
+   ![select the service](/images/Chatwoot/select-service.png)
+
+2. A popup window will appear. In the **Service provider** dropdown, select `io.opencui.chatwoot`. 
+
+   ![select the chatwoot support](/images/Chatwoot/select-support.png)
 
 ::: tip
 If you enable Chatwoot for the first time in your organization, check your email to get your user name and password so you can log into [Chatwoot](https://chatwoot.naturali.io/).
@@ -49,10 +52,11 @@ If you enable Chatwoot for the first time in your organization, check your email
 To make skill based routing work, you need to set up routing priority. When there are unfinished skills in the conversation, we follow routing priority to decide which team we should route the conversation to.\
 If an unfinished skill is one of the associate skills in routing priority, we route the conversation to the corresponding team. Otherwise, we route the conversation to default team.
 
-Follow these steps to set up routing priority.
+To set up routing priority:
 
-1. Click **Setting** > **Routing Priority** > **Default**, input team id of the default team. 
-2. If you have more than one team, click **add** to add more teams. The format of **Associate skill** is *Organization.Project.Skill*, e.g. *Demo.testChatbot.TestSkill*
+Inside your chatbot, in the **Settings** tab and under **Routing priority** page.
+1. Click the **Default** team, input team id of the default team. 
+2. If you have more than one team, click **Add** to add more teams. The format of **Associate skill** is `Organization.Project.Skill`, e.g. `me.test.supportDemo.TestSkill`.
 
 ![routing-priority](/images/Chatwoot/routing-priority.png)
 
