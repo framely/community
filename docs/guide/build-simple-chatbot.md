@@ -15,7 +15,7 @@ A type-based chatbot with multiple language support can then function in the fol
 
 The same concept is also illustrated here.
 
-![create save](/images/guide/pingpong/urr.png)
+![type-based cui](/images/guide/pingpong/urr.png)
 
 #### A proper type system
 OpenCUI is designed to support most APIs that can be defined by OpenAPI, which is a widely used standard for documenting RESTful APIs. This means that you can conversationally expose not only to primitive types like Int and String, but also to arrays and user-defined types with polymorphism support. This makes it easy to build conversational interfaces for arbitrary service APIs. In OpenCUI, functions are represented by skills, user-defined types are represented by frames, and primitive types are represented by entities.
