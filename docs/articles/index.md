@@ -27,6 +27,15 @@ layout: home
     path:'./reuse-reservation-module.html'
 },{
     info: {
+      title:'Build a reservation module',
+      description: ['Utilize a pre-defined service to build CUI in a module. The step-by-step guide takes table reservation as an example and shows how to customize the service to fit your business needs.'],
+      image: './../images/blog/banner/tutorial_reservation_module.png',
+      author: 'Sunny May',
+      date: '3/2/2023'
+    },
+    path:'./build-reservation-module.html'
+},{
+    info: {
       title:'From schema to snippets: a blueprint for chatbot',
       description: ['Create powerful custom chatbots with schema-driven development. Define interaction logic by starting from a schema, and then use contextual snippets to describe conversational behavior.'],
       image: './../images/blog/banner/from-schema-to-snippets.png',
