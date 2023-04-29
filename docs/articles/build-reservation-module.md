@@ -10,7 +10,7 @@ author: Sunny May
 ---
 
 # Build a reservation module
-In the previous guide on [build a hours module](../guide/build-module.md), we showed you how to declare a service and build a conversational user interface (CUI) in a module. In this guide, we'll demonstrate how to use a predefined service to build CUI in a module, customizing it based on your CUI design.
+In the previous guide on [build an hours module](../guide/build-module.md), we showed you how to declare a service and build a conversational user interface (CUI) in a module. In this guide, we'll demonstrate how to build CUI for a specific use case, table reservation in particular, on top of a predefined [generic reservation service](../reference/plugins/services/reservation/reservation-api.md).
 
 As the [reservation APIs](../reference/plugins/services/reservation/reservation-api.md) offer service that covers typical booking scenarios, we will utilize this service to create a reservation system in a specific domain, such as table reservations.
 

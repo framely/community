@@ -12,13 +12,13 @@ Here's a quick way to get started: clone an existing project. This guide will wa
 #### [Build an echo chatbot](build-simple-chatbot)
 This guide will walk you through the process of creating the simple chatbot that was introduced in the previous guide.
 
-#### [Reuse a hours module](reuse-component)
+#### [Reuse an hours module](reuse-component)
 Importing a module is another way to reuse existing work on OpenCUI. Modules are reusable conversational components based on their service interface. This guide will show you how to add functionality to your chatbot by reusing a module paired with a compatible provider.
 
-#### [Build a hours module](build-module)
+#### [Build an hours module](build-module)
 This guide will show you how to develop the module that were introduced in the reuse module guide.
 
-#### [Build a hours provider](build-provider)
+#### [Build an hours provider](build-provider)
 This guide will show you how to develop the backend/provider that were introduced in the reuse module guide.
 
 #### [Deploy a chatbot](deploy-to-channel)
