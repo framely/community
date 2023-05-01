@@ -76,7 +76,7 @@ For this module, you will be handling a simpler case, with the following assumpt
 2. The only resource can be booked for this restaurant is `table`.
 3. The duration is fixed for all the tables by restaurant.
 4. The number of guests determines which table the user can book (its capacity need to be greater than or equals to the party size). 
-5. 
+ 
 Note that not all slots are designed for user input; some slots may be implied or supplied by the backend, but they are included as slots to make it easier to use the generic reservation APIs. Based the above assumptions, location, resource type, and duration will be provided by business so no need for user to input.
 
 #### Schema layer: declare a skill 
