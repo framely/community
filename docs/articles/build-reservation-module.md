@@ -10,19 +10,21 @@ author: Sunny May
 ---
 
 # Build a reservation module
-In the previous guide on [build an hours module](../guide/build-module.md), we showed you how to declare a service and build a conversational user interface (CUI) in a module. In this guide, we'll demonstrate how to build CUI for a specific use case, table reservation in particular, on top of a predefined [generic reservation service](../reference/plugins/services/reservation/reservation-api.md).
+In the previous guide on [build an hours module](../guide/build-module.md), we showed you how to declare a service and build a conversational user interface (CUI) in the same module. In this guide, we'll demonstrate how to build CUI on top of a predefined [generic reservation service](./reservation/reservation-api).
 
-The table reservation module assists users in booking, viewing, or canceling reservations in a restaurant setting. This guide will use "[making a reservation](./reservation-cui-design.md#make-a-reservation)" as an example to demonstrate the steps to conversationally expose a service in a module. Exposing viewing and canceling reservations should be similar, and you can check the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type) to see how it is done.
+The table reservation module assists users in booking, viewing, or canceling reservations in a restaurant setting. This guide will only implement "[making a reservation](./reservation-cui-design.md#make-a-reservation)" as an example. Exposing viewing and canceling reservations should be similar, and you can check the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type) to see how it is done.
 
 ## Before you start
 1. [Sign up](./../guide/signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-2. If you're not yet familiar with the platform procedures, we recommend reading the [Quickstart guide](../guide/index.md) before proceeding.
+2. It is highly recommended that you follow through the [Quickstart guide](../guide/index).
+3. It is useful to go over [reservation cui design](./reservation-cui-design.md)
+4. It is useful to go over [adding table reservation functionality](./reuse-reservation-module.md)
 
 ## Create module: tableReservation
 To create a module, fill out the project creation form with the following settings:
 - **Project label**: Enter `tableReservation`.
 - **Template**: Select **LibraryWithCore**. This template has already imported the necessary types from the `io.opencui.core` library.
-- **Languages**: Add **English(en)**.
+- **Languages**: Add **English(en)**. You are required to add at least one language.
 - **Enable service interface**: Turn this toggle off. You won't need to declare a new service for this module as you'll be reusing an existing one.
 
 ## Import the service
@@ -30,12 +32,14 @@ To use functions declared in the reservation APIs, you need to import that servi
 1. Enter the [reservation module](https://build.opencui.io/org/services.opencui/agent/reservation/struct/service_schema) where the service is declared and import it into the `tableReservation` module you just created.
 
 ## Prepare types for the service
-It is common for APIs to be designed to be as generic as possible, so that the same backend can be used for different domains. Typically, these APIs are defined using abstract types which can then be customized into different concrete types for different domains. The Reservation API is designed based on this principle. In particular, it introduces an abstract type called 'Resource' which is used as return type for a function that return a list of candidate resources. This type represents things that can be booked ahead of time, which can map to concrete types such as hairdresser or table.
+It is common practice for APIs to be designed to be as generic as possible so that the same backend can be used for different domains. Typically, these APIs are defined using abstract types that can be customized into different concrete types for different domains.
 
-Booking resources is about pairing user with a resource that has particular properties. Therefore, each resource has some read-only properties, such as the capacity of a particular table, which should be set up in the backend by the operations team. During the booking process, the chatbot needs to find out the user's preferences on certain criteria, such as party size, so that it can provide the users with what they need.
+The reservation API follows this principle by introducing an abstract type called 'Resource' as the return type for a function that returns a list of candidate resources. This type represents things that can be booked ahead of time, such as a hairdresser or table.
+
+Each resource has some read-only properties, such as the capacity of a particular table. These available resources and their properties should be set up in the backend by the operations team. During the booking process, the chatbot needs to find out the user's requirements on resources, such as party size, so that it can pair the users with the resource with properties that match their needs.
 
 ### Build frame: Table
-For restaurant business, the bookable resource is `Table` which represents a table in a restaurant. In addition to the existing properties defined in the [Resource](../reference/plugins/services/reservation/reservation-api.md#resource), each table resource should also have its property representing capacity – the number of guests it can hold. Restaurant defines the number of tables they have as well as how many people can each table fit in the backend. 
+For a typical restaurant business, the bookable resource is `Table`. In addition to the existing properties defined in the [Resource](./reservation/reservation-api.md#resource), each table should also have a property representing capacity – the number of guests it can hold. Restaurant defines the number of tables they have as well as how many people can each table fit in the backend.
 
 #### Schema layer: declare a frame
 At this layer, you will create a "Table" frame, implements **Resource** frame.
@@ -51,30 +55,32 @@ Inside the `tableReservation` module
 Next, add a slot of **kotlin.Int** type with the label `capacity`, representing the maximum number of guests that the table can seat.
 
 #### Annotate type: Table
-Since this type doesn't need to be exposed conversationally, there's no need to add dialog annotation.
+Since this type doesn't need to be instantiated conversationally, there's no need to add dialog annotation.
 
 ## Build CUI for the service
-On OpenCUI, skills are used to build CUI. Before creating a skill, determine which slots to add to it based on the reservation APIs and the CUI design.
+In OpenCUI, conversational user interfaces are simply a set of dialog annotated types, including skills and their dependent types. Since all the dependent types are already available in the OpenCUI system, you can build the 'make reservation' skill directly.
 
 ### Build skill: MakeReservation
-Based on the slots mentioned in the [make a reservation](./reservation-cui-design.md#make-a-reservation) function and [makeReservation](../reference/plugins/services/reservation/reservation-api.md#makereservation) and [listResource](../reference/plugins/services/reservation/reservation-api.md#listresource) functions, the following information is required.
+
+To implement the [make a reservation](./reservation-cui-design.md#make-a-reservation) use case, you will use location, resourceType and [listResource](./reservation/reservation-api.md#listresource) function to get a list of resources for user to pick, then [makeReservation](./reservation/reservation-api.md#makereservation) function to make the reservation. So the skill should contain the following slots:
 - `userIdentifier`: A unique identifier for the user making the reservation.
 - `location`: The specified place that owns resources. Here, it should be the location of your restaurant.
-- `resourceType`: The type of the resource. Here, it should be "table".
+- `resourceType`: The type of the resource since . Here, it should be "table".
 - `duration`: The resource duration of the reservation. 
 - `number`: The number of guests attending the reservation.
 - `date`: The date of the reservation.
 - `time`: The time of the reservation.
 
-Here are some assumptions about this business:
-1. There is only one location for this restaurant.
-2. For table reservation, the type of resource should be "table".
-3. There is only one duration among all the resources.
-4. the number of guests determines which table the user can book (its capacity need to be greater than or equals to the party size). 
-
+For this module, you will be handling a simpler case, with the following assumptions:
+1. The restaurant exists in only one location.
+2. The only resource can be booked for this restaurant is `table`.
+3. The duration is fixed for all the tables by restaurant.
+4. The number of guests determines which table the user can book (its capacity need to be greater than or equals to the party size). 
+5. 
+Note that not all slots are designed for user input; some slots may be implied or supplied by the backend, but they are included as slots to make it easier to use the generic reservation APIs. Based the above assumptions, location, resource type, and duration will be provided by business so no need for user to input.
 
 #### Schema layer: declare a skill 
-Note that not all slots are designed for user input; some are designed to simplify specifying the interaction logic, such as resource type, duration, and location. This information may be implied or supplied by the backend, but including it in the context makes it easier to use the generic reservation APIs. Given these assumptions, the business can provide the location, resource type, and duration for the reservation process.
+
 
 ##### Create the skill
 Inside the `tableReservation` module and **Types** page, under the **Structure** view.
@@ -182,9 +188,9 @@ During the slot filling process, the following dialog annotations will be used.
     - Direct fill: `location` slot, `resourceType` slot and `duration` slot.
     - Always ask: `number` slot, `datePicker` slot and `timePicker` slot.
 2. [Initialization](../reference/annotations/init.md): When the business fills a slot, you can use initialization to provide a value for that slot. Here are the initial values for each slot:
-   - `location`: The first value in the list returned by [listLocation](../reference/plugins/services/reservation/reservation-api.md#listlocation).
+   - `location`: The first value in the list returned by [listLocation](./reservation/reservation-api.md#listlocation).
    - `resourceType`: "table" with the right type.
-   - `duration`: The first duration of the first value in the list returned by [listResource](../reference/plugins/services/reservation/reservation-api.md#listresource).
+   - `duration`: The first duration of the first value in the list returned by [listResource](./reservation/reservation-api.md#listresource).
 
 3. [Value check](../reference/annotations/valuecheck.md): When the user provides a slot value, you can use value check to validate it. For this guide, following the default recovery strategy is sufficient. Here are the rules for each slot to be considered valid:
    - `number`: There is at least one table that can seat the requested number of guests.
