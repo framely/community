@@ -43,18 +43,26 @@ defineProps({
 
 .blog-title {
   display: block;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
 
   h1 {
-    font-weight: 700;
+    font-weight: 600;
     line-height: 3.0;
     text-align: left;
-    font-size: 20px;
+    font-size: 36px;
   }
 
   p {
     text-align: left;
-    color: var(--c-text-lightest);
+    //color: var(--c-text-lightest);
     padding-bottom: 1rem;
+  }
+}
+
+@media (max-width:960px) {
+  .blog-title {
+    padding: 0 2rem;
   }
 }
 

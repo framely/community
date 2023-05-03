@@ -53,6 +53,7 @@ defineProps({
     position: relative;
     top: 0;
     transition: top ease 0.5s;
+    gap: 1rem;
 
     &:hover {
       border-radius: 6px;
@@ -64,6 +65,7 @@ defineProps({
 
   .blog-card-time {
     margin-bottom: 1.5rem;
+    color: var(--vp-c-text-light-2);
   }
 
   .blog-card-image {
@@ -71,9 +73,9 @@ defineProps({
     height: 10rem;
     border-radius: 6px;
     object-fit: cover;
-    background-color: var(--c-bg-light);
+    //background-color: var(--c-bg-light);
     margin-top: 4.5rem;
-    margin-left: 1.5rem;
+    //margin-left: 1.5rem;
   }
 
   .blog-card-info {
@@ -95,7 +97,7 @@ defineProps({
   }
 
   .blog-card-info-description {
-    color: var(--c-text-lighter);
+    color: var(--vp-c-text-light-2);
     margin-top: 0px;
     font-weight: normal;
     margin-bottom: 1.5rem;
@@ -107,7 +109,7 @@ defineProps({
     justify-content: space-between;
     align-items: center;
     padding-top: 0.5rem;
-    color: var(--c-text-lighter);
+    color: var(--vp-c-text-light-3);
     font-size: 12px;
     font-weight: normal;
   }
@@ -133,12 +135,5 @@ defineProps({
     grid-template-columns: 1fr;
     align-items: center;
   }
-
-  .blog-card {
-    border: 1px solid var(--c-border);
-    border-radius: 6px;
-    padding: 2rem;
-  }
-
 }
 </style>

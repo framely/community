@@ -67,8 +67,8 @@ defineProps({
   .pricing-top-info {
   margin: 2.5rem;
   text-align: center;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
 
   .pricing-top-title {
     font-size: 36px;
@@ -88,7 +88,7 @@ defineProps({
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 48px;
-    padding: 0 2rem 2rem 2rem;
+    padding: 0 2rem;
 
     .card {
       background-color: var(--vp-c-bg-soft);
