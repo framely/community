@@ -16,7 +16,7 @@ The roles in the organization are:
 | Member | Can see all other members, can be granted access to projects. |
 | Owner  | Full administrative rights to the org, and have complete access to all projects. |
 
-Organizations can own public, internal and private project. You can start with Starter Plan, which includes limited features on public project. To get the full feature set on public project, internal and private project and additional features at the organization level, you can upgrade to Team or Case Based plan. For more information, see [Pricing](../../pricing/README.md).
+Organizations can own public, internal and private project. You can start with Starter Plan, which includes limited features on public project. To get the full feature set on public project, internal and private project and additional features at the organization level, you can upgrade to Team or Case Based plan. For more information, see [Pricing](../../pricing/index.md).
 
 ## Project access
 In addition to managing access to the organization itself, you can separately manage access to your organization's projects. 
