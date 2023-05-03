@@ -28,7 +28,7 @@ layout: home
       price: 'Custom',
       // badge: 'per user / year',
       tagline: 'Beside services, you just need a conversational experience product owner.',
-      features: ['Everything included in Starter and: ',
+      features: ['Everything included in Builder and: ',
         'Larger, purpose built NLU Model',
         'Channel integration',
         'Private deploy',

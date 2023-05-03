@@ -55,7 +55,8 @@ defineProps({
 
   p {
     text-align: left;
-    //color: var(--c-text-lightest);
+    font-weight: 500;
+    color: var(--vp-c-text-2);
     padding-bottom: 1rem;
   }
 }

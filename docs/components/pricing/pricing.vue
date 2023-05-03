@@ -60,8 +60,10 @@ defineProps({
   flex-direction: column;
 
   .text-light {
+    font-size: 14px;
+    font-weight: 500;
     color: var(--vp-c-text-2);
-    padding-top: 16px;
+    padding-top: 8px;
   }
 
   .pricing-top-info {
@@ -77,7 +79,7 @@ defineProps({
   }
 
   .pricing-top-desc {
-    //font-size: 20px;
+    font-weight: 500;
     line-height: 28px;
     color: var(--vp-c-text-2);
     padding: 1rem;
