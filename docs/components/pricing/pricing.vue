@@ -60,15 +60,17 @@ defineProps({
   flex-direction: column;
 
   .text-light {
+    font-size: 14px;
+    font-weight: 500;
     color: var(--vp-c-text-2);
-    padding-top: 16px;
+    padding-top: 8px;
   }
 
   .pricing-top-info {
   margin: 2.5rem;
   text-align: center;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
 
   .pricing-top-title {
     font-size: 36px;
@@ -77,7 +79,7 @@ defineProps({
   }
 
   .pricing-top-desc {
-    //font-size: 20px;
+    font-weight: 500;
     line-height: 28px;
     color: var(--vp-c-text-2);
     padding: 1rem;
@@ -88,7 +90,7 @@ defineProps({
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 48px;
-    padding: 0 2rem 2rem 2rem;
+    padding: 0 2rem;
 
     .card {
       background-color: var(--vp-c-bg-soft);
