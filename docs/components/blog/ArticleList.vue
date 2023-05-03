@@ -65,7 +65,7 @@ defineProps({
 
   .blog-card-time {
     margin-bottom: 1.5rem;
-    color: var(--vp-c-text-light-2);
+    color: var(--vp-c-text-2);
   }
 
   .blog-card-image {
@@ -97,7 +97,7 @@ defineProps({
   }
 
   .blog-card-info-description {
-    color: var(--vp-c-text-light-2);
+    color: var(--vp-c-text-2);
     margin-top: 0px;
     font-weight: normal;
     margin-bottom: 1.5rem;
@@ -109,7 +109,7 @@ defineProps({
     justify-content: space-between;
     align-items: center;
     padding-top: 0.5rem;
-    color: var(--vp-c-text-light-3);
+    color: var(--vp-c-text-3);
     font-size: 12px;
     font-weight: normal;
   }
