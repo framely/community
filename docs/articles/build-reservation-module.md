@@ -87,7 +87,7 @@ Inside the `tableReservation` module and **Types** page, under the **Structure**
 1. Create a skill labeled as `MakeReservation`.
 
 ##### Add slots
-To prompt a user for a specific day, use the [DatePicker](../reference/plugins/components/datepicker/README.md) frame. Ensure that the `components` module exists under the **Dependencies** tab before proceeding. If it does not, import the [components module](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8aea6517f06c1880e3cff) to the `tableReservation` module first. 
+To prompt a user for a specific day, use the [DatePicker](../reference/plugins/components/datepicker/index.md) frame. Ensure that the `components` module exists under the **Dependencies** tab before proceeding. If it does not, import the [components module](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8aea6517f06c1880e3cff) to the `tableReservation` module first. 
 
 Inside the `MakeReservation` skill and **Schema** tab, under the **Structure** view.
 1. In the **Slots** section, add the following slots:

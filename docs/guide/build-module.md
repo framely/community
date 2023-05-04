@@ -105,7 +105,7 @@ Inside the `hours` module and **Types** page, under the **Structure** view.
 2. Enter `ShowHours` as a label for the skill type and press enter.
 
 ##### Add slots
-To prompt a user for a specific day, use the [DatePicker](../reference/plugins/components/datepicker/README.md) frame. This frame simplifies the process of entering a date and is an official CUI component declared in the `components` module. 
+To prompt a user for a specific day, use the [DatePicker](../reference/plugins/components/datepicker/index.md) frame. This frame simplifies the process of entering a date and is an official CUI component declared in the `components` module. 
 
 Before proceeding, ensure that the `components` module exists under the **Dependencies** tab. If it doesn't, import [components module](https://build.opencui.io/org/io.opencui/agent/components/struct/frame/63c8aea6517f06c1880e3cff) to the `hours` module first. After successful import, go back to `hours` module and refresh your webpage.
 

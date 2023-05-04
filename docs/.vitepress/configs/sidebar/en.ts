@@ -4,7 +4,7 @@ export const en = {
     {
       text: "Why OpenCUI",
       items: [
-        { text: 'Cost-effective conversational experience', link: '/essentials/README' },
+        { text: 'Cost-effective conversational experience', link: '/essentials/' },
         { text: 'Cooperative principle', link: '/essentials/cooperative' },
         { text: '5 levels of CUI', link: '/essentials/5levels-cui' },
         { text: 'Open sourced runtime', link: '/essentials/architecture' },
@@ -82,7 +82,7 @@ export const en = {
         { text: 'System CUI components', link: '/reference/annotations/systemcomponent' },
         {
           text: 'Date picker',
-          link: '/reference/plugins/components/datepicker/README',
+          link: '/reference/plugins/components/datepicker/',
           collapsed: true,
           items: [
             { text: 'CUI design', link: '/reference/plugins/components/datepicker/datepicker-design' }
