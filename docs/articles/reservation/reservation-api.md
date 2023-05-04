@@ -1,21 +1,35 @@
-# API Reference
+# Reservation API reference
 Version: v0.44.0
 
-The Reservation API ([services.opencui.reservation.IReservation](https://build.opencui.io/org/services.opencui/agent/reservation/struct/service_schema)) is applied to booking scenarios, including creating bookings, querying bookings, and canceling bookings, which exposes most of the features available in the reservation scenario. 
+The Reservation API ([services.opencui.reservation.IReservation](https://build.opencui.io/org/services.opencui/agent/reservation/struct/service_schema)) is designed for booking scenarios, and provides functionality for creating, querying, and canceling reservations. This API exposes most of the features available in the reservation scenario.
 
 - To utilize this service, ensure that you have an existing provider that implements it.
-- To invoke this service, ensure that your project has imported it and used it within your target skill/frame type.
+- To invoke this service, make sure you import it into your project and add a corresponding service slot within your target skill/frame type.
+
+<!-- add entities as wel，目前有以下 entities：-->
+## LocationName
+The LocationName object represents the name of the location that can be displayed to customers.
+
+## ResourceName
+The ResourceName object represents the name of the bookable resource that can be displayed to customers.
+
+## ResourceType
+The ResourceType object represents the type of the bookable resource that can be displayed to customers.
 
 ## Location
-The places where bookable resources are located. For example, restaurants, hotels, or hair salons.
+The Location object represents the places where bookable resources are located, such as restaurants, hotels, or hair salons.
 
 - Fields
 
   | Property | Type             | Description | 
   |:---------|:-----------------|:------------|
-  | id       | kotlin.String    | The unique ID for the location. |
-  | name     | LocationName     | The location name as seen by customers. Must be unique for the customer. |
-  | timezone | java.time.ZoneId | The timezone of the location.  |
+  | id       | kotlin.String    | The unique id for the location.                                |
+  | name     | LocationName     | The name of the location as seen by customers; must be unique. |
+  | timezone | java.time.ZoneId | The timezone of the location.                                  |
+
+<!-- 考虑到 listLocation 不是 Location 的 method，或许可以
+1. 移除 Methods，只保留下面的 listLocation?
+2. 或者将 Methods 改名为"Related methods", "Available actions" 或者 "Utility Methods"?-->
 
 - Methods
 
@@ -32,50 +46,47 @@ Returns a list of locations for the reservation services.
 
 - **Return**
 
-  If successful, this method returns a list of locations in the response body.
+  If successful, this method returns a list of Location objects in the response body.
 
   | Type | Description |
   |:-----|:------------|
   | [Location[]](#location) | A list of locations. |
 
-- **Example**
+- **Code example**
 
   ``` kotlin 
   val locationList = listLocation()
   ```
 
-
 ## Resource
-The bookable resources are provided for customers, such as tables in a restaurant, doctors in a hospital, hairdressers in a hair salon, etc. Resource object is an abstract object. 
+The Resource object represents bookable resources for customers, such as tables in a restaurant, doctors in a hospital, hairdressers in a hair salon, etc. Resource object is an abstract object. 
 
 - Fields
 
   | Property  | Type             | Description | 
   |:----------|:-----------------|:------------|
-  | id        | kotlin.String    | The unique ID for the bookable resource. |
-  | type      | ResourceType     | The type of the bookable resource. |
-  | name      | ResourceName     | The name of the bookable resource. |
-  | durations | kotlin.Int[]     | The durations of the Resource. |
-  | timezone  | java.time.zoneId | The timezone of the resource. |
-
+  | id        | kotlin.String    | The unique ID for the bookable resource.   |
+  | type      | ResourceType     | The type of the bookable resource.         |
+  | name      | ResourceName     | The display name of the bookable resource. |
+  | durations | kotlin.Int[]     | The durations of the Resource.             |
+  | timezone  | java.time.zoneId | The timezone of the resource.              |
 
 - Methods
 
   | Method | Description | 
   |:-------|:------------|
-  | [getResourceInfo](#getresourceinfo) | Gets information about a resource. | 
+  | [getResourceInfo](#getresourceinfo) | Gets information about one Resource based on resource id. | 
   | [listResource](#listresource) | Returns a list of resources on the specified type for one location. | 
-  | [resourceAvailable](#resourceavailable) | Checks whether there are available resources. | 
-
+  | [resourceAvailable](#resourceavailable) | Checks whether there are available resources and returns ValidationResult. |
 
 ### getResourceInfo
-Gets information about one resource based on resource id. 
+Gets information about one resource based on resource id.
 
 - **Parameters**
 
   | Label      | Type          | Description |
   |:-----------|:--------------|:------------|
-  | resourceId | kotlin.String | Required. The unique id of the resource to retrieve. |
+  | resourceId | kotlin.String | (Required) The unique id of the resource. |
 
 - **Return**
 
@@ -85,7 +96,7 @@ Gets information about one resource based on resource id.
   |:-----|:------------| 
   | [Resource](#resource) | The details of the instance of the resource's subclass, based on the resource id. |
 
-- **Example**
+- **Code example**
 
   ``` kotlin 
   val resource = getResourceInfo("resource id")
@@ -98,21 +109,21 @@ Returns a list of resources on the specified type for one location.
 
   | Label    | Type                  | Description |
   |:---------|:----------------------|:------------|
-  | location | [Location](#location) | Required. The specified place that owns resources. |
-  | type     | ResourceType          | Required. The type of resource to retrieve.  |
-  | duration | kotlin.int            | Required. The duration of the resource to retrieve. |
-  | date     | java.time.LocalDate   | Optional. The date of resources to retrieve. |
-  | time     | java.time.LocalTime   | Optional. The time of resources to retrieve. |
+  | location | [Location](#location) | (Required) The specified place that owns resources.  |
+  | type     | ResourceType          | (Required) The type of resource to retrieve.         |
+  | duration | kotlin.int            | (Required) The duration of the resource to retrieve. |
+  | date     | java.time.LocalDate   | The date of resources to retrieve.                   |
+  | time     | java.time.LocalTime   | The time of resources to retrieve.                   |
 
-- **Return Type**
+- **Return**
 
-  If successful, this method returns a list of resources. If not found, it returns null.
+  If successful, this method returns a list of Resource objects. If not found, it returns null.
 
   | Type | Description |
   |:-----|:------------|
   | [Resource[]](#resource) | A list of resources that matches the specified parameter value in the request. |
 
-- **Code Example**
+- **Code example**
 
   ``` kotlin 
   val location = listLocation().first()
@@ -125,18 +136,24 @@ Returns a list of resources on the specified type for one location.
   ```
 
 ### resourceAvailable
-Checks whether there are available resources, and returns [ValidationResult](#validationresult).
+Checks whether a specified resource is available.
 
 - **Parameters**
 
   | Label    | Type                  | Description |
   |:---------|:----------------------|:------------|
-  | resource | [Resource](#resource) | Required. The resource to retrieve. |
-  | duration | kotlin.int            | Required. The duration of the resource to retrieve. |
-  | date     | java.time.LocalDate   | Optional. The date of the resource to retrieve. |
-  | time     | java.time.LocalTime   | Optional. The time of the resource to retrieve. |
+  | resource | [Resource](#resource) | (Required) The resource to check for availability. |
+  | duration | kotlin.int            | (Required) The duration of the resource. |
+  | date     | java.time.LocalDate   | The date on which the availability needs to be checked. |
+  | time     | java.time.LocalTime   | The time when the availability needs to be checked. |
 
-- **Example**
+- **Return**
+
+  | Type                                  | Description     | 
+  |:--------------------------------------|:----------------|
+  | [ValidationResult](#validationresult) | An object indicates whether the resource is available or not based on the provided parameters. |
+
+- **Code example**
 
   ``` kotlin 
   val location = listLocation().first()
@@ -149,27 +166,26 @@ Checks whether there are available resources, and returns [ValidationResult](#va
   val result = resourceAvailable(date, time, duration, resource)
   ```
 
-
 ## Date
 
 ### availableDates
-Returns a list of available dates on the specified resource.
+Returns a list of available dates for a specified resource.
 
 - **Parameters**
 
   | Label    | Type                  | Description |
   |:---------|:----------------------|:------------| 
-  | resource | [Resource](#resource) | Required. Specify the resource to retrieve. |
-  | duration | kotlin.int            | Required. Specify the duration of the resource to retrieve. |
-  | time     | java.time.LocalTime   | Optional. Specify the time of the resource to retrieve. | 
+  | resource | [Resource](#resource) | (Required) The specified resource to retrieve.       |
+  | duration | kotlin.int            | (Required) The duration of the resource to retrieve. |
+  | time     | java.time.LocalTime   | The time of the resource to retrieve.                | 
   
 - **Return**
 
-  | Type | Description |
-  |:-----|:------------| 
-  | java.time.localDate[] | A list of available dates on the specified resource that matches the specified parameter value in the request. |
+  | Type                  | Description |
+  |:----------------------|:------------| 
+  | java.time.localDate[] | A list of available dates on the specified resource that match the specified parameter value in the request. |
 
-- **Code Example**
+- **Code example**
 
   ``` kotlin 
   val location = listLocation().first()
@@ -181,27 +197,26 @@ Returns a list of available dates on the specified resource.
   val dateList = availableDates(time, duration, resource)
   ```
 
-
 ## Time
 
 ### availableTimes
-Returns a list of available times on the specified resource.
+Returns a list of available times for a specified resource.
 
 - **Parameters**
 
   | Label    | Type                  | Description |
   |:---------|:----------------------|:------------| 
-  | resource | [Resource](#resource) | Required. Specify the resource to retrieve. |
-  | duration | kotlin.int            | Required. Specify the duration of the resource to retrieve. |
-  | date     | java.time.LocalDate   | Optional. Specify the date of the resource to retrieve. | 
+  | resource | [Resource](#resource) | (Required) The specified resource to retrieve.       |
+  | duration | kotlin.int            | (Required) The duration of the resource to retrieve. |
+  | date     | java.time.LocalDate   | The date of the resource to retrieve.                | 
 
 - **Return**
 
   | Type | Description |
   |:-----|:------------| 
-  | java.time.localTime[] | A list of available times on the specified resource that matches the specified parameter value in the request. |
+  | java.time.localTime[] | A list of available times on the specified resource that match the specified parameter value in the request. |
 
-- **Example**
+- **Code example**
 
   ``` kotlin 
   val location = listLocation().first()
@@ -213,54 +228,53 @@ Returns a list of available times on the specified resource.
   val timeList = availableTimes(date, duration, resource) 
   ```
 
-
 ## Reservation
-A reservation represents the booking of one resource at one location. Each reservation is a unique booking created by a customer.
+The Reservation object represents a customer's booking for a resource at a specific location. Each reservation is a unique booking created by a customer.
 
 - Fields
 
   | Property   | Type                     | Description | 
   |:-----------|:-------------------------|:------------|
-  | id         | kotlin.String            | The unique ID of the reservation. |
-  | resourceId | kotlin.String            | The resource ID of the reservation. |
-  | userId     | kotlin.String            | The unique ID of the customer. |
-  | start      | java.time.OffsetDateTime | The start date and time of a reservation. |
-  | end        | java.time.OffsetDateTime | The end date and time of a reservation.   |
-  | offset     | kotlin.Int               | The zone offset.                            |
+  | id         | kotlin.String            | The unique id of the reservation.                              |
+  | resourceId | kotlin.String            | The id of the booked resource.                                 |
+  | userId     | kotlin.String            | The unique id of the customer associated with the reservation. |
+  | start      | java.time.OffsetDateTime | The start date and time of the reservation.                    |
+  | end        | java.time.OffsetDateTime | The end date and time of the reservation.                      |
+  | offset     | kotlin.Int               | The timezone offset.                                           |
 
 - Methods
 
   | Method | Description | 
   |:-------|:------------|
-  | [makeReservation](#makereservation) | Creates a reservation. | 
-  | [listReservation](#listreservation) | Returns a list of reservations for the specified customer. | 
-  | [cancelReservation](#cancelreservation) | Deletes a reservation. | 
-  | [updateReservationn](#updatereservation) | Updates a reservation. | 
-  | [reservationCancelable](#listreservation) | Checks whether a reservation can be cancelled. | 
-  | [reservationUpdatable](#cancelreservation) | Checks whether a reservation can be updated. | 
+  | [makeReservation](#makereservation) | Creates a new reservation for a customer.                | 
+  | [listReservation](#listreservation) | Returns a list of reservations for a specified customer. | 
+  | [cancelReservation](#cancelreservation) | Deletes a specified reservation.                         | 
+  | [updateReservationn](#updatereservation) | Updates a specified reservation.                         | 
+  | [reservationCancelable](#listreservation) | Checks whether a specified reservation can be cancelled. | 
+  | [reservationUpdatable](#cancelreservation) | Checks whether a specified reservation can be updated.   | 
 
 ### makeReservation
-Creates a reservation. 
+Creates a new reservation for a customer.
 
 - **Parameters**
 
   | Label    | Type                  | Description |
   |:---------|:----------------------|:------------| 
-  | userId   | kotlin.String         | Required. The unique ID of the customer. |
-  | resource | [Resource](#resource) | Required. The resource of the reservation. |
-  | duration | kotlin.int            | Required. The resource duration of the reservation. |
-  | date     | java.time.LocalDate   | Optional. The date of the reservation.  |
-  | time     | java.time.LocalTime   | Optional. The time of the reservation.  |
+  | userId   | kotlin.String         | (Required) The unique ID of the customer.           |
+  | resource | [Resource](#resource) | (Required) The resource to be reserved.             |
+  | duration | kotlin.int            | (Required) The duration of the resource.            |
+  | date     | java.time.LocalDate   | The date on which the reservation will take place.  |
+  | time     | java.time.LocalTime   | The time when the reservation starts.               |
 
 - **Return**
 
-  If successful, this method returns a reservation in the response body, null on failure.
+  If successful, this method returns a Reservation object in the response body. Otherwise, null is returned.
 
   | Type | Description |
   |:-----|:------------| 
-  | [Reservation](#reservation) | A reservation instance by the customer. |
+  | [Reservation](#reservation) | A reservation instance created by the customer. |
 
-- **Example**
+- **Code example**
 
   ``` kotlin 
   val location = listLocation().first()
@@ -274,15 +288,15 @@ Creates a reservation.
   ```
 
 ### listReservation
-Returns a list of reservations for the specified customer.
+Returns a list of reservations for a specified customer.
 
 - **Parameters**
 
   | Label        | Type                  | Description |
   |:-------------|:----------------------|:------------| 
-  | userId       | kotlin.String         | Required. The unique ID of the customer. |
-  | location     | [Location](#location) | Optional. The location of the reservations to retrieve. |
-  | resourceType | ResourceType          | Optional. The resource type of the reservations to retrieve. |
+  | userId       | kotlin.String         | (Required) The unique id of the customer.                              |
+  | location     | [Location](#location) | The location where the reservations need to be retrieved from.         |
+  | resourceType | ResourceType          | The type of resource for which the reservations need to be retrieved.  |
 
 - **Return**
 
@@ -290,9 +304,9 @@ Returns a list of reservations for the specified customer.
 
   | Type | Description |
   |:-----|:------------| 
-  | [Reservation[]](#reservation) | A list of reservations by the specified customer. |
+  | [Reservation[]](#reservation) | A list of reservations matching the request criteria. |
 
-- **Example**
+- **Code example**
 
   ``` kotlin 
   val location = listLocation().first()
@@ -302,15 +316,22 @@ Returns a list of reservations for the specified customer.
   ```
 
 ### cancelReservation
-Deletes a reservation, and returns the [ValidationResult](#validationresult) object indicating whether the status of the cancellation operation was successful.
+Cancel a reservation that was previously made by a customer.
 
 - **Parameters**
 
   | Label       | Type                        | Description |
   |:------------|:----------------------------|:------------| 
-  | reservation | [Reservation](#reservation) | Required. The specified reservation needs to be cancelled.  |
+  | reservation | [Reservation](#reservation) | (Required) The reservation to be cancel.  |
 
-- **Example**
+- **Return**
+
+  | Type                                  | Description | 
+  |:--------------------------------------|:------------|
+  | [ValidationResult](#validationresult) | An object indicates whether the cancellation of the specified reservation was successful or not. |
+
+
+- **Code example**
 
   ``` kotlin 
   val location = listLocation().first()
@@ -321,19 +342,25 @@ Deletes a reservation, and returns the [ValidationResult](#validationresult) obj
   ```
 
 ### updateReservation
-Update a reservation, and returns the [ValidationResult](#validationresult) object indicating whether the status of the update operation was successful.
+Update a reservation that was previously made by a customer.
 
 - **Parameters**
 
   | Label       | Type                        | Description |
   |:------------|:----------------------------|:------------| 
-  | reservation | [reservation](#reservation) | Required. The specified reservation needs to be updated. |
-  | resource    | [Resource](#resource)       | Required. The resource of the reservation. |
-  | duration    | kotlin.int                  | Required. The resource duration of the reservation. |
-  | date        | java.time.LocalDate         | Optional. The date of the reservation.  |
-  | time        | java.time.LocalTime         | Optional. The time of the reservation.  |        
+  | reservation | [reservation](#reservation) | (Required) The specified reservation to be updated.  |
+  | resource    | [Resource](#resource)       | (Required) The resource of the reservation.          |
+  | duration    | kotlin.int                  | (Required) The resource duration of the reservation. |
+  | date        | java.time.LocalDate         | The date on which the reservation will take place.   |
+  | time        | java.time.LocalTime         | The time when the reservation starts.                |        
 
-- **Example**
+- **Return**
+
+  | Type   | Description | 
+  |:-------|:------------|
+  | [ValidationResult](#validationresult) | An object indicates whether the update operation was successful or not. |
+
+- **Code example**
 
   ``` kotlin 
   val location = listLocation().first()
@@ -348,15 +375,21 @@ Update a reservation, and returns the [ValidationResult](#validationresult) obje
   ```
 
 ### reservationCancelable
-Checks whether a reservation can be cancelled, and returns the [ValidationResult](#validationresult) object indicating whether the specified reservation can be cancelled.
+Checks whether a particular reservation can be cancelled.
 
 - **Parameters**
 
   | Label       | Type                        | Description |
   |:------------|:----------------------------|:------------| 
-  | reservation | [Reservation](#reservation) | Required. The specified reservation needs to be cancelled. |
+  | reservation | [Reservation](#reservation) | (Required) The reservation to check for cancellation. |
 
-- **Example**
+- **Return**
+
+  | Type                                  | Description  | 
+  |:--------------------------------------|:-------------|
+  | [ValidationResult](#validationresult) | An object indicates whether the specified reservation can be cancelled or not. |
+
+- **Code example**
 
   ``` kotlin 
   val location = listLocation().first()
@@ -367,19 +400,25 @@ Checks whether a reservation can be cancelled, and returns the [ValidationResult
   ```
 
 ### reservationUpdatable
-Checks whether a reservation can be updated, and returns the [ValidationResult](#validationresult) object indicating whether the specified reservation can be updated.
+Checks whether a particular reservation can be updated.
 
 - **Parameters**
 
   | Label       | Type                        | Description |
   |:------------|:----------------------------|:------------| 
-  | reservation | [reservation](#reservation) | Required. The specified reservation needs to be updated. |
-  | resource    | [Resource](#resource)       | Required. The resource of the reservation. |
-  | duration    | kotlin.int                  | Required. The resource duration of the reservation. |
-  | date        | java.time.LocalDate         | Optional. The date of the reservation.  |
-  | time        | java.time.LocalTime         | Optional. The time of the reservation.  |        
+  | reservation | [reservation](#reservation) | (Required) The reservation to check for update.      |
+  | resource    | [Resource](#resource)       | (Required) The resource of the reservation.          |
+  | duration    | kotlin.int                  | (Required) The resource duration of the reservation. |
+  | date        | java.time.LocalDate         | The date on which the reservation will take place.   |
+  | time        | java.time.LocalTime         | The time when the reservation starts.                |        
 
-- **Example**
+- **Return**
+
+  | Type                                  | Description  | 
+  |:--------------------------------------|:-------------|
+  | [ValidationResult](#validationresult) | An object indicates whether the specified reservation can be updated or not. |
+
+- **Code example**
 
   ``` kotlin 
   val location = listLocation().first()
@@ -393,12 +432,11 @@ Checks whether a reservation can be updated, and returns the [ValidationResult](
   val result = reservationUpdatable(reservation, date, time, duration, resource)
   ```
 
-
 ## ValidationResult
-The result object indicates whether the verification or the operation was successful.
+The ValidationResult object is returned by methods that perform validations on Reservations, indicating whether the verification or operation was successful.
 
   | Property           | Type            | Description | 
   |:-------------------|:----------------|:------------|
-  | success            | kotlin.Boolean  | The result of the verification or the operation, true or false. |
-  | invalidFeatureKeys | kotlin.String[] | The invalid feature. |
-  | message            | kotlin.String   | The error message of the invalid feature. |
+  | success            | kotlin.Boolean  | Indicates whether the validation or operation was successful (true) or not (false). |
+  | invalidFeatureKeys | kotlin.String[] | A list of invalid feature keys, if any.                                             |
+  | message            | kotlin.String   | An error message of the invalid feature.                                            |
