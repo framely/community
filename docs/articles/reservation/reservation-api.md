@@ -8,16 +8,16 @@ The Reservation API ([services.opencui.reservation.IReservation](https://build.o
 
 <!-- add entities as wel，目前有以下 entities：-->
 ## LocationName
-Represents the name of the location that can be displayed to customers.
+The name of the location that can be displayed to customers.
 
 ## ResourceName
-Represents the name of the bookable resource that can be displayed to customers.
+The name of the bookable resource that can be displayed to customers.
 
 ## ResourceType
-Represents the type of the bookable resource that can be displayed to customers.
+The type of the bookable resource that can be displayed to customers.
 
 ## Location
-Represents the places where bookable resources are located, such as restaurants, hotels, or hair salons.
+The places where bookable resources are located, such as restaurants, hotels, or hair salons.
 
 - Fields
 
@@ -59,7 +59,7 @@ Returns a list of locations for the reservation services.
   ```
 
 ## Resource
-Represents bookable resources for customers, such as tables in a restaurant, doctors in a hospital, hairdressers in a hair salon, etc. Resource object is an abstract object. 
+The bookable resources for customers, such as tables in a restaurant, doctors in a hospital, hairdressers in a hair salon, etc. Resource object is an abstract object. 
 
 - Fields
 
@@ -229,7 +229,7 @@ Returns a list of available times for a specified resource.
   ```
 
 ## Reservation
-Represents a customer's booking for a resource at a specific location. Each reservation is a unique booking created by a customer.
+The customer's booking for a resource at a specific location. Each reservation is a unique booking created by a customer.
 
 - Fields
 
