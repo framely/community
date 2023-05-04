@@ -322,7 +322,7 @@ Cancel a reservation that was previously made by a customer.
 
   | Label       | Type                        | Description |
   |:------------|:----------------------------|:------------| 
-  | reservation | [Reservation](#reservation) | (Required) The reservation to be cancel.  |
+  | reservation | [Reservation](#reservation) | (Required) The reservation to be cancelld. |
 
 - **Return**
 
