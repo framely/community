@@ -112,8 +112,8 @@ Returns a list of resources on the specified type for one location.
   | location | [Location](#location) | Required. The specified place that owns resources.  |
   | type     | ResourceType          | Required. The type of resource to retrieve.         |
   | duration | kotlin.int            | Required. The duration of the resource to retrieve. |
-  | date     | java.time.LocalDate   | Optional. The date of resources to retrieve.                   |
-  | time     | java.time.LocalTime   | Optional. The time of resources to retrieve.                   |
+  | date     | java.time.LocalDate   | Optional. The date of resources to retrieve.        |
+  | time     | java.time.LocalTime   | Optional. The time of resources to retrieve.        |
 
 - **Return**
 
@@ -142,10 +142,10 @@ Checks whether a specified resource is available.
 
   | Label    | Type                  | Description |
   |:---------|:----------------------|:------------|
-  | resource | [Resource](#resource) | Required. The resource to retrieve. |
+  | resource | [Resource](#resource) | Required. The resource to retrieve.                 |
   | duration | kotlin.int            | Required. The duration of the resource to retrieve. |
-  | date     | java.time.LocalDate   | Optional. The date of the resource to retrieve. |
-  | time     | java.time.LocalTime   | Optional. The time of the resource to retrieve. |
+  | date     | java.time.LocalDate   | Optional. The date of the resource to retrieve.     |
+  | time     | java.time.LocalTime   | Optional. The time of the resource to retrieve.     |
 
 - **Return**
 
@@ -177,7 +177,7 @@ Returns a list of available dates for a specified resource.
   |:---------|:----------------------|:------------| 
   | resource | [Resource](#resource) | Required. The specified resource to retrieve.       |
   | duration | kotlin.int            | Required. The duration of the resource to retrieve. |
-  | time     | java.time.LocalTime   | Optional. The time of the resource to retrieve.                | 
+  | time     | java.time.LocalTime   | Optional. The time of the resource to retrieve.     | 
   
 - **Return**
 
@@ -208,7 +208,7 @@ Returns a list of available times for a specified resource.
   |:---------|:----------------------|:------------| 
   | resource | [Resource](#resource) | Required. The specified resource to retrieve.       |
   | duration | kotlin.int            | Required. The duration of the resource to retrieve. |
-  | date     | java.time.LocalDate   | Optional. The date of the resource to retrieve.                | 
+  | date     | java.time.LocalDate   | Optional. The date of the resource to retrieve.     | 
 
 - **Return**
 
@@ -244,13 +244,13 @@ Represents a customer's booking for a resource at a specific location. Each rese
 
 - Methods
 
-  | Method | Description | 
-  |:-------|:------------|
-  | [makeReservation](#makereservation) | Creates a new reservation for a customer.                | 
-  | [listReservation](#listreservation) | Returns a list of reservations for a specified customer. | 
-  | [cancelReservation](#cancelreservation) | Deletes a specified reservation.                         | 
-  | [updateReservationn](#updatereservation) | Updates a specified reservation.                         | 
-  | [reservationCancelable](#listreservation) | Checks whether a specified reservation can be cancelled. | 
+  | Method                                     | Description | 
+  |:-------------------------------------------|:------------|
+  | [makeReservation](#makereservation)        | Creates a new reservation for a customer.                | 
+  | [listReservation](#listreservation)        | Returns a list of reservations for a specified customer. | 
+  | [cancelReservation](#cancelreservation)    | Deletes a specified reservation.                         | 
+  | [updateReservationn](#updatereservation)   | Updates a specified reservation.                         | 
+  | [reservationCancelable](#listreservation)  | Checks whether a specified reservation can be cancelled. | 
   | [reservationUpdatable](#cancelreservation) | Checks whether a specified reservation can be updated.   | 
 
 ### makeReservation
@@ -351,8 +351,8 @@ Update a reservation that was previously made by a customer.
   | reservation | [reservation](#reservation) | Required. The specified reservation to be updated.  |
   | resource    | [Resource](#resource)       | Required. The resource of the reservation.          |
   | duration    | kotlin.int                  | Required. The resource duration of the reservation. |
-  | date        | java.time.LocalDate   | Optional. The date of the reservation.         |
-  | time        | java.time.LocalTime   | Optional. The time of the reservation.         |       
+  | date        | java.time.LocalDate         | Optional. The date of the reservation.              |
+  | time        | java.time.LocalTime         | Optional. The time of the reservation.              |       
 
 - **Return**
 
@@ -403,14 +403,14 @@ Checks whether a particular reservation can be cancelled.
 Checks whether a particular reservation can be updated.
 
 - **Parameters**
-
+  
   | Label       | Type                        | Description |
   |:------------|:----------------------------|:------------| 
   | reservation | [reservation](#reservation) | Required. The reservation to check for update.      |
   | resource    | [Resource](#resource)       | Required. The resource of the reservation.          |
   | duration    | kotlin.int                  | Required. The resource duration of the reservation. |
-  | date        | java.time.LocalDate         | Optional. The date of the reservation.         |
-  | time        | java.time.LocalTime         | Optional. The time of the reservation.         |      
+  | date        | java.time.LocalDate         | Optional. The date of the reservation.              |
+  | time        | java.time.LocalTime         | Optional. The time of the reservation.              |      
 
 - **Return**
 
@@ -433,7 +433,7 @@ Checks whether a particular reservation can be updated.
   ```
 
 ## ValidationResult
-The ValidationResult object is returned by methods that perform validations on Reservations, indicating whether the verification or operation was successful.
+Returned by methods that perform validations on Reservations, indicating whether the verification or operation was successful.
 
   | Property           | Type            | Description | 
   |:-------------------|:----------------|:------------|
