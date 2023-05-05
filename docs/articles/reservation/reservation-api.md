@@ -433,10 +433,10 @@ Checks whether a particular reservation can be updated.
   ```
 
 ## ValidationResult
-Returned by methods that perform validations on Reservations, indicating whether the verification or operation was successful.
+The outcome of the verification or operation.
 
   | Property           | Type            | Description | 
   |:-------------------|:----------------|:------------|
-  | success            | kotlin.Boolean  | Indicates whether the validation or operation was successful (true) or not (false). |
-  | invalidFeatureKeys | kotlin.String[] | A list of invalid feature keys, if any.                                             |
-  | message            | kotlin.String   | An error message of the invalid feature.                                            |
+  | success            | kotlin.Boolean  | A boolean value indicating the success or failure. |
+  | invalidFeatureKeys | kotlin.String[] | A list of invalid feature keys, if any.            |
+  | message            | kotlin.String   | An error message of the invalid feature.           |
