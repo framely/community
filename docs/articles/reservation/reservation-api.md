@@ -117,7 +117,7 @@ Returns a list of resources on the specified type for one location.
 
 - **Return**
 
-  If successful, this method returns a list of Resource objects. If not found, it returns null.
+  If successful, this method returns a list of resources. If not found, it returns null.
 
   | Type | Description |
   |:-----|:------------|
@@ -268,7 +268,7 @@ Creates a new reservation for a customer.
 
 - **Return**
 
-  If successful, this method returns a Reservation object in the response body. Otherwise, null is returned.
+  If successful, this method returns a reservation in the response body. Otherwise, null is returned.
 
   | Type | Description |
   |:-----|:------------| 
