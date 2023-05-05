@@ -23,9 +23,9 @@ The places where bookable resources are located, such as restaurants, hotels, or
 
   | Property | Type             | Description | 
   |:---------|:-----------------|:------------|
-  | id       | kotlin.String    | The unique id for the location.                                |
-  | name     | LocationName     | The name of the location as seen by customers; must be unique. |
-  | timezone | java.time.ZoneId | The timezone of the location.                                  |
+  | id       | kotlin.String    | The unique id for the location.                         |
+  | name     | LocationName     | The location name as seen by customers, must be unique. |
+  | timezone | java.time.ZoneId | The timezone of the location.                           |
 
 <!-- 考虑到 listLocation 不是 Location 的 method，或许可以
 1. 移除 Methods，只保留下面的 listLocation?
@@ -46,7 +46,7 @@ Returns a list of locations for the reservation services.
 
 - **Return**
 
-  If successful, this method returns a list of Location objects in the response body.
+  If successful, this method returns a list of locations in the response body.
 
   | Type | Description |
   |:-----|:------------|
@@ -151,7 +151,7 @@ Checks whether a specified resource is available.
 
   | Type                                  | Description     | 
   |:--------------------------------------|:----------------|
-  | [ValidationResult](#validationresult) | An object indicates whether the resource is available or not based on the provided parameters. |
+  | [ValidationResult](#validationresult) | The result shows whether the resource is available. |
 
 - **Code example**
 
@@ -328,7 +328,7 @@ Cancel a reservation that was previously made by a customer.
 
   | Type                                  | Description | 
   |:--------------------------------------|:------------|
-  | [ValidationResult](#validationresult) | An object indicates whether the cancellation of the specified reservation was successful or not. |
+  | [ValidationResult](#validationresult) | The result shows whether the reservation was cancelled. |
 
 
 - **Code example**
@@ -358,7 +358,7 @@ Update a reservation that was previously made by a customer.
 
   | Type   | Description | 
   |:-------|:------------|
-  | [ValidationResult](#validationresult) | An object indicates whether the update operation was successful or not. |
+  | [ValidationResult](#validationresult) | The result shows whether the reservation was updated. |
 
 - **Code example**
 
@@ -387,7 +387,7 @@ Checks whether a particular reservation can be cancelled.
 
   | Type                                  | Description  | 
   |:--------------------------------------|:-------------|
-  | [ValidationResult](#validationresult) | An object indicates whether the specified reservation can be cancelled or not. |
+  | [ValidationResult](#validationresult) | The result shows whether the reservation is cancelable. |
 
 - **Code example**
 
@@ -416,7 +416,7 @@ Checks whether a particular reservation can be updated.
 
   | Type                                  | Description  | 
   |:--------------------------------------|:-------------|
-  | [ValidationResult](#validationresult) | An object indicates whether the specified reservation can be updated or not. |
+  | [ValidationResult](#validationresult) | The result shows whether the reservation is updatable. |
 
 - **Code example**
 
