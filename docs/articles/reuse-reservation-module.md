@@ -9,14 +9,29 @@ description:
 author: Sunny May
 ---
 
-# Reuse reservation module to build chatbot
-![message process](/images/blog/tutorial-reuse-reservation/message-process.png)
+# Reuse table reservation module to build chatbot
 
+<!--这篇文章主要写如何 reuse reservation module，应当和 reuse module 有所区分，因此：
+1. 不需要赘述 reuse module 中的内容，如果需要读者具有相应 backgroud 应直接指向该文档；
+2. 需要讲述和 reuse module 不同的地方，或者那篇文档里没有讲，在这里需要读者了解的信息；现在的介绍包括一部分 bg 但实际又不全面，影响理解；
+3. 如果读者真的不想了解，也应当可以读下来，而不是被前置的不完整信息卡住；（因为本质上 reuse 了，就不需要关注 bg，可以直接照着做）
+4. Dependency 的关系要讲明。
+5. 像“Service can have one or more backend implementations, each can be accessed via its corresponding provider.”是指 platform 的机制，应该是在 background 里。并不是指在这里，builder reuse 之后可以在 chatbot 为 reservation interface 配置多个 backend。
+-->
+
+<!-- 这里是被注掉的原文
 This guide shows you how to add a table reservation functionality to your chatbot by reusing a module. A module is a reusable conversational user interface(CUI) component whose conversational behavior is defined on top of some service APIs. Service can have one or more backend implementations, each can be accessed via its corresponding provider.
 
-Modules can be composed into bigger ones to provide more comprehensive conversational experience. By importing the right module into your chatbot, you can quickly add new conversational functionality. In this guide, we demonstrate how you can add table reservation to your chatbot using the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type). The table reservation module relies on a base module called the [reservation API](./reservation/reservation-api.md), which currently has a [Google Calendar based provider](./reservation/google-calendar-reservation.md). 
+Modules can be composed into bigger ones to provide more comprehensive conversational experience. By importing the right module into your chatbot, you can quickly add new conversational functionality. 
+-->
 
-The resulting chatbot can help users make, view, and cancel table reservations. Here is an example dialogue to show how the chatbot works:
+OpenCUI provides a mechanism for builders to share modules with each other. This means that you can take advantage of the expertise of others, which can save time and effort in building new chatbots.
+
+Modules are reusable and composable, and can be enabled or disabled service as needed. In some cases, it may be possible to reuse one or more modules within a chatbot. However, when doing this, it is important to ensure that the modules are compatible with each other and the corresponding implementations of service interfaces are also wired. This will ensure that the module works as expected in the chatbot.
+
+To use a pre-existing module, you first need to find a module that you are interested in. Then, you can simply import it into your chatbot, and use the functionality of the module directly in your chatbot. Modules are developed and maintained by other builders, so you can be confident that they are of high quality. You can also update modules as needed, which ensures that your chatbot always has the latest features and functionality. For more background and details about modules, see "[Reuse an hours module](../guide/reuse-component.md)".
+
+This guide will use table reservation as an example to show how to reuse the [tableReservation](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type) module in your chatbot. When you are done with this guide, the chatbot can help users make, view, and cancel table reservations. For example, a user might say the following to the chatbot:
 
 ``` json
 User: "Hi, I'd like to reserve a table, please."
@@ -31,20 +46,17 @@ User: "Yes."
 Chatbot: "Your reservation has been made. We'll see you at 3:00 PM on Sunday, December 25, 2022. You can check the reservation under your ID: xxxx."
 ```
 
-The detailed CUI design for table reservation can be found [here](reservation-cui-design).
-
-It only takes a few steps to add table reservation functionality to a chatbot:
-
-1. **Set up** resources in Google platform (where "resource" refers to the bookable table).
-2. **Import** a table reservation module to your chatbot. 
-3. **Set up** the provider in your chatbot to access to your resources.
+To reuse the `tableReservation` module, you need to understand the following dependencies: 
+1. [Table reservation CUI design](reservation-cui-design.md): This is is the blueprint for the user experience and service scope of the table reservation module.
+2. [Reservation API](./reservation/reservation-api.md): This is the API that the module relies on.
+3. [Google Calendar provider](./reservation/google-calendar-reservation.md): This is the backend that the chatbot uses to store reservations. It means that you need a Google Workspace account.
 
 ## Before you start
 1. [Sign up](../guide/signingup#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-2. We assume that you already followed through the [quickstart guide](../guide/index).
+2. Follow the [quickstart guide](../guide/index) to learn the basics of OpenCUI.
 3. Set up [Google Workspace](./reservation/google-calendar-reservation#set-up-google-workspace) and [service account](./reservation/google-calendar-reservation#set-up-service-account).
 
-## Set up resources
+## Set up Google Calendar
 Under the design of the reservation API, resources are the entities that users can book, reserve or make appointment, such as tables in a restaurant or hairdressers. Resources are always associated with a specific location, and before users can book a resource, you need to first prepare the business-specific locations and resources in the backend. Different backends may have different ways of defining which resources are available for booking. [Google Calendar based backend](./reservation/google-calendar-reservation) use Google Admin console to define table resources and Google Calendar to store reservations.
 
 To set up your table resources:
@@ -172,13 +184,15 @@ After completing these steps, your resource calendars should resemble the exampl
 ![calendar example](/images/blog/tutorial-reuse-reservation/calendar-example.png)
 
 
-## Import the module
+## Reuse tableReservation module
+
+### Import the module
 Now it's time to create a table reservation chatbot and reuse the table reservation module.
 
 1. Create a chatbot and add the **English(en)** language.
 2. [Import](../reference/platform/reusability.md#import-1) the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type) into your chatbot.
 
-## Wire the provider
+### Wire the provider
 Before you can use the functionality provided by the reservation API, you should declare a reservation service first, then wire the reservation provider to the service.
 
 To wire the reservation provider:
@@ -188,7 +202,7 @@ To wire the reservation provider:
    - Click **Select service** and select `services.opencui.reservation.IReservation`.
    - Follow [set up Google calendar reservation provider](./reservation/google-calendar-reservation.md#set-up-google-calendar-reservation-provider) to complete this integration.
 
-## Test a chatbot
+## Test the chatbot
 
 Finally, you can try to use your chatbot to make a table reservation. To test the chatbot:
 
