@@ -8,7 +8,18 @@ export const en = {
         { text: 'Cooperative principle', link: '/essentials/cooperative' },
         { text: '5 levels of CUI', link: '/essentials/5levels-cui' },
         { text: 'Open sourced runtime', link: '/essentials/architecture' },
-        { text: 'Document CUI design', link: '/essentials/document-requirement-for-cui' }
+        { text: 'Document CUI design', link: '/essentials/document-requirement-for-cui' },
+        {
+          text: 'Dialog Understanding',
+          items: [
+            { text: '1: A ChatGPT reset', link: '/essentials/du/chatgpt-reset' },
+            { text: '2: Theory', link: '/essentials/du/du-theory' },
+            { text: '3: Towards zero shot', link: '/essentials/du/towards-zero-shot' },
+            { text: '4: New formulations', link: '/essentials/du/new-formulations' },
+            { text: '5: Tuning strategy', link: '/essentials/du/tuning-strategy' },
+            { text: '6: Maintainable accuracy', link: '/essentials/du/maintainable-accuracy' },
+          ],
+        },
       ]
     }
   ],
