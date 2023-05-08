@@ -2,29 +2,31 @@
 
 The flow-based approach, widely used in building user interface applications, models both user input and system response as turn-by-turn chains. Defining the system’s response in the chain gives developers complete control over interactions, making it easier to achieve business objectives and provide an excellent user experience.
 
-However, defining the system’s response in this way does not reveal why a particular response is necessary. When a current interaction is not covered by predefined flows, the system simply does not know what to do. This is why developers must carefully define every possible interaction flow to deliver a good user experience. This is not a concern for graphical user interface (GUI) applications since users can only interact with the system in ways that were built for them.
+However, defining the system’s response in this way does not reveal why a particular response is necessary. When a current interaction is not covered by predefined flows, the system simply does not know what to do, leading to the infamous chatbot response, ‘I don’t understand’.
 
-Conversational user interfaces (CUIs) allow users to express themselves freely at any point, presenting developers with a dilemma. They must either attempt to enumerate an exponentially increasing number of conversational paths, leading to significant cost overruns, or risk providing a poor user experience by omitting some conversational paths.
+To prevent such a bad user experience, developers must carefully cover every possible interaction flow that a user can get into under this imperative setting. This is not too difficult for graphical user interface (GUI) applications since users can only interact with the system in predefined ways. However, since conversational user interfaces (CUIs) allow users to say anything at any turn, developers are forced to pick their poison: either attempt to enumerate an exponentially increasing number of conversational paths, leading to significant cost overruns, or risk providing a poor user experience by omitting some conversational paths.
 
-We propose a type-based approach called OpenCUI, which allows businesses to have complete control over the conversation, enabling them to effortlessly achieve their business objectives, while providing users with the flexibility to express themselves. To understand how this innovative approach functions, let’s first examine the typical tasks that chatbots perform.
+We propose a type-based approach to building chatbots called OpenCUI. To see how this approach can provide a good user experience and allow businesses to have complete control without the need to enumerate all possible conversation paths, let’s first examine how chatbots work.
 
 ## Three layers
-A chatbot is an application that provides services to users through a conversational user interface (CUI). As an interface to business capabilities, these services decouple the client from the provider, allowing software to be developed independently and reused across various applications and systems. To support multiple languages with a single interaction logic, a chatbot often processes user input in three steps:
-1. **Convert the user’s utterance into an event**, which is a representation of the meaning of the user’s statement in a language-independent manner.
-2. **Execute the builder-defined interaction logic to generate a dialog act based on the event, current dialog state, and service function returns**. The dialog act is a language-independent representation of the message that the chatbot needs to send to users.
+A chatbot is an application that provides services through a conversational user interface (CUI). To support multiple languages with a single interaction logic, a chatbot often processes user input in three steps:
+1. **Convert the user’s utterance into an event**, which represents the meaning of the user’s statement in a language-independent manner.
+2. **Use the builder-defined interaction logic to generate a dialog act based on the event, the current dialog state, and the service function returns**. The dialog act is a language-independent representation of the message that the chatbot needs to send to users.
 3. **Render the dialog act back to the user in the natural language**.
 
 ![type-based cui](/images/guide/pingpong/urr.png)
 
-Clearly, chatbots operate in 3 layers:
-1. **The schema layer exposes valuable APIs that can be shared across different frontends, including web and mobile apps**. These APIs are implemented in backend, where business creates value for their users.
-2. **The interaction layer’s responsibility is to guide the conversation towards a service that users can enjoy, even if it wasn’t the one they had in mind initially**. It’s important to note that the interaction layer is designed to deliver services that benefit both the user and the business, and it relies on service APIs to make the conversation effective.
-3. **The language layer converts text in natural language into structural representations of meaning and vice versa**. This allows chatbots to interact in a language-independent way, making it easier to provide a consistent user experience across different languages.
+Clearly, chatbots operate in three layers:
+1. The schema layer exposes valuable APIs that can be shared across different frontends, including web and mobile apps. These APIs are implemented in the backend, where businesses create value for their users.
+2. The interaction layer’s responsibility is to per business’s objective, guide the conversation towards a service that users can benefit from, even if it wasn’t the one they had in mind initially. It relies on service APIs to make the conversation effective.
+3. The language layer converts natural language text into structural representations of meaning and vice versa.
 
-## CUI as instantiation of type
-To invoke one of the service API functions, the chatbot must create a callable instance of that function type through the conversations. This process also involves creating instances for the input parameters or recursively for attributes of these types if they are composite. Both input parameter of function and attribute of composite type are normally called slots, and creating instances of slots is commonly known as slot filling.
+The interaction logic is defined in a language-independent logical space, which makes it easier to provide a consistent user experience across different languages. This also allows the existing development team to incorporate the goals and strategies of the business application into the conversational interaction.
 
-The chatbot can be built in three layers using a type based approach: first declare types at the schema layer, then attach dialog annotations onto these types at the interaction layer, and finally complete dialog annotations at the language layer by adding templates and exemplars. Dialog annotations specify the expected behavior of the chatbot during its building instances for different types. For example:
+## CUI creates callable instances
+To invoke one of the service functions, the chatbot must create a callable instance of that function type through the conversations. This process also involves creating instances for the input parameters or recursively for attributes of these types if they are composite. Both input parameter of function and attribute of composite type are normally called slots, and creating instances of slots is commonly known as slot filling.
+
+The chatbot can be built in three layers using a type based approach: first declare types at the schema layer, then attach dialog annotations onto these types at the interaction layer, and finally complete dialog annotations at the language layer by adding templates and exemplars. Dialog annotations specify the expected behavior of the chatbot during its building instances for different types. Here are some example dialog annotations:
 
 - **Prompt** indicates how to prompt the user for their preferences on a slot.
 - **Value recommendation** provides a list of candidates to the user for them to choose one from. You need to specify how to get the list, what happens if the list is empty or has only one item, and what to do if there are more items than what you can fit in one turn, etc.
@@ -32,24 +34,28 @@ The chatbot can be built in three layers using a type based approach: first decl
 
 Taking movie ticketing as an example, the decisions you have to make at each layer are:
 
-- **At schema layer**, skill `buyMovieTicket` should have the following slots. We assume the conversation happens in the logged-in session, so the user is known.
-   1. `movieTitle`: **MovieTitle**. The title of the movie.
-   2. `date`: **LocalDate**. The date of the movie ticket for.
-   3. `showTime`: **LocaTime**. The time of the movie showing.
-   4. `format`: **MovieFormat**. The format of the movie, e.g. IMAX 3D, Digital 3D, Standard.
+- **At schema layer**, skill `buyMovieTicket` should have the following slots. We assume the conversation happens in the logged-in session, so the user is known:
+  :::info Skill `buyMovieTicket` schema layer
+  1. `movieTitle`: **MovieTitle**. The title of the movie.
+  2. `date`: **LocalDate**. The date of the movie ticket for.
+  3. `showTime`: **LocaTime**. The time of the movie showing.
+  4. `format`: **MovieFormat**. The format of the movie, e.g. IMAX 3D, Digital 3D, Standard.
+  :::
 
 - **At interaction layer**, you decide how to create an instance of each slot in a language-independent fashion.
+  :::info Skill `buyMovieTicket` interaction layer
   1. `movieTitle`: required, prompt, value recommendation, value check.
   2. `date`: if the user did not mention a particular date, assume today.
   3. `showTime`: required, prompt, value recommendation, value check.
   4. `format`: prompt if the movie has more than one format available.
+  :::
 
 - **At language layer**, you define the template to render the dialog act into natural text and exemplar to showcase what semantics a natural language expression should be mapped into. For example, there is the prompt for each slot in English:
+  :::info Skill `buyMovieTicket` language layer
   1. `movieTitle`: *"Which movie are you interested in?"*
   2. `showTime`: *"Great! Which showtime works best for you?"*
   3. `format`: *"Do you prefer IMAX or regular?"*
-
-The interaction logic is defined language-independent logical space, which makes it easy for existing development team to inject the goals and strategies of business application into conversational interaction.
+  :::
 
 ## Benefits, benefits and benefits
 The separation of concerns in this three-layered approach allows developers to focus on specific tasks without worrying about the implementation details of other modules or layers, which can lead to more efficient development, easier debugging, greater code reuse, and reduced costs.
@@ -76,6 +82,6 @@ One of the defining characteristics of natural language is that the same word ca
 Large language models have fundamentally changed natural language understanding permanently. With a transformer architecture pretrained on vast amounts of natural text, these models are capable of delivering great performance under few, and even zero-shot settings. Gone are the days when you needed to train a new model for each service you wanted to offer. By formulating the dialog understanding problem into entailment and question answering, together with retrieval-augmented implementation, you can not only build a dialog understanding module with only a few examples but also simply add examples that the dialog understanding currently fails to understand, which is an effective way of hotfixing the understanding issue.
 
 ## Parting words
-According to Gates, only two technologies have ever struck him as ‘revolutionary’: the first is the modern graphical user interface (GUI). With its ease of use and gradually reduced cost of building GUI applications over the years, GUI applications have forever changed human civilization. Now, it is that time again — conversational user interface (CUI) has the potential to remove any barriers for any user to access any services. We hope type-based OpenCUI can help you build the great conversational experience your user deserve, without trapping you in the implementation details.
+According to Gates, only two technologies have ever struck him as "revolutionary": the first is the modern graphical user interface (GUI). With its ease of use and gradually reduced cost of building GUI applications over the years, GUI applications have forever changed human civilization. Now, it is that time again — conversational user interface (CUI) has the potential to remove any barriers for any user to access any services. We hope type-based OpenCUI can help you build the great conversational experience your user deserve, without trapping you in the implementation details.
 
 For the impatient, [you can get started now](https://build.opencui.io).
