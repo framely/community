@@ -1,6 +1,12 @@
 :root {
   //scroll-behavior: smooth;
 
+  /**
+   * The default theme CSS variables that can be overridden:
+   * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+   * -------------------------------------------------------------------------- */
+
+  // Color Base
   --vp-c-brand: #4282fd;
   --vp-c-brand-light: #5F95FE;
 
@@ -9,77 +15,31 @@
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(326deg, #5280F5, #39C0EE);
   // hero image bg
-  --vp-home-hero-image-background-image: -webkit-linear-gradient(-45deg, #ECF2FF 80%, #C9EBFF);
+  --vp-home-hero-image-background-image: -webkit-linear-gradient(-45deg, #5280F520 80%, #C9EBFF20 50%);
   --vp-home-hero-image-filter: blur(72px);
 
-
-
-  // background colors
-  --vp-c-bg: #ffffff;
-  --vp-c-bg-light: #f6f8fa;
-  --vp-c-bg-lighter: #eeeeee;
-  --vp-c-bg-navbar: var(--vp-c-bg);
-  --vp-c-bg-sidebar: var(--vp-c-bg);
-  --vp-c-bg-arrow: #cccccc;
-  --vp-c-bg-cta: #4282fd08;
-  --vp-c-bg-icon: #4282fd10;
-
-
-  // text colors
-  --vp-c-text: #2c3e50;
-  --vp-c-text-accent: var(--vp-c-brand);
-  --vp-c-text-light: #3a5169;
-  --vp-c-text-lighter: #4e6e8e;
-  --vp-c-text-lightest: #6a8bad;
-  --vp-c-text-quote: #999999;
-
-  // border colors
+  // Colors Theme
   --vp-c-border: #eaecef;
   --vp-c-border-dark: #dfe2e5;
 
-  // custom container colors
-  --vp-c-tip: var(--vp-c-brand-light);
-  --vp-c-tip-bg: var(--vp-c-bg-light);
-  --vp-c-tip-title: var(--vp-c-text);
-  --vp-c-tip-text: var(--vp-c-text);
-  --vp-c-tip-text-accent: var(--vp-c-text-accent);
-  --vp-c-warning: #e7c000;
-  --vp-c-warning-bg: #fffae3;
-  --vp-c-warning-title: #ad9000;
-  --vp-c-warning-text: #746000;
-  --vp-c-warning-text-accent: var(--vp-c-text);
-  --vp-c-danger: #cc0000;
-  --vp-c-danger-bg: #ffe0e0;
-  --vp-c-danger-title: #990000;
-  --vp-c-danger-text: #660000;
-  --vp-c-danger-text-accent: var(--vp-c-text);
-  --vp-c-details-bg: #eeeeee;
+  // Component: Custom Block
+  --vp-custom-block-tip-border: var(--vp-c-brand);
+  --vp-custom-block-tip-text: var(--vp-c-brand);
 
-  // badge component colors
-  --vp-c-badge-tip: var(--vp-c-tip);
-  --vp-c-badge-warning: var(--vp-c-warning);
-  --vp-c-badge-danger: var(--vp-c-danger);
-
-  // button
+  // Component: Button
   --vp-button-brand-border: var(--vp-c-brand-light);
   --vp-button-brand-hover-border: var(--vp-c-brand-light);
   --vp-button-brand-hover-bg: var(--vp-c-brand-light);
 
+  /**
+   * We added, not in vitepress
+   * -------------------------------------------------------------------------- */
 
-  // transition vars
-  --t-color: 0.3s ease;
-  --t-transform: 0.3s ease;
-
-  // code blocks vars
-  --code-bg-color: #282c34;
-  --code-hl-bg-color: rgba(0, 0, 0, 0.66);
-  --code-ln-color: #9e9e9e;
-  --code-ln-wrapper-width: 3.5rem;
-
+  // background colors
+  --vp-c-bg-icon: #4282fd10;
 
   // layout vars
   --homepage-width: 960px;
-
 }
 
 html.dark {
@@ -87,39 +47,9 @@ html.dark {
   --vp-c-brand: #4282fd;
   --vp-c-brand-light: #5F95FE;
 
-
-  // background colors
-  --vp-c-bg: #1e1e20;
-  --vp-c-bg-light: #2b313a;
-  --vp-c-bg-lighter: #262c34;
-  --vp-c-bg-cta: #4282fd08;
-  --vp-c-bg-icon: #4282fd25;
-
-
-  // text colors
-  --vp-c-text: #adbac7;
-  --vp-c-text-light: #96a7b7;
-  --vp-c-text-lighter: #8b9eb0;
-  --vp-c-text-lightest: #8094a8;
-
   // border colors
   --vp-c-border: #3e4c5a;
   --vp-c-border-dark: #34404c;
-
-  // custom container colors
-  --vp-c-tip: var(--vp-c-brand-light);
-  --vp-c-warning: #ceab00;
-  --vp-c-warning-bg: #7e755b;
-  --vp-c-warning-title: #ceac03;
-  --vp-c-warning-text: #362e00;
-  --vp-c-danger: #940000;
-  --vp-c-danger-bg: #806161;
-  --vp-c-danger-title: #610000;
-  --vp-c-danger-text: #3a0000;
-  --vp-c-details-bg: #323843;
-
-  // code blocks vars
-  --code-hl-bg-color: #363b46;
 }
 
 
