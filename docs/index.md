@@ -2,11 +2,12 @@
 layout: home
 title: OpenCUI
 hero:
+  name: Type-based Approach
+  text: for Chatbot Development
+  tagline: Time to deliver personalized services, via chat.
   image: 
     src: images/hero.png
-    alt: VitePress
-  tagline: Time to deliver personalized services, via chat.
-  text: Type-based Approach for Chatbot Development
+    alt: OpenCUI
   actions:
     - theme: brand
       text: Start to Build
