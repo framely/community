@@ -37,7 +37,7 @@ After saved, depending on the language you choose, the corresponding language bo
 ### Remove language
 To remove a language from your project, follow these steps:
 1. Switch to **Settings** tab, and head to the **General** page.
-2. In the **Project language** filed, click the "**X**" icon.
+2. In the **Project language** filed, click the "**X**" icon next to the language.
 3. Confirm the action as prompted.
 
 ![delete language](/images/platform/multilingual/delete_language.png)
