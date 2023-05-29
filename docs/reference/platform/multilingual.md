@@ -35,9 +35,9 @@ After saved, depending on the language you choose, the corresponding language bo
 ![switch language](/images/platform/multilingual/switch_language.png)
 
 ### Remove language
-Remove a language means you will delete the corresponding language bot. To delete a language-specific bot:
+To remove a language from your project, follow these steps:
 1. Switch to **Settings** tab, and head to the **General** page.
-2. In the **Project language** filed, click the "**X**" icon next to the desired language that you want to remove.
+2. In the **Project language** filed, click the "**X**" icon.
 3. Confirm the action as prompted.
 
 ![delete language](/images/platform/multilingual/delete_language.png)
