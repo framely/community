@@ -8,7 +8,7 @@ OpenCUI currently provides two separate serving environments, **development** an
 Deploy is the one that lets you publish the **latest master version** of your bot from development environment to production environment. As deploy only works well with the master version, before you start, please make sure you are done with testing and keep all instances you need merged into master.  
 
 ## How to use
-To deploy your chatbot, stay at **STRUCT** level:
+To deploy your chatbot:
 
 1. Head to the **Versions** page, all the versions are listed. If there is no version here, you need to merge your chatbot first, for more information about versions, see [Version control](versioncontrol.md). 
 
@@ -18,7 +18,7 @@ To deploy your chatbot, stay at **STRUCT** level:
 
    ![version page](/images/platform/deployment/deploy_button.png)
 
-3. When completed, there will be a **Green Checked Icon** to indicate the current deployed version. 
+3. When completed, there will be a **Green checked icon** to indicate the current deployed version. 
 
    ![version page](/images/platform/deployment/deploy_complete.png)
 
