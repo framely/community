@@ -32,7 +32,7 @@ Pull requests can only be opened when there are differences between branch and m
 - **Rebase**: When the master version is upgraded, synchronizing the latest master to your branch. 
 - **Diffs**: Shows you exactly how it differed from the base master.
 - **Commit**: Confirm your branch chagens and ready to start testing. 
-- **Pull Request**: Pull requests display diffs to compare the changes you made in your branch against the base master, which indicates you are willing to merge them into master.
+- **Pull request**: Pull requests display diffs to compare the changes you made in your branch against the base master, which indicates you are willing to merge them into master.
 
 ## How to use
 This guide walks you through version control workflow:
@@ -41,7 +41,7 @@ This guide walks you through version control workflow:
 To create branch, you can just modify your project, for example you can create a skill. And then all your work will be done in your branch. 
 
 ### View your changes
-1. To view your changes, click **Diff** in the upper-right corner of the Build area.
+1. To view your changes, click **Diff** in the upper-right corner of the Types area.
 
    ![click diff](/images/platform/versioncontrol/click_diff.png)
 
@@ -59,19 +59,16 @@ During your working, if the version of master has changed, **Rebase** with its i
 
    ![rebase](/images/platform/versioncontrol/rebase.png)
 
-2. If the **Rebase Conflicts** field slide out, it means there is a merge conflict. 
-
-   ![conflict](/images/platform/versioncontrol/conflict.png)
-
+2. If the **Rebase Conflicts** field slide out, it means there is a merge conflict.
 3. You have to make a choice, choose one of the two options you want to keep in the final merge. Once you've resolved all the conflicts, click **Resolve Conflicts** as resolved, then you can continue your branch work.
 
    ![resolve conflict](/images/platform/versioncontrol/resolve_conflict.png)
 
 ### Review changes
-To review changes, you should switch to **Version** page. In the middle of the second navigation bar, select **Version** tab: 
+To review changes, you should switch to **Versions** page.
 
 1. If you are ready to be reviewed, you can create a pull request with your changes. 
-    - Click **Pull Request** in the upper-right corner of the Version area.
+    - Click **Pull request** in the upper-right corner of the Versions area.
     
        ![pull request](/images/platform/versioncontrol/pull_request.png)
 
