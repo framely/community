@@ -37,32 +37,29 @@ The composition also provides reusability. When there is already a frame that in
 ### Import
 To import a component to your project, please follow the subsequent directions: 
 1. Click into the component which you would like to import.
-2. On the second navigation bar, click **Import**.
+2. In the top-right corner of the page, click **Import**.
 
    ![import icon](/images/platform/reusability/import-icon.png)
 
-3. In the popup window, **select** the project where you want to import this component.
+3. In the popup window, **select** the project where you want to import this component, and save it.
 
    ![import project](/images/platform/reusability/import-project.png)
-
-4. Click **Save**.
-
-   ![import save](/images/platform/reusability/import-save.png)
 
 ### Clone
 To clone a project to your org, please follow the subsequent directions: 
 1. Click into the project which you would like to clone.
-2. On the second navigation bar, click **Clone**.
+2. In the top-right corner of the page,  click **Clone**.
    
    ![clone icon](/images/platform/reusability/clone-icon.png)
 
-3. In the popup window, **select** the organization where you want to clone this project.
+3. After clicking Clone, a pop-up window will appear with basic chatbot settings. You will need to decide a few things:
+   - Choose which **Owner** organization you want to clone this project to.
+   - Optionally, you can change the **Project label** for this clone.
+   - Decide on how you want to **Deploy** this, have OpenCUI hosting it for you or have it deployed on premise.
+   - Pick which **Region** you want to deploy this chatbot to, pick one that is closer to your targeted users.
 
    ![clone project](/images/platform/reusability/clone-project.png)
-
-4. Click **Save**. 
-
-   ![clone save](/images/platform/reusability/clone-save.png)
+4. Click on **Clone** at the bottom of the popup.
 
 ### Inherit
 To inherit or implement frames:
@@ -84,6 +81,6 @@ To inherit or implement frames:
    ![compose frame](/images/platform/reusability/compose-frame.png)
    *2. Add frame as slot*
 
-2. To use a frame, navigate to the target skill. Under the **Schema** tab, select the frame you want to reuse in the **Use Frame** section.
+2. To use a frame, navigate to the target skill. Under the **Schema** tab, select the frame you want to reuse in the **Use frame** section.
 
    ![use frame](/images/platform/reusability/use-frame.png)
