@@ -53,12 +53,13 @@ To clone a project to your org, please follow the subsequent directions:
    ![clone icon](/images/platform/reusability/clone-icon.png)
 
 3. After clicking Clone, a pop-up window will appear with basic chatbot settings. You will need to decide a few things:
-   - Choose which **Owner** organization you want to clone this project to.
-   - Optionally, you can change the **Project label** for this clone.
-   - Decide on how you want to **Deploy** this, have OpenCUI hosting it for you or have it deployed on premise.
-   - Pick which **Region** you want to deploy this chatbot to, pick one that is closer to your targeted users.
+   - **Owner**: The organization you want to clone this project to.
+   - **Project label**: The unique identifier for the chatbot. Type a short, memorable label for your chatbot. We suggest using a lowercase label. For example, pingpong.
+   - **Deploy mode**: The way you deploy the chatbot. Have OpenCUI hosting it for you or have it deployed on premise.
+   - **Region**: Where you want to deploy this chatbot. Ideally, it should be close to your users.
 
    ![clone project](/images/platform/reusability/clone-project.png)
+
 4. Click on **Clone** at the bottom of the popup.
 
 ### Inherit
