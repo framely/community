@@ -63,7 +63,7 @@ To invite a member to join your org:
 ::: warning Need To Know
 - When you removing members from your organization, all project corresponding datas of their branch will be permanently destroy. The paid license count does not automatically downgrade.
 
-- When you converting members to collaborator, means this operation will covert them from **Internal member** to **Outside collaborator**, their permissions to the internal projects will be lost. If they do not have specific permissions for any of the projects, they will be removed from the organization.
+- When you converting members to collaborator, means this operation will covert them from **Internal member** to **Collaborator**, their permissions to the internal projects will be lost. If they do not have specific permissions for any of the projects, they will be removed from the organization.
 :::
 
 ### Manage access to project
