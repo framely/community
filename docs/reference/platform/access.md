@@ -47,7 +47,7 @@ By default, **Member** of an organization will have **Read** permissions to the 
 ### Invite member join organization
 To invite a member to join your org:
 
-1. Head to the organization **Settings** page, select the **Team Members** tab, click **Add Member**.
+1. Head to the organization **Team** page and click **Add member**.
 
    ![add org member](/images/platform/access/add_org_member.png)
 
@@ -55,7 +55,7 @@ To invite a member to join your org:
 
    ![type email](/images/platform/access/type_email.png)
 
-3. To manage members, find the person whose role you'd like to change, hover “**…**” icon on the right side. You can set a member as **Owner**, convert internal memeber to **Collaborator** or **Remove Member**. 
+3. To manage members, find the person whose role you'd like to change, hover “**…**” icon on the right side. You can set a member as **Owner**, convert internal member to **Collaborator** or **Remove member**. 
 
     ![manage member](/images/platform/access/manage_member.png)
 
@@ -63,13 +63,13 @@ To invite a member to join your org:
 ::: warning Need To Know
 - When you removing members from your organization, all project corresponding datas of their branch will be permanently destroy. The paid license count does not automatically downgrade.
 
-- When you converting members to collaborator, means this operation will covert them from **Internal Member** to **Outside Collaborator**, their permissions to the internal projects will be lost. If they do not have specific permissions for any of the projects, they will be removed from the organization.
+- When you converting members to collaborator, means this operation will covert them from **Internal member** to **Outside collaborator**, their permissions to the internal projects will be lost. If they do not have specific permissions for any of the projects, they will be removed from the organization.
 :::
 
 ### Manage access to project
 To give a member specific access to a project:
 
-1. Head to the project **Settings** page, select the **Access** tab, click **Add Member**.
+1. Head to the project **Settings** page. In the **Access** section, click **Add member**.
 
    ![project access](/images/platform/access/project_access.png)
 
