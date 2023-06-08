@@ -52,14 +52,6 @@ To clone a project to your org, please follow the subsequent directions:
    
    ![clone icon](/images/platform/reusability/clone-icon.png)
 
-3. After clicking Clone, a pop-up window will appear with basic settings. Depending on the type of project you're cloning, you may see only some of these fields or all of them:
-   - **Owner**: The organization you want to clone this project to.
-   - **Project label**: The unique identifier for the chatbot. Type a short, memorable label for your chatbot. We suggest using a lowercase label. For example, pingpong.
-   - **Deploy mode**: The way to deploy your project, you can choose OpenCUI hosting or private deployment for your project.
-   - **Region**: Where you want to deploy this chatbot. Ideally, it should be close to your users.
-
-4. Click on **Clone** at the bottom of the popup.
-
 ### Inherit
 To inherit or implement frames:
 1. Navigate to the target frame.
