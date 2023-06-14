@@ -36,16 +36,16 @@ To reduce the effort level on the user side, we support the conversation routing
 
 ### Enable support
 Inside your chatbot, in the **Settings** tab and under **Integrations** page.
-1. In the **Deploy service provider** section, select `io.opencui.support.ISupport` for setting up channel.
+1. In the **Support** section, turn on the toggle.
 
-   ![select the service](/images/Chatwoot/select-service.png)
+   ![enable the support](/images/Chatwoot/enable-support.png)
 
-2. A popup window will appear. In the **Service provider** dropdown, select `io.opencui.chatwoot`. 
+2. To access the configuration of the support, click on it.
 
-   ![select the chatwoot support](/images/Chatwoot/select-support.png)
+   ![configuration of suppot](/images/Chatwoot/support-configuration.png)
 
 ::: tip
-If you enable Chatwoot for the first time in your organization, check your email to get your user name and password so you can log into [Chatwoot](https://chatwoot.naturali.io/).
+If you enable Chatwoot for the first time in your organization, check your email to get your user name and password so you can log into [Chatwoot](https://chatwoot01.framely.ai).
 :::
 
 ### Set up routing priority
