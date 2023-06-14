@@ -4,7 +4,7 @@ When a user demands talking to a human agent, we can forward the conversation to
 ## How it works
 1. When an end-user demands talking to a human agent.
 
-![how-it-works-1](/images/Chatwoot/how-it-works-1.png)
+![how-it-works-1](/images/Chatwoot/dialog-sample.png)
 
 2. An agent will get notified when the conversation is assigned to him.
 
@@ -19,8 +19,6 @@ When a user demands talking to a human agent, we can forward the conversation to
 ![how-it-works-4](/images/Chatwoot/how-it-works-4.gif)
 
 5. After the agent resolves the conversation, next time the end-user will start with interacting bot again.
-
-![how-it-works-4](/images/Chatwoot/how-it-works-5.png)
 
 ## Configuration
 Now you can follow these steps to configure your account in Chatwoot.
