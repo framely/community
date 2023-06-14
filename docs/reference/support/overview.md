@@ -36,11 +36,11 @@ To reduce the effort level on the user side, we support the conversation routing
 
 ### Enable support
 Inside your chatbot, in the **Settings** tab and under **Integrations** page.
-1. In the **Support** section, turn on the support feature (such as Chatwoot).
+1. In the **Support** section, turn on the toggle.
 
    ![enable the support](/images/Chatwoot/enable-support.png)
 
-2. Once you have enabled a support feature, click on it to access its configuration. If you're using the OpenCUI-hosted chatbot, there's no need to fill in any configuration details. However, if you've opted for a private-deployed chatbot, you'll likely need to configure it by providing information such as your account details.
+2. To access the configuration of the support, click on it.
 
    ![configuration of suppot](/images/Chatwoot/support-configuration.png)
 
