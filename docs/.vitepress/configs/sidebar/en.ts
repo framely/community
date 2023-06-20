@@ -102,6 +102,13 @@ export const en = {
       ],
     },
     {
+      text: 'Conversation Design',
+      collapsed: false,
+      items: [
+        { text: 'Conversation Design', link: '/reference/conversation-design/conversation-design' },
+      ]
+    },
+    {
       text: 'Platform',
       collapsed: false,
       items: [
