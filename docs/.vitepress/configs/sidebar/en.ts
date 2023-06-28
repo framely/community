@@ -42,7 +42,7 @@ export const en = {
   ],
   '/reference/': [
     {
-      text: 'Dialog Annotations',
+      text: 'Dialog Annotations/System Components',
       collapsed: false,
       items: [
         { text: 'Overview', link: '/reference/annotations/overview' },
@@ -87,7 +87,7 @@ export const en = {
       link: '/reference/providers/extension',
     },
     {
-      text: 'CUI Components',
+      text: 'Composite Components',
       collapsed: false,
       items: [
         { text: 'System CUI components', link: '/reference/annotations/systemcomponent' },
