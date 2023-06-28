@@ -107,6 +107,7 @@ export const en = {
       items: [
         { text: 'Conversation design', link: '/reference/conversation-design/conversation-design' },
         { text: 'Get started', link: '/reference/conversation-design/get-started' },
+        { text: 'Gathering requirements', link: '/reference/conversation-design/gathering-requirements' },
       ]
     },
     {
