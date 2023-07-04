@@ -108,6 +108,7 @@ export const en = {
         { text: 'Conversation Design', link: '/reference/conversation-design/conversation-design' },
         { text: 'Gathering requirements', link: '/reference/conversation-design/gathering-requirements' },
         { text: 'Design interactions', link: '/reference/conversation-design/design-interactions' },
+        { text: 'Key use cases', link: '/reference/conversation-design/key-use-cases' },
       ]
     },
     {
