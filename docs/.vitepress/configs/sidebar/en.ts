@@ -109,6 +109,7 @@ export const en = {
         { text: 'Gathering requirements', link: '/reference/conversation-design/gathering-requirements' },
         { text: 'Design interactions', link: '/reference/conversation-design/design-interactions' },
         { text: 'Key use cases', link: '/reference/conversation-design/key-use-cases' },
+        { text: 'Test and iterate', link: '/reference/conversation-design/test-and-iterate' },
       ]
     },
     {
