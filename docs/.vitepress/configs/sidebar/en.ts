@@ -110,6 +110,7 @@ export const en = {
         { text: 'Design interactions', link: '/reference/conversation-design/design-interactions' },
         { text: 'Key use cases', link: '/reference/conversation-design/key-use-cases' },
         { text: 'Test and iterate', link: '/reference/conversation-design/test-and-iterate' },
+        { text: 'Design for the long tail', link: '/reference/conversation-design/design-for-long-tail' },
       ]
     },
     {
