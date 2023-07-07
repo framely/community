@@ -111,6 +111,7 @@ export const en = {
         { text: 'Key use cases', link: '/reference/conversation-design/key-use-cases' },
         { text: 'Test and iterate', link: '/reference/conversation-design/test-and-iterate' },
         { text: 'Design for the long tail', link: '/reference/conversation-design/design-for-long-tail' },
+        { text: 'Scale your design', link: '/reference/conversation-design/scale-your-design' },
       ]
     },
     {
