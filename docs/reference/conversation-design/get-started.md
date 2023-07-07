@@ -20,4 +20,4 @@ As soon as you have some sample use cases, it is important to start [testing and
 In the last phase of the process, you will specify the detailed design for your conversational feature. This involves making sure your feature adequately covers the [long tail](design-for-long-tail.md) of ways a conversation can deviate from the most common paths. To do this, you will need to add handling for errors and other uncommon scenarios.
 
 ## Scale your design
-Finally, you’ll scale your design to help users wherever they are. Since the OpenCUI platform helps users across channels, such as Messenger, WhatsApp, Google Business Messages, and more, your conversations should too. 
+Finally, you’ll [scale your design](scale-your-design.md) to help users wherever they are. Since the OpenCUI platform helps users across channels, such as Messenger, WhatsApp, Google Business Messages, and more, your conversations should too. 
