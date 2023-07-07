@@ -91,7 +91,7 @@ export const en = {
       link: '/reference/providers/extension',
     },
     {
-      text: 'Conversational Interaction Design',
+      text: 'Conversation Design',
       collapsed: false,
       items: [
         { text: 'Overview', link: '/reference/conversation-design/conversation-design' },
