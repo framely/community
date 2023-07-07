@@ -53,6 +53,10 @@ export const en = {
         { text: 'Confirmation', link: '/reference/annotations/confirmation' },
         { text: 'State transition', link: '/reference/annotations/transition' },
       ],
+    },    
+    {
+      text: 'System CUI Components',
+      link: '/reference/annotations/systemcomponent',
     },
     {
       text: 'Providers',
@@ -87,25 +91,10 @@ export const en = {
       link: '/reference/providers/extension',
     },
     {
-      text: 'CUI Components',
+      text: 'Conversational Interaction Design',
       collapsed: false,
       items: [
-        { text: 'System CUI components', link: '/reference/annotations/systemcomponent' },
-        {
-          text: 'Date picker',
-          link: '/reference/plugins/components/datepicker/',
-          collapsed: true,
-          items: [
-            { text: 'CUI design', link: '/reference/plugins/components/datepicker/datepicker-design' }
-          ],
-        },
-      ],
-    },
-    {
-      text: 'Conversation Design',
-      collapsed: false,
-      items: [
-        { text: 'Conversation design', link: '/reference/conversation-design/conversation-design' },
+        { text: 'Overview', link: '/reference/conversation-design/conversation-design' },
         { text: 'Get started', link: '/reference/conversation-design/get-started' },
         { text: 'Gathering requirements', link: '/reference/conversation-design/gathering-requirements' },
         { text: 'Design interactions', link: '/reference/conversation-design/design-interactions' },
