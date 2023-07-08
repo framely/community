@@ -1,8 +1,7 @@
-# How do I get started? 
+# How do I get started?
+Conversational interaction differs from GUI interaction as users are not confined to a predefined linear path. They have the freedom to express themselves and can take unexpected turns. Therefore, when designing a conversational experience, you must be prepared for non-linear user interactions.
 
-Conversation interaction is different from GUI interaction in that users are not restricted to following a linear path. They may jump around, express themselves freely, and take unexpected turns. This means that when designing a conversation, you need to think about user interaction in a non-linear way.
-
-You cannot simply map out a linear path and expect users to follow it. Instead, you need to consider the core of your business, the experience you want to bring to users, and how users can get services through interaction. The key is to think about the specific goals of your conversation and to design it accordingly. 
+While it is possible to map out every linear path that user might follow, doing so will the prohibitively expensive and time-consuming. On the other hand, the number of services that you want to expose conversationally are limited. Instead, you need to consider the core of your business, the experience you want to bring to users, and how users can get services through interaction. The key is to think about the specific goals of your conversation and to design it accordingly. 
 
 ## Gathering requirements
 First, identify the core of your business. What are the essential services that you offer? What kind of information do your users need to provide? What are the key features that you want to highlight? Gathering requirements is the process of understanding the needs of your customers and stakeholders. It is essential for any business that wants to develop a successful product or service. This is all part of [gathering requirements](gathering-requirements.md).

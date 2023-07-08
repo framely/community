@@ -1,8 +1,9 @@
 # Conversation design
 
-Creating conversational user interface for your business requires a breadth of design expertise (for example, voice user interface design, interaction design, visual design, motion design, and UX writing) that we’ve refined into a single discipline: conversation design.
+Conversation design refers to the process of creating and structuring conversational interactions between a user and a conversational interface, such as a chatbot or voice assistant. In theory, it requires careful consideration in many levels: logic at language independent interaction level, understanding and scripting at language level (can be different for voice channel), and visual components such as buttons and cards on client side. 
 
-Our goal is to help you craft conversations that are natural and intuitive for users, and to scale your conversations across all channels so that users can interact with you wherever they are.
+Traditionally, conversation design mainly involves designing the flow, structure, and content of the conversation at language level since that is where the main challenges are. However, with recent advances in using large language models for natural language understanding, it is time for us to take a more holistic view and with focus on achieving business objectives. This requires us to look at conversational design under this new three layer lens.  
+
 
 ## What is conversation？
 
@@ -12,7 +13,7 @@ The purpose of a conversation in business can vary depending on the specific nee
 
 The goal of a chatbot conversation is to help the user complete the task at hand. The conversation should be meaningful and efficient, and the goal should be to solve problems quickly and accurately. The number of conversation turns is not as important as the quality of the interaction.
 
-## What is conversation design? 
+## What is conversation interaction design? 
 
 Conversation design is a design discipline that leverages the principles of human conversation to create user interfaces that are easy to use and intuitive. It is a synthesis of several design disciplines, including voice user interface design, interaction design, visual design, motion design, audio design, and UX writing.
 
