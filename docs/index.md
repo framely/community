@@ -3,8 +3,8 @@ layout: home
 title: OpenCUI
 hero:
   name: Type-based Approach
-  text: for Chatbot Development
-  tagline: Time to deliver personalized services, via chat.
+  text: for Copilot Development
+  tagline: Make every user a power user, via CUI.
   image: 
     src: images/hero.png
     alt: OpenCUI
