@@ -69,12 +69,12 @@ defineProps({
   }
 
   .blog-card-image {
-    width: 16rem;
+    min-width: 16rem;
     height: 10rem;
     border-radius: 6px;
     object-fit: cover;
     //background-color: var(--c-bg-light);
-    margin-top: 4.5rem;
+    margin-top: 3.5rem;
     //margin-left: 1.5rem;
   }
 
@@ -123,10 +123,6 @@ defineProps({
   .article-wrapper {
     padding: 0 2rem;
     grid-column-gap: 2rem;
-
-    .blog-card-image {
-      height: 12rem;
-    }
   }
 }
 
@@ -134,6 +130,12 @@ defineProps({
   .article-wrapper {
     grid-template-columns: 1fr;
     align-items: center;
+    .blog-card {
+      flex-direction: column-reverse;
+    }
+    .blog-card-image {
+      width: 640px;
+    }
   }
 }
 </style>
