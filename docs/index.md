@@ -2,9 +2,9 @@
 layout: home
 title: OpenCUI
 hero:
-  name: Schema Engineering
-  text: for Conversational User Interface
-  tagline: Make every user a power user, via CUI.
+  name: Schema <br> Engineering
+  text: for Copilot Development
+  tagline: Eliminates hallucination by prompt engineering.
   image: 
     src: images/hero.png
     alt: OpenCUI
