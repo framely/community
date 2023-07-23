@@ -4,7 +4,7 @@ title: OpenCUI
 hero:
   name: Schema Engineering
   text: for Copilot Development
-  tagline: Bring dependability when prompt engineering falters.
+  tagline: Make prompt engineered copilot dependable.
   image: 
     src: images/hero.png
     alt: OpenCUI
