@@ -2,7 +2,7 @@
 layout: home
 title: OpenCUI
 hero:
-  name: Type-based Approach
+  name: Schema Engineering
   text: for Copilot Development
   tagline: Make every user a power user, via CUI.
   image: 
