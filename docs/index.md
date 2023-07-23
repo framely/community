@@ -2,7 +2,7 @@
 layout: home
 title: OpenCUI
 hero:
-  name: Schema <br> Engineering
+  name: Schema Engineering
   text: for Copilot Development
   tagline: Eliminates hallucination by prompt engineering.
   image: 
