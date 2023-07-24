@@ -2,9 +2,9 @@
 layout: home
 title: OpenCUI
 hero:
-  name: Schema Engineering
+  name: Schema-Guided Approach
   text: for Copilot Development
-  tagline: Make prompt engineered copilot dependable.
+  tagline: Bring dependability on top of LLMs.
   image: 
     src: images/hero.png
     alt: OpenCUI
