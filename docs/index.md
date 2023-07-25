@@ -4,7 +4,7 @@ title: OpenCUI
 hero:
   name: Schema-Guided Approach
   text: for Copilot Development
-  tagline: Reliable Conversations on Top of LLMs.
+  tagline: Build Dependable Chatbot on Top of LLMs.
   image: 
     src: images/hero.png
     alt: OpenCUI
