@@ -2,6 +2,13 @@
 export const en = {
   '/essentials/': [
     {
+      text: "Why Copilot",
+      items: [
+        { text: 'Why you have to do it?', link: '/essentials/why-copilot' },
+        { text: 'Dual process', link: '/essentials/dual-process' }
+      ]
+    },
+    {
       text: "Why OpenCUI",
       items: [
         { text: 'Cost-effective conversational experience', link: '/essentials/' },
