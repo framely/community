@@ -2,7 +2,7 @@
 export const en = [
   {
     text: 'Why OpenCUI',
-    link: '/essentials/',
+    link: '/essentials/why-copilot',
     activeMatch: '/essentials/',
   },
   {
