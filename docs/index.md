@@ -2,11 +2,11 @@
 layout: home
 title: OpenCUI
 hero:
-  name: Deterministic Conversational Experiences
+  name: Dependable Conversational Experiences
   text: on Top of LLMs
-  tagline: Schema-guided approach for System 2
+  tagline: Toward cost-effectiveness with dual process 
   image: 
-    src: images/essentials/dualprocess.webp
+    src: images/hero.png
     alt: OpenCUI
   actions:
     - theme: brand
