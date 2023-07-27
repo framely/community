@@ -2,7 +2,7 @@
 layout: home
 title: OpenCUI
 hero:
-  name: Dependable Conversational Experiences
+  name: Deterministic Conversational Experiences
   text: on Top of LLMs
   tagline: Schema-guided approach for System 2
   image: 
