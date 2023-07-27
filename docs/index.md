@@ -6,7 +6,7 @@ hero:
   text: on Top of LLMs
   tagline: Schema-guided approach for System 2
   image: 
-    src: images/hero.png
+    src: images/essentials/dualprocess.webp
     alt: OpenCUI
   actions:
     - theme: brand
