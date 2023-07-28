@@ -40,6 +40,33 @@
 
   // layout vars
   --homepage-width: 960px;
+
+  /**
+   * Change hero size
+   * -------------------------------------------------------------------------- */
+  .main{
+    align-self: center;
+  }
+  .image-container{
+    width: 520px;
+    height: 520px;
+    .image-src{
+      max-width: 520px;
+      max-height: 520px;
+    }
+  }
+  @media (max-width:960px) {
+    .image-container{
+      width: 320px;
+      height: 500px;
+      .image-src{
+        max-width: 360px;
+        max-height: 360px;
+      }
+    }
+  }
+  // End hero size
+
 }
 
 html.dark {
