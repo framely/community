@@ -6,7 +6,7 @@ hero:
   text: on Top of LLMs
   tagline: Toward cost-effectiveness with dual process 
   image: 
-    src: images/hero.png
+    src: images/system1.png
     alt: OpenCUI
   actions:
     - theme: brand
