@@ -35,7 +35,7 @@ export default {
     outline: 'deep',
     // nav social icons
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/opencui/community/discussions' },
+      { icon: 'github', link: 'https://github.com/opencui/community' },
       { icon: 'linkedin', link: 'https://www.linkedin.com/company/opencui-official/' },
     ],
     // 顶部右侧导航
