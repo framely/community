@@ -4,7 +4,7 @@ title: OpenCUI
 hero:
   name: Dependable Conversational Experiences
   text: on Top of LLMs
-  tagline: A dual process approach 
+  tagline: Cost-effective conversational user interface
   image: 
     src: images/system1.png
     alt: OpenCUI
