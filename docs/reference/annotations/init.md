@@ -1,47 +1,49 @@
 # Initialization
-When a user orders food, the bot will need to have the user's phone number. While it's acceptable to ask a first-time user for their number, it's not ideal for regular customers or those using a logged-in channel like iMessage, where we can get their phone number programmatically. Instead of always asking for the phone number upfront, the bot can be configured to suggest a value for the slot based on the user's history.
+Initialization is the process of assigning initial values to slots. This can be done when the values are known, such as when a user orders food and you already know their name and phone number. You can directly assign those values to the corresponding slots. This can be useful for saving time and effort, as the bot does not have to ask the user for the same information twice.
 
-```json
-Bot: "The order will be under the same number "1202555xxxx" as last time. Ready to place the order?"
-```
+For example, let's say you have a chatbot that helps users book vacations. If the user has already booked a flight, you can initialize the hotel's `start date` and `location` slots with the values of the flight's `arrival date` and `city`. This means that the user will not have to repeat this information when they book the hotel.
 
-There are other use cases where initialization can be helpful. For instance, when booking a vacation, the bot can associate a flight's arrival date and city as the start date and location for a subsequent hotel booking after a user has booked a flight ticket.
-
-```json
-Bot: "Booked a ticket from New York to Los Angeles on Feb 2, 2022. Do you want to book a hotel in Los Angeles from Feb 2, 2022?"
-```
-
-In both cases, initialization allows you to reduce the user effort level required to acquire services from you, thus providing users with a better user experience.
+By carefully considering which slots to initialize and with what values, you can make your bots more user-friendly and efficient. 
 
 ## Overview
-Initialization is the first stage of the [Five stages of slot filling](./overview.md#five-stages-of-slot-filling). When it's time to fill a slot, the bot will first check whether initialization is configured for that slot. If it finds a usable value (not null) based on configuration, it will skip the prompting stage and move directly to the value check and confirmation phase. Note, however, that user preference always takes precedence.
 
-You can initialize the slot with a value defined in arbitrary [kotlin code expression](./kotlinexpression.md), which includes but are not limited to the following expressions:
-- **Constant**: For example, if the type of slot is *kotlin.Int*, you may set its association to be `0`.
-- **Slot**: You can pick an earlier slot of the same type as proposed value. If you pick a later slot, the behavior is not defined.
-- **Function call**: You can use a function return: you can set the phone number as `getUserPhoneNumber()`, which returns the user's phone number.
+**Initialization is the first step in slot filling.** It is the process of setting a value for a slot before the user is asked to provide it. This can be done to save time and effort, or to ensure that the slot is always filled with a valid value.
 
-## How to use
-Initialization is an optional slot annotation. If you know that a user will most likely accept a value based on business logic or historical data, you can use it to reduce the need for the user to input by providing something they might accept.
+To set initialization, you need to specify the target slot and the value.
 
-The configuration of initialization is shown in the following figure, and the field labeled `Value` is used for specifying the proposed value.
+- **Target slot**: The slot that you want to initialize with a value before asking the user.
+
+- **Value**: The value that will be associated with the target slot. It is done by setting a [Kotlin expression](kotlinexpression.md) that evaluates the desired value. The expression can be a constant, another slot, or a function. You can also use conditional logic to determine the value.
+
+There are two ways to set initialization: slot level and frame level.
+
+- **Slot level**: This is the simplest type of initialization. You do not need to worry about the target slot, as it is the slot itself. You only need to specify the value that you want to initialize the slot with. 
+
+- **Frame level**: This is more flexible than slot level initialization. It allows you to initialize multiple slots including nested slots in a single place. You can also specify the order in which the slots are initialized. Frame level initialization is set in the "**Transition > State**" section.
 
 ![initialization](/images/annotation/initialization/init.png)
 
-### Does a user have to accept the proposed value?
-Depending on whether you give user a chance to confirm, initialization is used for two different purposes: assignment and suggestion. 
+## Limitations
 
-#### Assignment
-Sometimes, your business dictates what value can a slot take given existing slot fillings and business logic. This is assignment, where you can first enable the initialization on the slot but not configure the [explicit confirmation](../annotations/confirmation.md#explicit). This way, the bot will simply inform the user of the system's choice for this slot and move on to the next slot. In fact, you typically do not need to configure anything else.
+Here are some things to keep in mind:
 
-#### Suggestion
-At other times, your business may only suggest what value a slot can take, given existing user choices and business logic that a user has to accept. This is suggestion, where you can first enable initialization on the slot and then configure the [explicit confirmation](../annotations/confirmation.md#explicit). This way, the bot will inform the user of the system's suggested value for this slot and then give the user a chance to confirm. If the user agrees, the bot moves on to the next slot; if the user does not agree, the bot goes back to the prompting stage for the user to input again.
+- **Initialization is only assigned once.** This means that if the value of a slot is re-asked because it is unavailable or the user is dissatisfied, the initialization that has already been performed will not be performed again. 
 
-### Dos and don'ts
-::: tip Dos
-1. When using initialization, it is best to add an [implicit confirmation annotation](../annotations/confirmation.md#implicit) to inform the user of the choice that the system provided, in order to keep both the user and the bot on the same page.
-2. With suggestion, you also need to configure the prompt in case the user disagrees with the suggested value and the bot needs to extract the user's choice for this slot.
-3. Ensure that the proposed value here is compatible with the [value check](./valuecheck.md) annotation, minus any fluctuations due to data changes. For example, if the ticket is no longer available, the proposed value should reflect that. Otherwise, the user may become confused with an ill-timed value check message.
-:::
+- **When a nested slot has initialization defined in the hosting type, the initialization defined on the slot itself will not be executed for the first time.** This means that if a slot is initialized with different values at different places, such as on the hosting type or on the direct slot, the one defined on the hosting type will take precedence. If the nested slot is re-asked, the initialization value defined on the slot itself will be used.
 
+These limitations can be mitigated by carefully considering which slots to initialize and with what values. However, it is important to be aware of these limitations so that you can understand how they will affect your chatbot.
 
+## Best practice
+
+Initialization can be used in a variety of situations, such as:
+1. When the value of a slot is known in advance.
+2. When you want to ensure that a slot is always filled with a valid value.
+3. When you want to save time and effort by not having to ask the user for the value of a slot.
+
+Here are some tips for using initialization effectively:
+
+- **Use prompts.** Configure the prompt in case the user disagrees with the suggested value. This means that you should have a plan for what to do if the user does not agree with the suggested value. For example, you could ask the user to provide a different value, or you could provide a list of possible values.
+
+- **Use value checks.** Make sure that the value you are initializing the slot with is valid for the slot. For example, if you are building a chatbot that helps users book flights, you should use a value check to ensure that the value of the date slot is a valid date.
+
+- **Use confirmations.** When you initialize a slot, it is a good idea to confirm with the user that the value is correct. This can be done implicitly, by displaying the value, or explicitly, by asking the user to confirm the  that it is correct. For example, you could say something like *"The destination is Paris. Is that correct?"*
