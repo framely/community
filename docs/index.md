@@ -2,9 +2,9 @@
 layout: home
 title: OpenCUI
 hero:
-  name: No functionality should be hard to find.
-  text: Says ChatGPT
-  tagline: a dual process approach to copilot
+  name: Still make user look for functionality?
+  text: They deserve better, says ChatGPT.
+  tagline: With a dual process approach to copilot
   image: 
     src: images/system1.png
     alt: OpenCUI
