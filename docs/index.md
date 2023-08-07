@@ -2,9 +2,9 @@
 layout: home
 title: OpenCUI
 hero:
-  name: Dependable Conversational Experiences
-  text: on Top of LLMs
-  tagline: Cost-effective conversational user interface
+  name: No functionality should be hard to find.
+  text: Says ChatGPT
+  tagline: a dual process approach to copilot
   image: 
     src: images/system1.png
     alt: OpenCUI
