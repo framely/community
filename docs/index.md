@@ -2,9 +2,9 @@
 layout: home
 title: OpenCUI
 hero:
-  name: Still make user look for functionality?
-  text: They deserve better, says ChatGPT.
-  tagline: With a dual process approach to copilot
+  name: Dependable Conversational Experiences
+  text: on Top of LLMs
+  tagline: Don't make user think how to do things.
   image: 
     src: images/system1.png
     alt: OpenCUI
