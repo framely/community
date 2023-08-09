@@ -2,8 +2,8 @@
 layout: home
 title: OpenCUI
 hero:  
-  text: ChatGPT for your user-facing product
-  tagline: Dependable conversation on top of LLMs.
+  name: ChatGPT for your user-facing product
+  tagline: A dual process approach for dependable conversations on top of LLMs.
   image: 
     src: images/system1.png
     alt: OpenCUI
