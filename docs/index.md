@@ -1,10 +1,9 @@
 ---
 layout: home
 title: OpenCUI
-hero:
-  name: Dependable Conversational Experiences
-  text: on Top of LLMs
-  tagline: Don't make user think how to do things.
+hero:  
+  text: ChatGPT for your user-facing product
+  tagline: Dependable Conversation on Top of LLMs.
   image: 
     src: images/system1.png
     alt: OpenCUI
