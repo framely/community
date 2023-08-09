@@ -24,20 +24,11 @@ export const en = {
       ]
     }
   ],
-  '/guide/': [
+  '/copilot/': [
     {
-      text: 'Quickstart',
+      text: 'Copilot',
       items: [
-        { text: 'Sign up', link: '/guide/signingup' },
-        { text: 'Clone an echo chatbot', link: '/guide/clone-simple-chatbot' },
-        { text: 'Build an echo chatbot', link: '/guide/build-simple-chatbot' },
-        { text: 'Reuse an hours module', link: '/guide/reuse-component' },
-        { text: 'Build an hours module', link: '/guide/build-module' },
-        { text: 'Build an hours provider', link: '/guide/build-provider' },
-        { text: 'Deploy a chatbot', link: '/guide/deploy-to-channel' },
-        { text: 'Get a team', link: '/guide/are-you-ready' },
-        { text: 'OpenCUI workflow', link: '/guide/opencui-flow' },
-        { text: 'Key concepts', link: '/guide/concepts' },
+        { text: 'Why copilot', link: '/copilot/why-copilot' },
       ],
     }
   ],
