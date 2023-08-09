@@ -6,9 +6,9 @@ export const en = [
     activeMatch: '/essentials/',
   },
   {
-    text: 'Quickstart',
-    link: '/guide/',
-    activeMatch: '/guide/',
+    text: 'Copilot',
+    link: '/copilot/why-copilot',
+    activeMatch: '/copilot/',
   },
   {
     text: 'Reference',
