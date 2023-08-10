@@ -29,6 +29,12 @@ export const en = {
       text: 'Copilot',
       items: [
         { text: 'Why copilot', link: '/copilot/why-copilot' },
+        {
+          text: 'How to develop copilot',
+          items: [
+            { text: 'Overview', link: '/copilot/overview' },
+          ],
+        },
       ],
     }
   ],
