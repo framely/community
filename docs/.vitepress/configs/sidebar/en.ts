@@ -33,6 +33,7 @@ export const en = {
           text: 'How to develop copilot',
           items: [
             { text: 'Overview', link: '/copilot/overview' },
+            { text: 'Build copilot', link: '/copilot/build-copilot' },
           ],
         },
       ],
