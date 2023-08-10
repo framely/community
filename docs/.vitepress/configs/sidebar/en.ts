@@ -33,6 +33,7 @@ export const en = {
           text: 'How to develop copilot',
           items: [
             { text: 'Overview', link: '/copilot/overview' },
+            { text: 'Integrate with copilot', link: '/copilot/opencui-sdk' },
           ],
         },
       ],
