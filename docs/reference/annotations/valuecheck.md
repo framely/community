@@ -11,11 +11,21 @@ If the value check logic determines that any of these conditions are not met, it
 ## Overview
 Value check is used to help you ensure that the input values provided are correct information. It works by setting a series of verification conditions that the input value must meet, a message to inform the user when checking fails, and recovery strategies. When the input value fails one of the verification conditions, the bot will respond to the user according to the recovery strategy that is associated with that condition.
 
-- **Condition**: Identify the conditions that need to be checked. It is done by setting a [Kotlin expression](kotlinexpression.md) that evaluates a Boolean value, such as `slot != null`, `function() == true`. You can combine the statements using logical operator such as `&&`(and) or `||`(or), such as `slot != null && slot < 3`.
+- **Condition**: Identify the conditions that need to be met for the value to be considered valid. It is done by setting a [Kotlin expression](kotlinexpression.md) that evaluates a Boolean value, such as `slot != null`, `function() == true`. You can combine the statements using logical operator such as `&&`(and) or `||`(or), such as `slot != null && slot < 3`.
 
 - **Inform**: Define the messages the bot informs users if the value check fails. The messages should be clear and concise, and they should explain the specific error that occurred.
 
 - **Recovering strategy**: Set recovery strategies for invalid values. You can specify what the bot should do if there are invalid values. The default strategy is to clear the current slot and according to the fill strategy to re-ask the user.
+
+::: details More detailed explanation of how to set it
+![value check](/images/annotation/valuecheck/value-check.png)
+1. Go to the **slot detail page**, and select the **Annotation** tab.
+2. **Enable** value check and click the **Add** button.
+3. In the popup window:
+   - Identify the **conditions** that need to be met for the value to be considered valid.
+   - Define the **inform** messages that the bot will display to the user if the value check fails.
+   - Set **recovery strategies** for invalid values.
+:::
 
 For example, if you are a restaurant and you want to ensure that users only make reservations during your business hours, you could set a value check condition that checks whether the date and time the user provides is within your business hours: 
 ```kotlin
@@ -23,11 +33,11 @@ slot != null && slot.isAfter(businessHoursStart) && slot.isBefore(businessHoursE
 ```
 If the value check fails, the bot could display inform message that says:
 
-*"The date and time you provided is not within our business hours. Please choose a different date and time."*
+```
+"The date and time you provided is not within our business hours. Please choose a different date and time."
+```
 
 And clear the current slot value and re-ask the user for the date and time.
-
-![value check](/images/annotation/valuecheck/value-check.png)
 
 ## Limitations
 

@@ -15,6 +15,7 @@ The data passed to copilot project includes the **data scope** and the **context
 
 #### Define data scope
 As an assistant, copilot should share the same permissions as app users have. Therefore, determining the scope of information accessible to copilots is crucial. In other words, it involves defining the range of data that can be provided to the copilot.
+
 For instance, consider OpenCUI's copilot as a prime example. When users ask to modify a specific type, such as adding a response, the copilot needs to determine which type the users are referring to. To achieve this, data accessible to users must be passed to the DU so that it can recognize the mentioned type. Commonly mentioned names by app users in OpenCUI include "frame" (encompassing both frame and skill), "entity," and more. For **frontend developers**, you can refer to the [sending message](./opencui-sdk.md#send-messages) section to learn how to pass this information, while **copilot builders** can consult the guide on building entites to learn how to declare the related data structure on the OpenCUI platform.
 
 #### Define context
@@ -24,6 +25,7 @@ Taking OpenCUI copilot as an example, the context primarily consists of the orga
 ### Outputs of conversational application
 There are two ways to execute actions in a conversational application: implicit and explicit. In the implicit approach, when users express their requests, the copilot directly performs the corresponding actions on their behalf. In contrast, the explicit approach involves the copilot providing action buttons to app users, enabling them to execute the actions themselves. To maintain better control, we prioritize the implicit method for executing actions.
 For example, let's consider OpenCUI platform. If users want to clone a chatbot, they can create a new chatbot by selecting the cloning option, which is an action. Additionally, if the users are not not currently on the appropriate page to perform this action, they need to direct to the right page first, which is also an action. For **frontend developers**, you can refer to the [action](./opencui-sdk.md#action)  section to learn the data structure required, while **copilot builders** can look up the universal message to grasp the basic format of actions. The "actionParams" field in the action date type and the "payload" field in universal message need to be determined collaboratively between frontend developers and the copilot builders. Taking the previous example into consideration, the "actionParams" ("payload") field for the clone action can be structured as follows:
+
 ```json
 {
     "clickAction":"custom",
@@ -35,7 +37,7 @@ For example, let's consider OpenCUI platform. If users want to clone a chatbot, 
 ```
 
 ## Build copilot
-Once the events and actions are settled, copilot builders can start to build conversational applications in OpenCUI. For guidance on how to build a copilot, please refer to "How to build a copilot project".
+Once the events and actions are settled, copilot builders can start to build conversational applications in OpenCUI. For guidance on how to build a copilot, please refer to [How to build a copilot](./build-copilot.md).
 
 ## Integrate copilot with OpenCUI SDK
 After settling the events and actions, frontend developers can start to integrate conversational applications with OpenCUI SDK. To learn how to integrate with SDK, please refer to [Building copilot for your app with OpenCUI](./opencui-sdk.md).

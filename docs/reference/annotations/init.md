@@ -18,10 +18,30 @@ To set initialization, you need to specify the target slot and the value.
 There are two ways to set initialization: slot level and frame level.
 
 - **Slot level**: This is the simplest type of initialization. You do not need to worry about the target slot, as it is the slot itself. You only need to specify the value that you want to initialize the slot with. 
+  
+  ::: details More detailed explanation of how to set it on slot level
+  ![slot level init](/images/annotation/initialization/slot_init_1.png)
+  1. Go to the **slot detail page**, and select the **Annotation** tab.
+  2. **Enable** Initialization and click the **Add** button.
+  3. In the popup window, enter the desired value by kotlin expression and **Save**.
+  :::
 
-- **Frame level**: This is more flexible than slot level initialization. It allows you to initialize multiple slots including nested slots in a single place. You can also specify the order in which the slots are initialized. Frame level initialization is set in the "**Transition > State**" section.
+- **Type level**: This is more flexible than slot level initialization. It allows you to initialize multiple slots including nested slots in a single place. You can also specify the order in which the slots are initialized. Frame level initialization is set in the "**Transition > State**" section.
 
-![initialization](/images/annotation/initialization/init.png)
+  ::: details More detailed explanation of how to set it on type level
+  ![frame level init](/images/annotation/initialization/frame_init_1.png)
+  1. On the type level, select the **Annotation** tab.
+  2. In the **Transition** section, click the **Add** button.
+  
+  ![frame level init](/images/annotation/initialization/frame_init_2.png)
+
+  3. On the **Transition detail page**, select the following options:
+     - **Trigger method**: `State`
+     - **State**: 
+       - Target slot: The state that will trigger the initialization.
+       - State: `SlotInit`.
+     - **Update action**: Select the update action you need. For example, you can add a **Fill slot** action to fill the slot with a specific value.
+  :::
 
 ## Limitations
 
