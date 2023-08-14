@@ -52,6 +52,7 @@ export const en = {
         { text: 'Value recommendation', link: '/reference/annotations/valuerec' },
         { text: 'Value check', link: '/reference/annotations/valuecheck' },
         { text: 'Confirmation', link: '/reference/annotations/confirmation' },
+        { text: 'Post-fill action', link: '/reference/annotations/postfillaction' },
         { text: 'State transition', link: '/reference/annotations/transition' },
       ],
     },    
