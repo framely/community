@@ -5,7 +5,7 @@ hero:
   name: ChatGPT for your user-facing product
   tagline: A dual process approach for dependable conversations on top of LLMs.
   image: 
-    src: images/system1.png
+    src: images/copilot_hero.png
     alt: OpenCUI
   actions:
     - theme: brand

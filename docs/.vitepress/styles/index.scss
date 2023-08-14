@@ -50,6 +50,7 @@
   .image-container{
     width: 500px;
     height: 500px;
+    transform: translate(16px, 0px);
     .image-src{
       max-width: 500px;
       max-height: 500px;
@@ -59,6 +60,7 @@
     .image-container{
       width: 320px;
       height: 500px;
+      transform: translate(0px, 0px);
       .image-src{
         max-width: 360px;
         max-height: 360px;
