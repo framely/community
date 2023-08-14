@@ -14,6 +14,7 @@ requests, they eliminate the steep learning curve typically associated with feat
 copilots offer context-dependent assistance, reducing the effort required for both new and casual users to derive
 value from your application.
 
+![How copilot works](/images/copilot/process.png)
 
 Copilot is typically developed using the same client/server architecture: there will be copilot frontend that coexists
 with your app's frontend, and then there will be a copilot backend, or simply a special chatbot that you can build 
