@@ -1,10 +1,10 @@
 # Dual process: new paradigm for building chatbot
 
-:::info Syetem 1 vs System 2
-![Syetem 1 vs System 2](/images/essentials/system1.webp)
-:::
-
 ChatGPT has demonstrated that one can build a chatbot capable of generating sensible responses to almost any question based on the collective knowledge encoded in the web dump on which it was trained. Recently, prompt engineering, together with retrieval-augmented generation, has emerged as a new way for businesses to create chatbots that expose business-specific information found in past conversations and existing documents, without the need to write a single line of conversation flow code.
+
+:::info Syetem 1 vs System 2
+![Syetem 1 vs System 2](/images/system1.png)
+:::
 
 ## Prompt engineering with LLM is not enough
 Using natural language to program or control the every aspect of LLMs’ output, prompt engineering is democratizing and greatly reducing the cost of the chatbot development. As LLMs become more powerful, this new development paradigm is likely to become an increasingly important. However, it [lacks the precise control sometimes required by business use cases](https://opencui.medium.com/service-chatbot-using-chatgpt-case-study-1-f76aa80409e9). Furthermore, when it failed to generate desired output, the ways to fix it are limited:
