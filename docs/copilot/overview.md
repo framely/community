@@ -1,17 +1,38 @@
 # Overview
 
-OpenCUI is a practical framework to build applicaiton with conversational user interface. At a high level, it follows a dual process approach, leveraging LLMs (Language Models) for answering informational or low-impact queries through prompt engineering, and relying on software engineering for high-impact and transactional queries. By integrating LLM-based dialog understanding with schema-based interaction logic, OpenCUI enables the cost-effective development of natural and dependable conversational experiences.
+OpenCUI is a practical framework for building applications with a conversational user interface. At a high level, 
+it adopts a dual-process approach, utilizing Language Models (LLMs) to address informational or low-impact queries
+through prompt engineering. For high-impact and transactional queries, it relies on software engineering. 
+Through the integration of LLM-based dialog understanding and schema-based interaction logic, 
+OpenCUI facilitates cost-effective development of natural and reliable conversational experiences.
 
-One valuable application of OpenCUI is the creation of "copilots," which serve as conversational companions within your existing apps. These copilots respond to user requests in natural language, removing the steep learning curve typically associated with feature-rich applications. Copilots deliver value to both new and casual users by providing assistance in a context-dependent manner during their interactions. Instead of directly triggering backend APIs, copilots offer information and frontend action buttons to guide users through your app interactions. The development of a copilot involves three main steps:
-1. **Define copilot primitives**: Tailor copilot primitives to suit the specific needs of your application.
-2. **Build conversational application**: Utilize the OpenCUI platform to build a conversational application. Attach dialog annotations to function schemas to ensure your copilot can provide reliable responses.
-3. **Integrate OpenCUI SDK**: Integrate the conversational application with OpenCUI SDK to bring your copilot to life.
+OpenCUI is specially designed to aid in building 'copilots,' which function as conversational companions for your
+existing apps. Unlike regular chatbots that directly trigger backend APIs upon request, copilots provide information 
+and frontend action buttons to guide users through app interactions. This allows you to address existing UX issues 
+without the need to rebuild everything for a conversational user interface. As copilots respond to natural language
+requests, they eliminate the steep learning curve typically associated with feature-rich applications. Furthermore, 
+copilots offer context-dependent assistance, reducing the effort required for both new and casual users to derive
+value from your application.
+
+
+Copilot is typically developed using the same client/server architecture: there will be copilot frontend that coexists
+with your app's frontend, and then there will be a copilot backend, or simply a special chatbot that you can build 
+using OpenCUI. To develop a copilot, or conversational companion for your application, you just need to follow three 
+steps:
+1. **Define API between your app and copilot**: This includes how to describe the context, and what action can your application perform.
+2. **Build copilot backend**: This can be done by attaching dialog annotations to function schemas to ensure your copilot can provide reliable responses.
+3. **Implement the API and integrate OpenCUI SDK**: Implement the API defined in step #1, and copilot frontend by integrating with OpenCUI SDK to copilot backend built in step #2.
 
 ## Define copilot primitives
-Before starting to develop the copilot, copilot builders and app frontend teams need to work together to define the data structures that will be utilized between the copilot project and the app frontend. 
+Before starting to develop the copilot, copilot builders and app frontend teams need to work together to define the data
+structures and API that frontend team will provide for copilot so that copilot frontend can capture the current context,
+as well as asking app frontend to execute some action.
 
-### Inputs from app frontend
-The data passed to copilot project includes the **data scope** and the **context**. The data scope is essential for the dialog understanding(DU) component of the conversation application. App users can access the data within this scope by simply mentioning its name, allowing the DU to comprehend the intended data.  On the other hand, the context represents the information that conversation application needs to collect from the app users in order to identify their current state or page. 
+### API provides state of your app frontend
+To provide the context dependent response to user's query, it is important that copilot client get the context that user
+are currently in your app. This information can then be passed to copilot backend via OpenCUI SDK in form of **data 
+scope** 
+and the **context**. The data scope is essential for the dialog understanding(DU) component of the conversation application. App users can access the data within this scope by simply mentioning its name, allowing the DU to comprehend the intended data.  On the other hand, the context represents the information that conversation application needs to collect from the app users in order to identify their current state or page. 
 
 #### Define data scope
 As an assistant, copilot should share the same permissions as app users have. Therefore, determining the scope of information accessible to copilots is crucial. In other words, it involves defining the range of data that can be provided to the copilot.
