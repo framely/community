@@ -4,7 +4,7 @@ This doc describes how to implement a copilot frontend using the OpenCUI SDK, us
 [OpenCUI platform](https://build.opencui.io) as an example to guide you through building a copilot on your website.
 
 ### Install
-The OpenCUI copilot sdk supports javascript and typecript, and the OpenCUI platform is built using typescript + react.
+The OpenCUI copilot sdk supports javascript and typescript, and the OpenCUI platform is built using typescript + react.
 1. install by npm: `npm install opencui --save`
 2. Install by yarn: `yarn add opencui`
 

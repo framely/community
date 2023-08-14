@@ -30,11 +30,20 @@ The user query handling process involves the following steps:
 
 Copilot is typically developed using the same client/server architecture: there will be copilot frontend that coexists
 with your app's frontend, and then there will be a copilot backend, or simply a special chatbot that you can build 
-using OpenCUI. To develop a copilot, or conversational companion for your application, you just need to follow three 
-steps:
-1. **Design/implement API for copilot**: First make your app frontend copilot ready, by design and implement API so 
-   that copilot frontend can use. 
+using OpenCUI. As conversational companion to your application, copilot needs to interact with your application in 
+order to provide context dependent help to your user. The interaction between the copilot and your application are
+defined by the following meta API served by your application:
+```
+fun get_state(): List<FrameEvent>  // This function simply return the state in json form.
+fun execute(action_in_json: Action)  // This function execute the action defined in the json format.
+```
+To build a copilot for your app, you just need to complete the follow two steps:
+1. **Implement copilot meta API in your app**: You need to design the type system to describe the interaction state 
+   and frontend action so that user can drive through natural language command.
 2. **Build copilot backend**: This can be done by attaching dialog annotations to function schemas to so 
    that copilot follows the desired interaction logic.
-3. **Build copilot frontend**: Implement copilot frontend by using the API your app provider and integrating with 
-   OpenCUI SDK to interact with copilot backend.
+
+For most use cases, you can use our reference implementation of copilot frontend (currently only web version) since 
+copilot frontend does not need understand the semantics of copilot meta API. This reference implementation is based
+on copilot meta API and OpenCUI SDK for interaction with copilot backend. The reference implementation are open 
+sourced so that you can check out in case you need to make modification.  
