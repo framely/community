@@ -29,15 +29,10 @@ export const en = {
       text: 'Copilot',
       items: [
         { text: 'Why copilot', link: '/copilot/why-copilot' },
-        {
-          text: 'How to develop copilot',
-          items: [
-            { text: 'Overview', link: '/copilot/overview' },
-            { text: 'Define and implement API', link: '/copilot/define-api' },
-            { text: 'Build copilot backend', link: '/copilot/build-copilot' },
-            { text: 'Build copilot frontend', link: '/copilot/opencui-sdk' },
-          ],
-        },
+        { text: 'Overview on copilot development', link: '/copilot/overview' },
+        { text: 'Define and implement API', link: '/copilot/define-api' },
+        { text: 'Build copilot backend', link: '/copilot/build-copilot' },
+        { text: 'Build copilot frontend', link: '/copilot/opencui-sdk' },
       ],
     }
   ],
