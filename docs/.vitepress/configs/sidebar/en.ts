@@ -33,8 +33,9 @@ export const en = {
           text: 'How to develop copilot',
           items: [
             { text: 'Overview', link: '/copilot/overview' },
-            { text: 'Build copilot', link: '/copilot/build-copilot' },
-            { text: 'Integrate with copilot', link: '/copilot/opencui-sdk' },
+            { text: 'Define and implement API', link: '/copilot/define-api' },
+            { text: 'Build copilot backend', link: '/copilot/build-copilot' },
+            { text: 'Build copilot frontend', link: '/copilot/opencui-sdk' },
           ],
         },
       ],
