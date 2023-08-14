@@ -1,6 +1,7 @@
 # Building copilot for your app with OpenCUI
 
-This doc describes how to implement a copilot on the frontend using the OpenCUI SDK, using the copilot implementation on [OpenCUI platform](https://build.opencui.io) as an example to guide you through building a copilot on your website.
+This doc describes how to implement a copilot frontend using the OpenCUI SDK, using the copilot implementation on 
+[OpenCUI platform](https://build.opencui.io) as an example to guide you through building a copilot on your website.
 
 ### Install
 The OpenCUI copilot sdk supports javascript and typecript, and the OpenCUI platform is built using typescript + react.
@@ -22,7 +23,8 @@ const client = OpencuiClient.create({
 });
 ```
 
-Before this step, you need to make sure that you have built and deployed your copilot bot on the [OpenCUI platform](https://build.opencui.io). See How to build and deploy copilot bot. CopilotConfig parameter description of function create:
+Before this step, you need to make sure that you have built and deployed your copilot backend on the [OpenCUI platform]
+(https://build.opencui.io). See How to build and deploy copilot bot. CopilotConfig parameter description of function create:
 
 | Field name    | Type                 | Required | Description                                                                                                                                                                                             |
 |---------------|----------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
