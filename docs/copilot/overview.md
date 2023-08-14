@@ -14,26 +14,27 @@ requests, they eliminate the steep learning curve typically associated with feat
 copilots offer context-dependent assistance, reducing the effort required for both new and casual users to derive
 value from your application.
 
-:::info The process of handling user query
+:::info Life of a copilot query
 ![How copilot works](/images/copilot/process.png)
 :::
 
 The user query handling process involves the following steps:
-1. When the **user** sends text to the **copilot frontend**, the **app frontend** will send context to the **copilot frontend**.
-2. The **copilot frontend** passes the user query to the **copilot backend**.
+1. The **user** inputs text to the **copilot frontend**, the **copilot frontend** also query **your app** for 
+   the context where users are in your app.
+2. The **copilot frontend** passes the user query and context to the **copilot backend**.
 3. Based on the predefined skills, the **copilot backend** responds with relevant text and suggested actions to the **copilot frontend**.
 4. The **copilot frontend** displays the text and suggested actions to the **user**.
-5. The **user** selects and performs a specific suggested action.
-6. The **copilot frontend** executes the action within the **app frontend**.
+5. The **user** clicks a specific suggested action.
+6. The **app frontend** executes the action requested by the **copilot frontend**.
+7. The **app frontend** bring user to the target state, saving user from figuring out how do something.
 
 Copilot is typically developed using the same client/server architecture: there will be copilot frontend that coexists
 with your app's frontend, and then there will be a copilot backend, or simply a special chatbot that you can build 
-using OpenCUI. To develop a copilot, or conversational companion for your application, you just need to follow four 
+using OpenCUI. To develop a copilot, or conversational companion for your application, you just need to follow three 
 steps:
-1. **Define/implement API for copilot**: This includes how to describe the context, and what actions can your 
-   application perform.
+1. **Design/implement API for copilot**: First make your app frontend copilot ready, by design and implement API so 
+   that copilot frontend can use. 
 2. **Build copilot backend**: This can be done by attaching dialog annotations to function schemas to so 
-   that 
-   copilot follows the desired interaction logic.
-3. **Build copilot frontend**: Implement copilot frontend by integrating with OpenCUI SDK to interact with copilot 
-   backend.
+   that copilot follows the desired interaction logic.
+3. **Build copilot frontend**: Implement copilot frontend by using the API your app provider and integrating with 
+   OpenCUI SDK to interact with copilot backend.
