@@ -1,11 +1,27 @@
-# Define API for copilot
-Before starting to develop the copilot, copilot builders and app frontend teams need to work together to define the data
-structures and API that frontend team will provide for copilot so that copilot frontend can capture the current context,
-as well as asking app frontend to execute action.
+# Implement API for copilot
+Copilot meta API provides ways for copilot client to get the current 
+   state of user interaction in JSON, as well as execute actions encoded in JSON.  
 
-### API provides state of your app frontend
-To provide the context dependent response to user's query, it is important that copilot client get the context that user
-are currently in your app. This information can then be passed to copilot backend via OpenCUI SDK in form of **data 
+In general, there is not much special logic in the 
+Before starting to develop the copilot, product manager and architect need to work together to design the data
+structure needed by the following copilot API so that copilot can provide context dependent help for your users. There 
+are only two functions in this API:
+
+
+
+There are two main aspects that this API need to take care of. First, a query interface where copilot frontend can 
+use to get the exact application state for the current user session, which can be used as the context, or implicit input 
+for copilot backend. Capturing the context can save communication effort on the user side while enabling more natural 
+interaction. Second, an execution interface so that your app can execute the predefined frontend action for user, 
+which can bring value to users without needing them to learn how to achieve something with your app.  
+
+
+### API for querying state of your app
+To provide the context dependent response to user's query, it is important that copilot client get the interaction
+state that user are currently in your app. The state of user session captures  
+
+
+This information can then be passed to copilot backend via OpenCUI SDK in form of **data 
 scope** 
 and the **context**. The data scope is essential for the dialog understanding(DU) component of the conversation  
 application. App users can access the data within this scope by simply mentioning its name, allowing the DU to  
