@@ -14,7 +14,17 @@ requests, they eliminate the steep learning curve typically associated with feat
 copilots offer context-dependent assistance, reducing the effort required for both new and casual users to derive
 value from your application.
 
+:::info The process of handling user query
 ![How copilot works](/images/copilot/process.png)
+:::
+
+The user query handling process involves the following steps:
+1. When the **user** sends text to the **copilot frontend**, the **app frontend** will send context to the **copilot frontend**.
+2. The **copilot frontend** passes the user query to the **copilot backend**.
+3. Based on the predefined skills, the **copilot backend** responds with relevant text and suggested actions to the **copilot frontend**.
+4. The **copilot frontend** displays the text and suggested actions to the **user**.
+5. The **user** selects and performs a specific suggested action.
+6. The **copilot frontend** executes the action within the **app frontend**.
 
 Copilot is typically developed using the same client/server architecture: there will be copilot frontend that coexists
 with your app's frontend, and then there will be a copilot backend, or simply a special chatbot that you can build 
