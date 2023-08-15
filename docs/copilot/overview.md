@@ -26,7 +26,7 @@ The user query handling process involves the following steps:
 4. The **copilot frontend** displays the text and suggested actions to the **user**.
 5. The **user** clicks a specific suggested action.
 6. The **app frontend** executes the action requested by the **copilot frontend**.
-7. The **app frontend** bring user to the target state, saving user from figuring out how do something.
+7. The **app frontend** bring user to the target state, saving user from figuring out how to do this.
 
 Copilot is typically developed using the same client/server architecture: there will be copilot frontend that coexists
 with your app's frontend, and then there will be a copilot backend, or simply a special chatbot that you can build 
