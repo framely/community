@@ -1,11 +1,14 @@
-# How to build a copilot？
-This guide will demonstrate how to build a copilot using the OpenCUI platform, taking OpenCUI copilot as an example. The OpenCUI copilot provides functionalities such as direct access, onboarding, and feature discovery.
+# Build a copilot
+This guide will demonstrate how to build a copilot using the OpenCUI platform, taking OpenCUI copilot as an example.
+The OpenCUI copilot provides functionalities such as direct access, onboarding, and feature discovery. Copilot is 
+simply a chatbot that provide user to navigate your application instead of doing thing directly on your behalf.
 
 ## Before you start
 To gain a basic understanding, it is important to first learn [key concepts](https://opencui.io/guide/concepts.html) about type systems and dialog annotations.
 
 ## Declare copilot primitives
-Before diving into building the conversational user interface, you need to declare the data structures that will be shared with your frontend developers. These structures include the data scope that app users can access and the context of the current context/page.
+Before diving into building the conversational user interface, you need to declare the data structures that will be 
+shared with your frontend developers. These structures include the context described in the stack of pages.
 
 ### Build entities
 As is mentioned in [defining data scope](./overview.md#define-data-scope) section, to enable dialog understanding (DU)  in comprehending information mentioned by app users, it is necessary to create entity types that encode the accessible information. 
