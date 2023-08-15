@@ -1,99 +1,70 @@
 # Confirmation
-When a user orders a spicy sandwich, they may specify a level of spiciness that could be too intense for some people. To prevent discomfort, a bot might confirm if the user actually desires the requested spiciness level.
+Confirmations are a way for chatbots to check that they have understood the user's input correctly and that the user is happy with the actions that the chatbot is taking. They can help to build trust between the user and the chatbot. When users know that the chatbot is understanding them correctly and that they are in control of the conversation, they are more likely to trust the chatbot and use it again in the future.
 
-```json
-Chatbot: "How spicy do you want for your Tofu sandwich? On scale of 1 to 5?"
-User: "5 please?"
-Chatbot: "We use strong Jalapeño, so level 5 is considered deadly, are you sure you want level 5?"
-```
+Confirmations can be used in an implicit or explicit way:
+
+- **Implicit confirmations** are subtler and do not require the user to explicitly state that they agree with the chatbot. For example, a chatbot might say *"Alright, 4 guests"* after the user has said *"I want to book a table for 4 guests."* This implicit confirmation shows that the chatbot has understood the user's request and is moving on to the next step.
+
+- **Explicit confirmations** are more direct and require the user to explicitly state that they agree with the chatbot. For example, a chatbot might say *"I understand that you want to book a table for 4 guests. Is that correct?"* This explicit confirmation gives the user a chance to correct the chatbot if it has misunderstood their request.
 
 ## Overview
-Even when a user's choice for a slot passes the value check, the business may still feel that there are things that the user might not know. As a result, the bot can inform the user of something through implicit confirmation or ask the user to confirm their choice through explicit confirmation.
+Confirmations can help to prevent errors and keep users happy. You can choose the type of confirmation to display to the user based on different conditions, depending on the situation. The system will check the confirmations in the order you specify, from top to bottom. This means that the chatbot will only show the first confirmation that is met. If no condition is met, the system will not show any confirmations.
 
-To control this behavior, you can do the following:
-- Decide which types of confirmation to use: explicit and implicit.
-- Specify a conditional statement that triggers the confirmations.
-- Support multi-valued slot confirmation via per-value confirmation.
-- Provide corrections on the default and interruption strategies.
-- Allow for customization of the "yes/no" understanding of user utterances under this context for explicit confirmations."
+- **Condition**: The situation that must be met before a confirmation is sent. For example, a chatbot might need to confirm the user's credit card number before making a purchase.
 
-## How to use
-![confirmation](/images/annotation/confirmation/confirmation.png)
+- **Confirmation**: The message that the chatbot sends to the user to check that they have understood the input correctly. Confirmation can be implicit or explicit: 
 
-Confirmation is an optional annotation that can be defined at two different levels: slot level and type level, each with its own meaning:
+  - **Implicit**: Messages that simply inform the user that their input has been received. They do not require the user to reply, but the user may still provide feedback if they want to make a correction.
 
-- Slot level: The bot will confirm each slot that is defined.
-- Type level: The bot will confirm after all slots on the frame/skill have been completed, bundling slots together for confirmation. Users can accept and modify batch confirmations.
+  - **Explicit**: Messages explicitly check with the user that their input or request was understood correctly. The chatbot will not perform the action until it receives a reply from the user, usually in the form of a yes/no or similar response.
 
-### Conditions
-Using conditions, the bot can confirm with the user when a set of conditions is met. [Kotlin code expressions](kotlinexpression.md) can be used to specify the timing of key pieces of information that should be implied or requested.
+When using explicit confirmations, you can customize how the system understands user utterances that are interpreted as yes or no. This is because there are many ways to say yes or no in different contexts, such as *"Red is my favorite color."* To handle these synonym expressions of yes and no, you can use affirmative and negative expressions.
 
-```json
-User: "Get me two tickets for Adele on Jul 1st."
-Chatbot: "Adele on Jul 1st, the Event Organizer is requiring all attendees to have been fully vaccinated (14 days past final vaccination show) AND to have received a negative COVID-19 test within 48 hours of the event. Please confirm you want to continue?"
-User: "confirm"
-Chatbot: "Please select your seats"
-```
+- **Affirmative expressions** are words or phrases that mean yes, such as *"Sounds good"*, *"I agree"*, and *"Go ahead and delete it."*
 
-In the example above, the bot will confirm the COVID-19 information and request a yes or no answer only when the artist is Adele. For other artists, this confirmation will not be triggered.
+- **Negative expressions** are words or phrases that mean no, such as *"I'm not comfortable with that"*, *"I'm not interested"*, and *"Not really, I'll hold off on sending it."*
 
-```json
-User: "Get me two tickets for Coldplay on Aug 16th."
-Chatbot: "Coldplay on Aug 16th, please select your seats."
-```
-
-In this case, there are multiple conditions that need to be set here:
-
-![multiple conditions](/images/annotation/confirmation/confirmation_table.png)
- 
-- One should be like `artist!!.value == "adele"` or `artist == Artist("adele")`:
-
-![condition](/images/annotation/confirmation/condition_1.png)
-
-- Another can be simple, like `artist != null`:
-
-![condition](/images/annotation/confirmation/condition_2.png)
-
-Bot will check the conditions according to the top-to-bottom order, and ask user for confirmation when the condition is met:  
-- If the first condition is `true`, bot will respond the confirmation to the user.
-- if the first condition is `false`, bot will move on to the next condition, and so on.
-
-
-### Explicit
-![explicit](/images/annotation/confirmation/confirmation_condition_explicit.png)
-
-Explicit confirmation involves checking with the user that their input or request was understood correctly. It is often used to confirm critical details, and the bot will not perform the action until it receives a reply from the user, usually in the form of a yes/no or similar response.
-
-For example, you can double-check with the user before performing an action that would be difficult to undo, such as canceling an order.
-
-```json
-User: "Can I cancel an order?"
-Chatbot: "Sure. Could you provide me with the order number?"
-User: "123456"
-Chatbot: "I found the order: [order details] Should I go ahead and Cancel the order?"
-User: "Yes."
-Chatbot: "I have cancelled the order for you. "
-```
-
-But there are many ways to say yes or no by the user. To handle the synonym expressions of "yes/no", **Affirmatives** and **Negatives** provide the way for you to customize the "yes/no" understanding in specific contexts. 
-
-![implicit](/images/annotation/confirmation/confirmation_expression.png)
-
-For instance, the phrase *"Sorry I need to change"* may imply a new intention in some situations, but it may signify a negative response to confirmation in other contexts. By defining all possible cases in **Affirmatives** and **Negatives**, the bot can better understand user responses and provide appropriate actions.
+By using affirmative and negative expressions, you can help the system to correctly understand user utterances that are interpreted as yes or no, even if they are not explicitly saying *"yes"* or *"no"*.
 
 ::: tip Note
-The common understanding of confirmation yes and no is already supported in **system skill** *`io.opencui.core.confirmation.Yes`* and *`io.opencui.core.confirmation.No`*, so no need to define it here. But if needed, you can also customize system skill behavior by adding expressions.  
+The common understanding of confirmations for yes and no are already supported by the system skills `io.opencui.core.confirmation.Yes` and `io.opencui.core.confirmation.No`. So, there is no need to define them again. However, if you need to customize the system skill's behavior, you can add expressions to define your own confirmations.
 :::
 
-### Implicit
-![implicit](/images/annotation/confirmation/confirmation_condition_implicit.png)
+Confirmations can be set at two levels: slot level and frame level.
 
-Unlike explicit confirmation, implicit confirmation does not require a reply from the user. It simply confirms that the input has been received as an FYI notification and an operation will take place without asking for user approval. Although users might give feedback if they want to make a correction.
+- **Slot level** confirmations are used to confirm each slot that is defined. If the slot is multi-valued, multi-valued confirmation can be defined, which will confirm each value of the slot.
+  
+  ::: details More detailed explanation of how to set it on slot level
+  ![confirmation](/images/annotation/confirmation/confirmation.png)
+  1. Go to the **slot detail page**, and select the **Annotation** tab.
+  2. **Enable** Confirmation and click the **Add** button.
+  3. In the popup window, set the conditions, confirmations and **Save**.
+  :::
 
-```json
-User: "I need to change the shipping address."
-Chatbot: "Can I get your street address?"
-User: "[address]"
-Chatbot: "Get. I will set your street address to be [address]. You will receive an email confirmation of this change in a few minutes. What else can I help you with?"
-```
+- **Frame level** confirmations are used to confirm after all slots on the frame/skill have been completed. The chatbot will bundle slots together for confirmation. Users can accept and modify batch confirmations.
 
+  ::: details More detailed explanation of how to set it on type level
+  ![type level confirmation](/images/annotation/confirmation/type_confirmation.png)
+  1. On the type level, select the **Annotation** tab.
+  2. In the **Confirmation** section, click the **Add** button.
+  3. In the popup window, set the conditions, confirmations and **Save**.
+  :::
+
+## Best practice
+
+Confirmations are a great way to improve the accuracy and usability of your chatbot. They can be used to prevent errors by ensuring that users have provided accurate information, ensure user satisfaction by giving users the opportunity to correct any mistakes that have been made, and build trust between users and chatbots by showing that the chatbot is taking the user's input seriously.
+
+When using confirmations, it is important to consider the following:
+1. **Use confirmations at key points in the conversation.** This includes:
+   - When the chatbot is asking for information.
+   - When the chatbot is about to take a significant action, such as booking a reservation or making a purchase.
+   - When the chatbot is not sure if it has understood the user's input correctly.
+   - When the user is likely to make a mistake, such as entering their credit card number.
+
+2. **Use confirmations consistently.** This will help users know when to expect a confirmation and make it easier for them to understand what the chatbot is asking them to confirm.
+
+3. **Use clear and concise language in your confirmations.** The user should be able to easily understand what the chatbot is asking them to confirm. Avoid using jargon or technical terms that the user may not understand.
+
+4. **Give the user a chance to correct the chatbot if it has misunderstood their request.** 
+
+5. **Use a friendly and conversational tone in your confirmations.** This will help to build rapport with the user and make them feel more comfortable interacting with the chatbot.
