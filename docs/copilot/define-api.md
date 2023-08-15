@@ -32,7 +32,7 @@ PageContext frame](./build-copilot.md#build-a-frame) to learn how to declare the
 }
 ```
 
-### Copilot response
+### Support the execution of actions
 Upon receiving the user input along with the context that they are in, copilot can provide help in two ways: 
 information and action in form of buttons. The action button captures user intention, and once clicked, will change 
 app state as if users have interacted with app (by mouse clicking and keyboard inputting) in the way that can achieve 
