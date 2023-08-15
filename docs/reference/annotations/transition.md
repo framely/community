@@ -56,6 +56,26 @@ Condition triggerred transition allows you to customize interaction logic based 
 Transition is a low level control that you can use to implement arbitrary conversational interaction logic. But with great power, comes with great responsibility. The low level control can adversely impact the interaction logic defined at slot filling level if not used carefully. Please test your design when it comes to transition.
 :::
 
+#### Post-fill action
+The post-fill action provides a shortcut to customize the behavior of the user interaction after filling a slot at the slot level. It allows for additional information to be provided to users, filling other slots based on the value of the current slot, and much more.
+
+For example, in a restaurant reservation scenario, the post-fill action can be used to inform users about birthday discounts when they provide their preferred date for a reservation. If the chosen date matches their birthdate, the chatbot will notify them about personalized discounts and benefits.
+
+To set up the post-fill action, you need to define conditions and the update action:
+- **Conditions**: The conditions  under which the post-fill action should be executed.
+- **Update action**: The actions to be executed when the conditions are met. You can view the whole actions in [system actions](#system-actions).
+
+::: details Details on how to set it up
+
+![add post-fill action](/images/annotation/transition/add_post_fill_action.png)
+
+1. Enter a slot, and switch to the **Annotation** tab.
+2. Enable **Post-fill action** and click the **Add** button.
+
+![detail](/images/annotation/transition/post-fill_action.png)
+
+3. In the popup window, enter the **Conditions** using Kotlin expressions and select the desired **Update action**.
+:::
 
 ## System actions
 ![transition-action](/images/annotation/transition/transition-action.png)
@@ -108,24 +128,3 @@ Transfer the current conversation to a human agent. Please make sure you have co
 
 #### Close session
 Clear the entire session. For example, if the bot gets stuck with the user, for a better experience, the bot should actively jump out of the stuck and restart with the user under pre-set conditions.
-
-#### Post-fill action
-The post-fill action provides a method to customize the behavior of the user interaction after filling a slot. It allows for additional information to be provided to users, filling other slots based on the value of the current slot, and even starting another skill if necessary.
-
-For example, in a restaurant reservation scenario, the post-fill action can be used to inform users about birthday discounts when they provide their preferred date for a reservation. If the chosen date matches their birthdate, the chatbot will notify them about personalized discounts and benefits. Moreover, if the user wants to request a specific table arrangement, the chatbot can initiate a separate skill specifically designed for handling such requests.
-
-To set up the post-fill action, you need to define the target slot, conditions, and the update action:
-- **Target slot**: The slot that triggers the post-fill action when it's filled.
-- **Conditions**: The conditions  under which the post-fill action should be executed.
-- **Update action**: The actions to be executed when the conditions are met. You can view the whole actions in [system actions](./transition.md#system-actions).
-
-To set up post-fill actions, follow the steps below:
-
-![add post-fill action](/images/annotation/transition/add_post_fill_action.png)
-
-1. Enter a slot, and switch to the **Annotation** tab.
-2. Enable **Post-fill action** and click the **Add** button.
-
-![detail](/images/annotation/transition/post-fill_action.png)
-
-3. In the popup window, enter the **Conditions** using Kotlin expressions and select the desired **Update action**.
