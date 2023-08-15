@@ -1,22 +1,21 @@
-# Implement API for copilot
-Copilot meta API provides ways for copilot client to get the current 
-   state of user interaction in JSON, as well as execute actions encoded in JSON.  
+# Implement copilot meta API
+Copilot meta API provides ways for copilot client to get the current state of user interaction in JSON, as well as 
+execute actions encoded in JSON. Clearly, the actual definition of state and action and their semantics are 
+application dependent, and need to be designed for the use cases that your copilot try to address.  so Before starting 
+to develop the copilot, product manager and architect need to work together to design the data
+structure needed to capture the state of user interaction, as well as a set of actions that your app can execute per 
+user's request.
 
-In general, there is not much special logic in the 
-Before starting to develop the copilot, product manager and architect need to work together to design the data
-structure needed by the following copilot API so that copilot can provide context dependent help for your users. There 
-are only two functions in this API:
+## Expose user interaction state
+To help user in a context dependent fashion, copilot needs to be aware the current state of user interaction with 
+your app, and use these state as the context for conversational interaction. Copilot can then suggest 
+different action for the same command under different context, instead of requiring user to provide all the details 
+all the time, thus providing a more natural experience.
 
+For modern GUI application, the state of user interaction can be represented by a stack of pages, with each page
+defined by a type, which defines what information it can capture from user, and instance of that type which 
+represent the user input so far on that page.  
 
-
-There are two main aspects that this API need to take care of. First, a query interface where copilot frontend can 
-use to get the exact application state for the current user session, which can be used as the context, or implicit input 
-for copilot backend. Capturing the context can save communication effort on the user side while enabling more natural 
-interaction. Second, an execution interface so that your app can execute the predefined frontend action for user, 
-which can bring value to users without needing them to learn how to achieve something with your app.  
-
-
-### API for querying state of your app
 To provide the context dependent response to user's query, it is important that copilot client get the interaction
 state that user are currently in your app. The state of user session captures  
 
