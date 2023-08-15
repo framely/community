@@ -12,7 +12,7 @@ export const en = [
   },
   {
     text: 'Reference',
-    link: '/reference/annotations/overview.html',
+    link: '/reference/guide/signingup',
     activeMatch: '/reference/',
   },
   {
