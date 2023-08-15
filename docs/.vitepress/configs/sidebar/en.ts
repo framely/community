@@ -29,8 +29,8 @@ export const en = {
       text: 'Copilot',
       items: [
         { text: 'Why copilot', link: '/copilot/why-copilot' },
-        { text: 'Overview on copilot development', link: '/copilot/overview' },
-        { text: 'Define and implement API', link: '/copilot/define-api' },
+        { text: 'Development overview', link: '/copilot/overview' },
+        { text: 'Implement copilot meta API', link: '/copilot/define-api' },
         { text: 'Build copilot backend', link: '/copilot/build-copilot' },
         { text: 'Build copilot frontend', link: '/copilot/opencui-sdk' },
       ],
