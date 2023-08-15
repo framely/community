@@ -14,47 +14,30 @@ all the time, thus providing a more natural experience.
 
 For modern GUI application, the state of user interaction can be represented by a stack of pages, with each page
 defined by a type, which defines what information it can capture from user, and instance of that type which 
-represent the user input so far on that page.  
+represent the user input so far on that page. It should be clear that page on top is expanded from a component on
+the bottom page. In general, the state should simply capture the snapshot of the interaction, instead of the history 
+of it, in order to save the storage need to save them.
 
-To provide the context dependent response to user's query, it is important that copilot client get the interaction
-state that user are currently in your app. The state of user session captures  
-
-
-This information can then be passed to copilot backend via OpenCUI SDK in form of **data 
-scope** 
-and the **context**. The data scope is essential for the dialog understanding(DU) component of the conversation  
-application. App users can access the data within this scope by simply mentioning its name, allowing the DU to  
-comprehend the intended data.  On the other hand, the context represents the information that conversation  
-application needs to collect from the app users in order to identify their current state or page. 
-
-#### Define data scope
-As an assistant, copilot should share the same permissions as app users have. Therefore, determining the scope of  
-information accessible to copilots is crucial. In other words, it involves defining the range of data that  can be 
-provided to the copilot.
-
-For instance, consider OpenCUI's copilot as an example. When users ask to modify a specific type, such as adding a 
-response, the copilot needs to determine which type the users are referring to. To achieve this, data accessible to  
-users must be passed to the DU so that it can recognize the mentioned type. Commonly mentioned names by app users  
-in OpenCUI include "frame" (encompassing both frame and skill), "entity," and more. For **frontend developers**,  
-you can refer to the [sending message](./opencui-sdk.md#send-messages) section to learn how to pass this information,
-while **copilot builders**  can consult the guide on [building entities](./build-copilot.md#build-entities) to learn 
-how to declare  the related data structure on the OpenCUI platform.
-
-#### Define context
-When app users request a feature, they may not be in the target state or on the intended page. For example,  they 
-might want to add a specific type of slot, but the required library has not been imported into the current project.  
-This indicates they are not in the target state, which entails importing the necessary library first. Similarly, if 
-app users want to manage team members but are not on the page where all team members are listed, they are not on the target page.
 Taking OpenCUI copilot as an example, the context primarily consists of the organization label, agent label,  agent 
 type, page label, and so on. For **frontend developers**, you can refer to the [sending message](./opencui-sdk.
 md#send-messages) section  to learn how to pass the context, while **copilot builders** can refer to [building 
 PageContext frame](./build-copilot.md#build-a-frame) to learn how to declare the context on the OpenCUI platform.
+```json
+{
+    "orgLabel":"me.test",
+    "agentLabel":"pingpongSL",
+    "agentType":"chatbot",
+    "lang":"en",
+    "page":"typeList"
+}
+```
 
-### Outputs of conversational application
-There are two ways to execute actions in a conversational application: implicit and explicit. In the implicit  
-approach, when users express their requests, the copilot directly performs the corresponding actions on their  
-behalf. In contrast, the explicit approach involves the copilot providing action buttons to app users, enabling  
-them to execute the actions themselves. To maintain better control, we prioritize the implicit method for executing actions.
+### Copilot response
+Upon receiving the user input along with the context that they are in, copilot can provide help in two ways: 
+information and action in form of buttons. The action button captures user intention, and once clicked, will change 
+app state as if users have interacted with app (by mouse clicking and keyboard inputting) in the way that can achieve 
+user's goal. 
+
 For example, let's consider OpenCUI platform. If users want to clone a chatbot, they can create a new chatbot by  
 selecting the cloning option, which is an action. Additionally, if the users are not currently on the 
 appropriate  page to perform this action, they need to direct to the right page first, which is also an action.  For 
@@ -74,11 +57,6 @@ the "actionParams" ("payload") field for the clone action can be structured as f
 }
 ```
 
-## Build copilot
-Once the events and actions are settled, copilot builders can start to build conversational applications in OpenCUI. 
-For guidance on how to build a copilot, please refer to [How to build a copilot](./build-copilot.md).
-
-## Integrate copilot with OpenCUI SDK
-After settling the events and actions, frontend developers can start to integrate conversational applications with  
-OpenCUI SDK. To learn how to integrate with SDK, please refer to [Building copilot web frontend with OpenCUI](.
-/opencui-sdk.md).
+The set of actions your copilot can expose should be supported by your implementation of copilot meta API, and these 
+json object can be easily generated by copilot backend, and rendered in copilot frontend. Notice copilot frontend 
+only need to render these action encoded in json, which does not require any understanding of it. 
