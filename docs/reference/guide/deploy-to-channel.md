@@ -10,7 +10,7 @@ Let's use Messenger as an example to understand how it works. When a user sends 
 The steps in this guide build upon the chatbot created in one of the previous guides.
 
 ## Set up channels
-On OpenCUI, it is possible to configure multiple channels of the same or different channel types. In this guide, we will show you how to configure a Messenger channel. You can repeat this process for any number of channels you like. To learn more about each type of channels, please refer to the [Channel](../reference/channels/overview.md) section.
+On OpenCUI, it is possible to configure multiple channels of the same or different channel types. In this guide, we will show you how to configure a Messenger channel. You can repeat this process for any number of channels you like. To learn more about each type of channels, please refer to the [Channel](../channels/overview.md) section.
 
 ### Create a Messenger channel
 In the **Settings** tab and under **Integrations** page. 
@@ -25,7 +25,7 @@ In the **Settings** tab and under **Integrations** page.
 
 ### Configure the Messenger channel
 To integrate the Messenger into OpenCUI, both sides need to be set up simultaneously.
-1. Follow the steps in [Set up Messenger](../reference/channels/messenger.md#set-up-messenger) to set up your Meta application, remember to copy the token from **generate access token**, as you will need that here in OpenCUI.
+1. Follow the steps in [Set up Messenger](../channels/messenger.md#set-up-messenger) to set up your Meta application, remember to copy the token from **generate access token**, as you will need that here in OpenCUI.
 2. Configure the following settings in the window just popped up and save: 
    - **Label**: Set a label for this channel type, should be unique in the chatbot. 
    - **Verify Token**: Enter any private token you desire. This value will be needed to configure Messenger Webhook on Meta's side.
@@ -47,4 +47,4 @@ After you finish configuring your channel, the next step is to deploy your chatb
 
    ![deploy checked icon](/images/guide/pingpong/deploy_checked_icon.png)
 
-3. You can now use the **Callback URL** and **Verify token** values that you copied earlier to complete the setup of your Meta app by following steps in the [Finish Messenger setup](../reference/channels/messenger.md#finish-messenger-setup), and start interacting with your chatbot in the Messenger app.
+3. You can now use the **Callback URL** and **Verify token** values that you copied earlier to complete the setup of your Meta app by following steps in the [Finish Messenger setup](../channels/messenger.md#finish-messenger-setup), and start interacting with your chatbot in the Messenger app.

@@ -62,7 +62,7 @@ To use the built-in debug tool, you can follow these steps:
 
    ![pingpong test](/images/guide/start-with-clone/pingpong_test.png)
 
-   Additionally, there are other useful operations available in the upper right corner of the Debug area, such as viewing the log, saving a test case, and resetting the session. These operations can help you troubleshoot your chatbot. For more information about the Debug tool, please refer to the [Testing](../reference/platform/testing.md) section.
+   Additionally, there are other useful operations available in the upper right corner of the Debug area, such as viewing the log, saving a test case, and resetting the session. These operations can help you troubleshoot your chatbot. For more information about the Debug tool, please refer to the [Testing](../platform/testing.md) section.
 
    ![operation icon](/images/guide/start-with-clone/operation-icon.png)
 

@@ -2,7 +2,7 @@
 
 OpenCUI comes with a version control system that is similar to Git. It is designed for structured definition and to manage the complex interaction between different views (structure and language) and different branches (personal and master) across modules and chatbots effectively. If you have used Git in your development, this process should be very familiar to you.
 
-OpenCUI workflow is a branch-based workflow. After you tested your changes, it's important to ask project owner to review your changes and ensure they meet the chatbot's features and quality standards, by opening a pull request and comparing the changes across your branch. Once your change is approved, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version control](../reference/platform/versioncontrol.md) section.
+OpenCUI workflow is a branch-based workflow. After you tested your changes, it's important to ask project owner to review your changes and ensure they meet the chatbot's features and quality standards, by opening a pull request and comparing the changes across your branch. Once your change is approved, you can merge them into the master. For more information on working with branch and reviewing changes, please refer to the [Version control](../platform/versioncontrol.md) section.
 
 ## Before you start
 
@@ -58,6 +58,6 @@ To review changes:
 
    ![approve pull request](/images/guide/pingpong/approve_changes.png)
 
-4. Once the pull request is approved, you can **Merge** this pull request. OpenCUI will tell you if your pull request has conflicts that must be resolved before merging. For more information, see [Resolve Merge Conflict](../reference/platform/versioncontrol.md#resolve-merge-conflict).
+4. Once the pull request is approved, you can **Merge** this pull request. OpenCUI will tell you if your pull request has conflicts that must be resolved before merging. For more information, see [Resolve Merge Conflict](../platform/versioncontrol.md#resolve-merge-conflict).
 
    ![merge pull request](/images/guide/pingpong/merge_changes.png)

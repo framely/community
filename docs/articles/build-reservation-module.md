@@ -10,13 +10,13 @@ author: Sunny May
 ---
 
 # Build a reservation module
-In the previous guide on [build an hours module](../guide/build-module.md), we showed you how to declare a service and build a conversational user interface (CUI) in the same module. In this guide, we'll demonstrate how to build CUI on top of a predefined [generic reservation service](./reservation/reservation-api).
+In the previous guide on [build an hours module](../reference/guide/build-module.md), we showed you how to declare a service and build a conversational user interface (CUI) in the same module. In this guide, we'll demonstrate how to build CUI on top of a predefined [generic reservation service](./reservation/reservation-api).
 
 The table reservation module assists users in booking, viewing, or canceling reservations in a restaurant setting. This guide will only implement "[making a reservation](./reservation-cui-design.md#make-a-reservation)" as an example. Exposing viewing and canceling reservations should be similar, and you can check the [table reservation module](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type) to see how it is done.
 
 ## Before you start
-1. [Sign up](./../guide/signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-2. It is highly recommended that you follow through the [Quickstart guide](../guide/index).
+1. [Sign up](./../reference/guide/signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+2. It is highly recommended that you follow through the [Quickstart guide](../reference/guide/index).
 3. It is useful to go over [reservation cui design](./reservation-cui-design.md)
 4. It is useful to go over [adding table reservation functionality](./reuse-reservation-module.md)
 

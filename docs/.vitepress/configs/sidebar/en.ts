@@ -38,6 +38,22 @@ export const en = {
   ],
   '/reference/': [
     {
+      text: 'Quickstart',
+      collapsed: false,
+      items: [
+        { text: 'Sign up', link: '/reference/guide/signingup' },
+        { text: 'Clone an echo chatbot', link: '/reference/guide/clone-simple-chatbot' },
+        { text: 'Build an echo chatbot', link: '/reference/guide/build-simple-chatbot' },
+        { text: 'Reuse an hours module', link: '/reference/guide/reuse-component' },
+        { text: 'Build an hours module', link: '/reference/guide/build-module' },
+        { text: 'Build an hours provider', link: '/reference/guide/build-provider' },
+        { text: 'Deploy a chatbot', link: '/reference/guide/deploy-to-channel' },
+        { text: 'Get a team', link: '/reference/guide/are-you-ready' },
+        { text: 'OpenCUI workflow', link: '/reference/guide/opencui-flow' },
+        { text: 'Key concepts', link: '/reference/guide/concepts' }
+      ],
+    },
+    {
       text: 'Dialog Annotations',
       collapsed: false,
       items: [
