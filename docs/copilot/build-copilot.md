@@ -10,21 +10,10 @@ To gain a basic understanding, it is important to first learn [key concepts](htt
 Before diving into building the conversational user interface, you need to declare the data structures that will be 
 shared with your frontend developers. These structures include the context described in the stack of pages.
 
-### Build entities
-As is mentioned in [defining data scope](./overview.md#define-data-scope) section, to enable dialog understanding (DU)  in comprehending information mentioned by app users, it is necessary to create entity types that encode the accessible information. 
-
-For instance, in the case of the OpenCUI copilot, an entity called "FrameType" is created to encompass all frame labels and skill labels. This allows DU to extract the mentioned frame/skill when app users refer to them.
-::: details Details with OpenCUI Copilot as an example
-Create the following entities:
-- `FrameType`: It represents the frame and skill types in current projects.
-- `EntityType`: It represents the entity types in current projects.
-- `SlotEntity`: It represents the slots in current projects.
-:::
-
 ### Build a frame
-In order to encode the current state or page, a frame type needs to be created, along with parameters represented as slots within this frame. These slots carry essential information about the current state or page.
+In order to encode the current page, a frame type needs to be created, along with parameters represented as slots within this frame. These slots carry essential information about the current page.
 
-Taking OpenCUI copilot as an example, to encode the current page, we create a frame called "[PageContext](https://build.opencui.io/org/ai.bethere/agent/copilot/struct/frame/64b8cd8d459bf49540e3dd9e)" and add slots like orgLabel, agentLabel, and page in this frame. Additionally, we add a typeLabel slot with type FrameType. This allows copilot to confirm the current type with app users, if necessary. In this way, the OpenCUI frontend can encode the context into the "PageContext" frame. If a slot with this type is added, it can be automatically filled with the current context.
+Taking OpenCUI copilot as an example, to encode the current page, we create a frame called [PageContext](https://build.opencui.io/org/ai.bethere/agent/copilot/struct/frame/64b8cd8d459bf49540e3dd9e) and add slots like `orgLabel`, `agentLabel`, and `page` in this frame. In this way, the OpenCUI frontend can encode the context into the PageContext frame. If a slot with this type is added, it can be automatically filled with the current context.
 ::: details Details with OpenCUI Copilot as an example
 1. Create a frame with label `PageContext`.
 
@@ -32,12 +21,11 @@ Taking OpenCUI copilot as an example, to encode the current page, we create a fr
    - `orgLabel` with type `String`
    - `agentLabel` with type `String`
    - `page` with type `String`
-   - `typeLabel` with type `FrameType`
    - ...
 ::: 
 
 ## Build CUI
-This section illustrates the process of building a conversational user interface using the example of [cloning an echo chatbot](https://opencui.io/guide/clone-simple-chatbot.html). In the OpenCUI platform, there are two types of skills: component skills and composite skills. Component skills consist of slots with entity and frame types, while composite skills include these types along with skill types.
+This section illustrates the process of building a conversational user interface using the example of [cloning an echo chatbot](https://opencui.io/guide/clone-simple-chatbot.html). In the OpenCUI platform, there are two types of skills: **component skills** and **composite skills**. Component skills consist of slots with entity and frame types, while composite skills include these types along with skill types.
 
 To provide direct access, component skills can be used as they can be triggered independently. For instance, if there are two major steps involved in cloning an echo chatbot, each step can be an independent component skill, providing direct access for app users.
 
