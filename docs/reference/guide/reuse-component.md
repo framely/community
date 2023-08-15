@@ -72,7 +72,7 @@ To deploy PostgreSQL backend, click **Deploy backend** button in the upper-right
 ![deploy](/images/guide/use-service/deploy.png)
 
 ### Populate database
-Before the backend can serve relevant information, you need to populate the database with your business hours. You can do this using the [backoffice](../reference/providers/postgrest.md#access-backoffice). For every organization that uses at least one PostgreSQL provider, OpenCUI also creates a web application for that organization to manage the data in the backend. You can access the back office as follows:
+Before the backend can serve relevant information, you need to populate the database with your business hours. You can do this using the [backoffice](../providers/postgrest.md#access-backoffice). For every organization that uses at least one PostgreSQL provider, OpenCUI also creates a web application for that organization to manage the data in the backend. You can access the back office as follows:
 1. Inside the provider `hoursProvider`, select the **Settings** tab, click **Configuration** on the left sidebar.
 2. Copy and paste the **URL** to your browser, use **Admin email** and **Admin password** to log into backoffice. 
 
@@ -128,6 +128,6 @@ When you are ready to deploy your service to the production environment, you nee
 ![set up provider](/images/guide/use-service/set-up-provider.png)
 
 ## Test a chatbot
-Finally, you can try the chatbot for business hours using the built-in [Debug](../reference/platform/testing.md#how-to-use) tool. To do this, send the following messages to the chatbot:
+Finally, you can try the chatbot for business hours using the built-in [Debug](../platform/testing.md#how-to-use) tool. To do this, send the following messages to the chatbot:
 - *"When do you open?"* - This will return the business hours for the entire week, starting with the current day of the week.
 - *"Do you open this Friday?"* - This will return the business hours for this Friday, if it is open. If it is closed, you will be informed and the weekly business hours will be shown.

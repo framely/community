@@ -154,4 +154,4 @@ Inside the **target provider** with the hours module already imported and **Serv
       return hoursList
       ```
 
-After you have finished building a PostgREST provide, you can [create a pull request](./opencui-flow.md#create-a-pull-request), [review changes and merge them into the master](./opencui-flow.md#review-and-merge-pull-request). In the next step, you can use backoffice to add data and use [function console](../reference/providers/postgrest.md#function-console) to test the functions you just implemented.
+After you have finished building a PostgREST provide, you can [create a pull request](./opencui-flow.md#create-a-pull-request), [review changes and merge them into the master](./opencui-flow.md#review-and-merge-pull-request). In the next step, you can use backoffice to add data and use [function console](../providers/postgrest.md#function-console) to test the functions you just implemented.

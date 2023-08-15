@@ -29,7 +29,7 @@ OpenCUI provides a mechanism for builders to share modules with each other. This
 
 Modules are reusable and composable, and can be enabled or disabled service as needed. In some cases, it may be possible to reuse one or more modules within a chatbot. However, when doing this, it is important to ensure that the modules are compatible with each other and the corresponding implementations of service interfaces are also wired. This will ensure that the module works as expected in the chatbot.
 
-To use a pre-existing module, you first need to find a module that you are interested in. Then, you can simply import it into your chatbot, and use the functionality of the module directly in your chatbot. Modules are developed and maintained by other builders, so you can be confident that they are of high quality. You can also update modules as needed, which ensures that your chatbot always has the latest features and functionality. For more background and details about modules, see "[Reuse an hours module](../guide/reuse-component.md)".
+To use a pre-existing module, you first need to find a module that you are interested in. Then, you can simply import it into your chatbot, and use the functionality of the module directly in your chatbot. Modules are developed and maintained by other builders, so you can be confident that they are of high quality. You can also update modules as needed, which ensures that your chatbot always has the latest features and functionality. For more background and details about modules, see "[Reuse an hours module](../reference/guide/reuse-component.md)".
 
 This guide will use table reservation as an example to show how to reuse the [tableReservation](https://build.opencui.io/org/me.restaurant/agent/tableReservation/struct/type) module in your chatbot. When you are done with this guide, the chatbot can help users make, view, and cancel table reservations. For example, a user might say the following to the chatbot:
 
@@ -52,8 +52,8 @@ To reuse the `tableReservation` module, you need to understand the following dep
 3. [Google Calendar provider](./reservation/google-calendar-reservation.md): This is the backend that the chatbot uses to store reservations. It means that you need a Google Workspace account.
 
 ## Before you start
-1. [Sign up](../guide/signingup#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
-2. Follow the [quickstart guide](../guide/index) to learn the basics of OpenCUI.
+1. [Sign up](../reference/guide/signingup#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+2. Follow the [quickstart guide](../reference/guide/index) to learn the basics of OpenCUI.
 3. Set up [Google Workspace](./reservation/google-calendar-reservation#set-up-google-workspace) and [service account](./reservation/google-calendar-reservation#set-up-service-account).
 
 ## Set up Google Calendar
