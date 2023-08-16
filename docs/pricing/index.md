@@ -7,8 +7,8 @@ layout: home
 </script>
 
 <Pricing :frontmatter="{
-    title:'Conversational experience that works.',
-    tagline: `When the wave arrives and you don't want to be left behind, all you have to do is pick up the right tools and start to build.`,
+    title:'Dependable conversation your user deserves.',
+    tagline: `Pick up the right tools and start to build.`,
     cards: [{package:'Builder',
       price: '$0',
       badge: 'per user / year',
