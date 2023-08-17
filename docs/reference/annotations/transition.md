@@ -52,10 +52,19 @@ Condition triggerred transition allows you to customize interaction logic based 
 
 ![transition-condition](/images/annotation/transition/transition-condition.png)
 
+There is a convenient shortcut for condition triggered transitions at the slot level, which can be set in the target slot. The target slot refers to the slot you choose for specifying the trigger timing. To set it at the slot level:
+
+1. Enter the target slot, and switch to the **Annotation** tab. Enable **Post-fill action** and click the **Add** button.
+
+![add post-fill action](/images/annotation/transition/add_post_fill_action.png)
+
+2. In the popup window, enter the **Conditions** using Kotlin expressions and select the desired **Update action**.
+
+![detail](/images/annotation/transition/post-fill_action.png)
+
 ::: warning Used with caution
 Transition is a low level control that you can use to implement arbitrary conversational interaction logic. But with great power, comes with great responsibility. The low level control can adversely impact the interaction logic defined at slot filling level if not used carefully. Please test your design when it comes to transition.
 :::
-
 
 ## System actions
 ![transition-action](/images/annotation/transition/transition-action.png)
