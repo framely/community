@@ -52,29 +52,18 @@ Condition triggerred transition allows you to customize interaction logic based 
 
 ![transition-condition](/images/annotation/transition/transition-condition.png)
 
-::: warning Used with caution
-Transition is a low level control that you can use to implement arbitrary conversational interaction logic. But with great power, comes with great responsibility. The low level control can adversely impact the interaction logic defined at slot filling level if not used carefully. Please test your design when it comes to transition.
-:::
+There is a convenient shortcut for condition triggered transitions at the slot level, which can be set in the target slot. The target slot refers to the slot you choose for specifying the trigger timing. To set it at the slot level:
 
-#### Post-fill action
-The post-fill action provides a shortcut to customize the behavior of the user interaction after filling a slot at the slot level. It allows for additional information to be provided to users, filling other slots based on the value of the current slot, and much more.
-
-For example, in a restaurant reservation scenario, the post-fill action can be used to inform users about birthday discounts when they provide their preferred date for a reservation. If the chosen date matches their birthdate, the chatbot will notify them about personalized discounts and benefits.
-
-To set up the post-fill action, you need to define conditions and the update action:
-- **Conditions**: The conditions  under which the post-fill action should be executed.
-- **Update action**: The actions to be executed when the conditions are met. You can view the whole actions in [system actions](#system-actions).
-
-::: details Details on how to set it up
+1. Enter the target slot, and switch to the **Annotation** tab. Enable **Post-fill action** and click the **Add** button.
 
 ![add post-fill action](/images/annotation/transition/add_post_fill_action.png)
 
-1. Enter a slot, and switch to the **Annotation** tab.
-2. Enable **Post-fill action** and click the **Add** button.
+2. In the popup window, enter the **Conditions** using Kotlin expressions and select the desired **Update action**.
 
 ![detail](/images/annotation/transition/post-fill_action.png)
 
-3. In the popup window, enter the **Conditions** using Kotlin expressions and select the desired **Update action**.
+::: warning Used with caution
+Transition is a low level control that you can use to implement arbitrary conversational interaction logic. But with great power, comes with great responsibility. The low level control can adversely impact the interaction logic defined at slot filling level if not used carefully. Please test your design when it comes to transition.
 :::
 
 ## System actions
