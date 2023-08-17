@@ -4,7 +4,7 @@ OpenCUI copilot as an example. The OpenCUI copilot is designed to provide onboar
 causal chatbot developer. Copilot is a special chatbot in that it helps user indirectly instead of doing things 
 directly on user's behalf.
 
-To gain a basic understanding, it is important to first learn [key concepts](https://opencui.io/guide/concepts.html) about 
+To gain a basic understanding, it is important to first learn [key concepts](../reference/guide/concepts.md) about 
 [type systems](https://opencui.io/essentials/#cui-creates-callable-instances) and dialog annotations. Unlike other 
 flow based approach, OpenCUI allow you to build effective conversational user interface in a schema grounded fashion,
 based on the observation that all user interaction are designed to create function object based on user input. This 
@@ -51,8 +51,7 @@ of "PageContext" frame will be automatically filled for each turn.
 
 ## Build skills to help user
 Skills are functionality that can be triggered by user through natural language request. This section illustrates the 
-process of building a conversational experience to guide user through [cloning an echo chatbot](https://opencui.
-io/guide/clone-simple-chatbot.html). 
+process of building a conversational experience to guide user through [cloning an echo chatbot](../reference/guide/clone-simple-chatbot.md). 
 
 ### Build clone skill
 To build a skill that can be triggered conversationally, follow these steps:
@@ -117,8 +116,7 @@ labels.  Therefore, only the project type can be obtained from the app users.
 **4. Add slot to verify the current page**
 
 As we can obtain the current page through the context slot, we add a boolean slot called isTargetPage. It is 
-initialized  as true if the app users are on the target page, and false otherwise. We also add a [value check]
-(https://opencui.io/reference/annotations/valuecheck.html)  annotation. If the app users are not on the target page, 
+initialized  as true if the app users are on the target page, and false otherwise. We also add a [value check](../reference/annotations/valuecheck.md)  annotation. If the app users are not on the target page, 
 we provide an action button for them to navigate to the target page.
 ::: details Details with OpenCUI Copilot as an example
 1. Add the following slot in skill CloneProject:
@@ -227,8 +225,7 @@ chance that they can be filled. Therefore, we added a branch to handle that situ
     ```
 :::
 
-Similarly, the [TestChatbot](https://build.opencui.io/org/ai.
-bethere/agent/quickstarts/en/intent/64b897ae0f50353c647ca7e2) skill can be created. Unlike the CloneProject skill, 
+Similarly, the [TestChatbot](https://build.opencui.io/org/ai.bethere/agent/quickstarts/en/intent/64b897ae0f50353c647ca7e2) skill can be created. Unlike the CloneProject skill, 
 the  debug action can be executed  within the chatbot itself. Once app users are in the target chatbot, no 
 parameters  are required to execute the debug action.
 
@@ -243,8 +240,7 @@ To build a composite skill for onboarding app users or combining multiple action
 3. Add dialog annotations to add the missing information if necessary.
 4. Add slots to verify if the app users have completed each step if necessary.
 
-For example, let's consider the [QuickStartClone](https://build.opencui.io/org/ai.
-bethere/agent/quickstarts/en/intent/64b897ae0f50353c647ca7e3) skill used to guide app users through the process of   
+For example, let's consider the [QuickStartClone](https://build.opencui.io/org/ai.bethere/agent/quickstarts/en/intent/64b897ae0f50353c647ca7e3) skill used to guide app users through the process of   
 quickstart [cloning an echo chatbot](https://opencui.io/guide/clone-simple-chatbot.html). The happy path for the QuickStartClone skill involves the following steps:
 
 ![Happy path of QuickStartClone skill](/images/copilot/quickstart-clone.png)
@@ -264,8 +260,7 @@ Create a skill with label `CloneProject`
 **2. Add component skills**
 
 As we've built the skill "CloneProject" and skill "TestChatbot", now we can add these skills as slots in the skill  
-"QuickStartClone". Since the cloned project is fixed in this quickstart, we can use the frame-level [initialization]
-(../reference/annotations/init.md#overview)  to initialize the skill CloneProject with the predetermined parameters  
+"QuickStartClone". Since the cloned project is fixed in this quickstart, we can use the frame-level [initialization](../reference/annotations/init.md#overview)  to initialize the skill CloneProject with the predetermined parameters  
 including project type, organization label and project label.
 ::: details Details with OpenCUI Copilot as an example
 1. Add the following slots in skill QuickStartClone:
