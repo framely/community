@@ -281,7 +281,7 @@ including project type, organization label and project label.
 **3. Supplement the missing information**
 
 In the quickstart cloning an echo chatbot, there is an instruction on what to send to test the chatbot. This 
-instruction  is not covered in this skill yet, so we add a post-fill action in the slot testChatbot to supplement 
+instruction  is not covered in this skill yet, so we add a [post-fill action](../reference/annotations/transition.md#condition-triggered-transitions) in the slot testChatbot to supplement 
 the  missing instruction. Additionally, as there is no response section for the composite skill currently, we add 
 the  concluding part here as well.
 ::: details Details with OpenCUI Copilot as an example
