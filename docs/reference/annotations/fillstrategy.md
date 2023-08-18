@@ -1,147 +1,82 @@
 # Fill strategy
 
-If a user does not specify which movie they want to watch when buying tickets, the bot needs to prompt the user to provide this information.
-```json
-User: "Can I get two tickets for 8:00pm please?"
-Chatbot: "Which movie? We have two options: Top Gun and Star Wars."
-User: "Which movie has IMAX version?"
-Chatbot: "Both. Which movie do you want to watch?"
-User: "Top Gun, please."
+Fill strategy is the rule that determines how to interact with the user to obtain the information needed to complete a service. It decides whether or not to prompt the user for the information, and it also defines how other dialog annotations should work together.
+
+A slot is a piece of information that is needed to complete a task. For example, in a restaurant reservation service, the slots might be `date`, `time`, and `number of guests`. When you set the fill strategy to a slot and it is configured to be filled by user interaction, you can configure the dialog annotations based on your business logic. The OpenCUI framework will use a five-stage slot filling process to help you interact with users and converge on a servable request.
+
+The best fill strategy to use will depend on the specific task and your business needs. By understanding the different fill strategies, you can choose the one that is most likely to result in a successful interaction.
+
+Here is a more detailed explanation of each fill strategy.
+
+## Always ask
+
+Always ask strategy is a good choice for scenarios where users are required to provide essential information. It is a robust strategy, meaning that if the user does not provide the information, the chatbot will continue to ask until it gets what it needs. The always ask strategy can be helpful in ensuring that the chatbot has all of the information it needs to complete the service.
+
+Therefore, **it is important to fill in at least one prompt when using the Always ask fill strategy**. Prompts are questions that can be used to ask users for information, such as their name, email address, or other required details. For example, a prompt might ask *"What time would you like to book your table?"*
+
+## Conditional
+
+Conditional strategy is a good choice for scenarios where users are required to provide essential information, but only under specific conditions. It is not as robust as the always ask strategy, as **it needs to meet the conditions** before asking the user for information. The conditional strategy can be helpful in ensuring that the chatbot only asks for information that is relevant to the task at hand.
+
+**When you set the fill strategy to conditional, you should specify the condition and include at least one prompt.** 
+
+For example, you can set a conditional strategy for a slot that says:
+```kotlin
+// If the user wants to book a table for more than 10 people, then ask for the name of the event
+numberOfGuest > 10
 ```
+If the condition is met, the chatbot will ask the user for the name of the event. If the condition is not met, the chatbot will not take the action.
 
-## Overview
-Fill strategy is a required slot-level annotation that you can use to control when and how to prompt for a slot value. It decides whether or when to prompt the user to fill a slot. More importantly, it also defines how other fill annotations should work together. A prompt is a customization of the dialog act SlotRequest, and it contains a template that can help verbalize the slot request dialog act. The diversity of responses can be increased by adding more templates.
+## Gated 
 
-## How to use
-Prompt strategy is a composite annotation, as OpenCUI provides a set of concrete strategies to cover different use cases. Let's cover them one by one.
+Gated strategy is a boolean gate that is used to first introduce a topic before asking detailed questions about it. It can be a helpful way to ensure that the chatbot is only asking questions that are relevant to the user's needs. It can also be especially useful in situations where the user may be sensitive about the information they are providing, as it allows the user to control how much information they share.
 
-### Always ask
+The Gated strategy can only be applied to **frame slots**. Therefore, to take advantage of this strategy, **you first need to define a frame to host closely related slots**. When you set the fill strategy to Gated, you should **provide the boolean gate question**.
 
-#### Overview
-The Always strategy means that if the user does not provide a value, the chatbot will always prompt the user for that slot. It is easy to set up:
-- Set its Fill strategy to **Always ask**.
-- Fill in at least one template in the **Prompt** text input box.
+The Gated strategy will ask the user a yes-or-no question once and then wait for one of three types of answers:
 
-#### How to use
-If a slot is required by the business logic, you should configure the prompt strategy to Always ask. The bot will make sure that this slot is filled. That means if a user has not mentioned their preference before, or their choice is not legitimate, the bot will prompt the user to ensure that there will be a value for the given slot.
+- **Yes**: If the user answers yes, the chatbot will follow the depth-first rule and start filling nested slots one at a time in their natural order.
 
-### Conditional
-Not every slot is required. For example, when a user wants to watch a movie that does not have IMAX version, we should not be asking the user about it. For example, if the movie has the IMAX version, bot should behave this way: 
+- **Slot value**: If the user answers with a slot value, the chatbot will assume the gate is open and start filling nested slots with the user's input.
 
-```json
-User: "Can I get two tickets for 8:00pm Top Gun, please?"
-Chatbot: "Do you want the IMAX version?"
-User: "Yes, please."
-Chatbot: ""
-```
+- **No**: If the user answers no, the frame slot will simply be skipped (neither asked nor filled).
 
-For a movie without IMAX version, bot should skip this question to avoid being silly.
+For example, if you want to find out what symptoms a patient has, a chatbot can ask about symptoms in a more polite and sensitive way by first asking the patient whether they have any symptoms such as *"Do you have any symptoms?"*. If the patient says yes, the chatbot could then ask more detailed questions about the symptom: *"How long have you had a fever?"*, *"Is it intermittent or continuous?"*, *"What is your highest recorded temperature?"* If the patient says no, the chatbot can move on to the next topic.
 
-```json
-User: "Can I get two tickets for 8:00pm NomadLand, please?"
-Chatbot: "That will be $10. Please pay with ApplePay."
-```
+This can help to improve the user experience by ensuring that the chatbot only asks for the information that is relevant to the user's needs.
 
-#### Overview
-Conditional strategy allows the builder to specify a code expression to decide whether to prompt users for a given slot. As always, the slot used in this conditional expression should be earlier than the current slot, and bot behavior when referencing a later slot in the condition is not defined.
+## Recover only
 
-Like the Always strategy, the Conditional strategy is also orthogonal and imposes no constraints on other annotations in the [slot filling pipeline](./overview.md#five-stages-of-slot-filling) when the condition expression evaluates to true. However, when it evaluates to false, the slot will be left unfilled and the bot will move on to the next slot or response.
+Recover only strategy is a way to protect user privacy and make chatbots more user-friendly. It means that the chatbot will not ask the user for information unless the user specifically provides it. 
 
-Conditional strategy is easy to set up:
-- Pick a slot, set its Fill Strategy to Conditional then, specify the Kotlin Boolean code expression in input box.
-- Add template in Prompt so bot knows how to request information from user.
+For example, if a business does not need to know the user's age, they can use the Recover only strategy. This means that the chatbot will not ask the user for their age unless the user says something like *"I am 25 years old"*.
 
-#### How to use
-The Conditional strategy is useful for slots that are conditionally required. When a slot is required only under certain conditions according to business logic, you can use the Conditional strategy.
+**When you set the fill strategy to recover only, you should fill in at least one prompt.** This is to ensure that the chatbot can handle unexpected input from the user. The prompt will only be used if the chatbot cannot understand the user's input or if the slot value fails the value check.
 
-### Gated
-Sometimes, the information you want to collect from the user might be too sensitive or intrusive, so it is customary to ask for their permission to delve into details. For example, if you want to find out how long a patient has had a fever, whether it is intermittent or continuous, and what their highest recorded temperature was, it would be considered inappropriate to ask such questions directly without asking for the user's consent first.
+The Recover only strategy can be useful for the following use cases:
 
-```json
-Chatbot: "Since when have you had fever?"
-User: "I don't have a fever. What are you talking about?"
-```
+- **When the business has a default behavior or choice that could satisfy most users.** If the user does not provide any information, the chatbot will use the default behavior or choice. However, if the user does provide information, the chatbot will use that information instead.
 
-Instead, it is useful to first introduce the topic before asking detailed questions about it.
-```json
-Chatbot: "Do you have a fever?"
-User: "Yes."
-Chatbot: "Since when?"
-```
+- **When the business has a behavior or choice that they do not want to promote, but they still need to handle if it is required.** For example, a business may not want to promote a specific product, but they still need to handle it if the user asks about it.
 
-Of course, user can say no so bot need to move onto next slot.
+## Direct fill
 
-```json
-Chatbot: "Do you have a fever?"
-User: "Nope."
-Chatbot: "How about headache?"
-```
+Direct fill means that the chatbot will not ask the user for information. Instead, it will fill the value directly from a source, such as a database or other slot. This can be helpful in situations where the information is easily accessible and does not need to be collected from the user.
 
-#### Overview
-The Gated strategy can only be applied to frame slots. Therefore, to take advantage of this prompt strategy, you first need to define a frame to host closely related slots. Like the Conditional strategy, this choice is also orthogonal to other annotations in the [slot filling pipeline](./overview.md#five-stages-of-slot-filling).
+For example, if a chatbot is connected to a database of customer information, it can use the direct fill strategy to fill the slot for the user's name. The chatbot would not need to ask the user for their name, as it can simply retrieve the name from the database.
 
-The Boolean Gate will ask the user a yes-or-no question once and then wait for one of three types of answers.
-- If the answer is 'Yes,' OpenCUI will follow the depth-first rule and start filling nested slots one at a time in their natural order. 
-- If the answer is a slot value, OpenCUI will assume the gate is open and start filling nested slots with user input. 
-- If the answer is 'No,' the frame slot will simply be skipped (neither asked nor filled)."
+The direct fill strategy can be useful for reducing the number of questions that the chatbot asks, improving the accuracy of the information, making the chatbot more scalable. **However, it does not ask the user if the value is problematic.** This means that the chatbot may fill the slot with incorrect or outdated information. This can be a drawback in some cases, such as when the information is sensitive or confidential.
 
-Set up gated strategy is easy, on a **frame slot**:
-- Set its Fill Strategy to **Gated** then configure the detail for gated strategy:
-  - Prompt: template for boolean question that ask user whether he/she wants to or is able to provide slot value
-  - Affirmatives and Negatives: expression exemplars to help dialog understanding module, see [Affirmatives and Negatives in Confirmation](./confirmation.md#explicit)
-- Provide at least one template for the Prompt of the origin slot.
+## External event
 
-![boolean-gate](/images/annotation/fillstrategy/booleangate.png)
+The External event strategy means that the chatbot will not fill the slot with information itself. Instead, it will wait for an external event to occur before filling the slot. This can be useful in situations where the chatbot needs to work with external software, such as a payment processor or other asynchronous events.
 
-#### How to use
-When there is a complex subject with many details, it is more natural to use a boolean question as a gate to obtain user permission to go into the details. This can reduce user confusion and the effort required to deal with an unhappy conversation path.
+For example, if a chatbot is trying to book a flight, it can use the external event strategy to wait for the user to complete the payment process. Once the payment is complete, the chatbot will receive an event from the payment processor and then fill the slot with the flight information.
 
-### Recover only
-When a service option might only apply to a very small subset of users, such as wheelchair assistance, prompting every user for their choice is not a good user experience. However, when the initial value, either from user input or initialization, fails value check or confirmation, the bot needs to prompt the user for a new value.
-```json
-Chatbot: "Two one way ticket from Beijing to New Yok on July 1st, is this all?"
-User: "I need wheelchair assistance."
-Chatbot: "Do you have your own mobility device or do you want airport wheelchair service?"
-```
+When you set fill strategy to external event, you should:
 
-It is not appropriate to ask whether a user owns a mobility cart in general, but if the user mentions it first, we can go ahead and gather that information from them.
+- **Provide a message to inform the user of the conversation state.** This should let the user know the chatbot is waiting for an external event to occur before filling the slot.
 
-#### Overview
-When a slot is configured to have a recovering prompt strategy, the bot will not prompt the user unless there has been some prior effort to fill it, either through initialization by the builder or prior mention by the user.
+- **Configure the third-party software to send an event to resume the skill.** Different third-party software have different mechanisms for doing this.
 
-Configure the recover only is simple:
-- Set its Fill Strategy to **Recover only**.
-- Provide at least one template in original slot's Prompt.
-
-#### How to use
-The recover only strategy can be useful for the following use cases:
-- When businesses have a default behavior or choice that could satisfy most users through initialization, but it does not gain user approval, this strategy kicks in.
-- When businesses have a behavior or choice they do not want to promote, but still need to handle if it is required.
-- When users say something that the bot cannot understand or offer a slot value that fails the value check or suggestion initialization fails to get user approval, a re-prompt is needed to request the slot value from the user again."
-
-### External event
-Sometimes, the bot needs to rely on external events generated by trusted software to change the state of slot filling. For example, when the bot needs to wait for the user to execute some client action, such as payment, and only resume the conversation when the preconfigured third-party sends the expected events.
-
-```json
-Chatbot: "Your order contains 10 roses. Please complete the payment at _www.payment-link.com_."
-```
-
-At this point, conversation should be paused. The payment client action is configured so that payment service will send back event. Afte ther user finishes the payment action, bot will get that expected event
-and then resume the conversations:
-
-```json
-Chatbot: "Payment completed. Thanks for your business."
-```
-
-#### Overview
-External events, by themselves, only mean blocking (though some information is allowed before blocking). It is the builder's responsibility to configure the trusted software to send an event to finish the blocked skill in the conversation.
-
-Apart from that, if a business wants to interact differently depending on how well the client action has been done (e.g., successful, failed, or timed out), it needs to do some conditional branching with the hosting slot's value, just like it does with all the other slots. One typical place to do this is in the response.
-
-To set a slot's prompt strategy to be external:
-- Set its prompt strategy to **External Event**.
-- Provide information: provide a template to inform the user of the conversation state.
-- Configure the third-party software to send an event to resume the skill. Different third-party software have different mechanisms
-
-#### How to use
-Whenever the bot needs to work with external software, the external fill strategy is a good choice. Let the user know when the ball is in somebody else's court and this session is on pause, and restart with an updated status when it gets triggered by an external event.
+- **Handle errors that may occur when the external event does not occur or when the event is received incorrectly.** For example, you may need to retry the request or notify the user that the booking could not be completed.
