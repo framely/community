@@ -54,7 +54,7 @@ export const en = {
       ],
     },
     {
-      text: 'Dialog Annotations',
+      text: 'CUI components',
       collapsed: false,
       items: [
         { text: 'Overview', link: '/reference/annotations/overview' },
@@ -64,18 +64,14 @@ export const en = {
         { text: 'Value check', link: '/reference/annotations/valuecheck' },
         { text: 'Confirmation', link: '/reference/annotations/confirmation' },
         { text: 'State transition', link: '/reference/annotations/transition' },
+        { text: 'System CUI Components', link: '/reference/annotations/systemcomponent' }
       ],
     },    
-    {
-      text: 'System CUI Components',
-      link: '/reference/annotations/systemcomponent',
-    },
     {
       text: 'Providers',
       collapsed: false,
       items: [
         { text: 'Overview', link: '/reference/providers/overview' },
-        { text: 'Native provider', link: '/reference/providers/native' },
         { text: 'PostgreSQL provider', link: '/reference/providers/postgrest' }
       ]
     },
@@ -99,8 +95,12 @@ export const en = {
       ],
     },
     {
-      text: "Extensions",
-      link: '/reference/providers/extension',
+      text: 'Extension',
+      collapsed: false,
+      items: [
+        { text: 'Extensions', link: '/reference/providers/extension' },
+        { text: 'Native provider', link: '/reference/providers/native' }
+      ]
     },
     {
       text: 'Conversation Design',
