@@ -10,9 +10,17 @@ Value recommendation is a way to help users choose from a smaller set of pre-app
 
 To set up value recommendation, you need to specify the source and the display:
 
-- **Source**: This is the location of the list of values that you want to recommend. You can specify a code expression or skill that returns a list of values of the target type. In the code expression, you can call service functions such as `function()` or `function(input: slot!!)` and optionally apply some post-processing in Kotlin. If the service function returns only up-to-date options, dynamic suggestions will be offered. However, you can even specify a static list if it makes business sense. For example: you could specify the following list of colors: `listOf(Color.Red, Color.Black)`. For a better user experience, the candidates in this list should only include the options that are servable according to the business logic or data.
+- **Source**
 
-- **Display**: This is how the bot will render the list of options to the user. You can specify a template that verbalizes the offer list in different languages. The template should include a header, body, and footer. The body is required.
+  This is the location of the list of values that you want to recommend. You can specify a code expression or skill that returns a list of values of the target type. 
+  
+  In the code expression, you can call service functions such as `function()` or `function(input: slot!!)` and optionally apply some post-processing in Kotlin. If the service function returns only up-to-date options, dynamic suggestions will be offered. However, you can even specify a static list if it makes business sense. For example, you could specify the following list of colors: `listOf(Color.Red, Color.Black)`. 
+  
+  For a better user experience, the candidates in this list should only include the options that are servable according to the business logic or data.
+
+- **Display**
+
+  This is how the bot will render the list of options to the user. You can specify a template that verbalizes the offer list in different languages. The template should include a header, body, and footer. The body is required.
 
 ::: details More detailed explanation of how to set value recommendations
 ![value rec popup](/images/annotation/valuerec/valuerec.png)
@@ -39,7 +47,13 @@ To set up value recommendation, you need to specify the source and the display:
 
 Value recommendations can be defined at the slot level or the type level.
 
-- **Slot level**: This means that the value recommendation is specific to a single slot. For example, you could define a value recommendation for the `departureCity` slot that only includes cities that are served by a particular airline. This allows users to incrementally communicate what they want, by only providing the information they know at the moment. 
+- **Slot level**
+
+  This means that the value recommendation is specific to a single slot. 
+  
+  For example, you could define a value recommendation for the `departureCity` slot that only includes cities that are served by a particular airline. 
+  
+  This allows users to incrementally communicate what they want, by only providing the information they know at the moment. 
 
   ::: details More detailed explanation of how to set it on slot level
   1. Go to the **slot detail page**, and select the **Annotation** tab.
@@ -47,7 +61,13 @@ Value recommendations can be defined at the slot level or the type level.
   3. In the popup window, set the source, display, informs and **Save**.
   ::: 
 
-- **Type level**: This means that the value recommendation is specific to a type. For example, you could define a value recommendation for the `roundFlightTicket` type that includes the `departureCity` and `arrivalCity` slots. This means that the bot will recommend possible departure and arrival cities together when the user is booking a round flight ticket. This is a more holistic approach, where the bot will always recommend multiple slots simultaneously, and they will be filled together. 
+- **Type level**
+
+  This means that the value recommendation is specific to a type. 
+  
+  For example, you could define a value recommendation for the `roundFlightTicket` type that includes the `departureCity` and `arrivalCity` slots. This means that the bot will recommend possible departure and arrival cities together when the user is booking a round flight ticket. 
+  
+  This is a more holistic approach, where the bot will always recommend multiple slots simultaneously, and they will be filled together. 
 
   ::: details More detailed explanation of how to set it on type level
   1. On the type level, select the **Annotation** tab.
