@@ -12,20 +12,39 @@ Here is a more detailed explanation of each fill strategy.
 
 Always ask strategy is a good choice for scenarios where users are required to provide essential information. It is a robust strategy, meaning that if the user does not provide the information, the chatbot will continue to ask until it gets what it needs. The always ask strategy can be helpful in ensuring that the chatbot has all of the information it needs to complete the service.
 
-Therefore, **it is important to fill in at least one prompt when using the Always ask fill strategy**. Prompts are questions that can be used to ask users for information, such as their name, email address, or other required details. For example, a prompt might ask *"What time would you like to book your table?"*
+**When you set the fill strategy to always ask, it is important to provide at least one prompt.** **Prompts** are questions that can be used to ask users for information. They should be relevant to the information that you are asking for, clear and concise, and easy for the user to understand. 
+
+For example, if you are creating a chatbot that helps users book a table at a restaurant, you might use the following prompt: *"What time would you like to book your table?"* If you do not provide any prompts, the chatbot will not be able to ask the user for the information that you need. This could lead to the conversation getting stuck, or it could result in the chatbot providing incorrect information to the user.
+
+::: details More detailed explanation of how to set the Always ask strategy
+![Always ask strategy](/images/annotation/fillstrategy/always_ask.png)
+1. Go to the **slot detail page**, and select the **Annotation** tab.
+2. In the **Fill strategy** section, select **Always ask**.
+3. In the **Prompt** field, enter the question that can be used to ask users for information. 
+:::
 
 ## Conditional
 
 Conditional strategy is a good choice for scenarios where users are required to provide essential information, but only under specific conditions. It is not as robust as the always ask strategy, as **it needs to meet the conditions** before asking the user for information. The conditional strategy can be helpful in ensuring that the chatbot only asks for information that is relevant to the task at hand.
 
-**When you set the fill strategy to conditional, you should specify the condition and include at least one prompt.** 
+**When you set the fill strategy to conditional, you should specify the condition and include at least one prompt.** The **condition** is an expression that determines whether or not the chatbot should ask the user. 
 
-For example, you can set a conditional strategy for a slot that says:
+For example, if you are creating a chatbot that helps users book a table at a restaurant, you might use the conditional strategy for the slot that stores the name of the event. The condition could be that the number of guests is greater than 10:
+
 ```kotlin
-// If the user wants to book a table for more than 10 people, then ask for the name of the event
+// If the user wants to book a table for more than 10 people, ask for the name of the event
 numberOfGuest > 10
 ```
-If the condition is met, the chatbot will ask the user for the name of the event. If the condition is not met, the chatbot will not take the action.
+
+If the condition is met, the chatbot would ask the user for the name of the event. If the condition is not met, the chatbot would not ask the user for the name of the event.
+
+::: details More detailed explanation of how to set the Conditional strategy
+![Conditional strategy](/images/annotation/fillstrategy/conditional.png)
+1. Go to the **slot detail page**, and select the **Annotation** tab.
+2. In the **Fill strategy** section, select **Conditional**.
+3. In the **Condition** field, enter the expression that determines whether or not the chatbot should ask. The expression can be a simple comparison, such as `numberOfGuests > 10`, or it can be a more complex expression, such as `numberOfGuests > 10 && timeOfDay == "evening"`.
+4. In the **Prompt** field, enter the question that can be used to ask users for information. 
+:::
 
 ## Gated 
 
@@ -45,6 +64,14 @@ For example, if you want to find out what symptoms a patient has, a chatbot can 
 
 This can help to improve the user experience by ensuring that the chatbot only asks for the information that is relevant to the user's needs.
 
+::: details More detailed explanation of how to set the Gated strategy
+![Gated](/images/annotation/fillstrategy/gated.png)
+1. Go to the **slot detail page**, and select the **Annotation** tab.
+2. In the **Fill strategy** section, select **Gated**.
+3. In the **Gated** field, provide the boolean gate question.
+4. In **Affirmatives** and **Negatives** field, you can customize how the system understands user utterances that are interpreted as `yes` or `no` based context.
+:::
+
 ## Recover only
 
 Recover only strategy is a way to protect user privacy and make chatbots more user-friendly. It means that the chatbot will not ask the user for information unless the user specifically provides it. 
@@ -52,6 +79,13 @@ Recover only strategy is a way to protect user privacy and make chatbots more us
 For example, if a business does not need to know the user's age, they can use the Recover only strategy. This means that the chatbot will not ask the user for their age unless the user says something like *"I am 25 years old"*.
 
 **When you set the fill strategy to recover only, you should fill in at least one prompt.** This is to ensure that the chatbot can handle unexpected input from the user. The prompt will only be used if the chatbot cannot understand the user's input or if the slot value fails the value check.
+
+::: details More detailed explanation of how to set the Recover only strategy
+![Recover only strategy](/images/annotation/fillstrategy/recover_only.png)
+1. Go to the **slot detail page**, and select the **Annotation** tab.
+2. In the **Fill strategy** section, select **Recover only**.
+3. In the **Prompt** field, enter the question that can be used to ask users for information. 
+:::
 
 The Recover only strategy can be useful for the following use cases:
 
@@ -67,6 +101,12 @@ For example, if a chatbot is connected to a database of customer information, it
 
 The direct fill strategy can be useful for reducing the number of questions that the chatbot asks, improving the accuracy of the information, making the chatbot more scalable. **However, it does not ask the user if the value is problematic.** This means that the chatbot may fill the slot with incorrect or outdated information. This can be a drawback in some cases, such as when the information is sensitive or confidential.
 
+::: details More detailed explanation of how to set the Direct fill strategy
+![Direct fill strategy](/images/annotation/fillstrategy/direct_fill.png)
+1. Go to the **slot detail page**, and select the **Annotation** tab.
+2. In the **Fill strategy** section, select **Direct fill**.
+:::
+
 ## External event
 
 The External event strategy means that the chatbot will not fill the slot with information itself. Instead, it will wait for an external event to occur before filling the slot. This can be useful in situations where the chatbot needs to work with external software, such as a payment processor or other asynchronous events.
@@ -80,3 +120,10 @@ When you set fill strategy to external event, you should:
 - **Configure the third-party software to send an event to resume the skill.** Different third-party software have different mechanisms for doing this.
 
 - **Handle errors that may occur when the external event does not occur or when the event is received incorrectly.** For example, you may need to retry the request or notify the user that the booking could not be completed.
+
+::: details More detailed explanation of how to set the External event strategy
+![External event strategy](/images/annotation/fillstrategy/external_event.png)
+1. Go to the **slot detail page**, and select the **Annotation** tab.
+2. In the **Fill strategy** section, select **External event**.
+3. In the **Inform** field, provide a message to inform the user of the conversation state. 
+:::
