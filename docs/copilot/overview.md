@@ -1,7 +1,7 @@
 # Overview
 
 OpenCUI is a practical framework for building applications with a conversational user interface. At a high level, 
-it adopts a dual-process approach, utilizing Language Models (LLMs) to address informational or low-impact queries
+it adopts a dual-process approach, utilizing Large Language Models (LLMs) to address informational or low-impact queries
 through prompt engineering. For high-impact and transactional queries, it relies on software engineering. 
 Through the integration of LLM-based dialog understanding and schema-based interaction logic, 
 OpenCUI facilitates cost-effective development of natural and reliable conversational experiences.
@@ -31,7 +31,7 @@ The user query handling process involves the following steps:
 Copilot is typically developed using the same client/server architecture: there will be copilot frontend that coexists
 with your app's frontend, and then there will be a copilot backend, or simply a special chatbot that you can build 
 using OpenCUI. As conversational companion to your application, copilot needs to interact with your application in 
-order to provide context dependent help to your user. The interaction between the copilot and your application are
+order to provide context dependent help to your user. The interaction between the copilot and your application is
 defined by the following meta API served by your application:
 ```
 fun get_state(): List<FrameEvent>  // This function simply return the state in json form.
