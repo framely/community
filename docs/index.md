@@ -14,7 +14,7 @@ hero:
       type: primary
     - theme: alt
       text: Learn More
-      link: /guide/
+      link: /reference/guide/index
       type: secondary
 features:
   - title: 💬 CUI for your APIs
@@ -39,18 +39,11 @@ features:
 cta :
   - details: Import what you need, customize and deploy.
     title: Get Started
-    link: /guide/
+    link: /reference/guide/index
 
 ---
 
 <script setup>
   import Cta from './components/cta/callToAction.vue';
 </script>
-<Cta :frontmatter="[
-  {
-    details: 'Import what you need, customize and deploy.',
-    title: 'Get Started',
-    link: '/guide/'
-  }
-]"
-/>
+<Cta />
