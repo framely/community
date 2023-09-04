@@ -1,6 +1,6 @@
 # Build a copilot backend
 This guide will demonstrate how to build a copilot backend, or simply chatbot, using the OpenCUI platform, taking 
-OpenCUI copilot as an example. The OpenCUI copilot is designed to provide onboarding, and feature discovery for 
+OpenCUI copilot as an example. The OpenCUI copilot is designed to provide onboarding and feature discovery for 
 causal chatbot developer. Copilot is a special chatbot in that it helps user indirectly instead of doing things 
 directly on user's behalf.
 
@@ -10,16 +10,16 @@ flow based approach, OpenCUI allow you to build effective conversational user in
 based on the observation that all user interaction are designed to create function object based on user input. This 
 object can then be invoked to deliver the service to user. Under this approach, it is all about defining the type 
 and attach dialog annotation to make that type, including primitive type(entities), composite type(frames) and 
-function(skills), instantiable via conversation. These dialog annotation specify how builder wants each slot, also 
+function(skills), instantiable via conversation. These dialog annotations specify how builders want each slot, also 
 known as component or member data, can be instantiated through conversation, and OpenCUI runtime will manage the 
 conversation so that your bot can deliver the service to user as quickly as possible.
 
 
 ### Build entities
-In this tutorial, we will thus describe the types need to build a copilot for OpenCUI itself. Since the main 
-objects that builders work with on the platform is entity, frame and skill, we need to introduce some entities that 
-so builder can talk about them. For instance, an entity called "FrameType" is created to identify all frames and 
-skills. The full list of the entity types we introduce as follows.
+In this tutorial, we will thus describe the types needed to build a copilot for OpenCUI itself. Since the main 
+objects that builders work with on the platform are entity, frame and skill, we need to introduce some entities that 
+so builders can talk about them. For instance, an entity called "FrameType" is created to identify all frames and 
+skills. The full list of the entity types we introduce is as follows.
 
 ::: details Details with OpenCUI Copilot as an example
 Create the following entities:
@@ -50,7 +50,7 @@ of "PageContext" frame will be automatically filled for each turn.
 ::: 
 
 ## Build skills to help user
-Skills are functionality that can be triggered by user through natural language request. This section illustrates the 
+Skills are functionalities that can be triggered by users through natural language requests. This section illustrates the 
 process of building a conversational experience to guide user through [cloning an echo chatbot](../reference/guide/clone-simple-chatbot.md). 
 
 ### Build clone skill
@@ -95,12 +95,9 @@ There are two ways to clone a project:
 - Enter the target project and click the Clone button to clone it.
 - Enter an organization, click the Create button, select the type, and change the clone mode to Clone from.
 
-Since OpenCUI copilot does not support cross-organizational operation for now, copilot can only assist app users in  
-cloning projects using the second method. The parameters required to clone a project include the project type,  
-organization, and label of the target project.
+Since OpenCUI copilot does not support cross-organizational operation for now, copilot can only assist app users in cloning projects using the second method. The parameters required to clone a project include the project type, organization, and label of the target project.
 
-To determine the project type, we created the entity "ProjectType" and added a slot with this type, so copilot can  
-prompt app users to select the project type. However, DU currently cannot understand the organization and project 
+To determine the project type, we created the entity "ProjectType" and added a slot with this type, so copilot can prompt app users to select the project type. However, DU currently cannot understand the organization and project 
 labels.  Therefore, only the project type can be obtained from the app users.
 ::: details Details with OpenCUI Copilot as an example
 1. Add the following slots in skill CloneProject:
@@ -157,8 +154,7 @@ we provide an action button for them to navigate to the target page.
 
 Finally, after collecting all the required parameters, we can generate an action button to clone a project. Since 
 the app  users cannot fill the orgLabel and projectLabel slots, the default action of this skill will not mention 
-the  target organization and project. However, if these slots are initialized by other composite skills, there is a  
-chance that they can be filled. Therefore, we added a branch to handle that situation.
+the target organization and project. However, if these slots are initialized by other composite skills, there is a chance that they can be filled. Therefore, we added a branch to handle that situation.
 ::: details Details with OpenCUI Copilot as an example
 1. Add a default response in skill CloneProject:
    - **Action**: Single value message
@@ -240,8 +236,7 @@ To build a composite skill for onboarding app users or combining multiple action
 3. Add dialog annotations to add the missing information if necessary.
 4. Add slots to verify if the app users have completed each step if necessary.
 
-For example, let's consider the [QuickStartClone](https://build.opencui.io/org/ai.bethere/agent/quickstarts/en/intent/64b897ae0f50353c647ca7e3) skill used to guide app users through the process of   
-quickstart [cloning an echo chatbot](https://opencui.io/guide/clone-simple-chatbot.html). The happy path for the QuickStartClone skill involves the following steps:
+For example, let's consider the [QuickStartClone](https://build.opencui.io/org/ai.bethere/agent/quickstarts/en/intent/64b897ae0f50353c647ca7e3) skill used to guide app users through the process of quickstart [cloning an echo chatbot](https://opencui.io/guide/clone-simple-chatbot.html). The happy path for the QuickStartClone skill involves the following steps:
 
 ![Happy path of QuickStartClone skill](/images/copilot/quickstart-clone.png)
 
@@ -259,15 +254,13 @@ Create a skill with label `CloneProject`
 
 **2. Add component skills**
 
-As we've built the skill "CloneProject" and skill "TestChatbot", now we can add these skills as slots in the skill  
-"QuickStartClone". Since the cloned project is fixed in this quickstart, we can use the frame-level [initialization](../reference/annotations/init.md#overview)  to initialize the skill CloneProject with the predetermined parameters  
-including project type, organization label and project label.
+As we've built the skill "CloneProject" and skill "TestChatbot", now we can add these skills as slots in the skill "QuickStartClone". Since the cloned project is fixed in this quickstart, we can use the type-level [initialization](../reference/annotations/init.md#overview)  to initialize the skill CloneProject with the predetermined parameters including project type, organization label and project label.
 ::: details Details with OpenCUI Copilot as an example
 1. Add the following slots in skill QuickStartClone:
    - `cloneProject` with type `CloneProject`
    - `testChatbot` with type `TestChatbot`
 
-2. Add frame-level initialization for skill QuickStartClone:
+2. Add type-level initialization for skill QuickStartClone:
    - Fill slot `cloneProject.type` with value: `ProjectType("chatbot")`
    - Fill slot `cloneProject.orgLabel` with value: `"me.quickstart"`
    - Fill slot `cloneProject.projectLabel` with value: `"pingpongSL"`
@@ -299,7 +292,7 @@ Add annotation post-fill action for slot testChatbot:
 To ensure that app users complete each step of the cloning process, it's helpful to guide them through the steps one 
 by one. After showing them how to clone the echo chatbot, we want to confirm if they have finished this step. To 
 achieve  this, we add a boolean slot. If their answer is negative, copilot will prompt them to complete the cloning 
-step  before proceeding to the next step.
+step before proceeding to the next step.
 ::: details Details with OpenCUI Copilot as an example 
 1. Add the following slot in skill CloneProject:
    - `isNewChatbotPage` with type `boolean`
