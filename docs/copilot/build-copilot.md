@@ -154,7 +154,7 @@ we provide an action button for them to navigate to the target page.
 
 Finally, after collecting all the required parameters, we can generate an action button to clone a project. Since 
 the app  users cannot fill the orgLabel and projectLabel slots, the default action of this skill will not mention 
-the  target organization and project. However, if these slots are initialized by other composite skills, there is a chance that they can be filled. Therefore, we added a branch to handle that situation.
+the target organization and project. However, if these slots are initialized by other composite skills, there is a chance that they can be filled. Therefore, we added a branch to handle that situation.
 ::: details Details with OpenCUI Copilot as an example
 1. Add a default response in skill CloneProject:
    - **Action**: Single value message
