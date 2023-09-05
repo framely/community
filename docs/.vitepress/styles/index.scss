@@ -58,12 +58,10 @@
   }
   @media (max-width:960px) {
     .image-container{
-      width: 320px;
-      height: 500px;
       transform: translate(0px, 0px);
       .image-src{
-        max-width: 360px;
-        max-height: 360px;
+        max-width: 420px;
+        max-height: 450px;
       }
     }
   }
