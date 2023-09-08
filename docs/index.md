@@ -3,7 +3,7 @@ layout: home
 title: OpenCUI
 hero:  
   name: ChatGPT for your user-facing product
-  tagline: Make it easy for every user to get value from your application, as if they are power users.(Edited)
+  tagline: Help every user get value from your application, as if they are power users.
 
 Core
   image: 
