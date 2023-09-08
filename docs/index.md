@@ -36,6 +36,24 @@ features:
   - title: 🛠️ Fully Extensible
     details: The chatbot defined on the OpenCUI are generated into kotlin code, which makes it easy to integrate with any channel, support and services, take full advantage of java/kotlin ecosystem.
 
+contentCards:
+  - title: Dual process
+    details: The future of chatbots will likely be a dual-process system that combines traditional software engineering with LLMs, depending on the use case.
+    image: images/system1.png
+    left: true
+  - title: LLM based DU
+    details: Accuracy is not the most important metric when it comes to dialog understanding. To deploy a chatbot into production, every thing need to be hot fixable by the operation team.
+    image: images/language.png
+    left: false
+  - title: Schema based
+    details: The separation of concerns in three-layered approach allows you to focus on specific tasks without worrying about the implementation details of other modules or layers, which can lead to more efficient development, easier debugging, greater code reuse, and reduced costs.
+    image: images/schema.png
+    left: true
+  - title: Component based for reuse
+    details: Never build from scratch, build complex behavior by reusing black-box components, so you can focus on what you want instead of how to implement it. 
+    image: images/interaction.png
+    left: false
+
 cta :
   - details: Import what you need, customize and deploy.
     title: Get Started
@@ -44,6 +62,8 @@ cta :
 ---
 
 <script setup>
-  import Cta from './components/cta/callToAction.vue';
+  import Cta from './components/cta/callToAction.vue'
+  import contentCard from './components/contentCard/ContentCard.vue'
 </script>
+<contentCard />
 <Cta />
