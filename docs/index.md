@@ -4,8 +4,6 @@ title: OpenCUI
 hero:  
   name: ChatGPT for your user-facing product
   tagline: Help every user get value from your application, as if they are power users.
-
-Core
   image: 
     src: images/copilot_hero.png
     alt: OpenCUI
