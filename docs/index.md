@@ -3,7 +3,9 @@ layout: home
 title: OpenCUI
 hero:  
   name: ChatGPT for your user-facing product
-  tagline: A dual process approach for dependable conversations on top of LLMs.
+  tagline: Make it easy for every user to get value from your application, as if they are power users.(Edited)
+
+Core
   image: 
     src: images/copilot_hero.png
     alt: OpenCUI
