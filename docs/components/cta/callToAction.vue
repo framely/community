@@ -24,17 +24,20 @@ const cta = computed(() => {
 </template>
 <style lang="scss" scoped>
 .container-s {
+  padding: 0 40px;
   div {
     max-width: 1152px;
-    margin: 128px auto 0 auto;
+    margin: 60px auto 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: inherit;
-    // border: 1px solid var(--vp-c-bg-soft);
+    height: 100%;
+    background-color: var(--vp-c-bg-soft);
+    //background-color: inherit;
+    //border: 1px solid var(--vp-c-bg-soft);
     border-radius: 12px;
     justify-content: center;
-    padding: 0 24px;
+    padding: 60px 24px;
 
     h2 {
       //border: none;
