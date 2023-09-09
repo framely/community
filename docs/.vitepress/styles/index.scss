@@ -38,7 +38,7 @@
   // background colors
   --vp-c-bg-icon: #4282fd10;
 
-  // layout vars
+  // layout vars, blog and pricing page are using it
   --homepage-width: 960px;
 
   /**
@@ -57,6 +57,9 @@
     }
   }
   @media (max-width:960px) {
+    .container{
+      row-gap: 50px;
+    }
     .image-container{
       transform: translate(0px, 0px);
       .image-src{
