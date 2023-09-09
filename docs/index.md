@@ -3,7 +3,7 @@ layout: home
 title: OpenCUI
 hero:  
   name: ChatGPT for your user-facing product
-  tagline: A dual process approach for dependable conversations on top of LLMs.
+  tagline: Help every user get value from your application, as if they are power users.
   image: 
     src: images/copilot_hero.png
     alt: OpenCUI
@@ -12,10 +12,6 @@ hero:
       text: Start to Build
       link: https://build.opencui.io
       type: primary
-    - theme: alt
-      text: Learn More
-      link: /reference/guide/index
-      type: secondary
 features:
   - title: 💬 CUI for your APIs
     details: Building valuable services is hard, and we can not help with that. But if you already have APIs, building conversational user interface for it should be easy, with OpenCUI.
