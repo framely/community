@@ -34,7 +34,7 @@ features:
 
 contentCards:
   - title: Complete conversational ui solution for all use cases
-    details: A dual-process approach that automatically switches between dependable software and flexible LLMs, providing a great user experience regardless of whether the user's request is transactional or informational.
+    details: By automatically switching between dependable software and flexible LLMs, a dual-process approach provides a great user experience regardless of whether the user's request is transactional or informational.
     image: images/system1.png
     left: true
 
