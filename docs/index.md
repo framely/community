@@ -33,8 +33,8 @@ features:
     details: The chatbot defined on the OpenCUI are generated into kotlin code, which makes it easy to integrate with any channel, support and services, take full advantage of java/kotlin ecosystem.
 
 contentCards:
-  - title: Handle every user request
-    details: Regardless it is transactional or informational, our dual-process approach automatically switches between dependable software and flexible LLMs.
+  - title: Handle every user request, transactional or informational
+    details: Automatically switching between dependable software and flexible LLMs, our dual-process approach always deliver good conversational experience.
     image: images/system1.png
     left: true
 
