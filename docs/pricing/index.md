@@ -3,7 +3,7 @@ aside: false
 layout: home
 ---
 <script setup>
-  import Pricing from '../components/pricing/pricing.vue';
+  import Pricing from 'components/pricing/pricing.vue';
 </script>
 
 <Pricing :frontmatter="{
