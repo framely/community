@@ -65,7 +65,7 @@ const contentCard = computed(() => {
         .desc {
           color: var(--vp-c-text-2);
           font-weight: 500;
-          font-size: 1.125rem;
+          font-size: 1.25rem;
           line-height: 2rem;
           margin-bottom: 2.5rem;
         }
