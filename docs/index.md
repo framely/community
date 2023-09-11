@@ -47,8 +47,8 @@ cta :
 ---
 
 <script setup>
-  import Cta from './components/cta/callToAction.vue'
-  import contentCard from './components/contentCard/ContentCard.vue'
+  import Cta from 'components/cta/callToAction.vue'
+  import contentCard from 'components/contentCard/ContentCard.vue'
 </script>
 <contentCard />
 <Cta />
