@@ -37,7 +37,14 @@ contentCards:
     details: Automatically switching between dependable software and flexible LLMs, our dual-process approach always deliver good conversational experience.
     image: images/system1.png
     left: true
-
+  - title: No training, hotfixable dialog understanding
+    details: Using the same technology behind ChatGPT, labeling training data for each additional intent is a thing of past, now you can focus on business logic.
+    image: images/language.png
+    left: false
+  - title: No more flow-based interaction logic
+    details: Enumerating all possible conversation flow can create good user experience but with too high a cost. Schema based interaction logic changes that.  
+    image: images/schema.png
+    left: true
 
 cta :
   - details: Import what you need, customize and deploy.
