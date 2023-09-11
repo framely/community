@@ -33,8 +33,8 @@ features:
     details: The chatbot defined on the OpenCUI are generated into kotlin code, which makes it easy to integrate with any channel, support and services, take full advantage of java/kotlin ecosystem.
 
 contentCards:
-  - title: Dual process
-    details: The future of chatbots will likely be a dual-process system that combines traditional software engineering with LLMs, depending on the use case.
+  - title: Complete conversational ui solution for all use cases
+    details: A dual-process approach that automatically switches between dependable software and flexible LLMs, providing a great user experience regardless of whether the user's request is transactional or informational.
     image: images/system1.png
     left: true
 
