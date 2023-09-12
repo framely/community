@@ -50,22 +50,22 @@ const contentCard = computed(() => {
       padding: 4rem 0;
       gap: 4rem;
       .image {
-        width: 60%;
+        width: 45%;
       }
       .content {
-        width: 40%;
+        width: 55%;
         display: flex;
         flex-direction: column;
         .title {
           font-weight: 700;
           font-size: 2.25rem;
-          line-height: 1;
+          line-height: 2.5rem;
           margin-bottom: 1.5rem;
         }
         .desc {
           color: var(--vp-c-text-2);
           font-weight: 500;
-          font-size: 1.25rem;
+          font-size: 1.125rem;
           line-height: 2rem;
           margin-bottom: 2.5rem;
         }
@@ -90,6 +90,9 @@ const contentCard = computed(() => {
         .content {
           width: 100%;
           order: 1;
+          .title {
+            font-size: 1.75rem;
+          }
         }
       }
     }
