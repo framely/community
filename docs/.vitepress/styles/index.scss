@@ -73,15 +73,16 @@
   /**
    * Change main name, tagline, actions alignment
    * -------------------------------------------------------------------------- */
-  .name,
-  .text,
-  .tagline {
-    max-width: fit-content;
-    margin: auto;
-  }
-  
-  .actions {
-    justify-content: center;
+  .main {
+    .name,
+    .text,
+    .tagline {
+      max-width: fit-content;
+      margin: auto;
+    }
+    .actions {
+      justify-content: center;
+    }
   }
   /* End change main */
 
