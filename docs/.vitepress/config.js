@@ -45,6 +45,9 @@ export default {
     footer: {
       copyright: 'OpenCUI, Inc © 2023 All rights reserved. &nbsp;&nbsp;<a href="/policy/terms.html">Terms</a>&nbsp;&nbsp;<a href="/policy/privacy.html">Privacy</a>'
     },
+    docFooter: {
+      copyright: 'OpenCUI, Inc © 2023 All rights reserved. &nbsp;&nbsp;<a href="/policy/terms.html">Terms</a>&nbsp;&nbsp;<a href="/policy/privacy.html">Privacy</a>'
+    },
   },
 
 }
