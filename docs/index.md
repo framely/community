@@ -36,3 +36,5 @@ cta :
   import contentCard from './components/contentCard/ContentCard.vue'
 </script>
 
+<contentCard />
+<Cta />
