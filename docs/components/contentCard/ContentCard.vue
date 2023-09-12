@@ -82,8 +82,8 @@ const contentCard = computed(() => {
       .contentCard-card {
         display: flex;
         flex-direction: column;
-        //padding: 2rem 0;
-        gap: 2.5rem;
+        padding: 1rem 0;
+        gap: 1.5rem;
         .image {
           width: 100%;
         }
