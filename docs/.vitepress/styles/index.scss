@@ -1,6 +1,4 @@
 :root {
-  //scroll-behavior: smooth;
-
   /**
    * The default theme CSS variables that can be overridden:
    * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
@@ -43,7 +41,7 @@
 
   /**
    * Change hero size
-   * -------------------------------------------------------------------------- */
+   * Hide hero image, step 1 we just hide it.
   .main{
     align-self: center;
   }
@@ -69,6 +67,22 @@
     }
   }
   // End hero size
+   * -------------------------------------------------------------------------- */
+
+  /**
+   * Change main name, tagline, actions alignment
+   * -------------------------------------------------------------------------- */
+  .name,
+  .text,
+  .tagline {
+    max-width: fit-content;
+    margin: auto;
+  }
+  
+  .actions {
+    justify-content: center;
+  }
+  /* End change main */
 
 }
 
