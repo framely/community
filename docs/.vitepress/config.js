@@ -34,10 +34,10 @@ export default {
     // levels of TOC
     outline: 'deep',
     // nav social icons
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/opencui/community' },
-      { icon: 'linkedin', link: 'https://www.linkedin.com/company/opencui-official/' },
-    ],
+    // socialLinks: [
+    //   { icon: 'github', link: 'https://github.com/opencui/community' },
+    //   { icon: 'linkedin', link: 'https://www.linkedin.com/company/opencui-official/' },
+    // ],
     // 顶部右侧导航
     nav: navbar.en,
     sidebar: sidebar.en,
