@@ -3,7 +3,7 @@ layout: home
 title: OpenCUI
 hero:  
   name: ChatGPT for your user-facing product
-  tagline: Help every user get value from your application, as if they are power users.
+  tagline: Designed from the ground up for the era of LLMs to help every user get value from your application, as if they are power users.
   actions:
     - theme: brand
       text: Start to Build
@@ -11,15 +11,15 @@ hero:
       type: primary
 
 contentCards:
-  - title: Handle every user request, transactional or informational
-    details: Automatically switching between dependable software and flexible LLMs, our dual-process approach always deliver good conversational experience.
+  - title: Handle Every User Request, Whether Transactional or Informationa
+    details: Automatically switching between dependable software and flexible LLMs, our dual-process approach always deliver cost-effective conversational experience for both your APIs and content.
     image: images/system1.png
     left: true
-  - title: No training, hotfixable dialog understanding
+  - title: Understand Dialog with Zero or Few-Shot Learning
     details: Using the same technology behind ChatGPT, labeling training data for each additional intent is a thing of past, now you can focus on business logic.
     image: images/language.png
     left: false
-  - title: No more flow-based interaction logic
+  - title: Focus on Service with Schema-based Interaction Logic 
     details: Enumerating all possible conversation flow can create good user experience but with too high a cost. Schema based interaction logic changes that.  
     image: images/schema.png
     left: true

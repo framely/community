@@ -25,6 +25,7 @@
   --vp-custom-block-tip-text: var(--vp-c-brand);
 
   // Component: Button
+  --vp-button-brand-bg: var(--vp-c-brand);
   --vp-button-brand-border: var(--vp-c-brand-light);
   --vp-button-brand-hover-border: var(--vp-c-brand-light);
   --vp-button-brand-hover-bg: var(--vp-c-brand-light);
@@ -72,15 +73,17 @@
   /**
    * Change main name, tagline, actions alignment
    * -------------------------------------------------------------------------- */
-  .name,
-  .text,
-  .tagline {
-    max-width: fit-content;
-    margin: auto;
-  }
-  
-  .actions {
-    justify-content: center;
+  .main {
+    .name,
+    .text,
+    .tagline {
+      max-width: fit-content;
+      margin: auto;
+      text-align: center;
+    }
+    .actions {
+      justify-content: center;
+    }
   }
   /* End change main */
 
