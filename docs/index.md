@@ -33,7 +33,10 @@ cta :
 
 <script setup>
   import Cta from './components/cta/callToAction.vue'
-  import contentCard from './components/contentCard/ContentCard.vue'
+  import ContentCard from './components/contentCard/ContentCard.vue'
+  import Video from './components/video/videoSection.vue'
 </script>
-<contentCard />
+
+<Video />
+<ContentCard />
 <Cta />
