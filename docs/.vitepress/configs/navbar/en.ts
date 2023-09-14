@@ -6,11 +6,6 @@ export const en = [
     activeMatch: '/copilot/',
   },
   {
-    text: 'Why OpenCUI',
-    link: '/essentials/dual-process',
-    activeMatch: '/essentials/',
-  },
-  {
     text: 'Reference',
     link: '/reference/guide/signingup',
     activeMatch: '/reference/',
