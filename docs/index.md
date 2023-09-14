@@ -31,7 +31,7 @@ cta :
 
 columnFooter :
   - title: OpenCUI
-    tagline: ChatGPT for your user-facing product
+    tagline: Ground up Conversational User Interface (CUI) framework for LLM era 
     logo: /images/logo.png
     footerItems:
       - title: Social
