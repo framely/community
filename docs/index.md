@@ -29,14 +29,34 @@ cta :
     title: Get Started
     link: /reference/guide/index
 
+columnFooter :
+  - title: OpenCUI
+    tagline: ChatGPT for your user-facing product
+    logo: /images/logo.png
+    footerItems:
+      - title: Social
+        items:
+          - text: Medium
+            link: https://medium.com/opencui-official
+          - text: LinkedIn
+            link: https://www.linkedin.com/company/10969501/
+      - title: Legal
+        items:
+          - text: Terms of Service
+            link: /policy/terms
+          - text: Privacy policy
+            link: /policy/privacy
+
 ---
 
 <script setup>
   import Cta from './components/cta/callToAction.vue'
   import ContentCard from './components/contentCard/ContentCard.vue'
   import Video from './components/video/videoSection.vue'
+  import CFooter from './components/footer/columnFooter.vue'
 </script>
 
 <Video />
 <ContentCard />
 <Cta />
+<CFooter />
