@@ -24,10 +24,5 @@ export const en = [
     text: 'Blog',
     link: '/articles/',
     activeMatch: '/articles/',
-  },
-  {
-    text: 'Start to build',
-    link: 'https://build.opencui.io',
-    target: '_blank',
   }
 ]
