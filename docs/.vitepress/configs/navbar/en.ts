@@ -6,7 +6,7 @@ export const en = [
     activeMatch: '/copilot/',
   },
   {
-    text: 'Guide',
+    text: 'Resources',
     link: '/reference/guide/signingup',
     activeMatch: '/reference/',
   },
