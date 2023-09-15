@@ -1,8 +1,5 @@
 <script setup>
-import { useData } from 'vitepress';
-const { page, frontmatter } = useData()
 
-console.log('frontmatter:', frontmatter);
 import Cta from '../../components/cta/callToAction.vue'
 import ContentCard from '../../components/contentCard/ContentCard.vue'
 import Video from '../../components/video/videoSection.vue'
