@@ -9,7 +9,6 @@ hero:
       text: Start to Build
       link: https://build.opencui.io
       type: primary
-
 contentCards:
   - title: Handle Every User Request, Transactional or Informational
     details: Automatically switching between dependable software and flexible LLMs, our dual-process approach always deliver cost-effective conversational experience for both your APIs and content.
@@ -49,14 +48,3 @@ columnFooter :
 
 ---
 
-<script setup>
-  import Cta from './components/cta/callToAction.vue'
-  import ContentCard from './components/contentCard/ContentCard.vue'
-  import Video from './components/video/videoSection.vue'
-  import CFooter from './components/footer/columnFooter.vue'
-</script>
-
-<Video />
-<ContentCard />
-<Cta />
-<CFooter />
