@@ -6,7 +6,7 @@ import DefaultTheme from 'vitepress/theme'
 <template #nav-bar-content-after>
   <a :href="'https://build.opencui.io'" :target="'_blank'">
     <button class="button-start">
-      Start to build
+      Start to Build
     </button>
   </a>
 </template>
