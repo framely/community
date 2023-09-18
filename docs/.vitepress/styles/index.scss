@@ -74,6 +74,7 @@
    * Change main name, tagline, actions alignment
    * -------------------------------------------------------------------------- */
   .main {
+
     .name,
     .text,
     .tagline {
@@ -81,10 +82,12 @@
       margin: auto;
       text-align: center;
     }
+
     .actions {
       justify-content: center;
     }
   }
+
   /* End change main */
 
 }
@@ -97,4 +100,25 @@ html.dark {
   // border colors
   --vp-c-border: #3e4c5a;
   --vp-c-border-dark: #34404c;
+}
+
+// custom component styles
+
+.VPNavBar.has-sidebar {
+  >.container {
+    >.title {
+      background-color: var(--vp-c-bg);
+
+      >.VPNavBarTitle.has-sidebar {
+        >.title {
+          border-bottom: none !important;
+        }
+      }
+    }
+  }
+}
+
+.VPSidebar {
+  background-color: var(--vp-c-bg) !important;
+  border-right: 1px solid var(--vp-c-divider) !important;
 }

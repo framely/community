@@ -1,9 +1,10 @@
-import { sidebar, navbar } from "./configs"
-
+import { FALSE } from "sass";
+import { sidebar, navbar } from "./configs";
 
 export default {
   base: '/', // 项目的基础路径
   title: 'OpenCUI', // 文档的标题，会显示在
+  appearance: false,
   head: [
     [
       'script',

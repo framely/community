@@ -48,6 +48,6 @@
   "author": "Xiaoyun Wu <xiaoyun.wu@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "vitepress": "^1.0.0-rc.12"
+    "vitepress": "^1.0.0-rc.14"
   }
 }
