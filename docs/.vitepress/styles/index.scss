@@ -105,14 +105,23 @@ html.dark {
 // custom component styles
 
 .VPNavBar.has-sidebar {
+
   >.container {
+
     >.title {
+      border-bottom: 1px solid var(--vp-c-divider);
       background-color: var(--vp-c-bg);
 
       >.VPNavBarTitle.has-sidebar {
         >.title {
-          border-bottom: none !important;
+          border-bottom: none;
         }
+      }
+    }
+
+    >.content {
+      .curtain {
+        border-top: 1px solid var(--vp-c-divider);
       }
     }
   }
