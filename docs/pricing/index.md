@@ -68,7 +68,7 @@ cards:
     - package: Business
       price: Custom
       badge: 
-      tagline: Beside services, you just need a conversational experience product owner.
+      tagline: Give us APIs that you want to expose conversationally along with conversational interaction design, we take care the rest.
       features:
                 - 'Everything included in Starter and: '
                 - Larger, purpose built NLU Model
