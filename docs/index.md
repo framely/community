@@ -6,7 +6,7 @@ hero:
   tagline: Help every user get value from your application, as if they are power users.
   actions:
     - theme: brand
-      text: Start to Build
+      text: Request Access
       link: https://build.opencui.io
       type: primary
 contentCards:
@@ -25,8 +25,8 @@ contentCards:
 
 cta :
   - details: Import what you need, customize and deploy.
-    title: Get Started
-    link: /reference/guide/index
+    title: Request Access
+    link: https://build.opencui.io
 
 columnFooter :
   - title: OpenCUI

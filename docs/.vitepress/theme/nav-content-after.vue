@@ -15,7 +15,7 @@ const toggleAppearance = function (v) {
 <template #nav-bar-content-after>
   <a :href="'https://build.opencui.io'" :target="'_blank'">
     <button class="button-start">
-      Start to Build
+      Request Access
     </button>
   </a>
   <VPSwitch title="toggle dark mode" class="VPSwitchAppearance" :aria-checked="isDark" @click="toggleAppearance">
