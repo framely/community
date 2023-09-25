@@ -2,9 +2,9 @@ import { FALSE } from "sass";
 import { sidebar, navbar } from "./configs";
 
 export default {
-  base: '/', // 项目的基础路径
-  title: 'OpenCUI', // 文档的标题，会显示在
-  appearance: false,
+  base: '/',
+  title: 'OpenCUI',
+  appearance: 'force-dark',
   head: [
     [
       'script',
@@ -20,7 +20,7 @@ export default {
       gtag('config', 'G-L6RW3F0FPM');`
     ]
   ],
-  description: 'Type-based Approach for Chatbot Development', // 文档描述
+  description: 'Type-based Approach for Chatbot Development',
   lastUpdated: '上次更新时间', // string | boolean
   docsDir: 'docs',
   themeConfig: {
@@ -32,7 +32,7 @@ export default {
     //   { icon: 'github', link: 'https://github.com/opencui/community' },
     //   { icon: 'linkedin', link: 'https://www.linkedin.com/company/opencui-official/' },
     // ],
-    // 顶部右侧导航
+    
     nav: navbar.en,
     sidebar: sidebar.en,
     // footer
