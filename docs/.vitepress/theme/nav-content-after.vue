@@ -18,6 +18,10 @@ const toggleAppearance = function (v) {
       Request Access
     </button>
   </a>
+  <VPSwitch title="toggle dark mode" class="VPSwitchAppearance" :aria-checked="isDark" @click="toggleAppearance">
+    <VPIconSun class="sun" />
+    <VPIconMoon class="moon" />
+  </VPSwitch>
 </template>
 
 <style lang="scss">
