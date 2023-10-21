@@ -15,7 +15,7 @@ const video = computed(() => {
 <template>
   <div v-if="video.length" class="video-wrapper">
     <div v-for="video in video" :key="video.link">
-      <video class="video-player" :src="video.link" autoplay loop>
+      <video class="video-player" :src="video.link" controls>
       </video>
     </div>
   </div>
