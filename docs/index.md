@@ -46,5 +46,7 @@ columnFooter :
           - text: Privacy policy
             link: /policy/privacy
 
+video :
+  - link: videos/intro.mp4
 ---
 
