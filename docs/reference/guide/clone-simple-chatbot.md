@@ -12,7 +12,7 @@ Cloning projects is a great way to get started with OpenCUI. You can easily get 
 
 ## Before you start
 
-[Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login). A personal organization will be created for you when you sign up.
+Log in to [OpenCUI](https://build.opencui.io/login). A personal organization will be created for you when you sign in.
 
 ## Clone chatbot pingpong
 

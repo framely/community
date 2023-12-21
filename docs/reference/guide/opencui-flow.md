@@ -6,7 +6,7 @@ OpenCUI workflow is a branch-based workflow. After you tested your changes, it's
 
 ## Before you start
 
-To follow OpenCUI flow, you will need to [sign up](./signingup.md#sign-up) for a OpenCUI account and log into [OpenCUI](https://build.opencui.io/login) platform. Make sure to complete the steps outlined in the [Build a chatbot](./build-simple-chatbot.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
+To follow OpenCUI flow, you will need to log into [OpenCUI](https://build.opencui.io/login) platform. Make sure to complete the steps outlined in the [Build a chatbot](./build-simple-chatbot.md) guide. The steps in this guide build upon the chatbot created in the previous guide.
 
 ## Always in your branch
 

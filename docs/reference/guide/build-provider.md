@@ -7,7 +7,7 @@ In the previous guide, you learned how to use a cloned PostgreSQL provider in co
 
 ## Before you start
 
-- [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+- Log in to [OpenCUI](https://build.opencui.io/login).
 - [Build a simple chatbot](./build-simple-chatbot.md) for how to build a skill with entity slots.
 - [Reuse a full-stack module](./reuse-component.md) to get familiar with the functionality we try to build here.
 

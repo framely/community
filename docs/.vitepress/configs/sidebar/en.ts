@@ -41,7 +41,7 @@ export const en = {
       text: 'Quickstart',
       collapsed: false,
       items: [
-        { text: 'Sign up', link: '/reference/guide/signingup' },
+        { text: 'Get started', link: '/reference/guide/signingup' },
         { text: 'Clone an echo chatbot', link: '/reference/guide/clone-simple-chatbot' },
         { text: 'Build an echo chatbot', link: '/reference/guide/build-simple-chatbot' },
         { text: 'Reuse an hours module', link: '/reference/guide/reuse-component' },
