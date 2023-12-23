@@ -6,7 +6,7 @@ The Service is a special singleton type in a module with service enabled. It all
 In the previous guide, we showed how your chatbot can handle various business hours queries using the "hours" module. In this guide, we will show you how to build such a module in two parts: first declare the service, then define the conversational user interface on top of that. Both essentially involve defining a set of types, with types needed by the service requiring no dialog annotations.
 
 ## Before you start
-- [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+- Log in to [OpenCUI](https://build.opencui.io/login).
 - [Build a simple chatbot](./build-simple-chatbot.md) for how to build a skill with entity slots.
 - [Reuse a full-stack component](./reuse-component.md) to get familiar with the functionality you will build here.
 

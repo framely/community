@@ -52,7 +52,7 @@ To reuse the `tableReservation` module, you need to understand the following dep
 3. [Google Calendar provider](./reservation/google-calendar-reservation.md): This is the backend that the chatbot uses to store reservations. It means that you need a Google Workspace account.
 
 ## Before you start
-1. [Sign up](../reference/guide/signingup#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+1. Log in to [OpenCUI](https://build.opencui.io/login).
 2. Follow the [quickstart guide](../reference/guide/index) to learn the basics of OpenCUI.
 3. Set up [Google Workspace](./reservation/google-calendar-reservation#set-up-google-workspace) and [service account](./reservation/google-calendar-reservation#set-up-service-account).
 

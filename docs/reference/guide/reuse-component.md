@@ -18,7 +18,7 @@ A module of a service paired with a compatible provider is all you need to provi
 
 
 ## Before you start
-- [Sign up](./signingup.md#sign-up) for an account and log in to [OpenCUI](https://build.opencui.io/login).
+- Log in to [OpenCUI](https://build.opencui.io/login).
 - We assume that you have finished [clone a simple chatbot](clone-simple-chatbot.md).
 - We assume that you have finished [build a simple chatbot](build-simple-chatbot.md).
 
