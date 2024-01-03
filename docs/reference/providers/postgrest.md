@@ -193,11 +193,13 @@ Then all the functions on the service interface will be shown. To implement a fu
 ### PL/pgSQL
 For PostgreSQL providers, the provider dependent language is [PL/pgSQL](https://www.postgresql.org/docs/current/plpgsql.html). If you are familiar with [SQL](https://www.postgresql.org/docs/14/sql.html), writing SQL commands within a PL/pgSQL function will be easy. 
 
-For example, if you've stored your customers' information in your database and you want to get a customer's name by their user ID, which is an input parameter named *userId_parameter*,  the code will be like this:
+For example, if you've stored your customers' information in your database and you want to get a customer's name by their user ID, which is an input parameter named *userId_input*,  the code will be like this:
 ``` sql
+DECLARE
+    result text;
 BEGIN
-    RETURN QUERY 
-    SELECT name FROM "Info" WHERE "userId" = "userId_parameter";
+    SELECT name FROM "Info" WHERE "userId" = "userId_input" INTO result;
+    RETURN result;
 END
 ```
 Besides, [PL/pgSQL language](https://www.postgresql.org/docs/current/plpgsql.html) also supports [simple loops](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONTROL-STRUCTURES-LOOPS) and [conditionals](https://www.postgresql.org/docs/current/plpgsql-control-structures.html#PLPGSQL-CONDITIONALS).
@@ -214,28 +216,12 @@ END
 ```
 :::
 
-::: warning Warning
-The return type of Provider-dependent function **can NOT be entity**. If the function only returns one column, you should add wrap the entity using a frame.
-
-For example, if the type of column is X, you should create a frame and add a slot in the frame. The type of the slot should be corresponding of X in OpenCUI. 
-:::
-
 When the function returns a set of values of **composite type**, we convert the composite type back to a **frame**, so you can display or use these values in the OpenCUI environment. When returning values, be sure to follow these rules.
   - The **types** of slots in the the frame should be compatible with the types of return columns in the same index. For example, if the types of slots in the frame are [_kotlin.Int_, _kotlin.String_], the SQL data types of return columns should be [_bigint_, _text_] instead of [_text_, _bigint_].
   - The **labels** of slots in the the frame and the names of columns in the same index can be different. For example, if the labels of slots in a frame are [_id_, _name_], the names of return columns can be [_userId_, _userName_].
 
 ### Kotlin
 In OpenCUI, function can always be implemented in **Kotlin**, known as native functions. For more information about Kotlin, see [Kotlin](https://kotlinlang.org/docs/functions.html). 
-
-Native functions can be used to convert the value returning from a provider-dependent function to a desirable format. For example, if a provider-dependent function returns a multi-value frame with only one slot, you could use a Kotlin function to convert the multi-value frame into a multi-value slot.
-
-``` kotlin
-/* 
-Suppose a provider-dependent is getFoodCategory() which returns a list of frame. 
-There is one slot called returnValue in the frame. 
-*/
-return getFoodCategory()!!.map{it -> it.returnValue!!} 
-```
 
 ### Function Console
 When you finish implementing the function, before you wire it to the chatbot, you can verify whether your implementation is as expected through **Function Console**. Currently, function console can only test **Provider dependent** implementations. To use function console, following these steps: 
