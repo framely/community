@@ -40,6 +40,10 @@
   // layout vars, blog and pricing page are using it
   --homepage-width: 960px;
 
+  --mcc-bg: #fff;
+  --mcc-title: #2c2f31;
+  --mcc-content: #5e6266;
+
   /**
    * Change hero size
    * Hide hero image, step 1 we just hide it.
@@ -100,6 +104,10 @@ html.dark {
   // border colors
   --vp-c-border: #3e4c5a;
   --vp-c-border-dark: #34404c;
+
+  --mcc-bg: #242C31;
+  --mcc-title: #e1e4e7;
+  --mcc-content: #aebbc5;
 }
 
 // custom component styles
@@ -133,6 +141,7 @@ html.dark {
 }
 
 #cc-main {
+  --cc-bg: var(--mcc-bg); //var(--vp-c-bg);
   /** Change font **/
   // --cc-font-family: Roboto;
 
@@ -147,4 +156,14 @@ html.dark {
 
   /** Make the buttons a bit rounder **/
   // --cc-btn-border-radius: 10px;
+
+  --cc-separator-border-color: var(--vp-c-divider);
+
+  .cm__title {
+    color: var(--mcc-title);
+  }
+
+  .cm__desc {
+    color: var(--mcc-content) !important;
+  }
 }
