@@ -48,6 +48,7 @@
   "author": "Xiaoyun Wu <xiaoyun.wu@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "vanilla-cookieconsent": "3.0.0",
     "vitepress": "^1.0.0-rc.14"
   }
 }
