@@ -127,3 +127,20 @@ html.dark {
   background-color: var(--vp-c-bg) !important;
   border-right: 1px solid var(--vp-c-divider) !important;
 }
+
+#cc-main {
+  /** Change font **/
+  // --cc-font-family: Roboto;
+
+  /** Change button primary color to black **/
+  --cc-btn-primary-bg: #4282fd;
+  --cc-btn-primary-border-color: none;
+  --cc-btn-primary-hover-bg: #5F95FE;
+  // --cc-btn-primary-hover-border-color: #444444;
+
+  /** Also make toggles the same color as the button **/
+  // --cc-toggle-on-bg: var(--cc-btn-primary-bg);
+
+  /** Make the buttons a bit rounder **/
+  // --cc-btn-border-radius: 10px;
+}
