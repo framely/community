@@ -2,8 +2,8 @@
 layout: home
 title: OpenCUI
 hero:  
-  name: ChatGPT for your service APIs
-  tagline: Help every user get personalized service.
+  name: ChatGPT experience for your APIs
+  tagline: Your user deserve natural and personalized service.
   actions:
     - theme: brand
       text: Request Access
