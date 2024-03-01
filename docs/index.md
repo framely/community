@@ -6,7 +6,7 @@ hero:
   tagline: Your user deserve natural and personalized service.
   actions:
     - theme: brand
-      text: Request Access
+      text: Build your chatbot
       link: https://build.opencui.io
       type: primary
 contentCards:
@@ -25,7 +25,7 @@ contentCards:
 
 cta :
   - details: Import what you need, customize and deploy.
-    title: Request Access
+    title: Build your chatbot
     link: https://build.opencui.io
 
 columnFooter :
