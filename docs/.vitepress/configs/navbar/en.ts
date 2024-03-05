@@ -1,6 +1,11 @@
 
 export const en = [
   {
+    text: 'Why OpenCUI',
+    link: '/essentials/',
+    activeMatch: '/essentials/',
+  },
+  {
     text: 'Copilot',
     link: '/copilot/why-copilot',
     activeMatch: '/copilot/',
