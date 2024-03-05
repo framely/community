@@ -37,7 +37,7 @@ export default {
     sidebar: sidebar.en,
     // footer
     footer: {
-      copyright: 'OpenCUI, Inc © 2023 All rights reserved'
+      copyright: 'OpenCUI, Inc © 2024 All rights reserved'
     }
   },
 
