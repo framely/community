@@ -3,7 +3,7 @@ layout: home
 title: OpenCUI
 hero:  
   name: Superpower Conversation Designers with LLMs
-  tagline: Your user deserve natural and personalized service.
+  tagline: Build with power of the code and LLM, wihout write any.
   actions:
     - theme: brand
       text: Build Your Chatbot
