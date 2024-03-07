@@ -3,7 +3,7 @@ layout: home
 title: OpenCUI
 hero:  
   name: Build with Power of LLMs
-  tagline: Code level control for designers.
+  tagline: With code-level deterministic control when needed.
   actions:
     - theme: brand
       text: Start Build
