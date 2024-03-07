@@ -2,20 +2,20 @@
 layout: home
 title: OpenCUI
 hero:  
-  name: Build with Power of LLMs
-  tagline: With code-level deterministic control, when needed.
+  name: Build with Power of LLMs and Precision of Code.
+  tagline: You focus on design, we will help with implementation.
   actions:
     - theme: brand
       text: Start Build
       link: https://build.opencui.io
       type: primary
 contentCards:
-  - title: Handle Every User Request, Transactional or Informational
-    details: Automatically switching between dependable software and flexible LLMs, our dual-process approach always deliver cost-effective conversational experience for both your APIs and content.
+  - title: Deterministic behavior for high impact query and natural converage for rest
+    details: Automatically switching between software engineering and prompt engineering, our dual-process approach always deliver cost-effective conversational experience for both your APIs and content.
     image: images/system1.png
     left: true
   - title: Understand Dialog with Zero or Few-Shot Learning
-    details: Labeling training data for each additional intent is slow, expensive, and now unnecessary with LLMs. Without this step, you can focus on business logic and move at warp speed.
+    details: Labeling training data for each additional intent is slow, expensive, and now unnecessary with LLMs. Without this step, you can focus on interaction logic and move at warp speed.
     image: images/language.png
     left: false
   - title: Focus on Service with Schema-based Interaction Logic 
