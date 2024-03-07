@@ -2,8 +2,8 @@
 layout: home
 title: OpenCUI
 hero:  
-  name: Build Chatbots with Power of LLMs
-  tagline: Code level control, wihout write any.
+  name: Build with Power of LLMs
+  tagline: Code level control for designers.
   actions:
     - theme: brand
       text: Start Build
