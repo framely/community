@@ -2,11 +2,11 @@
 layout: home
 title: OpenCUI
 hero:  
-  name: Superpower Conversation Designers with LLMs
-  tagline: Build with power of the code and LLM, wihout write any.
+  name: Build Chatbots with Power of LLMs
+  tagline: Code level control, wihout write any.
   actions:
     - theme: brand
-      text: Build Your Chatbot
+      text: Start Build
       link: https://build.opencui.io
       type: primary
 contentCards:
@@ -25,7 +25,7 @@ contentCards:
 
 cta :
   - details: Import what you need, customize and deploy.
-    title: Build Your Chatbot
+    title: Start Build
     link: https://build.opencui.io
 
 columnFooter :
