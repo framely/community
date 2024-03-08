@@ -3,7 +3,7 @@ layout: home
 title: OpenCUI
 hero:  
   name: Build with Power of LLMs and Precision of Code.
-  tagline: You focus on design, we will help with implementation.
+  tagline: We will handle implementation so you can focus on design.
   actions:
     - theme: brand
       text: Start Build
