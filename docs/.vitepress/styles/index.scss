@@ -82,17 +82,24 @@
     }
 
     .name {
-      font-size: 4.8rem;
+      font-size: 6vw;
       line-height: 1.04;
       max-width: 75%;
+    }
+  }
+
+  @media (min-width:1600px) {
+    .main {
+      .name {
+        font-size: 4.8rem;
+      }
     }
   }
 
   @media (max-width:960px) {
     .main {
       .name {
-        font-size: 6vw;
-        line-height: 2.5rem;
+        font-size: 9vw;
         max-width: 100%;
       }
     }
