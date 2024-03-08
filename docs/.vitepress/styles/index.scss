@@ -9,9 +9,10 @@
   --vp-c-brand-light: #5F95FE;
 
   // hero name
-  --vp-home-hero-name-color: var(--vp-c-brand);
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(326deg, #5280F5, #39C0EE);
+  --vp-home-hero-name-color: var(--vp-c-text-1);
+  //--vp-home-hero-name-color: transparent;
+  //--vp-home-hero-name-background: -webkit-linear-gradient(326deg, #5280F5, #39C0EE);
+
   // hero image bg
   --vp-home-hero-image-background-image: -webkit-linear-gradient(-45deg, #5280F520 80%, #C9EBFF20 50%);
   --vp-home-hero-image-filter: blur(72px);
@@ -75,16 +76,25 @@
    * -------------------------------------------------------------------------- */
   .main {
 
-    .name,
     .text,
     .tagline {
-      max-width: fit-content;
-      margin: auto;
-      text-align: center;
+      max-width: 75%;
     }
 
-    .actions {
-      justify-content: center;
+    .name {
+      font-size: 4.8rem;
+      line-height: 1.04;
+      max-width: 75%;
+    }
+  }
+
+  @media (max-width:960px) {
+    .main {
+      .name {
+        font-size: 6vw;
+        line-height: 2.5rem;
+        max-width: 100%;
+      }
     }
   }
 
