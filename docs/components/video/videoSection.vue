@@ -23,7 +23,7 @@ const video = computed(() => {
 
 <style lang="scss" scoped>
 .video-wrapper {
-  padding: 0 40px 40px 40px;
+  padding: 120px 40px 40px 40px;
   max-width: 1152px;
   margin: 0 auto;
   background-color: inherit;
