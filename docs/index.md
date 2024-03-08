@@ -6,7 +6,7 @@ hero:
   tagline: Focus on design, and we'll take care of everything else.
   actions:
     - theme: brand
-      text: Start Build
+      text: Start building
       link: https://build.opencui.io
       type: primary
 contentCards:
@@ -25,7 +25,7 @@ contentCards:
 
 cta :
   - details: Import what you need, customize and deploy.
-    title: Start Build
+    title: Get started
     link: https://build.opencui.io
 
 columnFooter :
