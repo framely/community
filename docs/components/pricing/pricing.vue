@@ -13,22 +13,27 @@ defineProps({
 // const { page, frontmatter } = useData()
 
 </script>
+
 <template>
-  <div class="main">
+  <div class="container-p">
+
     <div class="pricing-top-info">
-      <h1 v-if="frontmatter.title" class="pricing-top-title">{{ frontmatter.title }}</h1>
-      <p v-if="frontmatter.tagline" class="pricing-top-desc">{{ frontmatter.tagline }}</p>
+      <h1 class="pricing-top-title">{{ frontmatter.title }}</h1>
+      <p class="pricing-top-desc">{{ frontmatter.tagline }}</p>
     </div>
-    <div class="cards" v-if="frontmatter.cards">
-      <div class="card" v-for="card in frontmatter.cards" :key="card">
+
+    <div class="cards">
+      <div class="card" v-for="card in frontmatter.cards" :key="card.package">
+
         <div class="card-head">
-          <h4 class="card-head-package" v-if="card.package">{{ card.package }}</h4>
+          <h4 class="card-head-package">{{ card.package }}</h4>
           <div class="price-badge-container">
-            <h1 class="card-head-price" v-if="card.price">{{ card.price }}</h1>
-            <span v-if="card.badge" class="badge-price">{{ card.badge }}</span>
+            <h1 class="card-head-price">{{ card.price }}</h1>
+            <span class="badge-price">{{ card.badge }}</span>
           </div>
-          <p v-if="card.tagline" class="text-tagline">{{ card.tagline }}</p>
+          <p class="text-tagline">{{ card.tagline }}</p>
         </div>
+
         <div class="card-body">
           <ul>
             <li v-for="list in card.features" :key="list">
@@ -36,22 +41,24 @@ defineProps({
             </li>
           </ul>
         </div>
+
         <div class="card-footer">
-          <p v-if="card.footertagline">{{ card.footertagline }}</p>
-          <button v-if="card.link">
-            <a :href="card.link">{{ card.buttonText }}</a>
-          </button>
+          <a :href="card.link">
+            <button>{{ card.buttonText }}</button>
+          </a>
         </div>
+
       </div>
     </div>
   </div>
 </template>
+
 <style lang="scss" scoped>
 .aside {
   width: 0 !important;
 }
 
-.main {
+.container-p {
   max-width: var(--homepage-width);
   position: relative;
   margin-top: 30px;
