@@ -4,7 +4,7 @@ import { useData } from 'vitepress'
 
 // const { Layout } = DefaultTheme
 defineProps({
-  frontmatter: {
+  pricingPlan: {
     type: Object,
     default: () => [],
   },
@@ -18,12 +18,12 @@ defineProps({
   <div class="container-p">
 
     <div class="pricing-top-info">
-      <h1 class="pricing-top-title">{{ frontmatter.title }}</h1>
-      <p class="pricing-top-desc">{{ frontmatter.tagline }}</p>
+      <h1 class="pricing-top-title">{{ pricingPlan.title }}</h1>
+      <p class="pricing-top-desc">{{ pricingPlan.tagline }}</p>
     </div>
 
     <div class="cards">
-      <div class="card" v-for="card in frontmatter.cards" :key="card.package">
+      <div class="card" v-for="card in pricingPlan.cards" :key="card.package">
 
         <div class="card-head">
           <h4 class="card-head-package">{{ card.package }}</h4>
@@ -59,7 +59,7 @@ defineProps({
 }
 
 .container-p {
-  max-width: var(--homepage-width);
+  max-width: 1152px;
   position: relative;
   margin-top: 30px;
   display: flex;
@@ -76,13 +76,13 @@ defineProps({
   .pricing-top-info {
   margin: 2.5rem;
   text-align: center;
-  padding-top: 1.5rem;
-  padding-bottom: 2rem;
+  padding-top: 120px;
+  padding-bottom: 80px;
 
   .pricing-top-title {
-    font-size: 36px;
+    font-size: 3.75rem;
     font-weight: 600;
-    line-height: 1.6;
+    line-height: 1.1;
   }
 
   .pricing-top-desc {
@@ -95,8 +95,8 @@ defineProps({
   .cards {
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 48px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     padding: 0 2rem;
 
     .card {
@@ -114,7 +114,7 @@ defineProps({
       }
 
       .card-head-package{
-        font-weight: 500;
+        font-weight: 600;
       }
 
       .price-badge-container {
@@ -126,7 +126,7 @@ defineProps({
 
       .card-head-price{
         font-size: 48px;
-        font-weight: 500;
+        font-weight: 600;
       }
       .badge-price {
         background: var(--vp-c-bg-icon);
@@ -182,8 +182,8 @@ defineProps({
   }
 }
 
-@media (max-width: 719px) {
-  .main {
+@media (max-width: 960px) {
+  .container-p {
     .cards {
       display: flex;
       flex-direction: column;
