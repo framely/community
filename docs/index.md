@@ -2,7 +2,9 @@
 layout: home
 title: OpenCUI
 hero:  
-  name: Build conversational interface with power of LLMs and precision of code
+  name: |
+    Build conversational interface with 
+    power of LLMs and precision of code
   tagline: Focus on design, and we'll take care of everything else.
   actions:
     - theme: brand

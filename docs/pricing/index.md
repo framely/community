@@ -7,7 +7,7 @@ layout: home
 </script>
 
 <Pricing :pricingPlan="{
-    title:'Dependable conversation your user deserves.',
+    title:'Dependable conversation your user deserves',
     tagline: `Pick up the right tools and start to build.`,
     cards: [{package:'STARTER',
       price: '$99',
