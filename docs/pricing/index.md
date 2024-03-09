@@ -6,37 +6,52 @@ layout: home
   import Pricing from '../components/pricing/pricing.vue';
 </script>
 
-<Pricing :frontmatter="{
-    title:'Dependable conversation your user deserves.',
+<Pricing :pricingPlan="{
+    title:'Dependable conversation your user deserves',
     tagline: `Pick up the right tools and start to build.`,
-    cards: [{package:'Builder',
-      price: '$0',
-      badge: 'per user / year',
-      tagline: 'For these who want to build CUI the right way and share what they build.',
-      features: ['Public Projects',
-        'Public Libraries',
-        'CUI Components',
-        'Multiple Language',
-        'Hosting Backoffice',
-        'Basic NLU Model',
-        'Development environment',
+    cards: [{package:'STARTER',
+      price: '$99',
+      badge: 'per year',
+      tagline: 'For designers and freelancers, who want building and sharing',
+      features: [
+        'Public projects',
+        'Public libraries',
+        'CUI components',
+        'Multiple language',
+        'Hosting backoffice',
+        'Basic NLU model',
         'Community Support'
       ],
-      buttonText: 'Start to build',
+      buttonText: 'Start building',
       link: 'https://build.opencui.io'
-    },{package:'Business',
+    },{package:'TEAMS',
+      price: '$500',
+      badge: 'per seat / mo',
+      tagline: 'For growing teams and agencies who want stronger permissions',
+      features: [
+        'Unlimited agents',
+        'Larger, purpose built NLU',
+        'Channel integration',
+        'Multiple language',
+        'Export agents',
+        'Advanced security',
+        'Priority support'
+      ],
+      buttonText: 'Add plan',
+      link: 'https://build.opencui.io'
+    },{package:'ENTERPRICE',
       price: 'Custom',
       // badge: 'per user / year',
-      tagline: 'Beside services, you just need a conversational experience product owner.',
-      features: ['Everything included in Builder and: ',
-        'Larger, purpose built NLU Model',
-        'Channel integration',
-        'Private deploy',
-        'OpenCUI hosting in production environment',
+      tagline: 'For those needing  an enterprise-grade solution',
+      features: [
+        'Unlimited knowledge base sources',
+        'Private cloud hosting',
+        'Bring your own LLM',
         'Custom Integrations',
-        'Advanced security, performance and customer success'
+        'Migration services',
+        'Custom contracting'
       ],
-      buttonText: 'What are you waiting for?',
+      buttonText: 'Contact Sales',
       link: 'https://build.opencui.io'
     }]
     }" 

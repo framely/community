@@ -4,7 +4,7 @@ import { useData } from 'vitepress'
 
 // const { Layout } = DefaultTheme
 defineProps({
-  frontmatter: {
+  pricingPlan: {
     type: Object,
     default: () => [],
   },
@@ -13,22 +13,27 @@ defineProps({
 // const { page, frontmatter } = useData()
 
 </script>
+
 <template>
-  <div class="main">
+  <div class="container-p">
+
     <div class="pricing-top-info">
-      <h1 v-if="frontmatter.title" class="pricing-top-title">{{ frontmatter.title }}</h1>
-      <p v-if="frontmatter.tagline" class="pricing-top-desc">{{ frontmatter.tagline }}</p>
+      <h1 class="pricing-top-title">{{ pricingPlan.title }}</h1>
+      <p class="pricing-top-desc">{{ pricingPlan.tagline }}</p>
     </div>
-    <div class="cards" v-if="frontmatter.cards">
-      <div class="card" v-for="card in frontmatter.cards" :key="card">
+
+    <div class="cards">
+      <div class="card" v-for="card in pricingPlan.cards" :key="card.package">
+
         <div class="card-head">
-          <h4 class="card-head-package" v-if="card.package">{{ card.package }}</h4>
+          <h4 class="card-head-package">{{ card.package }}</h4>
           <div class="price-badge-container">
-            <h1 class="card-head-price" v-if="card.price">{{ card.price }}</h1>
-            <span v-if="card.badge" class="badge-price">{{ card.badge }}</span>
+            <h1 class="card-head-price">{{ card.price }}</h1>
+            <span class="badge-price">{{ card.badge }}</span>
           </div>
-          <p v-if="card.tagline" class="text-tagline">{{ card.tagline }}</p>
+          <p class="text-tagline">{{ card.tagline }}</p>
         </div>
+
         <div class="card-body">
           <ul>
             <li v-for="list in card.features" :key="list">
@@ -36,23 +41,25 @@ defineProps({
             </li>
           </ul>
         </div>
+
         <div class="card-footer">
-          <p v-if="card.footertagline">{{ card.footertagline }}</p>
-          <button v-if="card.link">
-            <a :href="card.link">{{ card.buttonText }}</a>
-          </button>
+          <a :href="card.link">
+            <button>{{ card.buttonText }}</button>
+          </a>
         </div>
+
       </div>
     </div>
   </div>
 </template>
+
 <style lang="scss" scoped>
 .aside {
   width: 0 !important;
 }
 
-.main {
-  max-width: var(--homepage-width);
+.container-p {
+  max-width: 1152px;
   position: relative;
   margin-top: 30px;
   display: flex;
@@ -69,13 +76,13 @@ defineProps({
   .pricing-top-info {
   margin: 2.5rem;
   text-align: center;
-  padding-top: 1.5rem;
-  padding-bottom: 2rem;
+  padding-top: 120px;
+  padding-bottom: 80px;
 
   .pricing-top-title {
-    font-size: 36px;
+    font-size: 3.75rem;
     font-weight: 600;
-    line-height: 1.6;
+    line-height: 1.1;
   }
 
   .pricing-top-desc {
@@ -88,8 +95,8 @@ defineProps({
   .cards {
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 48px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     padding: 0 2rem;
 
     .card {
@@ -107,7 +114,7 @@ defineProps({
       }
 
       .card-head-package{
-        font-weight: 500;
+        font-weight: 600;
       }
 
       .price-badge-container {
@@ -119,7 +126,7 @@ defineProps({
 
       .card-head-price{
         font-size: 48px;
-        font-weight: 500;
+        font-weight: 600;
       }
       .badge-price {
         background: var(--vp-c-bg-icon);
@@ -175,8 +182,8 @@ defineProps({
   }
 }
 
-@media (max-width: 719px) {
-  .main {
+@media (max-width: 960px) {
+  .container-p {
     .cards {
       display: flex;
       flex-direction: column;
