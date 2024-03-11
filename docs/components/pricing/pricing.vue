@@ -74,26 +74,27 @@ defineProps({
   }
 
   .pricing-top-info {
-  margin: 2.5rem;
-  text-align: center;
-  padding-top: 120px;
-  padding-bottom: 80px;
+    margin: 2.5rem;
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 80px;
 
-  .pricing-top-title {
-    font-size: 3.75rem;
-    font-weight: 600;
-    line-height: 1.1;
+      .pricing-top-title {
+        font-size: 3.75rem;
+        font-weight: 600;
+        line-height: 1.1;
+      }
+
+      .pricing-top-desc {
+        font-weight: 500;
+        line-height: 28px;
+        color: var(--vp-c-text-2);
+        padding: 1rem;
+      }
   }
 
-  .pricing-top-desc {
-    font-weight: 500;
-    line-height: 28px;
-    color: var(--vp-c-text-2);
-    padding: 1rem;
-  }
-}
   .cards {
-    margin: auto;
+    //margin: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -184,14 +185,22 @@ defineProps({
 
 @media (max-width: 960px) {
   .container-p {
+    .pricing-top-info {
+      margin: 0;
+
+      .pricing-top-title {
+        font-size: 3rem;
+      }
+    }
     .cards {
       display: flex;
       flex-direction: column;
-
+      padding: 0 1rem;
       .card {
         min-width: fit-content;
       }
     }
   }
+
 }
 </style>
