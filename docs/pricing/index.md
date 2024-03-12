@@ -13,7 +13,7 @@ layout: home
     {package:'Builders',
         price: '$19',
         badge: 'per buider/mo',
-        tagline: 'For freelancers, who want building and earning',
+        tagline: 'For freelancers, who want to build and earn.',
         features: [
           'Single builder',
           'Public chatbots',
@@ -30,7 +30,7 @@ layout: home
     {package:'Teams',
         price: '$199',
         badge: 'per builder/mo',
-        tagline: 'For teams and agencies who take on bigger challenges',
+        tagline: 'For teams and agencies who take on bigger challenges.',
         features: [
           'Multiple builders',
           'Private chatbots',
@@ -50,7 +50,7 @@ layout: home
       {package:'Enterprise',
         price: 'Custom',
         // badge: 'per builder/ year',
-        tagline: 'For those needing an custom solution',
+        tagline: 'For companies that want the ultimate conversational experience.',
         features: [
           'Unlimited knowledge base sources',
           'Private cloud hosting',
