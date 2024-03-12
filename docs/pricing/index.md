@@ -9,51 +9,61 @@ layout: home
 <Pricing :pricingPlan="{
     title:'Dependable conversation your user deserves',
     tagline: `Pick up the right tools and start to build.`,
-    cards: [{package:'STARTER',
-      price: '$99',
-      badge: 'per year',
-      tagline: 'For designers and freelancers, who want building and sharing',
-      features: [
-        'Public projects',
-        'Public libraries',
-        'CUI components',
-        'Multiple language',
-        'Hosting backoffice',
-        'Basic NLU model',
-        'Community Support'
-      ],
-      buttonText: 'Start building',
-      link: 'https://build.opencui.io'
-    },{package:'TEAMS',
-      price: '$500',
-      badge: 'per seat / mo',
-      tagline: 'For growing teams and agencies who want stronger permissions',
-      features: [
-        'Unlimited agents',
-        'Larger, purpose built NLU',
-        'Channel integration',
-        'Multiple language',
-        'Export agents',
-        'Advanced security',
-        'Priority support'
-      ],
-      buttonText: 'Add plan',
-      link: 'https://build.opencui.io'
-    },{package:'ENTERPRICE',
-      price: 'Custom',
-      // badge: 'per user / year',
-      tagline: 'For those needing  an enterprise-grade solution',
-      features: [
-        'Unlimited knowledge base sources',
-        'Private cloud hosting',
-        'Bring your own LLM',
-        'Custom Integrations',
-        'Migration services',
-        'Custom contracting'
-      ],
-      buttonText: 'Contact Sales',
-      link: 'https://build.opencui.io'
-    }]
+    cards: [
+    {package:'Builders',
+        price: '$19',
+        badge: 'per buider/mo',
+        tagline: 'For freelancers, who want building and earning',
+        features: [
+          'Single builder',
+          'Public chatbots',
+          'Public modules',
+          'Test access only',
+          'Single language',
+          'Hosted database backend',
+          'Basic NLU model',
+          'Basic Support',
+        ],
+        buttonText: 'Start 14-day trial',
+        link: 'https://build.opencui.io'
+      },
+    {package:'Teams',
+        price: '$199',
+        badge: 'per builder/mo',
+        tagline: 'For teams and agencies who take on bigger challenges',
+        features: [
+          'Multiple builders',
+          'Private chatbots',
+          'Private modules',
+          'Dual process support',
+          'Larger NLU model',
+          'Text-to-code support',
+          'Channel integrations',
+          'Contact center integration',
+          'Multiple languages',
+          'Priority support',
+          'Addiitonal hosting package'
+        ],
+        buttonText: 'Add plan',
+        link: 'https://build.opencui.io'
+      },
+      {package:'Enterprise',
+        price: 'Custom',
+        // badge: 'per builder/ year',
+        tagline: 'For those needing an custom solution',
+        features: [
+          'Unlimited knowledge base sources',
+          'Private cloud hosting',
+          'Bring your own LLM',
+          'Export chatbots',
+          'Custom Integrations',
+          'Named support',
+          'Custom contracting',
+          'Advanced security',
+        ],
+        buttonText: 'Contact Sales',
+        link: 'https://build.opencui.io'
+      }]
     }" 
 />
 
