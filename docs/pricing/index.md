@@ -15,14 +15,14 @@ layout: home
         badge: 'per buider/mo',
         tagline: 'For freelancers, who want building and earning',
         features: [
+          'Single builder',
           'Public chatbots',
           'Public modules',
           'Test access only',
           'Single language',
-          'Hosted backoffice',
+          'Hosted database backend',
           'Basic NLU model',
           'Basic Support',
-          'Hosting package for chatbot'
         ],
         buttonText: 'Start 14-day trial',
         link: 'https://build.opencui.io'
@@ -32,13 +32,17 @@ layout: home
         badge: 'per builder/mo',
         tagline: 'For teams and agencies who take on bigger challenges',
         features: [
-          'Unlimited chatbots',
+          'Multiple builders',
+          'Private chatbots',
+          'Private modules',
           'Dual process support',
           'Larger NLU model',
-          'Channel integration',
+          'Text-to-code support',
+          'Channel integrations',
+          'Contact center integration',
           'Multiple languages',
-          'Advanced security',
-          'Priority support'
+          'Priority support',
+          'Addiitonal hosting package'
         ],
         buttonText: 'Add plan',
         link: 'https://build.opencui.io'
@@ -54,7 +58,8 @@ layout: home
           'Export chatbots',
           'Custom Integrations',
           'Named support',
-          'Custom contracting'
+          'Custom contracting',
+          'Advanced security',
         ],
         buttonText: 'Contact Sales',
         link: 'https://build.opencui.io'
