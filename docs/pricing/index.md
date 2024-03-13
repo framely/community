@@ -10,9 +10,10 @@ layout: home
     title:'Dependable conversation your user deserves',
     tagline: `Pick up the right tools and start to build.`,
     cards: [
-    {package:'Builders',
+      {
+        package:'Starters',
         price: '$19',
-        badge: 'per buider/mo',
+        badge: 'per seat/mo',
         tagline: 'For freelancers, who want to build and earn.',
         features: [
           'Single builder',
@@ -27,9 +28,10 @@ layout: home
         buttonText: 'Start 14-day trial',
         link: 'https://build.opencui.io'
       },
-    {package:'Teams',
+      {
+        package:'Teams',
         price: '$199',
-        badge: 'per builder/mo',
+        badge: 'per seat/mo',
         tagline: 'For teams and agencies who take on bigger challenges.',
         features: [
           'Multiple builders',
@@ -47,9 +49,10 @@ layout: home
         buttonText: 'Add plan',
         link: 'https://build.opencui.io'
       },
-      {package:'Enterprise',
+      {
+        package:'Enterprise',
         price: 'Custom',
-        // badge: 'per builder/ year',
+        // badge: 'per seat/ year',
         tagline: 'For companies that want the ultimate conversational experience.',
         features: [
           'Unlimited knowledge base sources',
@@ -63,8 +66,9 @@ layout: home
         ],
         buttonText: 'Contact Sales',
         link: 'https://build.opencui.io'
-      }]
-    }" 
+      }
+    ]
+  }" 
 />
 
 <!-- <Footer /> -->

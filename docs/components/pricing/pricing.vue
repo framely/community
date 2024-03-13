@@ -75,14 +75,16 @@ defineProps({
 
   .pricing-top-info {
     margin: 2.5rem;
-    text-align: center;
-    padding-top: 120px;
+    //text-align: center;
+    padding-top: 80px;
     padding-bottom: 80px;
+    width: 75%;
 
       .pricing-top-title {
-        font-size: 3.75rem;
-        font-weight: 600;
+        font-size: 4rem;
+        font-weight: 700;
         line-height: 1.1;
+        padding: 1rem;
       }
 
       .pricing-top-desc {
@@ -187,15 +189,18 @@ defineProps({
   .container-p {
     .pricing-top-info {
       margin: 0;
+      width: 100%;
+      padding-top: 60px;
+      padding-bottom: 40px;
 
       .pricing-top-title {
-        font-size: 3rem;
+        font-size: 2.3rem;
       }
     }
     .cards {
       display: flex;
       flex-direction: column;
-      padding: 0 1rem;
+      padding: 0 0.5rem;
       .card {
         min-width: fit-content;
       }
