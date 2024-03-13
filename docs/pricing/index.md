@@ -20,7 +20,7 @@ layout: home
           'Public modules',
           'Test access only',
           'Single language',
-          'Hosted database backend',
+          'Basic database backend',
           'Basic NLU model',
           'Basic Support',
         ],
